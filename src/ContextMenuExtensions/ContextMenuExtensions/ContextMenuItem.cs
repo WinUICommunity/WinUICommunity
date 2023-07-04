@@ -1,7 +1,4 @@
-﻿using Windows.Data.Json;
-using Windows.Storage;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 enum MultipleFilesFlag
 {
@@ -52,10 +49,10 @@ public class ContextMenuItem : ContextMenuBaseModel
             AcceptExts = json.GetNamedString(NameToJsonKey(nameof(AcceptExts)), string.Empty),
             AcceptDirectory = json.GetNamedBoolean(NameToJsonKey(nameof(AcceptDirectory)), false),
             AcceptFile = json.GetNamedBoolean(NameToJsonKey(nameof(AcceptFile)), true),
-            AcceptMultipleFilesFlag = (int)json.GetNamedNumber(NameToJsonKey(nameof(AcceptMultipleFilesFlag)), (int)MultipleFilesFlag.OFF),
+            AcceptMultipleFilesFlag = (int) json.GetNamedNumber(NameToJsonKey(nameof(AcceptMultipleFilesFlag)), (int) MultipleFilesFlag.OFF),
             PathDelimiter = json.GetNamedString(NameToJsonKey(nameof(PathDelimiter)), string.Empty),
             ParamForMultipleFiles = json.GetNamedString(NameToJsonKey(nameof(ParamForMultipleFiles)), string.Empty),
-            Index = (int)json.GetNamedNumber(NameToJsonKey(nameof(Index)), 0),
+            Index = (int) json.GetNamedNumber(NameToJsonKey(nameof(Index)), 0),
         };
         return menu;
     }
@@ -82,12 +79,9 @@ public class ContextMenuItem : ContextMenuBaseModel
 
     public static (bool, string) Check(ContextMenuItem content)
     {
-        if (string.IsNullOrEmpty(content.Title))
-        {
-            return (false, nameof(content.Title));
-        }
-
-        return string.IsNullOrEmpty(content.Exe)
+        return string.IsNullOrEmpty(content.Title)
+            ? (false, nameof(content.Title))
+            : string.IsNullOrEmpty(content.Exe)
             ? (false, nameof(content.Exe))
             : string.IsNullOrEmpty(content.Param) ? (false, nameof(content.Param)) : (true, string.Empty);
     }

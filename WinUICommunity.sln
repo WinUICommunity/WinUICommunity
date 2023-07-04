@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core\Core.csproj", "{26CEC4CD-751F-4064-918F-C876C1A83E40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "src\Core\Core.csproj", "{26CEC4CD-751F-4064-918F-C876C1A83E40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandingPages", "src\LandingPages\LandingPages.csproj", "{A8EDC2B9-3385-4198-A720-5DF3DB804C43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandingPages", "src\LandingPages\LandingPages.csproj", "{A8EDC2B9-3385-4198-A720-5DF3DB804C43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextMenuExtensions", "src\ContextMenuExtensions\ContextMenuExtensions.csproj", "{313A9EFC-9B4D-4082-A54F-88D78D458A0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContextMenuExtensions", "src\ContextMenuExtensions\ContextMenuExtensions.csproj", "{313A9EFC-9B4D-4082-A54F-88D78D458A0D}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WinUICommunity_Shared", "src\WinUICommunity_Shared\WinUICommunity_Shared.shproj", "{2DF4BB55-EE16-466B-8C86-8084B1A3BE55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "src\DemoApp\DemoApp.csproj", "{60D02545-DF30-4449-BB8A-059845AA3910}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp", "src\DemoApp\DemoApp.csproj", "{60D02545-DF30-4449-BB8A-059845AA3910}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Components", "src\Components\Components.csproj", "{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +99,22 @@ Global
 		{60D02545-DF30-4449-BB8A-059845AA3910}.Release|x86.ActiveCfg = Release|x86
 		{60D02545-DF30-4449-BB8A-059845AA3910}.Release|x86.Build.0 = Release|x86
 		{60D02545-DF30-4449-BB8A-059845AA3910}.Release|x86.Deploy.0 = Release|x86
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Debug|x64.Build.0 = Debug|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Debug|x86.Build.0 = Debug|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Release|ARM64.Build.0 = Release|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Release|x64.ActiveCfg = Release|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Release|x64.Build.0 = Release|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Release|x86.ActiveCfg = Release|Any CPU
+		{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

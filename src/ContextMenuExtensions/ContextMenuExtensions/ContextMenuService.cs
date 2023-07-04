@@ -1,9 +1,4 @@
-﻿using System.Diagnostics;
-
-using Windows.Storage;
-using Windows.System;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public class ContextMenuService
 {

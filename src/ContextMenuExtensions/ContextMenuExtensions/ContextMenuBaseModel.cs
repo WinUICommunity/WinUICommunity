@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public class ContextMenuBaseModel : INotifyPropertyChanged
 {

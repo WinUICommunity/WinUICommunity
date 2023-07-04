@@ -27,6 +27,12 @@
     <a href="https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions">
         <img alt="ContextMenuExtensions-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.ContextMenuExtensions?color=brightgreen&label=Installs"></img>
     </a>
+    <a href="https://www.nuget.org/packages/WinUICommunity.Components">
+        <img alt="Components-Version" src="https://img.shields.io/nuget/v/WinUICommunity.Components.svg"></img>
+    </a> 
+    <a href="https://www.nuget.org/packages/WinUICommunity.Components">
+        <img alt="Components-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Components?color=brightgreen&label=Installs"></img>
+    </a>
     <a href="https://ghost1372.github.io/WinUICommunity/">
         <img alt="Docs" src="https://img.shields.io/badge/Document-Here-critical"></img>
     </a>   
@@ -69,6 +75,11 @@ See the [LandingPages](src/LandingPages/README.md) to see how to use it
 ### add a new ContextMenu for Windows 11/10.
 
 See the [ContextMenuExtensions](src/ContextMenuExtensions/README.md) to see how to use it
+
+## Components
+### Experience WinUI 3 quickly and easily with the help of Components, Everything you need to develop an application is gathered in one place.
+
+See the [Components](src/Components/README.md) to see how to use it
 
 ## Demo
 
