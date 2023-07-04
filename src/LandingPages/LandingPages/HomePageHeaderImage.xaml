@@ -34,6 +34,7 @@
                            Source="{x:Bind HeaderOverlayImage, Mode=OneWay}"
                            Stretch="UniformToFill" />
         </Grid>
-        <Rectangle x:Name="ImageGridSurfaceRec" Fill="Transparent" />
+        <Rectangle x:Name="ImageGridSurfaceRec"
+                   Fill="Transparent" />
     </Grid>
 </UserControl>

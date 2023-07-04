@@ -6,11 +6,32 @@
                      NavigationCacheMode="Enabled">
 
     <Page.Resources>
-        <CollectionViewSource x:Name="itemsCVS" IsSourceGrouped="true" />
+        <CollectionViewSource x:Name="itemsCVS"
+                              IsSourceGrouped="true" />
     </Page.Resources>
 
     <!--  This grid acts as a root panel for the page.  -->
     <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <!--  Visual states reflect the application's window size  -->
+            <VisualStateGroup x:Name="LayoutVisualStates">
+                <VisualState x:Name="WideLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowLayout">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="learnMoreGrid.Margin" Value="16,36,0,36" />
+                        <Setter Target="itemGridView.Padding" Value="4,0,4,36" />
+                        <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <GridView x:Name="itemGridView"
                   Padding="24,0,24,0"
                   AutomationProperties.AutomationId="ItemGridView"
@@ -25,7 +46,8 @@
                   Loaded="OnItemGridViewLoaded"
                   SelectionMode="None">
             <GridView.Header>
-                <Grid x:Name="HeaderGrid" Margin="{x:Bind HeaderMargin}">
+                <Grid x:Name="HeaderGrid"
+                      Margin="{x:Bind HeaderMargin}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="204" />
                         <RowDefinition Height="*" />
@@ -85,25 +107,5 @@
                 </Grid>
             </GridView.Footer>
         </GridView>
-        <VisualStateManager.VisualStateGroups>
-            <!--  Visual states reflect the application's window size  -->
-            <VisualStateGroup x:Name="LayoutVisualStates">
-                <VisualState x:Name="WideLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="NarrowLayout">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="learnMoreGrid.Margin" Value="16,36,0,36" />
-                        <Setter Target="itemGridView.Padding" Value="4,0,4,36" />
-                        <Setter Target="itemGridView.ItemContainerStyle" Value="{StaticResource IndentedGridViewItemStyleSmall}" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
     </Grid>
 </local:ItemsPageBase>

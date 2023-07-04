@@ -16,7 +16,7 @@ public partial class SettingsCard : ButtonBase
         nameof(Header),
         typeof(object),
         typeof(SettingsCard),
-        new PropertyMetadata(defaultValue: null, (d, e) => ((SettingsCard) d).OnHeaderPropertyChanged((object) e.OldValue, (object) e.NewValue)));
+        new PropertyMetadata(defaultValue: null, (d, e) => ((SettingsCard)d).OnHeaderPropertyChanged((object)e.OldValue, (object)e.NewValue)));
 
     /// <summary>
     /// The backing <see cref="DependencyProperty"/> for the <see cref="Description"/> property.
@@ -25,7 +25,7 @@ public partial class SettingsCard : ButtonBase
         nameof(Description),
         typeof(object),
         typeof(SettingsCard),
-        new PropertyMetadata(defaultValue: null, (d, e) => ((SettingsCard) d).OnDescriptionPropertyChanged((object) e.OldValue, (object) e.NewValue)));
+        new PropertyMetadata(defaultValue: null, (d, e) => ((SettingsCard)d).OnDescriptionPropertyChanged((object)e.OldValue, (object)e.NewValue)));
 
     /// <summary>
     /// The backing <see cref="DependencyProperty"/> for the <see cref="HeaderIcon"/> property.
@@ -34,7 +34,7 @@ public partial class SettingsCard : ButtonBase
         nameof(HeaderIcon),
         typeof(IconElement),
         typeof(SettingsCard),
-        new PropertyMetadata(defaultValue: null, (d, e) => ((SettingsCard) d).OnHeaderIconPropertyChanged((IconElement) e.OldValue, (IconElement) e.NewValue)));
+        new PropertyMetadata(defaultValue: null, (d, e) => ((SettingsCard)d).OnHeaderIconPropertyChanged((IconElement)e.OldValue, (IconElement)e.NewValue)));
 
     /// <summary>
     /// The backing <see cref="DependencyProperty"/> for the <see cref="ActionIcon"/> property.
@@ -61,7 +61,7 @@ public partial class SettingsCard : ButtonBase
         nameof(IsClickEnabled),
         typeof(bool),
         typeof(SettingsCard),
-        new PropertyMetadata(defaultValue: false, (d, e) => ((SettingsCard) d).OnIsClickEnabledPropertyChanged((bool) e.OldValue, (bool) e.NewValue)));
+        new PropertyMetadata(defaultValue: false, (d, e) => ((SettingsCard)d).OnIsClickEnabledPropertyChanged((bool)e.OldValue, (bool)e.NewValue)));
 
     /// <summary>
     /// The backing <see cref="DependencyProperty"/> for the <see cref="ContentAlignment"/> property.
@@ -79,14 +79,14 @@ public partial class SettingsCard : ButtonBase
         nameof(IsActionIconVisible),
         typeof(bool),
         typeof(SettingsCard),
-        new PropertyMetadata(defaultValue: true, (d, e) => ((SettingsCard) d).OnIsActionIconVisiblePropertyChanged((bool) e.OldValue, (bool) e.NewValue)));
+        new PropertyMetadata(defaultValue: true, (d, e) => ((SettingsCard)d).OnIsActionIconVisiblePropertyChanged((bool)e.OldValue, (bool)e.NewValue)));
 
     /// <summary>
     /// Gets or sets the Header.
     /// </summary>
     public object Header
     {
-        get => (object) GetValue(HeaderProperty);
+        get => (object)GetValue(HeaderProperty);
         set => SetValue(HeaderProperty, value);
     }
 
@@ -97,7 +97,7 @@ public partial class SettingsCard : ButtonBase
     public new object Description
 #pragma warning restore CS0109 // Member does not hide an inherited member; new keyword is not required
     {
-        get => (object) GetValue(DescriptionProperty);
+        get => (object)GetValue(DescriptionProperty);
         set => SetValue(DescriptionProperty, value);
     }
 
@@ -106,7 +106,7 @@ public partial class SettingsCard : ButtonBase
     /// </summary>
     public IconElement HeaderIcon
     {
-        get => (IconElement) GetValue(HeaderIconProperty);
+        get => (IconElement)GetValue(HeaderIconProperty);
         set => SetValue(HeaderIconProperty, value);
     }
 
@@ -115,7 +115,7 @@ public partial class SettingsCard : ButtonBase
     /// </summary>
     public IconElement ActionIcon
     {
-        get => (IconElement) GetValue(ActionIconProperty);
+        get => (IconElement)GetValue(ActionIconProperty);
         set => SetValue(ActionIconProperty, value);
     }
 
@@ -124,7 +124,7 @@ public partial class SettingsCard : ButtonBase
     /// </summary>
     public string ActionIconToolTip
     {
-        get => (string) GetValue(ActionIconToolTipProperty);
+        get => (string)GetValue(ActionIconToolTipProperty);
         set => SetValue(ActionIconToolTipProperty, value);
     }
 
@@ -133,7 +133,7 @@ public partial class SettingsCard : ButtonBase
     /// </summary>
     public bool IsClickEnabled
     {
-        get => (bool) GetValue(IsClickEnabledProperty);
+        get => (bool)GetValue(IsClickEnabledProperty);
         set => SetValue(IsClickEnabledProperty, value);
     }
 
@@ -142,7 +142,7 @@ public partial class SettingsCard : ButtonBase
     /// </summary>
     public ContentAlignment ContentAlignment
     {
-        get => (ContentAlignment) GetValue(ContentAlignmentProperty);
+        get => (ContentAlignment)GetValue(ContentAlignmentProperty);
         set => SetValue(ContentAlignmentProperty, value);
     }
 
@@ -151,7 +151,7 @@ public partial class SettingsCard : ButtonBase
     /// </summary>
     public bool IsActionIconVisible
     {
-        get => (bool) GetValue(IsActionIconVisibleProperty);
+        get => (bool)GetValue(IsActionIconVisibleProperty);
         set => SetValue(IsActionIconVisibleProperty, value);
     }
 

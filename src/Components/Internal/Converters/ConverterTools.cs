@@ -2,7 +2,6 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using Microsoft.UI.Xaml.Markup;
-using System;
 
 namespace WinUICommunity;
 
@@ -35,13 +34,6 @@ internal static class ConverterTools
     /// <returns>The converted value</returns>
     internal static object Convert(object value, Type targetType)
     {
-        if (targetType.IsInstanceOfType(value))
-        {
-            return value;
-        }
-        else
-        {
-            return XamlBindingHelper.ConvertValue(targetType, value);
-        }
+        return targetType.IsInstanceOfType(value) ? value : XamlBindingHelper.ConvertValue(targetType, value);
     }
 }

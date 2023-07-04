@@ -10,7 +10,8 @@
                                                   EmptyValue="Collapsed"
                                                   NotEmptyValue="Visible" />
     </UserControl.Resources>
-    <Grid x:Name="headerGrid" Padding="36,24,36,0">
+    <Grid x:Name="headerGrid"
+          Padding="36,24,36,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -30,13 +31,16 @@
                    Style="{StaticResource CaptionTextBlockStyle}"
                    Text="{x:Bind Item.SecondaryTitle, Mode=OneWay}"
                    Visibility="{x:Bind Item.SecondaryTitle, Converter={StaticResource emptyStringToVisibilityConverter}, Mode=OneWay}" />
-        <Grid Grid.Row="2" Margin="0,12,0,12">
-            <StackPanel Orientation="Horizontal" Spacing="4">
+        <Grid Grid.Row="2"
+              Margin="0,12,0,12">
+            <StackPanel Orientation="Horizontal"
+                        Spacing="4">
                 <DropDownButton AutomationProperties.Name="{x:Bind DocumentationDropDownText, Mode=OneWay}"
                                 ToolTipService.ToolTip="{x:Bind DocumentationDropDownText, Mode=OneWay}"
                                 Visibility="{x:Bind Item.Docs, Converter={StaticResource collectionConverter}}">
                     <DropDownButton.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="8">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="8">
                             <ContentPresenter Content="{x:Bind DocumentationDropDownIconElement, Mode=OneWay}" />
                             <TextBlock Text="{x:Bind DocumentationDropDownText, Mode=OneWay}" />
                         </StackPanel>
@@ -53,7 +57,8 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate x:DataType="local:ControlInfoDocLink">
-                                        <HyperlinkButton NavigateUri="{Binding Uri}" ToolTipService.ToolTip="{Binding Uri}">
+                                        <HyperlinkButton NavigateUri="{Binding Uri}"
+                                                         ToolTipService.ToolTip="{Binding Uri}">
                                             <TextBlock Text="{x:Bind Title}" />
                                         </HyperlinkButton>
                                     </DataTemplate>
@@ -64,7 +69,8 @@
                 </DropDownButton>
                 <ContentPresenter Content="{x:Bind HeaderLeftContent, Mode=OneWay}" />
             </StackPanel>
-            <ContentPresenter HorizontalAlignment="Right" Content="{x:Bind HeaderRightContent, Mode=OneWay}" />
+            <ContentPresenter HorizontalAlignment="Right"
+                              Content="{x:Bind HeaderRightContent, Mode=OneWay}" />
         </Grid>
     </Grid>
 </UserControl>

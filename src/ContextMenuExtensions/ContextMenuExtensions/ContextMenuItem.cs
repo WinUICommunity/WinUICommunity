@@ -49,10 +49,10 @@ public class ContextMenuItem : ContextMenuBaseModel
             AcceptExts = json.GetNamedString(NameToJsonKey(nameof(AcceptExts)), string.Empty),
             AcceptDirectory = json.GetNamedBoolean(NameToJsonKey(nameof(AcceptDirectory)), false),
             AcceptFile = json.GetNamedBoolean(NameToJsonKey(nameof(AcceptFile)), true),
-            AcceptMultipleFilesFlag = (int) json.GetNamedNumber(NameToJsonKey(nameof(AcceptMultipleFilesFlag)), (int) MultipleFilesFlag.OFF),
+            AcceptMultipleFilesFlag = (int)json.GetNamedNumber(NameToJsonKey(nameof(AcceptMultipleFilesFlag)), (int)MultipleFilesFlag.OFF),
             PathDelimiter = json.GetNamedString(NameToJsonKey(nameof(PathDelimiter)), string.Empty),
             ParamForMultipleFiles = json.GetNamedString(NameToJsonKey(nameof(ParamForMultipleFiles)), string.Empty),
-            Index = (int) json.GetNamedNumber(NameToJsonKey(nameof(Index)), 0),
+            Index = (int)json.GetNamedNumber(NameToJsonKey(nameof(Index)), 0),
         };
         return menu;
     }

@@ -12,7 +12,8 @@
                       SizeChanged="scroller_SizeChanged"
                       VerticalScrollMode="Disabled"
                       ViewChanging="scroller_ViewChanging">
-            <Grid x:Name="ContentGrid" Margin="36,0,36,0">
+            <Grid x:Name="ContentGrid"
+                  Margin="36,0,36,0">
                 <ContentPresenter Content="{x:Bind HeaderContent, Mode=OneWay}" />
             </Grid>
         </ScrollViewer>
@@ -25,7 +26,8 @@
                 Style="{StaticResource ScrollButtonStyle}"
                 ToolTipService.ToolTip="Scroll left"
                 Visibility="Collapsed">
-            <FontIcon FontSize="{ThemeResource FlipViewButtonFontSize}" Glyph="&#xedd9;" />
+            <FontIcon FontSize="{ThemeResource FlipViewButtonFontSize}"
+                      Glyph="&#xedd9;" />
         </Button>
         <Button x:Name="ScrollForwardBtn"
                 Width="16"
@@ -36,7 +38,8 @@
                 Click="ScrollForwardBtn_Click"
                 Style="{StaticResource ScrollButtonStyle}"
                 ToolTipService.ToolTip="Scroll right">
-            <FontIcon FontSize="{ThemeResource FlipViewButtonFontSize}" Glyph="&#xEDDA;" />
+            <FontIcon FontSize="{ThemeResource FlipViewButtonFontSize}"
+                      Glyph="&#xEDDA;" />
         </Button>
     </Grid>
 </UserControl>

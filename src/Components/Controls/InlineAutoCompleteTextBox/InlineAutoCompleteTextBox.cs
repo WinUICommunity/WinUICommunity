@@ -5,8 +5,7 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using System.Collections.Generic;
-using System.Linq;
+
 using Windows.System;
 using Windows.UI;
 
@@ -92,7 +91,7 @@ public sealed class InlineAutoCompleteTextBox : TextBox
     /// </summary>
     public bool IsSuggestionCaseSensitive
     {
-        get => (bool) GetValue(IsSuggestionCaseSensitiveProperty);
+        get => (bool)GetValue(IsSuggestionCaseSensitiveProperty);
         set => SetValue(IsSuggestionCaseSensitiveProperty, value);
     }
 
@@ -101,7 +100,7 @@ public sealed class InlineAutoCompleteTextBox : TextBox
     /// </summary>
     public Brush SuggestionForeground
     {
-        get => (Brush) GetValue(SuggestionForegroundProperty);
+        get => (Brush)GetValue(SuggestionForegroundProperty);
         set => SetValue(SuggestionForegroundProperty, value);
     }
 
@@ -110,7 +109,7 @@ public sealed class InlineAutoCompleteTextBox : TextBox
     /// </summary>
     public IEnumerable<string> SuggestionsSource
     {
-        get => (IEnumerable<string>) GetValue(SuggestionsSourceProperty);
+        get => (IEnumerable<string>)GetValue(SuggestionsSourceProperty);
         set => SetValue(SuggestionsSourceProperty, value);
     }
 
@@ -119,7 +118,7 @@ public sealed class InlineAutoCompleteTextBox : TextBox
     /// </summary>
     public string SuggestionPrefix
     {
-        get => (string) GetValue(SuggestionPrefixProperty);
+        get => (string)GetValue(SuggestionPrefixProperty);
         set => SetValue(SuggestionPrefixProperty, value);
     }
 
@@ -128,7 +127,7 @@ public sealed class InlineAutoCompleteTextBox : TextBox
     /// </summary>
     public string SuggestionSuffix
     {
-        get => (string) GetValue(SuggestionSuffixProperty);
+        get => (string)GetValue(SuggestionSuffixProperty);
         set => SetValue(SuggestionSuffixProperty, value);
     }
 

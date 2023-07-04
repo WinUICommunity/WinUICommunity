@@ -2,9 +2,9 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using Microsoft.UI.Xaml;
 using System.Globalization;
-using System;
+
+using Microsoft.UI.Xaml;
 
 namespace WinUICommunity;
 
@@ -21,15 +21,18 @@ namespace WinUICommunity;
 /// </remarks>
 public class IsEqualStateTrigger : StateTriggerBase
 {
-    private void UpdateTrigger() => SetActive(AreValuesEqual(Value, To, true));
+    private void UpdateTrigger()
+    {
+        SetActive(AreValuesEqual(Value, To, true));
+    }
 
     /// <summary>
     /// Gets or sets the value for comparison.
     /// </summary>
     public object Value
     {
-        get { return GetValue(ValueProperty); }
-        set { SetValue(ValueProperty, value); }
+        get => GetValue(ValueProperty);
+        set => SetValue(ValueProperty, value);
     }
 
     /// <summary>
@@ -49,8 +52,8 @@ public class IsEqualStateTrigger : StateTriggerBase
     /// </summary>
     public object To
     {
-        get { return GetValue(ToProperty); }
-        set { SetValue(ToProperty, value); }
+        get => GetValue(ToProperty);
+        set => SetValue(ToProperty, value);
     }
 
     /// <summary>
@@ -80,14 +83,9 @@ public class IsEqualStateTrigger : StateTriggerBase
     private static bool ConvertTypeEquals(object value1, object value2)
     {
         // Let's see if we can convert:
-        if (value2 is Enum)
-        {
-            value1 = ConvertToEnum(value2.GetType(), value1);
-        }
-        else
-        {
-            value1 = Convert.ChangeType(value1, value2.GetType(), CultureInfo.InvariantCulture);
-        }
+        value1 = value2 is Enum
+            ? ConvertToEnum(value2.GetType(), value1)
+            : Convert.ChangeType(value1, value2.GetType(), CultureInfo.InvariantCulture);
 
         return value2.Equals(value1);
     }

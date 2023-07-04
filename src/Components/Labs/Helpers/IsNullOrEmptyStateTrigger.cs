@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Specialized;
+
 using Microsoft.UI.Xaml;
+
 using Windows.Foundation.Collections;
 
 namespace WinUICommunity;
@@ -14,8 +16,8 @@ public class IsNullOrEmptyStateTrigger : StateTriggerBase
     /// </summary>
     public object Value
     {
-        get { return GetValue(ValueProperty); }
-        set { SetValue(ValueProperty, value); }
+        get => GetValue(ValueProperty);
+        set => SetValue(ValueProperty, value);
     }
 
     /// <summary>
@@ -87,7 +89,7 @@ public class IsNullOrEmptyStateTrigger : StateTriggerBase
 
     private static void OnValuePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        var obj = (IsNullOrEmptyStateTrigger) d;
+        var obj = (IsNullOrEmptyStateTrigger)d;
         obj.UpdateTrigger();
     }
 

@@ -1,6 +1,7 @@
-﻿using Microsoft.UI.Xaml;
+﻿using System.ComponentModel;
+
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using System.ComponentModel;
 
 namespace WinUICommunity;
 
@@ -30,7 +31,7 @@ public class IsEnabledTextBlock : Control
     [Localizable(true)]
     public string Text
     {
-        get => (string) GetValue(TextProperty);
+        get => (string)GetValue(TextProperty);
         set => SetValue(TextProperty, value);
     }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
+
 using Windows.System;
 
 namespace WinUICommunity;
@@ -18,7 +19,7 @@ public sealed class KeyVisual : Control
 
     public object Content
     {
-        get => (object) GetValue(ContentProperty);
+        get => (object)GetValue(ContentProperty);
         set => SetValue(ContentProperty, value);
     }
 
@@ -26,7 +27,7 @@ public sealed class KeyVisual : Control
 
     public VisualType VisualType
     {
-        get => (VisualType) GetValue(VisualTypeProperty);
+        get => (VisualType)GetValue(VisualTypeProperty);
         set => SetValue(VisualTypeProperty, value);
     }
 
@@ -34,7 +35,7 @@ public sealed class KeyVisual : Control
 
     public bool IsError
     {
-        get => (bool) GetValue(IsErrorProperty);
+        get => (bool)GetValue(IsErrorProperty);
         set => SetValue(IsErrorProperty, value);
     }
 
@@ -49,8 +50,8 @@ public sealed class KeyVisual : Control
     protected override void OnApplyTemplate()
     {
         IsEnabledChanged -= KeyVisual_IsEnabledChanged;
-        _keyVisual = (KeyVisual) this;
-        _keyPresenter = (ContentPresenter) _keyVisual.GetTemplateChild(KeyPresenter);
+        _keyVisual = (KeyVisual)this;
+        _keyPresenter = (ContentPresenter)_keyVisual.GetTemplateChild(KeyPresenter);
         Update();
         SetEnabledState();
         SetErrorState();
@@ -60,17 +61,17 @@ public sealed class KeyVisual : Control
 
     private static void OnContentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        ((KeyVisual) d).Update();
+        ((KeyVisual)d).Update();
     }
 
     private static void OnSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        ((KeyVisual) d).Update();
+        ((KeyVisual)d).Update();
     }
 
     private static void OnIsErrorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        ((KeyVisual) d).SetErrorState();
+        ((KeyVisual)d).SetErrorState();
     }
 
     private void Update()
@@ -91,7 +92,7 @@ public sealed class KeyVisual : Control
             {
                 _keyVisual.Style = GetStyleSize("IconKeyVisualStyle");
 
-                switch ((int) _keyVisual.Content)
+                switch ((int)_keyVisual.Content)
                 {
                     /* We can enable other glyphs in the future
                     case 13: // The Enter key or button.
@@ -121,7 +122,7 @@ public sealed class KeyVisual : Control
                         winIconContainer.Width = iconDimensions;
                         _keyVisual._keyPresenter.Content = winIconContainer;
                         break;
-                    default: _keyVisual._keyPresenter.Content = ((VirtualKey) _keyVisual.Content).ToString(); break;
+                    default: _keyVisual._keyPresenter.Content = ((VirtualKey)_keyVisual.Content).ToString(); break;
                 }
             }
         }
@@ -129,30 +130,18 @@ public sealed class KeyVisual : Control
 
     public Style GetStyleSize(string styleName)
     {
-        if (VisualType == VisualType.Small)
-        {
-            return (Style) Application.Current.Resources["Small" + styleName];
-        }
-        else if (VisualType == VisualType.SmallOutline)
-        {
-            return (Style) Application.Current.Resources["SmallOutline" + styleName];
-        }
-        else
-        {
-            return (Style) Application.Current.Resources["Default" + styleName];
-        }
+        return VisualType == VisualType.Small
+            ? (Style)Application.Current.Resources["Small" + styleName]
+            : VisualType == VisualType.SmallOutline
+                ? (Style)Application.Current.Resources["SmallOutline" + styleName]
+                : (Style)Application.Current.Resources["Default" + styleName];
     }
 
     public double GetIconSize()
     {
-        if (VisualType == VisualType.Small || VisualType == VisualType.SmallOutline)
-        {
-            return (double) Application.Current.Resources["SmallIconSize"];
-        }
-        else
-        {
-            return (double) Application.Current.Resources["DefaultIconSize"];
-        }
+        return VisualType == VisualType.Small || VisualType == VisualType.SmallOutline
+            ? (double)Application.Current.Resources["SmallIconSize"]
+            : (double)Application.Current.Resources["DefaultIconSize"];
     }
 
     private void KeyVisual_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)

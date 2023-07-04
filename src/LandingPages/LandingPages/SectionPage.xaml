@@ -10,24 +10,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="TitleTxt"
-                   Margin="36,24,36,24"
-                   Style="{StaticResource TitleTextBlockStyle}" />
-        <GridView x:Name="itemGridView"
-                  Grid.Row="1"
-                  Padding="36,24,36,0"
-                  AutomationProperties.AutomationId="ItemGridView"
-                  AutomationProperties.Name="Items In Group"
-                  ContainerContentChanging="OnItemGridViewContainerContentChanging"
-                  IsItemClickEnabled="True"
-                  IsSwipeEnabled="False"
-                  ItemClick="OnItemGridViewItemClick"
-                  ItemContainerStyle="{StaticResource GridViewItemStyle}"
-                  ItemTemplate="{StaticResource ControlItemTemplate}"
-                  ItemsSource="{x:Bind Items, Mode=OneWay}"
-                  Loaded="OnItemGridViewLoaded"
-                  SelectionMode="None"
-                  TabIndex="1" />
         <!--  Visual states reflect the application's window size  -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="LayoutVisualStates">
@@ -49,5 +31,23 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <TextBlock x:Name="TitleTxt"
+                   Margin="36,24,36,24"
+                   Style="{StaticResource TitleTextBlockStyle}" />
+        <GridView x:Name="itemGridView"
+                  Grid.Row="1"
+                  Padding="36,24,36,0"
+                  AutomationProperties.AutomationId="ItemGridView"
+                  AutomationProperties.Name="Items In Group"
+                  ContainerContentChanging="OnItemGridViewContainerContentChanging"
+                  IsItemClickEnabled="True"
+                  IsSwipeEnabled="False"
+                  ItemClick="OnItemGridViewItemClick"
+                  ItemContainerStyle="{StaticResource GridViewItemStyle}"
+                  ItemTemplate="{StaticResource ControlItemTemplate}"
+                  ItemsSource="{x:Bind Items, Mode=OneWay}"
+                  Loaded="OnItemGridViewLoaded"
+                  SelectionMode="None"
+                  TabIndex="1" />
     </Grid>
 </local:ItemsPageBase>

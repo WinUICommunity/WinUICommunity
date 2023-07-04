@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace WinUICommunity;
@@ -9,8 +8,8 @@ public partial class SettingsExpander
 {
     public IList<object> Items
     {
-        get { return (IList<object>) GetValue(ItemsProperty); }
-        set { SetValue(ItemsProperty, value); }
+        get => (IList<object>)GetValue(ItemsProperty);
+        set => SetValue(ItemsProperty, value);
     }
 
     public static readonly DependencyProperty ItemsProperty =
@@ -18,8 +17,8 @@ public partial class SettingsExpander
 
     public object ItemsSource
     {
-        get { return (object) GetValue(ItemsSourceProperty); }
-        set { SetValue(ItemsSourceProperty, value); }
+        get => (object)GetValue(ItemsSourceProperty);
+        set => SetValue(ItemsSourceProperty, value);
     }
 
     public static readonly DependencyProperty ItemsSourceProperty =
@@ -27,8 +26,8 @@ public partial class SettingsExpander
 
     public object ItemTemplate
     {
-        get { return (object) GetValue(ItemTemplateProperty); }
-        set { SetValue(ItemTemplateProperty, value); }
+        get => (object)GetValue(ItemTemplateProperty);
+        set => SetValue(ItemTemplateProperty, value);
     }
 
     public static readonly DependencyProperty ItemTemplateProperty =
@@ -36,8 +35,8 @@ public partial class SettingsExpander
 
     public StyleSelector ItemContainerStyleSelector
     {
-        get { return (StyleSelector) GetValue(ItemContainerStyleSelectorProperty); }
-        set { SetValue(ItemContainerStyleSelectorProperty, value); }
+        get => (StyleSelector)GetValue(ItemContainerStyleSelectorProperty);
+        set => SetValue(ItemContainerStyleSelectorProperty, value);
     }
 
     public static readonly DependencyProperty ItemContainerStyleSelectorProperty =

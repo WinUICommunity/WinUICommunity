@@ -34,13 +34,6 @@ public class SettingsExpanderItemStyleSelector : StyleSelector
     /// <inheritdoc/>
     protected override Style SelectStyleCore(object item, DependencyObject container)
     {
-        if (container is SettingsCard card && card.IsClickEnabled)
-        {
-            return ClickableStyle;
-        }
-        else
-        {
-            return DefaultStyle;
-        }
+        return container is SettingsCard card && card.IsClickEnabled ? ClickableStyle : DefaultStyle;
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public class PageLink
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 /// <summary>
 /// Implements a weak event listener that allows the owner to be garbage
 /// collected if its only remaining link is an event handler.

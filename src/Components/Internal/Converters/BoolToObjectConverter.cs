@@ -2,7 +2,6 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
-using System;
 
 namespace WinUICommunity;
 
@@ -29,8 +28,8 @@ public partial class BoolToObjectConverter : DependencyObject, IValueConverter
     /// </summary>
     public object TrueValue
     {
-        get { return GetValue(TrueValueProperty); }
-        set { SetValue(TrueValueProperty, value); }
+        get => GetValue(TrueValueProperty);
+        set => SetValue(TrueValueProperty, value);
     }
 
     /// <summary>
@@ -38,8 +37,8 @@ public partial class BoolToObjectConverter : DependencyObject, IValueConverter
     /// </summary>
     public object FalseValue
     {
-        get { return GetValue(FalseValueProperty); }
-        set { SetValue(FalseValueProperty, value); }
+        get => GetValue(FalseValueProperty);
+        set => SetValue(FalseValueProperty, value);
     }
 
     /// <summary>

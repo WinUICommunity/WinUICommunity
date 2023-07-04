@@ -16,31 +16,31 @@ public sealed partial class OOBEPageControl : UserControl
 
     public string Title
     {
-        get { return (string) GetValue(TitleProperty); }
-        set { SetValue(TitleProperty, value); }
+        get => (string)GetValue(TitleProperty);
+        set => SetValue(TitleProperty, value);
     }
 
     public string Description
     {
-        get => (string) GetValue(DescriptionProperty);
+        get => (string)GetValue(DescriptionProperty);
         set => SetValue(DescriptionProperty, value);
     }
 
     public string HeroImage
     {
-        get => (string) GetValue(HeroImageProperty);
+        get => (string)GetValue(HeroImageProperty);
         set => SetValue(HeroImageProperty, value);
     }
 
     public double HeroImageHeight
     {
-        get { return (double) GetValue(HeroImageHeightProperty); }
-        set { SetValue(HeroImageHeightProperty, value); }
+        get => (double)GetValue(HeroImageHeightProperty);
+        set => SetValue(HeroImageHeightProperty, value);
     }
     public object PageContent
     {
-        get { return (object) GetValue(PageContentProperty); }
-        set { SetValue(PageContentProperty, value); }
+        get => (object)GetValue(PageContentProperty);
+        set => SetValue(PageContentProperty, value);
     }
 
     public static readonly DependencyProperty TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(SettingsPageControl), new PropertyMetadata(default(string)));

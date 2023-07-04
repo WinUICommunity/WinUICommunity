@@ -11,7 +11,7 @@ public class SettingsGroupAutomationPeer : FrameworkElementAutomationPeer
 
     protected override string GetNameCore()
     {
-        var selectedSettingsGroup = (SettingsGroup) Owner;
+        var selectedSettingsGroup = (SettingsGroup)Owner;
         return selectedSettingsGroup.Header;
     }
 }

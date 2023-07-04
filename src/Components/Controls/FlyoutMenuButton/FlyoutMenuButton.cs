@@ -1,5 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace WinUICommunity;
 public partial class FlyoutMenuButton : Button
@@ -18,7 +18,7 @@ public partial class FlyoutMenuButton : Button
     /// </summary>
     public object Icon
     {
-        get => (object) GetValue(IconProperty);
+        get => (object)GetValue(IconProperty);
         set => SetValue(IconProperty, value);
     }
 

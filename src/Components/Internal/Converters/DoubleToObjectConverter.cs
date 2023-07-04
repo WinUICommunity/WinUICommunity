@@ -3,7 +3,6 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
-using System;
 
 namespace WinUICommunity;
 
@@ -51,8 +50,8 @@ internal partial class DoubleToObjectConverter : DependencyObject, IValueConvert
     /// </summary>
     public object TrueValue
     {
-        get { return GetValue(TrueValueProperty); }
-        set { SetValue(TrueValueProperty, value); }
+        get => GetValue(TrueValueProperty);
+        set => SetValue(TrueValueProperty, value);
     }
 
     /// <summary>
@@ -60,8 +59,8 @@ internal partial class DoubleToObjectConverter : DependencyObject, IValueConvert
     /// </summary>
     public object FalseValue
     {
-        get { return GetValue(FalseValueProperty); }
-        set { SetValue(FalseValueProperty, value); }
+        get => GetValue(FalseValueProperty);
+        set => SetValue(FalseValueProperty, value);
     }
 
     /// <summary>
@@ -69,8 +68,8 @@ internal partial class DoubleToObjectConverter : DependencyObject, IValueConvert
     /// </summary>
     public object NullValue
     {
-        get { return GetValue(NullValueProperty); }
-        set { SetValue(NullValueProperty, value); }
+        get => GetValue(NullValueProperty);
+        set => SetValue(NullValueProperty, value);
     }
 
     /// <summary>
@@ -78,8 +77,8 @@ internal partial class DoubleToObjectConverter : DependencyObject, IValueConvert
     /// </summary>
     public double GreaterThan
     {
-        get { return (double)GetValue(GreaterThanProperty); }
-        set { SetValue(GreaterThanProperty, value); }
+        get => (double)GetValue(GreaterThanProperty);
+        set => SetValue(GreaterThanProperty, value);
     }
 
     /// <summary>
@@ -87,8 +86,8 @@ internal partial class DoubleToObjectConverter : DependencyObject, IValueConvert
     /// </summary>
     public double LessThan
     {
-        get { return (double)GetValue(LessThanProperty); }
-        set { SetValue(LessThanProperty, value); }
+        get => (double)GetValue(LessThanProperty);
+        set => SetValue(LessThanProperty, value);
     }
 
     /// <summary>

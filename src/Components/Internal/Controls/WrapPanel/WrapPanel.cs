@@ -2,9 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 using Windows.Foundation;
 
 namespace WinUICommunity;
@@ -20,8 +18,8 @@ public partial class WrapPanel : Panel
     /// </summary>
     public double HorizontalSpacing
     {
-        get { return (double) GetValue(HorizontalSpacingProperty); }
-        set { SetValue(HorizontalSpacingProperty, value); }
+        get => (double)GetValue(HorizontalSpacingProperty);
+        set => SetValue(HorizontalSpacingProperty, value);
     }
 
     /// <summary>
@@ -40,8 +38,8 @@ public partial class WrapPanel : Panel
     /// </summary>
     public double VerticalSpacing
     {
-        get { return (double) GetValue(VerticalSpacingProperty); }
-        set { SetValue(VerticalSpacingProperty, value); }
+        get => (double)GetValue(VerticalSpacingProperty);
+        set => SetValue(VerticalSpacingProperty, value);
     }
 
     /// <summary>
@@ -61,8 +59,8 @@ public partial class WrapPanel : Panel
     /// </summary>
     public Orientation Orientation
     {
-        get { return (Orientation) GetValue(OrientationProperty); }
-        set { SetValue(OrientationProperty, value); }
+        get => (Orientation)GetValue(OrientationProperty);
+        set => SetValue(OrientationProperty, value);
     }
 
     /// <summary>
@@ -84,8 +82,8 @@ public partial class WrapPanel : Panel
     /// </returns>
     public Thickness Padding
     {
-        get { return (Thickness) GetValue(PaddingProperty); }
-        set { SetValue(PaddingProperty, value); }
+        get => (Thickness)GetValue(PaddingProperty);
+        set => SetValue(PaddingProperty, value);
     }
 
     /// <summary>
@@ -104,8 +102,8 @@ public partial class WrapPanel : Panel
     /// </summary>
     public StretchChild StretchChild
     {
-        get { return (StretchChild) GetValue(StretchChildProperty); }
-        set { SetValue(StretchChildProperty, value); }
+        get => (StretchChild)GetValue(StretchChildProperty);
+        set => SetValue(StretchChildProperty, value);
     }
 
     /// <summary>

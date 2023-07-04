@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.ComponentModel;
+
 using Microsoft.UI.Xaml;
 
 namespace WinUICommunity;
@@ -43,24 +44,44 @@ public sealed class Validation : DependencyObject
             typeof(Validation), null);
 
     public static string GetValidationPropertyName(DependencyObject obj)
-        => (string)obj.GetValue(ValidationPropertyNameProperty);
+    {
+        return (string)obj.GetValue(ValidationPropertyNameProperty);
+    }
+
     public static void SetValidationPropertyName(DependencyObject obj, string value)
-        => obj.SetValue(ValidationPropertyNameProperty, value);
+    {
+        obj.SetValue(ValidationPropertyNameProperty, value);
+    }
 
     public static IEnumerable GetErrors(DependencyObject obj)
-        => (IEnumerable)obj.GetValue(ErrorsProperty);
+    {
+        return (IEnumerable)obj.GetValue(ErrorsProperty);
+    }
+
     public static void SetErrors(DependencyObject obj, IEnumerable errors)
-        => obj.SetValue(ErrorsProperty, errors);
+    {
+        obj.SetValue(ErrorsProperty, errors);
+    }
 
     public static object GetErrorTemplate(DependencyObject obj)
-        => obj.GetValue(ErrorTemplateProperty);
+    {
+        return obj.GetValue(ErrorTemplateProperty);
+    }
+
     public static void SetErrorTemplate(DependencyObject obj, object value)
-        => obj.SetValue(ErrorTemplateProperty, value);
+    {
+        obj.SetValue(ErrorTemplateProperty, value);
+    }
 
     public static INotifyDataErrorInfo GetValidationProvider(DependencyObject obj)
-        => (INotifyDataErrorInfo)obj.GetValue(ValidationProviderProperty);
+    {
+        return (INotifyDataErrorInfo)obj.GetValue(ValidationProviderProperty);
+    }
+
     public static void SetValidationProvider(DependencyObject obj, INotifyDataErrorInfo value)
-        => obj.SetValue(ValidationProviderProperty, value);
+    {
+        obj.SetValue(ValidationProviderProperty, value);
+    }
 
     private static void OnValidationProviderChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
     {

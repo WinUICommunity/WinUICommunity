@@ -1,8 +1,7 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 using Microsoft.UI.Xaml.Controls;
-using System;
-using System.Collections.Generic;
+
 using Windows.Foundation;
 
 namespace WinUICommunity;
@@ -41,13 +40,19 @@ public partial class WrapPanel
         }
 
         public UvMeasure Add(double u, double v)
-            => new UvMeasure { U = U + u, V = V + v };
+        {
+            return new UvMeasure { U = U + u, V = V + v };
+        }
 
         public UvMeasure Add(UvMeasure measure)
-            => Add(measure.U, measure.V);
+        {
+            return Add(measure.U, measure.V);
+        }
 
         public Size ToSize(Orientation orientation)
-            => orientation == Orientation.Horizontal ? new Size(U, V) : new Size(V, U);
+        {
+            return orientation == Orientation.Horizontal ? new Size(U, V) : new Size(V, U);
+        }
     }
 
     private struct UvRect
@@ -56,14 +61,20 @@ public partial class WrapPanel
 
         public UvMeasure Size { get; set; }
 
-        public Rect ToRect(Orientation orientation) => orientation switch
+        public Rect ToRect(Orientation orientation)
         {
-            Orientation.Vertical => new Rect(Position.V, Position.U, Size.V, Size.U),
-            Orientation.Horizontal => new Rect(Position.U, Position.V, Size.U, Size.V),
-            _ => ThrowArgumentException()
-        };
+            return orientation switch
+            {
+                Orientation.Vertical => new Rect(Position.V, Position.U, Size.V, Size.U),
+                Orientation.Horizontal => new Rect(Position.U, Position.V, Size.U, Size.V),
+                _ => ThrowArgumentException()
+            };
+        }
 
-        private static Rect ThrowArgumentException() => throw new ArgumentException("The input orientation is not valid.");
+        private static Rect ThrowArgumentException()
+        {
+            throw new ArgumentException("The input orientation is not valid.");
+        }
     }
 
     private struct Row

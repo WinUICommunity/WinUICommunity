@@ -185,14 +185,7 @@ public partial class SettingsCard : ButtonBase
     {
         if (GetTemplateChild(ActionIconPresenterHolder) is FrameworkElement actionIconPresenter)
         {
-            if (IsClickEnabled && IsActionIconVisible)
-            {
-                actionIconPresenter.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                actionIconPresenter.Visibility = Visibility.Collapsed;
-            }
+            actionIconPresenter.Visibility = IsClickEnabled && IsActionIconVisible ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 
@@ -228,13 +221,8 @@ public partial class SettingsCard : ButtonBase
 
     private FrameworkElement? GetFocusedElement()
     {
-        if (ControlHelpers.IsXamlRootAvailable && XamlRoot != null)
-        {
-            return FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement;
-        }
-        else
-        {
-            return FocusManager.GetFocusedElement() as FrameworkElement;
-        }
+        return ControlHelpers.IsXamlRootAvailable && XamlRoot != null
+            ? FocusManager.GetFocusedElement(XamlRoot) as FrameworkElement
+            : FocusManager.GetFocusedElement() as FrameworkElement;
     }
 }

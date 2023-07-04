@@ -90,10 +90,10 @@ public static class FrameworkElementEx
         where T : notnull, FrameworkElement
         where TPredicate : struct, IPredicate<T>
     {
-    // Jump label to manually optimize the tail recursive paths for elements with a single
-    // child by just overwriting the current element and jumping back to the start of the
-    // method. This avoids a recursive call and one stack frame every time.
-    Start:
+// Jump label to manually optimize the tail recursive paths for elements with a single
+// child by just overwriting the current element and jumping back to the start of the
+// method. This avoids a recursive call and one stack frame every time.
+Start:
 
         if (element is Panel panel)
         {
@@ -306,7 +306,7 @@ public static class FrameworkElementEx
     /// <returns>All the child <see cref="FrameworkElement"/> instance from <paramref name="element"/>.</returns>
     public static IEnumerable<FrameworkElement> FindChildren(this FrameworkElement element)
     {
-    Start:
+Start:
 
         if (element is Panel panel)
         {

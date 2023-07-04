@@ -2,7 +2,6 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using System;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Markup;
@@ -75,7 +74,7 @@ public partial class SettingsExpander
      nameof(IsExpanded),
      typeof(bool),
      typeof(SettingsExpander),
-     new PropertyMetadata(defaultValue: false, (d, e) => ((SettingsExpander) d).OnIsExpandedPropertyChanged((bool) e.OldValue, (bool) e.NewValue)));
+     new PropertyMetadata(defaultValue: false, (d, e) => ((SettingsExpander)d).OnIsExpandedPropertyChanged((bool)e.OldValue, (bool)e.NewValue)));
 
     /// <summary>
     /// 
@@ -84,7 +83,7 @@ public partial class SettingsExpander
     /// </summary>
     public object Header
     {
-        get => (object) GetValue(HeaderProperty);
+        get => (object)GetValue(HeaderProperty);
         set => SetValue(HeaderProperty, value);
     }
 
@@ -95,7 +94,7 @@ public partial class SettingsExpander
     public new object Description
 #pragma warning restore CS0109 // Member does not hide an inherited member; new keyword is not required
     {
-        get => (object) GetValue(DescriptionProperty);
+        get => (object)GetValue(DescriptionProperty);
         set => SetValue(DescriptionProperty, value);
     }
 
@@ -104,7 +103,7 @@ public partial class SettingsExpander
     /// </summary>
     public IconElement HeaderIcon
     {
-        get => (IconElement) GetValue(HeaderIconProperty);
+        get => (IconElement)GetValue(HeaderIconProperty);
         set => SetValue(HeaderIconProperty, value);
     }
 
@@ -113,7 +112,7 @@ public partial class SettingsExpander
     /// </summary>
     public object Content
     {
-        get => (object) GetValue(ContentProperty);
+        get => (object)GetValue(ContentProperty);
         set => SetValue(ContentProperty, value);
     }
 
@@ -122,7 +121,7 @@ public partial class SettingsExpander
     /// </summary>
     public UIElement ItemsHeader
     {
-        get => (UIElement) GetValue(ItemsHeaderProperty);
+        get => (UIElement)GetValue(ItemsHeaderProperty);
         set => SetValue(ItemsHeaderProperty, value);
     }
 
@@ -131,7 +130,7 @@ public partial class SettingsExpander
     /// </summary>
     public UIElement ItemsFooter
     {
-        get => (UIElement) GetValue(ItemsFooterProperty);
+        get => (UIElement)GetValue(ItemsFooterProperty);
         set => SetValue(ItemsFooterProperty, value);
     }
 
@@ -140,7 +139,7 @@ public partial class SettingsExpander
     /// </summary>
     public bool IsExpanded
     {
-        get => (bool) GetValue(IsExpandedProperty);
+        get => (bool)GetValue(IsExpandedProperty);
         set => SetValue(IsExpandedProperty, value);
     }
     protected virtual void OnIsExpandedPropertyChanged(bool oldValue, bool newValue)
