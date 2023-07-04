@@ -14,25 +14,22 @@
     </a> 
     <a href="https://www.nuget.org/packages/WinUICommunity.Core">
         <img alt="Core-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Core?color=brightgreen&label=Installs"></img>
-    </a> 
-
+    </a>
     <a href="https://www.nuget.org/packages/WinUICommunity.LandingPages">
         <img alt="LandingPages-Version" src="https://img.shields.io/nuget/v/WinUICommunity.LandingPages.svg"></img>
     </a> 
     <a href="https://www.nuget.org/packages/WinUICommunity.LandingPages">
         <img alt="LandingPages-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.LandingPages?color=brightgreen&label=Installs"></img>
-    </a> 
-
-    <a href="https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions">
-        <img alt="ContextMenuExtensions-Version" src="https://img.shields.io/nuget/v/WinUICommunity.ContextMenuExtensions.svg"></img>
     </a>
     <a href="https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions">
+        <img alt="ContextMenuExtensions-Version" src="https://img.shields.io/nuget/v/WinUICommunity.ContextMenuExtensions.svg"></img>
+    </a> 
+    <a href="https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions">
         <img alt="ContextMenuExtensions-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.ContextMenuExtensions?color=brightgreen&label=Installs"></img>
-    </a> 
-
-    <a href="https://ghost1372.github.io/winUICommunity/">
+    </a>
+    <a href="https://ghost1372.github.io/WinUICommunity/">
         <img alt="Docs" src="https://img.shields.io/badge/Document-Here-critical"></img>
-    </a> 
+    </a>   
 </p>
 
 <br>
