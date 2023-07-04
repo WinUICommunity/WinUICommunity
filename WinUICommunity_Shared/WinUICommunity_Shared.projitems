@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>2df4bb55-ee16-466b-8c86-8084b1a3be55</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>WinUICommunity_Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ControlInfoBadge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ControlInfoDataGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ControlInfoDataItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ControlInfoDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ControlInfoDocLink.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\GroupInfoList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\IncludedInBuildMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\PathType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\FileLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\InternalHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Navigation\NavigationArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Navigation\NavigationExtension.cs" />
+  </ItemGroup>
+</Project>

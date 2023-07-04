@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="WinUICommunity.PageHeader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
+             xmlns:local="using:WinUICommunity"
+             Visibility="{x:Bind PageHeaderVisibility, Mode=OneWay}">
+
+    <UserControl.Resources>
+        <converters:CollectionVisibilityConverter x:Name="collectionConverter"
+                                                  EmptyValue="Collapsed"
+                                                  NotEmptyValue="Visible" />
+    </UserControl.Resources>
+    <Grid x:Name="headerGrid" Padding="36,24,36,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                   Text="{x:Bind Item.Title, Mode=OneWay}"
+                   TextTrimming="CharacterEllipsis"
+                   TextWrapping="NoWrap"
+                   Visibility="{x:Bind Item.Title, Converter={StaticResource emptyStringToVisibilityConverter}, Mode=OneWay}" />
+        <TextBlock x:Name="SecondaryTitleTextBlock"
+                   Grid.Row="1"
+                   Margin="0,4,0,0"
+                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                   IsTextSelectionEnabled="True"
+                   Style="{StaticResource CaptionTextBlockStyle}"
+                   Text="{x:Bind Item.SecondaryTitle, Mode=OneWay}"
+                   Visibility="{x:Bind Item.SecondaryTitle, Converter={StaticResource emptyStringToVisibilityConverter}, Mode=OneWay}" />
+        <Grid Grid.Row="2" Margin="0,12,0,12">
+            <StackPanel Orientation="Horizontal" Spacing="4">
+                <DropDownButton AutomationProperties.Name="{x:Bind DocumentationDropDownText, Mode=OneWay}"
+                                ToolTipService.ToolTip="{x:Bind DocumentationDropDownText, Mode=OneWay}"
+                                Visibility="{x:Bind Item.Docs, Converter={StaticResource collectionConverter}}">
+                    <DropDownButton.Content>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <ContentPresenter Content="{x:Bind DocumentationDropDownIconElement, Mode=OneWay}" />
+                            <TextBlock Text="{x:Bind DocumentationDropDownText, Mode=OneWay}" />
+                        </StackPanel>
+                    </DropDownButton.Content>
+                    <DropDownButton.Flyout>
+                        <Flyout Placement="Bottom">
+                            <ItemsControl x:Name="DocsList"
+                                          IsTabStop="False"
+                                          ItemsSource="{x:Bind Item.Docs}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Vertical" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate x:DataType="local:ControlInfoDocLink">
+                                        <HyperlinkButton NavigateUri="{Binding Uri}" ToolTipService.ToolTip="{Binding Uri}">
+                                            <TextBlock Text="{x:Bind Title}" />
+                                        </HyperlinkButton>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Flyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+                <ContentPresenter Content="{x:Bind HeaderLeftContent, Mode=OneWay}" />
+            </StackPanel>
+            <ContentPresenter HorizontalAlignment="Right" Content="{x:Bind HeaderRightContent, Mode=OneWay}" />
+        </Grid>
+    </Grid>
+</UserControl>
