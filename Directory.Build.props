@@ -1,5 +1,5 @@
 ﻿<Project>
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' != 'DemoApp'">
     <TargetFrameworks>net6.0-windows10.0.17763.0;net6.0-windows10.0.19041.0;net7.0-windows10.0.17763.0;net7.0-windows10.0.19041.0</TargetFrameworks>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RuntimeIdentifiers>win10-x86;win10-x64</RuntimeIdentifiers>
@@ -9,7 +9,7 @@
     <AccelerateBuildsInVisualStudio>True</AccelerateBuildsInVisualStudio>
 
     <OutputPath>$(SolutionDir)output\$(MSBuildProjectName)\</OutputPath>
-    
+
     <!-- The NuGet package options -->
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -28,7 +28,7 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
   </ItemGroup>
   
-  <ItemGroup>
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'DemoApp'">
     <None Include="Assets\icon.png" Pack="true" PackagePath="" />
     <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
     <None Include="README.md" Pack="true" PackagePath="" />
