@@ -1,10 +1,56 @@
-name: Publish Release
+﻿name: Publish Release
 
 on:
   workflow_dispatch:
   
 env:
-  CORE_PROJECT_PATH: src/Core/Core.csproj
-  COMPONENTS_PROJECT_PATH: src/Components/Components.csproj
-  CONTEXTMENUEXTENSIONS_PROJECT_PATH: src/ContextMenuExtensions/ContextMenuExtensions.csproj
-  LANDINGPAGES_PROJECT_PATH: src/LandingPages/LandingPages.csproj
+  PROJECT_PATHS: |
+  src/Core/Core.csproj
+  src/Components/Components.csproj
+  src/ContextMenuExtensions/ContextMenuExtensions.csproj
+  src/LandingPages/LandingPages.csproj
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+      fetch-depth: 0
+
+# Get Version from csproj files
+    - name: Get project versions
+      id: get-versions
+      run: |
+        for /f "tokens=*" %%i in ('echo "${{ env.PROJECT_PATHS }}"') do (
+          echo "Project Path: %%i"
+          echo "::set-output name=proj-path-%%i::%%i"
+          echo "::set-output name=version-%%i::$(kzrnm/get-net-sdk-project-versions-action@v1.3.0 --proj-path %%i)"
+        )
+        
+    - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+
+    - name: Clean project
+        run: msbuild /t:clean
+
+    - name: Restore NuGet packages
+        run: msbuild /t:Restore
+
+    - name: Build projects
+      run: |
+        for /f "tokens=*" %%i in ('echo "${{ env.PROJECT_PATHS }}"') do (
+          msbuild "%%i" /t:Rebuild /p:Configuration=Release
+        )
+
+    - name: Generate NuGet packages
+      run: |
+        for /f "tokens=*" %%i in ('echo "${{ env.PROJECT_PATHS }}"') do (
+          msbuild "%%i" /t:Pack /p:Configuration=Release
+        )
+    
+    - name: Push NuGet packages to NuGet.org
+      run: |
+        for /r %%i in (*.nupkg) do (
+          dotnet nuget push "%%i" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json || true
+        )
