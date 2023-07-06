@@ -1,0 +1,10 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+  
+env:
+  CORE_PROJECT_PATH: src/Core/Core.csproj
+  COMPONENTS_PROJECT_PATH: src/Components/Components.csproj
+  CONTEXTMENUEXTENSIONS_PROJECT_PATH: src/ContextMenuExtensions/ContextMenuExtensions.csproj
+  LANDINGPAGES_PROJECT_PATH: src/LandingPages/LandingPages.csproj
