@@ -29,13 +29,13 @@ jobs:
         )
         
     - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+      uses: microsoft/setup-msbuild@v1.1
 
     - name: Clean project
-        run: msbuild /t:clean
+      run: msbuild /t:clean
 
     - name: Restore NuGet packages
-        run: msbuild /t:Restore
+      run: msbuild /t:Restore
 
     - name: Build projects
       run: |
