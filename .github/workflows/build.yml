@@ -5,10 +5,10 @@ on:
   
 env:
   PROJECT_PATHS: |
-  src/Core/Core.csproj
-  src/Components/Components.csproj
-  src/ContextMenuExtensions/ContextMenuExtensions.csproj
-  src/LandingPages/LandingPages.csproj
+    src/Core/Core.csproj
+    src/Components/Components.csproj
+    src/ContextMenuExtensions/ContextMenuExtensions.csproj
+    src/LandingPages/LandingPages.csproj
 
 jobs:
   build:
