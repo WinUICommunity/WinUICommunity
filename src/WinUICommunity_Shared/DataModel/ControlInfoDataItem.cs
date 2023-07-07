@@ -58,7 +58,7 @@ public class ControlInfoDataItem
     public ObservableCollection<ControlInfoDataItem> Items { get; set; }
     public ObservableCollection<string> RelatedControls { get; set; }
     public ControlInfoBadge InfoBadge { get; set; }
-    public bool IncludedInBuild { get; set; }
+    public bool IncludedInBuild { get; set; } = true;
     public override string ToString()
     {
         return Title;

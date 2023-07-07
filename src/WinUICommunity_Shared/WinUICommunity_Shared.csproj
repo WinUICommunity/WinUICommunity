@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>WinUICommunity.Shared</RootNamespace>
+    <UseWinUI>true</UseWinUI>
+    <Version>5.0.0</Version>
+  </PropertyGroup>
+</Project>

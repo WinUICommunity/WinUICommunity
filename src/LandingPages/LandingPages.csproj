@@ -13,8 +13,6 @@
 	  <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
 	  <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.4" />
   </ItemGroup>
-
-  <Import Project="..\WinUICommunity_Shared\WinUICommunity_Shared.projitems" Label="Shared" />
 	
   <ItemGroup>
 	  <PackageReference Include="XAMLTools.MSBuild" Version="1.0.0-alpha0143">
@@ -27,5 +25,8 @@
 		  <TargetFile>Themes\Generic.xaml</TargetFile>
 		  <Visible>True</Visible>
 	  </XAMLCombineItems>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WinUICommunity_Shared\WinUICommunity_Shared.csproj" />
   </ItemGroup>
 </Project>
