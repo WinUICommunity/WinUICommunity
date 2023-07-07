@@ -1,0 +1,65 @@
+﻿<Page x:Class="WinUICommunity.DemoApp.Pages.HomeLandingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:wuc="using:WinUICommunity"
+      mc:Ignorable="d">
+
+    <wuc:MainLandingPage x:Name="mainLandingsPage"
+                         HeaderImage="ms-appx:///Assets/GalleryHeaderImage.png"
+                         HeaderSubtitleText="Based On WinAppSDK 1.3"
+                         HeaderText="Demo App"
+                         Loaded="mainLandingsPage_Loaded"
+                         OnItemClick="mainLandingsPage_OnItemClick">
+        <wuc:MainLandingPage.HeaderContent>
+            <StackPanel Orientation="Horizontal"
+                        Spacing="10">
+                <wuc:HeaderTile Title="Documentation Center"
+                                Description="Learn how to work with controls and styles."
+                                Link="https://ghost1372.github.io/winUICommunity/">
+                    <wuc:HeaderTile.Source>
+                        <Image Source="/Assets/HomeHeaderTiles/Header-WinUIGallery.png" />
+                    </wuc:HeaderTile.Source>
+                </wuc:HeaderTile>
+                <wuc:HeaderTile Title="SettingsUI"
+                                Description="Experience WinUI 3 quickly and easily with the help of SettingsUI, Everything you need to develop an application is gathered in one place."
+                                Link="https://github.com/WinUICommunity/SettingsUI">
+                    <wuc:HeaderTile.Source>
+                        <Image Source="/Assets/HomeHeaderTiles/icon.png" />
+                    </wuc:HeaderTile.Source>
+                </wuc:HeaderTile>
+                <wuc:HeaderTile Title="Common"
+                                Description="Experience WinUI 3 quickly and easily with the help of Common, Everything you need to develop an application is gathered in one place."
+                                Link="https://github.com/WinUICommunity/Common">
+                    <wuc:HeaderTile.Source>
+                        <Image Source="/Assets/HomeHeaderTiles/icon.png" />
+                    </wuc:HeaderTile.Source>
+                </wuc:HeaderTile>
+                <wuc:HeaderTile Title="ShellContextMenu"
+                                Description="add a new ContextMenu for Windows 11/10."
+                                Link="https://github.com/WinUICommunity/ShellContextMenu">
+                    <wuc:HeaderTile.Source>
+                        <Image Source="/Assets/HomeHeaderTiles/icon.png" />
+                    </wuc:HeaderTile.Source>
+                </wuc:HeaderTile>
+            </StackPanel>
+        </wuc:MainLandingPage.HeaderContent>
+
+        <wuc:MainLandingPage.FooterContent>
+            <StackPanel>
+                <TextBlock x:Name="LearnMore"
+                           Margin="0,0,0,12"
+                           Foreground="{ThemeResource ApplicationForegroundThemeBrush}"
+                           Style="{StaticResource SubtitleTextBlockStyle}"
+                           Text="Learn More" />
+                <HyperlinkButton Content="Developer Center"
+                                 NavigateUri="https://developer.microsoft.com/en-us/windows/" />
+                <HyperlinkButton Content="App Code Samples"
+                                 NavigateUri="https://docs.microsoft.com/en-us/windows/apps/get-started/samples" />
+                <HyperlinkButton Content="Windows Template Studio"
+                                 NavigateUri="https://github.com/microsoft/WindowsTemplateStudio" />
+            </StackPanel>
+        </wuc:MainLandingPage.FooterContent>
+    </wuc:MainLandingPage>
+</Page>

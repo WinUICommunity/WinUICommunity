@@ -1,0 +1,122 @@
+﻿{
+  "Groups": [
+    {
+      "UniqueId": "WinUICommunity.DemoApp.Pages.HomeLandingPage",
+      "Title": "DemoApp",
+      "IsSpecialSection": false,
+      "Items": [
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ThemeManagerPage",
+          "Title": "ThemeManager"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.NavigationManagerPage",
+          "Title": "NavigationManager"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.DynamicLanguagePage",
+          "Title": "Dynamic Language"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.PrintPage",
+          "Title": "Print"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.AppNotificationPage",
+          "Title": "App Notification"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ContentDialogPage",
+          "Title": "Content Dialog"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.CommandObservablePage",
+          "Title": "Command and Observable"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.CheckUpdatePage",
+          "Title": "Check Update"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.PresenterPage",
+          "Title": "AppWindow Presenter"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.InlineAutoCompleteTextBoxPage",
+          "Title": "Inline AutoComplete TextBox"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.AboutPage",
+          "Title": "About"
+        }
+      ]
+    },
+    {
+      "Title": "LandingPages",
+      "SecondaryTitle": "",
+      "Items": [
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.AllLandingsPage",
+          "Title": "AllLandingPage"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.HomeLandingsPage",
+          "Title": "HomeLandingPage"
+        }
+      ]
+    },
+    {
+      "Title": "Settings Control",
+      "Items": [
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.SettingsControls",
+          "Title": "SettingsControls Sample"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.GeneralPage",
+          "Title": "General"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+          "Title": "Oobe"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.AwakePage",
+          "Title": "Awake"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ColorPickerPage",
+          "Title": "Color Picker"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.FancyZonesPage",
+          "Title": "Fancy Zones"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.PowerPreviewPage",
+          "Title": "Power Preview"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ImageResizerPage",
+          "Title": "Image Resizer"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.KeyboardManagerPage",
+          "Title": "Keyboard Manager"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.PowerRenamePage",
+          "Title": "Power Rename"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.PowerLauncherPage",
+          "Title": "Power Launcher"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ShortcutGuidePage",
+          "Title": "Shortcut Guide"
+        }
+      ]
+    }
+  ]
+}
