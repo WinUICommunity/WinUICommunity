@@ -22,7 +22,7 @@ public sealed partial class MainPage : Page
             {
                 JsonFilePath = "DataModel/DemoData.json"
             }
-        }, RootFrame);
+        }, RootFrame, ControlsSearchBox);
     }
 
     public void Navigate(string uniqeId)

@@ -2,7 +2,7 @@
   "Groups": [
     {
       "UniqueId": "WinUICommunity.DemoApp.Pages.HomeLandingPage",
-      "Title": "DemoApp",
+      "Title": "Features",
       "ImageIconPath": "ms-appx:///Assets/Fluent/logo.png",
       "ImagePath": "ms-appx:///Assets/Fluent/logo.png",
       "IsSpecialSection": false,
