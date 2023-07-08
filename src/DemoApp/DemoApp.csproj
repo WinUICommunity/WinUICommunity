@@ -13,6 +13,7 @@
     <Version>5.0.0</Version>
     <NoWarn>WMC1506;CS8632</NoWarn>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <ExcludedLanguages>en-US;fa-IR</ExcludedLanguages>
   </PropertyGroup>
 
   <ItemGroup>
@@ -58,11 +59,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <Target Name="RemoveFolders" AfterTargets="Build">
-    <ItemGroup>
-      <RemovingFiles Include="$(OutDir)*\*.mui" Exclude="$(OutDir)en-us\*.mui;$(OutDir)fa-IR\*.mui" />
-      <RemovingFolders Include="@(RemovingFiles->'%(RootDir)%(Directory)')" />
-    </ItemGroup>
-    <RemoveDir Directories="@(RemovingFolders)" />
-  </Target>
+  <Import Project="../Core/MSBuildTargets/RemoveLanguageFolders.targets" />
 </Project>

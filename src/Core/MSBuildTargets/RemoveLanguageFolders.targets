@@ -1,0 +1,29 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Define the OutputLanguages property -->
+  <PropertyGroup>
+    <OutputLanguages></OutputLanguages>
+  </PropertyGroup>
+
+  <!-- Split the ExcludedLanguages property into individual items -->
+  <ItemGroup>
+    <LanguageItems Include="$(ExcludedLanguages.Split(';'))" />
+  </ItemGroup>
+
+  <!-- Create the final output -->
+  <Target Name="CreateOutput" AfterTargets="Build">
+    <PropertyGroup>
+      <OutputLanguagesToDelete>@(LanguageItems->'$(OutDir)%(Identity)\*.mui')</OutputLanguagesToDelete>
+    </PropertyGroup>
+  </Target>
+
+  <!-- Remove Languages Folders -->
+  <Target Name="RemoveFolders" AfterTargets="Build">
+    <ItemGroup>
+      <RemovingFiles Include="$(OutDir)*\*.mui" Exclude="$(OutputLanguagesToDelete)" />
+      <RemovingFolders Include="@(RemovingFiles->'%(RootDir)%(Directory)')" />
+    </ItemGroup>
+    <RemoveDir Directories="@(RemovingFolders)" />
+  </Target>
+
+</Project>
