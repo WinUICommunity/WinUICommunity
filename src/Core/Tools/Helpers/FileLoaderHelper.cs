@@ -1,15 +1,11 @@
-﻿using System.Reflection;
+﻿namespace WinUICommunity;
 
-using Windows.Storage;
-
-namespace WinUICommunity;
-
-internal static class FileLoader
+public static class FileLoaderHelper
 {
-    internal static async Task<string> GetPath(string filePath, PathType pathType)
+    public static async Task<string> GetPath(string filePath, PathType pathType)
     {
         StorageFile file = null;
-        if (InternalHelper.IsPackaged)
+        if (ApplicationHelper.IsPackaged)
         {
             switch (pathType)
             {

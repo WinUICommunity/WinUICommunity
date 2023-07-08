@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Xaml.Controls;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public class NavigationArgs
 {

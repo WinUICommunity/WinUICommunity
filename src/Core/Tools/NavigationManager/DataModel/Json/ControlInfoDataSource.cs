@@ -62,7 +62,7 @@ public class ControlInfoDataSource
             }
         }
 
-        string filePath = await FileLoader.GetPath(jsonFilePath, pathType);
+        string filePath = await FileLoaderHelper.GetPath(jsonFilePath, pathType);
         using FileStream openStream = File.OpenRead(filePath);
         var controlInfoDataGroup = await JsonSerializer.DeserializeAsync<ControlInfoDataSource>(openStream, new JsonSerializerOptions
         {

@@ -27,6 +27,6 @@
 	  </XAMLCombineItems>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WinUICommunity_Shared\WinUICommunity_Shared.csproj" />
+    <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 </Project>
