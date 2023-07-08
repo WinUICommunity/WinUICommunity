@@ -6,7 +6,7 @@
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
 	  <Description>useful helpers, extension methods and classes</Description>
-	  <PackageTags>winui winui3 win11 xaml Common SettingsUI settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
+	  <PackageTags>winui winui3 win11 xaml core Common SettingsUI settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="nucs.JsonSettings" Version="2.0.2" />
