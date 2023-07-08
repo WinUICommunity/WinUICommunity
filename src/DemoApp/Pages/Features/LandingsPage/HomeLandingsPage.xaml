@@ -22,23 +22,23 @@
                         <Image Source="/Assets/HomeHeaderTiles/Header-WinUIGallery.png" />
                     </wuc:HeaderTile.Source>
                 </wuc:HeaderTile>
-                <wuc:HeaderTile Title="SettingsUI"
-                                Description="Experience WinUI 3 quickly and easily with the help of SettingsUI, Everything you need to develop an application is gathered in one place."
-                                Link="https://github.com/WinUICommunity/SettingsUI">
+                <wuc:HeaderTile Title="Components"
+                                Description="Experience WinUI 3 quickly and easily with the help of Components, Everything you need to develop an application is gathered in one place."
+                                Link="https://github.com/WinUICommunity/Components">
                     <wuc:HeaderTile.Source>
                         <Image Source="/Assets/HomeHeaderTiles/icon.png" />
                     </wuc:HeaderTile.Source>
                 </wuc:HeaderTile>
-                <wuc:HeaderTile Title="Common"
-                                Description="Experience WinUI 3 quickly and easily with the help of Common, Everything you need to develop an application is gathered in one place."
-                                Link="https://github.com/WinUICommunity/Common">
+                <wuc:HeaderTile Title="Core"
+                                Description="Experience WinUI 3 quickly and easily with the help of Core, Everything you need to develop an application is gathered in one place."
+                                Link="https://github.com/WinUICommunity/Core">
                     <wuc:HeaderTile.Source>
                         <Image Source="/Assets/HomeHeaderTiles/icon.png" />
                     </wuc:HeaderTile.Source>
                 </wuc:HeaderTile>
-                <wuc:HeaderTile Title="ShellContextMenu"
+                <wuc:HeaderTile Title="ContextMenuExtensions"
                                 Description="add a new ContextMenu for Windows 11/10."
-                                Link="https://github.com/WinUICommunity/ShellContextMenu">
+                                Link="https://github.com/WinUICommunity/ContextMenuExtensions">
                     <wuc:HeaderTile.Source>
                         <Image Source="/Assets/HomeHeaderTiles/icon.png" />
                     </wuc:HeaderTile.Source>

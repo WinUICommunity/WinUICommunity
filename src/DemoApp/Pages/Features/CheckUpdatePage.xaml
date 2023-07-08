@@ -1,26 +1,32 @@
-﻿<Page
-    x:Class="WinUICommunity.DemoApp.Pages.CheckUpdatePage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:wuc="using:WinUICommunity">
-    <wuc:SettingsPageControl
-        IsTabStop="False"
-        ModuleDescription="you can use UpdateHelper for checking application updates from github release page."
-        ModuleImageSource="ms-appx:///Assets/Modules/PT.png"
-        ModuleTitle="UpdateHelper">
+﻿<Page x:Class="WinUICommunity.DemoApp.Pages.CheckUpdatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:wuc="using:WinUICommunity">
+    <wuc:SettingsPageControl IsTabStop="False"
+                             ModuleDescription="you can use UpdateHelper for checking application updates from github release page."
+                             ModuleImageSource="ms-appx:///Assets/Modules/PT.png"
+                             ModuleTitle="UpdateHelper">
         <wuc:SettingsPageControl.ModuleContent>
-            <StackPanel Spacing="10" ChildrenTransitions="{StaticResource SettingsCardsAnimations}">
-                <InfoBar IsOpen="True" IsClosable="False" Severity="Warning" Title="First you must create a new release tag in github repository, tag version must be in this format : 1.0.0.0 now we can check for update with github username and github repository"/>
-                <Button Click="Button_Click" Content="Check for Update" HorizontalAlignment="Center"/>
-                <TextBox Name="txtUser" PlaceholderText="Github Username: ghost1372"/>
-                <TextBox Name="txtRepo" PlaceholderText="Github Repository: SettingsUI"/>
-                <TextBlock Name="txtReleaseUrl"/>
-                <TextBlock Name="txtCreatedAt"/>
-                <TextBlock Name="txtPublishedAt"/>
-                <TextBlock Name="txtIsPreRelease"/>
-                <TextBlock Name="txtTagName"/>
-                <TextBlock Name="txtChangelog"/>
-                <ListView Name="listView"/>
+            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                        Spacing="10">
+                <InfoBar Title="First you must create a new release tag in github repository, tag version must be in this format : 1.0.0.0 now we can check for update with github username and github repository"
+                         IsClosable="False"
+                         IsOpen="True"
+                         Severity="Warning" />
+                <Button HorizontalAlignment="Center"
+                        Click="Button_Click"
+                        Content="Check for Update" />
+                <TextBox Name="txtUser"
+                         PlaceholderText="Github Username: ghost1372" />
+                <TextBox Name="txtRepo"
+                         PlaceholderText="Github Repository: SettingsUI" />
+                <TextBlock Name="txtReleaseUrl" />
+                <TextBlock Name="txtCreatedAt" />
+                <TextBlock Name="txtPublishedAt" />
+                <TextBlock Name="txtIsPreRelease" />
+                <TextBlock Name="txtTagName" />
+                <TextBlock Name="txtChangelog" />
+                <ListView Name="listView" />
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
     </wuc:SettingsPageControl>

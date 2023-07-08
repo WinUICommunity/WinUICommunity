@@ -62,11 +62,11 @@ public partial class App : Application
             }
         });
 
-        //if (!ApplicationHelper.IsPackaged)
-        //{
-        //    notificationManager.Init(notificationManager, OnNotificationInvoked);
-        //}
-        //await InitializeLocalizer("fa-IR", "en-US");
+        if (!ApplicationHelper.IsPackaged)
+        {
+            notificationManager.Init(notificationManager, OnNotificationInvoked);
+        }
+        await InitializeLocalizer("fa-IR", "en-US");
 
         // Ensure the current window is active
         currentWindow.Activate();

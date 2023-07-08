@@ -3,118 +3,192 @@
     {
       "UniqueId": "WinUICommunity.DemoApp.Pages.HomeLandingPage",
       "Title": "DemoApp",
+      "ImageIconPath": "ms-appx:///Assets/Fluent/logo.png",
+      "ImagePath": "ms-appx:///Assets/Fluent/logo.png",
       "IsSpecialSection": false,
       "Items": [
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ThemeManagerPage",
-          "Title": "ThemeManager"
+          "Title": "ThemeManager",
+          "Subtitle": "Change Application Theme and Material Easily",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/theme.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/theme.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.NavigationManagerPage",
-          "Title": "NavigationManager"
+          "Title": "NavigationManager",
+          "Subtitle": "Navigate between pages easily (json file supported)",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/navigationView.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/navigationView.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.DynamicLanguagePage",
-          "Title": "Dynamic Language"
+          "Title": "Dynamic Language",
+          "Subtitle": "Change Application Language Realtime",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/language.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/language.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.PrintPage",
-          "Title": "Print"
+          "Title": "Print",
+          "Subtitle": "see how you can print data in winui 3",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/print.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/print.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.AppNotificationPage",
-          "Title": "App Notification"
+          "Title": "App Notification",
+          "Subtitle": "Send Notification in Window",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/notification.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/notification.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ContentDialogPage",
-          "Title": "Content Dialog"
+          "Title": "Content Dialog",
+          "Subtitle": "Some Extension Methods for ContentDialog",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/contentDialog.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/contentDialog.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.CommandObservablePage",
-          "Title": "Command and Observable"
+          "Title": "Command and Observable",
+          "Subtitle": "Command and INotifyPropertyChanged",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.CheckUpdatePage",
-          "Title": "Check Update"
+          "Title": "Check Update",
+          "Subtitle": "Check Application Update from Github",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/update.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/update.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.PresenterPage",
-          "Title": "AppWindow Presenter"
+          "Title": "AppWindow Presenter",
+          "Subtitle": "Work with Window.AppWindow",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/window.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/window.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.InlineAutoCompleteTextBoxPage",
-          "Title": "Inline AutoComplete TextBox"
-        },
-        {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.AboutPage",
-          "Title": "About"
+          "Title": "Inline AutoComplete TextBox",
+          "Subtitle": "Inline AutoComplete TextBox",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/autoSuggestBox.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/autoSuggestBox.png"
         }
       ]
     },
     {
       "Title": "LandingPages",
       "SecondaryTitle": "",
+      "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+      "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png",
       "Items": [
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.AllLandingsPage",
-          "Title": "AllLandingPage"
+          "Title": "AllLandingPage",
+          "Subtitle": "Show All Available options from Json file",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.HomeLandingsPage",
-          "Title": "HomeLandingPage"
+          "Title": "HomeLandingPage",
+          "Subtitle": "Show Simple Landing Page",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
         }
       ]
     },
     {
       "Title": "Settings Control",
+      "ImageIconPath": "ms-appx:///Assets/Fluent/settingsControl.png",
+      "ImagePath": "ms-appx:///Assets/Fluent/settingsControl.png",
       "Items": [
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.SettingsControls",
-          "Title": "SettingsControls Sample"
+          "Title": "SettingsControl Sample",
+          "Subtitle": "SettingsControl Sample",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/settingsControl.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/settingsControl.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.GeneralPage",
-          "Title": "General"
+          "Title": "General",
+          "Subtitle": "General Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/general.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/general.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
-          "Title": "Oobe"
+          "Title": "Oobe",
+          "Subtitle": "Oobe Page",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/powerToys.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/powerToys.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.AwakePage",
-          "Title": "Awake"
+          "Title": "Awake",
+          "Subtitle": "Awake Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/awake.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/awake.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ColorPickerPage",
-          "Title": "Color Picker"
+          "Title": "Color Picker",
+          "Subtitle": "Color Picker Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/colorPicker.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/colorPicker.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.FancyZonesPage",
-          "Title": "Fancy Zones"
+          "Title": "Fancy Zones",
+          "Subtitle": "Fancy Zones Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/fancyZones.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/fancyZones.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.PowerPreviewPage",
-          "Title": "Power Preview"
+          "Title": "Power Preview",
+          "Subtitle": "Power Preview Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/fileExplorerPreview.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/fileExplorerPreview.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ImageResizerPage",
-          "Title": "Image Resizer"
+          "Title": "Image Resizer",
+          "Subtitle": "Image Resizer Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/imageResizer.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/imageResizer.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.KeyboardManagerPage",
-          "Title": "Keyboard Manager"
+          "Title": "Keyboard Manager",
+          "Subtitle": "Keyboard Manager Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/keyboardManager.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/keyboardManager.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.PowerRenamePage",
-          "Title": "Power Rename"
+          "Title": "Power Rename",
+          "Subtitle": "Power Rename Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/powerRename.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/powerRename.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.PowerLauncherPage",
-          "Title": "Power Launcher"
+          "Title": "Power Launcher",
+          "Subtitle": "Power Launcher Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/powerToysRun.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/powerToysRun.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ShortcutGuidePage",
-          "Title": "Shortcut Guide"
+          "Title": "Shortcut Guide",
+          "Subtitle": "Shortcut Guide Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/shortcutGuide.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/shortcutGuide.png"
         }
       ]
     }

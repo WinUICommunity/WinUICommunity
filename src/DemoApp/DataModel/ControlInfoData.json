@@ -3,12 +3,6 @@
     {
       "UniqueId": "Features",
       "Title": "Features pages",
-      "SecondaryTitle": "",
-      "ApiNamespace": "",
-      "Subtitle": "",
-      "ImagePath": "",
-      "ImageIconPath": "",
-      "Description": "",
       "IsSpecialSection": false,
       "InfoBadge": {
         "BadgeValue": "10",
@@ -23,20 +17,12 @@
           "Subtitle": "you can use AppNotificationPage for Sending Toast Notification.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
-          "Description": "",
-          "Content": "",
-          "IsNew": false,
-          "IsUpdated": false,
-          "IsPreview": false,
-          "IncludedInBuild": true,
-          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "AppNotificationPage",
               "Uri": "https://ghost1372.github.io/winUICommunity/helpers/appNotification/"
             }
           ],
-          "RelatedControls": [],
           "InfoBadge": {
             "BadgeValue": "10",
             "HideNavigationViewInfoBadge": true
@@ -50,20 +36,13 @@
           "Subtitle": "you can use UpdateHelper for checking application updates from github release page.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
-          "Description": "",
-          "Content": "",
-          "IsNew": false,
           "IsUpdated": true,
-          "IsPreview": false,
-          "IncludedInBuild": true,
-          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "CheckUpdatePage",
               "Uri": "https://ghost1372.github.io/winUICommunity/helpers/updateHelper/"
             }
           ],
-          "RelatedControls": [],
           "InfoBadge": {
             "BadgeStyle": "SuccessIconInfoBadgeStyle",
             "BadgeSymbolIcon": "Sync"
@@ -77,15 +56,7 @@
           "Subtitle": "Observable: inherited from INotifyPropertyChanged. - RelayCommand: inherited from ICommand.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
-          "Description": "",
-          "Content": "",
-          "IsNew": false,
           "IsUpdated": true,
-          "IsPreview": false,
-          "IncludedInBuild": true,
-          "HideSourceCodeAndRelatedControls": true,
-          "Docs": [],
-          "RelatedControls": [],
           "InfoBadge": {
             "BadgeStyle": "SuccessIconInfoBadgeStyle",
             "BadgeBitmapIcon": "ms-appx:///Assets/Modules/PT.png"
@@ -99,15 +70,7 @@
           "Subtitle": "With the help of ShowAsyncQueue extension you can open multiple ContentDialogs.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
-          "Description": "",
-          "Content": "",
-          "IsNew": false,
           "IsUpdated": true,
-          "IsPreview": false,
-          "IncludedInBuild": true,
-          "HideSourceCodeAndRelatedControls": true,
-          "Docs": [],
-          "RelatedControls": [],
           "InfoBadge": {
             "BadgeStyle": "SuccessIconInfoBadgeStyle",
             "BadgeFontIconGlyph": "E710"
@@ -121,20 +84,13 @@
           "Subtitle": "With the help of DynamicLanguage you can create a dynamic multi language app.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
-          "Description": "",
-          "Content": "",
-          "IsNew": false,
           "IsUpdated": true,
-          "IsPreview": false,
-          "IncludedInBuild": true,
-          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "DynamicLanguagePage",
               "Uri": "https://ghost1372.github.io/winUICommunity/tools/dynamicLanguage/"
             }
           ],
-          "RelatedControls": [],
           "InfoBadge": {
             "BadgeStyle": "SuccessDotInfoBadgeStyle"
           }
@@ -147,20 +103,13 @@
           "Subtitle": "Inline AutoCompleteTextBox",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
-          "Description": "",
-          "Content": "",
-          "IsNew": false,
           "IsUpdated": true,
-          "IsPreview": false,
-          "IncludedInBuild": true,
-          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "InlineAutoCompleteTextBoxPage",
               "Uri": "https://ghost1372.github.io/winUICommunity/controls/inlineAutoCompleteTextBox/"
             }
           ],
-          "RelatedControls": [],
           "InfoBadge": {
             "BadgeStyle": "SuccessIconInfoBadgeStyle",
             "BadgeFontIconGlyph": "E710",
@@ -176,32 +125,20 @@
           "Subtitle": "SettingsControls from Labs",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
-          "Description": "",
-          "Content": "",
           "IsNew": true,
-          "IsUpdated": false,
-          "IsPreview": false,
-          "IncludedInBuild": true,
-          "HideSourceCodeAndRelatedControls": true,
           "Docs": [
             {
               "Title": "SettingsControls",
               "Uri": "https://ghost1372.github.io/winUICommunity/settingsControls/"
             }
-          ],
-          "RelatedControls": []
+          ]
         }
       ]
     },
     {
       "UniqueId": "Settings",
       "Title": "Settings pages",
-      "ApiNamespace": "",
-      "Subtitle": "",
-      "ImagePath": "",
       "SecondaryTitle": "Test SecondaryTitle",
-      "ImageIconPath": "",
-      "Description": "",
       "Items": [
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
@@ -211,14 +148,7 @@
           "Subtitle": "Settings Page with a Hero Image",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
-          "Description": "",
-          "Content": "",
-          "IsNew": false,
-          "IsUpdated": true,
-          "IsPreview": false,
-          "IncludedInBuild": true,
-          "Docs": [],
-          "RelatedControls": []
+          "IsUpdated": true
         }
       ]
     }

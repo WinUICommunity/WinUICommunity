@@ -49,7 +49,7 @@ public class ToastWithPayload : IScenario
             "<toast launch = \"action=ToastClick&amp;" + ScenarioIdToken + "\">"
         + "<visual>"
         + "<binding template = \"ToastGeneric\">"
-        + "<image placement = \"appLogoOverride\" hint-crop=\"circle\" src = \"" + ApplicationHelper.GetFullPathToAsset("Square150x150Logo.png") + "\"/>"
+        + "<image placement = \"appLogoOverride\" hint-crop=\"circle\" src = \"" + ApplicationHelper.GetFullPathToAsset("GalleryHeaderImage.png") + "\"/>"
         + "<text>" + ScenarioName + "</text>"
         + "<text>This is an example message using XML</text>"
         + "</binding>"

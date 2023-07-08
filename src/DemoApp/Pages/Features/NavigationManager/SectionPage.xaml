@@ -1,8 +1,8 @@
-<Page
-    x:Class="WinUICommunity.DemoApp.Pages.SectionPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:wuc="using:WinUICommunity">
+<Page x:Class="WinUICommunity.DemoApp.Pages.SectionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:wuc="using:WinUICommunity">
 
-    <wuc:SectionPage x:Name="sectionPage" OnItemClick="SectionPage_OnItemClick"/>
+    <wuc:SectionPage x:Name="sectionPage"
+                     OnItemClick="SectionPage_OnItemClick" />
 </Page>
