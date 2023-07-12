@@ -19,7 +19,7 @@
       <TargetFile>Themes\Generic.xaml</TargetFile>
       <Visible>True</Visible>
     </XAMLCombineItems>
-    <XAMLCombineItems Include="Labs\**\*.xaml">
+    <XAMLCombineItems Include="Controls\Labs\**\*.xaml">
       <TargetFile>Themes\Generic.xaml</TargetFile>
       <Visible>True</Visible>
     </XAMLCombineItems>
