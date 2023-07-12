@@ -4,8 +4,9 @@
 -->
 <!--
 Source files:
-Labs\SettingsCard\SettingsCard.xaml
-Labs\SettingsExpander\SettingsExpander.xaml
+Controls\Labs\SettingsCard\SettingsCard.xaml
+Controls\Labs\SettingsExpander\SettingsExpander.xaml
+Controls\Labs\TitleBar\TitleBar.xaml
 Themes\Styles\Button.xaml
 Themes\Styles\Colors.xaml
 Themes\Styles\Common.xaml
@@ -94,6 +95,8 @@ Themes\Styles\TextBlock.xaml
   <x:Double x:Key="SettingsExpanderContentMinHeight">16</x:Double>
   <x:Double x:Key="SettingsExpanderChevronButtonWidth">32</x:Double>
   <x:Double x:Key="SettingsExpanderChevronButtonHeight">32</x:Double>
+  <x:Double x:Key="TitleBarCompactHeight">32</x:Double>
+  <x:Double x:Key="TitleBarTallHeight">48</x:Double>
   <win:SolidColorBrush x:Key="SubtleButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}" />
   <win:SolidColorBrush x:Key="SubtleButtonBackgroundPointerOver" Color="{ThemeResource SubtleFillColorSecondary}" />
   <win:SolidColorBrush x:Key="SubtleButtonBackgroundPressed" Color="{ThemeResource SubtleFillColorTertiary}" />
@@ -721,6 +724,138 @@ Themes\Styles\TextBlock.xaml
                 </win:AnimatedIcon.FallbackIconSource>
               </win:AnimatedIcon>
             </win:ContentControl>
+          </win:Grid>
+        </win:ControlTemplate>
+      </win:Setter.Value>
+    </win:Setter>
+  </win:Style>
+  <win:Style x:Key="TitleBarBackButtonStyle" TargetType="Button">
+    <win:Setter Property="Background" Value="{ThemeResource NavigationViewBackButtonBackground}" />
+    <win:Setter Property="Foreground" Value="{ThemeResource NavigationViewItemForegroundChecked}" />
+    <win:Setter Property="FontFamily" Value="{ThemeResource SymbolThemeFontFamily}" />
+    <win:Setter Property="FontSize" Value="16" />
+    <win:Setter Property="MaxHeight" Value="40" />
+    <win:Setter Property="VerticalAlignment" Value="Stretch" />
+    <win:Setter Property="HorizontalContentAlignment" Value="Center" />
+    <win:Setter Property="VerticalContentAlignment" Value="Center" />
+    <win:Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+    <win:Setter Property="Content" Value="" />
+    <win:Setter Property="Padding" Value="12,4,12,4" />
+    <win:Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
+    <win:Setter Property="Template">
+      <win:Setter.Value>
+        <win:ControlTemplate TargetType="Button">
+          <win:Grid x:Name="RootGrid" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
+            <win:VisualStateManager.VisualStateGroups>
+              <win:VisualStateGroup x:Name="CommonStates">
+                <win:VisualState x:Name="Normal" />
+                <win:VisualState x:Name="PointerOver">
+                  <win:Storyboard>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonBackgroundPointerOver}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonForegroundPointerOver}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                  </win:Storyboard>
+                  <win:VisualState.Setters>
+                    <win:Setter Target="Content.(AnimatedIcon.State)" Value="PointerOver" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+                <win:VisualState x:Name="Pressed">
+                  <win:Storyboard>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonBackgroundPressed}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonForegroundPressed}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                  </win:Storyboard>
+                  <win:VisualState.Setters>
+                    <win:Setter Target="Content.(AnimatedIcon.State)" Value="Pressed" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+                <win:VisualState x:Name="Disabled">
+                  <win:Storyboard>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonForegroundDisabled}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                  </win:Storyboard>
+                </win:VisualState>
+              </win:VisualStateGroup>
+            </win:VisualStateManager.VisualStateGroups>
+            <win:AnimatedIcon x:Name="Content" Width="16" Height="16" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" win:AutomationProperties.AccessibilityView="Raw" AnimatedIcon.State="Normal">
+              <animatedvisuals:AnimatedBackVisualSource />
+              <win:AnimatedIcon.FallbackIconSource>
+                <win:FontIconSource FontFamily="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=FontFamily}" FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=FontSize}" Glyph="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" MirroredWhenRightToLeft="True" />
+              </win:AnimatedIcon.FallbackIconSource>
+            </win:AnimatedIcon>
+          </win:Grid>
+        </win:ControlTemplate>
+      </win:Setter.Value>
+    </win:Setter>
+  </win:Style>
+  <win:Style x:Key="TitleBarPaneToggleButtonStyle" TargetType="Button">
+    <win:Setter Property="Background" Value="{ThemeResource NavigationViewBackButtonBackground}" />
+    <win:Setter Property="Foreground" Value="{ThemeResource NavigationViewItemForegroundChecked}" />
+    <win:Setter Property="FontFamily" Value="{ThemeResource SymbolThemeFontFamily}" />
+    <win:Setter Property="FontSize" Value="16" />
+    <win:Setter Property="MaxHeight" Value="40" />
+    <win:Setter Property="VerticalAlignment" Value="Stretch" />
+    <win:Setter Property="HorizontalContentAlignment" Value="Center" />
+    <win:Setter Property="VerticalContentAlignment" Value="Center" />
+    <win:Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+    <win:Setter Property="Content" Value="" />
+    <win:Setter Property="Padding" Value="12,4,12,4" />
+    <win:Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
+    <win:Setter Property="Template">
+      <win:Setter.Value>
+        <win:ControlTemplate TargetType="Button">
+          <win:Grid x:Name="RootGrid" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
+            <win:VisualStateManager.VisualStateGroups>
+              <win:VisualStateGroup x:Name="CommonStates">
+                <win:VisualState x:Name="Normal" />
+                <win:VisualState x:Name="PointerOver">
+                  <win:Storyboard>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonBackgroundPointerOver}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonForegroundPointerOver}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                  </win:Storyboard>
+                  <win:VisualState.Setters>
+                    <win:Setter Target="Content.(AnimatedIcon.State)" Value="PointerOver" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+                <win:VisualState x:Name="Pressed">
+                  <win:Storyboard>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonBackgroundPressed}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonForegroundPressed}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                  </win:Storyboard>
+                  <win:VisualState.Setters>
+                    <win:Setter Target="Content.(AnimatedIcon.State)" Value="Pressed" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+                <win:VisualState x:Name="Disabled">
+                  <win:Storyboard>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="Content" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource NavigationViewButtonForegroundDisabled}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                  </win:Storyboard>
+                </win:VisualState>
+              </win:VisualStateGroup>
+            </win:VisualStateManager.VisualStateGroups>
+            <win:AnimatedIcon x:Name="Content" Width="16" Height="16" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" win:AutomationProperties.AccessibilityView="Raw" AnimatedIcon.State="Normal">
+              <animatedvisuals:AnimatedGlobalNavigationButtonVisualSource />
+              <win:AnimatedIcon.FallbackIconSource>
+                <win:FontIconSource FontFamily="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=FontFamily}" FontSize="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=FontSize}" Glyph="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" MirroredWhenRightToLeft="True" />
+              </win:AnimatedIcon.FallbackIconSource>
+            </win:AnimatedIcon>
           </win:Grid>
         </win:ControlTemplate>
       </win:Setter.Value>
@@ -1872,6 +2007,105 @@ Themes\Styles\TextBlock.xaml
       </win:Setter.Value>
     </win:Setter>
   </win:Style>
+  <win:Style x:Key="DefaultTitleBarStyle" TargetType="local:TitleBar">
+    <win:Setter Property="MinHeight" Value="{ThemeResource TitleBarCompactHeight}" />
+    <win:Setter Property="Template">
+      <win:Setter.Value>
+        <win:ControlTemplate TargetType="local:TitleBar">
+          <win:Grid x:Name="PART_RootGrid" Height="{TemplateBinding MinHeight}" Padding="4,0,4,0" VerticalAlignment="Stretch" Background="{TemplateBinding Background}">
+            <win:Grid.ColumnDefinitions>
+              <win:ColumnDefinition x:Name="PART_LeftPaddingColumn" Width="0" />
+              <win:ColumnDefinition x:Name="PART_ButtonsHolderColumn" Width="Auto" />
+              <win:ColumnDefinition x:Name="PART_IconColumn" Width="Auto" />
+              <win:ColumnDefinition x:Name="PART_TitleColumn" Width="Auto" />
+              <win:ColumnDefinition x:Name="PART_LeftDragColumn" Width="*" />
+              <win:ColumnDefinition x:Name="PART_ContentColumn" Width="Auto" />
+              <win:ColumnDefinition x:Name="PART_RightDragColumn" Width="*" />
+              <win:ColumnDefinition x:Name="PART_FooterColumn" Width="Auto" />
+              <win:ColumnDefinition x:Name="PART_RightPaddingColumn" Width="0" />
+            </win:Grid.ColumnDefinitions>
+            <win:VisualStateManager.VisualStateGroups>
+              <win:VisualStateGroup x:Name="BackButtonStates">
+                <win:VisualState x:Name="BackButtonVisible" />
+                <win:VisualState x:Name="BackButtonCollapsed">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="PART_BackButton.Visibility" Value="Collapsed" />
+                    <win:Setter Target="PART_BackButton.Visibility" Value="Collapsed" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+              <win:VisualStateGroup x:Name="PaneButtonStates">
+                <win:VisualState x:Name="PaneButtonVisible" />
+                <win:VisualState x:Name="PaneButtonCollapsed">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="PART_PaneButton.Visibility" Value="Collapsed" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+              <win:VisualStateGroup x:Name="IconStates">
+                <win:VisualState x:Name="IconVisible" />
+                <win:VisualState x:Name="IconCollapsed">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="PART_IconHolder.Visibility" Value="Collapsed" />
+                    <win:Setter Target="PART_TitleHolder.Margin" Value="4,0,0,0" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+              <win:VisualStateGroup x:Name="ReflowStates">
+                <win:VisualState x:Name="Wide" />
+                <win:VisualState x:Name="Narrow">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="PART_TitleHolder.Visibility" Value="Collapsed" />
+                    <win:Setter Target="PART_LeftDragColumn.Width" Value="Auto" />
+                    <win:Setter Target="PART_RightDragColumn.Width" Value="Auto" />
+                    <win:Setter Target="PART_ContentColumn.Width" Value="*" />
+                    <win:Setter Target="PART_ContentPresenter.Margin" Value="16,0,0,0" />
+                    <win:Setter Target="PART_ContentPresenter.MinWidth" Value="0" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+              <win:VisualStateGroup x:Name="WindowActivationStates">
+                <win:VisualState x:Name="Activated" />
+                <win:VisualState x:Name="Deactivated">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="PART_TitleText.Foreground" Value="{ThemeResource TextFillColorDisabledBrush}" />
+                    <win:Setter Target="PART_SubtitleText.Foreground" Value="{ThemeResource TextFillColorDisabledBrush}" />
+                    <win:Setter Target="PART_BackButton.IsEnabled" Value="False" />
+                    <win:Setter Target="PART_PaneButton.IsEnabled" Value="False" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+              <win:VisualStateGroup x:Name="DisplayModeStates">
+                <win:VisualState x:Name="Standard" />
+                <win:VisualState x:Name="Tall">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="PART_RootGrid.MinHeight" Value="{ThemeResource TitleBarTallHeight}" />
+                    <win:Setter Target="PART_RootGrid.Padding" Value="4" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+            </win:VisualStateManager.VisualStateGroups>
+            <win:Border x:Name="PART_IconHolder" Grid.Column="2" Margin="12,0,0,0" VerticalAlignment="Center">
+              <win:Viewbox x:Name="PART_Icon" MaxWidth="16" MaxHeight="16">
+                <win:ContentPresenter x:Name="PART_IconPresenter" win:AutomationProperties.AccessibilityView="Raw" win:HighContrastAdjustment="None" Content="{TemplateBinding Icon}" />
+              </win:Viewbox>
+            </win:Border>
+            <win:StackPanel x:Name="PART_TitleHolder" Grid.Column="3" Margin="16,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Spacing="4">
+              <win:TextBlock x:Name="PART_TitleText" MinWidth="48" Margin="0,0,0,1" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="{TemplateBinding Title}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
+              <win:TextBlock x:Name="PART_SubtitleText" MinWidth="48" Margin="0,0,0,1" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="{TemplateBinding Subtitle}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
+            </win:StackPanel>
+            <win:Grid x:Name="PART_DragRegion" Grid.Column="2" Grid.ColumnSpan="6" Background="Transparent" />
+            <win:StackPanel x:Name="ButtonHolder" Grid.Column="1" Orientation="Horizontal">
+              <win:Button x:Name="PART_BackButton" Style="{ThemeResource TitleBarBackButtonStyle}" ToolTipService.ToolTip="Back" />
+              <win:Button x:Name="PART_PaneButton" Style="{StaticResource TitleBarPaneToggleButtonStyle}" ToolTipService.ToolTip="Back" />
+            </win:StackPanel>
+            <win:ContentPresenter x:Name="PART_ContentPresenter" Grid.Column="5" MinWidth="360" Margin="4,0,4,0" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Content="{TemplateBinding Content}" />
+            <win:ContentPresenter x:Name="PART_Footer" Grid.Column="7" Margin="4,0,8,0" HorizontalContentAlignment="Right" Content="{TemplateBinding Footer}" />
+          </win:Grid>
+        </win:ControlTemplate>
+      </win:Setter.Value>
+    </win:Setter>
+  </win:Style>
   <win:Style BasedOn="{StaticResource DefaultFlyoutMenuButtonStyle}" TargetType="local:FlyoutMenuButton" />
   <win:Style BasedOn="{StaticResource DefaultSettingsCardStyle}" TargetType="labs:SettingsCard" />
   <win:Style x:Key="DefaultSettingsExpanderStyle" TargetType="labs:SettingsExpander">
@@ -1924,5 +2158,6 @@ Themes\Styles\TextBlock.xaml
       </win:Setter>
     </win:Style.Setters>
   </win:Style>
+  <win:Style BasedOn="{StaticResource DefaultTitleBarStyle}" TargetType="local:TitleBar" />
   <win:Style BasedOn="{StaticResource DefaultSettingsExpanderStyle}" TargetType="labs:SettingsExpander" />
 </win:ResourceDictionary>
