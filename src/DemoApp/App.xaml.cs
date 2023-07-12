@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using DemoApp.Pages;
 
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.AppNotifications;
@@ -25,7 +26,7 @@ public partial class App : Application
     public ThemeManager ThemeManager { get; set; }
     private NotificationManager notificationManager;
     public new static App Current => (App)Application.Current;
-
+    public string Title { get; set; } = "DemoApp";
     public App()
     {
         this.InitializeComponent();
@@ -43,6 +44,9 @@ public partial class App : Application
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         currentWindow = new Window();
+        currentWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
+        currentWindow.AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
+        currentWindow.Title = Title;
 
         if (currentWindow.Content is not Frame rootFrame)
         {

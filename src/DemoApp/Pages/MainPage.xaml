@@ -6,13 +6,27 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
-
     <Grid>
-        <NavigationView x:Name="NavigationViewControl"
-                        Canvas.ZIndex="0"
-                        IsTabStop="False"
-                        IsTitleBarAutoPaddingEnabled="True"
-                        PaneDisplayMode="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <wuc:TitleBar x:Name="appTitleBar"
+                      BackButtonClick="appTitleBar_BackButtonClick"
+                      IsBackButtonVisible="True"
+                      IsPaneButtonVisible="True"
+                      PaneButtonClick="appTitleBar_PaneButtonClick"
+                      Subtitle="v5.0">
+            <wuc:TitleBar.Icon>
+                <BitmapIcon ShowAsMonochrome="False"
+                            UriSource="ms-appx:///Assets/Fluent/logo.png" />
+            </wuc:TitleBar.Icon>
+        </wuc:TitleBar>
+        <NavigationView x:Name="NavView"
+                        Grid.Row="1"
+                        IsBackButtonVisible="Collapsed"
+                        IsPaneToggleButtonVisible="False">
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox x:Name="ControlsSearchBox"
                                 MinWidth="200"
@@ -37,7 +51,8 @@
                     </AutoSuggestBox.ItemTemplate>
                 </AutoSuggestBox>
             </NavigationView.AutoSuggestBox>
-            <Frame x:Name="RootFrame" />
+            <Frame x:Name="NavFrame"
+                   Navigated="NavFrame_Navigated" />
         </NavigationView>
     </Grid>
 </Page>
