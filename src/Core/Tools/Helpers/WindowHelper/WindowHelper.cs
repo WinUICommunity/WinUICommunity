@@ -129,4 +129,16 @@ public static partial class WindowHelper
         }
         NativeMethods.FlushMenuThemes();
     }
+
+    public static (Window window, Frame rootFrame) CreateWindowWithFrame()
+    {
+        var window = new Window();
+
+        if (window.Content is not Frame frame)
+        {
+            window.Content = frame = new Frame();
+            return (window, frame);
+        }
+        return (null, null);
+    }
 }
