@@ -6,41 +6,42 @@ public static class AutoSuggestBoxHelper
 
     public static void LoadSuggestions(AutoSuggestBox autoSuggestBox, AutoSuggestBoxTextChangedEventArgs args, IList<string> suggestList)
     {
-        var suggestions = new List<string>();
-        if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+        List<string> list = new List<string>();
+        if (args.Reason != 0)
         {
-            var querySplit = autoSuggestBox.Text.Split(' ');
-            var matchingItems = suggestList.Where(
-                item =>
-                {
-                    var flag = true;
-                    foreach (var queryToken in querySplit)
-                    {
-                        if (item.IndexOf(queryToken, StringComparison.CurrentCultureIgnoreCase) < 0)
-                        {
-                            flag = false;
-                        }
+            return;
+        }
 
-                    }
-                    return flag;
-                });
-            foreach (var item in matchingItems)
+        string[] querySplit = autoSuggestBox.Text.Split(' ');
+
+        foreach (string item in suggestList)
+        {
+            bool result = true;
+            foreach (string value in querySplit)
             {
-                suggestions.Add(item);
-            }
-            if (suggestions.Count > 0)
-            {
-                for (var i = 0; i < suggestions.Count; i++)
+                if (!item.Contains(value, StringComparison.CurrentCultureIgnoreCase))
                 {
-                    autoSuggestBox.ItemsSource = suggestions;
+                    result = false;
+                    break;
                 }
             }
-            else
+
+            if (result)
             {
-                autoSuggestBox.ItemsSource = new string[] { NoResult };
+                list.Add(item);
             }
         }
+
+        if (list.Count > 0)
+        {
+            autoSuggestBox.ItemsSource = list;
+        }
+        else
+        {
+            autoSuggestBox.ItemsSource = new string[1] { NoResult };
+        }
     }
+
     public static void LoadSuggestions(AutoSuggestBox autoSuggestBox, AutoSuggestBoxTextChangedEventArgs args, IList<string> suggestList, string noResultString)
     {
         NoResult = noResultString;
