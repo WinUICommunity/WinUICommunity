@@ -23,7 +23,7 @@
       <RemovingFiles Include="$(OutDir)*\*.mui" Exclude="$(OutputLanguagesToDelete)" />
       <RemovingFolders Include="@(RemovingFiles->'%(RootDir)%(Directory)')" />
     </ItemGroup>
-    <RemoveDir Directories="@(RemovingFolders)" />
+    <RemoveDir Condition="'$(ExcludedLanguages)' != ''" Directories="@(RemovingFolders)" />
   </Target>
 
 </Project>

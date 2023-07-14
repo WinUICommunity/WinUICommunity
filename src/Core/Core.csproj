@@ -8,6 +8,12 @@
 	  <Description>useful helpers, extension methods and classes</Description>
 	  <PackageTags>winui winui3 win11 xaml core Common SettingsUI settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="build\WinUICommunity.Core.targets" Pack="true" PackagePath="build\" />
+    <Content Include="MSBuildTargets\RemoveLanguageFolders.targets" Pack="true" PackagePath="MSBuildTargets\" />
+  </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="nucs.JsonSettings" Version="2.0.2" />
 	  <PackageReference Include="nucs.JsonSettings.Autosave" Version="2.0.2" />
