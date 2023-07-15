@@ -41,7 +41,7 @@ public partial class TitleBar : Control
         if (AutoConfigureCustomTitleBar)
         {
             Window.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
-
+            ConfigPresenter();
             this.Window.Activated -= Window_Activated;
             this.Window.Activated += Window_Activated;
 
