@@ -141,5 +141,21 @@ public static class ApplicationHelper
         var scaleFactorPercent = (uint)(((long)dpiX * 100 + (96 >> 1)) / 96);
         return scaleFactorPercent / 100.0;
     }
+
+    public static void SetApplicationLayoutRTL(Window window)
+    {
+        IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+
+        int exstyle = NativeMethods.GetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE);
+        NativeMethods.SetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE, exstyle | NativeMethods.WS_EX_LAYOUTRTL);
+    }
+
+    public static void SetApplicationLayoutLTR(Window window)
+    {
+        IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
+
+        int exstyle = NativeMethods.GetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE);
+        NativeMethods.SetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE, exstyle | NativeMethods.WS_EX_LAYOUTLTR);
+    }
 }
 
