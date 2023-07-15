@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
 
 namespace WinUICommunity;
-internal static class NativeMethods
+public static class NativeMethods
 {
-    internal enum PreferredAppMode
+    public enum PreferredAppMode
     {
         Default,
         AllowDark,
@@ -15,6 +15,10 @@ internal static class NativeMethods
     public const int WM_ACTIVATE = 0x0006;
     public const int WA_ACTIVE = 0x01;
     public const int WA_INACTIVE = 0x00;
+
+    public const int GWL_EXSTYLE = -20;
+    public const int WS_EX_LAYOUTRTL = 0x00400000;
+    public const int WS_EX_LAYOUTLTR = 0x00000000;
 
     [DllImport("user32.dll")]
     public static extern IntPtr GetActiveWindow();
@@ -28,21 +32,21 @@ internal static class NativeMethods
     public static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal, int Size, string FilePath);
 
     [DllImport("uxtheme.dll", EntryPoint = "#136", SetLastError = true, CharSet = CharSet.Unicode)]
-    internal static extern void FlushMenuThemes();
+    public static extern void FlushMenuThemes();
 
     [DllImport("uxtheme.dll", EntryPoint = "#135", SetLastError = true, CharSet = CharSet.Unicode)]
-    internal static extern int SetPreferredAppMode(PreferredAppMode preferredAppMode);
+    public static extern int SetPreferredAppMode(PreferredAppMode preferredAppMode);
 
     [DllImport("user32.dll", SetLastError = true)]
-    internal static extern void SwitchToThisWindow(IntPtr hWnd, bool turnOn);
+    public static extern void SwitchToThisWindow(IntPtr hWnd, bool turnOn);
 
-    internal delegate IntPtr WinProc(IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
+    public delegate IntPtr WinProc(IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
 
     [DllImport("NTdll.dll")]
-    internal static extern int RtlGetVersion(out RTL_OSVERSIONINFOEX lpVersionInformation);
+    public static extern int RtlGetVersion(out RTL_OSVERSIONINFOEX lpVersionInformation);
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct RTL_OSVERSIONINFOEX
+    public struct RTL_OSVERSIONINFOEX
     {
         public RTL_OSVERSIONINFOEX(uint dwMajorVersion, uint dwMinorVersion, uint dwBuildNumber, uint dwRevision, uint dwPlatformId, string szCSDVersion) : this()
         {
@@ -67,37 +71,43 @@ internal static class NativeMethods
     /// <summary>
     /// Places the window at the top of the Z order.
     /// </summary>
-    internal static readonly IntPtr HWND_TOP = new(0);
+    public static readonly IntPtr HWND_TOP = new(0);
 
     [DllImport("CoreMessaging.dll")]
-    internal static extern int CreateDispatcherQueueController([In] DispatcherQueueOptions options, [In, Out, MarshalAs(UnmanagedType.IUnknown)] ref object dispatcherQueueController);
+    public static extern int CreateDispatcherQueueController([In] DispatcherQueueOptions options, [In, Out, MarshalAs(UnmanagedType.IUnknown)] ref object dispatcherQueueController);
 
     [DllImport("User32.dll")]
-    internal static extern int GetDpiForWindow(IntPtr hwnd);
+    public static extern int GetDpiForWindow(IntPtr hwnd);
 
     [DllImport("User32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
-    internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, SetWindowPosFlags uFlags);
+    public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, SetWindowPosFlags uFlags);
 
     [DllImport("Shcore.dll", SetLastError = true)]
-    internal static extern int GetDpiForMonitor(IntPtr hmonitor, Monitor_DPI_Type dpiType, out uint dpiX, out uint dpiY);
+    public static extern int GetDpiForMonitor(IntPtr hmonitor, Monitor_DPI_Type dpiType, out uint dpiX, out uint dpiY);
 
     [DllImport("kernel32.dll", SetLastError = false, ExactSpelling = true, CharSet = CharSet.Unicode)]
-    internal static extern int GetCurrentPackageFullName(ref uint packageFullNameLength, [Optional] StringBuilder packageFullName);
+    public static extern int GetCurrentPackageFullName(ref uint packageFullNameLength, [Optional] StringBuilder packageFullName);
 
     [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
-    internal static extern int SetWindowLong32(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
+    public static extern int SetWindowLong32(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
 
     [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
-    internal static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
+    public static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc);
 
-    internal static IntPtr SetWindowLongPtr(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc)
+    public static IntPtr SetWindowLongPtr(IntPtr hWnd, WindowLongIndexFlags nIndex, WinProc newProc)
     {
         return IntPtr.Size == 8 ? SetWindowLongPtr64(hWnd, nIndex, newProc) : new IntPtr(SetWindowLong32(hWnd, nIndex, newProc));
     }
 
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
     [DllImport("user32.dll")]
-    internal static extern IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
+    public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+    [DllImport("user32.dll")]
+    public static extern IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
 
     /// <summary>
     /// An attribute applied to native pointer parameters to indicate its semantics
@@ -156,14 +166,14 @@ internal static class NativeMethods
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct DispatcherQueueOptions
+    public struct DispatcherQueueOptions
     {
         internal int dwSize;
         internal int threadType;
         internal int apartmentType;
     }
 
-    internal enum Monitor_DPI_Type : int
+    public enum Monitor_DPI_Type : int
     {
         MDT_Effective_DPI = 0,
         MDT_Angular_DPI = 1,
@@ -172,13 +182,13 @@ internal static class NativeMethods
     }
 
     [Flags]
-    internal enum WindowLongIndexFlags : int
+    public enum WindowLongIndexFlags : int
     {
         GWL_WNDPROC = -4,
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct MINMAXINFO
+    public struct MINMAXINFO
     {
         public POINT ptReserved;
         public POINT ptMaxSize;

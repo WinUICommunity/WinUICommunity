@@ -97,7 +97,6 @@ Themes\Styles\TextBlock.xaml
   <x:Double x:Key="SettingsExpanderChevronButtonHeight">32</x:Double>
   <x:Double x:Key="TitleBarCompactHeight">32</x:Double>
   <x:Double x:Key="TitleBarTallHeight">48</x:Double>
-  <x:Double x:Key="ContentMinWidth">360</x:Double>
   <win:SolidColorBrush x:Key="SubtleButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}" />
   <win:SolidColorBrush x:Key="SubtleButtonBackgroundPointerOver" Color="{ThemeResource SubtleFillColorSecondary}" />
   <win:SolidColorBrush x:Key="SubtleButtonBackgroundPressed" Color="{ThemeResource SubtleFillColorTertiary}" />
