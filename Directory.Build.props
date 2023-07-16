@@ -8,7 +8,7 @@
     <LangVersion>Latest</LangVersion>
     <AccelerateBuildsInVisualStudio>True</AccelerateBuildsInVisualStudio>
 
-    <OutputPath>$(SolutionDir)output\$(MSBuildProjectName)\</OutputPath>
+    <OutputPath>$(SolutionDir)\src\output\$(MSBuildProjectName)\</OutputPath>
 
     <!-- The NuGet package options -->
     <PackageIcon>icon.png</PackageIcon>

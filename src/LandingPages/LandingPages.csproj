@@ -6,6 +6,7 @@
     <Namespace>WinUICommunity.LandingPages</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
+    <AssemblyName>$(Namespace)</AssemblyName>
 	  <Description>Create a landings page in the style of WinUI 3 and WinUI-Gallery very quickly and easily</Description>
 	  <PackageTags>winui LandingsPage landingpages winui3 win11 xaml SettingsUI settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
   </PropertyGroup>

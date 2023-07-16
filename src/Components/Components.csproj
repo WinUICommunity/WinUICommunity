@@ -5,6 +5,7 @@
     <Namespace>WinUICommunity.Components</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
+    <AssemblyName>$(Namespace)</AssemblyName>
     <Description>Windows 11 settings page in WinUI 3 apps With many useful controls and styles</Description>
     <PackageTags>winui winui3 win11 xaml SettingsUI Components settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
   </PropertyGroup>
