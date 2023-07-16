@@ -14,6 +14,6 @@ internal partial class ImageEx : ImageExBase
         : base()
     {
         DefaultStyleKey = typeof(ImageEx);
-        DefaultStyleResourceUri = new System.Uri("ms-appx:///LandingPages/Themes/Generic.xaml");
+        DefaultStyleResourceUri = new System.Uri("ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml");
     }
 }
