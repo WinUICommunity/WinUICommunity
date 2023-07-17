@@ -97,6 +97,7 @@ Themes\Styles\TextBlock.xaml
   <x:Double x:Key="SettingsExpanderChevronButtonHeight">32</x:Double>
   <x:Double x:Key="TitleBarCompactHeight">32</x:Double>
   <x:Double x:Key="TitleBarTallHeight">48</x:Double>
+  <x:Double x:Key="TitleBarContentMaxWidth">360</x:Double>
   <win:SolidColorBrush x:Key="SubtleButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}" />
   <win:SolidColorBrush x:Key="SubtleButtonBackgroundPointerOver" Color="{ThemeResource SubtleFillColorSecondary}" />
   <win:SolidColorBrush x:Key="SubtleButtonBackgroundPressed" Color="{ThemeResource SubtleFillColorTertiary}" />
@@ -2018,9 +2019,9 @@ Themes\Styles\TextBlock.xaml
               <win:ColumnDefinition x:Name="PART_ButtonsHolderColumn" Width="Auto" />
               <win:ColumnDefinition x:Name="PART_IconColumn" Width="Auto" />
               <win:ColumnDefinition x:Name="PART_TitleColumn" Width="Auto" />
-              <win:ColumnDefinition x:Name="PART_LeftDragColumn" Width="*" />
+              <win:ColumnDefinition x:Name="PART_LeftDragColumn" Width="*" MinWidth="4" />
               <win:ColumnDefinition x:Name="PART_ContentColumn" Width="Auto" />
-              <win:ColumnDefinition x:Name="PART_RightDragColumn" Width="*" />
+              <win:ColumnDefinition x:Name="PART_RightDragColumn" Width="*" MinWidth="4" />
               <win:ColumnDefinition x:Name="PART_FooterColumn" Width="Auto" />
               <win:ColumnDefinition x:Name="PART_RightPaddingColumn" Width="0" />
             </win:Grid.ColumnDefinitions>
@@ -2051,6 +2052,22 @@ Themes\Styles\TextBlock.xaml
                   </win:VisualState.Setters>
                 </win:VisualState>
               </win:VisualStateGroup>
+              <win:VisualStateGroup x:Name="ContentStates">
+                <win:VisualState x:Name="ContentVisible" />
+                <win:VisualState x:Name="ContentCollapsed">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="PART_ContentPresenter.Visibility" Value="Collapsed" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+              <win:VisualStateGroup x:Name="FooterStates">
+                <win:VisualState x:Name="FooterVisible" />
+                <win:VisualState x:Name="FooterCollapsed">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="PART_FooterPresenter.Visibility" Value="Collapsed" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
               <win:VisualStateGroup x:Name="ReflowStates">
                 <win:VisualState x:Name="Wide" />
                 <win:VisualState x:Name="Narrow">
@@ -2058,8 +2075,10 @@ Themes\Styles\TextBlock.xaml
                     <win:Setter Target="PART_TitleHolder.Visibility" Value="Collapsed" />
                     <win:Setter Target="PART_LeftDragColumn.Width" Value="Auto" />
                     <win:Setter Target="PART_RightDragColumn.Width" Value="Auto" />
+                    <win:Setter Target="PART_RightDragColumn.MinWidth" Value="16" />
+                    <win:Setter Target="PART_LeftDragColumn.MinWidth" Value="16" />
                     <win:Setter Target="PART_ContentColumn.Width" Value="*" />
-                    <win:Setter Target="PART_ContentPresenter.Margin" Value="16,0,0,0" />
+                    <!--  Content can stretch now  -->
                     <win:Setter Target="PART_ContentPresenter.MinWidth" Value="0" />
                   </win:VisualState.Setters>
                 </win:VisualState>
@@ -2097,10 +2116,10 @@ Themes\Styles\TextBlock.xaml
             <win:Grid x:Name="PART_DragRegion" Grid.Column="2" Grid.ColumnSpan="6" Background="Transparent" />
             <win:StackPanel x:Name="ButtonHolder" Grid.Column="1" Orientation="Horizontal">
               <win:Button x:Name="PART_BackButton" Style="{ThemeResource TitleBarBackButtonStyle}" ToolTipService.ToolTip="Back" />
-              <win:Button x:Name="PART_PaneButton" Style="{StaticResource TitleBarPaneToggleButtonStyle}" ToolTipService.ToolTip="Back" />
+              <win:Button x:Name="PART_PaneButton" Style="{StaticResource TitleBarPaneToggleButtonStyle}" ToolTipService.ToolTip="Toggle menu" />
             </win:StackPanel>
-            <win:ContentPresenter x:Name="PART_ContentPresenter" Grid.Column="5" Margin="4,0,4,0" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Content="{TemplateBinding Content}" />
-            <win:ContentPresenter x:Name="PART_Footer" Grid.Column="7" Margin="4,0,8,0" HorizontalContentAlignment="Right" Content="{TemplateBinding Footer}" />
+            <win:ContentPresenter x:Name="PART_ContentPresenter" Grid.Column="5" MinWidth="360" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Content="{TemplateBinding Content}" />
+            <win:ContentPresenter x:Name="PART_FooterPresenter" Grid.Column="7" Margin="4,0,8,0" HorizontalContentAlignment="Right" Content="{TemplateBinding Footer}" />
           </win:Grid>
         </win:ControlTemplate>
       </win:Setter.Value>
