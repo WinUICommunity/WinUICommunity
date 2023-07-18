@@ -5,6 +5,8 @@
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 
+using WinRT.Interop;
+
 namespace WinUICommunity;
 
 [TemplatePart(Name = nameof(PART_ButtonsHolderColumn), Type = typeof(ColumnDefinition))]
@@ -39,7 +41,7 @@ public partial class TitleBar : Control
             Window.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
 
             ConfigPresenter();
-
+            
             this.Window.Activated -= Window_Activated;
             this.Window.Activated += Window_Activated;
 
@@ -166,5 +168,23 @@ public partial class TitleBar : Control
 
             Window.AppWindow.TitleBar.SetDragRectangles(dragRects);
         }
+    }
+
+    private double GetScaleAdjustment()
+    {
+        IntPtr hWnd = WindowNative.GetWindowHandle(this.Window);
+        WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+        DisplayArea displayArea = DisplayArea.GetFromWindowId(wndId, DisplayAreaFallback.Primary);
+        IntPtr hMonitor = Win32Interop.GetMonitorFromDisplayId(displayArea.DisplayId);
+
+        // Get DPI.
+        int result = NativeMethods.GetDpiForMonitor(hMonitor, NativeMethods.Monitor_DPI_Type.MDT_Default, out uint dpiX, out uint _);
+        if (result != 0)
+        {
+            throw new Exception("Could not get DPI for monitor.");
+        }
+
+        uint scaleFactorPercent = (uint)(((long)dpiX * 100 + (96 >> 1)) / 96);
+        return scaleFactorPercent / 100.0;
     }
 }
