@@ -1,12 +1,12 @@
 ﻿using System.Runtime.InteropServices;
 
 namespace WinUICommunity;
-public static class NativeMethods
+internal static class NativeMethods
 {
     [DllImport("Shcore.dll", SetLastError = true)]
-    public static extern int GetDpiForMonitor(IntPtr hmonitor, Monitor_DPI_Type dpiType, out uint dpiX, out uint dpiY);
+    internal static extern int GetDpiForMonitor(IntPtr hmonitor, Monitor_DPI_Type dpiType, out uint dpiX, out uint dpiY);
 
-    public enum Monitor_DPI_Type : int
+    internal enum Monitor_DPI_Type : int
     {
         MDT_Effective_DPI = 0,
         MDT_Angular_DPI = 1,
