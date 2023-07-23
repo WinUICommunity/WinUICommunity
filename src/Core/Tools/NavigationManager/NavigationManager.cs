@@ -90,9 +90,8 @@ public partial class NavigationManager : Observable
         Assembly assembly = string.IsNullOrEmpty(item.ApiNamespace) ? Application.Current.GetType().Assembly : (Assembly)Assembly.Load(item.ApiNamespace);
         if (assembly is not null)
         {
-
             Type pageType = assembly.GetType(item.UniqueId);
-            NavigateForJson(pageType);
+            NavigateForJson(pageType, item);
         }
     }
 
