@@ -2,8 +2,8 @@
 
 public class TitleBarCustomization
 {
-    public TitleBarWindowType TitleBarType { get; set; } = TitleBarWindowType.None;
+    public TitleBarWindowType TitleBarWindowType { get; set; } = TitleBarWindowType.None;
 
-    public TitleBarButtons CaptionButtonsColorForLightTheme { get; set; }
-    public TitleBarButtons CaptionButtonsColorForDarkTheme { get; set; }
+    public TitleBarButtons LightTitleBarButtons { get; set; }
+    public TitleBarButtons DarkTitleBarButtons { get; set; }
 }
