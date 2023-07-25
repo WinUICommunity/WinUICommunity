@@ -56,7 +56,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
     private PathType _pathType;
     private bool _autoIncludedInBuild;
 
-    private DataSource _dataSource;
+    public DataSource DataSource { get; set; }
 
     private NavigationViewItem topLevelItem { get; set; }
 
@@ -85,7 +85,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         _jsonFilePath = jsonFilePath;
         _pathType = pathType;
         _autoIncludedInBuild = autoIncludedInBuild;
-        _dataSource = new DataSource();
+        DataSource = new DataSource();
 
         await AddNavigationMenuItems();
     }
@@ -122,7 +122,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
 
     private void _autoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
     {
-        var matches = SearchNavigationViewItems(_dataSource.Groups.SelectMany(group => group.Items), sender.Text);
+        var matches = SearchNavigationViewItems(DataSource.Groups.SelectMany(group => group.Items), sender.Text);
 
         if (matches.Any())
         {
@@ -308,9 +308,9 @@ public class JsonNavigationViewService : IJsonNavigationViewService
 
     private async Task AddNavigationMenuItems()
     {
-        await _dataSource.GetDataAsync(_jsonFilePath, _pathType, _autoIncludedInBuild);
+        await DataSource.GetDataAsync(_jsonFilePath, _pathType, _autoIncludedInBuild);
 
-        foreach (var group in _dataSource.Groups.OrderBy(i => i.Title).Where(i => !i.IsSpecialSection && !i.HideGroup))
+        foreach (var group in DataSource.Groups.OrderBy(i => i.Title).Where(i => !i.IsSpecialSection && !i.HideGroup))
         {
             if (group.ShowItemsWithoutGroup)
             {

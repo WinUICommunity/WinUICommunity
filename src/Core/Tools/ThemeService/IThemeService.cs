@@ -11,10 +11,10 @@ public interface IThemeService
     delegate void ActualThemeChangedEventHandler(FrameworkElement sender, object args);
     event ActualThemeChangedEventHandler ActualThemeChanged;
 
-    Window CurrentWindow { get; internal set; }
-    SystemBackdrop CurrentSystemBackdrop { get; internal set; }
-    BackdropType CurrentBackdropType { get; internal set; }
-    Dictionary<Window, SystemBackdrop> CurrentSystemBackdropDic { get; internal set; }
+    Window CurrentWindow { get; set; }
+    SystemBackdrop CurrentSystemBackdrop { get; set; }
+    BackdropType CurrentBackdropType { get; set; }
+    Dictionary<Window, SystemBackdrop> CurrentSystemBackdropDic { get; set; }
 
     SystemBackdrop GetSystemBackdrop(BackdropType backdropType);
     SystemBackdrop GetCurrentSystemBackdrop(Window activeWindow);
