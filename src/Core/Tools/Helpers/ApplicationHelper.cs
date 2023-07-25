@@ -157,5 +157,32 @@ public static class ApplicationHelper
         int exstyle = NativeMethods.GetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE);
         NativeMethods.SetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE, exstyle | NativeMethods.WS_EX_LAYOUTLTR);
     }
+
+    public static Type GetPageType(string uniqueId, string assemblyString)
+    {
+        Assembly assembly;
+
+        if (string.IsNullOrEmpty(assemblyString))
+        {
+            assembly = Application.Current.GetType().Assembly;
+        }
+        else
+        {
+            try
+            {
+                assembly = Assembly.Load(assemblyString);
+            }
+            catch (Exception)
+            {
+                assembly = Application.Current.GetType().Assembly;
+            }
+        }
+
+        if (assembly is not null)
+        {
+            return assembly.GetType(uniqueId);
+        }
+        return null;
+    }
 }
 
