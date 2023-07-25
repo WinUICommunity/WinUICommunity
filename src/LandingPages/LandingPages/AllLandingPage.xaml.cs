@@ -67,10 +67,15 @@ public sealed partial class AllLandingPage : ItemsPageBase
         this.InitializeComponent();
     }
 
-    public async void GetDataAsync(string JsonFilePath, PathType pathType, IncludedInBuildMode IncludedInBuildMode = IncludedInBuildMode.CheckBasedOnIncludedInBuildProperty)
+    public void GetData(DataSource dataSource)
     {
-        var dataSource = new ControlInfoDataSource();
-        await dataSource.GetGroupsAsync(JsonFilePath, pathType, IncludedInBuildMode);
+        Items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem)).OrderBy(i => i.Title);
+    }
+
+    public async void GetDataAsync(string JsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    {
+        var dataSource = new DataSource();
+        await dataSource.GetGroupsAsync(JsonFilePath, pathType, autoIncludedInBuild);
         Items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem)).OrderBy(i => i.Title);
     }
 }

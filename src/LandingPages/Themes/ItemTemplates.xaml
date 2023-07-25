@@ -3,7 +3,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="using:WinUICommunity">
 
-    <DataTemplate x:Key="ControlItemTemplate" x:DataType="local:ControlInfoDataItem">
+    <DataTemplate x:Key="ControlItemTemplate"
+                  x:DataType="local:DataItem">
         <UserControl>
             <Grid x:Name="controlRoot"
                   Width="360"
@@ -20,7 +21,28 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <Grid Width="72" CornerRadius="{ThemeResource ControlCornerRadius}">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="LayoutVisualStates">
+                        <VisualState x:Name="WideLayout">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters />
+                        </VisualState>
+                        <VisualState x:Name="NarrowLayout">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="0" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="controlRoot.Width" Value="Auto" />
+                                <Setter Target="controlRoot.Height" Value="120" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+
+                <Grid Width="72"
+                      CornerRadius="{ThemeResource ControlCornerRadius}">
                     <local:ImageEx x:Name="gridImage"
                                    Width="48"
                                    VerticalAlignment="Center"
@@ -52,26 +74,6 @@
                            VerticalAlignment="Top"
                            Style="{StaticResource AttentionIconInfoBadgeStyle}"
                            Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" />
-
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="LayoutVisualStates">
-                        <VisualState x:Name="WideLayout">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="{StaticResource Breakpoint640Plus}" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters />
-                        </VisualState>
-                        <VisualState x:Name="NarrowLayout">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="0" />
-                            </VisualState.StateTriggers>
-                            <VisualState.Setters>
-                                <Setter Target="controlRoot.Width" Value="Auto" />
-                                <Setter Target="controlRoot.Height" Value="120" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
             </Grid>
         </UserControl>
     </DataTemplate>

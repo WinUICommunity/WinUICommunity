@@ -12,9 +12,9 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
     public event PropertyChangedEventHandler PropertyChanged;
 
     private string _itemId;
-    private IEnumerable<ControlInfoDataItem> _items;
+    private IEnumerable<DataItem> _items;
 
-    public IEnumerable<ControlInfoDataItem> Items
+    public IEnumerable<DataItem> Items
     {
         get => _items;
         set => SetProperty(ref _items, value);
@@ -35,7 +35,7 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
             container.XYFocusDown = container;
         }
 
-        var item = args.Item as ControlInfoDataItem;
+        var item = args.Item as DataItem;
         if (item != null)
         {
             args.ItemContainer.IsEnabled = item.IncludedInBuild;
@@ -46,7 +46,7 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
     protected void OnItemGridViewItemClick(object sender, ItemClickEventArgs e)
     {
         var gridView = (GridView)sender;
-        var item = (ControlInfoDataItem)e.ClickedItem;
+        var item = (DataItem)e.ClickedItem;
 
         _itemId = item.UniqueId;
         OnItemClick?.Invoke(gridView, e);
@@ -57,7 +57,7 @@ public abstract class ItemsPageBase : Page, INotifyPropertyChanged
         if (_itemId != null)
         {
             var gridView = (GridView)sender;
-            var items = gridView.ItemsSource as IEnumerable<ControlInfoDataItem>;
+            var items = gridView.ItemsSource as IEnumerable<DataItem>;
             var item = items?.FirstOrDefault(s => s.UniqueId == _itemId);
             if (item != null)
             {
