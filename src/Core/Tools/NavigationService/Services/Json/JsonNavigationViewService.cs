@@ -95,12 +95,13 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             }
 
             var selectedItem = GetSelectedItem(e.SourcePageType, uniqueId);
-            GetParentAndExpandItem(selectedItem);
+            ExpandItems(selectedItem);
+
             navigationView.SelectedItem = selectedItem;
         };
     }
 
-    private void GetParentAndExpandItem(NavigationViewItem navigationViewItem)
+    private void ExpandItems(NavigationViewItem navigationViewItem)
     {
         if (navigationViewItem != null)
         {
@@ -108,7 +109,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             if (parent != null)
             {
                 parent.IsExpanded = true;
-                GetParentAndExpandItem(parent);
+                ExpandItems(parent);
             }
         }
     }
