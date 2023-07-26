@@ -1,5 +1,4 @@
 ﻿using Microsoft.UI.Xaml.Automation;
-using Microsoft.UI.Xaml.Controls;
 
 using System.Diagnostics.CodeAnalysis;
 
@@ -74,11 +73,21 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         Navigated += (s, e) =>
         {
             navigationView.IsBackEnabled = CanGoBack;
-            var selectedItem = GetSelectedItem(e.SourcePageType);
-            if (selectedItem != null)
+            var dataItem = e.Parameter as DataItem;
+            var dataGroup = e.Parameter as DataGroup;
+            string uniqueId = string.Empty;
+
+            if (dataGroup != null && !string.IsNullOrEmpty(dataGroup.SectionId))
             {
-                navigationView.SelectedItem = selectedItem;
+                uniqueId = dataGroup.UniqueId;
             }
+            else if (dataItem != null && !string.IsNullOrEmpty(dataItem.SectionId))
+            {
+                uniqueId = dataItem.UniqueId;
+            }
+
+            var selectedItem = GetSelectedItem(e.SourcePageType, uniqueId);
+            navigationView.SelectedItem = selectedItem;
         };
     }
 
@@ -189,6 +198,68 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         }
     }
 
+    public NavigationViewItem? GetSelectedItem(Type pageType, string uniqueId)
+    {
+        if (_navigationView != null)
+        {
+            return GetSelectedItem(_navigationView.MenuItems, pageType, uniqueId) ?? GetSelectedItem(_navigationView.FooterMenuItems, pageType, uniqueId);
+        }
+
+        return null;
+    }
+
+    private NavigationViewItem? GetSelectedItem(IEnumerable<object> menuItems, Type pageType, string uniqueId)
+    {
+        foreach (var item in menuItems.OfType<NavigationViewItem>())
+        {
+            if (IsMenuItemForPageType(item, pageType, uniqueId))
+            {
+                return item;
+            }
+
+            var selectedChild = GetSelectedItem(item.MenuItems, pageType, uniqueId);
+            if (selectedChild != null)
+            {
+                return selectedChild;
+            }
+        }
+
+        return null;
+    }
+
+    private bool IsMenuItemForPageType(NavigationViewItem menuItem, Type sourcePageType, string uniqueId)
+    {
+        if (string.IsNullOrEmpty(uniqueId))
+        {
+            if (menuItem.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
+            {
+                return _pageService.GetPageType(pageKey) == sourcePageType;
+            }
+        }
+        else
+        {
+            var dataGroup = menuItem.DataContext as DataGroup;
+            var dataItem = menuItem.DataContext as DataItem;
+
+            if (dataGroup != null && !string.IsNullOrEmpty(dataGroup.UniqueId))
+            {
+                if (menuItem.GetValue(NavigationHelper.NavigateToProperty) is string pageKey && dataGroup.UniqueId.Equals(uniqueId))
+                {
+                    return _pageService.GetPageType(pageKey) == sourcePageType;
+                }
+            }
+
+            if (dataItem != null && !string.IsNullOrEmpty(dataItem.UniqueId))
+            {
+                if (menuItem.GetValue(NavigationHelper.NavigateToProperty) is string pageKey && dataItem.UniqueId.Equals(uniqueId))
+                {
+                    return _pageService.GetPageType(pageKey) == sourcePageType;
+                }
+            }
+        }
+        return false;
+    }
+
     public void UnregisterEvents()
     {
         if (_navigationView != null)
@@ -196,16 +267,6 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             _navigationView.BackRequested -= OnBackRequested;
             _navigationView.ItemInvoked -= OnItemInvoked;
         }
-    }
-
-    public NavigationViewItem? GetSelectedItem(Type pageType)
-    {
-        if (_navigationView != null)
-        {
-            return GetSelectedItem(_navigationView.MenuItems, pageType) ?? GetSelectedItem(_navigationView.FooterMenuItems, pageType);
-        }
-
-        return null;
     }
 
     private void OnBackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args) => GoBack();
@@ -241,35 +302,6 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         }
     }
 
-    private NavigationViewItem? GetSelectedItem(IEnumerable<object> menuItems, Type pageType)
-    {
-        foreach (var item in menuItems.OfType<NavigationViewItem>())
-        {
-            if (IsMenuItemForPageType(item, pageType))
-            {
-                return item;
-            }
-
-            var selectedChild = GetSelectedItem(item.MenuItems, pageType);
-            if (selectedChild != null)
-            {
-                return selectedChild;
-            }
-        }
-
-        return null;
-    }
-
-    private bool IsMenuItemForPageType(NavigationViewItem menuItem, Type sourcePageType)
-    {
-        if (menuItem.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
-        {
-            return _pageService.GetPageType(pageKey) == sourcePageType;
-        }
-
-        return false;
-    }
-
     private void AddNavigationViewItemsRecursively(IEnumerable<DataItem> navItems, bool isFooterNavigationViewItem, bool hasTopLevel, string pageKey, NavigationViewItem parentNavItem = null)
     {
         foreach (var navItem in navItems)
@@ -291,7 +323,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
                 }
             }
 
-            NavigationHelper.SetNavigateTo(navigationViewItem, navItem.UniqueId+navItem.Title);
+            NavigationHelper.SetNavigateTo(navigationViewItem, navItem.UniqueId);
             navigationViewItem.InfoBadge = GetInfoBadge(navItem);
             AutomationProperties.SetName(navigationViewItem, navItem.Title);
 
@@ -355,7 +387,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
                     }
                 }
 
-                NavigationHelper.SetNavigateTo(topLevelItem, group.UniqueId+group.Title);
+                NavigationHelper.SetNavigateTo(topLevelItem, group.UniqueId);
                 AutomationProperties.SetName(topLevelItem, group.Title);
                 topLevelItem.InfoBadge = GetInfoBadge(group);
 

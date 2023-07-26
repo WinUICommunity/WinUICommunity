@@ -2,7 +2,7 @@
   "Groups": [
     {
       "UniqueId": "Features",
-      "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+      "SectionId": "WinUICommunity.DemoApp.Pages.mySectionPage",
       "Title": "Features pages",
       "IsSpecialSection": false,
       "DataInfoBadge": {
@@ -131,13 +131,13 @@
     },
     {
       "UniqueId": "Settings",
-      "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+      "SectionId": "WinUICommunity.DemoApp.Pages.mySectionPage",
       "Title": "Settings pages",
       "SecondaryTitle": "Test SecondaryTitle",
       "Items": [
         {
           "UniqueId": "Settings2",
-          "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+          "SectionId": "WinUICommunity.DemoApp.Pages.mySectionPage",
           "Title": "Settings pages2",
           "SecondaryTitle": "Test SecondaryTitle",
           "Items": [
@@ -170,7 +170,7 @@
             },
             {
               "UniqueId": "Settings3",
-              "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+              "SectionId": "WinUICommunity.DemoApp.Pages.mySectionPage",
               "Title": "Settings pages3",
               "SecondaryTitle": "Test SecondaryTitle",
               "Items": [
@@ -194,7 +194,7 @@
                 },
                 {
                   "UniqueId": "Settings4",
-                  "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+                  "SectionId": "WinUICommunity.DemoApp.Pages.mySectionPage",
                   "Title": "Settings pages4",
                   "SecondaryTitle": "Test SecondaryTitle",
                   "Items": [

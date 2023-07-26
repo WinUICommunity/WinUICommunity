@@ -35,11 +35,11 @@ public class JsonPageService : PageService
             {
                 if (string.IsNullOrEmpty(dataItem.SectionId))
                 {
-                    _pageKeyToTypeMap[dataItem.UniqueId + dataItem.Title] = ApplicationHelper.GetPageType(dataItem.UniqueId, dataItem.ApiNamespace);
+                    _pageKeyToTypeMap[dataItem.UniqueId] = ApplicationHelper.GetPageType(dataItem.UniqueId, dataItem.ApiNamespace);
                 }
                 else
                 {
-                    _pageKeyToTypeMap[dataItem.UniqueId + dataItem.Title] = ApplicationHelper.GetPageType(dataItem.SectionId, dataItem.ApiNamespace);
+                    _pageKeyToTypeMap[dataItem.UniqueId] = ApplicationHelper.GetPageType(dataItem.SectionId, dataItem.ApiNamespace);
                 }
             }
         }
@@ -47,11 +47,11 @@ public class JsonPageService : PageService
         {
             if (string.IsNullOrEmpty(dataGroup.SectionId))
             {
-                _pageKeyToTypeMap[dataGroup.UniqueId + dataGroup.Title] = ApplicationHelper.GetPageType(dataGroup.UniqueId, dataGroup.ApiNamespace);
+                _pageKeyToTypeMap[dataGroup.UniqueId] = ApplicationHelper.GetPageType(dataGroup.UniqueId, dataGroup.ApiNamespace);
             }
             else
             {
-                _pageKeyToTypeMap[dataGroup.UniqueId + dataGroup.Title] = ApplicationHelper.GetPageType(dataGroup.SectionId, dataGroup.ApiNamespace);
+                _pageKeyToTypeMap[dataGroup.UniqueId] = ApplicationHelper.GetPageType(dataGroup.SectionId, dataGroup.ApiNamespace);
             }
         }
 
