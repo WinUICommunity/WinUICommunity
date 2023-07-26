@@ -8,6 +8,7 @@ public class DataSource
     private static readonly object _lock = new();
 
     public ObservableCollection<DataGroup> Groups { get; set; } = new ObservableCollection<DataGroup>();
+    public ObservableCollection<DataGroup> SectionGroups { get; set; } = new ObservableCollection<DataGroup>();
     
     public async Task<IEnumerable<DataGroup>> GetGroupsAsync(string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
     {
@@ -16,9 +17,23 @@ public class DataSource
         return Groups;
     }
 
+    public async Task<IEnumerable<DataGroup>> GetSectionGroupsAsync(string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    {
+        await GetDataAsync(jsonFilePath, pathType, autoIncludedInBuild);
+
+        return SectionGroups;
+    }
+
     public DataGroup GetGroup(string uniqueId)
     {
         var matches = Groups.Where((group) => !string.IsNullOrEmpty(group.UniqueId) && group.UniqueId.Equals(uniqueId));
+        if (matches.Count() == 1) return matches.First();
+        return null;
+    }
+
+    public DataGroup GetSectionGroup(string uniqueId)
+    {
+        var matches = SectionGroups.Where((group) => !string.IsNullOrEmpty(group.UniqueId) && group.UniqueId.Equals(uniqueId));
         if (matches.Count() == 1) return matches.First();
         return null;
     }
@@ -31,10 +46,26 @@ public class DataSource
         return matches.Count() == 1 ? matches.First() : null;
     }
 
+    public async Task<DataGroup> GetSectionGroupAsync(string uniqueId, string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    {
+        await GetDataAsync(jsonFilePath, pathType, autoIncludedInBuild);
+        // Simple linear search is acceptable for small data sets
+        var matches = SectionGroups.Where((group) => !string.IsNullOrEmpty(group.UniqueId) && group.UniqueId.Equals(uniqueId));
+        return matches.Count() == 1 ? matches.First() : null;
+    }
+
     public DataItem GetItem(string uniqueId)
     {
         // Simple linear search is acceptable for small data sets
         var matches = Groups.SelectMany(group => group.Items).Where((item) => !string.IsNullOrEmpty(item.UniqueId) && item.UniqueId.Equals(uniqueId));
+        if (matches.Count() > 0) return matches.First();
+        return null;
+    }
+
+    public DataItem GetSectionItem(string uniqueId)
+    {
+        // Simple linear search is acceptable for small data sets
+        var matches = SectionGroups.SelectMany(group => group.Items).Where((item) => !string.IsNullOrEmpty(item.UniqueId) && item.UniqueId.Equals(uniqueId));
         if (matches.Count() > 0) return matches.First();
         return null;
     }
@@ -48,9 +79,25 @@ public class DataSource
         return matches.Count() > 0 ? matches.First() : null;
     }
 
+    public async Task<DataItem> GetSectionItemAsync(string uniqueId, string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    {
+        await GetDataAsync(jsonFilePath, pathType, autoIncludedInBuild);
+        // Simple linear search is acceptable for small data sets
+        var matches = FindItems(SectionGroups.SelectMany(group => group.Items), uniqueId).ToList();
+
+        return matches.Count() > 0 ? matches.First() : null;
+    }
+
     public DataGroup GetGroupFromItem(string uniqueId)
     {
         var matches = Groups.Where((group) => group.Items.FirstOrDefault(item => !string.IsNullOrEmpty(item.UniqueId) && item.UniqueId.Equals(uniqueId)) != null);
+        if (matches.Count() == 1) return matches.First();
+        return null;
+    }
+
+    public DataGroup GetSectionGroupFromItem(string uniqueId)
+    {
+        var matches = SectionGroups.Where((group) => group.Items.FirstOrDefault(item => !string.IsNullOrEmpty(item.UniqueId) && item.UniqueId.Equals(uniqueId)) != null);
         if (matches.Count() == 1) return matches.First();
         return null;
     }
@@ -101,6 +148,7 @@ public class DataSource
                 if (!Groups.Any(g => g.Title == group.Title))
                 {
                     Groups.Add(group);
+                    SectionGroups.Add(group);
                 }
             }
         }
@@ -124,6 +172,25 @@ public class DataSource
     {
         foreach (var item in items)
         {
+            if (item.Items.Count > 0)
+            {
+                if (!SectionGroups.Any(g => g.Title == item.Title))
+                {
+                    var group = new DataGroup(
+                        item.UniqueId,
+                        item.Title,
+                        item.SecondaryTitle,
+                        item.Subtitle,
+                        item.ImagePath,
+                        item.ImageIconPath,
+                        item.Description,
+                        item.ApiNamespace,
+                        false, false, false, false, false,
+                        item.DataInfoBadge);
+                    group.Items = item.Items;
+                    SectionGroups.Add(group);
+                }
+            }
             UpdateItem(item, autoIncludedInBuild);
             UpdateItemInItems(item.Items, autoIncludedInBuild);
         }

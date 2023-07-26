@@ -226,6 +226,10 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             {
                 NavigateTo(_pageService.SectionPageKey, itemGroup.UniqueId);
             }
+            else if (_sectionPage != null && selectedItem.DataContext is DataItem item && !string.IsNullOrEmpty(item.UniqueId) && item.Items.Count > 0)
+            {
+                NavigateTo(_pageService.SectionPageKey, item.UniqueId);
+            }
             else
             {
                 if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)

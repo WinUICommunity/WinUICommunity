@@ -32,13 +32,13 @@ public sealed partial class SectionPage : ItemsPageBase
 
     public void GetData(DataSource dataSource, string uniqueId)
     {
-        var group = dataSource.GetGroup(uniqueId);
+        var group = dataSource.GetSectionGroup(uniqueId);
         GetItems(group);
     }
 
     public async void GetDataAsync(string uniqueId, string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
     {
-        var group = await new DataSource().GetGroupAsync(uniqueId, jsonFilePath, pathType, autoIncludedInBuild);
+        var group = await new DataSource().GetSectionGroupAsync(uniqueId, jsonFilePath, pathType, autoIncludedInBuild);
 
         GetItems(group);
     }
