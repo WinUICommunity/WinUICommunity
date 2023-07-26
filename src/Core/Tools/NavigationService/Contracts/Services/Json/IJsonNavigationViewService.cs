@@ -4,7 +4,7 @@ public interface IJsonNavigationViewService
 {
     void Initialize(NavigationView navigationView, Frame frame);
     void ConfigJson(string jsonFilePath, bool autoIncludedInBuild = false, PathType pathType = PathType.Relative);
-    void ConfigAutoSuggestBox(AutoSuggestBox autoSuggestBox, string notFoundString = null);
+    void ConfigAutoSuggestBox(AutoSuggestBox autoSuggestBox, bool useItemTemplate = true, string autoSuggestBoxNotFoundString = null, string autoSuggestBoxNotFoundImagePath = null);
     void ConfigDefaultPage(Type pageType);
     void ConfigSettingsPage(Type pageType);
     void ConfigSectionPage(Type pageType);

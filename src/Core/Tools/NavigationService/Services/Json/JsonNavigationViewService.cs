@@ -52,7 +52,8 @@ public class JsonNavigationViewService : IJsonNavigationViewService
 
     #endregion
 
-    private string _notFoundString;
+    private string _autoSuggestBoxNotFoundString;
+    private string _autoSuggestBoxNotFoundImagePath;
     public string _jsonFilePath;
     private PathType _pathType;
     private bool _autoIncludedInBuild;
@@ -108,22 +109,51 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         await AddNavigationMenuItems();
     }
 
-    public void ConfigAutoSuggestBox(AutoSuggestBox autoSuggestBox, string notFoundString)
+    public void ConfigAutoSuggestBox(AutoSuggestBox autoSuggestBox, bool useItemTemplate = true, string autoSuggestBoxNotFoundString = null, string autoSuggestBoxNotFoundImagePath = null)
     {
         _autoSuggestBox = autoSuggestBox;
 
         if (_autoSuggestBox != null)
         {
-            _notFoundString = notFoundString;
+            _autoSuggestBoxNotFoundString = autoSuggestBoxNotFoundString;
+            _autoSuggestBoxNotFoundImagePath = autoSuggestBoxNotFoundImagePath;
 
-            if (string.IsNullOrEmpty(_notFoundString))
+            if (string.IsNullOrEmpty(_autoSuggestBoxNotFoundString))
             {
-                _notFoundString = "No result found";
+                _autoSuggestBoxNotFoundString = "No result found";
+            }
+
+            if (string.IsNullOrEmpty(_autoSuggestBoxNotFoundImagePath))
+            {
+                _autoSuggestBoxNotFoundImagePath = "Assets/autoSuggestBoxNotFound.png";
             }
 
             _autoSuggestBox.TextChanged += _autoSuggestBox_TextChanged;
             _autoSuggestBox.QuerySubmitted += _autoSuggestBox_QuerySubmitted;
+
+            if (useItemTemplate)
+            {
+                CreateAutoSuggestBoxItemTemplate();
+            }
         }
+    }
+
+    private void CreateAutoSuggestBoxItemTemplate()
+    {
+        string dataTemplateXaml = @"
+    <DataTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'>
+        <Grid ColumnSpacing='12'>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width='16' />
+                <ColumnDefinition Width='*' />
+            </Grid.ColumnDefinitions>
+            <Image Source='{Binding ImagePath}' />
+            <TextBlock Grid.Column='1' Text='{Binding Title}' />
+        </Grid>
+    </DataTemplate>";
+
+        var dataTemplate = XamlReader.Load(dataTemplateXaml) as DataTemplate;
+        _autoSuggestBox.ItemTemplate = dataTemplate;
     }
 
     private void _autoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
@@ -144,11 +174,18 @@ public class JsonNavigationViewService : IJsonNavigationViewService
 
         if (matches.Any())
         {
+            foreach (var item in matches)
+            {
+                if (string.IsNullOrEmpty(item.ImagePath))
+                {
+                    item.ImagePath = _autoSuggestBoxNotFoundImagePath;
+                }
+            }
             _autoSuggestBox.ItemsSource = matches.OrderByDescending(i => i.Title.StartsWith(sender.Text.ToLowerInvariant())).ThenBy(i => i.Title);
         }
         else
         {
-            var noResultsItem = new DataItem(_notFoundString);
+            var noResultsItem = new DataItem(_autoSuggestBoxNotFoundString, _autoSuggestBoxNotFoundImagePath);
             var noResultsList = new List<DataItem>();
             noResultsList.Add(noResultsItem);
             _autoSuggestBox.ItemsSource = noResultsList;

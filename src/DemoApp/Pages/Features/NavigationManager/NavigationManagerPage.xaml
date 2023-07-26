@@ -45,21 +45,7 @@
                                         x:FieldModifier="public"
                                         KeyboardAcceleratorPlacementMode="Hidden"
                                         PlaceholderText="Search"
-                                        QueryIcon="Find">
-                            <AutoSuggestBox.ItemTemplate>
-                                <DataTemplate x:DataType="wuc:DataItem">
-                                    <Grid ColumnSpacing="12">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="16" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Image Source="{x:Bind ImagePath, Mode=OneWay}" />
-                                        <TextBlock Grid.Column="1"
-                                                   Text="{x:Bind Title, Mode=OneWay}" />
-                                    </Grid>
-                                </DataTemplate>
-                            </AutoSuggestBox.ItemTemplate>
-                        </AutoSuggestBox>
+                                        QueryIcon="Find" />
                     </NavigationView.AutoSuggestBox>
                     <Frame x:Name="rootFrame" />
                 </NavigationView>
