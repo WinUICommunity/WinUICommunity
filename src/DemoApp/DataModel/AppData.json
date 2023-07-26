@@ -4,7 +4,7 @@
       "UniqueId": "Features",
       "Title": "Features pages",
       "IsSpecialSection": false,
-      "InfoBadge": {
+      "DataInfoBadge": {
         "BadgeValue": "10",
         "BadgeStyle": "SuccessValueInfoBadgeStyle"
       },
@@ -13,17 +13,16 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.AppNotificationPage",
           "Title": "App Notification",
           "SecondaryTitle": "Test SecondaryTitle",
-          "ApiNamespace": "DemoApp",
           "Subtitle": "you can use AppNotificationPage for Sending Toast Notification.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
-          "Docs": [
+          "Links": [
             {
               "Title": "AppNotificationPage",
               "Uri": "https://ghost1372.github.io/winUICommunity/helpers/appNotification/"
             }
           ],
-          "InfoBadge": {
+          "DataInfoBadge": {
             "BadgeValue": "10",
             "HideNavigationViewInfoBadge": true
           }
@@ -31,19 +30,18 @@
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.CheckUpdatePage",
           "Title": "Check Update",
-          "ApiNamespace": "DemoApp",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "you can use UpdateHelper for checking application updates from github release page.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsUpdated": true,
-          "Docs": [
+          "Links": [
             {
               "Title": "CheckUpdatePage",
               "Uri": "https://ghost1372.github.io/winUICommunity/helpers/updateHelper/"
             }
           ],
-          "InfoBadge": {
+          "DataInfoBadge": {
             "BadgeStyle": "SuccessIconInfoBadgeStyle",
             "BadgeSymbolIcon": "Sync"
           }
@@ -51,13 +49,12 @@
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.CommandObservablePage",
           "Title": "Observable and RelayCommand",
-          "ApiNamespace": "DemoApp",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "Observable: inherited from INotifyPropertyChanged. - RelayCommand: inherited from ICommand.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsUpdated": true,
-          "InfoBadge": {
+          "DataInfoBadge": {
             "BadgeStyle": "SuccessIconInfoBadgeStyle",
             "BadgeBitmapIcon": "ms-appx:///Assets/Modules/PT.png"
           }
@@ -65,13 +62,12 @@
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ContentDialogPage",
           "Title": "Content Dialog",
-          "ApiNamespace": "DemoApp",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "With the help of ShowAsyncQueue extension you can open multiple ContentDialogs.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsUpdated": true,
-          "InfoBadge": {
+          "DataInfoBadge": {
             "BadgeStyle": "SuccessIconInfoBadgeStyle",
             "BadgeFontIconGlyph": "E710"
           }
@@ -79,38 +75,36 @@
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.DynamicLanguagePage",
           "Title": "Dynamic Language",
-          "ApiNamespace": "DemoApp",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "With the help of DynamicLanguage you can create a dynamic multi language app.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsUpdated": true,
-          "Docs": [
+          "Links": [
             {
               "Title": "DynamicLanguagePage",
               "Uri": "https://ghost1372.github.io/winUICommunity/tools/dynamicLanguage/"
             }
           ],
-          "InfoBadge": {
+          "DataInfoBadge": {
             "BadgeStyle": "SuccessDotInfoBadgeStyle"
           }
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.InlineAutoCompleteTextBoxPage",
           "Title": "Inline AutoCompleteTextBox",
-          "ApiNamespace": "DemoApp",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "Inline AutoCompleteTextBox",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsUpdated": true,
-          "Docs": [
+          "Links": [
             {
               "Title": "InlineAutoCompleteTextBoxPage",
               "Uri": "https://ghost1372.github.io/winUICommunity/controls/inlineAutoCompleteTextBox/"
             }
           ],
-          "InfoBadge": {
+          "DataInfoBadge": {
             "BadgeStyle": "SuccessIconInfoBadgeStyle",
             "BadgeFontIconGlyph": "E710",
             "BadgeWidth": 64,
@@ -120,13 +114,12 @@
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.SettingsControls",
           "Title": "Settings Controls",
-          "ApiNamespace": "DemoApp",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "SettingsControls from Labs",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
           "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsNew": true,
-          "Docs": [
+          "Links": [
             {
               "Title": "SettingsControls",
               "Uri": "https://ghost1372.github.io/winUICommunity/settingsControls/"
@@ -143,7 +136,6 @@
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
           "Title": "Oobe Page",
-          "ApiNamespace": "DemoApp",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "Settings Page with a Hero Image",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",

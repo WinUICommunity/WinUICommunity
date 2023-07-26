@@ -36,7 +36,7 @@
                                 PlaceholderText="Search"
                                 QueryIcon="Find">
                     <AutoSuggestBox.ItemTemplate>
-                        <DataTemplate x:DataType="wuc:ControlInfoDataItem"
+                        <DataTemplate x:DataType="wuc:DataItem"
                                       x:DefaultBindMode="OneWay">
                             <Grid ColumnSpacing="12">
                                 <Grid.ColumnDefinitions>

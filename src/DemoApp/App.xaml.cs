@@ -22,8 +22,8 @@ public partial class App : Application
 {
     public static Window currentWindow = Window.Current;
 
-    public NavigationManager NavigationManager { get; set; }
-    public ThemeManager ThemeManager { get; set; }
+    public IJsonNavigationViewService JsonNavigationViewService { get; set; }
+    public IThemeService ThemeService { get; set; }
     private NotificationManager notificationManager;
     public new static App Current => (App)Application.Current;
     public string Title { get; set; } = "DemoApp";
@@ -55,16 +55,12 @@ public partial class App : Application
         }
 
         rootFrame.Navigate(typeof(MainPage), args.Arguments);
+        ThemeService = new ThemeService();
+        ThemeService.Initialize(currentWindow);
+        ThemeService.ConfigBackdrop(BackdropType.Mica);
+        ThemeService.ConfigElementTheme(ElementTheme.Default);
 
-        ThemeManager = new ThemeManager(currentWindow, new ThemeOptions
-        {
-            BackdropType = BackdropType.MicaAlt,
-            ElementTheme = ElementTheme.Default,
-            TitleBarCustomization = new TitleBarCustomization
-            {
-                TitleBarType = TitleBarType.AppWindow
-            }
-        });
+        JsonNavigationViewService = new JsonNavigationViewService();
 
         if (!ApplicationHelper.IsPackaged)
         {

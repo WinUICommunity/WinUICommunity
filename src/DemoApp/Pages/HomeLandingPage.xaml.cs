@@ -1,6 +1,4 @@
-﻿using System;
-
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
@@ -16,20 +14,13 @@ public sealed partial class HomeLandingPage : Page
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
-        allLandingsPage.GetDataAsync("DataModel/DemoData.json", PathType.Relative);
+        allLandingsPage.GetData(App.Current.JsonNavigationViewService.DataSource);
     }
 
     private void allLandingsPage_OnItemClick(object sender, RoutedEventArgs e)
     {
         var args = (ItemClickEventArgs)e;
-        var item = (ControlInfoDataItem)args.ClickedItem;
-        Type pageType = Type.GetType(item.UniqueId);
-
-        if (pageType != null)
-        {
-            object parameter = null;
-            App.Current.NavigationManager.NavigateForJson(pageType, parameter);
-        }
+        var item = (DataItem)args.ClickedItem;
+        App.Current.JsonNavigationViewService.NavigateTo(item.UniqueId);
     }
-
 }

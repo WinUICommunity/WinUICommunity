@@ -16,18 +16,18 @@ public sealed partial class SettingsPage : Page
 
     private void SettingsPage_Loaded(object sender, RoutedEventArgs e)
     {
-        App.Current.ThemeManager.SetThemeComboBoxDefaultItem(CmbTheme);
-        App.Current.ThemeManager.SetBackdropComboBoxDefaultItem(CmbBackdrop);
+        App.Current.ThemeService.SetThemeComboBoxDefaultItem(CmbTheme);
+        App.Current.ThemeService.SetBackdropComboBoxDefaultItem(CmbBackdrop);
     }
 
     private void cmbTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        App.Current.ThemeManager.OnThemeComboBoxSelectionChanged(sender);
+        App.Current.ThemeService.OnThemeComboBoxSelectionChanged(sender);
     }
 
     private void cmbBackdrop_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        App.Current.ThemeManager.OnBackdropComboBoxSelectionChanged(sender);
+        App.Current.ThemeService.OnBackdropComboBoxSelectionChanged(sender);
     }
 
     private async void SettingsCard_Click(object sender, RoutedEventArgs e)

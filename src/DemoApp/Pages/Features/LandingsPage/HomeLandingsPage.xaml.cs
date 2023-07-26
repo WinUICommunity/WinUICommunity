@@ -1,4 +1,5 @@
-﻿using DemoApp.Pages;
+﻿using DemoApp;
+using DemoApp.Pages;
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -14,14 +15,13 @@ public sealed partial class HomeLandingsPage : Page
 
     private void mainLandingsPage_Loaded(object sender, RoutedEventArgs e)
     {
-        mainLandingsPage.GetDataAsync("DataModel/ControlInfoData.json", PathType.Relative);
+        mainLandingsPage.GetData(App.Current.JsonNavigationViewService.DataSource);
     }
 
     private void mainLandingsPage_OnItemClick(object sender, RoutedEventArgs e)
     {
         var args = (ItemClickEventArgs)e;
-        var item = (ControlInfoDataItem)args.ClickedItem;
-
-        MainPage.Instance.Navigate(item.UniqueId);
+        var item = (DataItem)args.ClickedItem;
+        App.Current.JsonNavigationViewService.NavigateTo(item.UniqueId);
     }
 }

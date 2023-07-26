@@ -1,10 +1,6 @@
-﻿using System;
-
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-
-using WinUICommunity;
 
 namespace DemoApp.Pages;
 public sealed partial class MainPage : Page
@@ -18,15 +14,11 @@ public sealed partial class MainPage : Page
         appTitleBar.Title = App.Current.Title;
         Instance = this;
 
-        App.Current.NavigationManager = NavigationManager.Initialize(NavView, new NavigationViewOptions
-        {
-            DefaultPage = typeof(HomeLandingPage),
-            SettingsPage = typeof(SettingsPage),
-            JsonOptions = new JsonOptions
-            {
-                JsonFilePath = "DataModel/DemoData.json"
-            }
-        }, NavFrame, ControlsSearchBox);
+        App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
+        App.Current.JsonNavigationViewService.ConfigJson("DataModel/DemoData.json");
+        App.Current.JsonNavigationViewService.ConfigAutoSuggestBox(ControlsSearchBox);
+        App.Current.JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));
+        App.Current.JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));
     }
 
     private void appTitleBar_BackButtonClick(object sender, RoutedEventArgs e)
@@ -45,11 +37,5 @@ public sealed partial class MainPage : Page
     private void NavFrame_Navigated(object sender, NavigationEventArgs e)
     {
         appTitleBar.IsBackButtonVisible = NavFrame.CanGoBack;
-    }
-
-    public void Navigate(string uniqeId)
-    {
-        Type pageType = Type.GetType(uniqeId);
-        NavFrame.Navigate(pageType);
     }
 }
