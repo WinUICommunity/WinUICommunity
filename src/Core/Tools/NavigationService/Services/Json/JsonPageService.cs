@@ -2,6 +2,8 @@
 
 public class JsonPageService : PageService
 {
+    public string SectionPageKey { get; set; } = nameof(SectionPageKey);
+
     public void GetPages(IList<object>? menuItems)
     {
         _pageKeyToTypeMap = new Dictionary<string, Type>();
@@ -15,6 +17,11 @@ public class JsonPageService : PageService
                 }
             }
         }
+    }
+
+    public void SetSectionPage(Type pageType)
+    {
+        _pageKeyToTypeMap.TryAdd(SectionPageKey, pageType);
     }
 
     private void AddNavigationItemToDictionary(NavigationViewItem navigationItem)

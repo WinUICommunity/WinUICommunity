@@ -17,6 +17,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
 
     private Type _defaultPage { get; set; }
     private Type _settingsPage { get; set; }
+    private Type _sectionPage { get; set; }
 
     #region NavigationService
     private object? _lastParameterUsed;
@@ -159,6 +160,11 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         }
     }
 
+    public void ConfigSectionPage(Type sectionPage)
+    {
+        _sectionPage = sectionPage;
+    }
+
     public void ConfigDefaultPage(Type DefaultPage)
     {
         _defaultPage = DefaultPage;
@@ -169,11 +175,12 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         _settingsPage = SettingsPage;
     }
 
-    private void ConfigDefaultPages()
+    private void ConfigPages()
     {
         _pageService.GetPages(MenuItems);
         _pageService.SetDefaultPage(_defaultPage);
         _pageService.SetSettingsPage(_settingsPage);
+        _pageService.SetSectionPage(_sectionPage);
 
         if (_pageService.GetPageType(_pageService.DefaultPageKey) != null)
         {
@@ -215,9 +222,16 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         {
             var selectedItem = args.InvokedItemContainer as NavigationViewItem;
 
-            if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
+            if (_sectionPage != null && selectedItem.DataContext is DataGroup itemGroup && !string.IsNullOrEmpty(itemGroup.UniqueId))
             {
-                NavigateTo(pageKey);
+                NavigateTo(_pageService.SectionPageKey, itemGroup.UniqueId);
+            }
+            else
+            {
+                if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
+                {
+                    NavigateTo(pageKey);
+                }
             }
         }
     }
@@ -353,7 +367,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             }
         }
 
-        ConfigDefaultPages();
+        ConfigPages();
     }
 
     private InfoBadge GetInfoBadge(dynamic data)

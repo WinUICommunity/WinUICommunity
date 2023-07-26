@@ -16,12 +16,27 @@ public class DataSource
         return Groups;
     }
 
+    public DataGroup GetGroup(string uniqueId)
+    {
+        var matches = Groups.Where((group) => !string.IsNullOrEmpty(group.UniqueId) && group.UniqueId.Equals(uniqueId));
+        if (matches.Count() == 1) return matches.First();
+        return null;
+    }
+
     public async Task<DataGroup> GetGroupAsync(string uniqueId, string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
     {
         await GetDataAsync(jsonFilePath, pathType, autoIncludedInBuild);
         // Simple linear search is acceptable for small data sets
-        var matches = Groups.Where((group) => group.UniqueId.Equals(uniqueId));
+        var matches = Groups.Where((group) => !string.IsNullOrEmpty(group.UniqueId) && group.UniqueId.Equals(uniqueId));
         return matches.Count() == 1 ? matches.First() : null;
+    }
+
+    public DataItem GetItem(string uniqueId)
+    {
+        // Simple linear search is acceptable for small data sets
+        var matches = Groups.SelectMany(group => group.Items).Where((item) => !string.IsNullOrEmpty(item.UniqueId) && item.UniqueId.Equals(uniqueId));
+        if (matches.Count() > 0) return matches.First();
+        return null;
     }
 
     public async Task<DataItem> GetItemAsync(string uniqueId, string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
@@ -33,11 +48,18 @@ public class DataSource
         return matches.Count() > 0 ? matches.First() : null;
     }
 
+    public DataGroup GetGroupFromItem(string uniqueId)
+    {
+        var matches = Groups.Where((group) => group.Items.FirstOrDefault(item => !string.IsNullOrEmpty(item.UniqueId) && item.UniqueId.Equals(uniqueId)) != null);
+        if (matches.Count() == 1) return matches.First();
+        return null;
+    }
+
     private IEnumerable<DataItem> FindItems(IEnumerable<DataItem> items, string uniqueId)
     {
         foreach (var item in items)
         {
-            if (item.UniqueId.Equals(uniqueId))
+            if (!string.IsNullOrEmpty(item.UniqueId) && item.UniqueId.Equals(uniqueId))
             {
                 yield return item;
             }

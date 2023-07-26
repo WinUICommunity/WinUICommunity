@@ -7,6 +7,7 @@ public interface IJsonNavigationViewService
     void ConfigAutoSuggestBox(AutoSuggestBox autoSuggestBox, string notFoundString = null);
     void ConfigDefaultPage(Type pageType);
     void ConfigSettingsPage(Type pageType);
+    void ConfigSectionPage(Type pageType);
     void UnregisterEvents();
 
     event NavigatedEventHandler Navigated;
