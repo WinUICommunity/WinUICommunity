@@ -33,12 +33,26 @@ public class JsonPageService : PageService
         {
             if (dataItem.IncludedInBuild && !string.IsNullOrEmpty(dataItem.UniqueId))
             {
-                _pageKeyToTypeMap[dataItem.UniqueId] = ApplicationHelper.GetPageType(dataItem.UniqueId, dataItem.ApiNamespace);
+                if (string.IsNullOrEmpty(dataItem.SectionId))
+                {
+                    _pageKeyToTypeMap[dataItem.UniqueId + dataItem.Title] = ApplicationHelper.GetPageType(dataItem.UniqueId, dataItem.ApiNamespace);
+                }
+                else
+                {
+                    _pageKeyToTypeMap[dataItem.UniqueId + dataItem.Title] = ApplicationHelper.GetPageType(dataItem.SectionId, dataItem.ApiNamespace);
+                }
             }
         }
         else if (navigationItem.DataContext is DataGroup dataGroup && !string.IsNullOrEmpty(dataGroup.UniqueId))
         {
-            _pageKeyToTypeMap[dataGroup.UniqueId] = ApplicationHelper.GetPageType(dataGroup.UniqueId, dataGroup.ApiNamespace);
+            if (string.IsNullOrEmpty(dataGroup.SectionId))
+            {
+                _pageKeyToTypeMap[dataGroup.UniqueId + dataGroup.Title] = ApplicationHelper.GetPageType(dataGroup.UniqueId, dataGroup.ApiNamespace);
+            }
+            else
+            {
+                _pageKeyToTypeMap[dataGroup.UniqueId + dataGroup.Title] = ApplicationHelper.GetPageType(dataGroup.SectionId, dataGroup.ApiNamespace);
+            }
         }
 
         // Check for nested NavigationViewItems

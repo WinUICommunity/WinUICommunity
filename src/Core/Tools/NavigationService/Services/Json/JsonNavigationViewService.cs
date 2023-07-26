@@ -291,7 +291,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
                 }
             }
 
-            NavigationHelper.SetNavigateTo(navigationViewItem, navItem.UniqueId);
+            NavigationHelper.SetNavigateTo(navigationViewItem, navItem.UniqueId+navItem.Title);
             navigationViewItem.InfoBadge = GetInfoBadge(navItem);
             AutomationProperties.SetName(navigationViewItem, navItem.Title);
 
@@ -355,7 +355,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
                     }
                 }
 
-                NavigationHelper.SetNavigateTo(topLevelItem, group.UniqueId);
+                NavigationHelper.SetNavigateTo(topLevelItem, group.UniqueId+group.Title);
                 AutomationProperties.SetName(topLevelItem, group.Title);
                 topLevelItem.InfoBadge = GetInfoBadge(group);
 
