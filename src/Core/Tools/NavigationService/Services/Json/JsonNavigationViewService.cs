@@ -73,6 +73,13 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         Navigated += (s, e) =>
         {
             navigationView.IsBackEnabled = CanGoBack;
+
+            if (e.SourcePageType == _settingsPage)
+            {
+                navigationView.SelectedItem = SettingsItem;
+                return;
+            }
+
             var dataItem = e.Parameter as DataItem;
             var dataGroup = e.Parameter as DataGroup;
             string uniqueId = string.Empty;
