@@ -2,6 +2,7 @@
   "Groups": [
     {
       "UniqueId": "Features",
+      "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
       "Title": "Features pages",
       "IsSpecialSection": false,
       "DataInfoBadge": {
@@ -130,17 +131,96 @@
     },
     {
       "UniqueId": "Settings",
+      "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
       "Title": "Settings pages",
       "SecondaryTitle": "Test SecondaryTitle",
       "Items": [
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
-          "Title": "Oobe Page",
+          "UniqueId": "Settings2",
+          "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+          "Title": "Settings pages2",
           "SecondaryTitle": "Test SecondaryTitle",
-          "Subtitle": "Settings Page with a Hero Image",
-          "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
-          "IsUpdated": true
+          "Items": [
+            {
+              "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+              "Title": "Oobe Page",
+              "SecondaryTitle": "Test SecondaryTitle",
+              "Subtitle": "Settings Page with a Hero Image",
+              "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+              "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+              "IsUpdated": true
+            },
+            {
+              "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+              "Title": "Oobe Page",
+              "SecondaryTitle": "Test SecondaryTitle",
+              "Subtitle": "Settings Page with a Hero Image",
+              "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+              "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+              "IsUpdated": true
+            },
+            {
+              "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+              "Title": "Oobe Page",
+              "SecondaryTitle": "Test SecondaryTitle",
+              "Subtitle": "Settings Page with a Hero Image",
+              "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+              "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+              "IsUpdated": true
+            },
+            {
+              "UniqueId": "Settings3",
+              "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+              "Title": "Settings pages3",
+              "SecondaryTitle": "Test SecondaryTitle",
+              "Items": [
+                {
+                  "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+                  "Title": "Oobe Page",
+                  "SecondaryTitle": "Test SecondaryTitle",
+                  "Subtitle": "Settings Page with a Hero Image",
+                  "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+                  "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+                  "IsUpdated": true
+                },
+                {
+                  "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+                  "Title": "Oobe Page",
+                  "SecondaryTitle": "Test SecondaryTitle",
+                  "Subtitle": "Settings Page with a Hero Image",
+                  "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+                  "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+                  "IsUpdated": true
+                },
+                {
+                  "UniqueId": "Settings4",
+                  "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+                  "Title": "Settings pages4",
+                  "SecondaryTitle": "Test SecondaryTitle",
+                  "Items": [
+                    {
+                      "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+                      "Title": "Oobe Page",
+                      "SecondaryTitle": "Test SecondaryTitle",
+                      "Subtitle": "Settings Page with a Hero Image",
+                      "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+                      "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+                      "IsUpdated": true
+                    },
+                    {
+                      "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+                      "Title": "Oobe Page",
+                      "SecondaryTitle": "Test SecondaryTitle",
+                      "Subtitle": "Settings Page with a Hero Image",
+                      "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+                      "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+                      "IsUpdated": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

@@ -1,7 +1,8 @@
 ﻿{
   "Groups": [
     {
-      "UniqueId": "WinUICommunity.DemoApp.Pages.HomeLandingPage",
+      "UniqueId": "Features",
+      "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
       "Title": "Features",
       "ImageIconPath": "ms-appx:///Assets/Fluent/logo.png",
       "ImagePath": "ms-appx:///Assets/Fluent/logo.png",
@@ -80,8 +81,9 @@
       ]
     },
     {
-      "Title": "LandingPages",
       "UniqueId": "LandingPages",
+      "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+      "Title": "LandingPages",
       "SecondaryTitle": "",
       "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
       "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png",
@@ -103,8 +105,9 @@
       ]
     },
     {
-      "Title": "Settings Control",
       "UniqueId": "Settings Control",
+      "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+      "Title": "Settings Control",
       "ImageIconPath": "ms-appx:///Assets/Fluent/settingsControl.png",
       "ImagePath": "ms-appx:///Assets/Fluent/settingsControl.png",
       "Items": [
