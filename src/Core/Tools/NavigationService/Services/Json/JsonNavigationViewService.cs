@@ -375,6 +375,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             {
                 if (hasTopLevel)
                 {
+                    NavigationHelper.SetParent(navigationViewItem, topLevelItem);
                     topLevelItem.MenuItems.Add(navigationViewItem);
                 }
                 else
@@ -391,6 +392,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             }
             else
             {
+                NavigationHelper.SetParent(navigationViewItem, parentNavItem);
                 parentNavItem.MenuItems.Add(navigationViewItem);
             }
 
