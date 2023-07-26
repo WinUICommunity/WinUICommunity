@@ -23,11 +23,17 @@ public class PageService : IPageService
 
     public virtual void SetDefaultPage(Type pageType)
     {
-        _pageKeyToTypeMap.TryAdd(DefaultPageKey, pageType);
+        if (pageType != null)
+        {
+            _pageKeyToTypeMap.TryAdd(DefaultPageKey, pageType);
+        }
     }
 
     public virtual void SetSettingsPage(Type pageType)
     {
-        _pageKeyToTypeMap.TryAdd(SettingsPageKey, pageType);
+        if (pageType != null)
+        {
+            _pageKeyToTypeMap.TryAdd(SettingsPageKey, pageType);
+        }
     }
 }

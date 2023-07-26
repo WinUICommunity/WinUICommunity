@@ -21,7 +21,10 @@ public class JsonPageService : PageService
 
     public void SetSectionPage(Type pageType)
     {
-        _pageKeyToTypeMap.TryAdd(SectionPageKey, pageType);
+        if (pageType != null)
+        {
+            _pageKeyToTypeMap.TryAdd(SectionPageKey, pageType);
+        }
     }
 
     private void AddNavigationItemToDictionary(NavigationViewItem navigationItem)
