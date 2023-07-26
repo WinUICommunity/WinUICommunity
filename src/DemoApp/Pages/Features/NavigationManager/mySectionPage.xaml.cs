@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using DemoApp;
+
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace WinUICommunity.DemoApp.Pages;
@@ -11,8 +13,8 @@ public sealed partial class mySectionPage : Page
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
-        var uniqueId = e.Parameter as string;
-        sectionPage.GetData(NavigationManagerPage.Instance.jsonNavigationViewService.DataSource, uniqueId);
+        var item = ApplicationHelper.GetUniqueIdAndSectionId(e.Parameter);
+        sectionPage.GetData(NavigationManagerPage.Instance.jsonNavigationViewService.DataSource, item.UniqueId, item.SectionId);
     }
 
     private void SectionPage_OnItemClick(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

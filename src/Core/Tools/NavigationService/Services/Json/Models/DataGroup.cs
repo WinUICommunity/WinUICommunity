@@ -4,12 +4,13 @@ namespace WinUICommunity;
 
 public class DataGroup
 {
-    public DataGroup(string uniqueId, string title, string secondaryTitle, 
+    public DataGroup(string uniqueId, string sectionId, string title, string secondaryTitle, 
         string subtitle, string imagePath, string imageIconPath, string description, 
         string apiNamespace, bool isSpecialSection, bool hideGroup, bool showItemsWithoutGroup,
         bool isExpanded, bool isFooterNavigationViewItem, DataInfoBadge dataInfoBadge)
     {
         UniqueId = uniqueId;
+        SectionId = sectionId;
         Title = title;
         SecondaryTitle = secondaryTitle;
         Subtitle = subtitle;
@@ -27,6 +28,7 @@ public class DataGroup
     }
 
     public string UniqueId { get; set; }
+    public string SectionId { get; set; }
     public string ApiNamespace { get; set; }
     public string Title { get; set; }
     public string SecondaryTitle { get; set; }

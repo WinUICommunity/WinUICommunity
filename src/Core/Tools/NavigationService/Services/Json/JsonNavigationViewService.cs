@@ -223,13 +223,13 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         {
             var selectedItem = args.InvokedItemContainer as NavigationViewItem;
 
-            if (_sectionPage != null && selectedItem.DataContext is DataGroup itemGroup && !string.IsNullOrEmpty(itemGroup.UniqueId))
+            if (_sectionPage != null && selectedItem.DataContext is DataGroup itemGroup && !string.IsNullOrEmpty(itemGroup.SectionId))
             {
-                NavigateTo(_pageService.SectionPageKey, itemGroup.UniqueId);
+                NavigateTo(_pageService.SectionPageKey, itemGroup);
             }
-            else if (_sectionPage != null && selectedItem.DataContext is DataItem item && !string.IsNullOrEmpty(item.UniqueId) && item.Items.Count > 0)
+            else if (_sectionPage != null && selectedItem.DataContext is DataItem item && !string.IsNullOrEmpty(item.SectionId) && item.Items.Count > 0)
             {
-                NavigateTo(_pageService.SectionPageKey, item.UniqueId);
+                NavigateTo(_pageService.SectionPageKey, item);
             }
             else
             {

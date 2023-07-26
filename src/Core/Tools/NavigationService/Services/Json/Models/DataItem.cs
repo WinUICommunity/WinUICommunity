@@ -17,13 +17,14 @@ public class DataItem
     }
 
     [JsonConstructor]
-    public DataItem(string uniqueId, string title, string secondaryTitle, object parameter, string apiNamespace,
+    public DataItem(string uniqueId, string sectionId, string title, string secondaryTitle, object parameter, string apiNamespace,
         string subtitle, string imagePath, string imageIconPath, string badgeString, string description,
         string content, bool isNew, bool isUpdated, bool isPreview, bool hideItem,
         bool hideNavigationViewItem, DataInfoBadge dataInfoBadge,
         ObservableCollection<DataLink> links, ObservableCollection<string> extra)
     {
         UniqueId = uniqueId;
+        SectionId = sectionId;
         Title = title;
         SecondaryTitle = secondaryTitle;
         Parameter = parameter;
@@ -45,6 +46,7 @@ public class DataItem
         Items = new ObservableCollection<DataItem>();
     }
     public string UniqueId { get; set; }
+    public string SectionId { get; set; }
     public string Title { get; set; }
     public string SecondaryTitle { get; set; }
     public object Parameter { get; set; }
