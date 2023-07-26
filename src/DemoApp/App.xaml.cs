@@ -30,6 +30,7 @@ public partial class App : Application
     public App()
     {
         this.InitializeComponent();
+        JsonNavigationViewService = new JsonNavigationViewService();
         if (!ApplicationHelper.IsPackaged)
         {
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
@@ -60,7 +61,6 @@ public partial class App : Application
         ThemeService.ConfigBackdrop(BackdropType.Mica);
         ThemeService.ConfigElementTheme(ElementTheme.Default);
 
-        JsonNavigationViewService = new JsonNavigationViewService();
 
         if (!ApplicationHelper.IsPackaged)
         {

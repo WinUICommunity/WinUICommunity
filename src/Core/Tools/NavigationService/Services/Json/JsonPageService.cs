@@ -21,12 +21,12 @@ public class JsonPageService : PageService
     {
         if (navigationItem.DataContext is DataItem dataItem)
         {
-            if (dataItem.IncludedInBuild)
+            if (dataItem.IncludedInBuild && !string.IsNullOrEmpty(dataItem.UniqueId))
             {
                 _pageKeyToTypeMap[dataItem.UniqueId] = ApplicationHelper.GetPageType(dataItem.UniqueId, dataItem.ApiNamespace);
             }
         }
-        else if (navigationItem.DataContext is DataGroup dataGroup)
+        else if (navigationItem.DataContext is DataGroup dataGroup && !string.IsNullOrEmpty(dataGroup.UniqueId))
         {
             _pageKeyToTypeMap[dataGroup.UniqueId] = ApplicationHelper.GetPageType(dataGroup.UniqueId, dataGroup.ApiNamespace);
         }

@@ -16,9 +16,9 @@ public sealed partial class MainPage : Page
 
         App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
         App.Current.JsonNavigationViewService.ConfigJson("DataModel/DemoData.json");
-        App.Current.JsonNavigationViewService.ConfigAutoSuggestBox(ControlsSearchBox);
         App.Current.JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));
         App.Current.JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));
+        App.Current.JsonNavigationViewService.ConfigAutoSuggestBox(ControlsSearchBox);
     }
 
     private void appTitleBar_BackButtonClick(object sender, RoutedEventArgs e)
