@@ -15,6 +15,7 @@ public sealed partial class HomeLandingPage : Page
     {
         base.OnNavigatedTo(e);
         allLandingsPage.GetData(App.Current.JsonNavigationViewService.DataSource);
+        allLandingsPage.OrderBy(i => i.Title);
     }
 
     private void allLandingsPage_OnItemClick(object sender, RoutedEventArgs e)

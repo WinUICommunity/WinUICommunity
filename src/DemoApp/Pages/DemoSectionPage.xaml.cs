@@ -16,6 +16,7 @@ public sealed partial class DemoSectionPage : Page
     {
         var uniqueId = e.Parameter as string;
         sectionPage.GetData(App.Current.JsonNavigationViewService.DataSource, uniqueId);
+        sectionPage.OrderBy(i => i.Title);
     }
 
     private void SectionPage_OnItemClick(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

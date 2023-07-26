@@ -6,24 +6,52 @@ public sealed partial class SectionPage : ItemsPageBase
         this.InitializeComponent();
     }
 
+    public void OrderBy(Func<DataItem, object> orderby = null)
+    {
+        if (orderby != null)
+        {
+            Items = Items?.OrderBy(orderby);
+        }
+        else
+        {
+            Items = Items?.OrderBy(i => i.Title);
+        }
+    }
+
+    public void OrderByDescending(Func<DataItem, object> orderByDescending = null)
+    {
+        if (orderByDescending != null)
+        {
+            Items = Items?.OrderByDescending(orderByDescending);
+        }
+        else
+        {
+            Items = Items?.OrderByDescending(i => i.Title);
+        }
+    }
+
     public void GetData(DataSource dataSource, string uniqueId)
     {
         var group = dataSource.GetGroup(uniqueId);
-        if (group != null)
-        {
-            TitleTxt.Text = group?.Title;
-            Items = group.Items?.Where(i => !i.HideItem)?.OrderBy(i => i.Title)?.ToList();
-        }
+        GetItems(group);
     }
 
     public async void GetDataAsync(string uniqueId, string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
     {
         var group = await new DataSource().GetGroupAsync(uniqueId, jsonFilePath, pathType, autoIncludedInBuild);
 
+        GetItems(group);
+    }
+
+    private void GetItems(DataGroup group)
+    {
         if (group != null)
         {
             TitleTxt.Text = group?.Title;
-            Items = group.Items?.Where(i => !i.HideItem)?.OrderBy(i => i.Title)?.ToList();
+
+            var items = group.Items?.Where(i => !i.HideItem);
+
+            Items = items?.ToList();
         }
     }
 

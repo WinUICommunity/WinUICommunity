@@ -134,7 +134,7 @@ public sealed partial class MainLandingPage : ItemsPageBase
 
     public void GetData(DataSource dataSource)
     {
-        Items = dataSource.Groups.Where(g => !g.HideGroup).SelectMany(g => g.Items.Where(i => i.BadgeString != null && !i.HideItem)).OrderBy(i => i.Title);
+        Items = dataSource.Groups.Where(g => !g.HideGroup).SelectMany(g => g.Items.Where(i => i.BadgeString != null && !i.HideItem));
         GetCollectionViewSource().Source = FormatData();
     }
 
@@ -142,8 +142,32 @@ public sealed partial class MainLandingPage : ItemsPageBase
     {
         var dataSource = new DataSource();
         await dataSource.GetGroupsAsync(JsonFilePath, pathType, autoIncludedInBuild);
-        Items = dataSource.Groups.Where(g => !g.HideGroup).SelectMany(g => g.Items.Where(i => i.BadgeString != null && !i.HideItem)).OrderBy(i => i.Title);
+        Items = dataSource.Groups.Where(g => !g.HideGroup).SelectMany(g => g.Items.Where(i => i.BadgeString != null && !i.HideItem));
         GetCollectionViewSource().Source = FormatData();
+    }
+
+    public void OrderBy(Func<DataItem, object> orderby = null)
+    {
+        if (orderby != null)
+        {
+            Items = Items?.OrderBy(orderby);
+        }
+        else
+        {
+            Items = Items?.OrderBy(i => i.Title);
+        }
+    }
+
+    public void OrderByDescending(Func<DataItem, object> orderByDescending = null)
+    {
+        if (orderByDescending != null)
+        {
+            Items = Items?.OrderByDescending(orderByDescending);
+        }
+        else
+        {
+            Items = Items?.OrderByDescending(i => i.Title);
+        }
     }
 
     public CollectionViewSource GetCollectionViewSource()
