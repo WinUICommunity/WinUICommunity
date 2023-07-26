@@ -95,8 +95,22 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             }
 
             var selectedItem = GetSelectedItem(e.SourcePageType, uniqueId);
+            GetParentAndExpandItem(selectedItem);
             navigationView.SelectedItem = selectedItem;
         };
+    }
+
+    private void GetParentAndExpandItem(NavigationViewItem navigationViewItem)
+    {
+        if (navigationViewItem != null)
+        {
+            var parent = navigationViewItem.GetValue(NavigationHelper.ParentProperty) as NavigationViewItem;
+            if (parent != null)
+            {
+                parent.IsExpanded = true;
+                GetParentAndExpandItem(parent);
+            }
+        }
     }
 
     public async void ConfigJson(string jsonFilePath, bool autoIncludedInBuild = false, PathType pathType = PathType.Relative)
