@@ -2,6 +2,8 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
+using WinUICommunity.DemoApp.Pages;
+
 namespace DemoApp.Pages;
 public sealed partial class MainPage : Page
 {
@@ -18,6 +20,7 @@ public sealed partial class MainPage : Page
         App.Current.JsonNavigationViewService.ConfigJson("DataModel/DemoData.json");
         App.Current.JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));
         App.Current.JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));
+        App.Current.JsonNavigationViewService.ConfigSectionPage(typeof(DemoSectionPage));
         App.Current.JsonNavigationViewService.ConfigAutoSuggestBox(ControlsSearchBox);
     }
 
