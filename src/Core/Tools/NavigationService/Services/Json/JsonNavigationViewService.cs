@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Controls;
 
 using System.Diagnostics.CodeAnalysis;
 
@@ -354,6 +355,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
                     }
                 }
 
+                NavigationHelper.SetNavigateTo(topLevelItem, group.UniqueId);
                 AutomationProperties.SetName(topLevelItem, group.Title);
                 topLevelItem.InfoBadge = GetInfoBadge(group);
 
