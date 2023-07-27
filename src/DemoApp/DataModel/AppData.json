@@ -142,7 +142,7 @@
           "SecondaryTitle": "Test SecondaryTitle",
           "Items": [
             {
-              "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+              "UniqueId": "WinUICommunity.DemoApp.Pages.KeyboardManagerPage",
               "Title": "Oobe Page",
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
@@ -151,7 +151,7 @@
               "IsUpdated": true
             },
             {
-              "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+              "UniqueId": "WinUICommunity.DemoApp.Pages.ImageResizerPage",
               "Title": "Oobe Page",
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
@@ -160,7 +160,7 @@
               "IsUpdated": true
             },
             {
-              "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+              "UniqueId": "WinUICommunity.DemoApp.Pages.FancyZonesPage",
               "Title": "Oobe Page",
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
@@ -184,7 +184,7 @@
                   "IsUpdated": true
                 },
                 {
-                  "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+                  "UniqueId": "WinUICommunity.DemoApp.Pages.ColorPickerPage",
                   "Title": "Oobe Page",
                   "SecondaryTitle": "Test SecondaryTitle",
                   "Subtitle": "Settings Page with a Hero Image",
@@ -208,7 +208,7 @@
                       "IsUpdated": true
                     },
                     {
-                      "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+                      "UniqueId": "WinUICommunity.DemoApp.Pages.AwakePage",
                       "Title": "Oobe Page",
                       "SecondaryTitle": "Test SecondaryTitle",
                       "Subtitle": "Settings Page with a Hero Image",

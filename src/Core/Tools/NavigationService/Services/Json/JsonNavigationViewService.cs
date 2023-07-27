@@ -85,7 +85,16 @@ public class JsonNavigationViewService : IJsonNavigationViewService
 
             var dataItem = e.Parameter as DataItem;
             var dataGroup = e.Parameter as DataGroup;
-            var selectedItem = GetSelectedItem(dataItem, dataGroup, _navigationView.MenuItems);
+            NavigationViewItem selectedItem = null;
+            if (dataGroup == null && dataItem == null)
+            {
+                selectedItem = GetSelectedItem(_navigationView.MenuItems, e.SourcePageType);
+            }
+            else
+            {
+                selectedItem = GetSelectedItem(_navigationView.MenuItems, dataItem, dataGroup);
+            }
+
             _navigationView.SelectedItem = selectedItem;
             ExpandItems(selectedItem);
         };
@@ -290,7 +299,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         }
     }
 
-    private NavigationViewItem GetSelectedItem(NavigationViewItem navigationViewItem)
+    public NavigationViewItem GetSelectedItem(NavigationViewItem navigationViewItem)
     {
         var rootItem = navigationViewItem?.GetValue(NavigationHelper.NavigateToProperty) as string;
 
@@ -313,7 +322,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         return null;
     }
 
-    private NavigationViewItem GetSelectedItem(DataItem dataItem, DataGroup dataGroup, IList<object> items)
+    public NavigationViewItem GetSelectedItem(IList<object> items, DataItem dataItem, DataGroup dataGroup)
     {
         if (dataItem != null)
         {
@@ -322,8 +331,6 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             {
                 foreach (NavigationViewItem item in items)
                 {
-                    var subDataItem = item.DataContext as DataItem;
-                    var subDataGroup = item.DataContext as DataGroup;
                     var subItem = item.GetValue(NavigationHelper.NavigateToProperty) as string;
 
                     if (rootItem.Equals(subItem))
@@ -331,9 +338,9 @@ public class JsonNavigationViewService : IJsonNavigationViewService
                         return item;
                     }
 
-                    if (item.MenuItems.Count > 0)
+                    if (item.MenuItems.Any())
                     {
-                        var selectedItem = GetSelectedItem(dataItem, null, item.MenuItems);
+                        var selectedItem = GetSelectedItem(item.MenuItems, dataItem, null);
                         if (selectedItem != null)
                         {
                             return selectedItem;
@@ -350,8 +357,6 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             {
                 foreach (NavigationViewItem item in items)
                 {
-                    var subDataItem = item.DataContext as DataItem;
-                    var subDataGroup = item.DataContext as DataGroup;
                     var subItem = item.GetValue(NavigationHelper.NavigateToProperty) as string;
 
                     if (rootItem.Equals(subItem))
@@ -359,14 +364,39 @@ public class JsonNavigationViewService : IJsonNavigationViewService
                         return item;
                     }
 
-                    if (item.MenuItems.Count > 0)
+                    if (item.MenuItems.Any())
                     {
-                        var selectedItem = GetSelectedItem(null, dataGroup, item.MenuItems);
+                        var selectedItem = GetSelectedItem(item.MenuItems, null, dataGroup);
                         if (selectedItem != null)
                         {
                             return selectedItem;
                         }
                     }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public NavigationViewItem GetSelectedItem(IList<object> items, Type currentPageType)
+    {
+        foreach (var item in items)
+        {
+            if (item is NavigationViewItem navigationViewItem)
+            {
+                string navigatedToValue = NavigationHelper.GetNavigateTo(navigationViewItem);
+                var pageType = _pageService.GetPageType(navigatedToValue);
+                if (pageType == currentPageType)
+                {
+                    return navigationViewItem;
+                }
+
+                if (navigationViewItem.MenuItems.Any())
+                {
+                    var selectedItem = GetSelectedItem(navigationViewItem.MenuItems, currentPageType);
+                    if (selectedItem != null)
+                        return selectedItem;
                 }
             }
         }
