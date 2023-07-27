@@ -2,7 +2,7 @@
 
 public class LocalizerException : Exception
 {
-    public LocalizerException(string message, Exception? innerException = null)
+    public LocalizerException(string? message = null, Exception? innerException = null)
         : base(message, innerException)
     {
     }

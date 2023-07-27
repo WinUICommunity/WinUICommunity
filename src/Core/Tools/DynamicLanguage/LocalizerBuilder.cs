@@ -1,4 +1,4 @@
-using System.Xml;
+﻿using System.Xml;
 
 namespace WinUICommunity;
 
@@ -75,7 +75,8 @@ public partial class LocalizerBuilder
     {
         if (IsLocalizerAlreadyBuilt is true)
         {
-            throw new LocalizerException($"{nameof(Localizer)} is already built.");
+            LocalizerIsAlreadyBuiltException localizerException = new();
+            throw localizerException;
         }
 
         Localizer localizer = new(this.options);

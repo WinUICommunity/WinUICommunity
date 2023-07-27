@@ -1,4 +1,4 @@
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public sealed partial class Localizer : ILocalizer, IDisposable
 {
@@ -67,16 +67,12 @@ public sealed partial class Localizer : ILocalizer, IDisposable
                 .Select(x => x.Language)
                 .ToArray();
         }
-        catch (LocalizerException)
-        {
-            throw;
-        }
+        
         catch (Exception exception)
         {
-            ThrowLocalizerException(exception, "Failed to get available languages.");
+            FailedToGetAvailableLanguagesException localizerException = new(innerException: exception);
+            throw localizerException;
         }
-
-        return Array.Empty<string>();
     }
 
     public string GetCurrentLanguage()
@@ -107,11 +103,9 @@ public sealed partial class Localizer : ILocalizer, IDisposable
         }
         catch (Exception exception)
         {
-            ThrowLocalizerException(exception, "Exception setting language. [{PreviousLanguage} -> {NextLanguage}]", previousLanguage, language);
+            FailedToSetLanguageException localizerException = new(previousLanguage, language, message: string.Empty, innerException: exception);
+            throw localizerException;
         }
-
-        ThrowLocalizerException(innerException: null, "Failed to set language. [{PreviousLanguage} -> {NextLanguage}]", previousLanguage, language);
-        return;
     }
 
     public string GetLocalizedString(string uid)
@@ -129,9 +123,14 @@ public sealed partial class Localizer : ILocalizer, IDisposable
                 return item.Value;
             }
         }
+        catch (LocalizerException)
+        {
+            throw;
+        }
         catch (Exception exception)
         {
-            ThrowLocalizerException(exception, "Failed to get localized string. [Uid: {Uid}]", uid);
+            FailedToGetLocalizedStringException localizerException = new(uid, innerException: exception);
+            throw localizerException;
         }
 
         return this.options.UseUidWhenLocalizedStringNotFound is true
@@ -153,9 +152,14 @@ public sealed partial class Localizer : ILocalizer, IDisposable
                 return items.Select(x => x.Value);
             }
         }
+        catch (LocalizerException)
+        {
+            throw;
+        }
         catch (Exception exception)
         {
-            ThrowLocalizerException(exception, "Failed to get localized string. [Uid: {Uid}]", uid);
+            FailedToGetLocalizedStringException localizerException = new(uid, innerException: exception);
+            throw localizerException;
         }
 
         return this.options.UseUidWhenLocalizedStringNotFound is true
@@ -224,12 +228,6 @@ public sealed partial class Localizer : ILocalizer, IDisposable
     private static void Uids_DependencyObjectUidSet(object? sender, DependencyObject dependencyObject)
     {
         (Localizer.Instance as Localizer)?.RegisterDependencyObject(dependencyObject);
-    }
-
-    private static void ThrowLocalizerException(Exception? innerException, string message, params object?[] args)
-    {
-        LocalizerException localizerException = new(message, innerException);
-        throw localizerException;
     }
 
     private static DependencyProperty? GetDependencyProperty(DependencyObject dependencyObject, string dependencyPropertyName)
