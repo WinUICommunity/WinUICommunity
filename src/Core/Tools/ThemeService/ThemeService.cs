@@ -1,7 +1,7 @@
-﻿using Nucs.JsonSettings.Modulation.Recovery;
-using Nucs.JsonSettings.Modulation;
-using Nucs.JsonSettings;
+﻿using Nucs.JsonSettings;
 using Nucs.JsonSettings.Fluent;
+using Nucs.JsonSettings.Modulation;
+using Nucs.JsonSettings.Modulation.Recovery;
 
 namespace WinUICommunity;
 public class ThemeService : IThemeService

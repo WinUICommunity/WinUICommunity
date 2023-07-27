@@ -14,8 +14,8 @@ public interface INavigationService
         get; set;
     }
 
-    Window? Window 
-    { 
+    Window? Window
+    {
         get; set;
     }
 

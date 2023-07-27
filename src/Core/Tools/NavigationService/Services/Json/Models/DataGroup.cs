@@ -4,8 +4,8 @@ namespace WinUICommunity;
 
 public class DataGroup
 {
-    public DataGroup(string uniqueId, string sectionId, string title, string secondaryTitle, 
-        string subtitle, string imagePath, string imageIconPath, string description, 
+    public DataGroup(string uniqueId, string sectionId, string title, string secondaryTitle,
+        string subtitle, string imagePath, string imageIconPath, string description,
         string apiNamespace, bool isSpecialSection, bool hideGroup, bool showItemsWithoutGroup,
         bool isExpanded, bool isFooterNavigationViewItem, DataInfoBadge dataInfoBadge)
     {

@@ -9,7 +9,7 @@ public class DataSource
 
     public ObservableCollection<DataGroup> Groups { get; set; } = new ObservableCollection<DataGroup>();
     public ObservableCollection<DataGroup> SectionGroups { get; set; } = new ObservableCollection<DataGroup>();
-    
+
     public async Task<IEnumerable<DataGroup>> GetGroupsAsync(string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
     {
         await GetDataAsync(jsonFilePath, pathType, autoIncludedInBuild);
@@ -202,7 +202,7 @@ public class DataSource
         if (autoIncludedInBuild)
         {
             Type pageType = ApplicationHelper.GetPageType(pageString, item.ApiNamespace);
-            
+
 
             isIncludedInBuild = pageType != null;
         }
@@ -210,7 +210,7 @@ public class DataSource
         {
             isIncludedInBuild = item.IncludedInBuild;
         }
-        
+
         item.IncludedInBuild = isIncludedInBuild;
         return item;
     }
