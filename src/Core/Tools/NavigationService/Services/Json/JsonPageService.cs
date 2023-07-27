@@ -35,11 +35,11 @@ public class JsonPageService : PageService
             {
                 if (string.IsNullOrEmpty(dataItem.SectionId))
                 {
-                    _pageKeyToTypeMap[dataItem.UniqueId] = ApplicationHelper.GetPageType(dataItem.UniqueId, dataItem.ApiNamespace);
+                    _pageKeyToTypeMap[GenerateUniqueId(dataItem.UniqueId, dataItem.Parameter?.ToString())] = ApplicationHelper.GetPageType(dataItem.UniqueId, dataItem.ApiNamespace);
                 }
                 else
                 {
-                    _pageKeyToTypeMap[dataItem.UniqueId] = ApplicationHelper.GetPageType(dataItem.SectionId, dataItem.ApiNamespace);
+                    _pageKeyToTypeMap[GenerateUniqueId(dataItem.UniqueId, dataItem.Parameter?.ToString())] = ApplicationHelper.GetPageType(dataItem.SectionId, dataItem.ApiNamespace);
                 }
             }
         }
@@ -47,11 +47,11 @@ public class JsonPageService : PageService
         {
             if (string.IsNullOrEmpty(dataGroup.SectionId))
             {
-                _pageKeyToTypeMap[dataGroup.UniqueId] = ApplicationHelper.GetPageType(dataGroup.UniqueId, dataGroup.ApiNamespace);
+                _pageKeyToTypeMap[GenerateUniqueId(dataGroup.UniqueId, null)] = ApplicationHelper.GetPageType(dataGroup.UniqueId, dataGroup.ApiNamespace);
             }
             else
             {
-                _pageKeyToTypeMap[dataGroup.UniqueId] = ApplicationHelper.GetPageType(dataGroup.SectionId, dataGroup.ApiNamespace);
+                _pageKeyToTypeMap[GenerateUniqueId(dataGroup.UniqueId, null)] = ApplicationHelper.GetPageType(dataGroup.SectionId, dataGroup.ApiNamespace);
             }
         }
 
@@ -65,6 +65,18 @@ public class JsonPageService : PageService
                     AddNavigationItemToDictionary(subNavigationItem);
                 }
             }
+        }
+    }
+
+    private string GenerateUniqueId(string uniqueId, string parameter)
+    {
+        if (string.IsNullOrEmpty(parameter))
+        {
+            return uniqueId;
+        }
+        else
+        {
+            return uniqueId + parameter;
         }
     }
 }
