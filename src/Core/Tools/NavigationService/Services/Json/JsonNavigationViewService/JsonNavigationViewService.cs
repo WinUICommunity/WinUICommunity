@@ -57,8 +57,11 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 selectedItem = GetSelectedItem(_navigationView.MenuItems, dataItem, dataGroup);
             }
 
-            _navigationView.SelectedItem = selectedItem;
-            ExpandItems(selectedItem);
+            if (selectedItem != null)
+            {
+                _navigationView.SelectedItem = selectedItem;
+                ExpandItems(selectedItem);
+            }
         };
     }
 
