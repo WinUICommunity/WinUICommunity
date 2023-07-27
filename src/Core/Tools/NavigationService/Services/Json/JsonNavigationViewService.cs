@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI.Xaml.Automation;
+using Microsoft.UI.Xaml.Media.Animation;
 
 using System.Diagnostics.CodeAnalysis;
 
@@ -178,7 +179,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             if (args.ChosenSuggestion is DataItem)
             {
                 var infoDataItem = args.ChosenSuggestion as DataItem;
-                NavigateTo(infoDataItem.UniqueId);
+                NavigateTo(infoDataItem.UniqueId, infoDataItem);
             }
         }
     }
@@ -355,7 +356,8 @@ public class JsonNavigationViewService : IJsonNavigationViewService
             {
                 if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
                 {
-                    NavigateTo(pageKey);
+                    var dataItem = selectedItem?.DataContext as DataItem;
+                    NavigateTo(pageKey, dataItem);
                 }
             }
         }
@@ -600,9 +602,19 @@ public class JsonNavigationViewService : IJsonNavigationViewService
         return false;
     }
 
-    public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
+    public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null)
     {
         var pageType = _pageService.GetPageType(pageKey);
+        return Navigate(pageType, parameter, clearNavigation, transitionInfo);
+    }
+
+    public bool NavigateTo(Type pageType, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null)
+    {
+        return Navigate(pageType, parameter, clearNavigation, transitionInfo);
+    }
+
+    public bool Navigate(Type pageType, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null)
+    {
         if (pageType == null)
         {
             return false;
