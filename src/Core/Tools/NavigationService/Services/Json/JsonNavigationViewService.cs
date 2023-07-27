@@ -384,7 +384,7 @@ public class JsonNavigationViewService : IJsonNavigationViewService
                 }
             }
 
-            NavigationHelper.SetNavigateTo(navigationViewItem, navItem.UniqueId);
+            NavigationHelper.SetNavigateTo(navigationViewItem, navItem.UniqueId+navItem.Parameter?.ToString());
             navigationViewItem.InfoBadge = GetInfoBadge(navItem);
             AutomationProperties.SetName(navigationViewItem, navItem.Title);
 
