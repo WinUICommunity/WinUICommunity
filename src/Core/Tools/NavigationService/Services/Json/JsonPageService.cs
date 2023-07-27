@@ -70,13 +70,6 @@ public class JsonPageService : PageService
 
     private string GenerateUniqueId(string uniqueId, string parameter)
     {
-        if (string.IsNullOrEmpty(parameter))
-        {
-            return uniqueId;
-        }
-        else
-        {
-            return uniqueId + parameter;
-        }
+        return uniqueId + parameter;
     }
 }

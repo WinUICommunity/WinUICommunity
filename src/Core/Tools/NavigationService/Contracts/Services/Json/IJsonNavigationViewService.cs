@@ -17,7 +17,6 @@ public interface IJsonNavigationViewService
     IList<object>? MenuItems { get; }
     object? SettingsItem { get; }
     DataSource DataSource { get; set; }
-    NavigationViewItem? GetSelectedItem(Type pageType, string uniqueId);
     IEnumerable<DataItem> SearchNavigationViewItems(IEnumerable<DataItem> items, string query);
 
     bool CanGoBack { get; }
