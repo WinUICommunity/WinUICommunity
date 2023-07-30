@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
 	  <NoWarn>CS8632;CS0067;CA1416</NoWarn>
-	  <Version>5.0.1</Version>
+	  <Version>5.0.2</Version>
     <Namespace>WinUICommunity.Core</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
