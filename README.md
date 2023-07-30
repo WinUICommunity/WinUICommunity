@@ -33,7 +33,7 @@
     <a href="https://www.nuget.org/packages/WinUICommunity.Components">
         <img alt="Components-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Components?color=brightgreen&label=Installs"></img>
     </a>
-    <a href="https://ghost1372.github.io/WinUICommunity/">
+    <a href="https://ghost1372.github.io/winUICommunity/">
         <img alt="Docs" src="https://img.shields.io/badge/Document-Here-critical"></img>
     </a>   
 </p>
