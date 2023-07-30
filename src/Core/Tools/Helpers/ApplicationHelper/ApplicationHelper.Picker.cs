@@ -18,7 +18,7 @@ public static partial class ApplicationHelper
         return await FileSavePicker(window, fileTypeChoices, suggestedFileName, defaultFileExtension, suggestedStartLocation);
     }
 
-    private static async Task<StorageFile> FileSavePicker(Window window, IDictionary<string, IList<string>> fileTypeChoices, string suggestedFileName, string defaultFileExtension, PickerLocationId suggestedStartLocation)
+    public static async Task<StorageFile> FileSavePicker(Window window, IDictionary<string, IList<string>> fileTypeChoices, string suggestedFileName, string defaultFileExtension, PickerLocationId suggestedStartLocation = PickerLocationId.ComputerFolder)
     {
         var savePicker = new FileSavePicker();
         savePicker.SuggestedStartLocation = suggestedStartLocation;
@@ -52,7 +52,7 @@ public static partial class ApplicationHelper
         return await FileOpenPicker(window, fileTypeFilter, suggestedStartLocation, pickerViewMode).PickSingleFileAsync();
     }
 
-    private static FileOpenPicker FileOpenPicker(Window window, IList<string> fileTypeFilter, PickerLocationId suggestedStartLocation, PickerViewMode pickerViewMode)
+    public static FileOpenPicker FileOpenPicker(Window window, IList<string> fileTypeFilter, PickerLocationId suggestedStartLocation = PickerLocationId.ComputerFolder, PickerViewMode pickerViewMode = PickerViewMode.Thumbnail)
     {
         var picker = new FileOpenPicker();
         picker.ViewMode = pickerViewMode;
@@ -66,12 +66,12 @@ public static partial class ApplicationHelper
         return picker;
     }
 
-    public static async Task<StorageFolder> PickSingleFolderAsync(Window window, IList<string> fileTypeFilter = null, PickerLocationId suggestedStartLocation, PickerViewMode pickerViewMode = PickerViewMode.Thumbnail)
+    public static async Task<StorageFolder> PickSingleFolderAsync(Window window, IList<string> fileTypeFilter = null, PickerLocationId suggestedStartLocation = PickerLocationId.ComputerFolder, PickerViewMode pickerViewMode = PickerViewMode.Thumbnail)
     {
         return await FolderPicker(window, fileTypeFilter, suggestedStartLocation, pickerViewMode).PickSingleFolderAsync();
     }
 
-    public static FolderPicker FolderPicker(Window window, IList<string> fileTypeFilter = null, PickerLocationId suggestedStartLocation, PickerViewMode pickerViewMode)
+    public static FolderPicker FolderPicker(Window window, IList<string> fileTypeFilter = null, PickerLocationId suggestedStartLocation = PickerLocationId.ComputerFolder, PickerViewMode pickerViewMode = PickerViewMode.Thumbnail)
     {
         FolderPicker folderPicker = new();
         WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, WindowHelper.GetWindowHandleForCurrentWindow(window));
