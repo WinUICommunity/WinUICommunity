@@ -10,6 +10,7 @@ public interface IJsonNavigationViewService
     void ConfigDefaultPage(Type pageType);
     void ConfigSettingsPage(Type pageType);
     void ConfigSectionPage(Type pageType);
+    void ConfigLocalizer(ILocalizer localizer);
     void UnregisterEvents();
 
     event NavigatedEventHandler Navigated;

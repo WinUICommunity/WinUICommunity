@@ -170,7 +170,7 @@ public class DataSource
                         item.ImageIconPath,
                         item.Description,
                         item.ApiNamespace,
-                        false, false, false, false, false,
+                        false, false, false, false, false,false,
                         item.DataInfoBadge);
                     group.Items = item.Items;
                     SectionGroups.Add(group);

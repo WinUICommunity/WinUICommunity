@@ -80,4 +80,9 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             NavigateTo(_pageService.DefaultPageKey);
         }
     }
+
+    public void ConfigLocalizer(ILocalizer localizer)
+    {
+        Localizer = localizer;
+    }
 }

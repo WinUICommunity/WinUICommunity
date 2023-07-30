@@ -10,7 +10,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             var navigationViewItem = new NavigationViewItem()
             {
                 IsEnabled = navItem.IncludedInBuild,
-                Content = navItem.Title,
+                Content = GetLocalizedText(navItem.Title, navItem.UsexUid),
                 Tag = navItem.UniqueId,
                 DataContext = navItem
             };
@@ -26,7 +26,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
             NavigationHelper.SetNavigateTo(navigationViewItem, navItem.UniqueId + navItem.Parameter?.ToString());
             navigationViewItem.InfoBadge = GetInfoBadge(navItem);
-            AutomationProperties.SetName(navigationViewItem, navItem.Title);
+            AutomationProperties.SetName(navigationViewItem, GetLocalizedText(navItem.Title, navItem.UsexUid));
 
             if (parentNavItem == null)
             {
@@ -75,7 +75,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             {
                 topLevelItem = new NavigationViewItem()
                 {
-                    Content = group.Title,
+                    Content = GetLocalizedText(group.Title, group.UsexUid),
                     IsExpanded = group.IsExpanded,
                     Tag = group.UniqueId,
                     DataContext = group
@@ -91,7 +91,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 }
 
                 NavigationHelper.SetNavigateTo(topLevelItem, group.UniqueId);
-                AutomationProperties.SetName(topLevelItem, group.Title);
+                AutomationProperties.SetName(topLevelItem, GetLocalizedText(group.Title, group.UsexUid));
                 topLevelItem.InfoBadge = GetInfoBadge(group);
 
                 var items = group.Items.Where(i => !i.HideNavigationViewItem);
@@ -206,5 +206,17 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 {
                     Glyph = imagePath
                 };
+    }
+
+    private string GetLocalizedText(string input, bool usexUid)
+    {
+        if (usexUid)
+        {
+            return Localizer.GetLocalizedString(input);
+        }
+        else
+        {
+            return input;
+        }
     }
 }
