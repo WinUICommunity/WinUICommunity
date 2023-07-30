@@ -212,7 +212,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     {
         if (usexUid)
         {
-            return Localizer.GetLocalizedString(input);
+            return !string.IsNullOrEmpty(input) ? Localizer.GetLocalizedString(input) : input;
         }
         else
         {
