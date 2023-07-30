@@ -138,11 +138,44 @@ public sealed partial class MainLandingPage : ItemsPageBase
         GetCollectionViewSource().Source = FormatData();
     }
 
+    public void GetLocalizedData(DataSource dataSource, ILocalizer localizer = null)
+    {
+        var items = dataSource.Groups.Where(g => !g.HideGroup).SelectMany(g => g.Items.Where(i => i.BadgeString != null && !i.HideItem)).ToList();
+        for (int i = 0; i < items.Count; i++)
+        {
+            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer);
+            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer);
+            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer);
+            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer);
+        }
+
+        Items = items;
+        GetCollectionViewSource().Source = FormatData();
+    }
+
     public async void GetDataAsync(string JsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
     {
         var dataSource = new DataSource();
         await dataSource.GetGroupsAsync(JsonFilePath, pathType, autoIncludedInBuild);
         Items = dataSource.Groups.Where(g => !g.HideGroup).SelectMany(g => g.Items.Where(i => i.BadgeString != null && !i.HideItem));
+        GetCollectionViewSource().Source = FormatData();
+    }
+
+    public async void GetLocalizedDataAsync(string JsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false, ILocalizer localizer = null)
+    {
+        var dataSource = new DataSource();
+        await dataSource.GetGroupsAsync(JsonFilePath, pathType, autoIncludedInBuild);
+        var items = dataSource.Groups.Where(g => !g.HideGroup).SelectMany(g => g.Items.Where(i => i.BadgeString != null && !i.HideItem)).ToList();
+        for (int i = 0; i < items.Count; i++)
+        {
+            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer);
+            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer);
+            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer);
+            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer);
+        }
+
+        Items = items;
+
         GetCollectionViewSource().Source = FormatData();
     }
 

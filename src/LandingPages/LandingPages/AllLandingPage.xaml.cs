@@ -67,9 +67,22 @@ public sealed partial class AllLandingPage : ItemsPageBase
         this.InitializeComponent();
     }
 
-    public void GetData(DataSource dataSource)
+    public void GetData(DataSource dataSource, ILocalizer localizer = null)
     {
         Items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem));
+    }
+    public void GetLocalizedData(DataSource dataSource, ILocalizer localizer = null)
+    {
+        var items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem)).ToList();
+        for (int i = 0; i < items.Count; i++)
+        {
+            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer);
+            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer);
+            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer);
+            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer);
+        }
+
+        Items = items;
     }
 
     public async void GetDataAsync(string JsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
@@ -77,6 +90,23 @@ public sealed partial class AllLandingPage : ItemsPageBase
         var dataSource = new DataSource();
         await dataSource.GetGroupsAsync(JsonFilePath, pathType, autoIncludedInBuild);
         Items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem));
+    }
+
+    public async void GetLocalizedDataAsync(string JsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false, ILocalizer localizer = null)
+    {
+        var dataSource = new DataSource();
+        await dataSource.GetGroupsAsync(JsonFilePath, pathType, autoIncludedInBuild);
+        var items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem)).ToList();
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer);
+            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer);
+            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer);
+            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer);
+        }
+
+        Items = items;
     }
 
     public void OrderBy(Func<DataItem, object> orderby = null)
