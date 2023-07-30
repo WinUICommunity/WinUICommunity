@@ -5,7 +5,7 @@ internal static class Helper
     {
         if (usexUid)
         {
-            return localizer.GetLocalizedString(input);
+            return !string.IsNullOrEmpty(input) ? localizer.GetLocalizedString(input) : input;
         }
         else
         {
