@@ -90,7 +90,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         {
             _frame.Tag = clearNavigation;
             var vmBeforeNavigation = _frame.GetPageViewModel();
-            var navigated = _frame.Navigate(pageType, parameter);
+            var navigated = _frame.Navigate(pageType, parameter, transitionInfo);
             if (navigated)
             {
                 _lastParameterUsed = parameter;
