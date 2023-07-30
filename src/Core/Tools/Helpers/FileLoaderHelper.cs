@@ -2,7 +2,7 @@
 
 public static class FileLoaderHelper
 {
-    public static async Task<string> GetPath(string filePath, PathType pathType)
+    public static async Task<string> GetPath(string filePath, PathType pathType = PathType.Relative)
     {
         StorageFile file = null;
         if (ApplicationHelper.IsPackaged)

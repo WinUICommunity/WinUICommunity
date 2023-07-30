@@ -3,15 +3,6 @@
 namespace WinUICommunity;
 public static class NativeMethods
 {
-    public enum PreferredAppMode
-    {
-        Default,
-        AllowDark,
-        ForceDark,
-        ForceLight,
-        Max
-    };
-
     public const int WM_ACTIVATE = 0x0006;
     public const int WA_ACTIVE = 0x01;
     public const int WA_INACTIVE = 0x00;
@@ -19,6 +10,11 @@ public static class NativeMethods
     public const int GWL_EXSTYLE = -20;
     public const int WS_EX_LAYOUTRTL = 0x00400000;
     public const int WS_EX_LAYOUTLTR = 0x00000000;
+
+    /// <summary>
+    /// Places the window at the top of the Z order.
+    /// </summary>
+    public static readonly IntPtr HWND_TOP = new(0);
 
     [DllImport("user32.dll")]
     public static extern IntPtr GetActiveWindow();
@@ -45,33 +41,8 @@ public static class NativeMethods
     [DllImport("NTdll.dll")]
     public static extern int RtlGetVersion(out RTL_OSVERSIONINFOEX lpVersionInformation);
 
-    [StructLayout(LayoutKind.Sequential)]
-    public struct RTL_OSVERSIONINFOEX
-    {
-        public RTL_OSVERSIONINFOEX(uint dwMajorVersion, uint dwMinorVersion, uint dwBuildNumber, uint dwRevision, uint dwPlatformId, string szCSDVersion) : this()
-        {
-            this.dwMajorVersion = dwMajorVersion;
-            this.dwMinorVersion = dwMinorVersion;
-            this.dwBuildNumber = dwBuildNumber;
-            this.dwRevision = dwRevision;
-            this.dwPlatformId = dwPlatformId;
-            this.szCSDVersion = szCSDVersion;
-        }
-        public readonly uint dwOSVersionInfoSize { get; init; } = (uint)Marshal.SizeOf<RTL_OSVERSIONINFOEX>();
-
-        public uint dwMajorVersion;
-        public uint dwMinorVersion;
-        public uint dwBuildNumber;
-        public uint dwRevision;
-        public uint dwPlatformId;
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
-        public string szCSDVersion;
-    }
-
-    /// <summary>
-    /// Places the window at the top of the Z order.
-    /// </summary>
-    public static readonly IntPtr HWND_TOP = new(0);
+    [DllImport("kernel32.dll")]
+    public static extern uint GetModuleFileName(IntPtr hModule, StringBuilder lpFilename, int nSize);
 
     [DllImport("CoreMessaging.dll")]
     public static extern int CreateDispatcherQueueController([In] DispatcherQueueOptions options, [In, Out, MarshalAs(UnmanagedType.IUnknown)] ref object dispatcherQueueController);
@@ -142,27 +113,27 @@ public static class NativeMethods
         public int ArrayLengthParameter { get; set; } = -1;
     }
 
-    [Flags]
-    public enum FriendlyFlags
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RTL_OSVERSIONINFOEX
     {
-        /// <summary>
-        /// The pointer is to the first element in an array.
-        /// </summary>
-        Array = 0x1,
+        public RTL_OSVERSIONINFOEX(uint dwMajorVersion, uint dwMinorVersion, uint dwBuildNumber, uint dwRevision, uint dwPlatformId, string szCSDVersion) : this()
+        {
+            this.dwMajorVersion = dwMajorVersion;
+            this.dwMinorVersion = dwMinorVersion;
+            this.dwBuildNumber = dwBuildNumber;
+            this.dwRevision = dwRevision;
+            this.dwPlatformId = dwPlatformId;
+            this.szCSDVersion = szCSDVersion;
+        }
+        public readonly uint dwOSVersionInfoSize { get; init; } = (uint)Marshal.SizeOf<RTL_OSVERSIONINFOEX>();
 
-        /// <summary>
-        /// The value is at least partially initialized by the caller.
-        /// </summary>
-        In = 0x2
-    }
-
-    [Flags]
-    public enum SetWindowPosFlags : uint
-    {
-        /// <summary>
-        ///     Retains the current position (ignores X and Y parameters).
-        /// </summary>
-        SWP_NOMOVE = 0x0002
+        public uint dwMajorVersion;
+        public uint dwMinorVersion;
+        public uint dwBuildNumber;
+        public uint dwRevision;
+        public uint dwPlatformId;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
+        public string szCSDVersion;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -173,20 +144,6 @@ public static class NativeMethods
         internal int apartmentType;
     }
 
-    public enum Monitor_DPI_Type : int
-    {
-        MDT_Effective_DPI = 0,
-        MDT_Angular_DPI = 1,
-        MDT_Raw_DPI = 2,
-        MDT_Default = MDT_Effective_DPI
-    }
-
-    [Flags]
-    public enum WindowLongIndexFlags : int
-    {
-        GWL_WNDPROC = -4,
-    }
-
     [StructLayout(LayoutKind.Sequential)]
     public struct MINMAXINFO
     {
@@ -195,11 +152,6 @@ public static class NativeMethods
         public POINT ptMaxPosition;
         public POINT ptMinTrackSize;
         public POINT ptMaxTrackSize;
-    }
-
-    public enum WindowMessage : int
-    {
-        WM_GETMINMAXINFO = 0x0024,
     }
 
     public struct POINT
@@ -226,4 +178,55 @@ public static class NativeMethods
         }
 #endif
     }
+
+    public enum WindowMessage : int
+    {
+        WM_GETMINMAXINFO = 0x0024,
+    }
+
+    [Flags]
+    public enum WindowLongIndexFlags : int
+    {
+        GWL_WNDPROC = -4,
+    }
+
+    public enum Monitor_DPI_Type : int
+    {
+        MDT_Effective_DPI = 0,
+        MDT_Angular_DPI = 1,
+        MDT_Raw_DPI = 2,
+        MDT_Default = MDT_Effective_DPI
+    }
+
+    [Flags]
+    public enum FriendlyFlags
+    {
+        /// <summary>
+        /// The pointer is to the first element in an array.
+        /// </summary>
+        Array = 0x1,
+
+        /// <summary>
+        /// The value is at least partially initialized by the caller.
+        /// </summary>
+        In = 0x2
+    }
+
+    [Flags]
+    public enum SetWindowPosFlags : uint
+    {
+        /// <summary>
+        ///     Retains the current position (ignores X and Y parameters).
+        /// </summary>
+        SWP_NOMOVE = 0x0002
+    }
+
+    public enum PreferredAppMode
+    {
+        Default,
+        AllowDark,
+        ForceDark,
+        ForceLight,
+        Max
+    };
 }

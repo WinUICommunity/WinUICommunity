@@ -1,61 +1,12 @@
-﻿namespace WinUICommunity;
-public static class ApplicationHelper
+﻿using Windows.Security.Cryptography.Core;
+using Windows.Security.Cryptography;
+using Windows.Storage.Streams;
+using System.Web;
+using System.Diagnostics;
+
+namespace WinUICommunity;
+public static partial class ApplicationHelper
 {
-    private const uint APPMODEL_ERROR_NO_PACKAGE = 15700;
-    public static bool IsPackaged { get; } = GetCurrentPackageName() != null;
-
-    public static string GetCurrentPackageName()
-    {
-        var length = 0u;
-        NativeMethods.GetCurrentPackageFullName(ref length);
-
-        var result = new StringBuilder((int)length);
-        var error = NativeMethods.GetCurrentPackageFullName(ref length, result);
-
-        return error == APPMODEL_ERROR_NO_PACKAGE ? null : result.ToString();
-    }
-
-    public static Windows.ApplicationModel.Package GetPackageDetails()
-    {
-        return Windows.ApplicationModel.Package.Current;
-    }
-    public static Windows.ApplicationModel.PackageVersion GetPackageVersion()
-    {
-        return GetPackageDetails().Id.Version;
-    }
-
-    public static string GetFullPathToExe()
-    {
-        var path = AppDomain.CurrentDomain.BaseDirectory;
-        var pos = path.LastIndexOf("\\");
-        return path.Substring(0, pos);
-    }
-
-    public static string GetFullPathToAsset(string assetName)
-    {
-        return GetFullPathToExe() + "\\Assets\\" + assetName;
-    }
-
-    public static string GetProjectNameAndVersion()
-    {
-        return $"{GetProjectName()}V{GetProjectVersion()}";
-    }
-
-    public static string GetProjectName()
-    {
-        return Application.Current.GetType().Assembly.GetName().Name;
-    }
-
-    public static string GetProjectVersion()
-    {
-        return Application.Current.GetType().Assembly.GetName().Version.ToString();
-    }
-
-    public static string GetLocalFolderPath()
-    {
-        return IsPackaged ? ApplicationData.Current.LocalFolder.Path : Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-    }
-
     public static void EnableSound(ElementSoundPlayerState elementSoundPlayerState = ElementSoundPlayerState.On, bool withSpatial = false)
     {
         ElementSoundPlayer.State = elementSoundPlayerState;
@@ -158,54 +109,45 @@ public static class ApplicationHelper
         NativeMethods.SetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE, exstyle | NativeMethods.WS_EX_LAYOUTLTR);
     }
 
-    public static Type GetPageType(string uniqueId, string assemblyString)
+    public static string GetDecodedStringFromHtml(string text)
     {
-        Assembly assembly;
+        if (string.IsNullOrEmpty(text))
+            return text;
 
-        if (string.IsNullOrEmpty(assemblyString))
-        {
-            assembly = Application.Current.GetType().Assembly;
-        }
-        else
-        {
-            try
-            {
-                assembly = Assembly.Load(assemblyString);
-            }
-            catch (Exception)
-            {
-                assembly = Application.Current.GetType().Assembly;
-            }
-        }
-
-        if (assembly is not null)
-        {
-            return assembly.GetType(uniqueId);
-        }
-        return null;
+        var decoded = HttpUtility.HtmlDecode(text);
+        var result = decoded != text;
+        return result ? decoded : text;
     }
 
-    public static (string UniqueId, string SectionId) GetUniqueIdAndSectionId(object parameter)
+    public static string GetFileSize(long size)
     {
-        var uniqueId = string.Empty;
-        var sectionId = string.Empty;
+        string[] sizeSuffixes = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
+        const string formatTemplate = "{0}{1:0.#} {2}";
 
-        var dataGroup = parameter as DataGroup;
-        var dataItem = parameter as DataItem;
-
-        if (dataGroup != null)
+        if (size == 0)
         {
-            uniqueId = dataGroup.UniqueId;
-            sectionId = dataGroup.SectionId;
+            return string.Format(formatTemplate, null, 0, sizeSuffixes[0]);
         }
 
-        if (dataItem != null)
-        {
-            uniqueId = dataItem.UniqueId;
-            sectionId = dataItem.SectionId;
-        }
+        var absSize = Math.Abs((double)size);
+        var fpPower = Math.Log(absSize, 1000);
+        var intPower = (int)fpPower;
+        var iUnit = intPower >= sizeSuffixes.Length
+            ? sizeSuffixes.Length - 1
+            : intPower;
+        var normSize = absSize / Math.Pow(1000, iUnit);
 
-        return (uniqueId, sectionId);
+        return string.Format(
+            formatTemplate,
+            size < 0 ? "-" : null, normSize, sizeSuffixes[iUnit]);
+    }
+
+    public static void Restart()
+    {
+        ProcessStartInfo processStartInfo = new ProcessStartInfo(GetExecutablePathNative());
+
+        Process.Start(processStartInfo);
+        Environment.Exit(0);
     }
 }
 
