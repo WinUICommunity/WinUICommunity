@@ -61,7 +61,6 @@ public partial class App : Application
         ThemeService.ConfigBackdrop(BackdropType.Mica);
         ThemeService.ConfigElementTheme(ElementTheme.Default);
 
-
         if (!ApplicationHelper.IsPackaged)
         {
             notificationManager.Init(notificationManager, OnNotificationInvoked);
@@ -108,7 +107,6 @@ public partial class App : Application
             StringsFolderPath = Path.Combine(AppContext.BaseDirectory, "Strings");
             var stringsFolder = await StorageFolder.GetFolderFromPathAsync(StringsFolderPath);
         }
-
 
         ILocalizer localizer = await new LocalizerBuilder()
             .AddStringResourcesFolderForLanguageDictionaries(StringsFolderPath)
