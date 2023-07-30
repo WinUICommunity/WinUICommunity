@@ -15,10 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Components", "Components\Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F361F19-8D50-4094-AE95-B59CC13676D0}"
 	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.gitignore = .gitignore
-		Directory.Build.props = Directory.Build.props
-		settings.xamlstyler = settings.xamlstyler
+		..\.editorconfig = ..\.editorconfig
+		..\.gitignore = ..\.gitignore
+		..\Directory.Build.props = ..\Directory.Build.props
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+		..\settings.xamlstyler = ..\settings.xamlstyler
 	EndProjectSection
 EndProject
 Global
