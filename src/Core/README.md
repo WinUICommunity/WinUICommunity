@@ -51,7 +51,7 @@ We moved all namespaces into a single namespace. No matter which (WinUICommunity
 
 ## Demo
 
-See the [Demo](https://github.com/winUICommunity/DemoApp) app to see how to use it
+See the [Demo](https://github.com/WinUICommunity/WinUICommunity) app to see how to use it
 
 
 ## Documentation
