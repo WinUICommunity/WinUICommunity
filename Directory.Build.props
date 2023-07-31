@@ -24,8 +24,8 @@
 
   <!-- The NuGet versions of dependencies to build against. -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.230724000" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="*" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(MSBuildProjectName)' != 'DemoApp'">
