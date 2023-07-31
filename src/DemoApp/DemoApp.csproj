@@ -10,10 +10,11 @@
     <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
-    <Version>5.0.0</Version>
+    <Version>5.0.2</Version>
     <NoWarn>WMC1506;CS8632</NoWarn>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <ExcludedLanguages>en-US;fa-IR</ExcludedLanguages>
+    <GITHUB_ACTIONS>false</GITHUB_ACTIONS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,12 +39,16 @@
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'false'">
     <ProjectReference Include="..\Components\Components.csproj" />
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\LandingPages\LandingPages.csproj" />
   </ItemGroup>
-
+  <ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <PackageReference Include="WinUICommunity.Components" Version="*"/>
+    <PackageReference Include="WinUICommunity.Core" Version="*"/>
+    <PackageReference Include="WinUICommunity.LandingPages" Version="*"/>
+  </ItemGroup>
   <!-- 
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
     Explorer "Package and Publish" context menu entry to be enabled for this project even if 

@@ -1,4 +1,4 @@
-name: Publish Release
+﻿name: Publish Release
 
 on:
   workflow_dispatch:
@@ -23,7 +23,7 @@ jobs:
         proj-path: ${{ env.PROJECT_PATH }}
 
     - name: Build and Publish DemoApp
-      run: dotnet publish ${{ env.PROJECT_PATH }} -c Release -r win10-x64 -p:Platform=x64 --self-contained true -p:PublishSingleFile=false -p:PublishReadyToRun=true -p:PublishTrimmed=false --output publish
+      run: dotnet publish ${{ env.PROJECT_PATH }} -c Release -r win10-x64 /p:GITHUB_ACTIONS=true -p:Platform=x64 --self-contained true -p:PublishSingleFile=false -p:PublishReadyToRun=true -p:PublishTrimmed=false --output publish
 
     - name: Zip Publish Folder
       uses: vimtor/action-zip@v1.1
