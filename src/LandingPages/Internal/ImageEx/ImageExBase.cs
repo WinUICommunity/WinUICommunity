@@ -16,7 +16,7 @@ namespace WinUICommunity;
 [TemplateVisualState(Name = UnloadedState, GroupName = CommonGroup)]
 [TemplateVisualState(Name = FailedState, GroupName = CommonGroup)]
 [TemplatePart(Name = PartImage, Type = typeof(object))]
-internal abstract partial class ImageExBase : Control, IAlphaMaskProvider
+public abstract partial class ImageExBase : Control, IAlphaMaskProvider
 {
     private bool _isInViewport;
 

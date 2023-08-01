@@ -7,7 +7,7 @@ namespace WinUICommunity;
 /// <summary>
 /// Base Code for ImageEx
 /// </summary>
-internal partial class ImageExBase
+public partial class ImageExBase
 {
     /// <summary>
     /// Identifies the <see cref="Stretch"/> dependency property.

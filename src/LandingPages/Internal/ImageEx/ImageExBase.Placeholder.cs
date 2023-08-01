@@ -6,7 +6,7 @@ namespace WinUICommunity;
 /// <summary>
 /// Base code for ImageEx
 /// </summary>
-internal partial class ImageExBase
+public partial class ImageExBase
 {
     /// <summary>
     /// Identifies the <see cref="PlaceholderSource"/> dependency property.

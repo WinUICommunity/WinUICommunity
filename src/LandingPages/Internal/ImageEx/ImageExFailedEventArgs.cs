@@ -4,12 +4,12 @@
 /// </summary>
 /// <param name="sender">The sender.</param>
 /// <param name="e">The event arguments.</param>
-internal delegate void ImageExFailedEventHandler(object sender, ImageExFailedEventArgs e);
+public delegate void ImageExFailedEventHandler(object sender, ImageExFailedEventArgs e);
 
 /// <summary>
 /// Provides data for the <see cref="ImageEx"/> ImageFailed event.
 /// </summary>
-internal class ImageExFailedEventArgs : EventArgs
+public class ImageExFailedEventArgs : EventArgs
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ImageExFailedEventArgs"/> class.
