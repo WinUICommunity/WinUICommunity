@@ -67,10 +67,12 @@
                                 VerticalAlignment="Center"
                                 Orientation="Vertical">
                         <TextBlock x:Name="smallHeaderSubtitleText"
+                                   FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                                    FontSize="18"
                                    Foreground="{x:Bind HeaderSubtitleForeground, Mode=OneWay}"
                                    Text="{x:Bind HeaderSubtitleText, Mode=OneWay}" />
                         <TextBlock x:Name="smallHeaderText"
+                                   FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                                    Foreground="{x:Bind HeaderForeground, Mode=OneWay}"
                                    Style="{StaticResource TitleLargeTextBlockStyle}"
                                    Text="{x:Bind HeaderText, Mode=OneWay}" />
@@ -91,6 +93,7 @@
                             <TextBlock x:Name="pageSubtitle"
                                        Margin="4,32,0,0"
                                        AutomationProperties.HeadingLevel="Level1"
+                                       FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                                        Style="{StaticResource SubtitleTextBlockStyle}"
                                        Text="{x:Bind Title}" />
                         </DataTemplate>

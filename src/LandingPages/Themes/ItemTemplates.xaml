@@ -57,11 +57,13 @@
                             Orientation="Vertical"
                             Spacing="2">
                     <TextBlock x:Name="titleText"
+                               FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                Text="{x:Bind Title}"
                                TextLineBounds="TrimToCapHeight"
                                TextWrapping="NoWrap" />
-                    <TextBlock Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                    <TextBlock FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                RelativePanel.Below="titleText"
                                Style="{StaticResource CaptionTextBlockStyle}"
                                Text="{x:Bind Subtitle}"
@@ -72,6 +74,7 @@
                            Width="10"
                            Margin="4"
                            VerticalAlignment="Top"
+                           FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                            Style="{StaticResource AttentionIconInfoBadgeStyle}"
                            Visibility="{x:Bind BadgeString, Converter={StaticResource nullToVisibilityConverter}}" />
             </Grid>

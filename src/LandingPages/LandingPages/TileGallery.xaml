@@ -23,6 +23,7 @@
                 Margin="8,-16,0,0"
                 AutomationProperties.Name="Scroll left"
                 Click="ScrollBackBtn_Click"
+                FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                 Style="{StaticResource ScrollButtonStyle}"
                 ToolTipService.ToolTip="Scroll left"
                 Visibility="Collapsed">
@@ -36,6 +37,7 @@
                 HorizontalAlignment="Right"
                 AutomationProperties.Name="Scroll right"
                 Click="ScrollForwardBtn_Click"
+                FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                 Style="{StaticResource ScrollButtonStyle}"
                 ToolTipService.ToolTip="Scroll right">
             <FontIcon FontSize="{ThemeResource FlipViewButtonFontSize}"
