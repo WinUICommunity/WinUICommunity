@@ -3,21 +3,29 @@
 namespace WinUICommunity;
 internal static class Helper
 {
-    internal static string GetLocalizedText(string input, bool usexUid, ILocalizer localizer, ResourceLoader resourceLoader)
+    internal static string GetLocalizedText(string input, bool usexUid, ILocalizer localizer, ResourceManager resourceManager, ResourceContext resourceContext)
     {
         if (string.IsNullOrEmpty(input))
             return input;
 
-        if (usexUid)
+        try
         {
-            if (localizer == null && resourceLoader != null)
+            if (usexUid)
             {
-                return resourceLoader.GetString(input);
+                if (localizer == null && resourceManager != null && resourceContext != null)
+                {
+                    var candidate = resourceManager.MainResourceMap.TryGetValue($"Resources/{input}", resourceContext);
+                    return candidate != null ? candidate.ValueAsString : input;
+                }
+                else if (resourceManager == null && localizer != null)
+                {
+                    return localizer.GetLocalizedString(input);
+                }
             }
-            else if (resourceLoader == null && localizer != null)
-            {
-                return localizer.GetLocalizedString(input);
-            }
+        }
+        catch (Exception)
+        {
+            return input;
         }
 
         return input;

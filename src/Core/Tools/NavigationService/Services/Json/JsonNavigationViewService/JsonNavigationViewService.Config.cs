@@ -88,8 +88,9 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         Localizer = localizer;
     }
 
-    public void ConfigLocalizer(ResourceLoader resourceLoader)
+    public void ConfigLocalizer(ResourceManager resourceManager, ResourceContext resourceContext)
     {
-        ResourceLoader = resourceLoader;
+        ResourceManager = resourceManager;
+        ResourceContext = resourceContext;
     }
 }

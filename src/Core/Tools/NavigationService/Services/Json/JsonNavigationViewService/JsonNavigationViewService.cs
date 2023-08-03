@@ -19,7 +19,8 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     private Type _settingsPage { get; set; }
     private Type _sectionPage { get; set; }
     public ILocalizer Localizer { get; set; }
-    public ResourceLoader ResourceLoader { get; set; }
+    public ResourceManager ResourceManager { get; set; }
+    public ResourceContext ResourceContext { get; set; }
 
     private string _autoSuggestBoxNotFoundString;
     private string _autoSuggestBoxNotFoundImagePath;

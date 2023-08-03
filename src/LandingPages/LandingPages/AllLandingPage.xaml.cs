@@ -75,23 +75,23 @@ public sealed partial class AllLandingPage : ItemsPageBase
 
     public void GetLocalizedData(DataSource dataSource, ILocalizer localizer)
     {
-        GetLocalized(dataSource, null, localizer);
+        GetLocalized(dataSource, null, null, localizer);
     }
 
-    public void GetLocalizedData(DataSource dataSource, ResourceLoader resourceLoader)
+    public void GetLocalizedData(DataSource dataSource, ResourceManager resourceManager, ResourceContext resourceContext)
     {
-        GetLocalized(dataSource, resourceLoader, null);
+        GetLocalized(dataSource, resourceManager, resourceContext, null);
     }
 
-    private void GetLocalized(DataSource dataSource, ResourceLoader resourceLoader, ILocalizer localizer)
+    private void GetLocalized(DataSource dataSource, ResourceManager resourceManager, ResourceContext resourceContext, ILocalizer localizer)
     {
         var items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem)).ToList();
         for (int i = 0; i < items.Count; i++)
         {
-            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer, resourceLoader);
-            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer, resourceLoader);
-            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer, resourceLoader);
-            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer, resourceLoader);
+            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer, resourceManager, resourceContext);
+            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer, resourceManager, resourceContext);
+            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer, resourceManager, resourceContext);
+            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer, resourceManager, resourceContext);
         }
 
         Items = items;
@@ -106,15 +106,15 @@ public sealed partial class AllLandingPage : ItemsPageBase
 
     public async void GetLocalizedDataAsync(string JsonFilePath, ILocalizer localizer, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
     {
-        await GetLocalizedAsync(JsonFilePath, null, localizer, pathType, autoIncludedInBuild);
+        await GetLocalizedAsync(JsonFilePath, null, null, localizer, pathType, autoIncludedInBuild);
     }
 
-    public async void GetLocalizedDataAsync(string JsonFilePath, ResourceLoader resourceLoader, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    public async void GetLocalizedDataAsync(string JsonFilePath, ResourceManager resourceManager, ResourceContext resourceContext, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
     {
-       await GetLocalizedAsync(JsonFilePath, resourceLoader, null, pathType, autoIncludedInBuild);
+       await GetLocalizedAsync(JsonFilePath, resourceManager, resourceContext, null, pathType, autoIncludedInBuild);
     }
 
-    private async Task GetLocalizedAsync(string JsonFilePath, ResourceLoader resourceLoader, ILocalizer localizer, PathType pathType, bool autoIncludedInBuild)
+    private async Task GetLocalizedAsync(string JsonFilePath, ResourceManager resourceManager, ResourceContext resourceContext, ILocalizer localizer, PathType pathType, bool autoIncludedInBuild)
     {
         var dataSource = new DataSource();
         await dataSource.GetGroupsAsync(JsonFilePath, pathType, autoIncludedInBuild);
@@ -122,10 +122,10 @@ public sealed partial class AllLandingPage : ItemsPageBase
 
         for (int i = 0; i < items.Count; i++)
         {
-            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer, resourceLoader);
-            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer, resourceLoader);
-            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer, resourceLoader);
-            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer, resourceLoader);
+            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer, resourceManager, resourceContext);
+            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer, resourceManager, resourceContext);
+            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer, resourceManager, resourceContext);
+            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer, resourceManager, resourceContext);
         }
 
         Items = items;

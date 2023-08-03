@@ -213,16 +213,24 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         if (string.IsNullOrEmpty(input))
             return input;
 
-        if (usexUid)
+        try
         {
-            if (Localizer == null && ResourceLoader != null)
+            if (usexUid)
             {
-                return ResourceLoader.GetString(input);
+                if (Localizer == null && ResourceManager != null && ResourceContext != null)
+                {
+                    var candidate = ResourceManager.MainResourceMap.TryGetValue($"Resources/{input}", ResourceContext);
+                    return candidate != null ? candidate.ValueAsString : input;
+                }
+                else if (ResourceManager == null && Localizer != null)
+                {
+                    return Localizer.GetLocalizedString(input);
+                }
             }
-            else if (ResourceLoader == null && Localizer != null)
-            {
-                return Localizer.GetLocalizedString(input);
-            }
+        }
+        catch (Exception)
+        {
+            return input;
         }
         return input;
     }
