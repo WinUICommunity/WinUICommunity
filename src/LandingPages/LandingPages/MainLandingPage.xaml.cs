@@ -3,6 +3,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
 public sealed partial class MainLandingPage : ItemsPageBase
@@ -138,15 +139,25 @@ public sealed partial class MainLandingPage : ItemsPageBase
         GetCollectionViewSource().Source = FormatData();
     }
 
-    public void GetLocalizedData(DataSource dataSource, ILocalizer localizer = null)
+    public void GetLocalizedData(DataSource dataSource, ILocalizer localizer)
+    {
+        GetLocalized(dataSource, null, localizer);
+    }
+
+    public void GetLocalizedData(DataSource dataSource, ResourceLoader resourceLoader)
+    {
+        GetLocalized(dataSource, resourceLoader, null);
+    }
+
+    private void GetLocalized(DataSource dataSource, ResourceLoader resourceLoader, ILocalizer localizer)
     {
         var items = dataSource.Groups.Where(g => !g.HideGroup).SelectMany(g => g.Items.Where(i => i.BadgeString != null && !i.HideItem)).ToList();
         for (int i = 0; i < items.Count; i++)
         {
-            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer);
-            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer);
-            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer);
-            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer);
+            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer, resourceLoader);
+            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer, resourceLoader);
+            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer, resourceLoader);
+            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer, resourceLoader);
         }
 
         Items = items;
@@ -161,17 +172,27 @@ public sealed partial class MainLandingPage : ItemsPageBase
         GetCollectionViewSource().Source = FormatData();
     }
 
-    public async void GetLocalizedDataAsync(string JsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false, ILocalizer localizer = null)
+    public async void GetLocalizedDataAsync(string JsonFilePath, ILocalizer localizer, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    {
+        await GetLocalizedAsync(JsonFilePath, null, localizer, pathType, autoIncludedInBuild);
+    }
+
+    public async void GetLocalizedDataAsync(string JsonFilePath, ResourceLoader resourceLoader, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    {
+        await GetLocalizedAsync(JsonFilePath, resourceLoader, null, pathType, autoIncludedInBuild);
+    }
+
+    private async Task GetLocalizedAsync(string JsonFilePath, ResourceLoader resourceLoader, ILocalizer localizer, PathType pathType, bool autoIncludedInBuild)
     {
         var dataSource = new DataSource();
         await dataSource.GetGroupsAsync(JsonFilePath, pathType, autoIncludedInBuild);
         var items = dataSource.Groups.Where(g => !g.HideGroup).SelectMany(g => g.Items.Where(i => i.BadgeString != null && !i.HideItem)).ToList();
         for (int i = 0; i < items.Count; i++)
         {
-            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer);
-            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer);
-            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer);
-            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer);
+            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, localizer, resourceLoader);
+            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, localizer, resourceLoader);
+            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, localizer, resourceLoader);
+            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, localizer, resourceLoader);
         }
 
         Items = items;

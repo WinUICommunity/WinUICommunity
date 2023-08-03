@@ -210,13 +210,20 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
     private string GetLocalizedText(string input, bool usexUid)
     {
+        if (string.IsNullOrEmpty(input))
+            return input;
+
         if (usexUid)
         {
-            return !string.IsNullOrEmpty(input) ? Localizer.GetLocalizedString(input) : input;
+            if (Localizer == null && ResourceLoader != null)
+            {
+                return ResourceLoader.GetString(input);
+            }
+            else if (ResourceLoader == null && Localizer != null)
+            {
+                return Localizer.GetLocalizedString(input);
+            }
         }
-        else
-        {
-            return input;
-        }
+        return input;
     }
 }

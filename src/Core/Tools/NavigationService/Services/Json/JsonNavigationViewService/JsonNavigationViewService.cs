@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
+using Microsoft.Windows.ApplicationModel.Resources;
+
 namespace WinUICommunity;
 
 public partial class JsonNavigationViewService : IJsonNavigationViewService
@@ -17,6 +19,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     private Type _settingsPage { get; set; }
     private Type _sectionPage { get; set; }
     public ILocalizer Localizer { get; set; }
+    public ResourceLoader ResourceLoader { get; set; }
 
     private string _autoSuggestBoxNotFoundString;
     private string _autoSuggestBoxNotFoundImagePath;

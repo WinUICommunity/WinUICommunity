@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
 
@@ -11,6 +12,7 @@ public interface IJsonNavigationViewService
     void ConfigSettingsPage(Type pageType);
     void ConfigSectionPage(Type pageType);
     void ConfigLocalizer(ILocalizer localizer);
+    void ConfigLocalizer(ResourceLoader resourceLoader);
     void UnregisterEvents();
 
     event NavigatedEventHandler Navigated;

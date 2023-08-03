@@ -1,4 +1,6 @@
-﻿namespace WinUICommunity;
+﻿using Microsoft.Windows.ApplicationModel.Resources;
+
+namespace WinUICommunity;
 public partial class JsonNavigationViewService : IJsonNavigationViewService
 {
     public async void ConfigJson(string jsonFilePath, bool autoIncludedInBuild = false, PathType pathType = PathType.Relative)
@@ -84,5 +86,10 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     public void ConfigLocalizer(ILocalizer localizer)
     {
         Localizer = localizer;
+    }
+
+    public void ConfigLocalizer(ResourceLoader resourceLoader)
+    {
+        ResourceLoader = resourceLoader;
     }
 }
