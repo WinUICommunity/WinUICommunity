@@ -43,6 +43,14 @@
  <img alt="LandingPages-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.LandingPages?logo=nuget&label=LandingPages%20Downloads&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.LandingPages"/>
 </a>
 
+<a href="https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates">
+ <img alt="WinUICommunityTemplates-Downloads" src="https://img.shields.io/visual-studio-marketplace/d/MahdiHosseini.WinUICommunityTemplates?logo=visual%20studio&label=Marketplace%20Downloads&link=https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3DMahdiHosseini.WinUICommunityTemplates"/>
+</a>
+
+<a href="https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates">
+ <img alt="WinUICommunityTemplates-Installs" src="https://img.shields.io/visual-studio-marketplace/i/MahdiHosseini.WinUICommunityTemplates?logo=visual%20studio&label=Marketplace%20Installs&link=https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3DMahdiHosseini.WinUICommunityTemplates"/>
+</a>
+
 <a href="https://ghost1372.github.io/winUICommunity/">
  <img alt="Docs" src="https://img.shields.io/badge/Read%20the%20Docs-Version?logo=markdown&label=Docs&color=red&link=https%3A%2F%2Fghost1372.github.io%2FwinUICommunity%2F"/>
 </a> 
