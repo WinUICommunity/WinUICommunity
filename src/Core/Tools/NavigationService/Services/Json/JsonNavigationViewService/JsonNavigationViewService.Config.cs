@@ -3,14 +3,14 @@
 namespace WinUICommunity;
 public partial class JsonNavigationViewService : IJsonNavigationViewService
 {
-    public async void ConfigJson(string jsonFilePath, bool autoIncludedInBuild = false, PathType pathType = PathType.Relative)
+    public void ConfigJson(string jsonFilePath, bool autoIncludedInBuild = false, PathType pathType = PathType.Relative)
     {
         JsonFilePath = jsonFilePath;
         _pathType = pathType;
         _autoIncludedInBuild = autoIncludedInBuild;
         DataSource = new DataSource();
 
-        await AddNavigationMenuItems();
+        AddNavigationMenuItems();
     }
 
     public void ConfigAutoSuggestBox(AutoSuggestBox autoSuggestBox, bool useItemTemplate = true, string autoSuggestBoxNotFoundString = null, string autoSuggestBoxNotFoundImagePath = null)

@@ -118,7 +118,7 @@ public class DataSource
 
         string filePath = await FileLoaderHelper.GetPath(jsonFilePath, pathType);
         using FileStream openStream = File.OpenRead(filePath);
-        var controlInfoDataGroup = await JsonSerializer.DeserializeAsync<DataSource>(openStream, new JsonSerializerOptions
+        var controlInfoDataGroup = JsonSerializer.Deserialize<DataSource>(openStream, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         });

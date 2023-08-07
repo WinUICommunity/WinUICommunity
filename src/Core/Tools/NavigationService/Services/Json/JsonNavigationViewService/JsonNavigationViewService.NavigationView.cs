@@ -5,6 +5,9 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 {
     private void AddNavigationViewItemsRecursively(IEnumerable<DataItem> navItems, bool isFooterNavigationViewItem, bool hasTopLevel, string pageKey, NavigationViewItem parentNavItem = null)
     {
+        if (_navigationView == null)
+            return;
+
         foreach (var navItem in navItems)
         {
             var navigationViewItem = new NavigationViewItem()
@@ -60,55 +63,59 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         }
     }
 
-    private async Task AddNavigationMenuItems()
+    private void AddNavigationMenuItems()
     {
-        await DataSource.GetDataAsync(JsonFilePath, _pathType, _autoIncludedInBuild);
+        if (_navigationView == null)
+            return;
 
-        foreach (var group in DataSource.Groups.OrderBy(i => i.Title).Where(i => !i.IsSpecialSection && !i.HideGroup))
+        DataSource.GetDataAsync(JsonFilePath, _pathType, _autoIncludedInBuild).ContinueWith(t =>
         {
-            if (group.ShowItemsWithoutGroup)
+            foreach (var group in DataSource.Groups.OrderBy(i => i.Title).Where(i => !i.IsSpecialSection && !i.HideGroup))
             {
-                var items = group.Items.Where(i => !i.HideNavigationViewItem);
-                AddNavigationViewItemsRecursively(items, group.IsFooterNavigationViewItem, false, group.UniqueId);
-            }
-            else
-            {
-                topLevelItem = new NavigationViewItem()
+                if (group.ShowItemsWithoutGroup)
                 {
-                    Content = GetLocalizedText(group.Title, group.UsexUid),
-                    IsExpanded = group.IsExpanded,
-                    Tag = group.UniqueId,
-                    DataContext = group
-                };
-
-                if (!string.IsNullOrEmpty(group.ImageIconPath))
-                {
-                    var icon = GetIcon(group.ImageIconPath);
-                    if (icon != null)
-                    {
-                        topLevelItem.Icon = icon;
-                    }
-                }
-
-                NavigationHelper.SetNavigateTo(topLevelItem, group.UniqueId);
-                AutomationProperties.SetName(topLevelItem, GetLocalizedText(group.Title, group.UsexUid));
-                topLevelItem.InfoBadge = GetInfoBadge(group);
-
-                var items = group.Items.Where(i => !i.HideNavigationViewItem);
-                AddNavigationViewItemsRecursively(items, group.IsFooterNavigationViewItem, true, group.UniqueId);
-
-                if (group.IsFooterNavigationViewItem)
-                {
-                    _navigationView.FooterMenuItems.Add(topLevelItem);
+                    var items = group.Items.Where(i => !i.HideNavigationViewItem);
+                    AddNavigationViewItemsRecursively(items, group.IsFooterNavigationViewItem, false, group.UniqueId);
                 }
                 else
                 {
-                    _navigationView.MenuItems.Add(topLevelItem);
+                    topLevelItem = new NavigationViewItem()
+                    {
+                        Content = GetLocalizedText(group.Title, group.UsexUid),
+                        IsExpanded = group.IsExpanded,
+                        Tag = group.UniqueId,
+                        DataContext = group
+                    };
+
+                    if (!string.IsNullOrEmpty(group.ImageIconPath))
+                    {
+                        var icon = GetIcon(group.ImageIconPath);
+                        if (icon != null)
+                        {
+                            topLevelItem.Icon = icon;
+                        }
+                    }
+
+                    NavigationHelper.SetNavigateTo(topLevelItem, group.UniqueId);
+                    AutomationProperties.SetName(topLevelItem, GetLocalizedText(group.Title, group.UsexUid));
+                    topLevelItem.InfoBadge = GetInfoBadge(group);
+
+                    var items = group.Items.Where(i => !i.HideNavigationViewItem);
+                    AddNavigationViewItemsRecursively(items, group.IsFooterNavigationViewItem, true, group.UniqueId);
+
+                    if (group.IsFooterNavigationViewItem)
+                    {
+                        _navigationView.FooterMenuItems.Add(topLevelItem);
+                    }
+                    else
+                    {
+                        _navigationView.MenuItems.Add(topLevelItem);
+                    }
                 }
             }
-        }
 
-        ConfigPages();
+            ConfigPages();
+        }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
     private InfoBadge GetInfoBadge(dynamic data)
