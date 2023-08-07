@@ -109,6 +109,19 @@ See the [Components](src/Components/README.md) to see how to use it
 
 See the [Demo](https://github.com/WinUICommunity/WinUICommunity/src/DemoApp) app to see how to use it
 
+
+## Project Templates
+
+for creating a new project easily, you can use our project templates:
+
+download and install our vsix package from Marketplace:
+
+[WinUICommunityTemplates](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates)
+
+
+![WinUICommunityTemplates](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
+
+
 ## Documentation
 
 See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
