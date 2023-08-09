@@ -40,14 +40,14 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'false'">
-    <ProjectReference Include="..\Components\Components.csproj" />
-    <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\LandingPages\LandingPages.csproj" />
+    <ProjectReference Include="..\dev\Components\Components.csproj" />
+    <ProjectReference Include="..\dev\Core\Core.csproj" />
+    <ProjectReference Include="..\dev\LandingPages\LandingPages.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <PackageReference Include="WinUICommunity.Components" Version="*"/>
-    <PackageReference Include="WinUICommunity.Core" Version="*"/>
-    <PackageReference Include="WinUICommunity.LandingPages" Version="*"/>
+    <PackageReference Include="WinUICommunity.Components" Version="*" />
+    <PackageReference Include="WinUICommunity.Core" Version="*" />
+    <PackageReference Include="WinUICommunity.LandingPages" Version="*" />
   </ItemGroup>
   <!-- 
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
@@ -64,5 +64,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <Import Project="../Core/MSBuildTargets/RemoveLanguageFolders.targets" />
+  <Import Project="../dev/Core/MSBuildTargets/RemoveLanguageFolders.targets" />
 </Project>
