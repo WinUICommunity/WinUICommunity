@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
 env:
-  PROJECT_PATH: src/DemoApp/DemoApp.csproj
+  PROJECT_PATH: Samples/DemoApp.csproj
   ZIP_FILENAME: ${{ github.workspace }}\publish\DemoApp-v
   DIR_PATH: publish
   

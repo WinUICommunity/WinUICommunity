@@ -24,6 +24,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		settings.xamlstyler = settings.xamlstyler
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{A7E91045-BCE4-461A-92B4-7F00B760603D}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\PublishDemoApp.yml = .github\workflows\PublishDemoApp.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
