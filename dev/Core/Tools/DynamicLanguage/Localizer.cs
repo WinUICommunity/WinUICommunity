@@ -42,7 +42,7 @@ public sealed partial class Localizer : ILocalizer, IDisposable
             this.localizationActions = LocalizationActions.DefaultActions;
         }
 
-        DependencyObjectUidSet += Uids_DependencyObjectUidSet; ;
+        DependencyObjectUidSet += Uids_DependencyObjectUidSet;
     }
 
     public event EventHandler<LanguageChangedEventArgs>? LanguageChanged;
@@ -53,10 +53,7 @@ public sealed partial class Localizer : ILocalizer, IDisposable
 
     private LanguageDictionary CurrentDictionary { get; set; } = new("");
 
-    public static ILocalizer Get()
-    {
-        return Instance;
-    }
+    public static ILocalizer Get() => Instance;
 
     public IEnumerable<string> GetAvailableLanguages()
     {
@@ -67,7 +64,6 @@ public sealed partial class Localizer : ILocalizer, IDisposable
                 .Select(x => x.Language)
                 .ToArray();
         }
-        
         catch (Exception exception)
         {
             FailedToGetAvailableLanguagesException localizerException = new(innerException: exception);
@@ -75,10 +71,7 @@ public sealed partial class Localizer : ILocalizer, IDisposable
         }
     }
 
-    public string GetCurrentLanguage()
-    {
-        return CurrentDictionary.Language;
-    }
+    public string GetCurrentLanguage() => CurrentDictionary.Language;
 
     public async Task SetLanguage(string language)
     {
@@ -167,15 +160,9 @@ public sealed partial class Localizer : ILocalizer, IDisposable
             : Array.Empty<string>();
     }
 
-    public LanguageDictionary GetCurrentLanguageDictionary()
-    {
-        return CurrentDictionary;
-    }
+    public LanguageDictionary GetCurrentLanguageDictionary() => CurrentDictionary;
 
-    public IEnumerable<LanguageDictionary> GetLanguageDictionaries()
-    {
-        return this.languageDictionaries.Values;
-    }
+    public IEnumerable<LanguageDictionary> GetLanguageDictionaries() => this.languageDictionaries.Values;
 
     public void Dispose()
     {
@@ -183,10 +170,7 @@ public sealed partial class Localizer : ILocalizer, IDisposable
         GC.SuppressFinalize(this);
     }
 
-    internal static void Set(ILocalizer localizer)
-    {
-        Instance = localizer;
-    }
+    internal static void Set(ILocalizer localizer) => Instance = localizer;
 
     internal void AddLanguageDictionary(LanguageDictionary languageDictionary)
     {
@@ -252,14 +236,6 @@ public sealed partial class Localizer : ILocalizer, IDisposable
         return null;
     }
 
-    private void LocalizeDependencyObjectsWithoutDependencyProperty(DependencyObject dependencyObject, string value)
-    {
-        foreach (LocalizationActions.ActionItem item in this.localizationActions
-            .Where(x => x.TargetType == dependencyObject.GetType()))
-        {
-            item.Action(new LocalizationActions.ActionArguments(dependencyObject, value));
-        }
-    }
     private async Task LocalizeDependencyObjects()
     {
         foreach (DependencyObject dependencyObject in await this.dependencyObjectsReferences.GetDependencyObjects())
@@ -275,17 +251,46 @@ public sealed partial class Localizer : ILocalizer, IDisposable
         {
             foreach (LanguageDictionary.Item item in items)
             {
-                if (GetDependencyProperty(
-                    dependencyObject,
-                    item.DependencyPropertyName) is DependencyProperty dependencyProperty)
-                {
-                    dependencyObject.SetValue(dependencyProperty, item.Value);
-                }
-                else
-                {
-                    LocalizeDependencyObjectsWithoutDependencyProperty(dependencyObject, item.Value);
-                }
+                LocalizeDependencyObject(dependencyObject, item);
             }
+        }
+    }
+
+    private void LocalizeDependencyObject(DependencyObject dependencyObject, LanguageDictionary.Item item)
+    {
+        if (GetDependencyProperty(
+            dependencyObject,
+            item.DependencyPropertyName) is DependencyProperty dependencyProperty)
+        {
+            LocalizeDependencyObjectsWithDependencyProperty(dependencyObject, dependencyProperty, item.Value);
+        }
+        else
+        {
+            LocalizeDependencyObjectsWithoutDependencyProperty(dependencyObject, item.Value);
+        }
+    }
+
+    private void LocalizeDependencyObjectsWithDependencyProperty(DependencyObject dependencyObject, DependencyProperty dependencyProperty, string value)
+    {
+        if (dependencyObject
+            .GetValue(dependencyProperty)?
+            .GetType() is Type propertyType &&
+            propertyType.IsEnum is true &&
+            Enum.TryParse(propertyType, value, out object? enumValue) is true)
+        {
+            dependencyObject.SetValue(dependencyProperty, enumValue);
+            return;
+        }
+
+        dependencyObject.SetValue(dependencyProperty, value);
+    }
+
+    private void LocalizeDependencyObjectsWithoutDependencyProperty(DependencyObject dependencyObject, string value)
+    {
+        foreach (LocalizationActions.ActionItem item in this.localizationActions
+            .Where(x => x.TargetType == dependencyObject.GetType()))
+        {
+            item.Action(new LocalizationActions.ActionArguments(dependencyObject, value));
         }
     }
 
