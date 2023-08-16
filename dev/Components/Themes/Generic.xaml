@@ -8,7 +8,6 @@ Controls\Labs\SettingsCard\SettingsCard.xaml
 Controls\Labs\SettingsExpander\SettingsExpander.xaml
 Controls\Labs\TitleBar\TitleBar.xaml
 Themes\Styles\Button.xaml
-Themes\Styles\Colors.xaml
 Themes\Styles\Common.xaml
 Themes\Styles\Controls\FlyoutMenuButton.xaml
 Themes\Styles\Controls\InlineAutoCompleteTextBox.xaml
@@ -34,9 +33,6 @@ Themes\Styles\TextBlock.xaml
       <win:StaticResource x:Key="SettingsCardBorderBrushPointerOver" ResourceKey="ControlElevationBorderBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushPressed" ResourceKey="ControlStrokeColorDefaultBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushDisabled" ResourceKey="ControlStrokeColorDefaultBrush" />
-      <win:SolidColorBrush x:Key="InfoBarInformationalSeverityBackgroundBrush" Color="#FF34424d" />
-      <win:Color x:Key="InfoBarInformationalSeverityIconBackground">#FF5fb2f2</win:Color>
-      <win:SolidColorBrush x:Key="SolidBackgroundBrush" Color="Black" />
     </win:ResourceDictionary>
     <win:ResourceDictionary x:Key="Light">
       <win:StaticResource x:Key="SettingsCardBackground" ResourceKey="CardBackgroundFillColorDefaultBrush" />
@@ -51,9 +47,6 @@ Themes\Styles\TextBlock.xaml
       <win:StaticResource x:Key="SettingsCardBorderBrushPointerOver" ResourceKey="ControlElevationBorderBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushPressed" ResourceKey="ControlStrokeColorDefaultBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushDisabled" ResourceKey="ControlStrokeColorDefaultBrush" />
-      <win:SolidColorBrush x:Key="InfoBarInformationalSeverityBackgroundBrush" Color="#FFd3e7f7" />
-      <win:Color x:Key="InfoBarInformationalSeverityIconBackground">#FF0063b1</win:Color>
-      <win:SolidColorBrush x:Key="SolidBackgroundBrush" Color="White" />
     </win:ResourceDictionary>
     <win:ResourceDictionary x:Key="HighContrast">
       <win:StaticResource x:Key="SettingsCardBackground" ResourceKey="SystemColorButtonFaceColorBrush" />
@@ -68,9 +61,6 @@ Themes\Styles\TextBlock.xaml
       <win:StaticResource x:Key="SettingsCardBorderBrushPointerOver" ResourceKey="SystemColorHighlightColorBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushPressed" ResourceKey="SystemColorHighlightTextColorBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushDisabled" ResourceKey="SystemControlDisabledTransparentBrush" />
-      <win:SolidColorBrush x:Key="InfoBarInformationalSeverityBackgroundBrush" Color="#FF34424d" />
-      <win:SolidColorBrush x:Key="SolidBackgroundBrush" Color="Black" />
-      <win:Color x:Key="InfoBarInformationalSeverityIconBackground">#FF5fb2f2</win:Color>
     </win:ResourceDictionary>
   </win:ResourceDictionary.ThemeDictionaries>
   <win:Thickness x:Key="SettingsCardBorderThickness">1</win:Thickness>
