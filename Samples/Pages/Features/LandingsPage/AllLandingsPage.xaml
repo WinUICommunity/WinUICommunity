@@ -8,7 +8,7 @@
 
     <Grid>
         <wuc:AllLandingPage x:Name="allLandingsPage"
-                            HeaderImage="ms-appx:///Assets/GalleryHeaderImage.png"
+                            HeaderImage="{ThemeResource HeaderCover}"
                             HeaderText="All"
                             Loaded="allLandingsPage_Loaded"
                             OnItemClick="allLandingsPage_OnItemClick" />

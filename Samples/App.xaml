@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml" />
                 <wuc:ItemTemplates />
                 <ResourceDictionary Source="ms-appx:///WinUICommunity.Components/Themes/InfoBarInformationalColor.xaml" />
+                <ResourceDictionary Source="Themes/ThemeResources.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

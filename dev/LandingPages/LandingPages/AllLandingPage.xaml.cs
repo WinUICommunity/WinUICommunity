@@ -26,11 +26,6 @@ public sealed partial class AllLandingPage : ItemsPageBase
         get => (double)GetValue(HeaderImageHeightProperty);
         set => SetValue(HeaderImageHeightProperty, value);
     }
-    public Brush HeaderForeground
-    {
-        get => (Brush)GetValue(HeaderForegroundProperty);
-        set => SetValue(HeaderForegroundProperty, value);
-    }
 
     public ImageSource PlaceholderSource
     {
@@ -57,7 +52,6 @@ public sealed partial class AllLandingPage : ItemsPageBase
     public static readonly DependencyProperty HeaderImageProperty = DependencyProperty.Register("HeaderImage", typeof(string), typeof(AllLandingPage), new PropertyMetadata(default(string)));
     public static readonly DependencyProperty HeaderOverlayImageProperty = DependencyProperty.Register("HeaderOverlayImage", typeof(string), typeof(AllLandingPage), new PropertyMetadata(default(string)));
     public static readonly DependencyProperty HeaderImageHeightProperty = DependencyProperty.Register("HeaderImageHeight", typeof(double), typeof(AllLandingPage), new PropertyMetadata(200.0));
-    public static readonly DependencyProperty HeaderForegroundProperty = DependencyProperty.Register("HeaderForeground", typeof(Brush), typeof(AllLandingPage), new PropertyMetadata(Application.Current.Resources["TextFillColorPrimaryBrush"] as Brush));
     public static readonly DependencyProperty PlaceholderSourceProperty = DependencyProperty.Register("PlaceholderSource", typeof(ImageSource), typeof(AllLandingPage), new PropertyMetadata(default(ImageSource)));
     public static readonly DependencyProperty IsCacheEnabledProperty = DependencyProperty.Register("IsCacheEnabled", typeof(bool), typeof(AllLandingPage), new PropertyMetadata(true));
     public static readonly DependencyProperty EnableLazyLoadingProperty = DependencyProperty.Register("EnableLazyLoading", typeof(bool), typeof(AllLandingPage), new PropertyMetadata(true));

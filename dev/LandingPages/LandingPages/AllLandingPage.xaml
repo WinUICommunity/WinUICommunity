@@ -51,7 +51,6 @@
                        Margin="36,0,0,0"
                        VerticalAlignment="Center"
                        FontFamily="{ThemeResource ContentControlThemeFontFamily}"
-                       Foreground="{x:Bind HeaderForeground, Mode=OneWay}"
                        Style="{StaticResource TitleTextBlockStyle}"
                        Text="{x:Bind HeaderText, Mode=OneWay}" />
         </Grid>

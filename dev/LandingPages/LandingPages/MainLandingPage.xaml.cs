@@ -13,16 +13,19 @@ public sealed partial class MainLandingPage : ItemsPageBase
         get => (string)GetValue(NewGroupTextProperty);
         set => SetValue(NewGroupTextProperty, value);
     }
+
     public string UpdatedGroupText
     {
         get => (string)GetValue(UpdatedGroupTextProperty);
         set => SetValue(UpdatedGroupTextProperty, value);
     }
+
     public string PreviewGroupText
     {
         get => (string)GetValue(PreviewGroupTextProperty);
         set => SetValue(PreviewGroupTextProperty, value);
     }
+
     public string HeaderText
     {
         get => (string)GetValue(HeaderTextProperty);
@@ -46,61 +49,61 @@ public sealed partial class MainLandingPage : ItemsPageBase
         get => (string)GetValue(HeaderImageProperty);
         set => SetValue(HeaderImageProperty, value);
     }
+
     public string HeaderOverlayImage
     {
         get => (string)GetValue(HeaderOverlayImageProperty);
         set => SetValue(HeaderOverlayImageProperty, value);
     }
+
     public double HeaderImageHeight
     {
         get => (double)GetValue(HeaderImageHeightProperty);
         set => SetValue(HeaderImageHeightProperty, value);
     }
+
     public Thickness HeaderMargin
     {
         get => (Thickness)GetValue(HeaderMarginProperty);
         set => SetValue(HeaderMarginProperty, value);
     }
+
     public object FooterContent
     {
         get => (object)GetValue(FooterContentProperty);
         set => SetValue(FooterContentProperty, value);
     }
+
     public double FooterHeight
     {
         get => (double)GetValue(FooterHeightProperty);
         set => SetValue(FooterHeightProperty, value);
     }
+
     public Thickness FooterMargin
     {
         get => (Thickness)GetValue(FooterMarginProperty);
         set => SetValue(FooterMarginProperty, value);
     }
-    public Brush HeaderForeground
-    {
-        get => (Brush)GetValue(HeaderForegroundProperty);
-        set => SetValue(HeaderForegroundProperty, value);
-    }
-    public Brush HeaderSubtitleForeground
-    {
-        get => (Brush)GetValue(HeaderSubtitleForegroundProperty);
-        set => SetValue(HeaderSubtitleForegroundProperty, value);
-    }
+    
     public ImageSource PlaceholderSource
     {
         get => (ImageSource)GetValue(PlaceholderSourceProperty);
         set => SetValue(PlaceholderSourceProperty, value);
     }
+
     public bool IsCacheEnabled
     {
         get => (bool)GetValue(IsCacheEnabledProperty);
         set => SetValue(IsCacheEnabledProperty, value);
     }
+
     public bool EnableLazyLoading
     {
         get => (bool)GetValue(EnableLazyLoadingProperty);
         set => SetValue(EnableLazyLoadingProperty, value);
     }
+
     public double LazyLoadingThreshold
     {
         get => (double)GetValue(LazyLoadingThresholdProperty);
@@ -121,8 +124,6 @@ public sealed partial class MainLandingPage : ItemsPageBase
     public static readonly DependencyProperty FooterContentProperty = DependencyProperty.Register("FooterContent", typeof(object), typeof(MainLandingPage), new PropertyMetadata(null));
     public static readonly DependencyProperty FooterHeightProperty = DependencyProperty.Register("FooterHeight", typeof(double), typeof(MainLandingPage), new PropertyMetadata(200.0));
     public static readonly DependencyProperty FooterMarginProperty = DependencyProperty.Register("FooterMargin", typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(16, 34, 48, 0)));
-    public static readonly DependencyProperty HeaderForegroundProperty = DependencyProperty.Register("HeaderForeground", typeof(Brush), typeof(MainLandingPage), new PropertyMetadata(Application.Current.Resources["TextFillColorPrimaryBrush"] as Brush));
-    public static readonly DependencyProperty HeaderSubtitleForegroundProperty = DependencyProperty.Register("HeaderSubtitleForeground", typeof(Brush), typeof(MainLandingPage), new PropertyMetadata(Application.Current.Resources["TextFillColorPrimaryBrush"] as Brush));
     public static readonly DependencyProperty PlaceholderSourceProperty = DependencyProperty.Register("PlaceholderSource", typeof(ImageSource), typeof(MainLandingPage), new PropertyMetadata(default(ImageSource)));
     public static readonly DependencyProperty IsCacheEnabledProperty = DependencyProperty.Register("IsCacheEnabled", typeof(bool), typeof(MainLandingPage), new PropertyMetadata(true));
     public static readonly DependencyProperty EnableLazyLoadingProperty = DependencyProperty.Register("EnableLazyLoading", typeof(bool), typeof(MainLandingPage), new PropertyMetadata(true));

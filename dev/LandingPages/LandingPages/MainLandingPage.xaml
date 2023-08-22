@@ -69,11 +69,9 @@
                         <TextBlock x:Name="smallHeaderSubtitleText"
                                    FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                                    FontSize="18"
-                                   Foreground="{x:Bind HeaderSubtitleForeground, Mode=OneWay}"
                                    Text="{x:Bind HeaderSubtitleText, Mode=OneWay}" />
                         <TextBlock x:Name="smallHeaderText"
                                    FontFamily="{ThemeResource ContentControlThemeFontFamily}"
-                                   Foreground="{x:Bind HeaderForeground, Mode=OneWay}"
                                    Style="{StaticResource TitleLargeTextBlockStyle}"
                                    Text="{x:Bind HeaderText, Mode=OneWay}" />
                     </StackPanel>

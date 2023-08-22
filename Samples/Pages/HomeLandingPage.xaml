@@ -8,8 +8,8 @@
       mc:Ignorable="d">
 
     <wuc:AllLandingPage x:Name="allLandingsPage"
-                        HeaderImage="ms-appx:///Assets/GalleryHeaderImage.png"
-                        HeaderOverlayImage="ms-appx:///Assets/GalleryHeaderImage.png"
+                        HeaderImage="{ThemeResource HeaderCover}"
+                        HeaderOverlayImage="{ThemeResource HeaderCover}"
                         HeaderText="DemoApp"
                         OnItemClick="allLandingsPage_OnItemClick" />
 </Page>
