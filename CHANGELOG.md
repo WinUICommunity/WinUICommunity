@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v5.0.6](https://github.com/WinUICommunity/WinUICommunity/compare/v5.0.2...v5.0.6)
+
+> 22 August 2023
+
+- improve resourceHelper [`f5dbcb6`](https://github.com/WinUICommunity/WinUICommunity/commit/f5dbcb6d394f1cc169387b7aa3d4d919e11bcfdf)
+- Improve Localization [`3291df2`](https://github.com/WinUICommunity/WinUICommunity/commit/3291df2ea270b68ce038af48fbfe86b6775bfbd6)
+- Improve Localizer [`aeb7f4d`](https://github.com/WinUICommunity/WinUICommunity/commit/aeb7f4d86ee5da6538bbc50be562021f3a43c89c)
+- Update Localizer.cs [`d957628`](https://github.com/WinUICommunity/WinUICommunity/commit/d9576280e7bd734b06b4242c62aeb1f4eb4089da)
+- Improve JsonNavigationViewService [`cb8177a`](https://github.com/WinUICommunity/WinUICommunity/commit/cb8177a6cbad7afd6726461191b5b4297a4f3f14)
+- Remove Custom Foreground and Fix LandingPages TextBlock Foreground issues [`b63f794`](https://github.com/WinUICommunity/WinUICommunity/commit/b63f7944081a211c38a5d7cfe668ed2e5d36428a)
+- refactor [`3e57bf8`](https://github.com/WinUICommunity/WinUICommunity/commit/3e57bf800381dec75f174c2f65a708fcb80a1687)
+- add InfoBarInformationalColor.xaml [`b4cf873`](https://github.com/WinUICommunity/WinUICommunity/commit/b4cf873154688f7fbc1d103613b4d674479b2a31)
+- public imagex [`c676456`](https://github.com/WinUICommunity/WinUICommunity/commit/c676456f53501c41c4e9a64b6e531ee5c5a25422)
+- Update README.md [`165115d`](https://github.com/WinUICommunity/WinUICommunity/commit/165115dd6fcad74ed11abd21ea8ff73a27f64f54)
+- add support font change for LandingPages [`10fbd2d`](https://github.com/WinUICommunity/WinUICommunity/commit/10fbd2df2667bbc99c5bee67fa1cdcd872fee3e8)
+- Update README.md [`7be3f95`](https://github.com/WinUICommunity/WinUICommunity/commit/7be3f956091afa107d503837d071dc396c1f3272)
+- update yml [`4fe1e32`](https://github.com/WinUICommunity/WinUICommunity/commit/4fe1e32d9a427173a031e2de16f9414d93105f78)
+- Update LandingPages.csproj [`41bb42d`](https://github.com/WinUICommunity/WinUICommunity/commit/41bb42d077daf2881e58bc1533dac4fae22a65cc)
+- Update LandingPages.csproj [`ba28aca`](https://github.com/WinUICommunity/WinUICommunity/commit/ba28aca53febc8a9d5bf106183988d8683d99db6)
+- Update Core.csproj [`ecabf8e`](https://github.com/WinUICommunity/WinUICommunity/commit/ecabf8e8f35d21f6ccb7244e339f23d723a70630)
+
+#### [v5.0.2](https://github.com/WinUICommunity/WinUICommunity/compare/v5.0.0...v5.0.2)
+
+> 31 July 2023
+
+- Create CHANGELOG.md [`699ceba`](https://github.com/WinUICommunity/WinUICommunity/commit/699cebae4083d09977d8e217b9c5be37d456d32a)
+- Create PublishDemoApp.yml [`6f2cc07`](https://github.com/WinUICommunity/WinUICommunity/commit/6f2cc07c1ab3483eae351629fe2341ef493bc7c4)
+- Update README.md [`866e256`](https://github.com/WinUICommunity/WinUICommunity/commit/866e2567af067564bef4dd5d67cd3f7484f9090b)
+- Update README.md [`8e26912`](https://github.com/WinUICommunity/WinUICommunity/commit/8e26912df359247cd6106f94c80cf654985bbe66)
+- Update README.md [`2af10af`](https://github.com/WinUICommunity/WinUICommunity/commit/2af10afa5f4074e2fbe2cb0c57147c472ec2d152)
+- Delete build.yml [`5d74901`](https://github.com/WinUICommunity/WinUICommunity/commit/5d7490166443b39fc220bebf5dc32dcaaeedf14e)
+- Revert "Update DemoApp.csproj" [`0a3b947`](https://github.com/WinUICommunity/WinUICommunity/commit/0a3b9473f0010e4c7a5d8acb3c26f6f2d1272031)
+- Update DemoApp.csproj [`a95214d`](https://github.com/WinUICommunity/WinUICommunity/commit/a95214ddbc32bcf1b459ea5d3df0b73c61585769)
+- fix publish demo [`31eab20`](https://github.com/WinUICommunity/WinUICommunity/commit/31eab201e01c75f92d006bd997f3dbb9f1427326)
+- update to WASDK v1.3.230724000 [`deda62b`](https://github.com/WinUICommunity/WinUICommunity/commit/deda62b68ddd4a381eb0d2ef1cea82ff9eddf47d)
+- Update RemoveLanguageFolders.targets [`ca35bd5`](https://github.com/WinUICommunity/WinUICommunity/commit/ca35bd5bf0f40db4986913f167c1e81f90c8472f)
+- always install latest stable wasdk version [`9c9bca7`](https://github.com/WinUICommunity/WinUICommunity/commit/9c9bca78fee9086fe5ac681a511936a92386c56f)
+- Update README.md [`db899a0`](https://github.com/WinUICommunity/WinUICommunity/commit/db899a0516f1b28252b71d5042e987a8aa84b6d2)
+
 #### v5.0.0
 
 > 30 July 2023
