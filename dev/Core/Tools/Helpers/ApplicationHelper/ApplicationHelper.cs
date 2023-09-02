@@ -1,8 +1,4 @@
-﻿using Windows.Security.Cryptography.Core;
-using Windows.Security.Cryptography;
-using Windows.Storage.Streams;
-using System.Web;
-using System.Diagnostics;
+﻿using System.Web;
 
 namespace WinUICommunity;
 public static partial class ApplicationHelper
@@ -140,14 +136,6 @@ public static partial class ApplicationHelper
         return string.Format(
             formatTemplate,
             size < 0 ? "-" : null, normSize, sizeSuffixes[iUnit]);
-    }
-
-    public static void Restart()
-    {
-        ProcessStartInfo processStartInfo = new ProcessStartInfo(GetExecutablePathNative());
-
-        Process.Start(processStartInfo);
-        Environment.Exit(0);
     }
 }
 
