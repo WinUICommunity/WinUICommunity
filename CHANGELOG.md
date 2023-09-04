@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v5.1.0](https://github.com/WinUICommunity/WinUICommunity/compare/v5.0.6...v5.1.0)
+
+> 22 August 2023
+
+- Update CHANGELOG.md [`a852c4f`](https://github.com/WinUICommunity/WinUICommunity/commit/a852c4fd343194585d3b03b77f84da2731dba58e)
+
 #### [v5.0.6](https://github.com/WinUICommunity/WinUICommunity/compare/v5.0.2...v5.0.6)
 
 > 22 August 2023
