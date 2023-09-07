@@ -1874,7 +1874,7 @@ Themes\Styles\TextBlock.xaml
       </win:Setter>
     </win:Style.Setters>
   </win:Style>
-  <win:Style x:Key="DefaultSettingsExpanderItemStyle" BasedOn="{StaticResource DefaultSettingsCardStyle}" TargetType="labs:SettingsCard">
+  <win:Style x:Key="DefaultSettingsExpanderItemStyle" BasedOn="{StaticResource DefaultSettingsCardStyle}" TargetType="local:SettingsCard">
     <win:Style.Setters>
       <win:Setter Property="BorderThickness" Value="{ThemeResource SettingsExpanderItemBorderThickness}" />
       <win:Setter Property="MinHeight" Value="52" />
@@ -1882,7 +1882,7 @@ Themes\Styles\TextBlock.xaml
       <win:Setter Property="CornerRadius" Value="0" />
     </win:Style.Setters>
   </win:Style>
-  <win:Style x:Key="ClickableSettingsExpanderItemStyle" BasedOn="{StaticResource DefaultSettingsExpanderItemStyle}" TargetType="labs:SettingsCard">
+  <win:Style x:Key="ClickableSettingsExpanderItemStyle" BasedOn="{StaticResource DefaultSettingsExpanderItemStyle}" TargetType="local:SettingsCard">
     <win:Style.Setters>
       <win:Setter Property="Padding" Value="{ThemeResource ClickableSettingsExpanderItemPadding}" />
     </win:Style.Setters>
@@ -2117,7 +2117,7 @@ Themes\Styles\TextBlock.xaml
   </win:Style>
   <win:Style BasedOn="{StaticResource DefaultFlyoutMenuButtonStyle}" TargetType="local:FlyoutMenuButton" />
   <win:Style BasedOn="{StaticResource DefaultSettingsCardStyle}" TargetType="labs:SettingsCard" />
-  <win:Style x:Key="DefaultSettingsExpanderStyle" TargetType="labs:SettingsExpander">
+  <win:Style x:Key="DefaultSettingsExpanderStyle" TargetType="local:SettingsExpander">
     <win:Style.Setters>
       <win:Setter Property="Background" Value="{ThemeResource SettingsCardBackground}" />
       <win:Setter Property="Foreground" Value="{ThemeResource SettingsCardForeground}" />
@@ -2140,8 +2140,8 @@ Themes\Styles\TextBlock.xaml
       <win:Setter Property="FocusVisualMargin" Value="-3" />
       <win:Setter Property="Template">
         <win:Setter.Value>
-          <win:ControlTemplate TargetType="labs:SettingsExpander">
-            <win:Expander MinWidth="{TemplateBinding MinWidth}" MinHeight="{TemplateBinding MinHeight}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" win:AutomationProperties.HelpText="{TemplateBinding AutomationProperties.HelpText}" win:AutomationProperties.Name="{TemplateBinding AutomationProperties.Name}" IsExpanded="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource SettingsExpanderExpanderStyle}">
+          <win:ControlTemplate TargetType="local:SettingsExpander">
+            <win:Expander MinWidth="{TemplateBinding MinWidth}" MinHeight="{TemplateBinding MinHeight}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" win:AutomationProperties.HelpText="{TemplateBinding AutomationProperties.HelpText}" win:AutomationProperties.Name="{TemplateBinding AutomationProperties.Name}" CornerRadius="{TemplateBinding CornerRadius}" IsExpanded="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource SettingsExpanderExpanderStyle}">
               <win:Expander.Header>
                 <local:SettingsCard Padding="{StaticResource SettingsExpanderHeaderPadding}" VerticalAlignment="Center" Background="Transparent" BorderThickness="0" Content="{TemplateBinding Content}" Description="{TemplateBinding Description}" Header="{TemplateBinding Header}" HeaderIcon="{TemplateBinding HeaderIcon}" IsClickEnabled="False" />
               </win:Expander.Header>
@@ -2168,5 +2168,5 @@ Themes\Styles\TextBlock.xaml
     </win:Style.Setters>
   </win:Style>
   <win:Style BasedOn="{StaticResource DefaultTitleBarStyle}" TargetType="local:TitleBar" />
-  <win:Style BasedOn="{StaticResource DefaultSettingsExpanderStyle}" TargetType="labs:SettingsExpander" />
+  <win:Style BasedOn="{StaticResource DefaultSettingsExpanderStyle}" TargetType="local:SettingsExpander" />
 </win:ResourceDictionary>
