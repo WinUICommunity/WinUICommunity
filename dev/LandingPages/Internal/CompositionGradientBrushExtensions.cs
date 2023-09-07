@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.WinUI.UI.Animations;
+﻿using CommunityToolkit.WinUI.Animations;
 
 using Microsoft.UI;
 using Microsoft.UI.Composition;

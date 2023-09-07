@@ -2,7 +2,7 @@
   <PropertyGroup>
 	  <TargetFrameworks>net6.0-windows10.0.19041.0;net7.0-windows10.0.19041.0</TargetFrameworks>
 	  <NoWarn>CA1416;WMC1506</NoWarn>
-	  <Version>5.1.0</Version>
+	  <Version>5.1.1</Version>
     <Namespace>WinUICommunity.LandingPages</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
@@ -11,8 +11,7 @@
 	  <PackageTags>winui LandingsPage landingpages winui3 win11 xaml SettingsUI settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-	  <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
-	  <PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
+	  <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.0.230907" />
 	  <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.4" />
   </ItemGroup>
 	

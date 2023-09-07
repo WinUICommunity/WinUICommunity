@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.WinUI;
-using CommunityToolkit.WinUI.UI;
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 
-using CommunityToolkit.WinUI.UI;
-using CommunityToolkit.WinUI.UI.Animations;
+using CommunityToolkit.WinUI;
+using CommunityToolkit.WinUI.Animations;
 
 using Microsoft.Graphics.Canvas.Effects;
 using Microsoft.UI.Composition;
