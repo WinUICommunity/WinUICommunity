@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity.Core.Tools;
+﻿namespace WinUICommunity;
 public interface ITitleBarAutoSuggestBoxAware
 {
     void OnAutoSuggestBoxTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args);
