@@ -126,9 +126,7 @@ public sealed partial class Localizer : ILocalizer, IDisposable
             throw localizerException;
         }
 
-        return this.options.UseUidWhenLocalizedStringNotFound is true
-            ? uid
-            : string.Empty;
+        return string.Empty;
     }
 
     public IEnumerable<string> GetLocalizedStrings(string uid)
@@ -155,9 +153,7 @@ public sealed partial class Localizer : ILocalizer, IDisposable
             throw localizerException;
         }
 
-        return this.options.UseUidWhenLocalizedStringNotFound is true
-            ? new string[] { uid }
-            : Array.Empty<string>();
+        return Array.Empty<string>();
     }
 
     public LanguageDictionary GetCurrentLanguageDictionary() => CurrentDictionary;

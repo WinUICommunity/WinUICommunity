@@ -16,13 +16,26 @@ public partial class LocalizerBuilder
 
     private readonly Localizer.Options options = new();
 
-    public static string StringResourcesFileXPath { get; set; } = "//root/data";
+    private string defaultStringResourcesFileName = "Resources.resw";
+
+    private string stringResourcesFileXPath = "//root/data";
 
     public static bool IsLocalizerAlreadyBuilt => Localizer.Get() is Localizer;
 
+    public LocalizerBuilder SetDefaultStringResourcesFileName(string fileName)
+    {
+        this.defaultStringResourcesFileName = fileName;
+        return this;
+    }
+
+    public LocalizerBuilder SetStringResourcesFileXPath(string xPath)
+    {
+        this.stringResourcesFileXPath = xPath;
+        return this;
+    }
+
     public LocalizerBuilder AddStringResourcesFolderForLanguageDictionaries(
         string stringResourcesFolderPath,
-        string resourcesFileName = "Resources.resw",
         bool ignoreExceptions = false)
     {
         this.builderActions.Add(() =>
@@ -31,13 +44,20 @@ public partial class LocalizerBuilder
             {
                 try
                 {
-                    string languageFilePath = Path.Combine(languageFolderPath, resourcesFileName);
-
-                    if (CreateLanguageDictionaryFromStringResourcesFile(
-                        languageFilePath,
-                        StringResourcesFileXPath) is LanguageDictionary dictionary)
+                    foreach (string stringResourcesFileFullPath in Directory.GetFiles(languageFolderPath, "*.resw"))
                     {
-                        this.languageDictionaries.Add(dictionary);
+                        string fileName = Path.GetFileName(stringResourcesFileFullPath);
+                        string sourceName = fileName == this.defaultStringResourcesFileName
+                            ? string.Empty
+                            : Path.GetFileNameWithoutExtension(fileName);
+
+                        if (CreateLanguageDictionaryFromStringResourcesFile(
+                            sourceName,
+                            stringResourcesFileFullPath,
+                            this.stringResourcesFileXPath) is LanguageDictionary dictionary)
+                        {
+                            this.languageDictionaries.Add(dictionary);
+                        }
                     }
                 }
                 catch
@@ -102,13 +122,17 @@ public partial class LocalizerBuilder
         return localizer;
     }
 
-    private static LanguageDictionary? CreateLanguageDictionaryFromStringResourcesFile(string filePath, string fileXPath)
+    private static LanguageDictionary? CreateLanguageDictionaryFromStringResourcesFile(string sourceName, string filePath, string fileXPath)
     {
-        return CreateStringResourceItemsFromResourcesFile(
+        if (CreateStringResourceItemsFromResourcesFile(
+            sourceName,
             filePath,
-            fileXPath) is StringResourceItems stringResourceItems
-            ? CreateLanguageDictionaryFromStringResourceItems(stringResourceItems)
-            : null;
+            fileXPath) is StringResourceItems stringResourceItems)
+        {
+            return CreateLanguageDictionaryFromStringResourceItems(stringResourceItems);
+        }
+
+        return null;
     }
 
     private static LanguageDictionary CreateLanguageDictionaryFromStringResourceItems(StringResourceItems stringResourceItems)
@@ -137,43 +161,46 @@ public partial class LocalizerBuilder
             stringResourceItem.Name);
     }
 
-    private static StringResourceItems? CreateStringResourceItemsFromResourcesFile(string filePath, string xPath = "//root/data")
+    private static StringResourceItems? CreateStringResourceItemsFromResourcesFile(string sourceName, string filePath, string xPath = "//root/data")
     {
         DirectoryInfo directoryInfo = new(filePath);
 
         if (directoryInfo.Parent?.Name is string language)
         {
             XmlDocument document = new();
-            if (File.Exists(directoryInfo.FullName))
-            {
-                document.Load(directoryInfo.FullName);
+            document.Load(directoryInfo.FullName);
 
-                if (document.SelectNodes(xPath) is XmlNodeList nodeList)
-                {
-                    List<StringResourceItem> items = new();
-                    items.AddRange(CreateStringResourceItems(nodeList));
-                    return new StringResourceItems(language, items);
-                }
+            if (document.SelectNodes(xPath) is XmlNodeList nodeList)
+            {
+                List<StringResourceItem> items = new();
+                IEnumerable<StringResourceItem> stringResourceItems = CreateStringResourceItems(sourceName, nodeList);
+                items.AddRange(stringResourceItems);
+                return new StringResourceItems(language, items);
             }
         }
+
         return null;
     }
 
-    private static IEnumerable<StringResourceItem> CreateStringResourceItems(XmlNodeList nodeList)
+    private static IEnumerable<StringResourceItem> CreateStringResourceItems(string sourceName, XmlNodeList nodeList)
     {
         foreach (XmlNode node in nodeList)
         {
-            if (CreateStringResourceItem(node) is StringResourceItem item)
+            if (CreateStringResourceItem(sourceName, node) is StringResourceItem item)
             {
                 yield return item;
             }
         }
     }
 
-    private static StringResourceItem? CreateStringResourceItem(XmlNode node)
+    private static StringResourceItem? CreateStringResourceItem(string sourceName, XmlNode node)
     {
+        string prefix = string.IsNullOrEmpty(sourceName) is false
+            ? $"/{sourceName}/"
+            : string.Empty;
+
         return new StringResourceItem(
-            Name: node.Attributes?["name"]?.Value ?? string.Empty,
+            Name: $"{prefix}{node.Attributes?["name"]?.Value ?? string.Empty}",
             Value: node["value"]?.InnerText ?? string.Empty,
             Comment: string.Empty);
     }
