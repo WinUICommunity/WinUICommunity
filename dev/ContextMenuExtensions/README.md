@@ -39,20 +39,20 @@ After installing, add the following codes to `Package.appxmanifest`
     <desktop4:Extension Category="windows.fileExplorerContextMenus">
         <desktop4:FileExplorerContextMenus>
             <desktop5:ItemType Type="Directory"  >
-                <desktop5:Verb Id="CustomMenu" Clsid="46F650E5-9959-48D6-AC13-A9637C5B3787" />
+                <desktop5:Verb Id="CustomMenu" Clsid="3EB53D8C-1221-451F-80AE-50E5B67E42DF" />
             </desktop5:ItemType>
             <desktop5:ItemType Type="*"  >
-                <desktop5:Verb Id="CustomMenu" Clsid="46F650E5-9959-48D6-AC13-A9637C5B3787" />
+                <desktop5:Verb Id="CustomMenu" Clsid="3EB53D8C-1221-451F-80AE-50E5B67E42DF" />
             </desktop5:ItemType>
             <desktop5:ItemType Type="Directory\Background">
-                <desktop5:Verb Id="CustomMenu" Clsid="46F650E5-9959-48D6-AC13-A9637C5B3787" />
+                <desktop5:Verb Id="CustomMenu" Clsid="3EB53D8C-1221-451F-80AE-50E5B67E42DF" />
             </desktop5:ItemType>
         </desktop4:FileExplorerContextMenus>
     </desktop4:Extension>
     <com:Extension Category="windows.comServer">
         <com:ComServer>
             <com:SurrogateServer  DisplayName="Custome Context Menu">
-                <com:Class Id="46F650E5-9959-48D6-AC13-A9637C5B3787" Path="ContextMenuCustomHost.dll" ThreadingModel="STA"/>
+                <com:Class Id="3EB53D8C-1221-451F-80AE-50E5B67E42DF" Path="ContextMenuCustomHost.dll" ThreadingModel="STA"/>
             </com:SurrogateServer>
         </com:ComServer>
     </com:Extension>
