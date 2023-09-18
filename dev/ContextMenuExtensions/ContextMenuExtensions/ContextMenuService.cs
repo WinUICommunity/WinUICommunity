@@ -6,39 +6,6 @@ public class ContextMenuService
 
     public static readonly ContextMenuService Ins = new();
 
-    public async void OpenMenusFolderAsync()
-    {
-        var folder = await GetMenusFolderAsync();
-        _ = await Launcher.LaunchFolderAsync(folder);
-    }
-
-    public async void OpenMenuFileAsync(ContextMenuItem item)
-    {
-        if (item.File == null)
-        {
-            return;
-        }
-        _ = await Launcher.LaunchFileAsync(item.File);
-    }
-
-    public string GetCustomMenuName()
-    {
-        var value = ApplicationData.Current.LocalSettings.Values["Custom_Menu_Name"];
-        return (value as string) ?? "Open With";
-    }
-
-    public async void SetCustomMenuName(string name)
-    {
-        await Task.Run(() =>
-        {
-            ApplicationData.Current.LocalSettings.Values["Custom_Menu_Name"] = name ?? "Open With";
-        });
-    }
-    public async void ClearAllMenus()
-    {
-        var folder = await GetMenusFolderAsync();
-        await folder.DeleteAsync();
-    }
     public async Task<List<ContextMenuItem>> QueryAllAsync()
     {
         var configFolder = await GetMenusFolderAsync();
@@ -53,7 +20,7 @@ public class ContextMenuService
                 item.File = file;
                 result.Add(item);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 var item = new ContextMenuItem
                 {
@@ -61,17 +28,16 @@ public class ContextMenuService
                     File = file
                 };
                 result.Add(item);
-                Debug.WriteLine(e.StackTrace);
             }
         }
-
+        result.Sort((l, r) => l.Index - r.Index);
         return result;
     }
 
     private async Task<StorageFile> CreateMenuFileAsync(string name)
     {
         var folder = await GetMenusFolderAsync();
-        return await folder.CreateFileAsync(name, CreationCollisionOption.ReplaceExisting);
+        return await folder.CreateFileAsync(name, CreationCollisionOption.GenerateUniqueName);
     }
 
     public async Task<StorageFolder> GetMenusFolderAsync()
@@ -143,4 +109,38 @@ public class ContextMenuService
         menus.Clear();
     }
 
+    public async void OpenMenusFolderAsync()
+    {
+        var folder = await GetMenusFolderAsync();
+        _ = await Launcher.LaunchFolderAsync(folder);
+    }
+
+    public async void OpenMenuFileAsync(ContextMenuItem item)
+    {
+        if (item.File == null)
+        {
+            return;
+        }
+        _ = await Launcher.LaunchFileAsync(item.File);
+    }
+
+    public string GetCustomMenuName()
+    {
+        var value = ApplicationData.Current.LocalSettings.Values["Custom_Menu_Name"];
+        return (value as string) ?? "Open With";
+    }
+
+    public async void SetCustomMenuName(string name)
+    {
+        await Task.Run(() =>
+        {
+            ApplicationData.Current.LocalSettings.Values["Custom_Menu_Name"] = name ?? "Open With";
+        });
+    }
+
+    public async void ClearAllMenus()
+    {
+        var folder = await GetMenusFolderAsync();
+        await folder.DeleteAsync();
+    }
 }
