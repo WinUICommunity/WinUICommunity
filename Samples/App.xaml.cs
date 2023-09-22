@@ -113,7 +113,6 @@ public partial class App : Application
             .SetOptions(options =>
             {
                 options.DefaultLanguage = "en-US";
-                options.UseUidWhenLocalizedStringNotFound = true;
             })
             .Build();
     }
