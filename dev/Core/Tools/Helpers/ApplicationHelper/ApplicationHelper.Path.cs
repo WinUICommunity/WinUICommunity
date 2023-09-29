@@ -37,21 +37,6 @@ public static partial class ApplicationHelper
         return GetFullPathToExe() + "\\Assets\\" + assetName;
     }
 
-    public static string GetProjectNameAndVersion()
-    {
-        return $"{GetProjectName()}V{GetProjectVersion()}";
-    }
-
-    public static string GetProjectName()
-    {
-        return Application.Current.GetType().Assembly.GetName().Name;
-    }
-
-    public static string GetProjectVersion()
-    {
-        return Application.Current.GetType().Assembly.GetName().Version.ToString();
-    }
-
     public static string GetLocalFolderPath()
     {
         return IsPackaged ? ApplicationData.Current.LocalFolder.Path : Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);

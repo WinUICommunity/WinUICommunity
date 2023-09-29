@@ -99,7 +99,14 @@ public class ThemeService : IThemeService
             element.ActualThemeChanged += OnActualThemeChanged;
         }
 
-        string AppName = ApplicationHelper.GetProjectNameAndVersion();
+        var appNameVersion = ApplicationHelper.GetAppNameAndVersion(NameType.AssemblyVersion2, VersionType.AssemblyInformationalVersionAttribute);
+        string AppName = appNameVersion.NameAndVersion;
+        if (string.IsNullOrEmpty(appNameVersion.Version))
+        {
+            appNameVersion = ApplicationHelper.GetAppNameAndVersion(NameType.AssemblyVersion2, VersionType.AssemblyVersion2);
+            AppName = appNameVersion.NameAndVersion;
+        }
+
         string RootPath = Path.Combine(ApplicationHelper.GetLocalFolderPath(), AppName);
         string AppConfigPath = Path.Combine(RootPath, "CommonAppConfig.json");
 
