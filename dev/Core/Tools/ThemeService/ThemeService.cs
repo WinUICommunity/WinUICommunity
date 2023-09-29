@@ -99,7 +99,7 @@ public class ThemeService : IThemeService
             element.ActualThemeChanged += OnActualThemeChanged;
         }
 
-        var appNameVersion = ApplicationHelper.GetAppNameAndVersion(NameType.AssemblyVersion2, VersionType.AssemblyInformationalVersionAttribute);
+        var appNameVersion = ApplicationHelper.GetAppNameAndVersion(NameType.AssemblyVersion2, VersionType.AssemblyInformationalVersion);
         string AppName = appNameVersion.NameAndVersion;
         if (string.IsNullOrEmpty(appNameVersion.Version))
         {
