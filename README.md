@@ -107,7 +107,7 @@ See the [Components](dev/Components/README.md) to see how to use it
 
 ## Demo
 
-See the [Demo](https://github.com/WinUICommunity/WinUICommunity/Samples) app to see how to use it
+See the [Demo](Samples) app to see how to use it
 
 
 ## Project Templates
