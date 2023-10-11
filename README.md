@@ -88,26 +88,26 @@
  
 ### Experience WinUI 3 quickly and easily with the help of Core, Everything you need to develop an application is gathered in one place.
 
-See the [Core](src/Core/README.md) to see how to use it
+See the [Core](dev/Core/README.md) to see how to use it
 
 ## LandingPages
 ### Create a landing page in the style of WinUI 3 and WinUI-Gallery very quickly and easily
 
-See the [LandingPages](src/LandingPages/README.md) to see how to use it
+See the [LandingPages](dev/LandingPages/README.md) to see how to use it
 
 ## ContextMenuExtensions
 ### add a new ContextMenu for Windows 11/10.
 
-See the [ContextMenuExtensions](src/ContextMenuExtensions/README.md) to see how to use it
+See the [ContextMenuExtensions](dev/ContextMenuExtensions/README.md) to see how to use it
 
 ## Components
 ### Experience WinUI 3 quickly and easily with the help of Components, Everything you need to develop an application is gathered in one place.
 
-See the [Components](src/Components/README.md) to see how to use it
+See the [Components](dev/Components/README.md) to see how to use it
 
 ## Demo
 
-See the [Demo](https://github.com/WinUICommunity/WinUICommunity/src/DemoApp) app to see how to use it
+See the [Demo](https://github.com/WinUICommunity/WinUICommunity/Samples) app to see how to use it
 
 
 ## Project Templates
