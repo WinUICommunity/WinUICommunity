@@ -27,6 +27,12 @@ public sealed partial class AllLandingPage : ItemsPageBase
         set => SetValue(HeaderImageHeightProperty, value);
     }
 
+    public CornerRadius HeaderGridCornerRadius
+    {
+        get => (CornerRadius)GetValue(HeaderGridCornerRadiusProperty);
+        set => SetValue(HeaderGridCornerRadiusProperty, value);
+    }
+
     public ImageSource PlaceholderSource
     {
         get => (ImageSource)GetValue(PlaceholderSourceProperty);
@@ -50,6 +56,7 @@ public sealed partial class AllLandingPage : ItemsPageBase
 
     public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register("HeaderText", typeof(string), typeof(AllLandingPage), new PropertyMetadata("All"));
     public static readonly DependencyProperty HeaderImageProperty = DependencyProperty.Register("HeaderImage", typeof(string), typeof(AllLandingPage), new PropertyMetadata(default(string)));
+    public static readonly DependencyProperty HeaderGridCornerRadiusProperty = DependencyProperty.Register("HeaderGridCornerRadius", typeof(CornerRadius), typeof(AllLandingPage), new PropertyMetadata(new CornerRadius(8,0,0,0)));
     public static readonly DependencyProperty HeaderOverlayImageProperty = DependencyProperty.Register("HeaderOverlayImage", typeof(string), typeof(AllLandingPage), new PropertyMetadata(default(string)));
     public static readonly DependencyProperty HeaderImageHeightProperty = DependencyProperty.Register("HeaderImageHeight", typeof(double), typeof(AllLandingPage), new PropertyMetadata(200.0));
     public static readonly DependencyProperty PlaceholderSourceProperty = DependencyProperty.Register("PlaceholderSource", typeof(ImageSource), typeof(AllLandingPage), new PropertyMetadata(default(ImageSource)));

@@ -35,7 +35,7 @@
         </VisualStateManager.VisualStateGroups>
 
         <Grid x:Name="HeaderGrid"
-              CornerRadius="8,0,0,0">
+              CornerRadius="{x:Bind HeaderGridCornerRadius, Mode=OneWay}">
             <local:HomePageHeaderImage Grid.RowSpan="2"
                                        Height="{x:Bind HeaderImageHeight, Mode=OneWay}"
                                        VerticalAlignment="Top"
