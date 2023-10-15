@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v5.3.0](https://github.com/WinUICommunity/WinUICommunity/compare/v5.2.0...v5.3.0)
+
+> 15 October 2023
+
+- Move VersionHelper into ApplicationHelper [`7148606`](https://github.com/WinUICommunity/WinUICommunity/commit/7148606cabffa6618867229a4f5dec32f1aa3ed2)
+- Fix Cornerradius Issue [`de450e4`](https://github.com/WinUICommunity/WinUICommunity/commit/de450e46a4ccc1d6dade5878121b90d50eb26782)
+- refactor [`974a2a3`](https://github.com/WinUICommunity/WinUICommunity/commit/974a2a3c6038bf6d1b6f86c60fe09a347fc73c12)
+- Add Some Nice BorderPanel Styles [`9941df2`](https://github.com/WinUICommunity/WinUICommunity/commit/9941df225e66cd957e29d405f297cf4c7c130b3f)
+- Update Version [`06bb404`](https://github.com/WinUICommunity/WinUICommunity/commit/06bb404d62740707319f25289db5d1b3fd6feb1c)
+- Update to WASDK 1.4.2 [`08e7459`](https://github.com/WinUICommunity/WinUICommunity/commit/08e7459e1a213597e04ff04facb394318763cc5e)
+- Update README.md [`b08c9d5`](https://github.com/WinUICommunity/WinUICommunity/commit/b08c9d543feaa344f3feb7c33efacfda1c27b828)
+- Update README.md [`06620a8`](https://github.com/WinUICommunity/WinUICommunity/commit/06620a81d1719b8891592cb77ff3a05d96d82ab0)
+
+#### [v5.2.0](https://github.com/WinUICommunity/WinUICommunity/compare/v5.1.0...v5.2.0)
+
+> 22 September 2023
+
+- Update ContextMenuExtensions [`c673e9f`](https://github.com/WinUICommunity/WinUICommunity/commit/c673e9f1941774f870e6ac5996e401863f168b01)
+- Create AcrylicBackdropHelper.cs [`12752fe`](https://github.com/WinUICommunity/WinUICommunity/commit/12752fec6fbd8532fa85cfdc3073cc7954f91362)
+- Add Support multiple resources for dynamic language [`a232e2b`](https://github.com/WinUICommunity/WinUICommunity/commit/a232e2bfc4be8aacf406f850e67d6d966ce981ce)
+- Fixing CornerRadius [`d6549a5`](https://github.com/WinUICommunity/WinUICommunity/commit/d6549a576d164d9fb89a237b2a098c3f4db7cfb5)
+- Update CommunityToolkit to v8.0 [`cff7897`](https://github.com/WinUICommunity/WinUICommunity/commit/cff7897ba83bd7b44bc277f882e1457e9a3ff8b6)
+- Update ApplicationHelper.cs [`08397ef`](https://github.com/WinUICommunity/WinUICommunity/commit/08397ef20c5c1693f9905ca90e3712d4eb476b22)
+- Update Generic.xaml [`ecd2b00`](https://github.com/WinUICommunity/WinUICommunity/commit/ecd2b004e80774d613a61a3feaa1e7c2dac249c7)
+- Update to WASDK 1.4.230913002 [`4444b4c`](https://github.com/WinUICommunity/WinUICommunity/commit/4444b4c420d83421e916a13b4793860173589abc)
+- Update Readme [`4d3a90a`](https://github.com/WinUICommunity/WinUICommunity/commit/4d3a90a550995b7eda17ae24aeae77469c626cd8)
+- add ITitleBarAutoSuggestBoxAware interface [`72b66f0`](https://github.com/WinUICommunity/WinUICommunity/commit/72b66f0e827094a72c61ab7d2d43f7c294099db7)
+- Update version 5.1.0 [`98ead7a`](https://github.com/WinUICommunity/WinUICommunity/commit/98ead7a8628da3caac799d3128d074c15008c27b)
+- Update CHANGELOG.md [`2ac6675`](https://github.com/WinUICommunity/WinUICommunity/commit/2ac6675642a951f32cd67438dfd7044aa3cb68c7)
+- update version [`19b6e05`](https://github.com/WinUICommunity/WinUICommunity/commit/19b6e0564980bc1c28776f0a87843695bfeec7f6)
+- Updating default value of the ActionIconToolTip [`774dcc2`](https://github.com/WinUICommunity/WinUICommunity/commit/774dcc2f464491715b029380db13473642f49cbf)
+- Update ITitleBarAutoSuggestBoxAware.cs [`50e89de`](https://github.com/WinUICommunity/WinUICommunity/commit/50e89de1055a1d6495c1af6fbe83cd61f411e49a)
+- Update Directory.Build.props [`4e9a3fa`](https://github.com/WinUICommunity/WinUICommunity/commit/4e9a3fa8d88b97cdc41aa63bc324e4df14c2d2b3)
+
 #### [v5.1.0](https://github.com/WinUICommunity/WinUICommunity/compare/v5.0.6...v5.1.0)
 
 > 22 August 2023
