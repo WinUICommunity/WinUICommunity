@@ -37,9 +37,18 @@ public static partial class ApplicationHelper
         return GetFullPathToExe() + "\\Assets\\" + assetName;
     }
 
-    public static string GetLocalFolderPath()
+    /// <summary>
+    /// Return ApplicationData Folder Path for Packaged and UnPackaged Mode Automatically
+    /// </summary>
+    /// <param name="forceUnpackagedMode"></param>
+    /// <returns></returns>
+    public static string GetLocalFolderPath(bool forceUnpackagedMode = false)
     {
-        return IsPackaged ? ApplicationData.Current.LocalFolder.Path : Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        var unpackaged = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        if (forceUnpackagedMode)
+            return unpackaged;
+
+        return IsPackaged ? ApplicationData.Current.LocalFolder.Path : unpackaged;
     }
 
     public static string GetExecutablePathNative()

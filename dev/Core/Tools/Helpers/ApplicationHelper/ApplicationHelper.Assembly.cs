@@ -59,7 +59,7 @@ public partial class ApplicationHelper
     /// </summary>
     /// <param name="versionType"></param>
     /// <returns></returns>
-    public static string GetAppVersion(VersionType versionType)
+    public static string GetAppVersion(VersionType versionType = VersionType.AssemblyInformationalVersion)
     {
         return GetAppVersionBase(versionType, null);
     }
@@ -102,7 +102,7 @@ public partial class ApplicationHelper
     /// </summary>
     /// <param name="nameType"></param>
     /// <returns></returns>
-    public static string GetAppName(NameType nameType)
+    public static string GetAppName(NameType nameType = NameType.AssemblyVersion2)
     {
         return GetAppNameBase(nameType, null);
     }
@@ -114,7 +114,7 @@ public partial class ApplicationHelper
     /// <param name="nameType"></param>
     /// <param name="assembly"></param>
     /// <returns></returns>
-    public static string GetAppName(NameType nameType, Assembly assembly)
+    public static string GetAppName(NameType nameType = NameType.AssemblyVersion2, Assembly assembly = null)
     {
         return GetAppNameBase(nameType, assembly);
     }
@@ -134,7 +134,7 @@ public partial class ApplicationHelper
     /// <param name="nameType"></param>
     /// <param name="versionType"></param>
     /// <returns></returns>
-    public static (string Name, string Version, string NameAndVersion) GetAppNameAndVersion(NameType nameType, VersionType versionType)
+    public static (string Name, string Version, string NameAndVersion) GetAppNameAndVersion(NameType nameType = NameType.AssemblyVersion2, VersionType versionType = VersionType.AssemblyInformationalVersion)
     {
         return GetAppNameAndVersionBase(nameType, versionType, null);
     }
