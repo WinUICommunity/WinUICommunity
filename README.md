@@ -1,4 +1,4 @@
-<p align="left">
+﻿<p align="left">
 <img alt="dotnet" src="https://img.shields.io/badge/%3E%3DNet%206.0-version?logo=dotnet&label=.Net"/>
 <img alt="OS" src="https://img.shields.io/badge/%3E%3DWindows%2010%20Build%201809-version?logo=windows&label=Supported%20OS&color=orange"/>
 <img alt="IDE-version" src="https://img.shields.io/badge/2022-Version?logo=visual%20studio&label=Visual%20Studio&color=purple"/>
@@ -73,7 +73,9 @@
 
 # WinUICommunity
  Useful Classes, controls, styles and codes for WinUI 3
+## Documentation
 
+See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
 ## Namespace
  For use in the Xaml:
  ```xml 
@@ -122,9 +124,6 @@ download and install our vsix package from Marketplace:
 ![WinUICommunityTemplates](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
 
-## Documentation
-
-See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
 
 ![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/LandingsPage/0.png)
 
