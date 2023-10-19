@@ -81,4 +81,4 @@ We moved all namespaces into a single namespace. No matter which (WinUICommunity
 
 ## Documentation
 
-See Here for Online [Documentation](https://ghost1372.github.io/WinUICommunity/)
+See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
