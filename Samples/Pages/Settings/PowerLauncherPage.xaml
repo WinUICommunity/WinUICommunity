@@ -21,7 +21,7 @@
                          IsOpen="True"
                          Severity="Informational" />
 
-                <wuc:SettingsGroup x:Uid="Shortcut">
+                <wuc:SimpleSettingsGroup x:Uid="Shortcut">
                     <wuc:SettingsExpander Description="Customize the keyboard shortcut to activate this module"
                                           Header="Activation shortcut"
                                           HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -37,9 +37,9 @@
                             </wuc:SettingsCard>
                         </wuc:SettingsExpander.Items>
                     </wuc:SettingsExpander>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Position &amp; appearance">
+                <wuc:SimpleSettingsGroup Header="Position &amp; appearance">
                     <wuc:SettingsExpander Description="If multiple monitors are in use, PowerToys Run can be launched on the desired monitor"
                                           Header="Preferred monitor position"
                                           HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -67,9 +67,9 @@
                             </wuc:SettingsCard>
                         </wuc:SettingsExpander.Items>
                     </wuc:SettingsExpander>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Position &amp; appearance">
+                <wuc:SimpleSettingsGroup Header="Position &amp; appearance">
                     <wuc:SettingsCard Description="If multiple monitors are in use, PowerToys Run can be launched on the desired monitor"
                                       Header="Preferred monitor position"
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -95,9 +95,9 @@
                             <ComboBoxItem Content="Default" />
                         </ComboBox>
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Plugins">
+                <wuc:SimpleSettingsGroup Header="Plugins">
                     <InfoBar Title="PowerToys Run can't provide any results without plugins"
                              IsClosable="False"
                              IsOpen="True"
@@ -131,7 +131,7 @@
                                    Style="{ThemeResource SecondaryTextStyle}"
                                    Text="Plugins are loading..." />
                     </StackPanel>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
         <wuc:SettingsPageControl.PrimaryLinks>

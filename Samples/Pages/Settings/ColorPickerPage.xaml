@@ -26,7 +26,7 @@
                          IsOpen="True"
                          Severity="Informational" />
 
-                <wuc:SettingsGroup Header="Shortcut">
+                <wuc:SimpleSettingsGroup Header="Shortcut">
                     <wuc:SettingsCard Header="Activation behavior"
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 Glyph=&#xEC4E;}">
@@ -38,9 +38,9 @@
                         </ComboBox>
                     </wuc:SettingsCard>
 
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Picker behavior">
+                <wuc:SimpleSettingsGroup Header="Picker behavior">
                     <wuc:SettingsCard Description="This format will be copied to your clipboard"
                                       Header="Default color format"
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -52,9 +52,9 @@
                                       Header="Show color name">
                         <ToggleSwitch />
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Color formats">
+                <wuc:SimpleSettingsGroup Header="Color formats">
                     <wuc:SettingsCard Description="Configure the color formats (edit, delete, hide, reorder them)"
                                       Header="Color formats"
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -117,7 +117,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
 

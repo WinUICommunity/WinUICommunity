@@ -22,7 +22,7 @@
                     </wuc:SettingsCard.Description>
                 </wuc:SettingsCard>
 
-                <wuc:SettingsGroup Header="Keys"
+                <wuc:SimpleSettingsGroup Header="Keys"
                                    IsEnabled="False">
                     <wuc:SettingsCard ActionIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 FontSize=14,
@@ -32,9 +32,9 @@
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 Glyph=&#xE92E;}"
                                       IsClickEnabled="True" />
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Shortcuts"
+                <wuc:SimpleSettingsGroup Header="Shortcuts"
                                    IsEnabled="False">
                     <wuc:SettingsCard ActionIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 FontSize=14,
@@ -44,7 +44,7 @@
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 Glyph=&#xE92E;}"
                                       IsClickEnabled="True" />
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
         <wuc:SettingsPageControl.PrimaryLinks>

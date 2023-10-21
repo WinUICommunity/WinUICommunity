@@ -10,7 +10,7 @@
         <wuc:SettingsPageControl.ModuleContent>
             <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
                         Orientation="Vertical">
-                <wuc:SettingsGroup Margin="0,-32,0,0"
+                <wuc:SimpleSettingsGroup Margin="0,-32,0,0"
                                    Header="Version">
                     <wuc:SettingsCard Header="PowerToys V1.0"
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -44,9 +44,9 @@
                              IsClosable="False"
                              IsOpen="True"
                              Severity="Informational" />
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Appearance &amp; behavior"
+                <wuc:SimpleSettingsGroup Header="Appearance &amp; behavior"
                                    IsEnabled="True">
                     <wuc:SettingsCard Header="App theme"
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -66,9 +66,9 @@
                                       Header="Run at startup">
                         <ToggleSwitch />
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Backup &amp; restore"
+                <wuc:SimpleSettingsGroup Header="Backup &amp; restore"
                                    Visibility="Visible">
                     <wuc:SettingsExpander Description="PowerToys will restart automatically if needed"
                                           Header="Backup and restore your settings"
@@ -152,11 +152,11 @@
                             </wuc:SettingsCard>
                         </wuc:SettingsExpander.Items>
                     </wuc:SettingsExpander>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
                 <InfoBar Title="Result"
                          IsClosable="False"
                          IsOpen="True" />
-                <wuc:SettingsGroup Header="Experimentation"
+                <wuc:SimpleSettingsGroup Header="Experimentation"
                                    Visibility="Visible">
                     <wuc:SettingsCard Description="Note: Only Windows Insider builds may be selected for experimentation"
                                       Header="Allow experimentation with new features">
@@ -169,7 +169,7 @@
                              IsClosable="False"
                              IsOpen="True"
                              Severity="Informational" />
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
         <wuc:SettingsPageControl.PrimaryLinks>

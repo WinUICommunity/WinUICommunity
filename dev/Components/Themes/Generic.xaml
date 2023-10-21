@@ -1119,7 +1119,7 @@ Themes\Styles\TextBlock.xaml
     <win:Setter Property="FontSize" Value="9" />
     <win:Setter Property="HorizontalContentAlignment" Value="Center" />
   </win:Style>
-  <win:Style TargetType="local:SettingsGroup">
+  <win:Style TargetType="local:SimpleSettingsGroup">
     <win:Setter Property="ItemsPanel">
       <win:Setter.Value>
         <win:ItemsPanelTemplate>
@@ -1132,7 +1132,7 @@ Themes\Styles\TextBlock.xaml
     <win:Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <win:Setter Property="Template">
       <win:Setter.Value>
-        <win:ControlTemplate TargetType="local:SettingsGroup">
+        <win:ControlTemplate TargetType="local:SimpleSettingsGroup">
           <win:Grid HorizontalAlignment="Stretch">
             <win:Grid.RowDefinitions>
               <win:RowDefinition Height="Auto" />

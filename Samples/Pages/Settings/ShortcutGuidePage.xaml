@@ -31,7 +31,7 @@
                                                   Text="to toggle your microphone" />
                 <Button Click="Button_Click"
                         Content="Open Shortcut Dialog" />
-                <wuc:SettingsGroup Header="Appearance &amp; behavior">
+                <wuc:SimpleSettingsGroup Header="Appearance &amp; behavior">
                     <wuc:SettingsCard Header="Choose a mode"
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 Glyph=&#xE790;}">
@@ -51,9 +51,9 @@
                                 Maximum="100"
                                 Minimum="0" />
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Excluded apps">
+                <wuc:SimpleSettingsGroup Header="Excluded apps">
                     <wuc:SettingsExpander Description="Turns off Shortcut Guide when these applications have focus - add one application name per line"
                                           Header="Exclude apps"
                                           HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -73,7 +73,7 @@
                             </wuc:SettingsCard>
                         </wuc:SettingsExpander.Items>
                     </wuc:SettingsExpander>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
         <wuc:SettingsPageControl.PrimaryLinks>

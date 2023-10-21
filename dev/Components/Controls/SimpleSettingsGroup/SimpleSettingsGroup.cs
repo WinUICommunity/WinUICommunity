@@ -1,8 +1,5 @@
 ﻿using System.ComponentModel;
-
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
-using Microsoft.UI.Xaml.Controls;
 
 namespace WinUICommunity;
 
@@ -12,15 +9,15 @@ namespace WinUICommunity;
 [TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
 [TemplateVisualState(Name = "Disabled", GroupName = "CommonStates")]
 [TemplatePart(Name = PartDescriptionPresenter, Type = typeof(ContentPresenter))]
-public partial class SettingsGroup : ItemsControl
+public partial class SimpleSettingsGroup : ItemsControl
 {
     private const string PartDescriptionPresenter = "DescriptionPresenter";
     private ContentPresenter _descriptionPresenter;
-    private SettingsGroup _settingsGroup;
+    private SimpleSettingsGroup _SimpleSettingsGroup;
 
-    public SettingsGroup()
+    public SimpleSettingsGroup()
     {
-        DefaultStyleKey = typeof(SettingsGroup);
+        DefaultStyleKey = typeof(SimpleSettingsGroup);
     }
 
     [Localizable(true)]
@@ -33,7 +30,7 @@ public partial class SettingsGroup : ItemsControl
     public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register(
         "Header",
         typeof(string),
-        typeof(SettingsGroup),
+        typeof(SimpleSettingsGroup),
         new PropertyMetadata(default(string)));
 
     [Localizable(true)]
@@ -46,25 +43,25 @@ public partial class SettingsGroup : ItemsControl
     public static readonly DependencyProperty DescriptionProperty = DependencyProperty.Register(
         "Description",
         typeof(object),
-        typeof(SettingsGroup),
+        typeof(SimpleSettingsGroup),
         new PropertyMetadata(null, OnDescriptionChanged));
 
     protected override void OnApplyTemplate()
     {
-        IsEnabledChanged -= SettingsGroup_IsEnabledChanged;
-        _settingsGroup = (SettingsGroup)this;
-        _descriptionPresenter = (ContentPresenter)_settingsGroup.GetTemplateChild(PartDescriptionPresenter);
+        IsEnabledChanged -= SimpleSettingsGroup_IsEnabledChanged;
+        _SimpleSettingsGroup = (SimpleSettingsGroup)this;
+        _descriptionPresenter = (ContentPresenter)_SimpleSettingsGroup.GetTemplateChild(PartDescriptionPresenter);
         SetEnabledState();
-        IsEnabledChanged += SettingsGroup_IsEnabledChanged;
+        IsEnabledChanged += SimpleSettingsGroup_IsEnabledChanged;
         base.OnApplyTemplate();
     }
 
     private static void OnDescriptionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        ((SettingsGroup)d).Update();
+        ((SimpleSettingsGroup)d).Update();
     }
 
-    private void SettingsGroup_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+    private void SimpleSettingsGroup_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
         SetEnabledState();
     }
@@ -76,16 +73,16 @@ public partial class SettingsGroup : ItemsControl
 
     private void Update()
     {
-        if (_settingsGroup == null)
+        if (_SimpleSettingsGroup == null)
         {
             return;
         }
 
-        _settingsGroup._descriptionPresenter.Visibility = _settingsGroup.Description == null ? Visibility.Collapsed : Visibility.Visible;
+        _SimpleSettingsGroup._descriptionPresenter.Visibility = _SimpleSettingsGroup.Description == null ? Visibility.Collapsed : Visibility.Visible;
     }
 
     protected override AutomationPeer OnCreateAutomationPeer()
     {
-        return new SettingsGroupAutomationPeer(this);
+        return new SimpleSettingsGroupAutomationPeer(this);
     }
 }

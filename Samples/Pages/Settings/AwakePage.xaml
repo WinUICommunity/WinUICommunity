@@ -24,7 +24,7 @@
                          IsOpen="True"
                          Severity="Informational" />
 
-                <wuc:SettingsGroup Header="Behavior">
+                <wuc:SimpleSettingsGroup Header="Behavior">
 
                     <wuc:SettingsCard Description="Manage the state of your device when Awake is active"
                                       Header="Mode"
@@ -85,7 +85,7 @@
                                                                 Glyph=&#xE7F4;}">
                         <ToggleSwitch />
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
 

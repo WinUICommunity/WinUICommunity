@@ -21,7 +21,7 @@
                          IsOpen="True"
                          Severity="Informational" />
 
-                <wuc:SettingsGroup Header="Editor">
+                <wuc:SimpleSettingsGroup Header="Editor">
                     <wuc:SettingsCard ActionIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 FontSize=14,
                                                                 Glyph=&#xE8A7;}"
@@ -46,10 +46,10 @@
                             <ComboBoxItem Content="Where the mouse pointer is" />
                         </ComboBox>
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
 
-                <wuc:SettingsGroup Header="Zones">
+                <wuc:SimpleSettingsGroup Header="Zones">
                     <wuc:SettingsExpander Description="Manage how zones behave when using FancyZones"
                                           Header="Zone behavior"
                                           IsExpanded="True">
@@ -99,9 +99,9 @@
                             </wuc:SettingsCard>
                         </wuc:SettingsExpander.Items>
                     </wuc:SettingsExpander>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Windows">
+                <wuc:SimpleSettingsGroup Header="Windows">
 
                     <wuc:SettingsExpander Description="Manage how windows behave when using FancyZones"
                                           Header="&gt;Window behavior"
@@ -177,9 +177,9 @@
                             </wuc:SettingsCard>
                         </wuc:SettingsExpander.Items>
                     </wuc:SettingsExpander>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Layouts">
+                <wuc:SimpleSettingsGroup Header="Layouts">
                     <wuc:SettingsExpander Description="Layout-specific shortcuts can be configured in the editor"
                                           Header="Enable quick layout switch"
                                           HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -191,9 +191,9 @@
                             </wuc:SettingsCard>
                         </wuc:SettingsExpander.Items>
                     </wuc:SettingsExpander>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Excluded apps">
+                <wuc:SimpleSettingsGroup Header="Excluded apps">
 
                     <wuc:SettingsExpander Description="Excludes an application from snapping to zones and will only react to Windows Snap - add one application name per line"
                                           Header="Excluded apps"
@@ -214,7 +214,7 @@
                             </wuc:SettingsCard>
                         </wuc:SettingsExpander.Items>
                     </wuc:SettingsExpander>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
 

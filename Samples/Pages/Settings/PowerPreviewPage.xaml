@@ -13,7 +13,7 @@
         <wuc:SettingsPageControl.ModuleContent>
             <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
                         Orientation="Vertical">
-                <wuc:SettingsGroup Description="Select the file types which must be rendered in the Preview Pane. Ensure that Preview Pane is open by toggling the view with Alt + P in File Explorer."
+                <wuc:SimpleSettingsGroup Description="Select the file types which must be rendered in the Preview Pane. Ensure that Preview Pane is open by toggling the view with Alt + P in File Explorer."
                                    Header="Preview Pane">
                     <InfoBar Title="Enabling the preview handlers will override other preview handlers already installed - there have been reports of incompatibility between Outlook and the PDF Preview Handler."
                              IsClosable="False"
@@ -101,9 +101,9 @@
                              IsClosable="False"
                              IsOpen="True"
                              Severity="Informational" />
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Description="Select the file types for which thumbnail previews must be rendered."
+                <wuc:SimpleSettingsGroup Description="Select the file types for which thumbnail previews must be rendered."
                                    Header="Thumbnail icon Preview">
                     <InfoBar Title="A reboot may be required for changes to these settings to take effect"
                              IsClosable="False"
@@ -121,7 +121,7 @@
                                                                 Glyph=&#xE91B;}">
                         <ToggleSwitch />
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
 

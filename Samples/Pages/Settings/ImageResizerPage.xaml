@@ -26,7 +26,7 @@
                          IsOpen="True"
                          Severity="Informational" />
 
-                <wuc:SettingsGroup Header="Image sizes">
+                <wuc:SimpleSettingsGroup Header="Image sizes">
                     <wuc:SettingsCard Description="Manage preset sizes that can be used in the editor"
                                       Header="Presets"
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -129,9 +129,9 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Encoding">
+                <wuc:SimpleSettingsGroup Header="Encoding">
                     <wuc:SettingsCard Header="Fallback encoder">
                         <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}"
                                   SelectedIndex="0">
@@ -171,9 +171,9 @@
                             <ComboBoxItem Content="Zip" />
                         </ComboBox>
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="File">
+                <wuc:SimpleSettingsGroup Header="File">
                     <wuc:SettingsCard Description="This format is used as the filename for resized images"
                                       Header="Filename format">
                         <StackPanel Orientation="Horizontal"
@@ -233,7 +233,7 @@
                             <ComboBoxItem Content="Timestamp of resize action" />
                         </ComboBox>
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
 

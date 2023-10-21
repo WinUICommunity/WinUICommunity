@@ -22,7 +22,7 @@
                          IsClosable="False"
                          IsOpen="True"
                          Severity="Informational" />
-                <wuc:SettingsGroup Header="Shell integration">
+                <wuc:SimpleSettingsGroup Header="Shell integration">
                     <wuc:SettingsExpander Header="Show PowerRename in"
                                           IsExpanded="True">
                         <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}"
@@ -36,9 +36,9 @@
                             </wuc:SettingsCard>
                         </wuc:SettingsExpander.Items>
                     </wuc:SettingsExpander>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
 
-                <wuc:SettingsGroup Header="Auto-complete">
+                <wuc:SimpleSettingsGroup Header="Auto-complete">
                     <wuc:SettingsExpander Header="Enable auto-complete for the search &amp; replace fields"
                                           IsExpanded="True">
                         <ToggleSwitch />
@@ -57,13 +57,13 @@
                                                                 Glyph=&#xe81c;}">
                         <ToggleSwitch />
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
-                <wuc:SettingsGroup Header="Behavior">
+                </wuc:SimpleSettingsGroup>
+                <wuc:SimpleSettingsGroup Header="Behavior">
                     <wuc:SettingsCard Description="Provides extended features but may use different regex syntax"
                                       Header="Use Boost library">
                         <ToggleSwitch />
                     </wuc:SettingsCard>
-                </wuc:SettingsGroup>
+                </wuc:SimpleSettingsGroup>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
 
