@@ -14,6 +14,7 @@ Themes\Styles\Controls\InlineAutoCompleteTextBox.xaml
 Themes\Styles\Controls\IsEnabledTextBlock.xaml
 Themes\Styles\Controls\KeyVisual.xaml
 Themes\Styles\Controls\SettingsGroup.xaml
+Themes\Styles\Controls\SimpleSettingsGroup.xaml
 Themes\Styles\Controls\Validation.xaml
 Themes\Styles\TabViewItem.xaml
 Themes\Styles\TextBlock.xaml
@@ -216,6 +217,13 @@ Themes\Styles\TextBlock.xaml
       </win:Setter.Value>
     </win:Setter>
   </win:Style>
+  <local:Bool2CornerRadiusConverter x:Key="Bool2CornerRadiusConverter" />
+  <win:DataTemplate x:Key="HeaderTextBlockTemplate">
+    <win:TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding}" />
+  </win:DataTemplate>
+  <win:DataTemplate x:Key="DescriptionTextBlockTemplate">
+    <win:TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="{Binding}" />
+  </win:DataTemplate>
   <local:ValidationEnabledConverter x:Name="CanValidateConverter" />
   <x:Double x:Key="SecondaryTextFontSize">12</x:Double>
   <x:Double x:Key="HeaderTextFontSize">12</x:Double>
@@ -1118,6 +1126,68 @@ Themes\Styles\TextBlock.xaml
     <win:Setter Property="Padding" Value="0" />
     <win:Setter Property="FontSize" Value="9" />
     <win:Setter Property="HorizontalContentAlignment" Value="Center" />
+  </win:Style>
+  <local:TextBlockTemplateSelector x:Key="HeaderTemplateSelector" TextBlockTemplate="{StaticResource HeaderTextBlockTemplate}" />
+  <local:TextBlockTemplateSelector x:Key="DescriptionTemplateSelector" TextBlockTemplate="{StaticResource DescriptionTextBlockTemplate}" />
+  <win:Style TargetType="local:SettingsGroup">
+    <win:Setter Property="IsTabStop" Value="False" />
+    <win:Setter Property="HorizontalAlignment" Value="Stretch" />
+    <win:Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <win:Setter Property="Template">
+      <win:Setter.Value>
+        <win:ControlTemplate TargetType="local:SettingsGroup">
+          <win:Grid HorizontalAlignment="Stretch">
+            <win:Grid.RowDefinitions>
+              <win:RowDefinition Height="Auto" />
+              <win:RowDefinition Height="Auto" />
+            </win:Grid.RowDefinitions>
+            <win:VisualStateManager.VisualStateGroups>
+              <win:VisualStateGroup x:Name="CommonStates">
+                <win:VisualState x:Name="Normal" />
+                <win:VisualState x:Name="Disabled">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="PART_HeaderPresenter.Foreground" Value="{ThemeResource TextFillColorDisabledBrush}" />
+                    <win:Setter Target="PART_DescriptionPresenter.Foreground" Value="{ThemeResource TextFillColorDisabledBrush}" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+            </win:VisualStateManager.VisualStateGroups>
+            <win:Grid x:Name="PART_RootGrid" Grid.Row="0" MinHeight="{ThemeResource SettingsCardMinHeight}" Padding="{ThemeResource SettingsCardPadding}" Background="{ThemeResource SettingsCardBackground}" BackgroundSizing="InnerBorderEdge" BorderBrush="{ThemeResource SettingsCardBorderBrush}" BorderThickness="{ThemeResource SettingsCardBorderThickness}" CornerRadius="{Binding Items.Count, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource Bool2CornerRadiusConverter}}">
+              <win:Grid.RowDefinitions>
+                <win:RowDefinition Height="Auto" />
+                <win:RowDefinition Height="Auto" />
+                <win:RowDefinition Height="Auto" />
+                <win:RowDefinition Height="Auto" />
+              </win:Grid.RowDefinitions>
+              <win:Viewbox x:Name="PART_HeaderIconPresenterHolder" Grid.Row="0" MaxWidth="64" MaxHeight="64" Margin="-5,-10,0,0" HorizontalAlignment="Left">
+                <win:ContentPresenter x:Name="PART_HeaderIconPresenter" win:AutomationProperties.AccessibilityView="Raw" win:HighContrastAdjustment="None" Content="{TemplateBinding HeaderIcon}" />
+              </win:Viewbox>
+              <win:ContentPresenter x:Name="PART_HeaderPresenter" Grid.Row="1" Margin="10,0,0,0" win:HighContrastAdjustment="None" Content="{TemplateBinding Header}" ContentTemplateSelector="{StaticResource HeaderTemplateSelector}" TextWrapping="Wrap" />
+              <win:ContentPresenter x:Name="PART_DescriptionPresenter" Grid.Row="2" Margin="10,15,0,10" Content="{TemplateBinding Description}" ContentTemplateSelector="{StaticResource DescriptionTemplateSelector}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="WrapWholeWords">
+                <win:ContentPresenter.Resources>
+                  <win:Style BasedOn="{StaticResource CaptionTextBlockStyle}" TargetType="TextBlock">
+                    <win:Style.Setters>
+                      <win:Setter Property="TextWrapping" Value="WrapWholeWords" />
+                    </win:Style.Setters>
+                  </win:Style>
+                  <win:Style BasedOn="{StaticResource TextButtonStyle}" TargetType="HyperlinkButton">
+                    <win:Style.Setters>
+                      <win:Setter Property="Padding" Value="0,0,0,0" />
+                    </win:Style.Setters>
+                  </win:Style>
+                </win:ContentPresenter.Resources>
+              </win:ContentPresenter>
+              <win:ContentPresenter x:Name="PART_ContentPresenter" Grid.Row="3" Margin="12,20,0,10" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Content="{TemplateBinding Content}" />
+            </win:Grid>
+            <win:ItemsRepeater x:Name="PART_ItemsRepeater" Grid.Row="1" TabFocusNavigation="Local">
+              <win:ItemsRepeater.Layout>
+                <win:StackLayout Orientation="Vertical" />
+              </win:ItemsRepeater.Layout>
+            </win:ItemsRepeater>
+          </win:Grid>
+        </win:ControlTemplate>
+      </win:Setter.Value>
+    </win:Setter>
   </win:Style>
   <win:Style TargetType="local:SimpleSettingsGroup">
     <win:Setter Property="ItemsPanel">

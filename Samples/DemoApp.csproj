@@ -10,7 +10,7 @@
     <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
-    <Version>5.3.0</Version>
+    <Version>5.3.1</Version>
     <NoWarn>WMC1506;CS8632</NoWarn>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <ExcludedLanguages>en-US;fa-IR</ExcludedLanguages>

@@ -112,6 +112,13 @@
       "ImagePath": "ms-appx:///Assets/Fluent/settingsControl.png",
       "Items": [
         {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.SettingsGroup",
+          "Title": "SettingsGroup Sample",
+          "Subtitle": "SettingsGroup Sample",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/settingsControl.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/settingsControl.png"
+        },
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.SettingsControls",
           "Title": "SettingsControl Sample",
           "Subtitle": "SettingsControl Sample",
