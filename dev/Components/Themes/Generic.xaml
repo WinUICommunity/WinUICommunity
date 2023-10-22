@@ -2187,8 +2187,8 @@ Themes\Styles\TextBlock.xaml
               </win:Viewbox>
             </win:Border>
             <win:StackPanel x:Name="PART_TitleHolder" Grid.Column="3" Margin="16,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Spacing="4">
-              <win:TextBlock x:Name="PART_TitleText" MinWidth="48" Margin="0,0,0,1" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="{TemplateBinding Title}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
-              <win:TextBlock x:Name="PART_SubtitleText" MinWidth="48" Margin="0,0,0,1" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="{TemplateBinding Subtitle}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
+              <win:TextBlock x:Name="PART_TitleText" MinWidth="48" Margin="0,0,0,1" FontFamily="{ThemeResource ContentControlThemeFontFamily}" Foreground="{ThemeResource TextFillColorPrimaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="{TemplateBinding Title}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
+              <win:TextBlock x:Name="PART_SubtitleText" MinWidth="48" Margin="0,0,0,1" FontFamily="{ThemeResource ContentControlThemeFontFamily}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{StaticResource CaptionTextBlockStyle}" Text="{TemplateBinding Subtitle}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" />
             </win:StackPanel>
             <win:Grid x:Name="PART_DragRegion" Grid.Column="2" Grid.ColumnSpan="6" Background="Transparent" />
             <win:StackPanel x:Name="ButtonHolder" Grid.Column="1" Orientation="Horizontal">
