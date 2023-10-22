@@ -34,35 +34,40 @@ public partial class SettingsGroup : Control
 
             }
 
-            foreach (SettingsCard item in Items)
+            foreach (dynamic item in Items)
             {
-                if (item == null)
+                if (item == null || (item is not SettingsCard && item is not SettingsExpander))
                 {
                     continue;
                 }
-                item.Padding = new Thickness(30, 0, 25, 0);
-                item.CornerRadius = new CornerRadius(0);
-                item.BorderThickness = new Thickness(1,1,1,0);
-
-                SettingsCard firstItem = (SettingsCard)Items.FirstOrDefault();
-                if (firstItem != null)
-                {
-                    firstItem.BorderThickness = new Thickness(1,0,1,0);
-                }
-                SettingsCard lastItem = (SettingsCard)Items.LastOrDefault();
-                if (lastItem != null && Items.Count == 1)
-                {
-                    lastItem.CornerRadius = new CornerRadius(0, 0, 4, 4);
-                    lastItem.BorderThickness = new Thickness(1,0,1,1);
-                }
-                else if (lastItem != null)
-                {
-                    lastItem.CornerRadius = new CornerRadius(0, 0, 4, 4);
-                    lastItem.BorderThickness = new Thickness(1);
-                }
+                ChangeBorderAndCornerRadius(item);
             }
 
             _itemsRepeater.ItemsSource = Items;
+        }
+    }
+
+    private void ChangeBorderAndCornerRadius(dynamic item)
+    {
+        item.Padding = new Thickness(25, 0, 25, 0);
+        item.CornerRadius = new CornerRadius(0);
+        item.BorderThickness = new Thickness(1, 1, 1, 0);
+
+        dynamic firstItem = (dynamic)Items.FirstOrDefault();
+        if (firstItem != null)
+        {
+            firstItem.BorderThickness = new Thickness(1, 0, 1, 0);
+        }
+        dynamic lastItem = (dynamic)Items.LastOrDefault();
+        if (lastItem != null && Items.Count == 1)
+        {
+            lastItem.CornerRadius = new CornerRadius(0, 0, 4, 4);
+            lastItem.BorderThickness = new Thickness(1, 0, 1, 1);
+        }
+        else if (lastItem != null)
+        {
+            lastItem.CornerRadius = new CornerRadius(0, 0, 4, 4);
+            lastItem.BorderThickness = new Thickness(1);
         }
     }
 

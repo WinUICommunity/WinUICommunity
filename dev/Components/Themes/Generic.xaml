@@ -1159,11 +1159,11 @@ Themes\Styles\TextBlock.xaml
                 <win:RowDefinition Height="Auto" />
                 <win:RowDefinition Height="Auto" />
               </win:Grid.RowDefinitions>
-              <win:Viewbox x:Name="PART_HeaderIconPresenterHolder" Grid.Row="0" MaxWidth="64" MaxHeight="64" Margin="-5,-10,0,0" HorizontalAlignment="Left">
+              <win:Viewbox x:Name="PART_HeaderIconPresenterHolder" Grid.Row="0" MaxWidth="32" MaxHeight="32" Margin="10,10,0,5" HorizontalAlignment="Left">
                 <win:ContentPresenter x:Name="PART_HeaderIconPresenter" win:AutomationProperties.AccessibilityView="Raw" win:HighContrastAdjustment="None" Content="{TemplateBinding HeaderIcon}" />
               </win:Viewbox>
-              <win:ContentPresenter x:Name="PART_HeaderPresenter" Grid.Row="1" Margin="10,0,0,0" win:HighContrastAdjustment="None" Content="{TemplateBinding Header}" ContentTemplateSelector="{StaticResource HeaderTemplateSelector}" TextWrapping="Wrap" />
-              <win:ContentPresenter x:Name="PART_DescriptionPresenter" Grid.Row="2" Margin="10,15,0,10" Content="{TemplateBinding Description}" ContentTemplateSelector="{StaticResource DescriptionTemplateSelector}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="WrapWholeWords">
+              <win:ContentPresenter x:Name="PART_HeaderPresenter" Grid.Row="1" Margin="10,10,0,0" win:HighContrastAdjustment="None" Content="{TemplateBinding Header}" ContentTemplateSelector="{StaticResource HeaderTemplateSelector}" TextWrapping="Wrap" />
+              <win:ContentPresenter x:Name="PART_DescriptionPresenter" Grid.Row="2" Margin="10,12,0,10" Content="{TemplateBinding Description}" ContentTemplateSelector="{StaticResource DescriptionTemplateSelector}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="WrapWholeWords">
                 <win:ContentPresenter.Resources>
                   <win:Style BasedOn="{StaticResource CaptionTextBlockStyle}" TargetType="TextBlock">
                     <win:Style.Setters>
@@ -1177,7 +1177,7 @@ Themes\Styles\TextBlock.xaml
                   </win:Style>
                 </win:ContentPresenter.Resources>
               </win:ContentPresenter>
-              <win:ContentPresenter x:Name="PART_ContentPresenter" Grid.Row="3" Margin="12,20,0,10" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Content="{TemplateBinding Content}" />
+              <win:ContentPresenter x:Name="PART_ContentPresenter" Grid.Row="3" Margin="10,20,0,10" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Content="{TemplateBinding Content}" />
             </win:Grid>
             <win:ItemsRepeater x:Name="PART_ItemsRepeater" Grid.Row="1" TabFocusNavigation="Local">
               <win:ItemsRepeater.Layout>
