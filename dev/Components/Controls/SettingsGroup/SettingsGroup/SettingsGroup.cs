@@ -1,10 +1,12 @@
 ﻿using System.Collections.ObjectModel;
+using Microsoft.UI.Xaml.Markup;
 
 namespace WinUICommunity;
 
 [TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
 [TemplateVisualState(Name = "Disabled", GroupName = "CommonStates")]
 [TemplatePart(Name = PartDescriptionPresenter, Type = typeof(ContentPresenter))]
+[ContentProperty(Name = nameof(Content))]
 public partial class SettingsGroup : Control
 {
     private const string PART_ItemsRepeater = "PART_ItemsRepeater";

@@ -6,12 +6,14 @@
     <local:Bool2CornerRadiusConverter x:Key="Bool2CornerRadiusConverter" />
 
     <DataTemplate x:Key="HeaderTextBlockTemplate">
-        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}"
+        <TextBlock FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                   Style="{ThemeResource SubtitleTextBlockStyle}"
                    Text="{Binding}" />
     </DataTemplate>
 
     <DataTemplate x:Key="DescriptionTextBlockTemplate">
-        <TextBlock Style="{ThemeResource BodyTextBlockStyle}"
+        <TextBlock FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                   Style="{ThemeResource BodyTextBlockStyle}"
                    Text="{Binding}" />
     </DataTemplate>
 
@@ -68,7 +70,8 @@
                                 <ContentPresenter x:Name="PART_HeaderIconPresenter"
                                                   win:AutomationProperties.AccessibilityView="Raw"
                                                   win:HighContrastAdjustment="None"
-                                                  Content="{TemplateBinding HeaderIcon}" />
+                                                  Content="{TemplateBinding HeaderIcon}"
+                                                  FontFamily="{ThemeResource ContentControlThemeFontFamily}" />
                             </Viewbox>
                             <ContentPresenter x:Name="PART_HeaderPresenter"
                                               Grid.Row="1"
@@ -76,12 +79,14 @@
                                               win:HighContrastAdjustment="None"
                                               Content="{TemplateBinding Header}"
                                               ContentTemplateSelector="{StaticResource HeaderTemplateSelector}"
+                                              FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                                               TextWrapping="Wrap" />
                             <ContentPresenter x:Name="PART_DescriptionPresenter"
                                               Grid.Row="2"
                                               Margin="10,12,0,10"
                                               Content="{TemplateBinding Description}"
                                               ContentTemplateSelector="{StaticResource DescriptionTemplateSelector}"
+                                              FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                               TextWrapping="WrapWholeWords">
                                 <ContentPresenter.Resources>
@@ -103,7 +108,8 @@
                                               Grid.Row="3"
                                               Margin="10,20,0,10"
                                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              Content="{TemplateBinding Content}" />
+                                              Content="{TemplateBinding Content}"
+                                              FontFamily="{ThemeResource ContentControlThemeFontFamily}" />
                         </Grid>
                         <ItemsRepeater x:Name="PART_ItemsRepeater"
                                        Grid.Row="1"
