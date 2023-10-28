@@ -34,40 +34,74 @@ public partial class SettingsGroup : Control
 
             }
 
-            foreach (dynamic item in Items)
+            foreach (var item in Items)
             {
-                if (item == null || (item is not SettingsCard && item is not SettingsExpander))
+                if (item != null && (item is SettingsCard || item is SettingsExpander))
                 {
-                    continue;
+                    ChangeBorderAndCornerRadius(item);
                 }
-                ChangeBorderAndCornerRadius(item);
             }
 
             _itemsRepeater.ItemsSource = Items;
         }
     }
 
-    private void ChangeBorderAndCornerRadius(dynamic item)
+    private void ChangeBorderAndCornerRadius(object item)
     {
-        item.Padding = new Thickness(25, 0, 25, 0);
-        item.CornerRadius = new CornerRadius(0);
-        item.BorderThickness = new Thickness(1, 1, 1, 0);
+        if (item is SettingsCard settingsCard)
+        {
+            settingsCard.Padding = new Thickness(25, 0, 25, 0);
+            settingsCard.CornerRadius = new CornerRadius(0);
+            settingsCard.BorderThickness = new Thickness(1, 1, 1, 0);
+        }
+        else if (item is SettingsExpander settingsExpander)
+        {
+            settingsExpander.Padding = new Thickness(25, 0, 25, 0);
+            settingsExpander.CornerRadius = new CornerRadius(0);
+            settingsExpander.BorderThickness = new Thickness(1, 1, 1, 0);
+        }
+        
+        var firstItem = Items.FirstOrDefault();
 
-        dynamic firstItem = (dynamic)Items.FirstOrDefault();
         if (firstItem != null)
         {
-            firstItem.BorderThickness = new Thickness(1, 0, 1, 0);
+            if (firstItem is SettingsCard firstSettingsCard)
+            {
+                firstSettingsCard.BorderThickness = new Thickness(1, 0, 1, 0);
+            }
+            else if (firstItem is SettingsExpander firstSettingsExpander)
+            {
+                firstSettingsExpander.BorderThickness = new Thickness(1, 0, 1, 0);
+            }
         }
-        dynamic lastItem = (dynamic)Items.LastOrDefault();
+
+        var lastItem = Items.LastOrDefault();
+
         if (lastItem != null && Items.Count == 1)
         {
-            lastItem.CornerRadius = new CornerRadius(0, 0, 4, 4);
-            lastItem.BorderThickness = new Thickness(1, 0, 1, 1);
+            if (lastItem is SettingsCard lastSettingsCard)
+            {
+                lastSettingsCard.CornerRadius = new CornerRadius(0, 0, 4, 4);
+                lastSettingsCard.BorderThickness = new Thickness(1, 0, 1, 1);
+            }
+            else if (lastItem is SettingsExpander lastSettingsExpander)
+            {
+                lastSettingsExpander.CornerRadius = new CornerRadius(0, 0, 4, 4);
+                lastSettingsExpander.BorderThickness = new Thickness(1, 0, 1, 1);
+            }
         }
         else if (lastItem != null)
         {
-            lastItem.CornerRadius = new CornerRadius(0, 0, 4, 4);
-            lastItem.BorderThickness = new Thickness(1);
+            if (lastItem is SettingsCard lastSettingsCard)
+            {
+                lastSettingsCard.CornerRadius = new CornerRadius(0, 0, 4, 4);
+                lastSettingsCard.BorderThickness = new Thickness(1);
+            }
+            else if (lastItem is SettingsExpander lastSettingsExpander)
+            {
+                lastSettingsExpander.CornerRadius = new CornerRadius(0, 0, 4, 4);
+                lastSettingsExpander.BorderThickness = new Thickness(1);
+            }
         }
     }
 
