@@ -3,6 +3,7 @@
 	  <TargetFrameworks>net6.0-windows10.0.19041.0;net7.0-windows10.0.19041.0</TargetFrameworks>
 	  <NoWarn>CA1416;WMC1506</NoWarn>
 	  <Version>5.3.1</Version>
+    <IsTrimmable>false</IsTrimmable>
     <Namespace>WinUICommunity.LandingPages</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>

@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
 	  <Version>5.3.0</Version>
+    <IsTrimmable>false</IsTrimmable>
     <Namespace>WinUICommunity.ContextMenuExtensions</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>

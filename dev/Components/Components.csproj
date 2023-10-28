@@ -2,6 +2,7 @@
   <PropertyGroup>
     <NoWarn>CS8632</NoWarn>
     <Version>5.3.3</Version>
+    <IsTrimmable>false</IsTrimmable>
     <Namespace>WinUICommunity.Components</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
