@@ -221,7 +221,7 @@ public sealed partial class Localizer : ILocalizer, IDisposable
         {
             return property;
         }
-        else if (type.GetField(
+        if (type.GetField(
             dependencyPropertyName,
             BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy) is FieldInfo fieldInfo &&
             fieldInfo.GetValue(null) is DependencyProperty field)
@@ -229,7 +229,34 @@ public sealed partial class Localizer : ILocalizer, IDisposable
             return field;
         }
 
+        if (dependencyPropertyName.Split(".") is string[] splitResult &&
+            splitResult.Length is 2)
+        {
+            string attachedPropertyClassName = splitResult[0];
+            IEnumerable<Type> types = GetTypesFromName(attachedPropertyClassName);
+
+            string attachedPropertyName = splitResult[1];
+            IEnumerable<PropertyInfo> attachedProperties = types
+                .Select(x => x.GetProperty(attachedPropertyName))
+                .OfType<PropertyInfo>();
+
+            foreach (PropertyInfo attachedProperty in attachedProperties)
+            {
+                if (attachedProperty.GetValue(null) is DependencyProperty dependencyProperty)
+                {
+                    return dependencyProperty;
+                }
+            }
+        }
+
         return null;
+    }
+
+    private static IEnumerable<Type> GetTypesFromName(string name)
+    {
+        return AppDomain.CurrentDomain.GetAssemblies()
+            .SelectMany(x => x.GetTypes())
+            .Where(x => x.Name == name);
     }
 
     private async Task LocalizeDependencyObjects()
@@ -259,11 +286,9 @@ public sealed partial class Localizer : ILocalizer, IDisposable
             item.DependencyPropertyName) is DependencyProperty dependencyProperty)
         {
             LocalizeDependencyObjectsWithDependencyProperty(dependencyObject, dependencyProperty, item.Value);
+            return;
         }
-        else
-        {
-            LocalizeDependencyObjectsWithoutDependencyProperty(dependencyObject, item.Value);
-        }
+        LocalizeDependencyObjectsWithoutDependencyProperty(dependencyObject, item.Value);
     }
 
     private void LocalizeDependencyObjectsWithDependencyProperty(DependencyObject dependencyObject, DependencyProperty dependencyProperty, string value)
