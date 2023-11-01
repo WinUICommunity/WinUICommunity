@@ -151,8 +151,8 @@ public partial class LocalizerBuilder
     private static LanguageDictionary.Item CreateLanguageDictionaryItem(StringResourceItem stringResourceItem)
     {
         string name = stringResourceItem.Name;
-        (string Uid, string DependencyPropertyName) = name.LastIndexOf(".") is int lastSeparatorIndex && lastSeparatorIndex > 1
-            ? (name[..lastSeparatorIndex], string.Concat(name.AsSpan(lastSeparatorIndex + 1), "Property"))
+        (string Uid, string DependencyPropertyName) = name.IndexOf(".") is int firstSeparatorIndex && firstSeparatorIndex > 1
+            ? (name[..firstSeparatorIndex], string.Concat(name.AsSpan(firstSeparatorIndex + 1), "Property"))
             : (name, string.Empty);
         return new LanguageDictionary.Item(
             Uid,
