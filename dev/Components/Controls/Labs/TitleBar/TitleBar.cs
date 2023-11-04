@@ -24,7 +24,7 @@ namespace WinUICommunity;
 [TemplatePart(Name = PartPaneButton, Type = typeof(Button))]
 [TemplatePart(Name = nameof(PART_LeftPaddingColumn), Type = typeof(ColumnDefinition))]
 [TemplatePart(Name = nameof(PART_RightPaddingColumn), Type = typeof(ColumnDefinition))]
-
+[TemplatePart(Name = nameof(PART_ButtonHolder), Type = typeof(StackPanel))]
 public partial class TitleBar : Control
 {
     private const string PartBackButton = "PART_BackButton";
@@ -64,6 +64,7 @@ public partial class TitleBar : Control
 
     ColumnDefinition? PART_LeftPaddingColumn;
     ColumnDefinition? PART_RightPaddingColumn;
+    StackPanel? PART_ButtonHolder;
 
     public TitleBar()
     {
@@ -75,6 +76,7 @@ public partial class TitleBar : Control
         PART_LeftPaddingColumn = GetTemplateChild(nameof(PART_LeftPaddingColumn)) as ColumnDefinition;
         PART_RightPaddingColumn = GetTemplateChild(nameof(PART_RightPaddingColumn)) as ColumnDefinition;
         Configure();
+        ConfigureButtonHolder();
         if (GetTemplateChild(PartBackButton) is Button backButton)
         {
             backButton.Click -= BackButton_Click;
@@ -93,6 +95,26 @@ public partial class TitleBar : Control
 
         Update();
         base.OnApplyTemplate();
+    }
+
+    private void ConfigureButtonHolder()
+    {
+        if (PART_ButtonHolder != null)
+        {
+            PART_ButtonHolder.SizeChanged -= PART_ButtonHolder_SizeChanged;
+        }
+
+        PART_ButtonHolder = GetTemplateChild(nameof(PART_ButtonHolder)) as StackPanel;
+
+        if (PART_ButtonHolder != null)
+        {
+            PART_ButtonHolder.SizeChanged += PART_ButtonHolder_SizeChanged;
+        }
+    }
+
+    private void PART_ButtonHolder_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        SetDragRegionForCustomTitleBar();
     }
 
     private void TitleBar_SizeChanged(object sender, SizeChangedEventArgs e)
