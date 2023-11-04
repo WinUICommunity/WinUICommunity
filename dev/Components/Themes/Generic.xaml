@@ -2090,7 +2090,7 @@ Themes\Styles\TextBlock.xaml
     <win:Setter Property="Template">
       <win:Setter.Value>
         <win:ControlTemplate TargetType="local:TitleBar">
-          <win:Grid x:Name="PART_RootGrid" Height="{TemplateBinding MinHeight}" Padding="4,0,4,0" VerticalAlignment="Stretch" Background="{TemplateBinding Background}">
+          <win:Grid x:Name="PART_RootGrid" Height="{TemplateBinding MinHeight}" Padding="4,0,0,0" VerticalAlignment="Stretch" Background="{TemplateBinding Background}">
             <win:Grid.ColumnDefinitions>
               <win:ColumnDefinition x:Name="PART_LeftPaddingColumn" Width="0" />
               <win:ColumnDefinition x:Name="PART_ButtonsHolderColumn" Width="Auto" />
