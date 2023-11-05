@@ -33,6 +33,18 @@ public partial class TitleBar : Control
         set { SetValue(IsAlwaysOnTopProperty, value); }
     }
 
+    public string PaneButtonTooltipText
+    {
+        get { return (string)GetValue(PaneButtonTooltipTextProperty); }
+        set { SetValue(PaneButtonTooltipTextProperty, value); }
+    }
+
+    public string BackButtonTooltipText
+    {
+        get { return (string)GetValue(BackButtonTooltipTextProperty); }
+        set { SetValue(BackButtonTooltipTextProperty, value); }
+    }
+
     public static readonly DependencyProperty HasTitleBarProperty =
         DependencyProperty.Register("HasTitleBar", typeof(bool), typeof(TitleBar), new PropertyMetadata(true, OnHasTitleBarChanged));
 
@@ -47,6 +59,12 @@ public partial class TitleBar : Control
 
     public static readonly DependencyProperty IsAlwaysOnTopProperty =
         DependencyProperty.Register("IsAlwaysOnTop", typeof(bool), typeof(TitleBar), new PropertyMetadata(false, OnIsAlwaysOnTopChanged));
+
+    public static readonly DependencyProperty PaneButtonTooltipTextProperty =
+        DependencyProperty.Register("PaneButtonTooltipText", typeof(string), typeof(TitleBar), new PropertyMetadata("Toggle menu"));
+
+    public static readonly DependencyProperty BackButtonTooltipTextProperty =
+        DependencyProperty.Register("BackButtonTooltipText", typeof(string), typeof(TitleBar), new PropertyMetadata("Back"));
 
     private static void OnHasTitleBarChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {

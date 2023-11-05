@@ -171,10 +171,10 @@
                                     Orientation="Horizontal">
                             <Button x:Name="PART_BackButton"
                                     Style="{ThemeResource TitleBarBackButtonStyle}"
-                                    ToolTipService.ToolTip="Back" />
+                                    ToolTipService.ToolTip="{TemplateBinding BackButtonTooltipText}" />
                             <Button x:Name="PART_PaneButton"
                                     Style="{StaticResource TitleBarPaneToggleButtonStyle}"
-                                    ToolTipService.ToolTip="Toggle menu" />
+                                    ToolTipService.ToolTip="{TemplateBinding PaneButtonTooltipText}" />
                         </StackPanel>
 
                         <ContentPresenter x:Name="PART_ContentPresenter"
