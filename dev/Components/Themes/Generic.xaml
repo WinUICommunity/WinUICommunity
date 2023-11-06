@@ -2192,8 +2192,8 @@ Themes\Styles\TextBlock.xaml
             </win:StackPanel>
             <win:Grid x:Name="PART_DragRegion" Grid.Column="2" Grid.ColumnSpan="6" Background="Transparent" />
             <win:StackPanel x:Name="PART_ButtonHolder" Grid.Column="1" Orientation="Horizontal">
-              <win:Button x:Name="PART_BackButton" Style="{ThemeResource TitleBarBackButtonStyle}" ToolTipService.ToolTip="Back" />
-              <win:Button x:Name="PART_PaneButton" Style="{StaticResource TitleBarPaneToggleButtonStyle}" ToolTipService.ToolTip="Toggle menu" />
+              <win:Button x:Name="PART_BackButton" Style="{ThemeResource TitleBarBackButtonStyle}" ToolTipService.ToolTip="{TemplateBinding BackButtonTooltipText}" />
+              <win:Button x:Name="PART_PaneButton" Style="{StaticResource TitleBarPaneToggleButtonStyle}" ToolTipService.ToolTip="{TemplateBinding PaneButtonTooltipText}" />
             </win:StackPanel>
             <win:ContentPresenter x:Name="PART_ContentPresenter" Grid.Column="5" MinWidth="360" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" Content="{TemplateBinding Content}" />
             <win:ContentPresenter x:Name="PART_FooterPresenter" Grid.Column="7" Margin="4,0,8,0" HorizontalContentAlignment="Right" Content="{TemplateBinding Footer}" />

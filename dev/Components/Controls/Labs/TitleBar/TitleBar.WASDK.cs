@@ -39,7 +39,9 @@ public partial class TitleBar : Control
             Window.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
 
             ConfigPresenter();
-            
+
+            this.Window.SizeChanged -= Window_SizeChanged;
+            this.Window.SizeChanged += Window_SizeChanged;
             this.Window.Activated -= Window_Activated;
             this.Window.Activated += Window_Activated;
 
@@ -85,6 +87,28 @@ public partial class TitleBar : Control
         }
     }
 
+    private void Window_SizeChanged(object sender, WindowSizeChangedEventArgs args)
+    {
+        UpdateVisualStateAndDragRegion(args.Size);
+    }
+
+    private void UpdateVisualStateAndDragRegion(Windows.Foundation.Size size)
+    {
+        if (size.Width <= CompactStateBreakpoint)
+        {
+            if (Content != null || Footer != null)
+            {
+                VisualStateManager.GoToState(this, NarrowState, true);
+            }
+        }
+        else
+        {
+            VisualStateManager.GoToState(this, WideState, true);
+        }
+
+        SetDragRegionForCustomTitleBar();
+    }
+
     private void UpdateCaptionButtons(FrameworkElement rootElement)
     {
         Window.AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
@@ -111,6 +135,7 @@ public partial class TitleBar : Control
 
         Window.AppWindow.TitleBar.ExtendsContentIntoTitleBar = false;
         this.Window.Activated -= Window_Activated;
+        this.Window.SizeChanged -= Window_SizeChanged;
         SizeChanged -= this.TitleBar_SizeChanged;
         Window.AppWindow.TitleBar.ResetToDefault();
     }
