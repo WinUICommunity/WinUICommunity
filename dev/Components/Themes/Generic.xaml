@@ -34,6 +34,18 @@ Themes\Styles\TextBlock.xaml
       <win:StaticResource x:Key="SettingsCardBorderBrushPointerOver" ResourceKey="ControlElevationBorderBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushPressed" ResourceKey="ControlStrokeColorDefaultBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushDisabled" ResourceKey="ControlStrokeColorDefaultBrush" />
+      <win:StaticResource x:Key="SubtleButtonBackground" ResourceKey="SubtleFillColorTransparent" />
+      <win:StaticResource x:Key="SubtleButtonBackgroundPointerOver" ResourceKey="SubtleFillColorSecondary" />
+      <win:StaticResource x:Key="SubtleButtonBackgroundPressed" ResourceKey="SubtleFillColorTertiary" />
+      <win:StaticResource x:Key="SubtleButtonBackgroundDisabled" ResourceKey="SubtleFillColorTransparent" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrush" ResourceKey="SubtleFillColorTransparent" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrushPointerOver" ResourceKey="SubtleFillColorSecondary" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrushPressed" ResourceKey="SubtleFillColorTertiary" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrushDisabled" ResourceKey="SubtleFillColorTransparent" />
+      <win:StaticResource x:Key="SubtleButtonForeground" ResourceKey="TextFillColorPrimary" />
+      <win:StaticResource x:Key="SubtleButtonForegroundPointerOver" ResourceKey="TextFillColorPrimary" />
+      <win:StaticResource x:Key="SubtleButtonForegroundPressed" ResourceKey="TextFillColorSecondary" />
+      <win:StaticResource x:Key="SubtleButtonForegroundDisabled" ResourceKey="TextFillColorDisabled" />
     </win:ResourceDictionary>
     <win:ResourceDictionary x:Key="Light">
       <win:StaticResource x:Key="SettingsCardBackground" ResourceKey="CardBackgroundFillColorDefaultBrush" />
@@ -48,6 +60,18 @@ Themes\Styles\TextBlock.xaml
       <win:StaticResource x:Key="SettingsCardBorderBrushPointerOver" ResourceKey="ControlElevationBorderBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushPressed" ResourceKey="ControlStrokeColorDefaultBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushDisabled" ResourceKey="ControlStrokeColorDefaultBrush" />
+      <win:StaticResource x:Key="SubtleButtonBackground" ResourceKey="SubtleFillColorTransparent" />
+      <win:StaticResource x:Key="SubtleButtonBackgroundPointerOver" ResourceKey="SubtleFillColorSecondary" />
+      <win:StaticResource x:Key="SubtleButtonBackgroundPressed" ResourceKey="SubtleFillColorTertiary" />
+      <win:StaticResource x:Key="SubtleButtonBackgroundDisabled" ResourceKey="SubtleFillColorTransparent" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrush" ResourceKey="SubtleFillColorTransparent" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrushPointerOver" ResourceKey="SubtleFillColorSecondary" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrushPressed" ResourceKey="SubtleFillColorTertiary" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrushDisabled" ResourceKey="SubtleFillColorTransparent" />
+      <win:StaticResource x:Key="SubtleButtonForeground" ResourceKey="TextFillColorPrimary" />
+      <win:StaticResource x:Key="SubtleButtonForegroundPointerOver" ResourceKey="TextFillColorPrimary" />
+      <win:StaticResource x:Key="SubtleButtonForegroundPressed" ResourceKey="TextFillColorSecondary" />
+      <win:StaticResource x:Key="SubtleButtonForegroundDisabled" ResourceKey="TextFillColorDisabled" />
     </win:ResourceDictionary>
     <win:ResourceDictionary x:Key="HighContrast">
       <win:StaticResource x:Key="SettingsCardBackground" ResourceKey="SystemColorButtonFaceColorBrush" />
@@ -62,6 +86,18 @@ Themes\Styles\TextBlock.xaml
       <win:StaticResource x:Key="SettingsCardBorderBrushPointerOver" ResourceKey="SystemColorHighlightColorBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushPressed" ResourceKey="SystemColorHighlightTextColorBrush" />
       <win:StaticResource x:Key="SettingsCardBorderBrushDisabled" ResourceKey="SystemControlDisabledTransparentBrush" />
+      <win:StaticResource x:Key="SubtleButtonBackground" ResourceKey="SystemColorWindowColorBrush" />
+      <win:StaticResource x:Key="SubtleButtonBackgroundPointerOver" ResourceKey="SystemColorHighlightTextColorBrush" />
+      <win:StaticResource x:Key="SubtleButtonBackgroundPressed" ResourceKey="SystemColorWindowColorBrush" />
+      <win:StaticResource x:Key="SubtleButtonBackgroundDisabled" ResourceKey="SystemControlBackgroundBaseLowBrush" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrush" ResourceKey="SystemColorWindowColorBrush" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrushPointerOver" ResourceKey="SystemColorHighlightColorBrush" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrushPressed" ResourceKey="SystemColorHighlightColorBrush" />
+      <win:StaticResource x:Key="SubtleButtonBorderBrushDisabled" ResourceKey="SystemColorGrayTextColor" />
+      <win:StaticResource x:Key="SubtleButtonForeground" ResourceKey="SystemColorButtonTextColorBrush" />
+      <win:StaticResource x:Key="SubtleButtonForegroundPointerOver" ResourceKey="SystemControlHighlightBaseHighBrush" />
+      <win:StaticResource x:Key="SubtleButtonForegroundPressed" ResourceKey="SystemControlHighlightBaseHighBrush" />
+      <win:StaticResource x:Key="SubtleButtonForegroundDisabled" ResourceKey="SystemControlDisabledBaseMediumLowBrush" />
     </win:ResourceDictionary>
   </win:ResourceDictionary.ThemeDictionaries>
   <win:Thickness x:Key="SettingsCardBorderThickness">1</win:Thickness>
@@ -89,14 +125,6 @@ Themes\Styles\TextBlock.xaml
   <x:Double x:Key="TitleBarCompactHeight">32</x:Double>
   <x:Double x:Key="TitleBarTallHeight">48</x:Double>
   <x:Double x:Key="TitleBarContentMaxWidth">360</x:Double>
-  <win:SolidColorBrush x:Key="SubtleButtonBackground" Color="{ThemeResource SubtleFillColorTransparent}" />
-  <win:SolidColorBrush x:Key="SubtleButtonBackgroundPointerOver" Color="{ThemeResource SubtleFillColorSecondary}" />
-  <win:SolidColorBrush x:Key="SubtleButtonBackgroundPressed" Color="{ThemeResource SubtleFillColorTertiary}" />
-  <win:SolidColorBrush x:Key="SubtleButtonBackgroundDisabled" Color="{ThemeResource SubtleFillColorTransparent}" />
-  <win:SolidColorBrush x:Key="SubtleButtonForeground" Color="{ThemeResource TextFillColorPrimary}" />
-  <win:SolidColorBrush x:Key="SubtleButtonForegroundPointerOver" Color="{ThemeResource TextFillColorPrimary}" />
-  <win:SolidColorBrush x:Key="SubtleButtonForegroundPressed" Color="{ThemeResource TextFillColorSecondary}" />
-  <win:SolidColorBrush x:Key="SubtleButtonForegroundDisabled" Color="{ThemeResource TextFillColorDisabled}" />
   <win:Style x:Key="HyperlinkButtonStyle" TargetType="HyperlinkButton" />
   <win:TransitionCollection x:Key="SettingsCardsAnimations">
     <win:EntranceThemeTransition FromVerticalOffset="50" />
@@ -869,10 +897,8 @@ Themes\Styles\TextBlock.xaml
     <win:Setter Property="Background" Value="{ThemeResource SubtleButtonBackground}" />
     <win:Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
     <win:Setter Property="Foreground" Value="{ThemeResource SubtleButtonForeground}" />
-    <win:Setter Property="BorderThickness" Value="0" />
-    <win:Setter Property="Width" Value="36" />
-    <win:Setter Property="Padding" Value="0" />
-    <win:Setter Property="Height" Value="36" />
+    <win:Setter Property="BorderBrush" Value="{ThemeResource SubtleButtonBorderBrush}" />
+    <win:Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}" />
     <win:Setter Property="Padding" Value="{StaticResource ButtonPadding}" />
     <win:Setter Property="HorizontalAlignment" Value="Left" />
     <win:Setter Property="VerticalAlignment" Value="Center" />
@@ -885,7 +911,7 @@ Themes\Styles\TextBlock.xaml
     <win:Setter Property="Template">
       <win:Setter.Value>
         <win:ControlTemplate TargetType="Button">
-          <win:ContentPresenter x:Name="ContentPresenter" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" AnimatedIcon.State="Normal" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" BackgroundSizing="{TemplateBinding BackgroundSizing}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" CornerRadius="{TemplateBinding CornerRadius}">
+          <win:ContentPresenter x:Name="ContentPresenter" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" AnimatedIcon.State="Normal" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" BackgroundSizing="{TemplateBinding BackgroundSizing}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" CornerRadius="{TemplateBinding CornerRadius}" Foreground="{TemplateBinding Foreground}">
             <win:ContentPresenter.BackgroundTransition>
               <win:BrushTransition Duration="0:0:0.083" />
             </win:ContentPresenter.BackgroundTransition>
@@ -896,6 +922,9 @@ Themes\Styles\TextBlock.xaml
                   <win:Storyboard>
                     <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
                       <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleButtonBackgroundPointerOver}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleButtonBorderBrushPointerOver}" />
                     </win:ObjectAnimationUsingKeyFrames>
                     <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
                       <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleButtonForegroundPointerOver}" />
@@ -910,6 +939,9 @@ Themes\Styles\TextBlock.xaml
                     <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
                       <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleButtonBackgroundPressed}" />
                     </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleButtonBorderBrushPressed}" />
+                    </win:ObjectAnimationUsingKeyFrames>
                     <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
                       <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleButtonForegroundPressed}" />
                     </win:ObjectAnimationUsingKeyFrames>
@@ -922,6 +954,9 @@ Themes\Styles\TextBlock.xaml
                   <win:Storyboard>
                     <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
                       <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleButtonBackgroundDisabled}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleButtonBorderBrushDisabled}" />
                     </win:ObjectAnimationUsingKeyFrames>
                     <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
                       <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SubtleButtonForegroundDisabled}" />
