@@ -38,6 +38,16 @@ public static class OSVersionHelper
     /// </summary>
     public static bool IsWindows11_22621_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 22621, OSVersion.Revision);
 
+    /// <summary>
+    ///     Windows 11 Build 22631
+    /// </summary>
+    public static bool IsWindows11_22631 { get; } = IsWindowsNT && OSVersion == new Version(10, 0, 22631, OSVersion.Revision);
+
+    /// <summary>
+    ///     Windows 11 Build 22631 Or Greater
+    /// </summary>
+    public static bool IsWindows11_22631_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 22631, OSVersion.Revision);
+
     public static Version GetOSVersion()
     {
         var osv = new NativeValues.RTL_OSVERSIONINFOEX();
