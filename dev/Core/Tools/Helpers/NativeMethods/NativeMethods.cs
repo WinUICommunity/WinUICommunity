@@ -1,7 +1,7 @@
 ﻿namespace WinUICommunity;
 public static partial class NativeMethods
 {
-    [DllImport(NativeValues.ExternDll.User32, EntryPoint = "FindWindowExW", SetLastError = true)]
+    [DllImport(NativeValues.ExternDll.User32, EntryPoint = "FindWindowExW", SetLastError = true, CharSet = CharSet.Unicode)]
     public static extern IntPtr FindWindowEx(IntPtr hWndParent, IntPtr hWndChildAfter, string lpszClass, string lpszWindow);
 
     [DllImport(NativeValues.ExternDll.User32)]
