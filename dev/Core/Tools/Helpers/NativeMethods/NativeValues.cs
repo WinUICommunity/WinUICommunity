@@ -8,6 +8,8 @@ public static class NativeValues
     /// </summary>
     public static readonly IntPtr HWND_TOP_IntPtr = new(0);
 
+    public delegate IntPtr WNDPROC(IntPtr hWnd, NativeValues.WindowMessage Msg, IntPtr wParam, IntPtr lParam);
+
     public static class ExternDll
     {
         public const string

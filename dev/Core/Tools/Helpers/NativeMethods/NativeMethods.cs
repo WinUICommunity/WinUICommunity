@@ -1,4 +1,6 @@
-﻿namespace WinUICommunity;
+﻿using System.Runtime.Versioning;
+
+namespace WinUICommunity;
 public static partial class NativeMethods
 {
     [DllImport(NativeValues.ExternDll.User32, EntryPoint = "FindWindowExW", SetLastError = true, CharSet = CharSet.Unicode)]
@@ -25,8 +27,6 @@ public static partial class NativeMethods
     [DllImport(NativeValues.ExternDll.User32, SetLastError = true)]
     public static extern void SwitchToThisWindow(IntPtr hWnd, bool turnOn);
 
-    public delegate IntPtr WinProc(IntPtr hWnd, NativeValues.WindowMessage Msg, IntPtr wParam, IntPtr lParam);
-
     [DllImport(NativeValues.ExternDll.NTdll)]
     public static extern int RtlGetVersion(out NativeValues.RTL_OSVERSIONINFOEX lpVersionInformation);
 
@@ -49,13 +49,14 @@ public static partial class NativeMethods
     [DllImport(NativeValues.ExternDll.Kernel32, SetLastError = false, ExactSpelling = true, CharSet = CharSet.Unicode)]
     public static extern int GetCurrentPackageFullName(ref uint packageFullNameLength, [Optional] StringBuilder packageFullName);
 
+
     [DllImport(NativeValues.ExternDll.User32, EntryPoint = "SetWindowLong")]
-    public static extern int SetWindowLong32(IntPtr hWnd, NativeValues.WindowLongIndexFlags nIndex, WinProc newProc);
+    public static extern int SetWindowLong32(IntPtr hWnd, int nIndex, NativeValues.WNDPROC newProc);
 
     [DllImport(NativeValues.ExternDll.User32, EntryPoint = "SetWindowLongPtr")]
-    public static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, NativeValues.WindowLongIndexFlags nIndex, WinProc newProc);
+    public static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, int nIndex, NativeValues.WNDPROC newProc);
 
-    public static IntPtr SetWindowLongPtr(IntPtr hWnd, NativeValues.WindowLongIndexFlags nIndex, WinProc newProc)
+    public static IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, NativeValues.WNDPROC newProc)
     {
         return IntPtr.Size == 8 ? SetWindowLongPtr64(hWnd, nIndex, newProc) : new IntPtr(SetWindowLong32(hWnd, nIndex, newProc));
     }
@@ -63,19 +64,13 @@ public static partial class NativeMethods
     [DllImport(NativeValues.ExternDll.User32)]
     public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
-    [DllImport(NativeValues.ExternDll.User32, EntryPoint = "GetWindowLongW", SetLastError = false)]
-    public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
-    [DllImport(NativeValues.ExternDll.User32, EntryPoint = "GetWindowLongPtrW", SetLastError = false)]
-    public static extern int GetWindowLongPtr(IntPtr hWnd, int nIndex);
-
     [DllImport(NativeValues.ExternDll.User32, EntryPoint = "SetWindowLongW", SetLastError = false)]
-    public static extern IntPtr SetWindowLong(IntPtr hWnd, NativeValues.WindowLongIndexFlags nIndex, IntPtr dwNewLong);
+    public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 
     [DllImport(NativeValues.ExternDll.User32, EntryPoint = "SetWindowLongPtrW", SetLastError = false)]
-    public static extern IntPtr SetWindowLongPtr(IntPtr hWnd, NativeValues.WindowLongIndexFlags nIndex, IntPtr dwNewLong);
+    public static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 
-    public static IntPtr SetWindowLongAuto(IntPtr hWnd, NativeValues.WindowLongIndexFlags nIndex, IntPtr dwNewLong)
+    public static IntPtr SetWindowLongAuto(IntPtr hWnd, int nIndex, IntPtr dwNewLong)
     {
         if (IntPtr.Size is 8)
         {
@@ -87,13 +82,14 @@ public static partial class NativeMethods
         }
     }
 
+
     [DllImport(NativeValues.ExternDll.User32, EntryPoint = "GetWindowLongW", SetLastError = false)]
-    public static extern int GetWindowLong(IntPtr hWnd, NativeValues.WindowLongIndexFlags nIndex);
+    public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
     [DllImport(NativeValues.ExternDll.User32, EntryPoint = "GetWindowLongPtrW", SetLastError = false)]
-    public static extern int GetWindowLongPtr(IntPtr hWnd, NativeValues.WindowLongIndexFlags nIndex);
+    public static extern int GetWindowLongPtr(IntPtr hWnd, int nIndex);
 
-    public static int GetWindowLongAuto(IntPtr hWnd, NativeValues.WindowLongIndexFlags nIndex)
+    public static int GetWindowLongAuto(IntPtr hWnd, int nIndex)
     {
         if (IntPtr.Size is 8)
         {
@@ -108,4 +104,29 @@ public static partial class NativeMethods
     [DllImport(NativeValues.ExternDll.User32)]
     public static extern IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, NativeValues.WindowMessage Msg, IntPtr wParam, IntPtr lParam);
 
+    [DllImport(NativeValues.ExternDll.User32, CharSet = CharSet.Auto)]
+    public static extern bool GetCursorPos(out NativeValues.POINT pt);
+
+    [DllImport(NativeValues.ExternDll.User32)]
+    public static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+
+    [DllImport(NativeValues.ExternDll.User32)]
+    public static extern bool EnableMenuItem(IntPtr hMenu, int UIDEnabledItem, int uEnable);
+
+    [DllImport(NativeValues.ExternDll.User32)]
+    public static extern bool InsertMenu(IntPtr hMenu, int wPosition, int wFlags, int wIDNewItem, string lpNewItem);
+
+    [DllImport(NativeValues.ExternDll.User32, ExactSpelling = true, EntryPoint = "DestroyMenu", CharSet = CharSet.Auto)]
+    [ResourceExposure(ResourceScope.None)]
+    public static extern bool IntDestroyMenu(HandleRef hMenu);
+
+    [DllImport(NativeValues.ExternDll.User32, CharSet = CharSet.Unicode, SetLastError = true)]
+    public static extern IntPtr SendMessage(IntPtr hWnd, int nMsg, IntPtr wParam, IntPtr lParam);
+
+    [DllImport(NativeValues.ExternDll.User32)]
+    public static extern IntPtr GetWindow(IntPtr hwnd, int nCmd);
+
+    [DllImport(NativeValues.ExternDll.User32)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    public static extern bool DestroyWindow(IntPtr hwnd);
 }
