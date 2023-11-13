@@ -3,7 +3,7 @@ using Windows.Storage;
 using Windows.System.Profile;
 
 namespace WinUICommunity;
-public static class InfoHelper
+internal static class InfoHelper
 {
     public static Version AppVersion { get; } = new Version(
         Package.Current.Id.Version.Major,

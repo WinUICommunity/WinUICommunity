@@ -31,7 +31,7 @@ public partial class App : Application
     {
         this.InitializeComponent();
         JsonNavigationViewService = new JsonNavigationViewService();
-        if (!ApplicationHelper.IsPackaged)
+        if (!PackageHelper.IsPackaged)
         {
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
             var c_notificationHandlers = new Dictionary<int, Action<AppNotificationActivatedEventArgs>>();
@@ -61,7 +61,7 @@ public partial class App : Application
         ThemeService.ConfigBackdrop(BackdropType.Mica);
         ThemeService.ConfigElementTheme(ElementTheme.Default);
 
-        if (!ApplicationHelper.IsPackaged)
+        if (!PackageHelper.IsPackaged)
         {
             notificationManager.Init(notificationManager, OnNotificationInvoked);
         }
@@ -86,7 +86,7 @@ public partial class App : Application
     private async Task InitializeLocalizer(params string[] languages)
     {
         // Initialize a "Strings" folder in the "LocalFolder" for the packaged app.
-        if (ApplicationHelper.IsPackaged)
+        if (PackageHelper.IsPackaged)
         {
             // Create string resources file from app resources if doesn't exists.
             StorageFolder localFolder = ApplicationData.Current.LocalFolder;

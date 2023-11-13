@@ -14,7 +14,7 @@ public sealed partial class DemoSectionPage : Page
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
-        var item = ApplicationHelper.GetUniqueIdAndSectionId(e.Parameter);
+        var item = NavigationServiceHelper.GetUniqueIdAndSectionId(e.Parameter);
         sectionPage.GetData(App.Current.JsonNavigationViewService.DataSource, item.UniqueId, item.SectionId);
         sectionPage.OrderBy(i => i.Title);
     }

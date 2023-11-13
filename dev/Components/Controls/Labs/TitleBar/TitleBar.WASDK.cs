@@ -161,6 +161,7 @@ public partial class TitleBar : Control
         }
         return 0.0;
     }
+    
     public void SetDragRegion(NonClientRegionKind nonClientRegionKind, params FrameworkElement[] frameworkElements)
     {
         var nonClientInputSrc = InputNonClientPointerSource.GetForWindowId(Window.AppWindow.Id);

@@ -35,7 +35,7 @@ public sealed partial class AppNotificationPage : Page
     }
     private void btnToast1_Click(object sender, RoutedEventArgs e)
     {
-        if (!ApplicationHelper.IsPackaged)
+        if (!PackageHelper.IsPackaged)
         {
             ToastWithAvatar.Instance.SendToast();
         }
@@ -43,7 +43,7 @@ public sealed partial class AppNotificationPage : Page
 
     private void btnToast2_Click(object sender, RoutedEventArgs e)
     {
-        if (!ApplicationHelper.IsPackaged)
+        if (!PackageHelper.IsPackaged)
         {
             ToastWithTextBox.Instance.SendToast();
         }
@@ -51,7 +51,7 @@ public sealed partial class AppNotificationPage : Page
 
     private void btnToast3_Click(object sender, RoutedEventArgs e)
     {
-        if (!ApplicationHelper.IsPackaged)
+        if (!PackageHelper.IsPackaged)
         {
             ToastWithPayload.Instance.SendToast();
         }
