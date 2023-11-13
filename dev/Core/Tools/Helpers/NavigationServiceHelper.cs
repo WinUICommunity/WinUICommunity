@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity.Core.Tools.Done;
+﻿namespace WinUICommunity;
 public partial class NavigationServiceHelper
 {
     public static Type GetPageType(string uniqueId, string assemblyString)

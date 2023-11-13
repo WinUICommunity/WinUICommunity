@@ -60,7 +60,7 @@ public partial class WindowHelper
     /// <param name="hwnd"></param>
     /// <param name="width"></param>
     /// <param name="height"></param>
-    public void SetWindowSize(Window window, int width, int height)
+    public static void SetWindowSize(Window window, int width, int height)
     {
         var hwnd = WindowNative.GetWindowHandle(window);
         // Win32 uses pixels and WinUI 3 uses effective pixels, so you should apply the DPI scale factor
