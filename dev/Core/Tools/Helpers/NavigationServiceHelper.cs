@@ -1,5 +1,5 @@
-﻿namespace WinUICommunity;
-public static partial class ApplicationHelper
+﻿namespace WinUICommunity.Core.Tools.Done;
+public partial class NavigationServiceHelper
 {
     public static Type GetPageType(string uniqueId, string assemblyString)
     {

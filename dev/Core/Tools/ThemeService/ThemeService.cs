@@ -12,22 +12,10 @@ public class ThemeService : IThemeService
 
     public Window CurrentWindow { get; set; }
     public SystemBackdrop CurrentSystemBackdrop { get; set; }
-    public Dictionary<Window, SystemBackdrop> CurrentSystemBackdropDic { get; set; } = new();
     public ElementTheme ActualTheme
     {
         get
         {
-            foreach (Window window in WindowHelper.ActiveWindows)
-            {
-                if (window.Content is FrameworkElement rootElement)
-                {
-                    if (rootElement.RequestedTheme != ElementTheme.Default)
-                    {
-                        return rootElement.RequestedTheme;
-                    }
-                }
-            }
-
             if (CurrentWindow != null && CurrentWindow.Content is FrameworkElement element)
             {
                 if (element.RequestedTheme != ElementTheme.Default)
@@ -35,32 +23,17 @@ public class ThemeService : IThemeService
                     return element.RequestedTheme;
                 }
             }
-            return ApplicationHelper.GetEnum<ElementTheme>(Application.Current.RequestedTheme.ToString());
+            return GeneralHelper.GetEnum<ElementTheme>(Application.Current.RequestedTheme.ToString());
         }
     }
     public ElementTheme RootTheme
     {
         get
         {
-            foreach (Window window in WindowHelper.ActiveWindows)
-            {
-                if (window.Content is FrameworkElement rootElement)
-                {
-                    return rootElement.RequestedTheme;
-                }
-            }
             return CurrentWindow != null && CurrentWindow.Content is FrameworkElement element ? element.RequestedTheme : ElementTheme.Default;
         }
         set
         {
-            foreach (Window window in WindowHelper.ActiveWindows)
-            {
-                if (window.Content is FrameworkElement rootElement)
-                {
-                    rootElement.RequestedTheme = value;
-                }
-            }
-
             if (CurrentWindow != null && CurrentWindow.Content is FrameworkElement element)
             {
                 element.RequestedTheme = value;
@@ -82,32 +55,27 @@ public class ThemeService : IThemeService
 
     public void Initialize(Window window, bool useAutoSave = true, string filename = null)
     {
+        if (window == null)
+        {
+            return;
+        }
         CurrentWindow = window;
 
-        foreach (Window activeWindow in WindowHelper.ActiveWindows)
+        if (CurrentWindow.Content is FrameworkElement element)
         {
-            if (activeWindow.Content is FrameworkElement rootElement)
-            {
-                WindowHelper.SetPreferredAppMode(rootElement.ActualTheme);
-                rootElement.ActualThemeChanged += OnActualThemeChanged;
-            }
-        }
-
-        if (CurrentWindow != null && CurrentWindow.Content is FrameworkElement element)
-        {
-            WindowHelper.SetPreferredAppMode(element.ActualTheme);
+            GeneralHelper.SetPreferredAppMode(element.ActualTheme);
             element.ActualThemeChanged += OnActualThemeChanged;
         }
 
-        var appNameVersion = ApplicationHelper.GetAppNameAndVersion(NameType.AssemblyVersion2, VersionType.AssemblyInformationalVersion);
-        string AppName = appNameVersion.NameAndVersion;
-        if (string.IsNullOrEmpty(appNameVersion.Version))
+        var appInfo = AssemblyInfoHelper.GetAppInfo(NameType.CurrentAssemblyVersion, VersionType.AssemblyInformationalVersion);
+        string AppName = appInfo.NameAndVersion;
+        if (string.IsNullOrEmpty(appInfo.Version))
         {
-            appNameVersion = ApplicationHelper.GetAppNameAndVersion(NameType.AssemblyVersion2, VersionType.AssemblyVersion2);
-            AppName = appNameVersion.NameAndVersion;
+            appInfo = AssemblyInfoHelper.GetAppInfo(NameType.CurrentAssemblyVersion, VersionType.CurrentAssemblyVersion);
+            AppName = appInfo.NameAndVersion;
         }
 
-        string RootPath = Path.Combine(ApplicationHelper.GetLocalFolderPath(), AppName);
+        string RootPath = Path.Combine(PathHelper.GetLocalFolderPath(), AppName);
         string AppConfigPath = Path.Combine(RootPath, "CommonAppConfig.json");
 
         this.useAutoSave = useAutoSave;
@@ -123,6 +91,11 @@ public class ThemeService : IThemeService
 
     public void ConfigBackdrop(BackdropType backdropType = BackdropType.Mica, bool force = false)
     {
+        if (CurrentWindow == null)
+        {
+            return;
+        }
+
         if (useAutoSave && Settings.IsBackdropFirstRun)
         {
             Settings.BackdropType = backdropType;
@@ -133,24 +106,12 @@ public class ThemeService : IThemeService
 
         if (backdropType != BackdropType.None)
         {
-            foreach (Window _window in WindowHelper.ActiveWindows)
-            {
-                var systemBackdrop = GetCurrentSystemBackdropFromLocalConfig(backdropType, force);
-                CurrentSystemBackdropDic.Add(_window, systemBackdrop);
-                _window.SystemBackdrop = systemBackdrop;
-                SetBackdropFallBackColorForWindows10(_window);
-                CurrentBackdropType = GetBackdropType(systemBackdrop);
-            }
+            var systemBackdrop = GetCurrentSystemBackdropFromLocalConfig(backdropType, force);
+            CurrentSystemBackdrop = systemBackdrop;
+            CurrentWindow.SystemBackdrop = systemBackdrop;
+            SetBackdropFallBackColorForWindows10(CurrentWindow);
 
-            if (CurrentWindow != null)
-            {
-                var systemBackdrop = GetCurrentSystemBackdropFromLocalConfig(backdropType, force);
-                CurrentSystemBackdrop = systemBackdrop;
-                CurrentWindow.SystemBackdrop = systemBackdrop;
-                SetBackdropFallBackColorForWindows10(CurrentWindow);
-
-                CurrentBackdropType = GetBackdropType(systemBackdrop);
-            }
+            CurrentBackdropType = GetBackdropType(systemBackdrop);
         }
         else
         {
@@ -210,12 +171,6 @@ public class ThemeService : IThemeService
         }
     }
 
-    public SystemBackdrop GetCurrentSystemBackdrop(Window activeWindow)
-    {
-        var currentWindow = CurrentSystemBackdropDic.FirstOrDefault(x => x.Key == activeWindow);
-        return currentWindow.Value != null ? currentWindow.Key.SystemBackdrop : null;
-    }
-
     public SystemBackdrop GetCurrentSystemBackdrop()
     {
         return CurrentSystemBackdrop != null ? CurrentWindow.SystemBackdrop : null;
@@ -240,26 +195,12 @@ public class ThemeService : IThemeService
         var systemBackdrop = GetSystemBackdrop(backdropType);
         CurrentBackdropType = backdropType;
 
-        foreach (var key in CurrentSystemBackdropDic.Keys)
+        if (Settings.BackdropType != backdropType)
         {
-            if (Settings.BackdropType != backdropType)
-            {
-                key.SystemBackdrop = systemBackdrop;
-                CurrentSystemBackdropDic[key] = systemBackdrop;
-            }
-
-            SetBackdropFallBackColorForWindows10(key);
+            CurrentWindow.SystemBackdrop = systemBackdrop;
         }
 
-        if (CurrentSystemBackdropDic != null)
-        {
-            if (Settings.BackdropType != backdropType)
-            {
-                CurrentWindow.SystemBackdrop = systemBackdrop;
-            }
-
-            SetBackdropFallBackColorForWindows10(CurrentWindow);
-        }
+        SetBackdropFallBackColorForWindows10(CurrentWindow);
 
         if (this.useAutoSave && Settings.BackdropType != backdropType)
         {
@@ -296,7 +237,7 @@ public class ThemeService : IThemeService
 
     private void OnActualThemeChanged(FrameworkElement sender, object args)
     {
-        WindowHelper.SetPreferredAppMode(sender.ActualTheme);
+        GeneralHelper.SetPreferredAppMode(sender.ActualTheme);
         UpdateSystemCaptionButtonColors();
         ActualThemeChanged?.Invoke(sender, args);
     }
@@ -306,36 +247,6 @@ public class ThemeService : IThemeService
         return RootTheme == ElementTheme.Default
             ? Application.Current.RequestedTheme == ApplicationTheme.Dark
             : RootTheme == ElementTheme.Dark;
-    }
-
-    public void UpdateSystemCaptionButtonForWindow(Window window)
-    {
-        var res = Application.Current.Resources;
-
-        if (titleBarCustomization?.LightTitleBarButtons == null && titleBarCustomization?.DarkTitleBarButtons == null)
-        {
-            res["WindowCaptionBackground"] = Colors.Transparent;
-            res["WindowCaptionBackgroundDisabled"] = Colors.Transparent;
-        }
-        else
-        {
-            if (IsDarkTheme())
-            {
-                res["WindowCaptionBackground"] = titleBarCustomization?.DarkTitleBarButtons?.ButtonBackgroundColor;
-                res["WindowCaptionBackgroundDisabled"] = titleBarCustomization?.DarkTitleBarButtons?.ButtonInactiveBackgroundColor;
-                res["WindowCaptionForeground"] = titleBarCustomization?.DarkTitleBarButtons?.ButtonForegroundColor;
-                res["WindowCaptionForegroundDisabled"] = titleBarCustomization?.DarkTitleBarButtons?.ButtonInactiveForegroundColor;
-            }
-            else
-            {
-                res["WindowCaptionBackground"] = titleBarCustomization?.LightTitleBarButtons?.ButtonBackgroundColor;
-                res["WindowCaptionBackgroundDisabled"] = titleBarCustomization?.LightTitleBarButtons?.ButtonInactiveBackgroundColor;
-                res["WindowCaptionForeground"] = titleBarCustomization?.LightTitleBarButtons?.ButtonForegroundColor;
-                res["WindowCaptionForegroundDisabled"] = titleBarCustomization?.LightTitleBarButtons?.ButtonInactiveForegroundColor;
-            }
-        }
-
-        WindowHelper.ActivateWindowAgain(window);
     }
 
     public void UpdateSystemCaptionButtonForAppWindow(Window window)
@@ -405,7 +316,7 @@ public class ThemeService : IThemeService
         res["WindowCaptionBackgroundDisabled"] = res["SystemControlBackgroundBaseLowBrush"];
         res["WindowCaptionForeground"] = res["SystemControlForegroundBaseHighBrush"];
         res["WindowCaptionForegroundDisabled"] = res["SystemControlDisabledBaseMediumLowBrush"];
-        WindowHelper.ActivateWindowAgain(window);
+        WindowHelper.ReActivateWindow(window);
     }
 
     public void UpdateSystemCaptionButton(Window window)
@@ -417,9 +328,6 @@ public class ThemeService : IThemeService
                 case TitleBarWindowType.None:
                     ResetCaptionButtonColors(window);
                     break;
-                case TitleBarWindowType.Window:
-                    UpdateSystemCaptionButtonForWindow(window);
-                    break;
                 case TitleBarWindowType.AppWindow:
                     UpdateSystemCaptionButtonForAppWindow(window);
                     break;
@@ -429,11 +337,6 @@ public class ThemeService : IThemeService
 
     private void UpdateSystemCaptionButtonColors()
     {
-        foreach (Window window in WindowHelper.ActiveWindows)
-        {
-            UpdateSystemCaptionButton(window);
-        }
-
         if (CurrentWindow != null)
         {
             UpdateSystemCaptionButton(CurrentWindow);
@@ -459,7 +362,7 @@ public class ThemeService : IThemeService
         var selectedTheme = (cmb?.SelectedItem as ComboBoxItem)?.Tag?.ToString();
         if (selectedTheme != null)
         {
-            var currentTheme = ApplicationHelper.GetEnum<ElementTheme>(selectedTheme);
+            var currentTheme = GeneralHelper.GetEnum<ElementTheme>(selectedTheme);
             if (RootTheme != currentTheme)
             {
                 RootTheme = currentTheme;
@@ -483,7 +386,7 @@ public class ThemeService : IThemeService
         var selectedBackdrop = (cmb?.SelectedItem as ComboBoxItem)?.Tag?.ToString();
         if (selectedBackdrop != null)
         {
-            var backdrop = ApplicationHelper.GetEnum<BackdropType>(selectedBackdrop);
+            var backdrop = GeneralHelper.GetEnum<BackdropType>(selectedBackdrop);
             SetCurrentSystemBackdrop(backdrop);
         }
     }
@@ -504,7 +407,7 @@ public class ThemeService : IThemeService
         var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
         if (selectedTheme != null)
         {
-            var currentTheme = ApplicationHelper.GetEnum<ElementTheme>(selectedTheme);
+            var currentTheme = GeneralHelper.GetEnum<ElementTheme>(selectedTheme);
             if (RootTheme != currentTheme)
             {
                 RootTheme = currentTheme;
@@ -523,7 +426,7 @@ public class ThemeService : IThemeService
         var selectedBackdrop = ((RadioButton)sender)?.Tag?.ToString();
         if (selectedBackdrop != null)
         {
-            var backdrop = ApplicationHelper.GetEnum<BackdropType>(selectedBackdrop);
+            var backdrop = GeneralHelper.GetEnum<BackdropType>(selectedBackdrop);
             SetCurrentSystemBackdrop(backdrop);
         }
     }

@@ -1,8 +1,41 @@
 ﻿using System.Web;
 
 namespace WinUICommunity;
-public static partial class ApplicationHelper
+public partial class GeneralHelper
 {
+    /// <summary>
+    /// Sets the preferred app mode based on the specified element theme.
+    /// </summary>
+    /// <param name="theme">The element theme to set the preferred app mode to.</param>
+    /// <remarks>
+    /// This method sets the preferred app mode based on the specified element theme. If the "theme" parameter is set to "Dark", it sets the preferred app mode to "ForceDark", forcing the app to use a dark theme. If the "theme" parameter is set to "Light", it sets the preferred app mode to "ForceLight", forcing the app to use a light theme. Otherwise, it sets the preferred app mode to "Default", using the system default theme. After setting the preferred app mode, the method flushes the menu themes to ensure that any changes take effect immediately. 
+    /// </remarks>
+    public static void SetPreferredAppMode(ElementTheme theme)
+    {
+        if (theme == ElementTheme.Dark)
+        {
+            NativeMethods.SetPreferredAppMode(NativeValues.PreferredAppMode.ForceDark);
+        }
+        else if (theme == ElementTheme.Light)
+        {
+            NativeMethods.SetPreferredAppMode(NativeValues.PreferredAppMode.ForceLight);
+        }
+        else
+        {
+            NativeMethods.SetPreferredAppMode(NativeValues.PreferredAppMode.Default);
+        }
+        NativeMethods.FlushMenuThemes();
+    }
+
+    public static double GetRasterizationScaleForElement(UIElement element)
+    {
+        if (element.XamlRoot != null)
+        {
+            return element.XamlRoot.RasterizationScale;
+        }
+        return 0.0;
+    }
+
     public static void EnableSound(ElementSoundPlayerState elementSoundPlayerState = ElementSoundPlayerState.On, bool withSpatial = false)
     {
         ElementSoundPlayer.State = elementSoundPlayerState;
@@ -39,11 +72,6 @@ public static partial class ApplicationHelper
         };
     }
 
-    public static bool IsNetworkAvailable()
-    {
-        return NetworkInformation.GetInternetConnectionProfile()?.NetworkAdapter != null;
-    }
-
     public static Geometry GetGeometry(string key)
     {
         return (Geometry)XamlBindingHelper.ConvertValue(typeof(Geometry), (string)Application.Current.Resources[key]);
@@ -71,38 +99,20 @@ public static partial class ApplicationHelper
         return char.ConvertFromUtf32(codePoint);
     }
 
-    public static double GetScaleAdjustment(Window window)
-    {
-        var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
-        var wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-        var displayArea = DisplayArea.GetFromWindowId(wndId, DisplayAreaFallback.Primary);
-        var hMonitor = Win32Interop.GetMonitorFromDisplayId(displayArea.DisplayId);
-
-        // Get DPI.
-        var result = NativeMethods.GetDpiForMonitor(hMonitor, NativeMethods.Monitor_DPI_Type.MDT_Default, out var dpiX, out var _);
-        if (result != 0)
-        {
-            throw new Exception("Could not get DPI for monitor.");
-        }
-
-        var scaleFactorPercent = (uint)(((long)dpiX * 100 + (96 >> 1)) / 96);
-        return scaleFactorPercent / 100.0;
-    }
-
     public static void SetApplicationLayoutRTL(Window window)
     {
         IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
 
-        int exstyle = NativeMethods.GetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE);
-        NativeMethods.SetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE, exstyle | NativeMethods.WS_EX_LAYOUTRTL);
+        int exstyle = NativeMethods.GetWindowLong(hWnd, NativeValues.GWL_EXSTYLE);
+        NativeMethods.SetWindowLong(hWnd, NativeValues.GWL_EXSTYLE, exstyle | NativeValues.WS_EX_LAYOUTRTL);
     }
 
     public static void SetApplicationLayoutLTR(Window window)
     {
         IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
 
-        int exstyle = NativeMethods.GetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE);
-        NativeMethods.SetWindowLong(hWnd, NativeMethods.GWL_EXSTYLE, exstyle | NativeMethods.WS_EX_LAYOUTLTR);
+        int exstyle = NativeMethods.GetWindowLong(hWnd, NativeValues.GWL_EXSTYLE);
+        NativeMethods.SetWindowLong(hWnd, NativeValues.GWL_EXSTYLE, exstyle | NativeValues.WS_EX_LAYOUTLTR);
     }
 
     public static string GetDecodedStringFromHtml(string text)
@@ -114,28 +124,4 @@ public static partial class ApplicationHelper
         var result = decoded != text;
         return result ? decoded : text;
     }
-
-    public static string GetFileSize(long size)
-    {
-        string[] sizeSuffixes = { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
-        const string formatTemplate = "{0}{1:0.#} {2}";
-
-        if (size == 0)
-        {
-            return string.Format(formatTemplate, null, 0, sizeSuffixes[0]);
-        }
-
-        var absSize = Math.Abs((double)size);
-        var fpPower = Math.Log(absSize, 1000);
-        var intPower = (int)fpPower;
-        var iUnit = intPower >= sizeSuffixes.Length
-            ? sizeSuffixes.Length - 1
-            : intPower;
-        var normSize = absSize / Math.Pow(1000, iUnit);
-
-        return string.Format(
-            formatTemplate,
-            size < 0 ? "-" : null, normSize, sizeSuffixes[iUnit]);
-    }
 }
-

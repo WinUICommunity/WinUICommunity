@@ -1,27 +1,18 @@
 ﻿using Microsoft.UI.Input;
 
 namespace WinUICommunity;
-public partial class ApplicationHelper
+public partial class TitleBarHelper
 {
-    public static double GetRasterizationScaleForElement(UIElement element)
-    {
-        if (element.XamlRoot != null)
-        {
-            return element.XamlRoot.RasterizationScale;
-        }
-        return 0.0;
-    }
-
     public static void SetDragRegion(Window window, NonClientRegionKind nonClientRegionKind, params FrameworkElement[] frameworkElements)
     {
         var nonClientInputSrc = InputNonClientPointerSource.GetForWindowId(window.AppWindow.Id);
         List<Windows.Graphics.RectInt32> rects = new List<Windows.Graphics.RectInt32>();
+        var scale = GeneralHelper.GetRasterizationScaleForElement(frameworkElements[0]);
 
         foreach (var frameworkElement in frameworkElements)
         {
             GeneralTransform transformElement = frameworkElement.TransformToVisual(null);
             Windows.Foundation.Rect bounds = transformElement.TransformBounds(new Windows.Foundation.Rect(0, 0, frameworkElement.ActualWidth, frameworkElement.ActualHeight));
-            var scale = GetRasterizationScaleForElement(frameworkElement);
             var transparentRect = new Windows.Graphics.RectInt32(
                 _X: (int)Math.Round(bounds.X * scale),
                 _Y: (int)Math.Round(bounds.Y * scale),

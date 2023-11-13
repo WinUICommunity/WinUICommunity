@@ -1,7 +1,7 @@
 ﻿namespace WinUICommunity;
-public partial class ApplicationHelper
+public partial class AssemblyInfoHelper
 {
-    internal static T GetCustomAttributeBase<T>(Assembly assembly) where T : Attribute
+    internal static T GetCustomAttributeFromAssembly<T>(Assembly assembly) where T : Attribute
     {
         if (assembly == null)
         {
@@ -21,15 +21,15 @@ public partial class ApplicationHelper
 
     public static T GetCustomAttribute<T>() where T : Attribute
     {
-        return GetCustomAttributeBase<T>(null);
+        return GetCustomAttributeFromAssembly<T>(null);
     }
 
     public static T GetCustomAttribute<T>(Assembly assembly) where T : Attribute
     {
-        return GetCustomAttributeBase<T>(assembly);
+        return GetCustomAttributeFromAssembly<T>(assembly);
     }
 
-    internal static string GetAppVersionBase(VersionType versionType, Assembly assembly = null)
+    internal static string GetVersionInfoBase(VersionType versionType, Assembly assembly = null)
     {
         if (assembly == null)
         {
@@ -38,9 +38,9 @@ public partial class ApplicationHelper
 
         switch (versionType)
         {
-            case VersionType.AssemblyVersion:
+            case VersionType.EntryAssemblyVersion:
                 return assembly.GetName().Version.ToString();
-            case VersionType.AssemblyVersion2:
+            case VersionType.CurrentAssemblyVersion:
                 return Application.Current.GetType().Assembly.GetName().Version.ToString();
             case VersionType.AssemblyFileVersion:
                 return assembly.GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
@@ -54,32 +54,32 @@ public partial class ApplicationHelper
     /// <AssemblyVersion>1.0.0.0</AssemblyVersion>
     /// <FileVersion>1.0.0.0</FileVersion>
     /// <Version>1.0.0.0-xyz</Version>
-    /// AssemblyVersion: Assembly.GetEntryAssembly
-    /// AssemblyVersion2: Application.Current.GetType().Assembly
+    /// EntryAssemblyVersion: Assembly.GetEntryAssembly
+    /// CurrentAssemblyVersion: Application.Current.GetType().Assembly
     /// </summary>
     /// <param name="versionType"></param>
     /// <returns></returns>
-    public static string GetAppVersion(VersionType versionType = VersionType.AssemblyInformationalVersion)
+    public static string GetAssemblyVersion(VersionType versionType = VersionType.AssemblyInformationalVersion)
     {
-        return GetAppVersionBase(versionType, null);
+        return GetVersionInfoBase(versionType, null);
     }
 
     /// <summary>
     /// <AssemblyVersion>1.0.0.0</AssemblyVersion>
     /// <FileVersion>1.0.0.0</FileVersion>
     /// <Version>1.0.0.0-xyz</Version>
-    /// AssemblyVersion: Assembly.GetEntryAssembly
-    /// AssemblyVersion2: Application.Current.GetType().Assembly
+    /// EntryAssemblyVersion: Assembly.GetEntryAssembly
+    /// CurrentAssemblyVersion: Application.Current.GetType().Assembly
     /// </summary>
     /// <param name="versionType"></param>
     /// <param name="assembly">Default is GetEntryAssembly</param>
     /// <returns></returns>
-    public static string GetAppVersion(VersionType versionType, Assembly assembly)
+    public static string GetAssemblyVersion(VersionType versionType, Assembly assembly)
     {
-        return GetAppVersionBase(versionType, assembly);
+        return GetVersionInfoBase(versionType, assembly);
     }
 
-    internal static string GetAppNameBase(NameType nameType, Assembly assembly = null)
+    internal static string GetAppNameInfoBase(NameType nameType, Assembly assembly = null)
     {
         if (assembly == null)
         {
@@ -88,68 +88,68 @@ public partial class ApplicationHelper
 
         switch (nameType)
         {
-            case NameType.AssemblyVersion:
+            case NameType.EntryAssemblyVersion:
                 return assembly.GetName().Name;
-            case NameType.AssemblyVersion2:
+            case NameType.CurrentAssemblyVersion:
                 return Application.Current.GetType().Assembly.GetName().Name;
             default: return null;
         }
     }
 
     /// <summary>
-    /// AssemblyVersion: Assembly.GetEntryAssembly
-    /// AssemblyVersion2: Application.Current.GetType().Assembly
+    /// EntryAssemblyVersion: Assembly.GetEntryAssembly
+    /// CurrentAssemblyVersion: Application.Current.GetType().Assembly
     /// </summary>
     /// <param name="nameType"></param>
     /// <returns></returns>
-    public static string GetAppName(NameType nameType = NameType.AssemblyVersion2)
+    public static string GetAppName(NameType nameType = NameType.CurrentAssemblyVersion)
     {
-        return GetAppNameBase(nameType, null);
+        return GetAppNameInfoBase(nameType, null);
     }
 
     /// <summary>
-    /// AssemblyVersion: Assembly.GetEntryAssembly
-    /// AssemblyVersion2: Application.Current.GetType().Assembly
+    /// EntryAssemblyVersion: Assembly.GetEntryAssembly
+    /// CurrentAssemblyVersion: Application.Current.GetType().Assembly
     /// </summary>
     /// <param name="nameType"></param>
     /// <param name="assembly"></param>
     /// <returns></returns>
-    public static string GetAppName(NameType nameType = NameType.AssemblyVersion2, Assembly assembly = null)
+    public static string GetAppName(NameType nameType = NameType.CurrentAssemblyVersion, Assembly assembly = null)
     {
-        return GetAppNameBase(nameType, assembly);
+        return GetAppNameInfoBase(nameType, assembly);
     }
 
-    internal static (string Name, string Version, string NameAndVersion) GetAppNameAndVersionBase(NameType nameType, VersionType versionType, Assembly assembly)
+    internal static (string Name, string Version, string NameAndVersion) GetAppInfoBase(NameType nameType, VersionType versionType, Assembly assembly)
     {
         var name = GetAppName(nameType, assembly);
-        var version = GetAppVersion(versionType, assembly);
+        var version = GetAssemblyVersion(versionType, assembly);
         var nameAndVersion = $"{name} v{version}";
         return (name, version, nameAndVersion);
     }
 
     /// <summary>
-    /// AssemblyVersion: Assembly.GetEntryAssembly
-    /// AssemblyVersion2: Application.Current.GetType().Assembly
+    /// EntryAssemblyVersion: Assembly.GetEntryAssembly
+    /// CurrentAssemblyVersion: Application.Current.GetType().Assembly
     /// </summary>
     /// <param name="nameType"></param>
     /// <param name="versionType"></param>
     /// <returns></returns>
-    public static (string Name, string Version, string NameAndVersion) GetAppNameAndVersion(NameType nameType = NameType.AssemblyVersion2, VersionType versionType = VersionType.AssemblyInformationalVersion)
+    public static (string Name, string Version, string NameAndVersion) GetAppInfo(NameType nameType = NameType.CurrentAssemblyVersion, VersionType versionType = VersionType.AssemblyInformationalVersion)
     {
-        return GetAppNameAndVersionBase(nameType, versionType, null);
+        return GetAppInfoBase(nameType, versionType, null);
     }
 
     /// <summary>
-    /// AssemblyVersion: Assembly.GetEntryAssembly
-    /// AssemblyVersion2: Application.Current.GetType().Assembly
+    /// EntryAssemblyVersion: Assembly.GetEntryAssembly
+    /// CurrentAssemblyVersion: Application.Current.GetType().Assembly
     /// </summary>
     /// <param name="nameType"></param>
     /// <param name="versionType"></param>
     /// <param name="assembly"></param>
     /// <returns></returns>
-    public static (string Name, string Version, string NameAndVersion) GetAppNameAndVersion(NameType nameType, VersionType versionType, Assembly assembly)
+    public static (string Name, string Version, string NameAndVersion) GetAppInfo(NameType nameType, VersionType versionType, Assembly assembly)
     {
-        return GetAppNameAndVersionBase(nameType, versionType, assembly);
+        return GetAppInfoBase(nameType, versionType, assembly);
     }
 
     [Obsolete("Please Use ApplicationHelper.GetAppNameAndVersion method")]
@@ -173,14 +173,14 @@ public partial class ApplicationHelper
 
 public enum VersionType
 {
-    AssemblyVersion = 0, // Assembly.GetEntryAssembly
-    AssemblyVersion2 = 1, // Application.Current.GetType().Assembly
+    EntryAssemblyVersion = 0, // Assembly.GetEntryAssembly
+    CurrentAssemblyVersion = 1, // Application.Current.GetType().Assembly
     AssemblyFileVersion = 2,
     AssemblyInformationalVersion = 3,
 }
 
 public enum NameType
 {
-    AssemblyVersion = 0, // Assembly.GetEntryAssembly
-    AssemblyVersion2 = 1, // Application.Current.GetType().Assembly
+    EntryAssemblyVersion = 0, // Assembly.GetEntryAssembly
+    CurrentAssemblyVersion = 1, // Application.Current.GetType().Assembly
 }

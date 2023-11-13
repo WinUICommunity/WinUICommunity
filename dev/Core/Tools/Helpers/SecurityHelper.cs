@@ -3,9 +3,9 @@ using Windows.Security.Cryptography;
 using Windows.Storage.Streams;
 
 namespace WinUICommunity;
-public static partial class ApplicationHelper
+public partial class SecurityHelper
 {
-    public static string GetMD5Hash(String strMsg)
+    public static string GetMD5Hash(string strMsg)
     {
         string strAlgName = HashAlgorithmNames.Md5;
         IBuffer buffUtf8Msg = CryptographicBuffer.ConvertStringToBinary(strMsg, BinaryStringEncoding.Utf8);
@@ -24,7 +24,7 @@ public static partial class ApplicationHelper
         return hex;
     }
 
-    public static string GetSHA256Hash(String strMsg)
+    public static string GetSHA256Hash(string strMsg)
     {
         string strAlgName = HashAlgorithmNames.Sha256;
         IBuffer buffUtf8Msg = CryptographicBuffer.ConvertStringToBinary(strMsg, BinaryStringEncoding.Utf8);

@@ -173,7 +173,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         {
             return new SymbolIconSource
             {
-                Symbol = ApplicationHelper.GetEnum<Symbol>(symbol),
+                Symbol = GeneralHelper.GetEnum<Symbol>(symbol),
                 Foreground = Application.Current.Resources["SystemControlForegroundAltHighBrush"] as Brush,
             };
         }
@@ -191,7 +191,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         {
             var fontIcon = new FontIconSource
             {
-                Glyph = ApplicationHelper.GetGlyph(glyph),
+                Glyph = GeneralHelper.GetGlyph(glyph),
                 Foreground = Application.Current.Resources["SystemControlForegroundAltHighBrush"] as Brush,
             };
             if (!string.IsNullOrEmpty(fontName))

@@ -1,4 +1,6 @@
-﻿namespace WinUICommunity;
+﻿using WinUICommunity.Core.Tools.Done;
+
+namespace WinUICommunity;
 
 public class JsonPageService : PageService
 {
@@ -35,11 +37,11 @@ public class JsonPageService : PageService
             {
                 if (string.IsNullOrEmpty(dataItem.SectionId))
                 {
-                    _pageKeyToTypeMap[GenerateUniqueId(dataItem.UniqueId, dataItem.Parameter?.ToString())] = ApplicationHelper.GetPageType(dataItem.UniqueId, dataItem.ApiNamespace);
+                    _pageKeyToTypeMap[GenerateUniqueId(dataItem.UniqueId, dataItem.Parameter?.ToString())] = NavigationServiceHelper.GetPageType(dataItem.UniqueId, dataItem.ApiNamespace);
                 }
                 else
                 {
-                    _pageKeyToTypeMap[GenerateUniqueId(dataItem.UniqueId, dataItem.Parameter?.ToString())] = ApplicationHelper.GetPageType(dataItem.SectionId, dataItem.ApiNamespace);
+                    _pageKeyToTypeMap[GenerateUniqueId(dataItem.UniqueId, dataItem.Parameter?.ToString())] = NavigationServiceHelper.GetPageType(dataItem.SectionId, dataItem.ApiNamespace);
                 }
             }
         }
@@ -47,11 +49,11 @@ public class JsonPageService : PageService
         {
             if (string.IsNullOrEmpty(dataGroup.SectionId))
             {
-                _pageKeyToTypeMap[GenerateUniqueId(dataGroup.UniqueId, null)] = ApplicationHelper.GetPageType(dataGroup.UniqueId, dataGroup.ApiNamespace);
+                _pageKeyToTypeMap[GenerateUniqueId(dataGroup.UniqueId, null)] = NavigationServiceHelper.GetPageType(dataGroup.UniqueId, dataGroup.ApiNamespace);
             }
             else
             {
-                _pageKeyToTypeMap[GenerateUniqueId(dataGroup.UniqueId, null)] = ApplicationHelper.GetPageType(dataGroup.SectionId, dataGroup.ApiNamespace);
+                _pageKeyToTypeMap[GenerateUniqueId(dataGroup.UniqueId, null)] = NavigationServiceHelper.GetPageType(dataGroup.SectionId, dataGroup.ApiNamespace);
             }
         }
 

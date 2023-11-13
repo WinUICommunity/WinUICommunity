@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json;
+using WinUICommunity.Core.Tools.Done;
 
 namespace WinUICommunity;
 
@@ -116,7 +117,7 @@ public class DataSource
             }
         }
 
-        string filePath = await FileLoaderHelper.GetPath(jsonFilePath, pathType);
+        string filePath = await PathHelper.GetFilePath(jsonFilePath, pathType);
         using FileStream openStream = File.OpenRead(filePath);
         var controlInfoDataGroup = JsonSerializer.Deserialize<DataSource>(openStream, new JsonSerializerOptions
         {
@@ -201,7 +202,7 @@ public class DataSource
         string pageString = item.UniqueId;
         if (autoIncludedInBuild)
         {
-            Type pageType = ApplicationHelper.GetPageType(pageString, item.ApiNamespace);
+            Type pageType = NavigationServiceHelper.GetPageType(pageString, item.ApiNamespace);
 
 
             isIncludedInBuild = pageType != null;

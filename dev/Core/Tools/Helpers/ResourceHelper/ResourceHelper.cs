@@ -64,7 +64,7 @@ public class ResourceHelper : IResourceHelper
     public void SetLanguage(string language)
     {
         ResourceContext.QualifierValues["Language"] = language;
-        if (ApplicationHelper.IsPackaged)
+        if (PackageHelper.IsPackaged)
         {
             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = language;
         }

@@ -40,7 +40,7 @@ public static class OSVersionHelper
 
     public static Version GetOSVersion()
     {
-        var osv = new NativeMethods.RTL_OSVERSIONINFOEX();
+        var osv = new NativeValues.RTL_OSVERSIONINFOEX();
         NativeMethods.RtlGetVersion(out osv);
         return new Version((int)osv.dwMajorVersion, (int)osv.dwMinorVersion, (int)osv.dwBuildNumber, (int)osv.dwRevision);
     }

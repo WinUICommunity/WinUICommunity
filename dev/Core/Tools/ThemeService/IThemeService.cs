@@ -14,10 +14,7 @@ public interface IThemeService
     Window CurrentWindow { get; set; }
     SystemBackdrop CurrentSystemBackdrop { get; set; }
     BackdropType CurrentBackdropType { get; set; }
-    Dictionary<Window, SystemBackdrop> CurrentSystemBackdropDic { get; set; }
-
     SystemBackdrop GetSystemBackdrop(BackdropType backdropType);
-    SystemBackdrop GetCurrentSystemBackdrop(Window activeWindow);
     SystemBackdrop GetCurrentSystemBackdrop();
     BackdropType GetBackdropType(SystemBackdrop systemBackdrop);
     BackdropType GetCurrentBackdropType();
@@ -25,7 +22,6 @@ public interface IThemeService
 
     void SetCurrentSystemBackdrop(BackdropType backdropType);
     bool IsDarkTheme();
-    void UpdateSystemCaptionButtonForWindow(Window window);
     void UpdateSystemCaptionButtonForAppWindow(Window window);
     void ResetCaptionButtonColors(Window window);
     void UpdateSystemCaptionButton(Window window);

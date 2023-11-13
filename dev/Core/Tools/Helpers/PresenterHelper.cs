@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public static partial class WindowHelper
+public partial class PresenterHelper
 {
     public static void SetOverlappedPresenterState(Window window, OverlappedPresenterState overlappedPresenterState)
     {
