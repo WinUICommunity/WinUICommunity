@@ -1,6 +1,6 @@
 ﻿<Project>
   <PropertyGroup Condition="'$(MSBuildProjectName)' != 'DemoApp'">
-    <TargetFrameworks>net6.0-windows10.0.17763.0;net6.0-windows10.0.19041.0;net7.0-windows10.0.17763.0;net7.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks>net7.0-windows10.0.17763.0;net7.0-windows10.0.19041.0;net8.0-windows10.0.17763.0;net8.0-windows10.0.19041.0</TargetFrameworks>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RuntimeIdentifiers>win10-x86;win10-x64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
@@ -21,10 +21,15 @@
     <PackageReleaseNotes>https://github.com/WinUICommunity/WinUICommunity/releases</PackageReleaseNotes>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework.StartsWith(net8.0))' == 'true'">
+    <!-- Property for .NET 8.0 -->
+    <UseRidGraph>true</UseRidGraph>
+  </PropertyGroup>
+  
   <!-- The NuGet versions of dependencies to build against. -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="*" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="*" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231008000" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.2428" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(MSBuildProjectName)' != 'DemoApp'">
