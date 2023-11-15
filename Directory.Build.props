@@ -20,6 +20,12 @@
     <RepositoryUrl>https://github.com/WinUICommunity/WinUICommunity</RepositoryUrl>
     <PackageReleaseNotes>https://github.com/WinUICommunity/WinUICommunity/releases</PackageReleaseNotes>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework.StartsWith(net8.0))' == 'true'">
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework.StartsWith(net7.0))' == 'true'">
+    <RuntimeIdentifiers>win10-x86;win10-x64</RuntimeIdentifiers>
+  </PropertyGroup>
   
   <!-- The NuGet versions of dependencies to build against. -->
   <ItemGroup>
