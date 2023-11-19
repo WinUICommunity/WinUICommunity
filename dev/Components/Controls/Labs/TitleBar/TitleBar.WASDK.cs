@@ -170,7 +170,11 @@ public partial class TitleBar : Control
 
         foreach (var frameworkElement in frameworkElements)
         {
-            GeneralTransform transformElement = frameworkElement.TransformToVisual(null);
+            if (frameworkElement == null)
+            {
+                continue;
+            }
+            GeneralTransform transformElement = frameworkElement.TransformToVisual(frameworkElement);
             Windows.Foundation.Rect bounds = transformElement.TransformBounds(new Windows.Foundation.Rect(0, 0, frameworkElement.ActualWidth, frameworkElement.ActualHeight));
             var transparentRect = new Windows.Graphics.RectInt32(
                 _X: (int)Math.Round(bounds.X * scale),
@@ -180,8 +184,10 @@ public partial class TitleBar : Control
             );
             rects.Add(transparentRect);
         }
-        
-        nonClientInputSrc.SetRegionRects(nonClientRegionKind, rects.ToArray());
+        if (rects.Count > 0)
+        {
+            nonClientInputSrc.SetRegionRects(nonClientRegionKind, rects.ToArray());
+        }
     }
 
     public void ClearDragRegions(NonClientRegionKind nonClientRegionKind)
