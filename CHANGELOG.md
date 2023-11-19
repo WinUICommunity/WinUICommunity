@@ -2,6 +2,60 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v5.4.0](https://github.com/WinUICommunity/WinUICommunity/compare/v5.3.1...v5.4.0)
+
+> 19 November 2023
+
+- Fix: SplashScreen and portable RIDs [`#10`](https://github.com/WinUICommunity/WinUICommunity/pull/10)
+- Fix #9 Tnx to @dzhukovsky [`#9`](https://github.com/WinUICommunity/WinUICommunity/issues/9)
+- Fix #8 Tnx to @dzhukovsky [`#8`](https://github.com/WinUICommunity/WinUICommunity/issues/8)
+- Refactor All Helper Classes [`c281280`](https://github.com/WinUICommunity/WinUICommunity/commit/c28128006495b2907f0ba26f78445390baf64bd3)
+- Add ContextMenu Support for TitleBar [`f78a263`](https://github.com/WinUICommunity/WinUICommunity/commit/f78a2639886c60928971c1c7c3f76a10fe7a7aff)
+- Use WASDK v1.4 new Custom TitleBar API, Simplify Calculating Rects [`a035fb6`](https://github.com/WinUICommunity/WinUICommunity/commit/a035fb6051af22097f868f48b1e23539e785f509)
+- Update SubtleButtonStyle [`f2def77`](https://github.com/WinUICommunity/WinUICommunity/commit/f2def77f0a6a1d97f5ec8e6bf2001ae98a6df060)
+- refactor [`9275b2c`](https://github.com/WinUICommunity/WinUICommunity/commit/9275b2ca2a116d6badc0848e12bed90f0f131b2d)
+- Fix Some Issues [`a5478cc`](https://github.com/WinUICommunity/WinUICommunity/commit/a5478cc149c15d0a65d2abdb0e4715c356a1242d)
+- Update SettingGroup.Property.cs [`1a0dce5`](https://github.com/WinUICommunity/WinUICommunity/commit/1a0dce59e2ed7cdefd6ddfdf02ab8cfdf07c1f56)
+- Fix Drag Region when Window Resize [`b9e9a86`](https://github.com/WinUICommunity/WinUICommunity/commit/b9e9a8677e85305da9703db967326be87adeca59)
+- Add TitleBar Customizing Helper Classes [`f1a40d6`](https://github.com/WinUICommunity/WinUICommunity/commit/f1a40d6c779cf8b23b5cd48786ab1ae6c436a3d4)
+- Update Localizer.cs [`b168d78`](https://github.com/WinUICommunity/WinUICommunity/commit/b168d78e9ce74e96a4adfc6de1d644d1376b53a8)
+- Update SettingsGroup [`c42e5a3`](https://github.com/WinUICommunity/WinUICommunity/commit/c42e5a34aba00f82fa2255a8ecc098af4192965a)
+- Drop Net 6.0 and Add Support Net 8.0 [`1824e3f`](https://github.com/WinUICommunity/WinUICommunity/commit/1824e3f917cd28491059b6bc050d9e4b7414ce3e)
+- FIx Demo [`12ca4e6`](https://github.com/WinUICommunity/WinUICommunity/commit/12ca4e61d3ff7101bb6152010b44f43897b08b87)
+- Add Tooltip property for Titlebar buttons [`4ff4669`](https://github.com/WinUICommunity/WinUICommunity/commit/4ff466902cc480fbe171db8e2f12a2f54beb413e)
+- Update OSVersionHelper.cs [`a443759`](https://github.com/WinUICommunity/WinUICommunity/commit/a443759c0b169195017cb41e40b1b609ecbaec22)
+- use portable RIDs [`8d93b02`](https://github.com/WinUICommunity/WinUICommunity/commit/8d93b02c37fa277387975a89fa0aa4b1af36cc33)
+- Refactor [`ca15aa7`](https://github.com/WinUICommunity/WinUICommunity/commit/ca15aa750cb219532810b8d57d7c4226ff7506e7)
+- Update Directory.Build.props [`6484f55`](https://github.com/WinUICommunity/WinUICommunity/commit/6484f5578f612344f93fbe31193744017605f1f7)
+- Update TitleBar.WASDK.cs [`348aa12`](https://github.com/WinUICommunity/WinUICommunity/commit/348aa124b0945e993b0d59c42cdb62f47ec22c24)
+- Update PublishDemoApp.yml [`79b8722`](https://github.com/WinUICommunity/WinUICommunity/commit/79b872230c54f47888ba9829f8049c165e5887fe)
+- we dont need Condition for net8.0 or higher [`1e0ced4`](https://github.com/WinUICommunity/WinUICommunity/commit/1e0ced4f8ea00cecc97cbdcc6133df741cc84f19)
+- Move Scale out of loop [`9204cd8`](https://github.com/WinUICommunity/WinUICommunity/commit/9204cd89c4bfad30774b72c33de1d8286fef79be)
+- Update LocalizerBuilder.cs [`0ce345f`](https://github.com/WinUICommunity/WinUICommunity/commit/0ce345f861e8da2b48ea6aefb02566ed77a0773f)
+- Add IsTrimmable [`e13d46e`](https://github.com/WinUICommunity/WinUICommunity/commit/e13d46edfba875f4c3836011387a8aadd2da43c3)
+- Update PublishDemoApp.yml [`dcdfc8c`](https://github.com/WinUICommunity/WinUICommunity/commit/dcdfc8ca2d8615745791296e593904f1f4e40dfe)
+- Update PublishDemoApp.yml [`006b324`](https://github.com/WinUICommunity/WinUICommunity/commit/006b32480c29829a5bbf211f97e1dcfbcd2fbd83)
+- Update to WASD v1.4.3 [`1f057ca`](https://github.com/WinUICommunity/WinUICommunity/commit/1f057ca2d09733befc226337a1db5d28d2e820d9)
+- Update README.md [`00dea19`](https://github.com/WinUICommunity/WinUICommunity/commit/00dea1929ee15d4af07a97d168f766ba6e303b89)
+- Update Components.csproj [`f95bd54`](https://github.com/WinUICommunity/WinUICommunity/commit/f95bd54efcdd72e7ea28e2cda332c93de68e6383)
+- Update Core.csproj [`cd1fc3c`](https://github.com/WinUICommunity/WinUICommunity/commit/cd1fc3c17946e106b8cb64090b6a4f129cf0a05a)
+- Update NativeMethods.cs [`6fdc68f`](https://github.com/WinUICommunity/WinUICommunity/commit/6fdc68f10630182841cdfc83a02a1c0b435f195c)
+- Update Version [`9d902a0`](https://github.com/WinUICommunity/WinUICommunity/commit/9d902a0cd8059bce86774aba8215200061c219a4)
+- Update PublishDemoApp.yml [`b57f788`](https://github.com/WinUICommunity/WinUICommunity/commit/b57f7889cb9eb0845070581383c4acf5e2b1cbfd)
+- Update Directory.Build.props [`3dc6915`](https://github.com/WinUICommunity/WinUICommunity/commit/3dc69152ae1f7800b66d612bd652a46e77848d69)
+- Update Styles [`5f60c60`](https://github.com/WinUICommunity/WinUICommunity/commit/5f60c60b1a5e6600504570c8510eb8633384b643)
+- fix SplashScreen [`66a21c0`](https://github.com/WinUICommunity/WinUICommunity/commit/66a21c003408a654dd7317ce58ac02de3b433994)
+
+#### [v5.3.1](https://github.com/WinUICommunity/WinUICommunity/compare/v5.3.0...v5.3.1)
+
+> 22 October 2023
+
+- correct mistake of document url [`#6`](https://github.com/WinUICommunity/WinUICommunity/pull/6)
+- Add new SettingsGroup [`dbf5e0a`](https://github.com/WinUICommunity/WinUICommunity/commit/dbf5e0ab799dcffd389f00ce438b6777a5dcb82b)
+- rename SettingsGroup to SimpleSettingsGroup [`3143d80`](https://github.com/WinUICommunity/WinUICommunity/commit/3143d802db377625c6efb799641fe1eae175883a)
+- Update CHANGELOG.md [`caac3fa`](https://github.com/WinUICommunity/WinUICommunity/commit/caac3fa002cf3e880addbd54191672dcfda5a76e)
+- Fix TitleBar FontFamily [`4f646bc`](https://github.com/WinUICommunity/WinUICommunity/commit/4f646bc93a694379801926497d19d25497dae1e1)
+
 #### [v5.3.0](https://github.com/WinUICommunity/WinUICommunity/compare/v5.2.0...v5.3.0)
 
 > 15 October 2023
