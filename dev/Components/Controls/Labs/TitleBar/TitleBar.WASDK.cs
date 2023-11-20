@@ -174,7 +174,7 @@ public partial class TitleBar : Control
             {
                 continue;
             }
-            GeneralTransform transformElement = frameworkElement.TransformToVisual(frameworkElement);
+            GeneralTransform transformElement = frameworkElement.TransformToVisual(null);
             Windows.Foundation.Rect bounds = transformElement.TransformBounds(new Windows.Foundation.Rect(0, 0, frameworkElement.ActualWidth, frameworkElement.ActualHeight));
             var transparentRect = new Windows.Graphics.RectInt32(
                 _X: (int)Math.Round(bounds.X * scale),
