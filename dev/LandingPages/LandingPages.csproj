@@ -2,7 +2,7 @@
   <PropertyGroup>
 	  <TargetFrameworks>net7.0-windows10.0.19041.0;net8.0-windows10.0.19041.0</TargetFrameworks>
 	  <NoWarn>CA1416;WMC1506</NoWarn>
-	  <Version>5.4.0</Version>
+	  <Version>5.5.0</Version>
     <IsTrimmable>false</IsTrimmable>
     <Namespace>WinUICommunity.LandingPages</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
@@ -13,7 +13,7 @@
   </PropertyGroup>
   <ItemGroup>
 	  <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.0.230907" />
-	  <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.4" />
+	  <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.5.1" />
   </ItemGroup>
 	
   <ItemGroup>
