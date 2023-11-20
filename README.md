@@ -1,5 +1,5 @@
 ﻿<p align="left">
-<img alt="dotnet" src="https://img.shields.io/badge/%3E%3DNet%207.0-version?logo=dotnet&label=.Net"/>
+<img alt="dotnet" src="https://img.shields.io/badge/%3E%3DNet%206.0-version?logo=dotnet&label=.Net"/>
 <img alt="OS" src="https://img.shields.io/badge/%3E%3DWindows%2010%20Build%201809-version?logo=windows&label=Supported%20OS&color=orange"/>
 <img alt="IDE-version" src="https://img.shields.io/badge/2022-Version?logo=visual%20studio&label=Visual%20Studio&color=purple"/>
 
