@@ -50,6 +50,7 @@
             <TextBlock x:Name="smallHeaderText"
                        Margin="36,0,0,0"
                        VerticalAlignment="Center"
+                       FontSize="{x:Bind HeaderFontSize, Mode=OneWay}"
                        FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                        Style="{StaticResource TitleTextBlockStyle}"
                        Text="{x:Bind HeaderText, Mode=OneWay}" />

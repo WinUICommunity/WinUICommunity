@@ -8,6 +8,18 @@ using Microsoft.Windows.ApplicationModel.Resources;
 namespace WinUICommunity;
 public sealed partial class MainLandingPage : ItemsPageBase
 {
+    public double HeaderFontSize
+    {
+        get => (double)GetValue(HeaderFontSizeProperty);
+        set => SetValue(HeaderFontSizeProperty, value);
+    }
+
+    public double HeaderSubtitleFontSize
+    {
+        get => (double)GetValue(HeaderSubtitleFontSizeProperty);
+        set => SetValue(HeaderSubtitleFontSizeProperty, value);
+    }
+
     public string NewGroupText
     {
         get => (string)GetValue(NewGroupTextProperty);
@@ -110,6 +122,8 @@ public sealed partial class MainLandingPage : ItemsPageBase
         set => SetValue(LazyLoadingThresholdProperty, value);
     }
 
+    public static readonly DependencyProperty HeaderSubtitleFontSizeProperty = DependencyProperty.Register("HeaderSubtitleFontSize", typeof(double), typeof(MainLandingPage), new PropertyMetadata(18.0));
+    public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(MainLandingPage), new PropertyMetadata(40.0));
     public static readonly DependencyProperty PreviewGroupTextProperty = DependencyProperty.Register("PreviewGroupText", typeof(string), typeof(MainLandingPage), new PropertyMetadata("Preview"));
     public static readonly DependencyProperty UpdatedGroupTextProperty = DependencyProperty.Register("UpdatedGroupText", typeof(string), typeof(MainLandingPage), new PropertyMetadata("Recently updated"));
     public static readonly DependencyProperty NewGroupTextProperty = DependencyProperty.Register("NewGroupText", typeof(string), typeof(MainLandingPage), new PropertyMetadata("Recently added"));

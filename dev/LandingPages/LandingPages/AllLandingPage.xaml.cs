@@ -5,6 +5,11 @@ using Microsoft.Windows.ApplicationModel.Resources;
 namespace WinUICommunity;
 public sealed partial class AllLandingPage : ItemsPageBase
 {
+    public double HeaderFontSize
+    {
+        get => (double)GetValue(HeaderFontSizeProperty);
+        set => SetValue(HeaderFontSizeProperty, value);
+    }
     public string HeaderImage
     {
         get => (string)GetValue(HeaderImageProperty);
@@ -54,6 +59,7 @@ public sealed partial class AllLandingPage : ItemsPageBase
         set => SetValue(LazyLoadingThresholdProperty, value);
     }
 
+    public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(AllLandingPage), new PropertyMetadata(28.0));
     public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register("HeaderText", typeof(string), typeof(AllLandingPage), new PropertyMetadata("All"));
     public static readonly DependencyProperty HeaderImageProperty = DependencyProperty.Register("HeaderImage", typeof(string), typeof(AllLandingPage), new PropertyMetadata(default(string)));
     public static readonly DependencyProperty HeaderGridCornerRadiusProperty = DependencyProperty.Register("HeaderGridCornerRadius", typeof(CornerRadius), typeof(AllLandingPage), new PropertyMetadata(new CornerRadius(8,0,0,0)));

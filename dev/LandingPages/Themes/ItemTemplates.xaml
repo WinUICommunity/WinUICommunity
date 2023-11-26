@@ -58,11 +58,13 @@
                             Spacing="2">
                     <TextBlock x:Name="titleText"
                                FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                               FontSize="{ThemeResource LandingItemTitleFontSize}"
                                Style="{StaticResource BodyStrongTextBlockStyle}"
                                Text="{x:Bind Title}"
                                TextLineBounds="TrimToCapHeight"
                                TextWrapping="NoWrap" />
                     <TextBlock FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                               FontSize="{ThemeResource LandingItemSubtitleFontSize}"
                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                RelativePanel.Below="titleText"
                                Style="{StaticResource CaptionTextBlockStyle}"
