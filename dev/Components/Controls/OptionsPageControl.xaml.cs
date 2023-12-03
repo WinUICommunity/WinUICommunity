@@ -18,7 +18,7 @@ public sealed partial class OptionsPageControl : UserControl
         DependencyProperty.Register(nameof(OptionsPaneContent), typeof(UIElement), typeof(OptionsPageControl), new PropertyMetadata(null, OnOptionsPaneContentChanged));
 
     public static readonly DependencyProperty OptionsPaneMinWidthProperty =
-       DependencyProperty.Register(nameof(OptionsPaneMinWidth), typeof(int), typeof(OptionsPageControl), new PropertyMetadata(286));
+       DependencyProperty.Register(nameof(OptionsPaneMinWidth), typeof(double), typeof(OptionsPageControl), new PropertyMetadata(286));
 
     public static readonly DependencyProperty OptionsPanePaddingProperty =
         DependencyProperty.Register(nameof(OptionsPanePadding), typeof(Thickness), typeof(OptionsPageControl), new PropertyMetadata(new Thickness(16)));
@@ -36,7 +36,7 @@ public sealed partial class OptionsPageControl : UserControl
        DependencyProperty.Register(nameof(OptionsBarHorizontalContentAlignment), typeof(HorizontalAlignment), typeof(OptionsPageControl), new PropertyMetadata(HorizontalAlignment.Center));
 
     public static readonly DependencyProperty OptionsBarMinWidthProperty =
-        DependencyProperty.Register(nameof(OptionsBarMinWidth), typeof(int), typeof(OptionsPageControl), new PropertyMetadata(32));
+        DependencyProperty.Register(nameof(OptionsBarMinWidth), typeof(double), typeof(OptionsPageControl), new PropertyMetadata(32));
 
     public static readonly DependencyProperty IsPageFooterExpandedProperty =
         DependencyProperty.Register(nameof(IsPageFooterExpanded), typeof(bool), typeof(OptionsPageControl), new PropertyMetadata(false));
@@ -83,9 +83,9 @@ public sealed partial class OptionsPageControl : UserControl
         set => SetValue(OptionsPaneContentProperty, value);
     }
 
-    public int OptionsPaneMinWidth
+    public double OptionsPaneMinWidth
     {
-        get { return (int)GetValue(OptionsPaneMinWidthProperty); }
+        get { return (double)GetValue(OptionsPaneMinWidthProperty); }
         set { SetValue(OptionsPaneMinWidthProperty, value); }
     }
 
@@ -119,9 +119,9 @@ public sealed partial class OptionsPageControl : UserControl
         set { SetValue(OptionsBarHorizontalContentAlignmentProperty, value); }
     }
 
-    public int OptionsBarMinWidth
+    public double OptionsBarMinWidth
     {
-        get { return (int)GetValue(OptionsBarMinWidthProperty); }
+        get { return (double)GetValue(OptionsBarMinWidthProperty); }
         set { SetValue(OptionsBarMinWidthProperty, value); }
     }
 
