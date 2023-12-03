@@ -6,11 +6,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              x:Name="ShortcutContentControl"
              mc:Ignorable="d">
-    <UserControl.Resources>
-        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"
-                                         FalseValue="Collapsed"
-                                         TrueValue="Visible" />
-    </UserControl.Resources>
     <Grid MinWidth="498"
           MinHeight="220">
         <Grid.RowDefinitions>

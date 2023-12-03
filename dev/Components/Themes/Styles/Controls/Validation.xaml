@@ -9,8 +9,6 @@
                     xmlns:contract7Present="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract,7)"
                     xmlns:local="using:WinUICommunity">
 
-    <local:ValidationEnabledConverter x:Name="CanValidateConverter" />
-
     <Style x:Key="ValidatingTextBoxStyle"
            TargetType="TextBox">
         <Setter Property="Template">
