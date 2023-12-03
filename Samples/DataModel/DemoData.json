@@ -9,6 +9,13 @@
       "IsSpecialSection": false,
       "Items": [
         {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.OptionsPageControlPage",
+          "Title": "OptionsPageControl",
+          "Subtitle": "A page with options",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+        },
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ThemeManagerPage",
           "Title": "ThemeManager",
           "Subtitle": "Change Application Theme and Material Easily",
