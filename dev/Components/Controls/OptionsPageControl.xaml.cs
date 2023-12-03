@@ -18,7 +18,7 @@ public sealed partial class OptionsPageControl : UserControl
         DependencyProperty.Register(nameof(OptionsPaneContent), typeof(UIElement), typeof(OptionsPageControl), new PropertyMetadata(null, OnOptionsPaneContentChanged));
 
     public static readonly DependencyProperty OptionsPaneMinWidthProperty =
-       DependencyProperty.Register(nameof(OptionsPaneMinWidth), typeof(double), typeof(OptionsPageControl), new PropertyMetadata(286));
+       DependencyProperty.Register(nameof(OptionsPaneMinWidth), typeof(double), typeof(OptionsPageControl), new PropertyMetadata(286.0));
 
     public static readonly DependencyProperty OptionsPanePaddingProperty =
         DependencyProperty.Register(nameof(OptionsPanePadding), typeof(Thickness), typeof(OptionsPageControl), new PropertyMetadata(new Thickness(16)));
@@ -36,7 +36,7 @@ public sealed partial class OptionsPageControl : UserControl
        DependencyProperty.Register(nameof(OptionsBarHorizontalContentAlignment), typeof(HorizontalAlignment), typeof(OptionsPageControl), new PropertyMetadata(HorizontalAlignment.Center));
 
     public static readonly DependencyProperty OptionsBarMinWidthProperty =
-        DependencyProperty.Register(nameof(OptionsBarMinWidth), typeof(double), typeof(OptionsPageControl), new PropertyMetadata(32));
+        DependencyProperty.Register(nameof(OptionsBarMinWidth), typeof(double), typeof(OptionsPageControl), new PropertyMetadata(32.0));
 
     public static readonly DependencyProperty IsPageFooterExpandedProperty =
         DependencyProperty.Register(nameof(IsPageFooterExpanded), typeof(bool), typeof(OptionsPageControl), new PropertyMetadata(false));
