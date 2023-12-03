@@ -4,7 +4,51 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
 
-    <Grid />
+    <ScrollViewer>
+        <Grid Margin="10">
+            <Grid.Resources>
+                <DataTemplate x:Key="ValidationTemplate"
+                              x:DataType="x:String">
+                    <TextBlock Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                               Text="{x:Bind}" />
+                </DataTemplate>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Spacing="6">
+                <TextBox x:Name="NameBox"
+                         wuc:Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                         wuc:Validation.ValidationPropertyName="Name"
+                         wuc:Validation.ValidationProvider="{x:Bind UserInfo}"
+                         Header="Easy boxes with validation"
+                         PlaceholderText="Name"
+                         Style="{StaticResource ValidatingTextBoxStyle}"
+                         Text="{x:Bind UserInfo.Name, Mode=TwoWay}" />
+
+                <TextBox x:Name="MailBox"
+                         wuc:Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                         wuc:Validation.ValidationPropertyName="Mail"
+                         wuc:Validation.ValidationProvider="{x:Bind UserInfo}"
+                         PlaceholderText="Mail"
+                         Style="{StaticResource ValidatingTextBoxStyle}"
+                         Text="{x:Bind UserInfo.Mail, Mode=TwoWay}" />
+
+                <Button x:Name="CoolButton"
+                        Width="320"
+                        HorizontalAlignment="Center"
+                        Click="CoolButton_Click"
+                        Content="Cool button"
+                        IsEnabled="{x:Bind UserInfo.HasErrors.Equals(x:False), Mode=OneWay}"
+                        Style="{StaticResource AccentButtonStyle}" />
+            </StackPanel>
+
+            <Frame Name="frame"
+                   Grid.Column="1" />
+        </Grid>
+    </ScrollViewer>
 </Page>
