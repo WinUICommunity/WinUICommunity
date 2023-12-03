@@ -19,6 +19,20 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.LoadingPage",
           "Title": "LoadingPage",
           "Subtitle": "Loading Page",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/loading.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/loading.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.SwitchPresenter",
+          "Title": "SwitchPresenter",
+          "Subtitle": "SwitchPresenter",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/switchPresenter.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/switchPresenter.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ValidationPage",
+          "Title": "ValidationPage",
+          "Subtitle": "Validation Page",
           "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
           "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
         },
