@@ -4,9 +4,9 @@
 -->
 <!--
 Source files:
-Controls\Labs\SettingsCard\SettingsCard.xaml
-Controls\Labs\SettingsExpander\SettingsExpander.xaml
-Controls\Labs\TitleBar\TitleBar.xaml
+Controls\Ported\SettingsCard\SettingsCard.xaml
+Controls\Ported\SettingsExpander\SettingsExpander.xaml
+Controls\Ported\TitleBar\TitleBar.xaml
 Themes\Styles\Button.xaml
 Themes\Styles\Common.xaml
 Themes\Styles\Controls\FlyoutMenuButton.xaml
