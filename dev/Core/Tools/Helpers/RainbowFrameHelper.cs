@@ -48,15 +48,6 @@ public class RainbowFrameHelper
     }
 
     /// <summary>
-    /// default value is 16ms
-    /// </summary>
-    /// <param name="frameUpdateInterval"></param>
-    public void UpdateFrameUpdateInterval(TimeSpan frameUpdateInterval)
-    {
-        FrameUpdateInterval = frameUpdateInterval;
-    }
-
-    /// <summary>
     /// default value is 4 and effectSpeed should be greater than zero (0)
     /// </summary>
     /// <param name="effectSpeed"></param>
