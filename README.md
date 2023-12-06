@@ -123,7 +123,7 @@ download and install our vsix package from Marketplace:
 
 ![WinUICommunityTemplates](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
-
+![WindowUI](https://raw.githubusercontent.com/WindowUIOrg/Resources/main/WindowUI/RainbowFrame.gif)
 
 ![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/LandingsPage/0.png)
 
