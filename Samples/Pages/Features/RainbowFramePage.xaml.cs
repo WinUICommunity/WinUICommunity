@@ -1,0 +1,38 @@
+﻿using System;
+using DemoApp;
+using Microsoft.UI;
+using Microsoft.UI.Xaml.Controls;
+
+namespace WinUICommunity.DemoApp.Pages;
+
+public sealed partial class RainbowFramePage : Page
+{
+    private RainbowFrameHelper rainbowFrameHelper;
+    public RainbowFramePage()
+    {
+        this.InitializeComponent();
+        rainbowFrameHelper = new RainbowFrameHelper(App.currentWindow);
+    }
+
+    private void btnFixed_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        rainbowFrameHelper?.StopRainbowFrame();
+        rainbowFrameHelper.ChangeFrameColor(Colors.Red);
+    }
+
+    private void btnReset_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        rainbowFrameHelper?.ResetFrameColorToDefault();
+    }
+
+    private void btnRainbow_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        rainbowFrameHelper?.StopRainbowFrame();
+        rainbowFrameHelper?.StartRainbowFrame();
+    }
+
+    private void nbEffectSpeed_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
+    {
+        rainbowFrameHelper?.UpdateEffectSpeed((int)args.NewValue);
+    }
+}

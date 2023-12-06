@@ -8,7 +8,7 @@
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
     <ScrollViewer>
-        <Grid Margin="10">
+        <Grid Margin="10" ChildrenTransitions="{StaticResource SettingsCardsAnimations}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

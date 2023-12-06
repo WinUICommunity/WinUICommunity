@@ -44,7 +44,7 @@
         </animations:ImplicitAnimationSet>
     </Page.Resources>
     <ScrollViewer>
-        <Grid Margin="10">
+        <Grid Margin="10" ChildrenTransitions="{StaticResource SettingsCardsAnimations}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />

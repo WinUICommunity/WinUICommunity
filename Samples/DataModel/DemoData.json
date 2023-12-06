@@ -16,9 +16,16 @@
           "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
         },
         {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.RainbowFramePage",
+          "Title": "Rainbow Frame",
+          "Subtitle": "a window with Rainbow Frame",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+        },
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.LoadingPage",
-          "Title": "LoadingPage",
-          "Subtitle": "Loading Page",
+          "Title": "Loading",
+          "Subtitle": "Loading",
           "ImageIconPath": "ms-appx:///Assets/Fluent/loading.png",
           "ImagePath": "ms-appx:///Assets/Fluent/loading.png"
         },
@@ -31,15 +38,15 @@
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ValidationPage",
-          "Title": "ValidationPage",
-          "Subtitle": "Validation Page",
+          "Title": "Validation",
+          "Subtitle": "Validation",
           "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
           "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ExtensionPage",
-          "Title": "ExtensionPage",
-          "Subtitle": "Extension Page",
+          "Title": "Extension",
+          "Subtitle": "Extension",
           "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
           "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
         },
