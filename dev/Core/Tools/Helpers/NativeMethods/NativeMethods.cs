@@ -129,4 +129,8 @@ public static partial class NativeMethods
     [DllImport(NativeValues.ExternDll.User32)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool DestroyWindow(IntPtr hwnd);
+
+    [DllImport("dwmapi.dll", CharSet = CharSet.Unicode, PreserveSig = false)]
+    public static extern int DwmSetWindowAttribute(IntPtr hwnd, NativeValues.DWMWINDOWATTRIBUTE dwAttribute, ref uint pvAttribute, uint cbAttribute);
+
 }

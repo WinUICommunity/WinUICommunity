@@ -259,4 +259,12 @@ public static class NativeValues
         WM_SYSMENU = 0x0313,
         WM_GETMINMAXINFO = 0x0024
     }
+
+    [Flags]
+    public enum DWMWINDOWATTRIBUTE : uint
+    {
+        DWMWA_WINDOW_CORNER_PREFERENCE = 33,
+        DWMWA_BORDER_COLOR,
+        DWMWA_VISIBLE_FRAME_BORDER_THICKNESS
+    }
 }

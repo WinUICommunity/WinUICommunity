@@ -124,4 +124,9 @@ public partial class GeneralHelper
         var result = decoded != text;
         return result ? decoded : text;
     }
+
+    public static uint ColorToUInt(Color color)
+    {
+        return (uint)((color.B << 16) | (color.G << 8) | (color.R << 0));
+    }
 }
