@@ -23,6 +23,20 @@
           "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
         },
         {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.FileAndFolderPickerPage",
+          "Title": "File And Folder Picker",
+          "Subtitle": "File And Folder Picker",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.StylesPage",
+          "Title": "Styles",
+          "Subtitle": "Styles",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+        },
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.LoadingPage",
           "Title": "Loading",
           "Subtitle": "Loading",

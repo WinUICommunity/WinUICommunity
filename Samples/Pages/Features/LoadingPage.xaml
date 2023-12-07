@@ -7,17 +7,14 @@
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
 
-    <Grid ChildrenTransitions="{StaticResource SettingsCardsAnimations}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+    <StackPanel VerticalAlignment="Center"
+                ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                Spacing="10">
         <ToggleSwitch x:Name="LoadingState"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
                       IsOn="True" />
-        <wuc:Loading Grid.Row="1"
-                     HorizontalAlignment="Center"
+        <wuc:Loading HorizontalAlignment="Center"
                      VerticalAlignment="Center"
                      IsLoading="{x:Bind LoadingState.IsOn, Mode=OneWay}">
             <wuc:Loading.Content>
@@ -30,5 +27,5 @@
                 </StackPanel>
             </wuc:Loading.Content>
         </wuc:Loading>
-    </Grid>
+    </StackPanel>
 </Page>
