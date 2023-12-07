@@ -1,14 +1,14 @@
 ﻿using WinRT.Interop;
 
 namespace WinUICommunity;
-public class RainbowFrameHelper : IRainbowFrame
+public class RainbowFrame : IRainbowFrame
 {
     private uint _defaultColor = 0xFFFFFFFF;
     private DispatcherTimer _frameTimer;
     private DateTimeOffset _started;
     private TimeSpan FrameUpdateInterval = TimeSpan.FromMilliseconds(16);
     private Window _window;
-    private IntPtr hwnd;
+    private nint hwnd;
     private int EffectSpeed = 4;
 
     public void Initialize(Window window, TimeSpan frameUpdateInterval, int effectSpeed)
@@ -120,9 +120,9 @@ public class RainbowFrameHelper : IRainbowFrame
         // Credit to https://www.chilliant.com/rgb2hsv.html
         var hueToRGB = new Func<float, uint>(H =>
         {
-            float R = Math.Abs(H * 6 - 3) - 1;
-            float G = 2 - Math.Abs(H * 6 - 2);
-            float B = 2 - Math.Abs(H * 6 - 4);
+            var R = Math.Abs(H * 6 - 3) - 1;
+            var G = 2 - Math.Abs(H * 6 - 2);
+            var B = 2 - Math.Abs(H * 6 - 4);
             return saturateAndToColor(R, G, B);
         });
 
@@ -134,9 +134,9 @@ public class RainbowFrameHelper : IRainbowFrame
         var delta = now - _started;
         var seconds = delta.TotalSeconds / EffectSpeed; // divide by EffectSpeed (Default = 4), to make the effect slower. Otherwise it flashes way too fast.
 
-        double integerValue = Math.Floor(seconds);
+        var integerValue = Math.Floor(seconds);
 
-        double decimalValue = seconds - integerValue;
+        var decimalValue = seconds - integerValue;
 
         var color = hueToRGB((float)decimalValue);
 

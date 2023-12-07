@@ -7,11 +7,11 @@ namespace WinUICommunity.DemoApp.Pages;
 
 public sealed partial class RainbowFramePage : Page
 {
-    private RainbowFrameHelper rainbowFrameHelper;
+    private RainbowFrame rainbowFrameHelper;
     public RainbowFramePage()
     {
         this.InitializeComponent();
-        rainbowFrameHelper = new RainbowFrameHelper();
+        rainbowFrameHelper = new RainbowFrame();
         rainbowFrameHelper.Initialize(App.currentWindow);
     }
 
