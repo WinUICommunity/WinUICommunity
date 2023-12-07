@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public interface IRainbowFrameService
+public interface IRainbowFrame
 {
     void Initialize(Window window, TimeSpan frameUpdateInterval, int effectSpeed);
     void Initialize(Window window, TimeSpan frameUpdateInterval);
