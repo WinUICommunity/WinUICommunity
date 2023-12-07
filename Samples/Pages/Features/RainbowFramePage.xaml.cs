@@ -11,7 +11,8 @@ public sealed partial class RainbowFramePage : Page
     public RainbowFramePage()
     {
         this.InitializeComponent();
-        rainbowFrameHelper = new RainbowFrameHelper(App.currentWindow);
+        rainbowFrameHelper = new RainbowFrameHelper();
+        rainbowFrameHelper.Initialize(App.currentWindow);
     }
 
     private void btnFixed_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

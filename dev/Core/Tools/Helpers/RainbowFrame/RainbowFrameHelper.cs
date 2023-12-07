@@ -1,7 +1,7 @@
 ﻿using WinRT.Interop;
 
 namespace WinUICommunity;
-public class RainbowFrameHelper
+public class RainbowFrameHelper : IRainbowFrame
 {
     private uint _defaultColor = 0xFFFFFFFF;
     private DispatcherTimer _frameTimer;
@@ -10,25 +10,27 @@ public class RainbowFrameHelper
     private Window _window;
     private IntPtr hwnd;
     private int EffectSpeed = 4;
-    public RainbowFrameHelper(Window window, TimeSpan frameUpdateInterval, int effectSpeed)
+
+    public void Initialize(Window window, TimeSpan frameUpdateInterval, int effectSpeed)
     {
         InitializeWindow(window);
         InitializeEffectSpeed(effectSpeed);
         FrameUpdateInterval = frameUpdateInterval;
     }
-    public RainbowFrameHelper(Window window, TimeSpan frameUpdateInterval)
+
+    public void Initialize(Window window, TimeSpan frameUpdateInterval)
     {
         InitializeWindow(window);
         FrameUpdateInterval = frameUpdateInterval;
     }
 
-    public RainbowFrameHelper(Window window, int effectSpeed)
+    public void Initialize(Window window, int effectSpeed)
     {
         InitializeWindow(window);
         InitializeEffectSpeed(effectSpeed);
     }
 
-    public RainbowFrameHelper(Window window)
+    public void Initialize(Window window)
     {
         InitializeWindow(window);
     }
