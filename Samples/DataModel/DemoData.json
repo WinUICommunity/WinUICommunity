@@ -12,15 +12,15 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.OptionsPageControlPage",
           "Title": "OptionsPageControl",
           "Subtitle": "A page with options",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+          "ImageIconPath": "ms-appx:///Assets/Fluent/optionsPageControl.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/optionsPageControl.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.RainbowFramePage",
           "Title": "Rainbow Frame",
           "Subtitle": "a window with Rainbow Frame",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+          "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/frame.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.FileAndFolderPickerPage",
@@ -33,8 +33,8 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.StylesPage",
           "Title": "Styles",
           "Subtitle": "Styles",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+          "ImageIconPath": "ms-appx:///Assets/Fluent/styles.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.LoadingPage",
@@ -54,15 +54,15 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.ValidationPage",
           "Title": "Validation",
           "Subtitle": "Validation",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+          "ImageIconPath": "ms-appx:///Assets/Fluent/behaviors.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/behaviors.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ExtensionPage",
           "Title": "Extension",
           "Subtitle": "Extension",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+          "ImageIconPath": "ms-appx:///Assets/Fluent/extensions.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/extensions.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ThemeManagerPage",
