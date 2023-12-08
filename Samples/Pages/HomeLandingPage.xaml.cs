@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-using WinUICommunity;
+using WindowUI;
 
 namespace DemoApp.Pages;
 public sealed partial class HomeLandingPage : Page

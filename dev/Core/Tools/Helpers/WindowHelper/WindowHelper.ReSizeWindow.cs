@@ -1,6 +1,6 @@
 ﻿using WinRT.Interop;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public partial class WindowHelper
 {
     /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 public partial class FileHelper
 {
     public static string GetFileSize(long size)

@@ -5,7 +5,7 @@
 using System.Text.RegularExpressions;
 using Windows.ApplicationModel.DataTransfer;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 /// <inheritdoc cref="TextBoxExtensions"/>
 public static partial class TextBoxExtensions

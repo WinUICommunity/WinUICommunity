@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Media;
 using Microsoft.Windows.ApplicationModel.Resources;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public sealed partial class AllLandingPage : ItemsPageBase
 {
     public double HeaderFontSize

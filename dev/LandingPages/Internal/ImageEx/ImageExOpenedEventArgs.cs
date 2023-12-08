@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 /// <summary>
 /// A delegate for <see cref="ImageEx"/> opened.
 /// </summary>

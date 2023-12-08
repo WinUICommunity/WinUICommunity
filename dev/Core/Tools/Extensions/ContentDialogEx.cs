@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Xaml.Input;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 public static class ContentDialogEx
 {

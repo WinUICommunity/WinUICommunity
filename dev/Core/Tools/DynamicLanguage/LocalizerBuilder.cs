@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 public partial class LocalizerBuilder
 {

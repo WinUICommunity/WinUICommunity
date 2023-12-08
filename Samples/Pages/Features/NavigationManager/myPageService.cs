@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using WinUICommunity;
-using WinUICommunity.DemoApp.Pages;
+using WindowUI;
+using WindowUI.DemoApp.Pages;
 
 namespace DemoApp.Pages;
 internal class myPageService : PageService

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 public class NavigationService : INavigationService
 {

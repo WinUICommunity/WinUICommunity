@@ -1,79 +1,79 @@
-﻿<Page x:Class="WinUICommunity.DemoApp.Pages.PowerRenamePage"
+﻿<Page x:Class="WindowUI.DemoApp.Pages.PowerRenamePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:wuc="using:WinUICommunity"
+      xmlns:wui="using:WindowUI"
       mc:Ignorable="d">
 
-    <wuc:SettingsPageControl ModuleDescription="A Windows Shell extension for more advanced bulk renaming using search and replace or regular expressions."
+    <wui:SettingsPageControl ModuleDescription="A Windows Shell extension for more advanced bulk renaming using search and replace or regular expressions."
                              ModuleImageSource="ms-appx:///Assets/Modules/PowerRename.png"
                              ModuleTitle="PowerRename"
                              SecondaryLinksHeader="Attribution">
-        <wuc:SettingsPageControl.ModuleContent>
+        <wui:SettingsPageControl.ModuleContent>
             <StackPanel x:Name="PowerRenameView"
                         ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
                         Orientation="Vertical">
-                <wuc:SettingsCard Header="Enable PowerRename"
-                                  HeaderIcon="{wuc:BitmapIcon Source=/Assets/Fluent/powerRename.png}">
+                <wui:SettingsCard Header="Enable PowerRename"
+                                  HeaderIcon="{wui:BitmapIcon Source=/Assets/Fluent/powerRename.png}">
                     <ToggleSwitch />
-                </wuc:SettingsCard>
+                </wui:SettingsCard>
                 <InfoBar Title="The system administrator is forcing this setting."
                          IsClosable="False"
                          IsOpen="True"
                          Severity="Informational" />
-                <wuc:SimpleSettingsGroup Header="Shell integration">
-                    <wuc:SettingsExpander Header="Show PowerRename in"
+                <wui:SimpleSettingsGroup Header="Shell integration">
+                    <wui:SettingsExpander Header="Show PowerRename in"
                                           IsExpanded="True">
                         <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}"
                                   SelectedIndex="0">
                             <ComboBoxItem Content="Default and extended context menu" />
                             <ComboBoxItem Content="Extended context menu only" />
                         </ComboBox>
-                        <wuc:SettingsExpander.Items>
-                            <wuc:SettingsCard ContentAlignment="Left">
+                        <wui:SettingsExpander.Items>
+                            <wui:SettingsCard ContentAlignment="Left">
                                 <CheckBox Content="Hide icon in context menu" />
-                            </wuc:SettingsCard>
-                        </wuc:SettingsExpander.Items>
-                    </wuc:SettingsExpander>
-                </wuc:SimpleSettingsGroup>
+                            </wui:SettingsCard>
+                        </wui:SettingsExpander.Items>
+                    </wui:SettingsExpander>
+                </wui:SimpleSettingsGroup>
 
-                <wuc:SimpleSettingsGroup Header="Auto-complete">
-                    <wuc:SettingsExpander Header="Enable auto-complete for the search &amp; replace fields"
+                <wui:SimpleSettingsGroup Header="Auto-complete">
+                    <wui:SettingsExpander Header="Enable auto-complete for the search &amp; replace fields"
                                           IsExpanded="True">
                         <ToggleSwitch />
-                        <wuc:SettingsExpander.Items>
-                            <wuc:SettingsCard Header="Maximum number of items">
+                        <wui:SettingsExpander.Items>
+                            <wui:SettingsCard Header="Maximum number of items">
                                 <NumberBox MinWidth="{StaticResource SettingActionControlMinWidth}"
                                            Maximum="20"
                                            Minimum="0"
                                            SpinButtonPlacementMode="Compact" />
-                            </wuc:SettingsCard>
-                        </wuc:SettingsExpander.Items>
-                    </wuc:SettingsExpander>
+                            </wui:SettingsCard>
+                        </wui:SettingsExpander.Items>
+                    </wui:SettingsExpander>
 
-                    <wuc:SettingsCard Header="Show recently used strings"
-                                      HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
+                    <wui:SettingsCard Header="Show recently used strings"
+                                      HeaderIcon="{wui:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 Glyph=&#xe81c;}">
                         <ToggleSwitch />
-                    </wuc:SettingsCard>
-                </wuc:SimpleSettingsGroup>
-                <wuc:SimpleSettingsGroup Header="Behavior">
-                    <wuc:SettingsCard Description="Provides extended features but may use different regex syntax"
+                    </wui:SettingsCard>
+                </wui:SimpleSettingsGroup>
+                <wui:SimpleSettingsGroup Header="Behavior">
+                    <wui:SettingsCard Description="Provides extended features but may use different regex syntax"
                                       Header="Use Boost library">
                         <ToggleSwitch />
-                    </wuc:SettingsCard>
-                </wuc:SimpleSettingsGroup>
+                    </wui:SettingsCard>
+                </wui:SimpleSettingsGroup>
             </StackPanel>
-        </wuc:SettingsPageControl.ModuleContent>
+        </wui:SettingsPageControl.ModuleContent>
 
-        <wuc:SettingsPageControl.PrimaryLinks>
-            <wuc:PageLink Link="https://aka.ms/PowerToysOverview_PowerRename"
+        <wui:SettingsPageControl.PrimaryLinks>
+            <wui:PageLink Link="https://aka.ms/PowerToysOverview_PowerRename"
                           Text="Learn more about PowerRename" />
-        </wuc:SettingsPageControl.PrimaryLinks>
-        <wuc:SettingsPageControl.SecondaryLinks>
-            <wuc:PageLink Link="https://github.com/chrdavis/SmartRename"
+        </wui:SettingsPageControl.PrimaryLinks>
+        <wui:SettingsPageControl.SecondaryLinks>
+            <wui:PageLink Link="https://github.com/chrdavis/SmartRename"
                           Text="Chris Davis's SmartRenamer" />
-        </wuc:SettingsPageControl.SecondaryLinks>
-    </wuc:SettingsPageControl>
+        </wui:SettingsPageControl.SecondaryLinks>
+    </wui:SettingsPageControl>
 </Page>

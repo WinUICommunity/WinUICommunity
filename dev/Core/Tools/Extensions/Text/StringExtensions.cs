@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace WinUICommunity;
+namespace WindowUI;
 /// <summary>
 /// Helpers for working with strings and string representations.
 /// </summary>

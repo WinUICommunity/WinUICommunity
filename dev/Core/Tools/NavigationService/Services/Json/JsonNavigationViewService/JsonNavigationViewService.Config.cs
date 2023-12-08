@@ -1,6 +1,6 @@
 ﻿using Microsoft.Windows.ApplicationModel.Resources;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public partial class JsonNavigationViewService : IJsonNavigationViewService
 {
     public void ConfigJson(string jsonFilePath, bool autoIncludedInBuild = false, PathType pathType = PathType.Relative)

@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 
 /// <summary>
 /// Custom <see cref="MarkupExtension"/> which can provide <see cref="FontIconSource"/> values.

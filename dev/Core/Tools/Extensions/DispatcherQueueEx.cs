@@ -1,5 +1,5 @@
 ﻿#if WINDOWS10_0_19041_0_OR_GREATER
-namespace WinUICommunity;
+namespace WindowUI;
 /// <summary>
 /// Helpers for executing code in a <see cref="DispatcherQueue"/>.
 /// </summary>

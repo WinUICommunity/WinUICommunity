@@ -2,7 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 /// <summary>
 /// Provides the Command attached dependency property for the <see cref="ListViewBase"/>

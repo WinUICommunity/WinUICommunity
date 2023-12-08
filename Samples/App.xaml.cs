@@ -12,9 +12,9 @@ using Microsoft.Windows.AppNotifications;
 
 using Windows.Storage;
 
-using WinUICommunity;
-using WinUICommunity.DemoApp.AppNotification;
-using WinUICommunity.DemoApp.Pages;
+using WindowUI;
+using WindowUI.DemoApp.AppNotification;
+using WindowUI.DemoApp.Pages;
 
 namespace DemoApp;
 
@@ -26,7 +26,7 @@ public partial class App : Application
     public IThemeService ThemeService { get; set; }
     private NotificationManager notificationManager;
     public new static App Current => (App)Application.Current;
-    public string Title { get; set; } = "DemoApp";
+    public string Title { get; set; } = "WindowUI DemoApp";
     public App()
     {
         this.InitializeComponent();

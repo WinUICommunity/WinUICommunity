@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 public struct EnumeratorWithIndex<T>
 {
     public readonly T Value;

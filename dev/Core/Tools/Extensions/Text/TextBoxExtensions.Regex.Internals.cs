@@ -5,7 +5,7 @@
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 /// <inheritdoc cref="TextBoxExtensions"/>
 public static partial class TextBoxExtensions

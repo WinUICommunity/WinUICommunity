@@ -1,6 +1,6 @@
 ﻿using WinRT.Interop;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public class WndProcHelper
 {
     private IntPtr Handle { get; set; }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 /// <summary>
 /// Base code for ImageEx

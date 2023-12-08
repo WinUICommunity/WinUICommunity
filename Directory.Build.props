@@ -13,12 +13,12 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Authors>WinUICommunity</Authors>
+    <Authors>WindowUIOrg</Authors>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Copyright>Copyright (c) 2021-2023 Mahdi Hosseini</Copyright>
-    <PackageProjectUrl>https://github.com/WinUICommunity/WinUICommunity</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/WinUICommunity/WinUICommunity</RepositoryUrl>
-    <PackageReleaseNotes>https://github.com/WinUICommunity/WinUICommunity/releases</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/WindowUIOrg/WindowUI</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/WindowUIOrg/WindowUI</RepositoryUrl>
+    <PackageReleaseNotes>https://github.com/WindowUIOrg/WindowUI/releases</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework.StartsWith(net7.0))' == 'true' Or '$(TargetFramework.StartsWith(net6.0))' == 'true'">
     <RuntimeIdentifiers>win10-x86;win10-x64</RuntimeIdentifiers>

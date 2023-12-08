@@ -2,12 +2,12 @@
   <PropertyGroup>
 	  <Version>5.5.0</Version>
     <IsTrimmable>false</IsTrimmable>
-    <Namespace>WinUICommunity.ContextMenuExtensions</Namespace>
+    <Namespace>WindowUI.ContextMenuExtensions</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
     <AssemblyName>$(Namespace)</AssemblyName>
 	  <Description>Create a New Context Menu Item for Windows 11/10</Description>
-	  <PackageTags>winui contextmenuextensions winui3 win11 xaml settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion contextmenu shell WinUICommunity</PackageTags>
+	  <PackageTags>winui contextmenuextensions winui3 win11 xaml settings theme WindowUIOrg WindowUI styles projectreunion winappsdk windowsappsdk wasdk reunion contextmenu shell WinUICommunity</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="ContextMenuCustomHost.dll">

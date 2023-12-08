@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 public class FailedToGetLocalizedStringException : LocalizerException
 {
     public FailedToGetLocalizedStringException(string uid, string? message = null, Exception? innerException = null)

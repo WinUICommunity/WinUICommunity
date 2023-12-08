@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 
 /// <summary>
 /// The ImageEx control extends the default Image platform control improving the performance and responsiveness of your Apps.
@@ -14,6 +14,6 @@ public partial class ImageEx : ImageExBase
         : base()
     {
         DefaultStyleKey = typeof(ImageEx);
-        DefaultStyleResourceUri = new System.Uri("ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml");
+        DefaultStyleResourceUri = new System.Uri("ms-appx:///WindowUI.LandingPages/Themes/Generic.xaml");
     }
 }

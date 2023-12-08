@@ -1,5 +1,5 @@
 ﻿
-namespace WinUICommunity;
+namespace WindowUI;
 public interface IThemeService
 {
     void Initialize(Window window, bool useAutoSave = true, string filename = null);

@@ -4,12 +4,12 @@
 	  <NoWarn>CA1416;WMC1506</NoWarn>
 	  <Version>5.5.2</Version>
     <IsTrimmable>false</IsTrimmable>
-    <Namespace>WinUICommunity.LandingPages</Namespace>
+    <Namespace>WindowUI.LandingPages</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
     <AssemblyName>$(Namespace)</AssemblyName>
 	  <Description>Create a landings page in the style of WinUI 3 and WinUI-Gallery very quickly and easily</Description>
-	  <PackageTags>winui LandingsPage landingpages winui3 win11 xaml SettingsUI settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
+	  <PackageTags>winui LandingsPage landingpages WindowUI winui3 win11 xaml SettingsUI settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
   </PropertyGroup>
   <ItemGroup>
 	  <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.0.230907" />

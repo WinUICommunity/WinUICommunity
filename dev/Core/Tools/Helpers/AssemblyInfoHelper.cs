@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 public partial class AssemblyInfoHelper
 {
     internal static T GetCustomAttributeFromAssembly<T>(Assembly assembly) where T : Attribute

@@ -1,7 +1,7 @@
 ﻿using Windows.Storage.Pickers;
 using WinRT.Interop;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public partial class FileAndFolderPickerHelper
 {
     private static FileSavePicker FileSavePicker(Window window, IDictionary<string, IList<string>> fileTypeChoices, string suggestedFileName, string defaultFileExtension, PickerLocationId suggestedStartLocation = PickerLocationId.ComputerFolder)

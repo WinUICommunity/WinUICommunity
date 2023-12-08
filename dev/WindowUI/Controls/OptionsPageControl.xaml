@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UserControl x:Class="WindowUI.OptionsPageControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+
+    <Grid CornerRadius="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="MainCard"
+              VerticalAlignment="Stretch"
+              Background="{ThemeResource LayerFillColorDefaultBrush}"
+              BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+              BorderThickness="{x:Bind MainCardBorderThickness, Mode=OneWay}"
+              CornerRadius="{x:Bind MainCardCornerRadius, Mode=OneWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="OptionsPanel"
+                  Grid.Column="1"
+                  VerticalAlignment="Stretch"
+                  Background="{ThemeResource LayerFillColorDefaultBrush}"
+                  BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                  BorderThickness="1,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ScrollViewer Grid.Row="0"
+                              Grid.Column="0"
+                              MinWidth="{x:Bind OptionsPaneMinWidth, Mode=OneWay}"
+                              Padding="{x:Bind OptionsPanePadding, Mode=OneWay}"
+                              IsEnabled="{x:Bind IsOptionsBarEnabled, Mode=OneWay}"
+                              Visibility="{x:Bind OptionsPaneVisibility, Mode=OneWay}">
+                    <ContentControl HorizontalContentAlignment="Stretch"
+                                    Content="{x:Bind OptionsPaneContent, Mode=OneWay}" />
+                </ScrollViewer>
+                <Grid x:Name="FixedOptionsBar"
+                      Grid.Column="1"
+                      Padding="4"
+                      HorizontalAlignment="Right"
+                      Background="{ThemeResource LayerFillColorAltBrush}"
+                      BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                      BorderThickness="1,0,0,0"
+                      RowSpacing="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <ContentControl x:Name="FixedOptionsBarContent"
+                                    Grid.Row="0"
+                                    Width="{x:Bind OptionsBarMinWidth, Mode=OneWay}"
+                                    VerticalAlignment="Top"
+                                    HorizontalContentAlignment="{x:Bind OptionsBarHorizontalContentAlignment, Mode=OneWay}"
+                                    Content="{x:Bind OptionsBarContent, Mode=OneWay}"
+                                    IsEnabled="{x:Bind IsOptionsBarEnabled, Mode=OneWay}" />
+                    <ContentControl x:Name="FixedOptionsBarFooter"
+                                    Grid.Row="1"
+                                    Width="{x:Bind OptionsBarMinWidth, Mode=OneWay}"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalContentAlignment="{x:Bind OptionsBarHorizontalContentAlignment, Mode=OneWay}"
+                                    Content="{x:Bind OptionsBarFooterContent, Mode=OneWay}"
+                                    IsEnabled="{x:Bind IsOptionsBarEnabled, Mode=OneWay}" />
+                </Grid>
+            </Grid>
+
+            <Grid x:Name="ContentPageHolder"
+                  Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
+                <!--  A solidbackground we enable when toggling themes. WinUI uses a lot of translucent brushes and might look weird  -->
+                <Border Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
+                        CornerRadius="8,0,0,8"
+                        Visibility="Collapsed" />
+                <ScrollViewer HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                    <ContentControl Margin="16"
+                                    HorizontalContentAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    Content="{x:Bind PageContent, Mode=OneWay}" />
+                </ScrollViewer>
+            </Grid>
+
+            <Expander Grid.Row="2"
+                      Grid.ColumnSpan="3"
+                      MinHeight="0"
+                      Margin="0,-1,0,0"
+                      Padding="0,0,0,0"
+                      HorizontalAlignment="Stretch"
+                      BorderBrush="Transparent"
+                      BorderThickness="0,1,0,0"
+                      CornerRadius="0,0,8,8"
+                      Header="{x:Bind PageFooterHeader, Mode=OneWay}"
+                      IsEnabled="{x:Bind IsPageFooterEnabled, Mode=OneWay}"
+                      IsExpanded="{x:Bind IsPageFooterExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      Visibility="{x:Bind PageFooterVisibility, Mode=OneWay}">
+                <Expander.Resources>
+                    <Thickness x:Key="ExpanderChevronMargin">20,0,4,0</Thickness>
+                </Expander.Resources>
+                <Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                      BorderThickness="0,1,0,0">
+                    <ScrollViewer HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch">
+                        <ContentControl MaxHeight="400"
+                                        Margin="16"
+                                        HorizontalContentAlignment="Stretch"
+                                        VerticalContentAlignment="Stretch"
+                                        Content="{x:Bind PageFooterContent, Mode=OneWay}" />
+                    </ScrollViewer>
+                </Grid>
+            </Expander>
+        </Grid>
+    </Grid>
+</UserControl>

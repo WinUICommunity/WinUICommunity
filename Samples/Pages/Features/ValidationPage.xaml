@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Page x:Class="WinUICommunity.DemoApp.Pages.ValidationPage"
+<Page x:Class="WindowUI.DemoApp.Pages.ValidationPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:wuc="using:WinUICommunity"
+      xmlns:wui="using:WindowUI"
       mc:Ignorable="d">
 
     <ScrollViewer>
@@ -23,18 +23,18 @@
             </Grid.ColumnDefinitions>
             <StackPanel Spacing="6">
                 <TextBox x:Name="NameBox"
-                         wuc:Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
-                         wuc:Validation.ValidationPropertyName="Name"
-                         wuc:Validation.ValidationProvider="{x:Bind UserInfo}"
+                         wui:Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                         wui:Validation.ValidationPropertyName="Name"
+                         wui:Validation.ValidationProvider="{x:Bind UserInfo}"
                          Header="Easy boxes with validation"
                          PlaceholderText="Name"
                          Style="{StaticResource ValidatingTextBoxStyle}"
                          Text="{x:Bind UserInfo.Name, Mode=TwoWay}" />
 
                 <TextBox x:Name="MailBox"
-                         wuc:Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
-                         wuc:Validation.ValidationPropertyName="Mail"
-                         wuc:Validation.ValidationProvider="{x:Bind UserInfo}"
+                         wui:Validation.ErrorTemplate="{StaticResource ValidationTemplate}"
+                         wui:Validation.ValidationPropertyName="Mail"
+                         wui:Validation.ValidationProvider="{x:Bind UserInfo}"
                          PlaceholderText="Mail"
                          Style="{StaticResource ValidatingTextBoxStyle}"
                          Text="{x:Bind UserInfo.Mail, Mode=TwoWay}" />

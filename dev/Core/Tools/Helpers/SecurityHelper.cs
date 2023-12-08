@@ -2,7 +2,7 @@
 using Windows.Security.Cryptography;
 using Windows.Storage.Streams;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public partial class SecurityHelper
 {
     public static string GetMD5Hash(string strMsg)

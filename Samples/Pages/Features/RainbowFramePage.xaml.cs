@@ -3,7 +3,7 @@ using DemoApp;
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WindowUI.DemoApp.Pages;
 
 public sealed partial class RainbowFramePage : Page
 {

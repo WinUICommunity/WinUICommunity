@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Xaml;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public sealed partial class ItemTemplates : ResourceDictionary
 {
     public ItemTemplates()

@@ -3,7 +3,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WindowUI.DemoApp.Pages;
 
 public sealed partial class DemoSectionPage : Page
 {

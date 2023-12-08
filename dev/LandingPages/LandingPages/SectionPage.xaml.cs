@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 public sealed partial class SectionPage : ItemsPageBase
 {
     public SectionPage()

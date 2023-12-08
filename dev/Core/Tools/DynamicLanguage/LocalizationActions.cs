@@ -1,6 +1,6 @@
 using Microsoft.UI.Xaml.Documents;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 public static class LocalizationActions
 {

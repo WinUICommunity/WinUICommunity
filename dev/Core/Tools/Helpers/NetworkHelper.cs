@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 public partial class NetworkHelper
 {
     public static bool IsNetworkAvailable()

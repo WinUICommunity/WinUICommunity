@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public partial class GeneralHelper
 {
     /// <summary>

@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-using WinUICommunity.DemoApp.Pages;
+using WindowUI.DemoApp.Pages;
 
 namespace DemoApp.Pages;
 public sealed partial class MainPage : Page

@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 
 /// <summary>
 /// An <see cref="IPredicate{T}"/> type matching items of a given type.

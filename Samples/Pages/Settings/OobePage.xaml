@@ -1,14 +1,14 @@
-﻿<Page x:Class="WinUICommunity.DemoApp.Pages.OobePage"
+﻿<Page x:Class="WindowUI.DemoApp.Pages.OobePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:wuc="using:WinUICommunity"
+      xmlns:wui="using:WindowUI"
       mc:Ignorable="d">
-    <wuc:OOBEPageControl Title="FileExplorer Preview"
+    <wui:OOBEPageControl Title="FileExplorer Preview"
                          Description="These settings allow you to manage your Windows File Explorer custom preview handlers."
                          HeroImage="ms-appx:///Assets/Modules/OOBE/FileExplorer.png">
-        <wuc:OOBEPageControl.PageContent>
+        <wui:OOBEPageControl.PageContent>
             <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
                         Orientation="Vertical">
                 <TextBlock Style="{ThemeResource OobeSubtitleStyle}"
@@ -23,6 +23,6 @@
                     </HyperlinkButton>
                 </StackPanel>
             </StackPanel>
-        </wuc:OOBEPageControl.PageContent>
-    </wuc:OOBEPageControl>
+        </wui:OOBEPageControl.PageContent>
+    </wui:OOBEPageControl>
 </Page>

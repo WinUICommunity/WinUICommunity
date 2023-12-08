@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 public partial class PathHelper
 {
     private static readonly int MAX_PATH = 255;

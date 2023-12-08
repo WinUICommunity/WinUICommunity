@@ -2,9 +2,9 @@
 
 using Microsoft.Windows.AppNotifications;
 
-using WinUICommunity.DemoApp.Pages;
+using WindowUI.DemoApp.Pages;
 
-namespace WinUICommunity.DemoApp.AppNotification;
+namespace WindowUI.DemoApp.AppNotification;
 public class ToastWithPayload : IScenario
 {
     private static ToastWithPayload _Instance;

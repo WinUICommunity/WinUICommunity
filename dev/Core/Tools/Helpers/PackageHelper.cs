@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 public class PackageHelper
 {
     private const uint APPMODEL_ERROR_NO_PACKAGE = 15700;

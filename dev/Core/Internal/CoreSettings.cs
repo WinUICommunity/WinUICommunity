@@ -1,7 +1,7 @@
 ﻿using Nucs.JsonSettings;
 using Nucs.JsonSettings.Modulation;
 
-namespace WinUICommunity;
+namespace WindowUI;
 internal class CoreSettings : JsonSettings, IVersionable
 {
     [EnforcedVersion("5.3.0.0")]

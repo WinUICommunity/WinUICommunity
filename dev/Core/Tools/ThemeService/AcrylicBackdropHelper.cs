@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Composition.SystemBackdrops;
 using WinRT;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 public class WindowsSystemDispatcherQueueHelper
 {

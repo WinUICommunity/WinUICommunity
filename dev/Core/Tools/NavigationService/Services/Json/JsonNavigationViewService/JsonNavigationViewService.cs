@@ -2,7 +2,7 @@
 
 using Microsoft.Windows.ApplicationModel.Resources;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 public partial class JsonNavigationViewService : IJsonNavigationViewService
 {

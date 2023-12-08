@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public sealed partial class TileGallery : UserControl
 {
     public object HeaderContent

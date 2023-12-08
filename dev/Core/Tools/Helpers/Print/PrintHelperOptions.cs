@@ -1,7 +1,7 @@
 ﻿#if WINDOWS10_0_19041_0_OR_GREATER
 using Windows.Graphics.Printing;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 /// <summary>
 /// Represents options used in a print task.

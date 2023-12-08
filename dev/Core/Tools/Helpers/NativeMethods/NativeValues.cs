@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public static class NativeValues
 {
     /// <summary>

@@ -1,6 +1,6 @@
 ﻿using WinRT.Interop;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public class RainbowFrame : IRainbowFrame
 {
     private uint _defaultColor = 0xFFFFFFFF;

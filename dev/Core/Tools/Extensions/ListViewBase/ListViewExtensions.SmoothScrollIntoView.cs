@@ -4,7 +4,7 @@
 
 using Microsoft.UI.Xaml.Controls.Primitives;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 /// <summary>
 /// Smooth scroll the list to bring specified item into view

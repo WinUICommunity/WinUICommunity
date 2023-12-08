@@ -3,7 +3,7 @@ using Nucs.JsonSettings.Fluent;
 using Nucs.JsonSettings.Modulation;
 using Nucs.JsonSettings.Modulation.Recovery;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public class ThemeService : IThemeService
 {
     internal static CoreSettings Settings = JsonSettings.Configure<CoreSettings>()

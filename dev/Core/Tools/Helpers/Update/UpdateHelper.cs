@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 public static class UpdateHelper
 {

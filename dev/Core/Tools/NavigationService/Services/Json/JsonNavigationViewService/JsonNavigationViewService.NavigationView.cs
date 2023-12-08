@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Xaml.Automation;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public partial class JsonNavigationViewService : IJsonNavigationViewService
 {
     private void AddNavigationViewItemsRecursively(IEnumerable<DataItem> navItems, bool isFooterNavigationViewItem, bool hasTopLevel, string pageKey, NavigationViewItem parentNavItem = null)

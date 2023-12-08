@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Versioning;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public static partial class NativeMethods
 {
     [DllImport(NativeValues.ExternDll.User32, EntryPoint = "FindWindowExW", SetLastError = true, CharSet = CharSet.Unicode)]

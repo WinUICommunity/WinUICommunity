@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public abstract class ItemsPageBase : Page, INotifyPropertyChanged
 {
     public event EventHandler<RoutedEventArgs> OnItemClick;

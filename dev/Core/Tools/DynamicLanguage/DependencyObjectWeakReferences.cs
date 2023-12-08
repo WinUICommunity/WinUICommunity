@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 
 internal sealed class DependencyObjectReferenceAddedEventArgs : EventArgs
 {

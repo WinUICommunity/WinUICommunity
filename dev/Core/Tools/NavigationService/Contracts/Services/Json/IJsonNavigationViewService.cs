@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.ApplicationModel.Resources;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 public interface IJsonNavigationViewService
 {

@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 
 // Helper class to set the navigation target for a NavigationViewItem.
 //

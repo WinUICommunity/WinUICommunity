@@ -2,7 +2,7 @@
 
 using Microsoft.UI.Xaml.Media.Animation;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public partial class JsonNavigationViewService : IJsonNavigationViewService
 {
     private object? _lastParameterUsed;

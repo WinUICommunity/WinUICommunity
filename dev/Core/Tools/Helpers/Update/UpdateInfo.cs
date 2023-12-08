@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 public class UpdateInfo
 {

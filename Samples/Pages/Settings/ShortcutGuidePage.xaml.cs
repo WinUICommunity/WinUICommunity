@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using System.Collections.Generic;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WindowUI.DemoApp.Pages;
 
 public sealed partial class ShortcutGuidePage : Page
 {

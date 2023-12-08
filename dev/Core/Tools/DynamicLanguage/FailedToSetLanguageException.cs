@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 public class FailedToSetLanguageException : LocalizerException
 {
     public FailedToSetLanguageException(string oldLanguage, string newLanguage, string? message = null, Exception? innerException = null)

@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Input;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public partial class TitleBarHelper
 {
     public static void SetDragRegion(Window window, NonClientRegionKind nonClientRegionKind, params FrameworkElement[] frameworkElements)

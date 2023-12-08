@@ -1,4 +1,4 @@
-﻿namespace WinUICommunity;
+﻿namespace WindowUI;
 
 /// <summary>
 /// An extension for the <see cref="Dictionary{TKey,TValue}"/> class.

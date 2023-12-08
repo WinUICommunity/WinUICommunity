@@ -1,34 +1,34 @@
-﻿<Page x:Class="WinUICommunity.DemoApp.Pages.AwakePage"
+﻿<Page x:Class="WindowUI.DemoApp.Pages.AwakePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:wuc="using:WinUICommunity"
+      xmlns:wui="using:WindowUI"
       mc:Ignorable="d">
 
-    <wuc:SettingsPageControl IsTabStop="False"
+    <wui:SettingsPageControl IsTabStop="False"
                              ModuleDescription="A convenient way to keep your PC awake on-demand."
                              ModuleImageSource="ms-appx:///Assets/Modules/Awake.png"
                              ModuleTitle="Awake"
                              SecondaryLinksHeader="Attribution">
-        <wuc:SettingsPageControl.ModuleContent>
+        <wui:SettingsPageControl.ModuleContent>
             <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
                         Orientation="Vertical">
-                <wuc:SettingsCard Header="Enable Awake"
-                                  HeaderIcon="{wuc:BitmapIcon Source=/Assets/Fluent/awake.png}">
+                <wui:SettingsCard Header="Enable Awake"
+                                  HeaderIcon="{wui:BitmapIcon Source=/Assets/Fluent/awake.png}">
                     <ToggleSwitch OffContent="Off"
                                   OnContent="On" />
-                </wuc:SettingsCard>
+                </wui:SettingsCard>
                 <InfoBar Title="The system administrator is forcing this setting."
                          IsClosable="False"
                          IsOpen="True"
                          Severity="Informational" />
 
-                <wuc:SimpleSettingsGroup Header="Behavior">
+                <wui:SimpleSettingsGroup Header="Behavior">
 
-                    <wuc:SettingsCard Description="Manage the state of your device when Awake is active"
+                    <wui:SettingsCard Description="Manage the state of your device when Awake is active"
                                       Header="Mode"
-                                      HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
+                                      HeaderIcon="{wui:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 Glyph=&#xE945;}">
                         <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}"
                                   SelectedIndex="0">
@@ -37,25 +37,25 @@
                             <ComboBoxItem x:Uid="Awake_TemporaryKeepAwakeSelector" />
                             <ComboBoxItem x:Uid="Awake_ExpirableKeepAwakeSelector" />
                         </ComboBox>
-                    </wuc:SettingsCard>
+                    </wui:SettingsCard>
 
-                    <wuc:SettingsExpander Description="Keep custom awake state until a specific date and time"
+                    <wui:SettingsExpander Description="Keep custom awake state until a specific date and time"
                                           Header="End date and time"
-                                          HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
+                                          HeaderIcon="{wui:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                     Glyph=&#xEC92;}"
                                           IsExpanded="True">
-                        <wuc:SettingsExpander.Items>
-                            <wuc:SettingsCard Header="End date">
+                        <wui:SettingsExpander.Items>
+                            <wui:SettingsCard Header="End date">
                                 <DatePicker />
-                            </wuc:SettingsCard>
-                            <wuc:SettingsCard Header="End time">
+                            </wui:SettingsCard>
+                            <wui:SettingsCard Header="End time">
                                 <TimePicker ClockIdentifier="24HourClock" />
-                            </wuc:SettingsCard>
-                        </wuc:SettingsExpander.Items>
-                    </wuc:SettingsExpander>
+                            </wui:SettingsCard>
+                        </wui:SettingsExpander.Items>
+                    </wui:SettingsExpander>
 
-                    <wuc:SettingsCard Header="Interval before returning to the previous awakeness state"
-                                      HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
+                    <wui:SettingsCard Header="Interval before returning to the previous awakeness state"
+                                      HeaderIcon="{wui:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 Glyph=&#xE916;}">
 
                         <StackPanel MinWidth="{StaticResource SettingActionControlMinWidth}"
@@ -77,25 +77,25 @@
                                        SmallChange="1"
                                        SpinButtonPlacementMode="Compact" />
                         </StackPanel>
-                    </wuc:SettingsCard>
+                    </wui:SettingsCard>
 
-                    <wuc:SettingsCard Description="This setting is only available when keeping the PC awake"
+                    <wui:SettingsCard Description="This setting is only available when keeping the PC awake"
                                       Header="Keep screen on"
-                                      HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
+                                      HeaderIcon="{wui:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 Glyph=&#xE7F4;}">
                         <ToggleSwitch />
-                    </wuc:SettingsCard>
-                </wuc:SimpleSettingsGroup>
+                    </wui:SettingsCard>
+                </wui:SimpleSettingsGroup>
             </StackPanel>
-        </wuc:SettingsPageControl.ModuleContent>
+        </wui:SettingsPageControl.ModuleContent>
 
-        <wuc:SettingsPageControl.PrimaryLinks>
-            <wuc:PageLink Link="https://aka.ms/PowerToysOverview_Awake"
+        <wui:SettingsPageControl.PrimaryLinks>
+            <wui:PageLink Link="https://aka.ms/PowerToysOverview_Awake"
                           Text="Learn more about Awake" />
-        </wuc:SettingsPageControl.PrimaryLinks>
-        <wuc:SettingsPageControl.SecondaryLinks>
-            <wuc:PageLink Link="https://Awake.den.dev"
+        </wui:SettingsPageControl.PrimaryLinks>
+        <wui:SettingsPageControl.SecondaryLinks>
+            <wui:PageLink Link="https://Awake.den.dev"
                           Text="Den Delimarsky's Awake" />
-        </wuc:SettingsPageControl.SecondaryLinks>
-    </wuc:SettingsPageControl>
+        </wui:SettingsPageControl.SecondaryLinks>
+    </wui:SettingsPageControl>
 </Page>

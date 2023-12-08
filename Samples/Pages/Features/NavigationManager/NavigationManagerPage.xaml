@@ -1,9 +1,9 @@
-﻿<Page x:Class="WinUICommunity.DemoApp.Pages.NavigationManagerPage"
+﻿<Page x:Class="WindowUI.DemoApp.Pages.NavigationManagerPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:wuc="using:WinUICommunity"
+      xmlns:wui="using:WindowUI"
       mc:Ignorable="d">
 
     <TabView>
@@ -19,13 +19,13 @@
                     </NavigationView.AutoSuggestBox>
                     <NavigationView.MenuItems>
                         <NavigationViewItem Margin="0,0,12,0"
-                                            wuc:NavigationHelper.NavigateTo="GeneralPage"
+                                            wui:NavigationHelper.NavigateTo="GeneralPage"
                                             Content="General" />
                         <NavigationViewItem Margin="0,0,12,0"
-                                            wuc:NavigationHelper.NavigateTo="AwakePage"
+                                            wui:NavigationHelper.NavigateTo="AwakePage"
                                             Content="Awake" />
                         <NavigationViewItem Margin="0,0,12,0"
-                                            wuc:NavigationHelper.NavigateTo="FancyZonesPage"
+                                            wui:NavigationHelper.NavigateTo="FancyZonesPage"
                                             Content="FancyZone" />
                     </NavigationView.MenuItems>
                     <Frame x:Name="shellFrame" />

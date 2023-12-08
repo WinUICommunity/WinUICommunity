@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 public class DataSource
 {

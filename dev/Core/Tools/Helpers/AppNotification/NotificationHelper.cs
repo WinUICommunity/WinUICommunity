@@ -1,6 +1,6 @@
 ﻿using Microsoft.Windows.AppNotifications;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public static class NotificationHelper
 {
     private const string scenarioTag = "scenarioId";

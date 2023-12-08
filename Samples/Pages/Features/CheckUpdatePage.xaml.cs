@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using System;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WindowUI.DemoApp.Pages;
 
 public sealed partial class CheckUpdatePage : Page
 {
@@ -14,8 +14,8 @@ public sealed partial class CheckUpdatePage : Page
     {
         if (string.IsNullOrEmpty(txtUser.Text) || string.IsNullOrEmpty(txtRepo.Text))
         {
-            txtUser.Text = "WinUICommunity";
-            txtRepo.Text = "SettingsUI";
+            txtUser.Text = "WindowUIOrg";
+            txtRepo.Text = "WindowUI";
         }
         var ver = await UpdateHelper.CheckUpdateAsync(txtUser.Text, txtRepo.Text);
         if (ver.IsExistNewVersion)

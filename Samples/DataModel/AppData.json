@@ -2,7 +2,7 @@
   "Groups": [
     {
       "UniqueId": "Features",
-      "SectionId": "WinUICommunity.DemoApp.Pages.mySectionPage",
+      "SectionId": "WindowUI.DemoApp.Pages.mySectionPage",
       "Title": "Features pages",
       "IsSpecialSection": false,
       "DataInfoBadge": {
@@ -11,7 +11,7 @@
       },
       "Items": [
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.AppNotificationPage",
+          "UniqueId": "WindowUI.DemoApp.Pages.AppNotificationPage",
           "Title": "App Notification",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "you can use AppNotificationPage for Sending Toast Notification.",
@@ -20,7 +20,7 @@
           "Links": [
             {
               "Title": "AppNotificationPage",
-              "Uri": "https://ghost1372.github.io/winUICommunity/helpers/appNotification/"
+              "Uri": "https://ghost1372.github.io/WindowUI/helpers/appNotification/"
             }
           ],
           "DataInfoBadge": {
@@ -29,7 +29,7 @@
           }
         },
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.CheckUpdatePage",
+          "UniqueId": "WindowUI.DemoApp.Pages.CheckUpdatePage",
           "Title": "Check Update",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "you can use UpdateHelper for checking application updates from github release page.",
@@ -39,7 +39,7 @@
           "Links": [
             {
               "Title": "CheckUpdatePage",
-              "Uri": "https://ghost1372.github.io/winUICommunity/helpers/updateHelper/"
+              "Uri": "https://ghost1372.github.io/WindowUI/helpers/updateHelper/"
             }
           ],
           "DataInfoBadge": {
@@ -48,7 +48,7 @@
           }
         },
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.CommandObservablePage",
+          "UniqueId": "WindowUI.DemoApp.Pages.CommandObservablePage",
           "Title": "Observable and RelayCommand",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "Observable: inherited from INotifyPropertyChanged. - RelayCommand: inherited from ICommand.",
@@ -61,7 +61,7 @@
           }
         },
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.ContentDialogPage",
+          "UniqueId": "WindowUI.DemoApp.Pages.ContentDialogPage",
           "Title": "Content Dialog",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "With the help of ShowAsyncQueue extension you can open multiple ContentDialogs.",
@@ -74,7 +74,7 @@
           }
         },
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.DynamicLanguagePage",
+          "UniqueId": "WindowUI.DemoApp.Pages.DynamicLanguagePage",
           "Title": "Dynamic Language",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "With the help of DynamicLanguage you can create a dynamic multi language app.",
@@ -84,7 +84,7 @@
           "Links": [
             {
               "Title": "DynamicLanguagePage",
-              "Uri": "https://ghost1372.github.io/winUICommunity/tools/dynamicLanguage/"
+              "Uri": "https://ghost1372.github.io/WindowUI/tools/dynamicLanguage/"
             }
           ],
           "DataInfoBadge": {
@@ -92,7 +92,7 @@
           }
         },
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.InlineAutoCompleteTextBoxPage",
+          "UniqueId": "WindowUI.DemoApp.Pages.InlineAutoCompleteTextBoxPage",
           "Title": "Inline AutoCompleteTextBox",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "Inline AutoCompleteTextBox",
@@ -102,7 +102,7 @@
           "Links": [
             {
               "Title": "InlineAutoCompleteTextBoxPage",
-              "Uri": "https://ghost1372.github.io/winUICommunity/controls/inlineAutoCompleteTextBox/"
+              "Uri": "https://ghost1372.github.io/WindowUI/controls/inlineAutoCompleteTextBox/"
             }
           ],
           "DataInfoBadge": {
@@ -113,7 +113,7 @@
           }
         },
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.SettingsControls",
+          "UniqueId": "WindowUI.DemoApp.Pages.SettingsControls",
           "Title": "Settings Controls",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "SettingsControls from Labs",
@@ -123,7 +123,7 @@
           "Links": [
             {
               "Title": "SettingsControls",
-              "Uri": "https://ghost1372.github.io/winUICommunity/settingsControls/"
+              "Uri": "https://ghost1372.github.io/WindowUI/settingsControls/"
             }
           ]
         }
@@ -131,18 +131,18 @@
     },
     {
       "UniqueId": "Settings",
-      "SectionId": "WinUICommunity.DemoApp.Pages.mySectionPage",
+      "SectionId": "WindowUI.DemoApp.Pages.mySectionPage",
       "Title": "Settings pages",
       "SecondaryTitle": "Test SecondaryTitle",
       "Items": [
         {
           "UniqueId": "Settings2",
-          "SectionId": "WinUICommunity.DemoApp.Pages.mySectionPage",
+          "SectionId": "WindowUI.DemoApp.Pages.mySectionPage",
           "Title": "Settings pages2",
           "SecondaryTitle": "Test SecondaryTitle",
           "Items": [
             {
-              "UniqueId": "WinUICommunity.DemoApp.Pages.KeyboardManagerPage",
+              "UniqueId": "WindowUI.DemoApp.Pages.KeyboardManagerPage",
               "Title": "Oobe Page",
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
@@ -151,7 +151,7 @@
               "IsUpdated": true
             },
             {
-              "UniqueId": "WinUICommunity.DemoApp.Pages.ImageResizerPage",
+              "UniqueId": "WindowUI.DemoApp.Pages.ImageResizerPage",
               "Title": "Oobe Page",
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
@@ -160,7 +160,7 @@
               "IsUpdated": true
             },
             {
-              "UniqueId": "WinUICommunity.DemoApp.Pages.FancyZonesPage",
+              "UniqueId": "WindowUI.DemoApp.Pages.FancyZonesPage",
               "Title": "Oobe Page",
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
@@ -170,12 +170,12 @@
             },
             {
               "UniqueId": "Settings3",
-              "SectionId": "WinUICommunity.DemoApp.Pages.mySectionPage",
+              "SectionId": "WindowUI.DemoApp.Pages.mySectionPage",
               "Title": "Settings pages3",
               "SecondaryTitle": "Test SecondaryTitle",
               "Items": [
                 {
-                  "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+                  "UniqueId": "WindowUI.DemoApp.Pages.OobePage",
                   "Title": "Oobe Page",
                   "SecondaryTitle": "Test SecondaryTitle",
                   "Subtitle": "Settings Page with a Hero Image",
@@ -184,7 +184,7 @@
                   "IsUpdated": true
                 },
                 {
-                  "UniqueId": "WinUICommunity.DemoApp.Pages.ColorPickerPage",
+                  "UniqueId": "WindowUI.DemoApp.Pages.ColorPickerPage",
                   "Title": "Oobe Page",
                   "SecondaryTitle": "Test SecondaryTitle",
                   "Subtitle": "Settings Page with a Hero Image",
@@ -194,12 +194,12 @@
                 },
                 {
                   "UniqueId": "Settings4",
-                  "SectionId": "WinUICommunity.DemoApp.Pages.mySectionPage",
+                  "SectionId": "WindowUI.DemoApp.Pages.mySectionPage",
                   "Title": "Settings pages4",
                   "SecondaryTitle": "Test SecondaryTitle",
                   "Items": [
                     {
-                      "UniqueId": "WinUICommunity.DemoApp.Pages.OobePage",
+                      "UniqueId": "WindowUI.DemoApp.Pages.OobePage",
                       "Title": "Oobe Page",
                       "SecondaryTitle": "Test SecondaryTitle",
                       "Subtitle": "Settings Page with a Hero Image",
@@ -208,7 +208,7 @@
                       "IsUpdated": true
                     },
                     {
-                      "UniqueId": "WinUICommunity.DemoApp.Pages.AwakePage",
+                      "UniqueId": "WindowUI.DemoApp.Pages.AwakePage",
                       "Title": "Oobe Page",
                       "SecondaryTitle": "Test SecondaryTitle",
                       "Subtitle": "Settings Page with a Hero Image",

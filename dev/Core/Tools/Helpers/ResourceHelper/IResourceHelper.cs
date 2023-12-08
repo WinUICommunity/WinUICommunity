@@ -1,6 +1,6 @@
 ﻿using Microsoft.Windows.ApplicationModel.Resources;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public interface IResourceHelper
 {
     ResourceManager ResourceManager { get; set; }

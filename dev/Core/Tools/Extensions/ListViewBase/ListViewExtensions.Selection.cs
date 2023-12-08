@@ -4,7 +4,7 @@
 
 using Microsoft.UI.Xaml.Data;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 /// <summary>
 /// Provides attached dependency properties for the <see cref="ListViewBase"/>

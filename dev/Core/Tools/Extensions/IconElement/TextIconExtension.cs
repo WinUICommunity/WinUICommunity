@@ -2,7 +2,7 @@
 
 using Windows.UI.Text;
 
-namespace WinUICommunity;
+namespace WindowUI;
 
 /// <summary>
 /// An abstract <see cref="MarkupExtension"/> which to produce text-based icons.

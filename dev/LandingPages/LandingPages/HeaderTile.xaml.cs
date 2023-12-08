@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 
 using Windows.System;
 
-namespace WinUICommunity;
+namespace WindowUI;
 public sealed partial class HeaderTile : UserControl
 {
     public event EventHandler<RoutedEventArgs> OnItemClick;
