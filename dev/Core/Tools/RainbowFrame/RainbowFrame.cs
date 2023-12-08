@@ -7,38 +7,62 @@ public class RainbowFrame : IRainbowFrame
     private DispatcherTimer _frameTimer;
     private DateTimeOffset _started;
     private TimeSpan FrameUpdateInterval = TimeSpan.FromMilliseconds(16);
-    private Window _window;
-    private nint hwnd;
+    private IntPtr _hwnd;
     private int EffectSpeed = 4;
 
     public void Initialize(Window window, TimeSpan frameUpdateInterval, int effectSpeed)
     {
-        InitializeWindow(window);
-        InitializeEffectSpeed(effectSpeed);
-        FrameUpdateInterval = frameUpdateInterval;
+        InternalInitialize(window, _hwnd, effectSpeed, frameUpdateInterval);
+    }
+
+    public void Initialize(IntPtr hwnd, TimeSpan frameUpdateInterval, int effectSpeed)
+    {
+        InternalInitialize(null, hwnd, effectSpeed, frameUpdateInterval);
     }
 
     public void Initialize(Window window, TimeSpan frameUpdateInterval)
     {
-        InitializeWindow(window);
-        FrameUpdateInterval = frameUpdateInterval;
+        InternalInitialize(window, _hwnd, EffectSpeed, frameUpdateInterval);
+    }
+
+    public void Initialize(IntPtr hwnd, TimeSpan frameUpdateInterval)
+    {
+        InternalInitialize(null, hwnd, EffectSpeed, frameUpdateInterval);
     }
 
     public void Initialize(Window window, int effectSpeed)
     {
-        InitializeWindow(window);
-        InitializeEffectSpeed(effectSpeed);
+        InternalInitialize(window, _hwnd, effectSpeed, FrameUpdateInterval);
+    }
+
+    public void Initialize(IntPtr hwnd, int effectSpeed)
+    {
+        InternalInitialize(null, hwnd, effectSpeed, FrameUpdateInterval);
     }
 
     public void Initialize(Window window)
     {
-        InitializeWindow(window);
+        InternalInitialize(window, _hwnd, EffectSpeed, FrameUpdateInterval);
     }
 
-    private void InitializeWindow(Window window)
+    public void Initialize(IntPtr hwnd)
     {
-        _window = window;
-        hwnd = WindowNative.GetWindowHandle(_window);
+        InternalInitialize(null, hwnd, EffectSpeed, FrameUpdateInterval);
+    }
+
+    private void InternalInitialize(Window window, IntPtr hwnd, int effectSpeed, TimeSpan frameUpdateInterval)
+    {
+        if (window != null)
+        {
+            _hwnd = WindowNative.GetWindowHandle(window);
+        }
+        else
+        {
+            _hwnd = hwnd;
+        }
+
+        InitializeEffectSpeed(effectSpeed);
+        FrameUpdateInterval = frameUpdateInterval;
     }
 
     private void InitializeEffectSpeed(int effectSpeed)
@@ -78,7 +102,7 @@ public class RainbowFrame : IRainbowFrame
         {
             if (OSVersionHelper.IsWindows11_22000_OrGreater)
             {
-                NativeMethods.DwmSetWindowAttribute(hwnd, NativeValues.DWMWINDOWATTRIBUTE.DWMWA_BORDER_COLOR, ref color, sizeof(uint));
+                NativeMethods.DwmSetWindowAttribute(_hwnd, NativeValues.DWMWINDOWATTRIBUTE.DWMWA_BORDER_COLOR, ref color, sizeof(uint));
             }
         }
         catch (Exception)
