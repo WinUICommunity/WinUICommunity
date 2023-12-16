@@ -4,7 +4,6 @@
 -->
 <!--
 Source files:
-Controls\Ported\Loading\Loading.xaml
 Controls\Ported\SettingsCard\SettingsCard.xaml
 Controls\Ported\SettingsExpander\SettingsExpander.xaml
 Controls\Ported\TitleBar\TitleBar.xaml
@@ -102,99 +101,6 @@ Themes\Styles\TextBlock.xaml
       <win:StaticResource x:Key="SubtleButtonForegroundDisabled" ResourceKey="SystemControlDisabledBaseMediumLowBrush" />
     </win:ResourceDictionary>
   </win:ResourceDictionary.ThemeDictionaries>
-  <win:Style TargetType="local:Loading">
-    <win:Setter Property="HorizontalContentAlignment" Value="Center" />
-    <win:Setter Property="VerticalContentAlignment" Value="Center" />
-    <win:Setter Property="HorizontalAlignment" Value="Stretch" />
-    <win:Setter Property="VerticalAlignment" Value="Stretch" />
-    <win:Setter Property="Template">
-      <win:Setter.Value>
-        <win:ControlTemplate TargetType="local:Loading">
-          <win:Border x:Name="RootGrid" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}" Opacity="0" Visibility="Collapsed">
-            <win:VisualStateManager.VisualStateGroups>
-              <win:VisualStateGroup x:Name="CommonStates">
-                <win:VisualState x:Name="LoadingIn">
-                  <win:Storyboard>
-                    <win:DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
-                      <win:EasingDoubleKeyFrame KeyTime="0:0:0" Value="40">
-                        <win:EasingDoubleKeyFrame.EasingFunction>
-                          <win:QuadraticEase EasingMode="EaseInOut" />
-                        </win:EasingDoubleKeyFrame.EasingFunction>
-                      </win:EasingDoubleKeyFrame>
-                      <win:EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
-                        <win:EasingDoubleKeyFrame.EasingFunction>
-                          <win:QuadraticEase EasingMode="EaseInOut" />
-                        </win:EasingDoubleKeyFrame.EasingFunction>
-                      </win:EasingDoubleKeyFrame>
-                    </win:DoubleAnimationUsingKeyFrames>
-                    <win:DoubleAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Opacity">
-                      <win:EasingDoubleKeyFrame KeyTime="0:0:0" Value="0">
-                        <win:EasingDoubleKeyFrame.EasingFunction>
-                          <win:QuadraticEase EasingMode="EaseInOut" />
-                        </win:EasingDoubleKeyFrame.EasingFunction>
-                      </win:EasingDoubleKeyFrame>
-                      <win:EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
-                        <win:EasingDoubleKeyFrame.EasingFunction>
-                          <win:QuadraticEase EasingMode="EaseInOut" />
-                        </win:EasingDoubleKeyFrame.EasingFunction>
-                      </win:EasingDoubleKeyFrame>
-                    </win:DoubleAnimationUsingKeyFrames>
-                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Visibility">
-                      <win:DiscreteObjectKeyFrame KeyTime="0:0:0">
-                        <win:DiscreteObjectKeyFrame.Value>
-                          <win:Visibility>Visible</win:Visibility>
-                        </win:DiscreteObjectKeyFrame.Value>
-                      </win:DiscreteObjectKeyFrame>
-                    </win:ObjectAnimationUsingKeyFrames>
-                  </win:Storyboard>
-                </win:VisualState>
-                <win:VisualState x:Name="LoadingOut">
-                  <win:Storyboard>
-                    <win:DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
-                      <win:EasingDoubleKeyFrame KeyTime="0:0:0" Value="0">
-                        <win:EasingDoubleKeyFrame.EasingFunction>
-                          <win:QuadraticEase EasingMode="EaseInOut" />
-                        </win:EasingDoubleKeyFrame.EasingFunction>
-                      </win:EasingDoubleKeyFrame>
-                      <win:EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="40">
-                        <win:EasingDoubleKeyFrame.EasingFunction>
-                          <win:QuadraticEase EasingMode="EaseInOut" />
-                        </win:EasingDoubleKeyFrame.EasingFunction>
-                      </win:EasingDoubleKeyFrame>
-                    </win:DoubleAnimationUsingKeyFrames>
-                    <win:DoubleAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Opacity">
-                      <win:EasingDoubleKeyFrame KeyTime="0:0:0" Value="1">
-                        <win:EasingDoubleKeyFrame.EasingFunction>
-                          <win:QuadraticEase EasingMode="EaseInOut" />
-                        </win:EasingDoubleKeyFrame.EasingFunction>
-                      </win:EasingDoubleKeyFrame>
-                      <win:EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
-                        <win:EasingDoubleKeyFrame.EasingFunction>
-                          <win:QuadraticEase EasingMode="EaseInOut" />
-                        </win:EasingDoubleKeyFrame.EasingFunction>
-                      </win:EasingDoubleKeyFrame>
-                    </win:DoubleAnimationUsingKeyFrames>
-                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Visibility">
-                      <win:DiscreteObjectKeyFrame KeyTime="0:0:0.2">
-                        <win:DiscreteObjectKeyFrame.Value>
-                          <win:Visibility>Collapsed</win:Visibility>
-                        </win:DiscreteObjectKeyFrame.Value>
-                      </win:DiscreteObjectKeyFrame>
-                    </win:ObjectAnimationUsingKeyFrames>
-                  </win:Storyboard>
-                </win:VisualState>
-              </win:VisualStateGroup>
-            </win:VisualStateManager.VisualStateGroups>
-            <win:ContentPresenter x:Name="ContentGrid" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" x:DeferLoadStrategy="Lazy">
-              <win:ContentPresenter.RenderTransform>
-                <win:CompositeTransform />
-              </win:ContentPresenter.RenderTransform>
-            </win:ContentPresenter>
-          </win:Border>
-        </win:ControlTemplate>
-      </win:Setter.Value>
-    </win:Setter>
-  </win:Style>
   <win:Thickness x:Key="SettingsCardBorderThickness">1</win:Thickness>
   <win:Thickness x:Key="SettingsCardPadding">16,16,16,16</win:Thickness>
   <x:Double x:Key="SettingsCardMinWidth">148</x:Double>

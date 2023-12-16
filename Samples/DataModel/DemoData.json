@@ -37,13 +37,6 @@
           "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
         },
         {
-          "UniqueId": "WindowUI.DemoApp.Pages.LoadingPage",
-          "Title": "Loading",
-          "Subtitle": "Loading",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/loading.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/loading.png"
-        },
-        {
           "UniqueId": "WindowUI.DemoApp.Pages.SwitchPresenter",
           "Title": "SwitchPresenter",
           "Subtitle": "SwitchPresenter",
