@@ -6,8 +6,8 @@
     <UseWinUI>true</UseWinUI>
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Latest</LangVersion>
-
-    <OutputPath>$(SolutionDir)output\$(MSBuildProjectName)\</OutputPath>
+    
+    <OutputPath Condition="'$(MSBuildProjectName)' == 'WindowUI' Or '$(MSBuildProjectName)' == 'WindowUI.Core' Or '$(MSBuildProjectName)' == 'WindowUI.LandingPages' Or '$(MSBuildProjectName)' == 'WindowUI.ContextMenuExtensions'">$(SolutionDir)output\$(MSBuildProjectName)\</OutputPath>
 
     <!-- The NuGet package options -->
     <PackageIcon>icon.png</PackageIcon>
