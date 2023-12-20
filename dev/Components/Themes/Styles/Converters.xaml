@@ -8,4 +8,6 @@
     <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"
                                      FalseValue="Collapsed"
                                      TrueValue="Visible" />
+
+    <local:GridLengthConverter x:Key="GridLengthConverter" />
 </ResourceDictionary>
