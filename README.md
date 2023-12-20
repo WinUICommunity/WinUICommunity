@@ -8,7 +8,7 @@
 </a> 
 
 <a href="https://www.nuget.org/profiles/WinUICommunity">
-  <img alt="WinuiCommunity Nugets" src="https://img.shields.io/badge/WinUICommunity-Version?logo=nuget&label=Nuget&link=https%3A%2F%2Fwww.nuget.org%2Fprofiles%2FWinUICommunity"/>
+  <img alt="WinUICommunity Nugets" src="https://img.shields.io/badge/WinUICommunity-Version?logo=nuget&label=Nuget&link=https%3A%2F%2Fwww.nuget.org%2Fprofiles%2FWinUICommunity"/>
 </a> 
 
 <a href="https://www.nuget.org/packages/WinUICommunity.Core">
@@ -20,7 +20,7 @@
 </a>
 
 <a href="https://www.nuget.org/packages/WinUICommunity.Components">
-  <img alt="Components-Version" src="https://img.shields.io/nuget/v/WinUICommunity.Components?logo=nuget&label=Components&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Components"/>
+  <img alt="WinUICommunity.Components-Version" src="https://img.shields.io/nuget/v/WinUICommunity.Components?logo=nuget&label=WinUICommunity&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Components"/>
 </a> 
 
 <a href="https://www.nuget.org/packages/WinUICommunity.Components">
@@ -118,23 +118,111 @@ for creating a new project easily, you can use our project templates:
 
 download and install our vsix package from Marketplace:
 
-[WinUICommunityTemplates](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates)
+[WinUICommunity](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates)
 
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
-![WinUICommunityTemplates](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
+### Titlebar
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/TitleBar.png)
 
-![WindowUI](https://raw.githubusercontent.com/WindowUIOrg/Resources/main/WindowUI/RainbowFrame.gif)
+### Options Page Control
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OptionsPageControl.png)
 
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/LandingsPage/0.png)
+### ContextMenu
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/ContextMenu.png)
 
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/0.png)
+### SwitchPresenter
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/SwitchPresenter.gif)
 
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/1.png)
+### Blue InfoBar
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/BlueInfoBar.png)
 
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/5.png)
+### Border Style
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/BorderStyle.png)
 
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/2.png)
+### StackPanel Style
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/StackPanelStyle.png)
 
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/3.png)
+### Grid Style
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/GridStyle.png)
 
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/4.png)
+### Settings
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/Setting.png)
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/SettingsGroup.png)
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/SimpleSettingsGroup.png)
+
+### AutoSuggestBox Helper
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/AutoSuggestBoxHelper.png)
+
+### Enum Value Extension
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/EnumValueEx.png)
+
+### Picker
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Picker.png)
+
+### TextBox Extension
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TextBoxEx.png)
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TextBoxMaskEx.png)
+
+### Validation
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Validation.png)
+
+### AppNotification
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/AppNotificationAvatar.png)
+
+### CheckBox With Description Control
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/CheckBoxWithDescriptionControl.png)
+
+### Hyperlink Button Style
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/HyperlinkButtonStyle.png)
+
+### Inline AutoComplete
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/InlineAutoComplete.png)
+
+### TextBox Checked
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/IsEnabledTextBox_Checked.png)
+
+### KeyVisual
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/KeyVisual.png)
+
+### ListViewItem Setting Style
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/ListViewItemSettingStyle.png)
+
+### NavigationView Service
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/NavigationViewHelper.gif)
+
+### Shortcut
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/Shortcut.png)
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/Shortcut_Dialog_Error.png)
+
+### TabViewItem Style
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/TabViewItemRounded.png)
+
+### Taskbar Helper
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/TaskbarError.png)
+
+### LandingPages
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/LandingsPage/0.png)
+
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/LandingsPage/AllLandingsPage.png)
+
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/LandingsPage/HeaderTile.png)
+
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/LandingsPage/ItemPage.png)
+
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/LandingsPage/PageHeader.png)
+
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/LandingsPage/0.png)
+
+### Settings
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/0.png)
+
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/1.png)
+
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/5.png)
+
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/2.png)
+
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/3.png)
+
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/4.png)
