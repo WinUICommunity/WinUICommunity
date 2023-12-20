@@ -1,8 +1,6 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-
-namespace WindowUI.DemoApp.Pages;
-
+namespace WinUICommunity.DemoApp.Pages;
 
 public sealed partial class GrowlPage : Page
 {

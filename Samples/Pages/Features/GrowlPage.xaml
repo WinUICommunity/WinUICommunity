@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Page x:Class="WindowUI.DemoApp.Pages.GrowlPage"
+<Page x:Class="WinUICommunity.DemoApp.Pages.GrowlPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:wui="using:WindowUI"
+      xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
 
     <Grid Margin="10"
@@ -35,9 +35,9 @@
                     Content="Growl Global with GrowlInfo" />
         </StackPanel>
         <StackPanel Grid.Column="1"
-                    wui:Growl.GrowlParent="True" />
+                    wuc:Growl.GrowlParent="True" />
         <StackPanel Grid.Column="2"
-                    wui:Growl.GrowlParent="True"
-                    wui:Growl.Token="Test" />
+                    wuc:Growl.GrowlParent="True"
+                    wuc:Growl.Token="Test" />
     </Grid>
 </Page>

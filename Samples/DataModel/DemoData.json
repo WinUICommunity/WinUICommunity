@@ -9,7 +9,7 @@
       "IsSpecialSection": false,
       "Items": [
          {
-          "UniqueId": "WindowUI.DemoApp.Pages.GrowlPage",
+          "UniqueId": "WinUICommunity.DemoApp.Pages.GrowlPage",
           "Title": "Growl",
           "Subtitle": "Growl",
           "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
