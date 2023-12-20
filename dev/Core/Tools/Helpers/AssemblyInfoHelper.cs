@@ -29,7 +29,7 @@ public partial class AssemblyInfoHelper
         return GetCustomAttributeFromAssembly<T>(assembly);
     }
 
-    internal static string GetVersionInfoBase(VersionType versionType, Assembly assembly = null)
+    internal static string GetVersionInfoBase(VersionType versionType, Assembly assembly)
     {
         if (assembly == null)
         {
@@ -79,7 +79,7 @@ public partial class AssemblyInfoHelper
         return GetVersionInfoBase(versionType, assembly);
     }
 
-    internal static string GetAppNameInfoBase(NameType nameType, Assembly assembly = null)
+    internal static string GetAppNameInfoBase(NameType nameType, Assembly assembly)
     {
         if (assembly == null)
         {
@@ -102,7 +102,7 @@ public partial class AssemblyInfoHelper
     /// </summary>
     /// <param name="nameType"></param>
     /// <returns></returns>
-    public static string GetAppName(NameType nameType = NameType.CurrentAssemblyVersion)
+    public static string GetAppName(NameType nameType = NameType.EntryAssemblyVersion)
     {
         return GetAppNameInfoBase(nameType, null);
     }
@@ -114,7 +114,7 @@ public partial class AssemblyInfoHelper
     /// <param name="nameType"></param>
     /// <param name="assembly"></param>
     /// <returns></returns>
-    public static string GetAppName(NameType nameType = NameType.CurrentAssemblyVersion, Assembly assembly = null)
+    public static string GetAppName(NameType nameType, Assembly assembly)
     {
         return GetAppNameInfoBase(nameType, assembly);
     }
@@ -134,7 +134,7 @@ public partial class AssemblyInfoHelper
     /// <param name="nameType"></param>
     /// <param name="versionType"></param>
     /// <returns></returns>
-    public static (string Name, string Version, string NameAndVersion) GetAppInfo(NameType nameType = NameType.CurrentAssemblyVersion, VersionType versionType = VersionType.AssemblyInformationalVersion)
+    public static (string Name, string Version, string NameAndVersion) GetAppInfo(NameType nameType = NameType.EntryAssemblyVersion, VersionType versionType = VersionType.AssemblyInformationalVersion)
     {
         return GetAppInfoBase(nameType, versionType, null);
     }
@@ -150,24 +150,6 @@ public partial class AssemblyInfoHelper
     public static (string Name, string Version, string NameAndVersion) GetAppInfo(NameType nameType, VersionType versionType, Assembly assembly)
     {
         return GetAppInfoBase(nameType, versionType, assembly);
-    }
-
-    [Obsolete("Please Use ApplicationHelper.GetAppNameAndVersion method")]
-    public static string GetProjectNameAndVersion()
-    {
-        return $"{GetProjectName()}V{GetProjectVersion()}";
-    }
-
-    [Obsolete("Please Use ApplicationHelper.GetAppName method")]
-    public static string GetProjectName()
-    {
-        return Application.Current.GetType().Assembly.GetName().Name;
-    }
-
-    [Obsolete("Please Use ApplicationHelper.GetAppVersion method")]
-    public static string GetProjectVersion()
-    {
-        return Application.Current.GetType().Assembly.GetName().Version.ToString();
     }
 }
 
