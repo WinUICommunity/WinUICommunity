@@ -71,4 +71,33 @@ public partial class WindowHelper
 
         NativeMethods.SetWindowPos(hwnd, NativeValues.HWND_TOP_IntPtr, 0, 0, width, height, NativeValues.SetWindowPosFlags.SWP_NOMOVE);
     }
+
+    private static void MoveAndResizeWindowBase(AppWindow appWindow, int width, int height, int x, int y)
+    {
+        var rightPosition = new Windows.Graphics.RectInt32
+        {
+            Height = height,
+            Width = width,
+            X = x,
+            Y = y
+        };
+
+        appWindow.MoveAndResize(rightPosition);
+    }
+    public static void MoveAndResizeWindow(AppWindow appWindow, int width, int height, int x, int y)
+    {
+        MoveAndResizeWindowBase(appWindow, width, height, x, y);
+    }
+    public static void MoveAndResizeWindow(AppWindow appWindow, int width, int height)
+    {
+        var displayArea = DisplayArea.GetFromWindowId(appWindow.Id, DisplayAreaFallback.Nearest);
+
+        int screenWidth = displayArea.WorkArea.Width;
+        int screenHeight = displayArea.WorkArea.Height;
+
+        int positionX = (screenWidth - width) / 2;
+        int positionY = (screenHeight - height) / 2;
+
+        MoveAndResizeWindowBase(appWindow, width, height, positionX, positionY);
+    }
 }

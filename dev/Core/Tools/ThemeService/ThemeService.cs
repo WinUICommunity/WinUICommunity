@@ -173,7 +173,7 @@ public class ThemeService : IThemeService
             case BackdropType.AcrylicThin:
                 return new AcrylicThinBackdrop();
             case BackdropType.Transparent:
-                return new TransparentBackdropHelper();
+                return new TransparentBackdrop();
             default:
                 return null;
         }
@@ -192,7 +192,7 @@ public class ThemeService : IThemeService
             var mica = (MicaBackdrop)systemBackdrop;
             return mica.Kind == Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt ? BackdropType.MicaAlt : BackdropType.Mica;
         }
-        else if (backdropType == typeof(TransparentBackdropHelper))
+        else if (backdropType == typeof(TransparentBackdrop))
         {
             return BackdropType.Transparent;
         }

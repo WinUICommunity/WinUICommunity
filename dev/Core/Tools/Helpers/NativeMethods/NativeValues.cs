@@ -214,6 +214,14 @@ public static class NativeValues
         DQTAT_COM_STA = 2
     };
 
+    public enum DWM_WINDOW_CORNER_PREFERENCE
+    {
+        DWMWCP_DEFAULT = 0,
+        DWMWCP_DONOTROUND = 1,
+        DWMWCP_ROUND = 2,
+        DWMWCP_ROUNDSMALL = 3
+    }
+
     public enum DISPATCHERQUEUE_THREAD_TYPE
     {
         DQTYPE_THREAD_DEDICATED = 1,

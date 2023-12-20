@@ -39,4 +39,16 @@ public partial class WindowHelper
         }
         return (null, null);
     }
+
+    public static void SetWindowCornerRadius(Window window, NativeValues.DWM_WINDOW_CORNER_PREFERENCE cornerPreference)
+    {
+        SetWindowCornerRadius(WindowNative.GetWindowHandle(window), cornerPreference);
+    }
+
+    public static void SetWindowCornerRadius(IntPtr hwnd, NativeValues.DWM_WINDOW_CORNER_PREFERENCE cornerPreference)
+    {
+        var attribute = NativeValues.DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
+        var preference = (uint)cornerPreference;
+        NativeMethods.DwmSetWindowAttribute(hwnd, attribute, ref preference, sizeof(uint));
+    }
 }
