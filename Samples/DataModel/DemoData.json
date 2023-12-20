@@ -8,6 +8,13 @@
       "ImagePath": "ms-appx:///Assets/Fluent/logo.png",
       "IsSpecialSection": false,
       "Items": [
+         {
+          "UniqueId": "WindowUI.DemoApp.Pages.GrowlPage",
+          "Title": "Growl",
+          "Subtitle": "Growl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/frame.png"
+        },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.OptionsPageControlPage",
           "Title": "OptionsPageControl",

@@ -17,7 +17,7 @@ public partial class Growl : InfoBar
     private RoutedEventHandler ConfirmButtonClicked;
     private Func<object, RoutedEventArgs, bool> CloseButtonClicked;
     private static Dictionary<string, Panel> PanelDic = new Dictionary<string, Panel>();
-    private static GrowlWindow GrowlWindow;
+    public static GrowlWindow GrowlWindow { get; private set; }
     public static Panel GrowlPanel { get; set; }
 
     public Growl()

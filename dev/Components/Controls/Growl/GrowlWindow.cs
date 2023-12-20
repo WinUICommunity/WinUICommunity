@@ -47,7 +47,7 @@ public class GrowlWindow : Window
 
         int margin = 10;
         var displayArea = DisplayArea.GetFromWindowId(AppWindow.Id, DisplayAreaFallback.Nearest);
-        var scale = WindowUI.GeneralHelper.GetRasterizationScaleForElement(GrowlPanel);
+        var scale = GeneralHelper.GetRasterizationScaleForElement(GrowlPanel);
         GrowlWidth = (int)(GrowlWidth * scale);
         var xPosition = displayArea.WorkArea.Width - GrowlWidth - margin;
 
@@ -90,7 +90,7 @@ public class GrowlWindow : Window
     }
     internal void Init()
     {
-        WindowUI.WindowHelper.SetWindowCornerRadius(this, WindowUI.NativeValues.DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_DONOTROUND);
+        WindowHelper.SetWindowCornerRadius(this, NativeValues.DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_DONOTROUND);
         MoveAndResizeWindow();
     }
 }
