@@ -10,8 +10,8 @@ public class ThemeService : IThemeService
                                .WithRecovery(RecoveryAction.RenameAndLoadDefault)
                                .WithVersioning(VersioningResultAction.RenameAndLoadDefault);
 
-    internal class AcrylicThin : DesktopAcrylicBackdrop { }
-    internal class AcrylicBase : DesktopAcrylicBackdrop { }
+    internal class AcrylicThinBackdrop : DesktopAcrylicBackdrop { }
+    internal class AcrylicBaseBackdrop : DesktopAcrylicBackdrop { }
     public Window CurrentWindow { get; set; }
     public SystemBackdrop CurrentSystemBackdrop { get; set; }
     public ElementTheme ActualTheme
@@ -110,7 +110,7 @@ public class ThemeService : IThemeService
         {
             var systemBackdrop = GetCurrentSystemBackdropFromLocalConfig(backdropType, force);
             CurrentSystemBackdrop = systemBackdrop;
-            CurrentWindow.SystemBackdrop = systemBackdrop;
+            SetWindowBackdrop(systemBackdrop);
             SetBackdropFallBackColorForWindows10(CurrentWindow);
 
             CurrentBackdropType = GetBackdropType(systemBackdrop);
@@ -169,9 +169,11 @@ public class ThemeService : IThemeService
             case BackdropType.DesktopAcrylic:
                 return new DesktopAcrylicBackdrop();
             case BackdropType.AcrylicBase:
-                return new AcrylicBase();
+                return new AcrylicBaseBackdrop();
             case BackdropType.AcrylicThin:
-                return new AcrylicThin();
+                return new AcrylicThinBackdrop();
+            case BackdropType.Transparent:
+                return new TransparentBackdropHelper();
             default:
                 return null;
         }
@@ -179,7 +181,7 @@ public class ThemeService : IThemeService
 
     public SystemBackdrop GetCurrentSystemBackdrop()
     {
-        return CurrentSystemBackdrop != null ? CurrentWindow.SystemBackdrop : null;
+        return CurrentSystemBackdrop;
     }
 
     public BackdropType GetBackdropType(SystemBackdrop systemBackdrop)
@@ -190,11 +192,15 @@ public class ThemeService : IThemeService
             var mica = (MicaBackdrop)systemBackdrop;
             return mica.Kind == Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt ? BackdropType.MicaAlt : BackdropType.Mica;
         }
-        else if (backdropType == typeof(AcrylicBase))
+        else if (backdropType == typeof(TransparentBackdropHelper))
+        {
+            return BackdropType.Transparent;
+        }
+        else if (backdropType == typeof(AcrylicBaseBackdrop))
         {
             return BackdropType.AcrylicBase;
         }
-        else if (backdropType == typeof(AcrylicThin))
+        else if (backdropType == typeof(AcrylicThinBackdrop))
         {
             return BackdropType.AcrylicThin;
         }
@@ -215,20 +221,7 @@ public class ThemeService : IThemeService
 
         if (Settings.BackdropType != backdropType)
         {
-            if (systemBackdrop is AcrylicBase)
-            {
-                CurrentWindow.SystemBackdrop = null;
-                new AcrylicBackdropHelper(CurrentWindow).TrySetAcrylicBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
-            }
-            else if (systemBackdrop is AcrylicThin)
-            {
-                CurrentWindow.SystemBackdrop = null;
-                new AcrylicBackdropHelper(CurrentWindow).TrySetAcrylicBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
-            }
-            else
-            {
-                CurrentWindow.SystemBackdrop = systemBackdrop;
-            }
+            SetWindowBackdrop(systemBackdrop);
         }
 
         SetBackdropFallBackColorForWindows10(CurrentWindow);
@@ -237,6 +230,24 @@ public class ThemeService : IThemeService
         {
             Settings.BackdropType = backdropType;
             Settings?.Save();
+        }
+    }
+
+    private void SetWindowBackdrop(SystemBackdrop systemBackdrop)
+    {
+        CurrentWindow.SystemBackdrop = null;
+
+        if (systemBackdrop is AcrylicBaseBackdrop)
+        {
+            new AcrylicBackdropHelper(CurrentWindow).TrySetAcrylicBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
+        }
+        else if (systemBackdrop is AcrylicThinBackdrop)
+        {
+            new AcrylicBackdropHelper(CurrentWindow).TrySetAcrylicBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
+        }
+        else
+        {
+            CurrentWindow.SystemBackdrop = systemBackdrop;
         }
     }
 

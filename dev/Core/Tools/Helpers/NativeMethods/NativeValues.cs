@@ -9,6 +9,7 @@ public static class NativeValues
     public static readonly IntPtr HWND_TOP_IntPtr = new(0);
 
     public delegate IntPtr WNDPROC(IntPtr hWnd, NativeValues.WindowMessage Msg, IntPtr wParam, IntPtr lParam);
+    public delegate IntPtr SUBCLASSPROC(IntPtr hWnd, uint uMsg, nuint wParam, nint lParam, nuint uIdSubclass, nuint dwRefData);
 
     public static class ExternDll
     {
@@ -167,6 +168,77 @@ public static class NativeValues
         public POINT ptMaxTrackSize;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    public struct RECT
+    {
+        public int Left;
+        public int Top;
+        public int Right;
+        public int Bottom;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MARGINS
+    {
+        public int cxLeftWidth;
+        public int cxRightWidth;
+        public int cyTopHeight;
+        public int cyBottomHeight;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct PAINTSTRUCT
+    {
+        public IntPtr hdc;
+        public bool fErase;
+        public RECT rcPaint;
+        public bool fRestore;
+        public bool fIncUpdate;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
+        public byte[] rgbReserved;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct DWM_BLURBEHIND
+    {
+        public DWM_BLURBEHIND_Mask dwFlags;
+        public bool fEnable;
+        public IntPtr hRgnBlur;
+        public bool fTransitionOnMaximized;
+    }
+
+    public enum DISPATCHERQUEUE_THREAD_APARTMENTTYPE
+    {
+        DQTAT_COM_NONE = 0,
+        DQTAT_COM_ASTA = 1,
+        DQTAT_COM_STA = 2
+    };
+
+    public enum DISPATCHERQUEUE_THREAD_TYPE
+    {
+        DQTYPE_THREAD_DEDICATED = 1,
+        DQTYPE_THREAD_CURRENT = 2,
+    };
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct DispatcherQueueOptions2
+    {
+        public int dwSize;
+
+        [MarshalAs(UnmanagedType.I4)]
+        public DISPATCHERQUEUE_THREAD_TYPE threadType;
+
+        [MarshalAs(UnmanagedType.I4)]
+        public DISPATCHERQUEUE_THREAD_APARTMENTTYPE apartmentType;
+    };
+
+    [Flags]
+    public enum DWM_BLURBEHIND_Mask
+    {
+        Enable = 0x00000001,
+        BlurRegion = 0x00000002,
+        TransitionMaximized = 0x00000004,
+    }
     public struct POINT
     {
         /// <summary>
@@ -257,7 +329,70 @@ public static class NativeValues
         WM_NCRBUTTONDOWN = 0x00A4,
         WM_SYSCOMMAND = 0x0112,
         WM_SYSMENU = 0x0313,
-        WM_GETMINMAXINFO = 0x0024
+        WM_GETMINMAXINFO = 0x0024,
+        WM_PAINT = 0x000F,
+        WM_ERASEBKGND = 0x0014,
+        WM_MOVE = 3,
+        WM_CLOSE = 0x0010,
+        WM_SETCURSOR = 0x20,
+        WM_NCMOUSEMOVE = 0x00a0,
+        WM_ACTIVATE = 0x0006,
+        WM_ACTIVATEAPP = 0x001c,
+        WM_SHOWWINDOW = 0x018,
+        WM_WINDOWPOSCHANGING = 0x0046,
+        WM_WINDOWPOSCHANGED = 0x0047,
+        WM_SETTEXT = 0x000c,
+        WM_GETTEXT = 0x000d,
+        WM_GETTEXTLENGTH = 0x000e,
+        WM_NCACTIVATE = 0x0086,
+        WM_CAPTURECHANGED = 0x0215,
+        WM_NCMOUSELEAVE = 0x02a2,
+        WM_MOVING = 0x0216,
+        WM_POINTERLEAVE = 0x024A,
+        WM_POINTERUPDATE = 0x0245,
+        WM_NCPOINTERUPDATE = 0x0241,
+        WM_SIZE = 0x0005,
+        WM_NCUAHDRAWCAPTION = 0x00AE,
+        WM_NCHITTEST = 0x0084,
+        WM_SIZING = 0x0214,
+        WM_ENABLE = 0x000A,
+        WM_ENTERSIZEMOVE = 0x0231,
+        WM_EXITSIZEMOVE = 0x0232,
+        WM_CONTEXTMENU = 0x007b,
+        WM_MOUSEMOVE = 0x0200,
+        WM_LBUTTONDOWN = 0x0201,
+        WM_LBUTTONUP = 0x0202,
+        WM_LBUTTONDBLCLK = 0x0203,
+        WM_RBUTTONDOWN = 0x0204,
+        WM_RBUTTONUP = 0x0205,
+        WM_RBUTTONDBLCLK = 0x0206,
+        WM_MBUTTONDOWN = 0x0207,
+        WM_MBUTTONUP = 0x0208,
+        WM_MBUTTONDBLCLK = 0x0209,
+        WM_USER = 0x0400,
+        WM_GETICON = 0x007f,
+        WM_SETICON = 0x0080,
+        WM_DPICHANGED = 0x02E0,
+        WM_DISPLAYCHANGE = 0x007E,
+        WM_SETTINGCHANGE = 0x001A,
+        WM_THEMECHANGE = 0x031A,
+        WM_NCCALCSIZE = 0x0083,
+        WM_NCPAINT = 0x0085,
+        WM_NCPOINTERDOWN = 0x0242,
+        WM_NCPOINTERUP = 0x0243,
+        NIN_SELECT = WM_USER,
+        NIN_KEYSELECT = WM_USER + 1,
+        NIN_BALLOONSHOW = WM_USER + 2,
+        NIN_BALLOONHIDE = WM_USER + 3,
+        NIN_BALLOONTIMEOUT = WM_USER + 4,
+        NIN_BALLOONUSERCLICK = WM_USER + 5,
+        NIN_POPUPOPEN = WM_USER + 6,
+        NIN_POPUPCLOSE = WM_USER + 7,
+    }
+
+    public enum StockObjectType
+    {
+        BLACK_BRUSH = 4
     }
 
     [Flags]

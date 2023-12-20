@@ -46,6 +46,9 @@
                     <RadioButton Checked="OnBackdropRadioButtonChecked"
                                  Content="Acrylic Thin"
                                  Tag="AcrylicThin" />
+                    <RadioButton Checked="OnBackdropRadioButtonChecked"
+                                 Content="Transparent"
+                                 Tag="Transparent" />
                 </StackPanel>
 
                 <ComboBox Name="cmbTheme"
@@ -72,6 +75,8 @@
                                   Tag="AcrylicBase" />
                     <ComboBoxItem Content="Acrylic Thin"
                                   Tag="AcrylicThin" />
+                    <ComboBoxItem Content="Transparent"
+                                  Tag="Transparent" />
                 </ComboBox>
             </StackPanel>
         </wuc:SettingsPageControl.ModuleContent>
