@@ -20,7 +20,7 @@
 </a>
 
 <a href="https://www.nuget.org/packages/WinUICommunity.Components">
-  <img alt="WinUICommunity.Components-Version" src="https://img.shields.io/nuget/v/WinUICommunity.Components?logo=nuget&label=WinUICommunity.Components&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Components"/>
+  <img alt="WinUICommunity.Components-Version" src="https://img.shields.io/nuget/v/WinUICommunity.Components?logo=nuget&label=Components&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Components"/>
 </a> 
 
 <a href="https://www.nuget.org/packages/WinUICommunity.Components">
