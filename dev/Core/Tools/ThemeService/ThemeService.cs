@@ -1,4 +1,5 @@
-﻿using Nucs.JsonSettings;
+﻿using Microsoft.UI.Composition.SystemBackdrops;
+using Nucs.JsonSettings;
 using Nucs.JsonSettings.Fluent;
 using Nucs.JsonSettings.Modulation;
 using Nucs.JsonSettings.Modulation.Recovery;
@@ -9,9 +10,6 @@ public class ThemeService : IThemeService
     internal static CoreSettings Settings = JsonSettings.Configure<CoreSettings>()
                                .WithRecovery(RecoveryAction.RenameAndLoadDefault)
                                .WithVersioning(VersioningResultAction.RenameAndLoadDefault);
-
-    internal class AcrylicThinBackdrop : DesktopAcrylicBackdrop { }
-    internal class AcrylicBaseBackdrop : DesktopAcrylicBackdrop { }
     public Window CurrentWindow { get; set; }
     public SystemBackdrop CurrentSystemBackdrop { get; set; }
     public ElementTheme ActualTheme
@@ -165,13 +163,13 @@ public class ThemeService : IThemeService
             case BackdropType.Mica:
                 return new MicaBackdrop();
             case BackdropType.MicaAlt:
-                return new MicaBackdrop { Kind = Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt };
+                return new MicaBackdrop { Kind = MicaKind.BaseAlt };
             case BackdropType.DesktopAcrylic:
                 return new DesktopAcrylicBackdrop();
             case BackdropType.AcrylicBase:
-                return new AcrylicBaseBackdrop();
+                return new AcrylicBackdrop(DesktopAcrylicKind.Base);
             case BackdropType.AcrylicThin:
-                return new AcrylicThinBackdrop();
+                return new AcrylicBackdrop(DesktopAcrylicKind.Thin);
             case BackdropType.Transparent:
                 return new TransparentBackdrop();
             default:
@@ -190,19 +188,16 @@ public class ThemeService : IThemeService
         if (backdropType == typeof(MicaBackdrop))
         {
             var mica = (MicaBackdrop)systemBackdrop;
-            return mica.Kind == Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt ? BackdropType.MicaAlt : BackdropType.Mica;
+            return mica.Kind == MicaKind.BaseAlt ? BackdropType.MicaAlt : BackdropType.Mica;
         }
         else if (backdropType == typeof(TransparentBackdrop))
         {
             return BackdropType.Transparent;
         }
-        else if (backdropType == typeof(AcrylicBaseBackdrop))
+        else if (backdropType == typeof(AcrylicBackdrop))
         {
-            return BackdropType.AcrylicBase;
-        }
-        else if (backdropType == typeof(AcrylicThinBackdrop))
-        {
-            return BackdropType.AcrylicThin;
+            var acrylic = (AcrylicBackdrop)systemBackdrop;
+            return acrylic.Kind == DesktopAcrylicKind.Thin ? BackdropType.AcrylicThin : BackdropType.AcrylicBase;
         }
         else if (backdropType == typeof(DesktopAcrylicBackdrop))
         {
@@ -235,20 +230,7 @@ public class ThemeService : IThemeService
 
     private void SetWindowBackdrop(SystemBackdrop systemBackdrop)
     {
-        CurrentWindow.SystemBackdrop = null;
-
-        if (systemBackdrop is AcrylicBaseBackdrop)
-        {
-            new AcrylicBackdropHelper(CurrentWindow).TrySetAcrylicBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
-        }
-        else if (systemBackdrop is AcrylicThinBackdrop)
-        {
-            new AcrylicBackdropHelper(CurrentWindow).TrySetAcrylicBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
-        }
-        else
-        {
-            CurrentWindow.SystemBackdrop = systemBackdrop;
-        }
+        CurrentWindow.SystemBackdrop = systemBackdrop;
     }
 
     private SystemBackdrop GetCurrentSystemBackdropFromLocalConfig(BackdropType backdropType, bool ForceBackdrop)
