@@ -18,6 +18,6 @@ public class GrowlInfo
     public bool IsIconVisible { get; set; } = true;
     public bool UseBlueColorForInfo { get; set; }
     public TimeSpan WaitTime { get; set; } = TimeSpan.FromSeconds(6);
-    public RoutedEventHandler ConfirmButtonClicked { get; set; }
+    public Func<object, RoutedEventArgs, bool> ConfirmButtonClicked { get; set; }
     public Func<object, RoutedEventArgs, bool> CloseButtonClicked { get; set; }
 }
