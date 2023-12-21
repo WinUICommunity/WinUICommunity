@@ -21,6 +21,11 @@ public sealed partial class GrowlPage : Page
         Growl.Error("Hello", "Error");
         Growl.Success("Hello");
         Growl.Success("Hello", "Success");
+        Growl.Ask("Hello", (s,e) =>
+        {
+            Growl.Info("Clicked");
+            return true;
+        });
     }
 
     private void btnGrowlInfo_Click(object sender, RoutedEventArgs e)
@@ -80,6 +85,11 @@ public sealed partial class GrowlPage : Page
         Growl.ErrorWithToken("Hello", "Error", "Test");
         Growl.SuccessWithToken("Hello", "Test");
         Growl.SuccessWithToken("Hello", "Success", "Test");
+        Growl.AskWithToken("Hello", "Test", (s, e) =>
+        {
+            Growl.Info("Clicked");
+            return true;
+        });
     }
 
     private void btnGrowlInfoToken_Click(object sender, RoutedEventArgs e)
@@ -144,6 +154,11 @@ public sealed partial class GrowlPage : Page
         Growl.ErrorGlobal("Hello", "Error");
         Growl.SuccessGlobal("Hello");
         Growl.SuccessGlobal("Hello", "Success");
+        Growl.AskGlobal("Hello", (s, e) =>
+        {
+            Growl.Info("Clicked");
+            return true;
+        });
     }
 
     private void btnGrowlInfoGlobal_Click(object sender, RoutedEventArgs e)
