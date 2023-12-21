@@ -122,6 +122,13 @@ download and install our vsix package from Marketplace:
 
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
+### Transparent Backdrop
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TransparentBackdrop.png)
+
+### Acrylic Backdrop
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/AcrylicBaseBackdrop.png)
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/AcrylicThinBackdrop.png)
+
 ### Titlebar
 ![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/TitleBar.png)
 
