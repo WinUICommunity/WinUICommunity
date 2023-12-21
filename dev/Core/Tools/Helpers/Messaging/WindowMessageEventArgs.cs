@@ -2,7 +2,7 @@
 
 public sealed class WindowMessageEventArgs : EventArgs
 {
-    internal WindowMessageEventArgs(nint hwnd, uint messageId, nuint wParam, nint lParam)
+    public WindowMessageEventArgs(IntPtr hwnd, uint messageId, nuint wParam, nint lParam)
     {
         Message = new Message(hwnd, messageId, wParam, lParam);
     }
@@ -13,5 +13,5 @@ public sealed class WindowMessageEventArgs : EventArgs
 
     public Message Message { get; }
 
-    internal NativeValues.WindowMessage MessageType => (NativeValues.WindowMessage)Message.MessageId;
+    public NativeValues.WindowMessage MessageType => (NativeValues.WindowMessage)Message.MessageId;
 }

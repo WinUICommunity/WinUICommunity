@@ -4,7 +4,7 @@ namespace WinUICommunity;
 public sealed class WindowMessageMonitor : IDisposable
 {
     private nint _hwnd = IntPtr.Zero;
-    private delegate nint WinProc(nint hWnd, uint msg, nint wParam, nint lParam);
+    private delegate nint WinProc(IntPtr hWnd, uint msg, nint wParam, nint lParam);
     private NativeValues.SUBCLASSPROC callback;
     private readonly object _lockObject = new object();
 
@@ -12,7 +12,7 @@ public sealed class WindowMessageMonitor : IDisposable
     {
     }
 
-    public WindowMessageMonitor(nint hwnd)
+    public WindowMessageMonitor(IntPtr hwnd)
     {
         _hwnd = hwnd;
     }
@@ -52,7 +52,7 @@ public sealed class WindowMessageMonitor : IDisposable
         }
     }
 
-    private nint NewWindowProc(nint hWnd, uint uMsg, nuint wParam, nint lParam, nuint uIdSubclass, nuint dwRefData)
+    private nint NewWindowProc(IntPtr hWnd, uint uMsg, nuint wParam, nint lParam, nuint uIdSubclass, nuint dwRefData)
     {
         var handler = _NativeMessage;
         if (handler != null)
