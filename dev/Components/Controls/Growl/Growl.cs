@@ -308,4 +308,28 @@ public partial class Growl : InfoBar
         };
         timer.Start();
     }
+
+    private static void Clear(Panel panel) => panel?.Children.Clear();
+    public static void Clear(string token = "")
+    {
+        if (!string.IsNullOrEmpty(token))
+        {
+            if (PanelDic.TryGetValue(token, out var panel))
+            {
+                Clear(panel);
+            }
+        }
+        else
+        {
+            Clear(GrowlPanel);
+        }
+    }
+
+    public static void ClearGlobal()
+    {
+        if (GrowlWindow == null) return;
+        Clear(GrowlWindow.GrowlPanel);
+        GrowlWindow.Close();
+        GrowlWindow = null;
+    }
 }
