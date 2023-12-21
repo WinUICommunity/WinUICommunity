@@ -10,6 +10,7 @@ Controls\Ported\TitleBar\TitleBar.xaml
 Themes\Styles\Button.xaml
 Themes\Styles\Common.xaml
 Themes\Styles\Controls\FlyoutMenuButton.xaml
+Themes\Styles\Controls\Growl.xaml
 Themes\Styles\Controls\InlineAutoCompleteTextBox.xaml
 Themes\Styles\Controls\IsEnabledTextBlock.xaml
 Themes\Styles\Controls\KeyVisual.xaml
@@ -181,6 +182,7 @@ Themes\Styles\TextBlock.xaml
     <win:Setter Property="Orientation" Value="Horizontal" />
     <win:Setter Property="Spacing" Value="8" />
   </win:Style>
+  <x:Double x:Key="GrowlWidth">340</x:Double>
   <win:Style TargetType="local:IsEnabledTextBlock">
     <win:Setter Property="Foreground" Value="{ThemeResource DefaultTextForegroundThemeBrush}" />
     <win:Setter Property="IsTabStop" Value="False" />
@@ -1118,6 +1120,200 @@ Themes\Styles\TextBlock.xaml
             </win:ContentPresenter>
           </win:Grid>
         </win:ControlTemplate>
+      </win:Setter.Value>
+    </win:Setter>
+  </win:Style>
+  <win:Style TargetType="local:Growl">
+    <win:Setter Property="IsOpen" Value="True" />
+    <win:Setter Property="CornerRadius" Value="{ThemeResource OverlayCornerRadius}" />
+    <win:Setter Property="Shadow">
+      <win:Setter.Value>
+        <win:ThemeShadow />
+      </win:Setter.Value>
+    </win:Setter>
+    <win:Setter Property="Width" Value="{ThemeResource GrowlWidth}" />
+    <win:Setter Property="Template">
+      <win:Setter.Value>
+        <win:ControlTemplate x:Name="Root" TargetType="local:Growl">
+          <win:Border x:Name="ContentRoot" VerticalAlignment="Top" Background="{ThemeResource InfoBarInformationalSeverityBackgroundBrush}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
+            <win:VisualStateManager.VisualStateGroups>
+              <win:VisualStateGroup x:Name="SeverityLevels">
+                <win:VisualState x:Name="Informational" />
+                <win:VisualState x:Name="Error">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="ContentRoot.Background" Value="{ThemeResource InfoBarErrorSeverityBackgroundBrush}" />
+                    <win:Setter Target="IconBackground.Foreground" Value="{ThemeResource InfoBarErrorSeverityIconBackground}" />
+                    <win:Setter Target="StandardIcon.Text" Value="{StaticResource InfoBarErrorIconGlyph}" />
+                    <win:Setter Target="StandardIcon.Foreground" Value="{ThemeResource InfoBarErrorSeverityIconForeground}" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+                <win:VisualState x:Name="Warning">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="ContentRoot.Background" Value="{ThemeResource InfoBarWarningSeverityBackgroundBrush}" />
+                    <win:Setter Target="IconBackground.Foreground" Value="{ThemeResource InfoBarWarningSeverityIconBackground}" />
+                    <win:Setter Target="StandardIcon.Text" Value="{StaticResource InfoBarWarningIconGlyph}" />
+                    <win:Setter Target="StandardIcon.Foreground" Value="{ThemeResource InfoBarWarningSeverityIconForeground}" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+                <win:VisualState x:Name="Success">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="ContentRoot.Background" Value="{ThemeResource InfoBarSuccessSeverityBackgroundBrush}" />
+                    <win:Setter Target="IconBackground.Foreground" Value="{ThemeResource InfoBarSuccessSeverityIconBackground}" />
+                    <win:Setter Target="StandardIcon.Text" Value="{StaticResource InfoBarSuccessIconGlyph}" />
+                    <win:Setter Target="StandardIcon.Foreground" Value="{ThemeResource InfoBarSuccessSeverityIconForeground}" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+              <win:VisualStateGroup x:Name="IconStates">
+                <win:VisualState x:Name="StandardIconVisible">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="UserIconBox.Visibility" Value="Collapsed" />
+                    <win:Setter Target="StandardIconArea.Visibility" Value="Visible" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+                <win:VisualState x:Name="UserIconVisible">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="UserIconBox.Visibility" Value="Visible" />
+                    <win:Setter Target="StandardIconArea.Visibility" Value="Collapsed" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+                <win:VisualState x:Name="NoIconVisible" />
+              </win:VisualStateGroup>
+              <win:VisualStateGroup>
+                <win:VisualState x:Name="CloseButtonVisible" />
+                <win:VisualState x:Name="CloseButtonCollapsed">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="CloseButton.Visibility" Value="Collapsed" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+              <win:VisualStateGroup x:Name="InfoBarVisibility">
+                <win:VisualState x:Name="InfoBarVisible" />
+                <win:VisualState x:Name="InfoBarCollapsed">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="ContentRoot.Visibility" Value="Collapsed" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+              <win:VisualStateGroup>
+                <win:VisualState x:Name="ForegroundNotSet" />
+                <win:VisualState x:Name="ForegroundSet">
+                  <win:VisualState.Setters>
+                    <win:Setter Target="Title.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}" />
+                    <win:Setter Target="Message.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+            </win:VisualStateManager.VisualStateGroups>
+            <!--  Background is used here so that it overrides the severity status color if set.  -->
+            <win:Grid MinHeight="{ThemeResource InfoBarMinHeight}" Padding="{StaticResource InfoBarContentRootPadding}" HorizontalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}">
+              <win:Grid.ColumnDefinitions>
+                <win:ColumnDefinition Width="Auto" />
+                <!--  Icon  -->
+                <win:ColumnDefinition Width="*" />
+                <!--  Title, message, and action  -->
+                <win:ColumnDefinition Width="Auto" />
+                <!--  Close button  -->
+              </win:Grid.ColumnDefinitions>
+              <win:Grid.RowDefinitions>
+                <win:RowDefinition Height="Auto" />
+                <win:RowDefinition Height="Auto" />
+              </win:Grid.RowDefinitions>
+              <win:Grid x:Name="StandardIconArea" Visibility="Collapsed">
+                <win:TextBlock x:Name="IconBackground" Grid.Column="0" Margin="{StaticResource InfoBarIconMargin}" VerticalAlignment="Top" AutomationProperties.AccessibilityView="Raw" FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="{StaticResource InfoBarIconFontSize}" Foreground="{ThemeResource InfoBarInformationalSeverityIconBackground}" Text="{StaticResource InfoBarIconBackgroundGlyph}" />
+                <win:TextBlock x:Name="StandardIcon" Grid.Column="0" Margin="{StaticResource InfoBarIconMargin}" VerticalAlignment="Top" FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="{StaticResource InfoBarIconFontSize}" Foreground="{ThemeResource InfoBarInformationalSeverityIconForeground}" Text="{StaticResource InfoBarInformationalIconGlyph}" />
+              </win:Grid>
+              <win:Viewbox x:Name="UserIconBox" Grid.Column="0" MaxWidth="{ThemeResource InfoBarIconFontSize}" MaxHeight="{ThemeResource InfoBarIconFontSize}" Margin="{ThemeResource InfoBarIconMargin}" VerticalAlignment="Top" Child="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.IconElement}" Visibility="Collapsed" />
+              <win:InfoBarPanel Grid.Column="1" Margin="{StaticResource InfoBarPanelMargin}" HorizontalOrientationPadding="{StaticResource InfoBarPanelHorizontalOrientationPadding}" VerticalOrientationPadding="{StaticResource InfoBarPanelVerticalOrientationPadding}">
+                <win:TextBlock x:Name="Title" FontSize="{StaticResource InfoBarTitleFontSize}" FontWeight="{StaticResource InfoBarTitleFontWeight}" Foreground="{ThemeResource InfoBarTitleForeground}" InfoBarPanel.HorizontalOrientationMargin="{StaticResource InfoBarTitleHorizontalOrientationMargin}" InfoBarPanel.VerticalOrientationMargin="{StaticResource InfoBarTitleVerticalOrientationMargin}" Text="{TemplateBinding Title}" TextWrapping="WrapWholeWords" />
+                <win:TextBlock x:Name="Message" FontSize="{StaticResource InfoBarMessageFontSize}" FontWeight="{StaticResource InfoBarMessageFontWeight}" Foreground="{ThemeResource InfoBarMessageForeground}" InfoBarPanel.HorizontalOrientationMargin="{StaticResource InfoBarMessageHorizontalOrientationMargin}" InfoBarPanel.VerticalOrientationMargin="{StaticResource InfoBarMessageVerticalOrientationMargin}" Text="{TemplateBinding Message}" TextWrapping="WrapWholeWords" />
+                <win:ContentPresenter VerticalAlignment="Top" Content="{TemplateBinding ActionButton}" InfoBarPanel.HorizontalOrientationMargin="{StaticResource InfoBarActionHorizontalOrientationMargin}" InfoBarPanel.VerticalOrientationMargin="{StaticResource InfoBarActionVerticalOrientationMargin}">
+                  <win:ContentPresenter.Resources>
+                    <win:Style BasedOn="{StaticResource DefaultHyperlinkButtonStyle}" TargetType="HyperlinkButton">
+                      <win:Style.Setters>
+                        <win:Setter Property="Margin" Value="{StaticResource InfoBarHyperlinkButtonMargin}" />
+                        <win:Setter Property="Foreground" Value="{ThemeResource InfoBarHyperlinkButtonForeground}" />
+                      </win:Style.Setters>
+                    </win:Style>
+                  </win:ContentPresenter.Resources>
+                </win:ContentPresenter>
+              </win:InfoBarPanel>
+              <win:Grid Grid.Row="1" Grid.Column="1" Margin="{TemplateBinding RootGridMargin}">
+                <win:Grid.ColumnDefinitions>
+                  <win:ColumnDefinition Width="{Binding ShowConfirmButton, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource GridLengthConverter}}" />
+                  <win:ColumnDefinition Width="{Binding ShowCloseButton, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource GridLengthConverter}}" />
+                </win:Grid.ColumnDefinitions>
+                <win:Grid.RowDefinitions>
+                  <win:RowDefinition Height="Auto" />
+                  <win:RowDefinition Height="Auto" />
+                  <win:RowDefinition Height="Auto" />
+                </win:Grid.RowDefinitions>
+                <win:TextBlock x:Name="PART_DateTime" Grid.ColumnSpan="2" Margin="0,0,10,10" Style="{ThemeResource CaptionTextBlockStyle}" Text="{TemplateBinding DateTime}" Visibility="{TemplateBinding ShowDateTime}" />
+                <win:ContentPresenter Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Content="{TemplateBinding Content}" />
+                <win:Button x:Name="PART_ConfirmButton" Grid.Row="2" Margin="5,0" HorizontalAlignment="Stretch" Content="{TemplateBinding ConfirmButtonText}" Foreground="{ThemeResource SystemAccentColor}" Style="{StaticResource SubtleButtonStyle}" Visibility="{TemplateBinding ShowConfirmButton}" />
+                <win:Button x:Name="PART_CloseButton" Grid.Row="2" Grid.Column="1" Margin="5,0" HorizontalAlignment="Stretch" Content="{TemplateBinding CloseButtonText}" Foreground="{ThemeResource InfoBarErrorSeverityIconBackground}" Style="{StaticResource SubtleButtonStyle}" Visibility="{TemplateBinding ShowCloseButton}" />
+              </win:Grid>
+              <win:Button Name="CloseButton" Grid.Column="2" Command="{TemplateBinding CloseButtonCommand}" CommandParameter="{TemplateBinding CloseButtonCommandParameter}" Style="{TemplateBinding CloseButtonStyle}">
+                <win:Button.Resources>
+                  <win:ResourceDictionary>
+                    <win:ResourceDictionary.ThemeDictionaries>
+                      <win:ResourceDictionary x:Key="Default">
+                        <win:StaticResource x:Key="ButtonBackground" ResourceKey="AppBarButtonBackground" />
+                        <win:StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="AppBarButtonBackgroundPointerOver" />
+                        <win:StaticResource x:Key="ButtonBackgroundPressed" ResourceKey="AppBarButtonBackgroundPressed" />
+                        <win:StaticResource x:Key="ButtonBackgroundDisabled" ResourceKey="AppBarButtonBackgroundDisabled" />
+                        <win:StaticResource x:Key="ButtonForeground" ResourceKey="AppBarButtonForeground" />
+                        <win:StaticResource x:Key="ButtonForegroundPointerOver" ResourceKey="AppBarButtonForegroundPointerOver" />
+                        <win:StaticResource x:Key="ButtonForegroundPressed" ResourceKey="AppBarButtonForegroundPressed" />
+                        <win:StaticResource x:Key="ButtonForegroundDisabled" ResourceKey="AppBarButtonForegroundDisabled" />
+                        <win:StaticResource x:Key="ButtonBorderBrush" ResourceKey="AppBarButtonBorderBrush" />
+                        <win:StaticResource x:Key="ButtonBorderBrushPointerOver" ResourceKey="AppBarButtonBorderBrushPointerOver" />
+                        <win:StaticResource x:Key="ButtonBorderBrushPressed" ResourceKey="AppBarButtonBorderBrushPressed" />
+                        <win:StaticResource x:Key="ButtonBorderBrushDisabled" ResourceKey="AppBarButtonBorderBrushDisabled" />
+                      </win:ResourceDictionary>
+                      <win:ResourceDictionary x:Key="HighContrast">
+                        <win:StaticResource x:Key="ButtonBackground" ResourceKey="AppBarButtonBackground" />
+                        <win:StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="AppBarButtonBackgroundPointerOver" />
+                        <win:StaticResource x:Key="ButtonBackgroundPressed" ResourceKey="AppBarButtonBackgroundPressed" />
+                        <win:StaticResource x:Key="ButtonBackgroundDisabled" ResourceKey="AppBarButtonBackgroundDisabled" />
+                        <win:StaticResource x:Key="ButtonForeground" ResourceKey="AppBarButtonForeground" />
+                        <win:StaticResource x:Key="ButtonForegroundPointerOver" ResourceKey="AppBarButtonForegroundPointerOver" />
+                        <win:StaticResource x:Key="ButtonForegroundPressed" ResourceKey="AppBarButtonForegroundPressed" />
+                        <win:StaticResource x:Key="ButtonForegroundDisabled" ResourceKey="AppBarButtonForegroundDisabled" />
+                        <win:StaticResource x:Key="ButtonBorderBrush" ResourceKey="AppBarButtonBorderBrush" />
+                        <win:StaticResource x:Key="ButtonBorderBrushPointerOver" ResourceKey="AppBarButtonBorderBrushPointerOver" />
+                        <win:StaticResource x:Key="ButtonBorderBrushPressed" ResourceKey="AppBarButtonBorderBrushPressed" />
+                        <win:StaticResource x:Key="ButtonBorderBrushDisabled" ResourceKey="AppBarButtonBorderBrushDisabled" />
+                      </win:ResourceDictionary>
+                      <win:ResourceDictionary x:Key="Light">
+                        <win:StaticResource x:Key="ButtonBackground" ResourceKey="AppBarButtonBackground" />
+                        <win:StaticResource x:Key="ButtonBackgroundPointerOver" ResourceKey="AppBarButtonBackgroundPointerOver" />
+                        <win:StaticResource x:Key="ButtonBackgroundPressed" ResourceKey="AppBarButtonBackgroundPressed" />
+                        <win:StaticResource x:Key="ButtonBackgroundDisabled" ResourceKey="AppBarButtonBackgroundDisabled" />
+                        <win:StaticResource x:Key="ButtonForeground" ResourceKey="AppBarButtonForeground" />
+                        <win:StaticResource x:Key="ButtonForegroundPointerOver" ResourceKey="AppBarButtonForegroundPointerOver" />
+                        <win:StaticResource x:Key="ButtonForegroundPressed" ResourceKey="AppBarButtonForegroundPressed" />
+                        <win:StaticResource x:Key="ButtonForegroundDisabled" ResourceKey="AppBarButtonForegroundDisabled" />
+                        <win:StaticResource x:Key="ButtonBorderBrush" ResourceKey="AppBarButtonBorderBrush" />
+                        <win:StaticResource x:Key="ButtonBorderBrushPointerOver" ResourceKey="AppBarButtonBorderBrushPointerOver" />
+                        <win:StaticResource x:Key="ButtonBorderBrushPressed" ResourceKey="AppBarButtonBorderBrushPressed" />
+                        <win:StaticResource x:Key="ButtonBorderBrushDisabled" ResourceKey="AppBarButtonBorderBrushDisabled" />
+                      </win:ResourceDictionary>
+                    </win:ResourceDictionary.ThemeDictionaries>
+                  </win:ResourceDictionary>
+                </win:Button.Resources>
+                <win:Viewbox Width="{StaticResource InfoBarCloseButtonGlyphSize}" Height="{StaticResource InfoBarCloseButtonGlyphSize}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                  <win:SymbolIcon Symbol="{StaticResource InfoBarCloseButtonSymbol}" />
+                </win:Viewbox>
+              </win:Button>
+            </win:Grid>
+          </win:Border>
+        </win:ControlTemplate>
+      </win:Setter.Value>
+    </win:Setter>
+    <win:Setter Property="ContentTemplate">
+      <win:Setter.Value>
+        <win:DataTemplate />
       </win:Setter.Value>
     </win:Setter>
   </win:Style>
