@@ -122,37 +122,43 @@ public partial class Growl : InfoBar
     public static void Warning(string title) => InitGrowl(new GrowlInfo
     {
         Title = title,
-        Severity = InfoBarSeverity.Warning
+        Severity = InfoBarSeverity.Warning,
+        StaysOpen = true
     });
     public static void WarningGlobal(string title) => InitGrowlGlobal(new GrowlInfo
     {
         Title = title,
-        Severity = InfoBarSeverity.Warning
+        Severity = InfoBarSeverity.Warning,
+        StaysOpen = true
     });
     public static void WarningWithToken(string title, string token) => InitGrowl(new GrowlInfo
     {
         Title = title,
         Severity = InfoBarSeverity.Warning,
-        Token = token
+        Token = token,
+        StaysOpen = true
     });
     public static void Warning(string title, string message) => InitGrowl(new GrowlInfo
     {
         Title = title,
         Message = message,
-        Severity = InfoBarSeverity.Warning
+        Severity = InfoBarSeverity.Warning,
+        StaysOpen = true
     });
     public static void WarningGlobal(string title, string message) => InitGrowlGlobal(new GrowlInfo
     {
         Title = title,
         Message = message,
-        Severity = InfoBarSeverity.Warning
+        Severity = InfoBarSeverity.Warning,
+        StaysOpen = true
     });
     public static void WarningWithToken(string title, string message, string token) => InitGrowl(new GrowlInfo
     {
         Title = title,
         Message = message,
         Severity = InfoBarSeverity.Warning,
-        Token = token
+        Token = token,
+        StaysOpen = true
     });
     public static void Warning(GrowlInfo growlInfo) => InitGrowl(growlInfo, true, InfoBarSeverity.Warning);
     public static void WarningGlobal(GrowlInfo growlInfo) => InitGrowlGlobal(growlInfo, true, InfoBarSeverity.Warning);
@@ -160,37 +166,43 @@ public partial class Growl : InfoBar
     public static void Error(string title) => InitGrowl(new GrowlInfo
     {
         Title = title,
-        Severity = InfoBarSeverity.Error
+        Severity = InfoBarSeverity.Error,
+        StaysOpen = true
     });
     public static void ErrorGlobal(string title) => InitGrowlGlobal(new GrowlInfo
     {
         Title = title,
-        Severity = InfoBarSeverity.Error
+        Severity = InfoBarSeverity.Error,
+        StaysOpen = true
     });
     public static void ErrorWithToken(string title, string token) => InitGrowl(new GrowlInfo
     {
         Title = title,
         Severity = InfoBarSeverity.Error,
-        Token = token
+        Token = token,
+        StaysOpen = true
     });
     public static void Error(string title, string message) => InitGrowl(new GrowlInfo
     {
         Title = title,
         Message = message,
-        Severity = InfoBarSeverity.Error
+        Severity = InfoBarSeverity.Error,
+        StaysOpen = true
     });
     public static void ErrorGlobal(string title, string message) => InitGrowlGlobal(new GrowlInfo
     {
         Title = title,
         Message = message,
-        Severity = InfoBarSeverity.Error
+        Severity = InfoBarSeverity.Error,
+        StaysOpen = true
     });
     public static void ErrorWithToken(string title, string message, string token) => InitGrowl(new GrowlInfo
     {
         Title = title,
         Message = message,
         Severity = InfoBarSeverity.Error,
-        Token = token
+        Token = token,
+        StaysOpen = true
     });
     public static void Error(GrowlInfo growlInfo) => InitGrowl(growlInfo, true, InfoBarSeverity.Error);
     public static void ErrorGlobal(GrowlInfo growlInfo) => InitGrowlGlobal(growlInfo, true, InfoBarSeverity.Error);
