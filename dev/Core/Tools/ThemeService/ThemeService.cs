@@ -167,9 +167,9 @@ public class ThemeService : IThemeService
             case BackdropType.DesktopAcrylic:
                 return new DesktopAcrylicBackdrop();
             case BackdropType.AcrylicBase:
-                return new AcrylicBackdrop(DesktopAcrylicKind.Base);
+                return new AcrylicBackdrop() { Kind = DesktopAcrylicKind.Base };
             case BackdropType.AcrylicThin:
-                return new AcrylicBackdrop(DesktopAcrylicKind.Thin);
+                return new AcrylicBackdrop() { Kind = DesktopAcrylicKind.Thin };
             case BackdropType.Transparent:
                 return new TransparentBackdrop();
             default:

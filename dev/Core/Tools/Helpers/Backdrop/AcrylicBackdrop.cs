@@ -6,10 +6,7 @@ public class AcrylicBackdrop : SystemBackdrop
 {
     DesktopAcrylicController acrylicController;
     public DesktopAcrylicKind Kind { get; set; }
-    public AcrylicBackdrop(DesktopAcrylicKind acrylicKind)
-    {
-        this.Kind = acrylicKind;
-    }
+
     protected override void OnTargetConnected(ICompositionSupportsSystemBackdrop connectedTarget, XamlRoot xamlRoot)
     {
         base.OnTargetConnected(connectedTarget, xamlRoot);
