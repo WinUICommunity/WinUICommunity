@@ -20,7 +20,7 @@ public partial class WindowHelper
     /// </summary>
     public static int MaxWindowHeight { get; set; } = 1600;
 
-    private WndProcHelper wndProc;
+    private WindowMessageMonitor monitor;
     private Window Window;
     public WindowHelper(Window window)
     {
@@ -29,29 +29,25 @@ public partial class WindowHelper
 
     public void RegisterWindowMinMax()
     {
-        wndProc = new WndProcHelper(Window);
-        wndProc.RegisterWndProc(WndProc);
+        monitor = new WindowMessageMonitor(Window);
+        monitor.WindowMessageReceived -= Monitor_WindowMessageReceived;
+        monitor.WindowMessageReceived += Monitor_WindowMessageReceived;
     }
-
-    private IntPtr WndProc(IntPtr hWnd, NativeValues.WindowMessage Msg, IntPtr wParam, IntPtr lParam)
+    private void Monitor_WindowMessageReceived(object? sender, WindowMessageEventArgs e)
     {
-        switch (Msg)
+        if (e.MessageType == NativeValues.WindowMessage.WM_GETMINMAXINFO)
         {
-            case NativeValues.WindowMessage.WM_GETMINMAXINFO:
-                var dpi = NativeMethods.GetDpiForWindow(hWnd);
-                var scalingFactor = (float)dpi / 96;
+            var dpi = NativeMethods.GetDpiForWindow(WindowNative.GetWindowHandle(Window));
+            var scalingFactor = (float)dpi / 96;
 
-                var minMaxInfo = Marshal.PtrToStructure<NativeValues.MINMAXINFO>(lParam);
-                minMaxInfo.ptMinTrackSize.x = (int)(MinWindowWidth * scalingFactor);
-                minMaxInfo.ptMaxTrackSize.x = (int)(MaxWindowWidth * scalingFactor);
-                minMaxInfo.ptMinTrackSize.y = (int)(MinWindowHeight * scalingFactor);
-                minMaxInfo.ptMaxTrackSize.y = (int)(MaxWindowHeight * scalingFactor);
+            var minMaxInfo = Marshal.PtrToStructure<NativeValues.MINMAXINFO>(e.Message.LParam);
+            minMaxInfo.ptMinTrackSize.x = (int)(MinWindowWidth * scalingFactor);
+            minMaxInfo.ptMaxTrackSize.x = (int)(MaxWindowWidth * scalingFactor);
+            minMaxInfo.ptMinTrackSize.y = (int)(MinWindowHeight * scalingFactor);
+            minMaxInfo.ptMaxTrackSize.y = (int)(MaxWindowHeight * scalingFactor);
 
-                Marshal.StructureToPtr(minMaxInfo, lParam, true);
-                break;
-
+            Marshal.StructureToPtr(minMaxInfo, e.Message.LParam, true);
         }
-        return wndProc.CallWindowProc(hWnd, Msg, wParam, lParam);
     }
 
     /// <summary>
@@ -72,25 +68,9 @@ public partial class WindowHelper
         NativeMethods.SetWindowPos(hwnd, NativeValues.HWND_TOP_IntPtr, 0, 0, width, height, NativeValues.SetWindowPosFlags.SWP_NOMOVE);
     }
 
-    private static void MoveAndResizeWindowBase(AppWindow appWindow, int width, int height, int x, int y)
+    public static void MoveAndResizeCenterScreen(Window window, int width, int height)
     {
-        var rightPosition = new Windows.Graphics.RectInt32
-        {
-            Height = height,
-            Width = width,
-            X = x,
-            Y = y
-        };
-
-        appWindow.MoveAndResize(rightPosition);
-    }
-    public static void MoveAndResizeWindow(AppWindow appWindow, int width, int height, int x, int y)
-    {
-        MoveAndResizeWindowBase(appWindow, width, height, x, y);
-    }
-    public static void MoveAndResizeWindow(AppWindow appWindow, int width, int height)
-    {
-        var displayArea = DisplayArea.GetFromWindowId(appWindow.Id, DisplayAreaFallback.Nearest);
+        var displayArea = DisplayArea.GetFromWindowId(window.AppWindow.Id, DisplayAreaFallback.Nearest);
 
         int screenWidth = displayArea.WorkArea.Width;
         int screenHeight = displayArea.WorkArea.Height;
@@ -98,6 +78,17 @@ public partial class WindowHelper
         int positionX = (screenWidth - width) / 2;
         int positionY = (screenHeight - height) / 2;
 
-        MoveAndResizeWindowBase(appWindow, width, height, positionX, positionY);
+        MoveAndResize(window, width, height, positionX, positionY);
+    }
+
+    public static void MoveAndResize(Window window, double x, double y, double width, double height)
+    {
+        var scale = NativeMethods.GetDpiForWindow(WindowNative.GetWindowHandle(window)) / 96f;
+        window.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32((int)x, (int)y, (int)(width * scale), (int)(height * scale)));
+    }
+
+    public static void Move(Window window, int x, int y)
+    {
+        window.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(x, y, window.AppWindow.Size.Width, window.AppWindow.Size.Height));
     }
 }
