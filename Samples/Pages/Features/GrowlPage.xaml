@@ -35,8 +35,10 @@
                     Content="Growl Global with GrowlInfo" />
         </StackPanel>
         <StackPanel Grid.Column="1"
+                    MinWidth="340"
                     wuc:Growl.GrowlParent="True" />
         <StackPanel Grid.Column="2"
+                    MinWidth="340"
                     wuc:Growl.GrowlParent="True"
                     wuc:Growl.Token="Test" />
     </Grid>
