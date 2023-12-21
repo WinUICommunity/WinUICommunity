@@ -174,7 +174,7 @@ public partial class Growl : InfoBar
     {
         Resources.MergedDictionaries.Add(new ResourceDictionary
         {
-            Source = new Uri("ms-appx:///WindowUI/Themes/InfoBarInformationalColor.xaml")
+            Source = new Uri("ms-appx:///WinUICommunity.Components/Themes/InfoBarInformationalColor.xaml")
         });
     }
 
