@@ -206,4 +206,33 @@ public partial class Growl : InfoBar
     });
     public static void Error(GrowlInfo growlInfo) => InitGrowl(growlInfo, true, InfoBarSeverity.Error);
     public static void ErrorGlobal(GrowlInfo growlInfo) => InitGrowlGlobal(growlInfo, true, InfoBarSeverity.Error);
+
+    public static void Ask(string title, Func<object, RoutedEventArgs, bool> actionBeforeClose) => InitGrowl(new GrowlInfo
+    {
+        Title = title,
+        Severity = InfoBarSeverity.Informational,
+        StaysOpen = true,
+        ConfirmButtonClicked = actionBeforeClose,
+        ShowConfirmButton = true,
+        ShowCloseButton = true
+    });
+    public static void AskGlobal(string title, Func<object, RoutedEventArgs, bool> actionBeforeClose) => InitGrowlGlobal(new GrowlInfo
+    {
+        Title = title,
+        Severity = InfoBarSeverity.Informational,
+        StaysOpen = true,
+        ConfirmButtonClicked = actionBeforeClose,
+        ShowConfirmButton = true,
+        ShowCloseButton = true
+    });
+    public static void AskWithToken(string title, string token, Func<object, RoutedEventArgs, bool> actionBeforeClose) => InitGrowl(new GrowlInfo
+    {
+        Title = title,
+        Severity = InfoBarSeverity.Informational,
+        StaysOpen = true,
+        ConfirmButtonClicked = actionBeforeClose,
+        ShowConfirmButton = true,
+        ShowCloseButton = true,
+        Token = token,
+    });
 }
