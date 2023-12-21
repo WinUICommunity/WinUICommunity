@@ -14,7 +14,7 @@ public partial class Growl : InfoBar
     private Button _closeButton;
 
     private DispatcherTimer timer;
-    private RoutedEventHandler ConfirmButtonClicked;
+    private Func<object, RoutedEventArgs, bool> ConfirmButtonClicked;
     private Func<object, RoutedEventArgs, bool> CloseButtonClicked;
     private static Dictionary<string, Panel> PanelDic = new Dictionary<string, Panel>();
     public static GrowlWindow GrowlWindow { get; private set; }
@@ -156,9 +156,17 @@ public partial class Growl : InfoBar
     }
     private void OnConfirmButtonClick(object sender, RoutedEventArgs e)
     {
-        if (ConfirmButtonClicked != null)
+        if (ConfirmButtonClicked == null)
         {
-            ConfirmButtonClicked.Invoke(sender, e);
+            IsOpen = false;
+        }
+        else
+        {
+            bool result = ConfirmButtonClicked.Invoke(sender, e);
+            if (result)
+            {
+                IsOpen = false;
+            }
         }
     }
 
