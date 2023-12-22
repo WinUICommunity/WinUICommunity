@@ -10,6 +10,7 @@ Controls\Ported\TitleBar\TitleBar.xaml
 Themes\Styles\Button.xaml
 Themes\Styles\Common.xaml
 Themes\Styles\Controls\FlyoutMenuButton.xaml
+Themes\Styles\Controls\Gravatar.xaml
 Themes\Styles\Controls\Growl.xaml
 Themes\Styles\Controls\InlineAutoCompleteTextBox.xaml
 Themes\Styles\Controls\IsEnabledTextBlock.xaml
@@ -181,6 +182,24 @@ Themes\Styles\TextBlock.xaml
     <win:Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
     <win:Setter Property="Orientation" Value="Horizontal" />
     <win:Setter Property="Spacing" Value="8" />
+  </win:Style>
+  <win:Style TargetType="local:Gravatar">
+    <win:Setter Property="Width" Value="72" />
+    <win:Setter Property="Height" Value="72" />
+    <win:Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}" />
+    <win:Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
+    <win:Setter Property="Padding" Value="6" />
+    <win:Setter Property="BorderThickness" Value="1" />
+    <win:Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
+    <win:Setter Property="Template">
+      <win:Setter.Value>
+        <win:ControlTemplate TargetType="local:Gravatar">
+          <win:Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
+            <win:ContentPresenter Margin="{TemplateBinding Padding}" />
+          </win:Border>
+        </win:ControlTemplate>
+      </win:Setter.Value>
+    </win:Setter>
   </win:Style>
   <x:Double x:Key="GrowlWidth">340</x:Double>
   <win:Style TargetType="local:IsEnabledTextBlock">

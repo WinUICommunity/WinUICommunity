@@ -8,6 +8,13 @@
       "ImagePath": "ms-appx:///Assets/Fluent/logo.png",
       "IsSpecialSection": false,
       "Items": [
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.GravatarPage",
+          "Title": "Gravatar",
+          "Subtitle": "Gravatar",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/gravatar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/gravatar.png"
+        },
          {
           "UniqueId": "WinUICommunity.DemoApp.Pages.GrowlPage",
           "Title": "Growl",
