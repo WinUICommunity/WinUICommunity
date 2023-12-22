@@ -56,12 +56,12 @@ See the [Demo](https://github.com/WinUICommunity/WinUICommunity) app to see how 
 
 ## Documentation
 
-See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
+See Here for Online [Documentation](https://ghost1372.github.io/winUICommunityCore/)
 
 ## Available Features
 
 - Dynamic Localization without need to restart Application
-- ThemeService with the Support of `Mica, MicaAlt and Acrylic`
+- ThemeService with the Support of `Mica, MicaAlt, Transparent and Acrylic`
 - Extensions Methods
 - A lot of useful Helper Classes for working with Window, Application, Taskbar, Resources, Print and more
 - NavigationView Services To implement quick and easy Navigation with AutoSuggestBox and Back Button
