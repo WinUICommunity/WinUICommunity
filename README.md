@@ -85,27 +85,96 @@ See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
  ```csharp
  using WinUICommunity;
  ```
+## Usage
 
-## Core
- 
-### Experience WinUI 3 quickly and easily with the help of Core, Everything you need to develop an application is gathered in one place.
+### Core
+ Experience WinUI 3 quickly and easily with the help of Core, Everything you need to develop an application is gathered in one place. Helpers, Extensions...
+ - Converter
+ - DynamicLanguage
+ - Extensions
+ - Helpers
+ - NavigationService
+ - RainbowFrame
+ - ThemeService
+ - And More...
 
-See the [Core](dev/Core/README.md) to see how to use it
+#### Install
+```
+Install-Package WinUICommunity.Core
+```
 
-## LandingPages
-### Create a landing page in the style of WinUI 3 and WinUI-Gallery very quickly and easily
+For more info See the [Core](dev/Core/README.md) and [Docs](https://ghost1372.github.io/winUICommunityCore/)
 
-See the [LandingPages](dev/LandingPages/README.md) to see how to use it
+### Components
+Experience WinUI 3 quickly and easily with the help of Components, Everything you need to develop an application is gathered in one place.
 
-## ContextMenuExtensions
-### add a new ContextMenu for Windows 11/10.
+Components Includes custom controls and styles.
 
-See the [ContextMenuExtensions](dev/ContextMenuExtensions/README.md) to see how to use it
+- FlyoutMenuButton
+- Growl
+- InlineAutoCompleteTextBox
+- IsEnabledTextBlock
+- KeyVisual
+- OOBEPageControl
+- Shortcut
+- Validation
+- WrapPanel
+- CheckBoxWithDescription
+- OptionsPageControl
+- TitleBar
+- SettingsCard
+- SettingsExpander
+- SettingsGroup
+- SwitchPresenter
+- UniformGrid
+- InfoBar Style
+- Grid Style
+- StackPanel Style
+- Border Style
+- Subtle Button Style
 
-## Components
-### Experience WinUI 3 quickly and easily with the help of Components, Everything you need to develop an application is gathered in one place.
+#### Install
+```
+Install-Package WinUICommunity.Components
+```
+After installing, add the following resource to app.xaml
 
-See the [Components](dev/Components/README.md) to see how to use it
+```xml
+<ResourceDictionary Source="ms-appx:///WinUICommunity.Components/Themes/Generic.xaml" />
+```
+
+For more info See the [Components](dev/Components/README.md) and [Docs](https://ghost1372.github.io/winUICommunityComponents/)
+
+
+### LandingPages
+Create a landing page in the style of WinUI 3 and WinUI-Gallery very quickly and easily
+
+- HomeLandingPage
+- AllLandingPage
+
+#### Install
+```
+Install-Package WinUICommunity.LandingPages
+```
+After installing, add the following resource to app.xaml
+
+```xml
+<wuc:ItemTemplates/>
+<ResourceDictionary Source="ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml" />
+```
+
+For more info See the [LandingPages](dev/LandingPages/README.md) and [Docs](https://ghost1372.github.io/winUICommunityLandingPages/)
+
+### ContextMenuExtensions
+add a new ContextMenu for Windows 11/10.
+
+#### Install
+```
+Install-Package WinUICommunity.ContextMenuExtensions
+```
+
+For more info See the [ContextMenuExtensions](dev/ContextMenuExtensions/README.md) and [Docs](https://ghost1372.github.io/winUICommunityContextMenuExtensions/)
+
 
 ## Demo
 
