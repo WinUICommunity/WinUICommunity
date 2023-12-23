@@ -110,6 +110,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
+- Shield
 - Gravatar
 - FlyoutMenuButton
 - Growl
@@ -191,6 +192,9 @@ download and install our vsix package from Marketplace:
 [WinUICommunity](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates)
 
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
+
+### Gravatar
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Shield.png)
 
 ### Gravatar
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Gravatar.gif)
