@@ -9,6 +9,13 @@
       "IsSpecialSection": false,
       "Items": [
         {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ShieldPage",
+          "Title": "Shield",
+          "Subtitle": "Shield",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/Shield.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/Shield.png"
+        },
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.GravatarPage",
           "Title": "Gravatar",
           "Subtitle": "Gravatar",

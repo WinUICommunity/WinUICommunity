@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="WinUICommunity.DemoApp.Pages.ShieldPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:WinUICommunity.DemoApp.Pages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:wuc="using:WinUICommunity"
+      mc:Ignorable="d">
+
+    <StackPanel Margin="10,50,10,10"
+                VerticalAlignment="Top"
+                ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                Spacing="10">
+        <StackPanel Orientation="Horizontal"
+                    Spacing="10">
+            <wuc:Shield Click="Shield_Click"
+                        Status="Components"
+                        Subject="WinUICommunity" />
+            <wuc:Shield Click="Shield_Click"
+                        Status="Core"
+                        Subject="WinUICommunity"
+                        Color="Green" />
+            <wuc:Shield Click="Shield_Click"
+                        Status="LandingPage"
+                        Subject="WinUICommunity"
+                        Color="Orange" />
+            <wuc:Shield Click="Shield_Click"
+                        Status="Github"
+                        Color="Violet">
+                <wuc:Shield.Subject>
+                    <Viewbox Margin="2">
+                        <PathIcon Data="{StaticResource GitHubIcon}" />
+                    </Viewbox>
+                </wuc:Shield.Subject>
+            </wuc:Shield>
+            <wuc:Shield Click="Shield_Click"
+                        Subject="Github"
+                        Color="Violet">
+                <wuc:Shield.Status>
+                    <Viewbox>
+                        <PathIcon Margin="2"
+                                  Data="{StaticResource GitHubIcon}" />
+                    </Viewbox>
+                </wuc:Shield.Status>
+            </wuc:Shield>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    Spacing="10">
+            <wuc:Shield Status="passing"
+                        Subject="build"
+                        Color="LimeGreen" />
+            <wuc:Shield Status="vs2022"
+                        Subject="IDE"
+                        Color="Green" />
+        </StackPanel>
+
+    </StackPanel>
+</Page>
