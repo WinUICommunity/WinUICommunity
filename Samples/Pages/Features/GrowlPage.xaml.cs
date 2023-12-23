@@ -205,4 +205,11 @@ public sealed partial class GrowlPage : Page
             Message = "Success with GrowlInfo"
         });
     }
+
+    private void btnClear_Click(object sender, RoutedEventArgs e)
+    {
+        Growl.Clear();
+        Growl.Clear("Test");
+        Growl.ClearGlobal();
+    }
 }

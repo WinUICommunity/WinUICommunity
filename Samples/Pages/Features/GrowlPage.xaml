@@ -33,6 +33,9 @@
             <Button x:Name="btnGrowlInfoGlobal"
                     Click="btnGrowlInfoGlobal_Click"
                     Content="Growl Global with GrowlInfo" />
+            <Button x:Name="btnClear"
+                    Click="btnClear_Click"
+                    Content="Clear" />
         </StackPanel>
         <StackPanel Grid.Column="1"
                     MinWidth="340"

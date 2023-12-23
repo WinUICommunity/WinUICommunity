@@ -51,8 +51,7 @@
                         Subject="build"
                         Color="LimeGreen" />
             <wuc:Shield Status="vs2022"
-                        Subject="IDE"
-                        Color="Green" />
+                        Subject="IDE" />
         </StackPanel>
 
     </StackPanel>
