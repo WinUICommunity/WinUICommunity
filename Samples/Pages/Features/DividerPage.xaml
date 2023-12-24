@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="WinUICommunity.DemoApp.Pages.DividerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:WinUICommunity.DemoApp.Pages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:wuc="using:WinUICommunity"
+      mc:Ignorable="d">
+
+    <StackPanel Margin="10"
+                ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                Spacing="10">
+        <StackPanel Orientation="Horizontal"
+                    Spacing="10">
+            <StackPanel Width="300">
+                <wuc:Divider />
+                <wuc:Divider Content="Title" />
+                <wuc:Divider ContentPadding="0">
+                    <Button Content="More" />
+                </wuc:Divider>
+                <wuc:Divider LineStroke="{ThemeResource AccentAAFillColorDefaultBrush}"
+                             LineStrokeThickness="2" />
+                <wuc:Divider LineStroke="{ThemeResource SystemFillColorCriticalBrush}"
+                             LineStrokeThickness="2" />
+
+                <wuc:Divider LineStrokeDashArray="2,2" />
+            </StackPanel>
+            <StackPanel Width="300">
+                <wuc:Divider HorizontalContentAlignment="Left"
+                             Content="Title" />
+                <wuc:Divider HorizontalContentAlignment="Right"
+                             Content="Title"
+                             ContentPadding="10,0" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Button" />
+                    <wuc:Divider MaxHeight="16"
+                                 Orientation="Vertical" />
+                    <Button Content="Button" />
+                    <wuc:Divider MaxHeight="16"
+                                 Orientation="Vertical" />
+                    <Button Content="Button" />
+                </StackPanel>
+                <StackPanel Margin="0,16,0,0"
+                            Orientation="Horizontal">
+                    <Button Content="Button" />
+                    <wuc:Divider MaxHeight="16"
+                                 LineStrokeThickness="2"
+                                 Orientation="Vertical" />
+                    <Button Content="Button" />
+                    <wuc:Divider MaxHeight="16"
+                                 LineStrokeThickness="2"
+                                 Orientation="Vertical" />
+                    <Button Content="Button" />
+                </StackPanel>
+                <StackPanel Margin="0,16,0,0"
+                            Orientation="Horizontal">
+                    <Button Content="Button" />
+                    <wuc:Divider MaxHeight="16"
+                                 LineStroke="{ThemeResource AccentAAFillColorTertiaryBrush}"
+                                 LineStrokeThickness="2"
+                                 Orientation="Vertical" />
+                    <Button Content="Button" />
+                    <wuc:Divider MaxHeight="16"
+                                 LineStroke="{ThemeResource SystemFillColorCriticalBrush}"
+                                 LineStrokeThickness="2"
+                                 Orientation="Vertical" />
+                    <Button Content="Button" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Page>
