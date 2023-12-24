@@ -38,14 +38,15 @@ public class Divider : Control
     public static readonly DependencyProperty ContentPaddingProperty =
         DependencyProperty.Register("ContentPadding", typeof(Thickness), typeof(Divider), new PropertyMetadata(new Thickness(24,0,24,0)));
 
-    public static readonly DependencyProperty ContentProperty = DependencyProperty.Register(
-        nameof(Content), typeof(object), typeof(Divider), new PropertyMetadata(null, OnContentPropertyChanged));
-
     public object Content
     {
         get => GetValue(ContentProperty);
         set => SetValue(ContentProperty, value);
     }
+
+    public static readonly DependencyProperty ContentProperty =
+        DependencyProperty.Register(nameof(Content), typeof(object), typeof(Divider), new PropertyMetadata(null, OnContentPropertyChanged));
+
     private static void OnContentPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctl = (Divider)d;
@@ -54,16 +55,15 @@ public class Divider : Control
             ctl.UpdateContent(e.NewValue);
         }
     }
-    
-
-    public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register(
-        nameof(Orientation), typeof(Orientation), typeof(Divider), new PropertyMetadata(Orientation.Horizontal, OnOrientationPropertyChanged));
 
     public Orientation Orientation
     {
         get => (Orientation)GetValue(OrientationProperty);
         set => SetValue(OrientationProperty, value);
     }
+
+    public static readonly DependencyProperty OrientationProperty =
+        DependencyProperty.Register(nameof(Orientation), typeof(Orientation), typeof(Divider), new PropertyMetadata(Orientation.Horizontal, OnOrientationPropertyChanged));
 
     private static void OnOrientationPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
@@ -75,23 +75,23 @@ public class Divider : Control
         }
     }
 
-    public static readonly DependencyProperty LineStrokeProperty = DependencyProperty.Register(
-        nameof(LineStroke), typeof(Brush), typeof(Divider), new PropertyMetadata(default(Brush)));
-
     public Brush LineStroke
     {
         get => (Brush)GetValue(LineStrokeProperty);
         set => SetValue(LineStrokeProperty, value);
     }
 
-    public static readonly DependencyProperty LineStrokeThicknessProperty = DependencyProperty.Register(
-        nameof(LineStrokeThickness), typeof(double), typeof(Divider), new PropertyMetadata(1.0));
+    public static readonly DependencyProperty LineStrokeProperty =
+        DependencyProperty.Register(nameof(LineStroke), typeof(Brush), typeof(Divider), new PropertyMetadata(default(Brush)));
 
     public double LineStrokeThickness
     {
         get => (double)GetValue(LineStrokeThicknessProperty);
         set => SetValue(LineStrokeThicknessProperty, value);
     }
+
+    public static readonly DependencyProperty LineStrokeThicknessProperty =
+        DependencyProperty.Register(nameof(LineStrokeThickness), typeof(double), typeof(Divider), new PropertyMetadata(1.0));
 
     public DoubleCollection LineStrokeDashArray
     {
@@ -101,6 +101,23 @@ public class Divider : Control
 
     public static readonly DependencyProperty LineStrokeDashArrayProperty =
         DependencyProperty.Register("LineStrokeDashArray", typeof(DoubleCollection), typeof(Divider), new PropertyMetadata(default(DoubleCollection)));
+
+    protected override void OnApplyTemplate()
+    {
+        base.OnApplyTemplate();
+
+        _PART_ColumnStart = GetTemplateChild(PART_ColumnStart) as ColumnDefinition;
+        _PART_ColumnEnd = GetTemplateChild(PART_ColumnEnd) as ColumnDefinition;
+        _PART_StretchLine = GetTemplateChild(PART_StretchLine) as Line;
+        _PART_LeftLine = GetTemplateChild(PART_LeftLine) as Line;
+        _PART_RightLine = GetTemplateChild(PART_RightLine) as Line;
+        _PART_Content = GetTemplateChild(PART_Content) as ContentPresenter;
+
+        UnRegisterHorizontalContentAlignmentChangedCallback();
+        RegisterHorizontalContentAlignmentChangedCallback();
+        UpdateOrientation(Orientation);
+        UpdateContent(Content);
+    }
 
     private void UnRegisterHorizontalContentAlignmentChangedCallback()
     {
@@ -188,22 +205,5 @@ public class Divider : Control
         }
 
         UpdateHorizontalContentAlignment();
-    }
-    protected override void OnApplyTemplate()
-    {
-        base.OnApplyTemplate();
-
-        _PART_ColumnStart = GetTemplateChild(PART_ColumnStart) as ColumnDefinition;
-        _PART_ColumnEnd = GetTemplateChild(PART_ColumnEnd) as ColumnDefinition;
-        _PART_StretchLine = GetTemplateChild(PART_StretchLine) as Line;
-        _PART_LeftLine = GetTemplateChild(PART_LeftLine) as Line;
-        _PART_RightLine = GetTemplateChild(PART_RightLine) as Line;
-        _PART_Content = GetTemplateChild(PART_Content) as ContentPresenter;
-
-        UnRegisterHorizontalContentAlignmentChangedCallback();
-        RegisterHorizontalContentAlignmentChangedCallback();
-        UpdateOrientation(Orientation);
-        UpdateHorizontalContentAlignment();
-        UpdateContent(Content);
     }
 }
