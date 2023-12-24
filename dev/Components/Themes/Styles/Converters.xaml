@@ -12,4 +12,6 @@
     <local:GridLengthConverter x:Key="GridLengthConverter" />
 
     <local:CornerRadiusSplitConverter x:Key="CornerRadiusSplitConverter" />
+
+    <local:LineDashStrokeArrayConverter x:Key="LineDashStrokeArrayConverter" />
 </ResourceDictionary>

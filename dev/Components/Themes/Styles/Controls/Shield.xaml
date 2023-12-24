@@ -3,8 +3,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="using:WinUICommunity">
 
-    <SolidColorBrush x:Key="ShieldColor"
-                     Color="{ThemeResource SystemAccentColor}" />
     <SolidColorBrush x:Key="ShieldBorderBrush"
                      Color="{ThemeResource CardStrokeColorDefaultBrush}" />
 
@@ -14,7 +12,7 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="{ThemeResource TextOnAccentFillColorDefault}" />
         <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
-        <Setter Property="Color" Value="{ThemeResource ShieldColor}" />
+        <Setter Property="Color" Value="{ThemeResource AccentAAFillColorTertiaryBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:Shield">
