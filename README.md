@@ -110,6 +110,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
+- Divider
 - Shield
 - Gravatar
 - FlyoutMenuButton
@@ -193,7 +194,11 @@ download and install our vsix package from Marketplace:
 
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
-### Gravatar
+### Divider
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Divider.png)
+
+
+### Shield
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Shield.png)
 
 ### Gravatar
