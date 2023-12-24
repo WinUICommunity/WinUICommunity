@@ -25,6 +25,17 @@
                              LineStrokeThickness="2" />
 
                 <wuc:Divider LineStrokeDashArray="2,2" />
+                <wuc:Divider Content="Title"
+                             LineStrokeDashArray="2,2"
+                             LineStrokeThickness="2" />
+                <wuc:Divider Content="Title"
+                             LineStroke="{ThemeResource AccentAAFillColorDefaultBrush}"
+                             LineStrokeDashArray="2,2"
+                             LineStrokeThickness="2" />
+                <wuc:Divider Content="Title"
+                             LineStroke="{ThemeResource SystemFillColorCriticalBrush}"
+                             LineStrokeDashArray="2,2"
+                             LineStrokeThickness="2" />
             </StackPanel>
             <StackPanel Width="300">
                 <wuc:Divider HorizontalContentAlignment="Left"
