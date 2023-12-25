@@ -1,13 +1,10 @@
 ﻿namespace WinUICommunity;
 
-/// <summary>
-/// Custom <see cref="MarkupExtension"/> which can provide symbol-baased <see cref="FontIconSource"/> values.
-/// </summary>
 [MarkupExtensionReturnType(ReturnType = typeof(FontIconSource))]
 public class SymbolIconSourceExtension : TextIconExtension
 {
     /// <summary>
-    /// Gets or sets the <see cref="Microsoft.UI.Xaml.Controls.Symbol"/> value representing the icon to display.
+    /// Gets or sets the <see cref="Symbol"/> value representing the icon to display.
     /// </summary>
     public Symbol Symbol { get; set; }
 
@@ -17,7 +14,7 @@ public class SymbolIconSourceExtension : TextIconExtension
         var fontIcon = new FontIconSource
         {
             Glyph = unchecked((char)Symbol).ToString(),
-            FontFamily = SegoeMDL2AssetsFontFamily,
+            FontFamily = SymbolThemeFontFamily,
             FontWeight = FontWeight,
             FontStyle = FontStyle,
             IsTextScaleFactorEnabled = IsTextScaleFactorEnabled,

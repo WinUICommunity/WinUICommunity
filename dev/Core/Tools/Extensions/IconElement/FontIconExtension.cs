@@ -1,28 +1,27 @@
 ﻿namespace WinUICommunity;
 
-/// <summary>
-/// Custom <see cref="MarkupExtension"/> which can provide <see cref="FontIcon"/> values.
-/// </summary>
 [MarkupExtensionReturnType(ReturnType = typeof(FontIcon))]
 public class FontIconExtension : TextIconExtension
 {
     /// <summary>
     /// Gets or sets the <see cref="string"/> value representing the icon to display.
     /// </summary>
-    public string Glyph { get; set; }
+    public string? Glyph { get; set; }
 
     /// <summary>
     /// Gets or sets the font family to use to display the icon. If <see langword="null"/>, "Segoe MDL2 Assets" will be used.
     /// </summary>
-    public FontFamily FontFamily { get; set; }
+    public FontFamily? FontFamily { get; set; }
 
     /// <inheritdoc/>
     protected override object ProvideValue()
     {
+        default(ArgumentNullException).ThrowIfNull(Glyph);
+
         var fontIcon = new FontIcon
         {
             Glyph = Glyph,
-            FontFamily = FontFamily ?? SegoeMDL2AssetsFontFamily,
+            FontFamily = FontFamily ?? SymbolThemeFontFamily,
             FontWeight = FontWeight,
             FontStyle = FontStyle,
             IsTextScaleFactorEnabled = IsTextScaleFactorEnabled,

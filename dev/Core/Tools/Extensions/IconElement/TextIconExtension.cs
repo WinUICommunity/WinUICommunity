@@ -4,9 +4,6 @@ using Windows.UI.Text;
 
 namespace WinUICommunity;
 
-/// <summary>
-/// An abstract <see cref="MarkupExtension"/> which to produce text-based icons.
-/// </summary>
 public abstract class TextIconExtension : MarkupExtension
 {
     /// <summary>
@@ -15,12 +12,15 @@ public abstract class TextIconExtension : MarkupExtension
     public double FontSize { get; set; }
 
     [ThreadStatic]
-    private static FontFamily segoeMDL2AssetsFontFamily;
+    private static FontFamily? symbolThemeFontFamily;
 
     /// <summary>
     /// Gets the reusable "Segoe MDL2 Assets" <see cref="FontFamily"/> instance.
     /// </summary>
-    protected static FontFamily SegoeMDL2AssetsFontFamily => segoeMDL2AssetsFontFamily ??= new FontFamily("Segoe MDL2 Assets");
+    protected static FontFamily SymbolThemeFontFamily
+    {
+        get => symbolThemeFontFamily ??= new FontFamily("Segoe Fluent Icons,Segoe MDL2 Assets");
+    }
 
     /// <summary>
     /// Gets or sets the thickness of the icon glyph.
@@ -35,7 +35,7 @@ public abstract class TextIconExtension : MarkupExtension
     /// <summary>
     /// Gets or sets the foreground <see cref="Brush"/> for the icon.
     /// </summary>
-    public Brush Foreground { get; set; }
+    public Brush? Foreground { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether automatic text enlargement, to reflect the system text size setting, is enabled.
