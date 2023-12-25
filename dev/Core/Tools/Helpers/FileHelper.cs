@@ -24,4 +24,36 @@ public partial class FileHelper
             size < 0 ? "-" : null, normSize, sizeSuffixes[iUnit]);
     }
 
+    public static async Task<StorageFile> GetStorageFile(string filePath, PathType pathType = PathType.Relative)
+    {
+        StorageFile file = null;
+        if (PackageHelper.IsPackaged)
+        {
+            switch (pathType)
+            {
+                case PathType.Relative:
+                    var sourceUri = new Uri("ms-appx:///" + filePath);
+                    file = await StorageFile.GetFileFromApplicationUriAsync(sourceUri);
+                    break;
+                case PathType.Absolute:
+                    file = await StorageFile.GetFileFromPathAsync(filePath);
+                    break;
+            }
+        }
+        else
+        {
+            switch (pathType)
+            {
+                case PathType.Relative:
+                    var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), filePath));
+                    file = await StorageFile.GetFileFromPathAsync(sourcePath);
+                    break;
+                case PathType.Absolute:
+                    file = await StorageFile.GetFileFromPathAsync(filePath);
+                    break;
+            }
+        }
+
+        return file;
+    }
 }
