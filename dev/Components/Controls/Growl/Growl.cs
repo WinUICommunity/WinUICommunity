@@ -30,8 +30,8 @@ public partial class Growl : InfoBar
     protected override void OnApplyTemplate()
     {
         base.OnApplyTemplate();
-        _confirmButton = GetTemplateChild("PART_ConfirmButton") as Button;
-        _closeButton = GetTemplateChild("PART_CloseButton") as Button;
+        _confirmButton = GetTemplateChild(PART_ConfirmButton) as Button;
+        _closeButton = GetTemplateChild(PART_CloseButton) as Button;
 
         if (_confirmButton != null)
         {
