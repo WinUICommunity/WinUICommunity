@@ -8,7 +8,7 @@
                              ModuleImageSource="ms-appx:///Assets/Modules/PT.png"
                              ModuleTitle="Observable and RelayCommand">
         <wuc:SettingsPageControl.ModuleContent>
-            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}">
+            <StackPanel wuc:PanelAttach.ChildrenTransitions="Default">
                 <Button HorizontalAlignment="Center"
                         Command="{x:Bind Vm.ItemInvokedCommand}"
                         Content="Click Here" />

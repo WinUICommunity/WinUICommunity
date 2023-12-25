@@ -11,7 +11,7 @@
                              ModuleImageSource="ms-appx:///Assets/Modules/PowerPreview.png"
                              ModuleTitle="File Explorer">
         <wuc:SettingsPageControl.ModuleContent>
-            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+            <StackPanel wuc:PanelAttach.ChildrenTransitions="Default"
                         Orientation="Vertical">
                 <wuc:SimpleSettingsGroup Description="Select the file types which must be rendered in the Preview Pane. Ensure that Preview Pane is open by toggling the view with Alt + P in File Explorer."
                                    Header="Preview Pane">

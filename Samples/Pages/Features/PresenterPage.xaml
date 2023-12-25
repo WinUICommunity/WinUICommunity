@@ -7,7 +7,7 @@
                              ModuleImageSource="ms-appx:///Assets/Modules/PT.png"
                              ModuleTitle="WindowHelper">
         <wuc:SettingsPageControl.ModuleContent>
-            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+            <StackPanel wuc:PanelAttach.ChildrenTransitions="Default"
                         Spacing="10">
                 <StackPanel VerticalAlignment="Center">
                     <Button x:Name="CompactoverlaytBtn"

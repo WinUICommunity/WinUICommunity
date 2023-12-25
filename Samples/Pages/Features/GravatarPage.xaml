@@ -8,7 +8,7 @@
       mc:Ignorable="d">
 
     <StackPanel Margin="10"
-                ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                wuc:PanelAttach.ChildrenTransitions="Default"
                 Spacing="10">
         <wuc:Gravatar Id="{x:Bind txt.Text, Mode=OneWay}" />
         <TextBox x:Name="txt"

@@ -8,7 +8,7 @@
                              ModuleTitle="General"
                              SecondaryLinksHeader="Related information">
         <wuc:SettingsPageControl.ModuleContent>
-            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+            <StackPanel wuc:PanelAttach.ChildrenTransitions="Default"
                         Orientation="Vertical">
                 <wuc:SimpleSettingsGroup Margin="0,-32,0,0"
                                    Header="Version">

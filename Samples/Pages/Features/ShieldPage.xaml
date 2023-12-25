@@ -10,7 +10,7 @@
 
     <StackPanel Margin="10,50,10,10"
                 VerticalAlignment="Top"
-                ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                wuc:PanelAttach.ChildrenTransitions="Default"
                 Spacing="10">
         <StackPanel Orientation="Horizontal"
                     Spacing="10">

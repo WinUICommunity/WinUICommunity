@@ -12,7 +12,7 @@
                              SecondaryLinksHeader="Attribution">
         <wuc:SettingsPageControl.ModuleContent>
             <StackPanel x:Name="PowerRenameView"
-                        ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                        wuc:PanelAttach.ChildrenTransitions="Default"
                         Orientation="Vertical">
                 <wuc:SettingsCard Header="Enable PowerRename"
                                   HeaderIcon="{wuc:BitmapIcon Source=/Assets/Fluent/powerRename.png}">

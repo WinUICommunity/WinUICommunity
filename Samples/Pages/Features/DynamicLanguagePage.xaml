@@ -9,7 +9,7 @@
                              ModuleImageSource="ms-appx:///Assets/Modules/PT.png"
                              ModuleTitle="Localizer">
         <wuc:SettingsPageControl.ModuleContent>
-            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+            <StackPanel wuc:PanelAttach.ChildrenTransitions="Default"
                         Spacing="10">
                 <InfoBar Title="This example only works in UnPackaged Mode, if you want to use it in Packaged mode, please go to DynamicLanguageHelper and change ResourceFolderPath"
                          IsClosable="False"

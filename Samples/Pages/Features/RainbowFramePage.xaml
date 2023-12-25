@@ -4,11 +4,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
 
     <ScrollViewer>
         <StackPanel Margin="10"
-                    ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                    wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
             <Button x:Name="btnFixed"
                     Click="btnFixed_Click"

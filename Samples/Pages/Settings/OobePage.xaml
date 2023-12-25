@@ -9,7 +9,7 @@
                          Description="These settings allow you to manage your Windows File Explorer custom preview handlers."
                          HeroImage="ms-appx:///Assets/Modules/OOBE/FileExplorer.png">
         <wuc:OOBEPageControl.PageContent>
-            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+            <StackPanel wuc:PanelAttach.ChildrenTransitions="Default"
                         Orientation="Vertical">
                 <TextBlock Style="{ThemeResource OobeSubtitleStyle}"
                            Text="How to enable" />

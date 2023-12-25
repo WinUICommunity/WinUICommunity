@@ -15,7 +15,7 @@
                              ModuleTitle="Color Picker"
                              SecondaryLinksHeader="Attribution">
         <wuc:SettingsPageControl.ModuleContent>
-            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+            <StackPanel wuc:PanelAttach.ChildrenTransitions="Default"
                         Orientation="Vertical">
                 <wuc:SettingsCard Header="Enable Color Picker"
                                   HeaderIcon="{wuc:BitmapIcon Source=/Assets/Fluent/colorPicker.png}">

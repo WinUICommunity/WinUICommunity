@@ -9,7 +9,7 @@
 
     <ScrollViewer>
         <Grid Margin="10"
-              ChildrenTransitions="{StaticResource SettingsCardsAnimations}">
+              wuc:PanelAttach.ChildrenTransitions="Default">
             <Grid.Resources>
                 <DataTemplate x:Key="ValidationTemplate"
                               x:DataType="x:String">

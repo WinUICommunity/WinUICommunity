@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:models="using:WinUICommunity.DemoApp.Models"
+      xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
     <TabView Margin="10"
              IsAddTabButtonVisible="False">
@@ -12,7 +13,7 @@
                      IsClosable="False">
             <ScrollViewer>
                 <StackPanel Margin="10"
-                            ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                            wuc:PanelAttach.ChildrenTransitions="Default"
                             Spacing="10">
                     <TextBlock Style="{StaticResource OobeSubtitleStyle}"
                                Text="OobeSubtitleStyle" />
@@ -38,7 +39,7 @@
                      IsClosable="False">
             <ScrollViewer>
                 <StackPanel Margin="20"
-                            ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                            wuc:PanelAttach.ChildrenTransitions="Default"
                             Spacing="10">
                     <Border Height="50"
                             Style="{ThemeResource BorderPanel}" />
@@ -57,7 +58,7 @@
                      IsClosable="False">
             <ScrollViewer>
                 <StackPanel Margin="10"
-                            ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                            wuc:PanelAttach.ChildrenTransitions="Default"
                             Spacing="10">
                     <Grid Width="100"
                           Height="100"
@@ -72,7 +73,7 @@
                      IsClosable="False">
             <ScrollViewer>
                 <StackPanel Margin="10"
-                            ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                            wuc:PanelAttach.ChildrenTransitions="Default"
                             Spacing="10">
                     <StackPanel Width="100"
                                 Height="100"

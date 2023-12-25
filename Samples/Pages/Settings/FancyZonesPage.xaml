@@ -10,7 +10,7 @@
                              ModuleImageSource="ms-appx:///Assets/Modules/FancyZones.png"
                              ModuleTitle="FancyZones">
         <wuc:SettingsPageControl.ModuleContent>
-            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+            <StackPanel wuc:PanelAttach.ChildrenTransitions="Default"
                         Orientation="Vertical">
                 <wuc:SettingsCard Header="Enable FancyZones"
                                   HeaderIcon="{wuc:BitmapIcon Source=/Assets/Fluent/fancyZones.png}">

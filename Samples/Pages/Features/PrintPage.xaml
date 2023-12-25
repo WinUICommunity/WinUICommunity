@@ -8,7 +8,7 @@
                              ModuleTitle="PrintHelper">
         <wuc:SettingsPageControl.ModuleContent>
             <StackPanel Margin="10"
-                        ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                        wuc:PanelAttach.ChildrenTransitions="Default"
                         Spacing="10">
                 <InfoBar Title="Because PrintHelper has not yet been updated to the CommunityToolkit package, we added it. But note that whenever it is updated to the CommunityToolkit package, we will remove this helper class."
                          IsClosable="False"

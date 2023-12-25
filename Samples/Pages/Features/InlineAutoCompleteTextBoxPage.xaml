@@ -8,7 +8,7 @@
                              ModuleTitle="InlineAutoCompleteTextBox">
         <wuc:SettingsPageControl.ModuleContent>
             <StackPanel Margin="10"
-                        ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+                        wuc:PanelAttach.ChildrenTransitions="Default"
                         Orientation="Vertical">
                 <StackPanel.Resources>
                     <Style TargetType="Grid">

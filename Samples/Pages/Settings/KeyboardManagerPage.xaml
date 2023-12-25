@@ -10,7 +10,7 @@
                              ModuleImageSource="ms-appx:///Assets/Modules/KBM.png"
                              ModuleTitle="Keyboard Manager">
         <wuc:SettingsPageControl.ModuleContent>
-            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}">
+            <StackPanel wuc:PanelAttach.ChildrenTransitions="Default">
                 <wuc:SettingsCard Header="Enable Keyboard Manager"
                                   HeaderIcon="{wuc:BitmapIcon Source=/Assets/Fluent/keyboardManager.png}">
                     <ToggleSwitch />

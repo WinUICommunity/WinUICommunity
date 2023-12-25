@@ -7,7 +7,7 @@
                              ModuleImageSource="ms-appx:///Assets/Modules/PT.png"
                              ModuleTitle="UpdateHelper">
         <wuc:SettingsPageControl.ModuleContent>
-            <StackPanel ChildrenTransitions="{StaticResource SettingsCardsAnimations}"
+            <StackPanel wuc:PanelAttach.ChildrenTransitions="Default"
                         Spacing="10">
                 <InfoBar Title="First you must create a new release tag in github repository, tag version must be in this format : 1.0.0.0 now we can check for update with github username and github repository"
                          IsClosable="False"
