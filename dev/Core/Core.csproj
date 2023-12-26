@@ -2,7 +2,7 @@
   <PropertyGroup>
 	  <NoWarn>CS8632;CS0067;CA1416</NoWarn>
 	  <Version>5.5.1</Version>
-    <IsTrimmable>true</IsTrimmable>
+    <IsTrimmable>false</IsTrimmable>
     <Namespace>WinUICommunity.Core</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
