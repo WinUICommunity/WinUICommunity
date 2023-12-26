@@ -194,9 +194,12 @@ download and install our vsix package from Marketplace:
 
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
+### FontIcon Extension : Choose Fluent Icons (more than 1400) with Name or Code
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FontIconGlyph.png)
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FontIconGlyph2.png)
+
 ### Divider
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Divider.png)
-
 
 ### Shield
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Shield.png)
