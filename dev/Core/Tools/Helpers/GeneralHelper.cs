@@ -4,6 +4,17 @@ namespace WinUICommunity;
 public partial class GeneralHelper
 {
     /// <summary>
+    /// Convert a Glyph Code like E700, into Unicode Char for using in Code-Behind. output will be \uE700
+    /// </summary>
+    /// <param name="glyph"></param>
+    /// <returns></returns>
+    public static char GetGlyphUnicodeChar(string glyph)
+    {
+        var unicodeValue = Convert.ToInt32(glyph, 16);
+        return Convert.ToChar(unicodeValue);
+    }
+
+    /// <summary>
     /// Sets the preferred app mode based on the specified element theme.
     /// </summary>
     /// <param name="theme">The element theme to set the preferred app mode to.</param>

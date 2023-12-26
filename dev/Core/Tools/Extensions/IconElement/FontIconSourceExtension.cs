@@ -8,6 +8,9 @@ public class FontIconSourceExtension : TextIconExtension
     /// </summary>
     public string? Glyph { get; set; }
 
+    public GlyphCode GlyphCode { get; set; } = GlyphCode.None;
+    public GlyphName GlyphName { get; set; } = GlyphName.None;
+
     /// <summary>
     /// Gets or sets the font family to use to display the icon. If <see langword="null"/>, "Segoe MDL2 Assets" will be used.
     /// </summary>
@@ -16,6 +19,21 @@ public class FontIconSourceExtension : TextIconExtension
     /// <inheritdoc/>
     protected override object ProvideValue()
     {
+        if (string.IsNullOrEmpty(Glyph))
+        {
+            if (GlyphCode != GlyphCode.None)
+            {
+                Glyph = $"{GeneralHelper.GetGlyphUnicodeChar(GlyphCode.ToString())}";
+            }
+
+            if (GlyphName != GlyphName.None)
+            {
+                var glyphNameIndex = (int)GlyphName;
+                var glyphCode = (GlyphCode)glyphNameIndex;
+                Glyph = $"{GeneralHelper.GetGlyphUnicodeChar(glyphCode.ToString())}";
+            }
+        }
+
         var fontIcon = new FontIconSource
         {
             Glyph = Glyph,
