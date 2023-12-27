@@ -38,19 +38,41 @@ public static partial class SecurityHelper
         return EncryptStringAsymmetricBase(plainText, publicKey, null, AsymmetricAlgorithm.RSA_PKCS1, EncodeType.Hex);
     }
 
+    public static string EncryptStringAsymmetric(string plainText, out CryptographicKey keyPair)
+    {
+        keyPair = GenerateAsymmetricKeyPair(AsymmetricAlgorithm.RSA_PKCS1);
+        return EncryptStringAsymmetricBase(plainText, null, keyPair.ExportPublicKey(), AsymmetricAlgorithm.RSA_PKCS1, EncodeType.Hex);
+    }
+
     public static string EncryptStringAsymmetric(string plainText, string publicKey, AsymmetricAlgorithm asymmetricAlgorithm)
     {
         return EncryptStringAsymmetricBase(plainText, publicKey, null, asymmetricAlgorithm, EncodeType.Hex);
     }
-
+    public static string EncryptStringAsymmetric(string plainText, out CryptographicKey keyPair, AsymmetricAlgorithm asymmetricAlgorithm)
+    {
+        keyPair = GenerateAsymmetricKeyPair(asymmetricAlgorithm);
+        return EncryptStringAsymmetricBase(plainText, null, keyPair.ExportPublicKey(), asymmetricAlgorithm, EncodeType.Hex);
+    }
     public static string EncryptStringAsymmetric(string plainText, string publicKey, EncodeType encodeType)
     {
         return EncryptStringAsymmetricBase(plainText, publicKey, null, AsymmetricAlgorithm.RSA_PKCS1, encodeType);
     }
 
+    public static string EncryptStringAsymmetric(string plainText, out CryptographicKey keyPair, EncodeType encodeType)
+    {
+        keyPair = GenerateAsymmetricKeyPair(AsymmetricAlgorithm.RSA_PKCS1);
+        return EncryptStringAsymmetricBase(plainText, null, keyPair.ExportPublicKey(), AsymmetricAlgorithm.RSA_PKCS1, encodeType);
+    }
+
     public static string EncryptStringAsymmetric(string plainText, string publicKey, AsymmetricAlgorithm asymmetricAlgorithm, EncodeType encodeType)
     {
         return EncryptStringAsymmetricBase(plainText, publicKey, null, asymmetricAlgorithm, encodeType);
+    }
+
+    public static string EncryptStringAsymmetric(string plainText, out CryptographicKey keyPair, AsymmetricAlgorithm asymmetricAlgorithm, EncodeType encodeType)
+    {
+        keyPair = GenerateAsymmetricKeyPair(asymmetricAlgorithm);
+        return EncryptStringAsymmetricBase(plainText, null, keyPair.ExportPublicKey(), asymmetricAlgorithm, encodeType);
     }
 
     public static string EncryptStringAsymmetric(string plainText, IBuffer publicKey)
