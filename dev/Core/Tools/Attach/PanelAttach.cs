@@ -1,6 +1,22 @@
 ﻿using Microsoft.UI.Xaml.Media.Animation;
 
 namespace WinUICommunity;
+
+public enum PanelTransitionCollection
+{
+    None,
+    Default,
+    AddDeleteThemeTransition,
+    ContentThemeTransition,
+    EdgeUIThemeTransition,
+    EntranceThemeTransition,
+    NavigationThemeTransition,
+    PaneThemeTransition,
+    PopupThemeTransition,
+    ReorderThemeTransition,
+    RepositionThemeTransition,
+    SettingsCardTransition
+}
 public class PanelAttach
 {
     public static PanelTransitionCollection GetChildrenTransitions(DependencyObject obj)

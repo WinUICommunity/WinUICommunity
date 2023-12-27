@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
 namespace WinUICommunity;
@@ -158,5 +159,10 @@ public static class StringExtensions
         }
 
         return value ?? string.Empty;
+    }
+
+    public static string GetHash(this string value, HashAlgorithm hashAlgorithm)
+    {
+        return SecurityHelper.GetHash(value, hashAlgorithm);
     }
 }
