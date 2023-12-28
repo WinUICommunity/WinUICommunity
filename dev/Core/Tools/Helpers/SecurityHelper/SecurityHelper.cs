@@ -45,19 +45,19 @@ public static partial class SecurityHelper
         switch (hashAlgorithm)
         {
             case HashAlgorithm.MD5:
-                result = MD5.HashData(stream);
+                result = await MD5.HashDataAsync(stream);
                 break;
             case HashAlgorithm.SHA1:
-                result = SHA1.HashData(stream);
+                result = await SHA1.HashDataAsync(stream);
                 break;
             case HashAlgorithm.SHA256:
-                result = SHA256.HashData(stream);
+                result = await SHA256.HashDataAsync(stream);
                 break;
             case HashAlgorithm.SHA384:
-                result = SHA384.HashData(stream);
+                result = await SHA384.HashDataAsync(stream);
                 break;
             case HashAlgorithm.SHA512:
-                result = SHA512.HashData(stream);
+                result = await SHA512.HashDataAsync(stream);
                 break;
         }
         return encodeType == EncodeType.Hex
