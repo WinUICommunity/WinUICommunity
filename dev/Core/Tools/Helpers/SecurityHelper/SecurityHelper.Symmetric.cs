@@ -12,9 +12,9 @@ public static partial class SecurityHelper
         IBuffer dataBuffer = CryptographicBuffer.ConvertStringToBinary(plainText, BinaryStringEncoding.Utf8);
 
         var algoName = symmetricAlgorithm.ToString().Replace("TRIPLE_", "3");
-        SymmetricKeyAlgorithmProvider aesProvider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(algoName);
+        SymmetricKeyAlgorithmProvider symmetricProvider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(algoName);
 
-        CryptographicKey cryptoKey = aesProvider.CreateSymmetricKey(keyBuffer);
+        CryptographicKey cryptoKey = symmetricProvider.CreateSymmetricKey(keyBuffer);
 
         IBuffer encryptedBuffer = CryptographicEngine.Encrypt(cryptoKey, dataBuffer, null);
 
@@ -50,9 +50,9 @@ public static partial class SecurityHelper
 
         var algoName = symmetricAlgorithm.ToString().Replace("TRIPLE_", "3");
 
-        SymmetricKeyAlgorithmProvider aesProvider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(algoName);
+        SymmetricKeyAlgorithmProvider symmetricProvider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(algoName);
 
-        CryptographicKey cryptoKey = aesProvider.CreateSymmetricKey(keyBuffer);
+        CryptographicKey cryptoKey = symmetricProvider.CreateSymmetricKey(keyBuffer);
 
         IBuffer decryptedBuffer = CryptographicEngine.Decrypt(cryptoKey, encryptedBuffer, null);
 
@@ -79,7 +79,7 @@ public static partial class SecurityHelper
         return DecryptStringSymmetricBase(encryptedText, key, symmetricAlgorithm, encodeType);
     }
 
-    private static System.Security.Cryptography.SymmetricAlgorithm GetSymmetricAlgorithm(string aes_Key, string aes_IV, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
+    private static System.Security.Cryptography.SymmetricAlgorithm GetAESSymmetricAlgorithm(string aes_Key, string aes_IV, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
     {
         System.Security.Cryptography.SymmetricAlgorithm symmetricAlgorithm;
         symmetricAlgorithm = Aes.Create();
@@ -124,7 +124,7 @@ public static partial class SecurityHelper
 
     private static void EncryptFileAESBase(Stream inputStream, Stream outputStream, string aes_Key, string aes_IV, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
     {
-        var symmetricAlgorithm = GetSymmetricAlgorithm(aes_Key, aes_IV, out aes_KeyOut, out aes_IVOut, encodeType);
+        var symmetricAlgorithm = GetAESSymmetricAlgorithm(aes_Key, aes_IV, out aes_KeyOut, out aes_IVOut, encodeType);
 
         using (CryptoStream cryptoStream = new CryptoStream(outputStream, symmetricAlgorithm.CreateEncryptor(), CryptoStreamMode.Write))
         {
@@ -173,7 +173,7 @@ public static partial class SecurityHelper
 
     private static void DecryptFileAESBase(Stream inputStream, Stream outputStream, string aes_Key, string aes_IV, EncodeType encodeType)
     {
-        var symmetricAlgorithm = GetSymmetricAlgorithm(aes_Key, aes_IV, out _, out _, encodeType);
+        var symmetricAlgorithm = GetAESSymmetricAlgorithm(aes_Key, aes_IV, out _, out _, encodeType);
 
         using (CryptoStream cryptoStream = new CryptoStream(outputStream, symmetricAlgorithm.CreateDecryptor(), CryptoStreamMode.Write))
         {
