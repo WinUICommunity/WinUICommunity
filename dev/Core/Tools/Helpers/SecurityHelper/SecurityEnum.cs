@@ -1,5 +1,10 @@
 ﻿namespace WinUICommunity;
 
+public enum CryptoMode
+{
+    Encrypt,
+    Decrypt
+}
 public enum RSAKeySize : uint
 {
     RSA512 = 512,
