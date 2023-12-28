@@ -10,6 +10,9 @@
 	  <Description>useful helpers, extension methods and classes</Description>
 	  <PackageTags>winui winui3 win11 xaml core Common SettingsUI settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Assets\icon.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="build\WinUICommunity.Core.targets" Pack="true" PackagePath="build\" />

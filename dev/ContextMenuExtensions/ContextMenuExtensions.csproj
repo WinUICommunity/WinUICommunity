@@ -9,6 +9,9 @@
 	  <PackageTags>winui contextmenuextensions winui3 win11 xaml settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion contextmenu shell WinUICommunity</PackageTags>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ContextMenuCustomHost.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
