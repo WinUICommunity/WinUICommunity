@@ -25,7 +25,7 @@ public static partial class SecurityHelper
 
     public static string EncryptStringSymmetric(string plainText, string key)
     {
-        return EncryptStringSymmetricBase(plainText, key, SymmetricAlgorithm.AES_CBC_PKCS7, EncodeType.Hex);
+        return EncryptStringSymmetricBase(plainText, key, SymmetricAlgorithm.AES_CCM, EncodeType.Hex);
     }
     public static string EncryptStringSymmetric(string plainText, string key, SymmetricAlgorithm symmetricAlgorithm)
     {
@@ -33,7 +33,7 @@ public static partial class SecurityHelper
     }
     public static string EncryptStringSymmetric(string plainText, string key, EncodeType encodeType)
     {
-        return EncryptStringSymmetricBase(plainText, key, SymmetricAlgorithm.AES_CBC_PKCS7, encodeType);
+        return EncryptStringSymmetricBase(plainText, key, SymmetricAlgorithm.AES_CCM, encodeType);
     }
     public static string EncryptStringSymmetric(string plainText, string key, SymmetricAlgorithm symmetricAlgorithm, EncodeType encodeType)
     {
@@ -61,7 +61,7 @@ public static partial class SecurityHelper
 
     public static string DecryptStringSymmetric(string encryptedText, string key)
     {
-        return DecryptStringSymmetricBase(encryptedText, key, SymmetricAlgorithm.AES_CBC_PKCS7, EncodeType.Hex);
+        return DecryptStringSymmetricBase(encryptedText, key, SymmetricAlgorithm.AES_CCM, EncodeType.Hex);
     }
 
     public static string DecryptStringSymmetric(string encryptedText, string key, SymmetricAlgorithm symmetricAlgorithm)
@@ -71,7 +71,7 @@ public static partial class SecurityHelper
 
     public static string DecryptStringSymmetric(string encryptedText, string key, EncodeType encodeType)
     {
-        return DecryptStringSymmetricBase(encryptedText, key, SymmetricAlgorithm.AES_CBC_PKCS7, encodeType);
+        return DecryptStringSymmetricBase(encryptedText, key, SymmetricAlgorithm.AES_CCM, encodeType);
     }
 
     public static string DecryptStringSymmetric(string encryptedText, string key, SymmetricAlgorithm symmetricAlgorithm, EncodeType encodeType)
@@ -122,90 +122,69 @@ public static partial class SecurityHelper
         return symmetricAlgorithm;
     }
 
-    private static void EncryptFileAESBase(Stream inputStream, Stream outputStream, string aes_Key, string aes_IV, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
+    private static void CryptoFileAESBase(CryptoMode cryptoMode,string inputFilePath, string outputFilePath, string aes_Key, string aes_IV, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
     {
+        using FileStream inputStream = new FileStream(inputFilePath, FileMode.Open, FileAccess.Read);
+        using FileStream outputStream = new FileStream(outputFilePath, FileMode.Create, FileAccess.Write);
+        outputStream.SetLength(0);
+
+        //Create variables to help with read and write.
+        byte[] bin = new byte[100]; //This is intermediate storage for the encryption.
+        long rdlen = 0;              //This is the total number of bytes written.
+        long totlen = inputStream.Length;    //This is the total length of the input file.
+        int len;                     //This is the number of bytes to be written at a time.
+
         var symmetricAlgorithm = GetAESSymmetricAlgorithm(aes_Key, aes_IV, out aes_KeyOut, out aes_IVOut, encodeType);
 
-        using (CryptoStream cryptoStream = new CryptoStream(outputStream, symmetricAlgorithm.CreateEncryptor(), CryptoStreamMode.Write))
+        ICryptoTransform cryptoTransform = null;
+        switch (cryptoMode)
         {
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-
-            while ((bytesRead = inputStream.Read(buffer, 0, buffer.Length)) > 0)
-            {
-                cryptoStream.Write(buffer, 0, bytesRead);
-            }
-
-            cryptoStream.FlushFinalBlock();
+            case CryptoMode.Encrypt:
+                cryptoTransform = symmetricAlgorithm.CreateEncryptor();
+                break;
+            case CryptoMode.Decrypt:
+                cryptoTransform = symmetricAlgorithm.CreateDecryptor();
+                break;
         }
-    }
 
-    private static void EncryptFileAESBase2(string inputFilePath, string outputFilePath, string aes_Key, string aes_IV, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
-    {
-        using (FileStream inputStream = new FileStream(inputFilePath, FileMode.Open, FileAccess.Read))
+        using CryptoStream cryptoStream = new CryptoStream(outputStream, cryptoTransform, CryptoStreamMode.Write);
+        while (rdlen < totlen)
         {
-            using (FileStream outputStream = new FileStream(outputFilePath, FileMode.Create, FileAccess.Write))
-            {
-                EncryptFileAESBase(inputStream, outputStream, aes_Key, aes_IV, out aes_KeyOut, out aes_IVOut, encodeType);
-            }
+            len = inputStream.Read(bin, 0, 100);
+            cryptoStream.Write(bin, 0, len);
+            rdlen = rdlen + len;
         }
+        cryptoStream.Close();
+        outputStream.Close();
+        inputStream.Close();
     }
 
     public static void EncryptFileAES(string inputFilePath, string outputFilePath, string aes_Key, string aes_IV)
     {
-        EncryptFileAESBase2(inputFilePath, outputFilePath, aes_Key, aes_IV, out _, out _, EncodeType.Base64);
+        CryptoFileAESBase(CryptoMode.Encrypt, inputFilePath, outputFilePath, aes_Key, aes_IV, out _, out _, EncodeType.Base64);
     }
 
     public static void EncryptFileAES(string inputFilePath, string outputFilePath, string aes_Key, string aes_IV, EncodeType encodeType)
     {
-        EncryptFileAESBase2(inputFilePath, outputFilePath, aes_Key, aes_IV, out _, out _, encodeType);
+        CryptoFileAESBase(CryptoMode.Encrypt, inputFilePath, outputFilePath, aes_Key, aes_IV, out _, out _, encodeType);
     }
 
     public static void EncryptFileAES(string inputFilePath, string outputFilePath, out string aes_KeyOut, out string aes_IVOut)
     {
-        EncryptFileAESBase2(inputFilePath, outputFilePath, null, null, out aes_KeyOut, out aes_IVOut, EncodeType.Base64);
+        CryptoFileAESBase(CryptoMode.Encrypt, inputFilePath, outputFilePath, null, null, out aes_KeyOut, out aes_IVOut, EncodeType.Base64);
     }
 
     public static void EncryptFileAES(string inputFilePath, string outputFilePath, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
     {
-        EncryptFileAESBase2(inputFilePath, outputFilePath, null, null, out aes_KeyOut, out aes_IVOut, encodeType);
-    }
-
-    private static void DecryptFileAESBase(Stream inputStream, Stream outputStream, string aes_Key, string aes_IV, EncodeType encodeType)
-    {
-        var symmetricAlgorithm = GetAESSymmetricAlgorithm(aes_Key, aes_IV, out _, out _, encodeType);
-
-        using (CryptoStream cryptoStream = new CryptoStream(outputStream, symmetricAlgorithm.CreateDecryptor(), CryptoStreamMode.Write))
-        {
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-
-            while ((bytesRead = inputStream.Read(buffer, 0, buffer.Length)) > 0)
-            {
-                cryptoStream.Write(buffer, 0, bytesRead);
-            }
-
-            cryptoStream.FlushFinalBlock();
-        }
-    }
-
-    private static void DecryptFileAESBase2(string inputFilePath, string outputFilePath, string aes_Key, string aes_IV, EncodeType encodeType)
-    {
-        using (FileStream inputStream = new FileStream(inputFilePath, FileMode.Open, FileAccess.Read))
-        {
-            using (FileStream outputStream = new FileStream(outputFilePath, FileMode.Create, FileAccess.Write))
-            {
-                DecryptFileAESBase(inputStream, outputStream, aes_Key, aes_IV, EncodeType.Base64);
-            }
-        }
+        CryptoFileAESBase(CryptoMode.Encrypt, inputFilePath, outputFilePath, null, null, out aes_KeyOut, out aes_IVOut, encodeType);
     }
 
     public static void DecryptFileAES(string inputFilePath, string outputFilePath, string aes_Key, string aes_IV)
     {
-        DecryptFileAESBase2(inputFilePath, outputFilePath, aes_Key, aes_IV, EncodeType.Base64);
+        CryptoFileAESBase(CryptoMode.Decrypt, inputFilePath, outputFilePath, aes_Key, aes_IV, out _, out _, EncodeType.Base64); 
     }
     public static void DecryptFileAES(string inputFilePath, string outputFilePath, string aes_Key, string aes_IV, EncodeType encodeType)
     {
-        DecryptFileAESBase2(inputFilePath, outputFilePath, aes_Key, aes_IV, encodeType);
+        CryptoFileAESBase(CryptoMode.Decrypt, inputFilePath, outputFilePath, aes_Key, aes_IV, out _, out _, encodeType);
     }
 }
