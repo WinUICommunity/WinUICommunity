@@ -13,7 +13,6 @@
     <Version>5.5.0</Version>
     <NoWarn>WMC1506;CS8632</NoWarn>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
-    <ExcludedLanguages>en-US;fa-IR</ExcludedLanguages>
     <GITHUB_ACTIONS>false</GITHUB_ACTIONS>
     <UseRidGraph>true</UseRidGraph>
   </PropertyGroup>
@@ -65,5 +64,4 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <Import Project="../dev/Core/MSBuildTargets/RemoveLanguageFolders.targets" />
 </Project>
