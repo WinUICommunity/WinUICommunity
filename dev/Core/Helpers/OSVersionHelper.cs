@@ -54,4 +54,9 @@ public static class OSVersionHelper
         NativeMethods.RtlGetVersion(out osv);
         return new Version((int)osv.dwMajorVersion, (int)osv.dwMinorVersion, (int)osv.dwBuildNumber, (int)osv.dwRevision);
     }
+
+    public static bool IsEqualOrGreater(Version version)
+    {
+        return IsWindowsNT && OSVersion >= new Version(version.Major, version.Minor, version.Build, version.Revision);
+    }
 }
