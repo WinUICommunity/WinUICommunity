@@ -1,6 +1,7 @@
 ﻿using Windows.Security.Cryptography.Core;
 using Windows.Security.Cryptography;
 using Windows.Storage.Streams;
+using System.Security.Cryptography;
 
 namespace WinUICommunity;
 
@@ -8,50 +9,62 @@ public static partial class SecurityHelper
 {
     public static string GetHash(string value, HashAlgorithm hashAlgorithm, EncodeType encodeType = EncodeType.Hex)
     {
-        IBuffer buffUtf8Msg = CryptographicBuffer.ConvertStringToBinary(value, BinaryStringEncoding.Utf8);
-
-        HashAlgorithmProvider objAlgProv = HashAlgorithmProvider.OpenAlgorithm(hashAlgorithm.ToString());
-
-        IBuffer buffHash = objAlgProv.HashData(buffUtf8Msg);
-
-        if (buffHash.Length != objAlgProv.HashLength)
+        var bytes = Encoding.UTF8.GetBytes(value);
+        byte[] result = null;
+        switch (hashAlgorithm)
         {
-            throw new Exception("There was an error creating the hash");
+            case HashAlgorithm.MD5:
+                result = MD5.HashData(bytes);
+                break;
+            case HashAlgorithm.SHA1:
+                result = SHA1.HashData(bytes);
+                break;
+            case HashAlgorithm.SHA256:
+                result = SHA256.HashData(bytes);
+                break;
+            case HashAlgorithm.SHA384:
+                result = SHA384.HashData(bytes);
+                break;
+            case HashAlgorithm.SHA512:
+                result = SHA512.HashData(bytes);
+                break;
         }
-
         return encodeType == EncodeType.Hex
-            ? CryptographicBuffer.EncodeToHexString(buffHash).ToUpper()
-            : CryptographicBuffer.EncodeToBase64String(buffHash).ToUpper();
+            ? Convert.ToHexString(result).ToUpper()
+            : Convert.ToBase64String(result).ToUpper();
     }
+
+#if NET7_0_OR_GREATER
 
     public static async Task<string> GetHashFromFileAsync(string filePath, HashAlgorithm hashAlgorithm, EncodeType encodeType = EncodeType.Hex)
     {
         var file = await FileHelper.GetStorageFile(filePath, PathType.Absolute);
-        HashAlgorithmProvider alg = HashAlgorithmProvider.OpenAlgorithm(hashAlgorithm.ToString());
         var stream = await file.OpenStreamForReadAsync();
-        var inputStream = stream.AsInputStream();
 
-        uint capacity = 100000000;
-        var buffer = new Windows.Storage.Streams.Buffer(capacity);
-        var hash = alg.CreateHash();
-
-        while (true)
+        byte[] result = null;
+        switch (hashAlgorithm)
         {
-            IBuffer readBuffer = await inputStream.ReadAsync(buffer, capacity, InputStreamOptions.None);
-
-            if (readBuffer.Length > 0)
-                hash.Append(readBuffer);
-            else
+            case HashAlgorithm.MD5:
+                result = MD5.HashData(stream);
+                break;
+            case HashAlgorithm.SHA1:
+                result = SHA1.HashData(stream);
+                break;
+            case HashAlgorithm.SHA256:
+                result = SHA256.HashData(stream);
+                break;
+            case HashAlgorithm.SHA384:
+                result = SHA384.HashData(stream);
+                break;
+            case HashAlgorithm.SHA512:
+                result = SHA512.HashData(stream);
                 break;
         }
-
-        inputStream.Dispose();
-        stream.Dispose();
-
         return encodeType == EncodeType.Hex
-                    ? CryptographicBuffer.EncodeToHexString(hash.GetValueAndReset()).ToUpper()
-                    : CryptographicBuffer.EncodeToBase64String(hash.GetValueAndReset()).ToUpper();
+            ? Convert.ToHexString(result).ToUpper()
+            : Convert.ToBase64String(result).ToUpper();
     }
+#endif
 
     public static string EncryptBase64(string input)
     {
