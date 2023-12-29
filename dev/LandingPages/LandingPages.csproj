@@ -32,9 +32,6 @@
     <Content Remove="Assets\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj"/>
   </ItemGroup>
 </Project>
