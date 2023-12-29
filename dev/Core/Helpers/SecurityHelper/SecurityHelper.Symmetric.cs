@@ -7,7 +7,7 @@ public static partial class SecurityHelper
     {
         using var aes = Aes.Create();
         aes.GenerateKey();
-        aes.IV();
+        aes.GenerateIV();
         return (Key:aes.Key, IV:aes.IV);
     }
     private static byte[] EncryptStringAesBase(string plainText, string aes_Key, string aes_IV, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
