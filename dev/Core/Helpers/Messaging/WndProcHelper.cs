@@ -3,29 +3,29 @@
 namespace WinUICommunity;
 public class WndProcHelper
 {
-    private nint Handle { get; set; }
+    private IntPtr Handle { get; set; }
     private NativeValues.WNDPROC newMainWindowWndProc = null;
-    private nint oldMainWindowWndProc = IntPtr.Zero;
+    private IntPtr oldMainWindowWndProc = IntPtr.Zero;
 
     private NativeValues.WNDPROC newInputNonClientPointerSourceWndProc = null;
-    private nint oldInputNonClientPointerSourceWndProc = IntPtr.Zero;
+    private IntPtr oldInputNonClientPointerSourceWndProc = IntPtr.Zero;
 
     public WndProcHelper(Window window)
     {
         Handle = WindowNative.GetWindowHandle(window);
     }
 
-    public WndProcHelper(nint hwnd)
+    public WndProcHelper(IntPtr hwnd)
     {
         Handle = hwnd;
     }
 
-    public nint CallWindowProc(nint hWnd, NativeValues.WindowMessage Msg, nint wParam, nint lParam)
+    public IntPtr CallWindowProc(IntPtr hWnd, NativeValues.WindowMessage Msg, IntPtr wParam, IntPtr lParam)
     {
         return NativeMethods.CallWindowProc(oldMainWindowWndProc, hWnd, Msg, wParam, lParam);
     }
 
-    public nint CallInputNonClientPointerSourceWindowProc(nint hWnd, NativeValues.WindowMessage Msg, nint wParam, nint lParam)
+    public IntPtr CallInputNonClientPointerSourceWindowProc(IntPtr hWnd, NativeValues.WindowMessage Msg, IntPtr wParam, IntPtr lParam)
     {
         return NativeMethods.CallWindowProc(oldInputNonClientPointerSourceWndProc, hWnd, Msg, wParam, lParam);
     }
