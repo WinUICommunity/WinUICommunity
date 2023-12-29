@@ -26,27 +26,6 @@ public enum HashAlgorithm
     SHA384,
     SHA512
 }
-public enum SymmetricAlgorithm
-{
-    RC4,
-    RC2_CBC,
-    RC2_ECB,
-    RC2_CBC_PKCS7,
-    RC2_ECB_PKCS7,
-    AES_CBC,
-    AES_CBC_PKCS7,
-    AES_CCM,
-    AES_ECB,
-    AES_ECB_PKCS7,
-    DES_CBC,
-    DES_CBC_PKCS7,
-    DES_ECB,
-    DES_ECB_PKCS7,
-    TRIPLE_DES_CBC,
-    TRIPLE_DES_CBC_PKCS7,
-    TRIPLE_DES_ECB,
-    TRIPLE_DES_ECB_PKCS7
-}
 
 public enum AsymmetricAlgorithm
 {
