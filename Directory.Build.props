@@ -17,7 +17,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <Copyright>Copyright (c) 2021-2023 Mahdi Hosseini</Copyright>
+    <Copyright>Copyright (c) 2021-2024 Mahdi Hosseini</Copyright>
     <PackageProjectUrl>https://github.com/WinUICommunity/WinUICommunity</PackageProjectUrl>
     <RepositoryUrl>https://github.com/WinUICommunity/WinUICommunity</RepositoryUrl>
     <PackageReleaseNotes>https://github.com/WinUICommunity/WinUICommunity/releases</PackageReleaseNotes>
