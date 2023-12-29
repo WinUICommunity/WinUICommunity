@@ -1,82 +1,135 @@
-﻿using Windows.Security.Cryptography.Core;
-using Windows.Security.Cryptography;
-using Windows.Storage.Streams;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 
 namespace WinUICommunity;
 public static partial class SecurityHelper
 {
-    private static string EncryptStringSymmetricBase(string plainText, string key, SymmetricAlgorithm symmetricAlgorithm, EncodeType encodeType)
+    public static (byte[] Key, byte[] IV) GenerateAESKeyAndIV()
     {
-        IBuffer keyBuffer = CryptographicBuffer.ConvertStringToBinary(key, BinaryStringEncoding.Utf8);
-        IBuffer dataBuffer = CryptographicBuffer.ConvertStringToBinary(plainText, BinaryStringEncoding.Utf8);
+        using var aes = Aes.Create();
+        aes.GenerateKey();
+        aes.IV();
+        return (Key:aes.Key, IV:aes.IV);
+    }
+    private static byte[] EncryptStringAesBase(string plainText, string aes_Key, string aes_IV, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
+    {
+        byte[] encrypted;
 
-        var algoName = symmetricAlgorithm.ToString().Replace("TRIPLE_", "3");
-        SymmetricKeyAlgorithmProvider symmetricProvider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(algoName);
+        using var aesAlg = GetAESSymmetricAlgorithm(aes_Key, aes_IV, out aes_KeyOut, out aes_IVOut, encodeType);
+        ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
 
-        CryptographicKey cryptoKey = symmetricProvider.CreateSymmetricKey(keyBuffer);
+        using (MemoryStream msEncrypt = new MemoryStream())
+        {
+            using CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
+            using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+            {
+                swEncrypt.Write(plainText);
+            }
+            encrypted = msEncrypt.ToArray();
+        }
 
-        IBuffer encryptedBuffer = CryptographicEngine.Encrypt(cryptoKey, dataBuffer, null);
-
-        return encodeType == EncodeType.Hex
-            ? CryptographicBuffer.EncodeToHexString(encryptedBuffer)
-            : CryptographicBuffer.EncodeToBase64String(encryptedBuffer);
+        return encrypted;
     }
 
-    public static string EncryptStringSymmetric(string plainText, string key)
+    public static byte[] EncryptStringAesToByte(string plainText, string aes_Key, string aes_IV)
     {
-        return EncryptStringSymmetricBase(plainText, key, SymmetricAlgorithm.AES_CCM, EncodeType.Hex);
+        return EncryptStringAesBase(plainText, aes_Key, aes_IV, out _, out _, EncodeType.Hex);
     }
-    public static string EncryptStringSymmetric(string plainText, string key, SymmetricAlgorithm symmetricAlgorithm)
+    public static byte[] EncryptStringAesToByte(string plainText, out string aes_Key, out string aes_IV)
     {
-        return EncryptStringSymmetricBase(plainText, key, symmetricAlgorithm, EncodeType.Hex);
-    }
-    public static string EncryptStringSymmetric(string plainText, string key, EncodeType encodeType)
-    {
-        return EncryptStringSymmetricBase(plainText, key, SymmetricAlgorithm.AES_CCM, encodeType);
-    }
-    public static string EncryptStringSymmetric(string plainText, string key, SymmetricAlgorithm symmetricAlgorithm, EncodeType encodeType)
-    {
-        return EncryptStringSymmetricBase(plainText, key, symmetricAlgorithm, encodeType);
+        return EncryptStringAesBase(plainText, null, null, out aes_Key, out aes_IV, EncodeType.Hex);
     }
 
-    private static string DecryptStringSymmetricBase(string encryptedText, string key, SymmetricAlgorithm symmetricAlgorithm, EncodeType encodeType)
+    public static byte[] EncryptStringAesToByte(string plainText, string aes_Key, string aes_IV, EncodeType encodeType)
     {
-        IBuffer keyBuffer = CryptographicBuffer.ConvertStringToBinary(key, BinaryStringEncoding.Utf8);
-
-        var encryptedBuffer = encodeType == EncodeType.Hex
-            ? CryptographicBuffer.DecodeFromHexString(encryptedText)
-            : CryptographicBuffer.DecodeFromBase64String(encryptedText);
-
-        var algoName = symmetricAlgorithm.ToString().Replace("TRIPLE_", "3");
-
-        SymmetricKeyAlgorithmProvider symmetricProvider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(algoName);
-
-        CryptographicKey cryptoKey = symmetricProvider.CreateSymmetricKey(keyBuffer);
-
-        IBuffer decryptedBuffer = CryptographicEngine.Decrypt(cryptoKey, encryptedBuffer, null);
-
-        return CryptographicBuffer.ConvertBinaryToString(BinaryStringEncoding.Utf8, decryptedBuffer);
+        return EncryptStringAesBase(plainText, aes_Key, aes_IV, out _, out _, encodeType);
+    }
+    public static byte[] EncryptStringAesToByte(string plainText, out string aes_Key, out string aes_IV, EncodeType encodeType)
+    {
+        return EncryptStringAesBase(plainText, null, null, out aes_Key, out aes_IV, encodeType);
     }
 
-    public static string DecryptStringSymmetric(string encryptedText, string key)
+    public static string EncryptStringAes(string plainText, string aes_Key, string aes_IV)
     {
-        return DecryptStringSymmetricBase(encryptedText, key, SymmetricAlgorithm.AES_CCM, EncodeType.Hex);
+        var encrypted = EncryptStringAesBase(plainText, aes_Key, aes_IV, out _, out _, EncodeType.Hex);
+        return Convert.ToHexString(encrypted);
+    }
+    public static string EncryptStringAes(string plainText, out string aes_Key, out string aes_IV)
+    {
+        var encrypted = EncryptStringAesBase(plainText, null, null, out aes_Key, out aes_IV, EncodeType.Hex);
+        return Convert.ToHexString(encrypted);
     }
 
-    public static string DecryptStringSymmetric(string encryptedText, string key, SymmetricAlgorithm symmetricAlgorithm)
+    public static string EncryptStringAes(string plainText, string aes_Key, string aes_IV, EncodeType encodeType)
     {
-        return DecryptStringSymmetricBase(encryptedText, key, symmetricAlgorithm, EncodeType.Hex);
+        var encrypted = EncryptStringAesBase(plainText, aes_Key, aes_IV, out _, out _, encodeType);
+        if (encodeType == EncodeType.Hex)
+        {
+            return Convert.ToHexString(encrypted);
+        }
+        else
+        {
+            return Convert.ToBase64String(encrypted);
+        }
+    }
+    public static string EncryptStringAes(string plainText, out string aes_Key, out string aes_IV, EncodeType encodeType)
+    {
+        var encrypted = EncryptStringAesBase(plainText, null, null, out aes_Key, out aes_IV, encodeType);
+        if (encodeType == EncodeType.Hex)
+        {
+            return Convert.ToHexString(encrypted);
+        }
+        else
+        {
+            return Convert.ToBase64String(encrypted);
+        }
     }
 
-    public static string DecryptStringSymmetric(string encryptedText, string key, EncodeType encodeType)
+    private static string DecryptStringAesBase(byte[] cipherText, string aes_Key, string aes_IV, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
     {
-        return DecryptStringSymmetricBase(encryptedText, key, SymmetricAlgorithm.AES_CCM, encodeType);
+        string plaintext = null;
+        using var aesAlg = GetAESSymmetricAlgorithm(aes_Key, aes_IV, out aes_KeyOut, out aes_IVOut, encodeType);
+
+        ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+        using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+        {
+            using CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
+            using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+            {
+                plaintext = srDecrypt.ReadToEnd();
+            }
+        }
+
+        return plaintext;
     }
 
-    public static string DecryptStringSymmetric(string encryptedText, string key, SymmetricAlgorithm symmetricAlgorithm, EncodeType encodeType)
+    public static string DecryptStringAes(string cipherText, string aes_Key, string aes_IV)
     {
-        return DecryptStringSymmetricBase(encryptedText, key, symmetricAlgorithm, encodeType);
+        return DecryptStringAesBase(Convert.FromHexString(cipherText), aes_Key, aes_IV, out _, out _, EncodeType.Hex);
+    }
+
+    public static string DecryptStringAes(string cipherText, string aes_Key, string aes_IV, EncodeType encodeType)
+    {
+        if (encodeType == EncodeType.Hex)
+        {
+            var hexBytes = Convert.FromHexString(cipherText);
+            return DecryptStringAesBase(hexBytes, aes_Key, aes_IV, out _, out _, encodeType);
+        }
+        else
+        {
+            var base64bytes = Convert.FromBase64String(cipherText);
+            return DecryptStringAesBase(base64bytes, aes_Key, aes_IV, out _, out _, encodeType);
+        }
+    }
+
+    public static string DecryptStringAes(byte[] cipherText, string aes_Key, string aes_IV)
+    {
+        return DecryptStringAesBase(cipherText, aes_Key, aes_IV, out _, out _, EncodeType.Hex);
+    }
+
+    public static string DecryptStringAes(byte[] cipherText, string aes_Key, string aes_IV, EncodeType encodeType)
+    {
+        return DecryptStringAesBase(cipherText, aes_Key, aes_IV, out _, out _, encodeType);
     }
 
     private static System.Security.Cryptography.SymmetricAlgorithm GetAESSymmetricAlgorithm(string aes_Key, string aes_IV, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
@@ -118,7 +171,6 @@ public static partial class SecurityHelper
             aes_IVOut = Convert.ToBase64String(symmetricAlgorithm.IV);
         }
 
-
         return symmetricAlgorithm;
     }
 
@@ -134,7 +186,7 @@ public static partial class SecurityHelper
         long totlen = inputStream.Length;    //This is the total length of the input file.
         int len;                     //This is the number of bytes to be written at a time.
 
-        var symmetricAlgorithm = GetAESSymmetricAlgorithm(aes_Key, aes_IV, out aes_KeyOut, out aes_IVOut, encodeType);
+        using var symmetricAlgorithm = GetAESSymmetricAlgorithm(aes_Key, aes_IV, out aes_KeyOut, out aes_IVOut, encodeType);
 
         ICryptoTransform cryptoTransform = null;
         switch (cryptoMode)
@@ -169,14 +221,14 @@ public static partial class SecurityHelper
         CryptoFileAESBase(CryptoMode.Encrypt, inputFilePath, outputFilePath, aes_Key, aes_IV, out _, out _, encodeType);
     }
 
-    public static void EncryptFileAES(string inputFilePath, string outputFilePath, out string aes_KeyOut, out string aes_IVOut)
+    public static void EncryptFileAES(string inputFilePath, string outputFilePath, out string aes_Key, out string aes_IV)
     {
-        CryptoFileAESBase(CryptoMode.Encrypt, inputFilePath, outputFilePath, null, null, out aes_KeyOut, out aes_IVOut, EncodeType.Base64);
+        CryptoFileAESBase(CryptoMode.Encrypt, inputFilePath, outputFilePath, null, null, out aes_Key, out aes_IV, EncodeType.Base64);
     }
 
-    public static void EncryptFileAES(string inputFilePath, string outputFilePath, out string aes_KeyOut, out string aes_IVOut, EncodeType encodeType)
+    public static void EncryptFileAES(string inputFilePath, string outputFilePath, out string aes_Key, out string aes_IV, EncodeType encodeType)
     {
-        CryptoFileAESBase(CryptoMode.Encrypt, inputFilePath, outputFilePath, null, null, out aes_KeyOut, out aes_IVOut, encodeType);
+        CryptoFileAESBase(CryptoMode.Encrypt, inputFilePath, outputFilePath, null, null, out aes_Key, out aes_IV, encodeType);
     }
 
     public static void DecryptFileAES(string inputFilePath, string outputFilePath, string aes_Key, string aes_IV)
