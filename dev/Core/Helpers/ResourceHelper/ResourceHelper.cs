@@ -70,9 +70,31 @@ public class ResourceHelper : IResourceHelper
         }
     }
 
-    public string GetString(string key, string filename = "Resources")
+    private string GetStringBase(string key, string language, string filename)
     {
+        if (string.IsNullOrEmpty(language))
+        {
+            ResourceContext.QualifierValues["Language"] = language;
+        }
         var candidate = ResourceManager.MainResourceMap.TryGetValue($"{filename}/{key}", ResourceContext);
         return candidate != null ? candidate.ValueAsString : key;
+    }
+
+    public string GetString(string key)
+    {
+        return GetStringBase(key, null, "Resources");
+    }
+    public string GetString(string key, string language)
+    {
+        return GetStringBase(key, language, "Resources");
+    }
+    public string GetStringFromResource(string key, string filename)
+    {
+        return GetStringBase(key, null, filename);
+    }
+
+    public string GetStringFromResource(string key, string language, string filename)
+    {
+        return GetStringBase(key, language, filename);
     }
 }

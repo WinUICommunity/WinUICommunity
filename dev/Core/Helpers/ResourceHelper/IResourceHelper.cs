@@ -10,5 +10,8 @@ public interface IResourceHelper
     void Initialize(ResourceManager resourceManager);
     void Initialize(ResourceManager resourceManager, ResourceContext resourceContext);
     List<string> GetAllResourcesKeys(string identifier = null);
-    string GetString(string key, string filename = "Resources");
+    string GetString(string key);
+    string GetString(string key, string language);
+    string GetStringFromResource(string key, string filename);
+    string GetStringFromResource(string key, string language, string filename);
 }
