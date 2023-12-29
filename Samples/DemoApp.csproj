@@ -7,10 +7,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
-    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
+    <PublishProfile>win-x64.pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
-    <Version>5.5.0</Version>
+    <Version>6.0.0</Version>
     <NoWarn>WMC1506;CS8632</NoWarn>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <GITHUB_ACTIONS>false</GITHUB_ACTIONS>
