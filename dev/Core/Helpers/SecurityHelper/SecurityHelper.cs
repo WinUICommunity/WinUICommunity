@@ -1,7 +1,4 @@
-﻿using Windows.Security.Cryptography.Core;
-using Windows.Security.Cryptography;
-using Windows.Storage.Streams;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 
 namespace WinUICommunity;
 
