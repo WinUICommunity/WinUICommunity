@@ -11,6 +11,9 @@
 	  <Description>Create a landings page in the style of WinUI 3 and WinUI-Gallery very quickly and easily</Description>
 	  <PackageTags>winui LandingsPage landingpages winui3 win11 xaml SettingsUI settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <TargetFrameworks>net8.0-windows10.0.19041.0</TargetFrameworks>
+  </PropertyGroup>
   <ItemGroup>
 	  <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.0.230907" />
 	  <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.5.1" />

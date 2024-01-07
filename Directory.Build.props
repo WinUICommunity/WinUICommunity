@@ -25,6 +25,9 @@
   <PropertyGroup Condition="'$(TargetFramework.StartsWith(net7.0))' == 'true' Or '$(TargetFramework.StartsWith(net6.0))' == 'true'">
     <RuntimeIdentifiers>win10-x86;win10-x64</RuntimeIdentifiers>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <TargetFrameworks>net8.0-windows10.0.19041.0</TargetFrameworks>
+  </PropertyGroup>
   
   <!-- The NuGet versions of dependencies to build against. -->
   <ItemGroup>
