@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<wuc:OptionsPageControl x:Class="WinUICommunity.DemoApp.Examples.ControlExample"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:local="using:WinUICommunity.DemoApp.Examples"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:wuc="using:WinUICommunity"
+                        mc:Ignorable="d">
+    <wuc:OptionsPageControl.Footer>
+        <Pivot x:Name="pivot"
+               x:DefaultBindMode="OneWay">
+            <PivotItem x:Name="PivotXAMLItem">
+                <PivotItem.Header>
+                    <TextBlock Style="{ThemeResource BaseTextBlockStyle}"
+                               Text="XAML" />
+                </PivotItem.Header>
+                <local:SampleCodePresenter x:Name="XamlPresenter"
+                                           Code="{x:Bind Xaml}"
+                                           CodeSourceFile="{x:Bind XamlSource}" />
+            </PivotItem>
+            <PivotItem x:Name="PivotCSharpItem">
+                <PivotItem.Header>
+                    <TextBlock Style="{ThemeResource BaseTextBlockStyle}"
+                               Text="C#" />
+                </PivotItem.Header>
+                <local:SampleCodePresenter x:Name="CSharpPresenter"
+                                           Code="{x:Bind CSharp}"
+                                           CodeSourceFile="{x:Bind CSharpSource}"
+                                           SampleType="CSharp" />
+            </PivotItem>
+        </Pivot>
+    </wuc:OptionsPageControl.Footer>
+</wuc:OptionsPageControl>

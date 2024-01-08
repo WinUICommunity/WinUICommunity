@@ -64,4 +64,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ColorCode.Core" Version="2.0.15" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ControlPagesSampleCode\" />
+  </ItemGroup>
 </Project>
