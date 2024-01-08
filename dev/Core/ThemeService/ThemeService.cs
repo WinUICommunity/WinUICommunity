@@ -461,4 +461,14 @@ public class ThemeService : IThemeService
 
         BackdropPanel.Children.Cast<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentBackdrop).IsChecked = true;
     }
+
+    public ElementTheme GetActualTheme()
+    {
+        return ActualTheme;
+    }
+
+    public ElementTheme GetRootTheme()
+    {
+        return RootTheme;
+    }
 }
