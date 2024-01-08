@@ -131,18 +131,11 @@ public sealed partial class ControlExample : OptionsPageControl
     {
         if (ActualTheme == ElementTheme.Dark)
         {
-            RequestedTheme = ElementTheme.Light;
+            App.Current.ThemeService.SetCurrentThemeWithoutSave(ElementTheme.Light);
         }
         else
         {
-            RequestedTheme = ElementTheme.Dark;
+            App.Current.ThemeService.SetCurrentThemeWithoutSave(ElementTheme.Dark);
         }
-
-        XamlPresenter.changedElementTheme = RequestedTheme;
-        XamlPresenter.renderCodesWithChangedTheme = true;
-        XamlPresenter.GenerateSyntaxHighlightedContent();
-        CSharpPresenter.changedElementTheme = RequestedTheme;
-        CSharpPresenter.renderCodesWithChangedTheme = true;
-        CSharpPresenter.GenerateSyntaxHighlightedContent();
     }
 }

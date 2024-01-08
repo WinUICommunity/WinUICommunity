@@ -45,8 +45,6 @@ public sealed partial class SampleCodePresenter : UserControl
     public bool IsEmpty => string.IsNullOrEmpty(Code) && string.IsNullOrEmpty(CodeSourceFile);
 
     private string actualCode = "";
-    public bool renderCodesWithChangedTheme;
-    public ElementTheme changedElementTheme;
     public SampleCodePresenter()
     {
         this.InitializeComponent();
@@ -117,7 +115,7 @@ public sealed partial class SampleCodePresenter : UserControl
         return derviedSourceString;
     }
 
-    public void GenerateSyntaxHighlightedContent()
+    private void GenerateSyntaxHighlightedContent()
     {
         var language = SampleType switch
         {
@@ -173,15 +171,8 @@ public sealed partial class SampleCodePresenter : UserControl
 
         actualCode = sampleString;
 
-        RichTextBlockFormatter formatter;
-        if (renderCodesWithChangedTheme)
-        {
-            formatter = GenerateRichTextFormatter(changedElementTheme);
-        }
-        else
-        {
-            formatter = GenerateRichTextFormatter();
-        }
+        var formatter = GenerateRichTextFormatter();
+        
         if (SampleType == SampleCodePresenterType.Inline)
         {
             CodeScrollViewer.Content = new TextBlock() { FontFamily = new FontFamily("Consolas"), Text = actualCode, IsTextSelectionEnabled = true, TextTrimming = TextTrimming.CharacterEllipsis };
@@ -201,18 +192,6 @@ public sealed partial class SampleCodePresenter : UserControl
         var formatter = new RichTextBlockFormatter(App.Current.ThemeService.GetActualTheme());
 
         if (App.Current.ThemeService.IsDarkTheme())
-        {
-            UpdateFormatterDarkThemeColors(formatter);
-        }
-
-        return formatter;
-    }
-
-    public RichTextBlockFormatter GenerateRichTextFormatter(ElementTheme elementTheme)
-    {
-        var formatter = new RichTextBlockFormatter(elementTheme);
-
-        if (elementTheme == ElementTheme.Dark)
         {
             UpdateFormatterDarkThemeColors(formatter);
         }

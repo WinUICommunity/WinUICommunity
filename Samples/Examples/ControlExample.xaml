@@ -12,8 +12,6 @@
         <Thickness x:Key="ExpanderChevronMargin">0</Thickness>
         <x:Double x:Key="ExpanderChevronButtonSize">0</x:Double>
         <Thickness x:Key="ExpanderHeaderBorderThickness">0,0,0,0</Thickness>
-        <StaticResource x:Key="ExpanderContentBackground"
-                        ResourceKey="LayerFillColorDefaultBrush" />
     </wuc:OptionsPageControl.Resources>
     <wuc:OptionsPageControl.Bar>
         <StackPanel>
