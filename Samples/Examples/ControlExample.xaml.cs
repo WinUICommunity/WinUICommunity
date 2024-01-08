@@ -1,5 +1,7 @@
-﻿using DemoApp;
+﻿using System.Linq;
+using DemoApp;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace WinUICommunity.DemoApp.Examples;
 public sealed partial class ControlExample : OptionsPageControl
@@ -14,10 +16,12 @@ public sealed partial class ControlExample : OptionsPageControl
             if (string.IsNullOrEmpty((string)e.NewValue) && string.IsNullOrEmpty(ctl.XamlSource))
             {
                 ctl.PivotXAMLItem.Visibility = Visibility.Collapsed;
+                ctl.AddOrRemovePivotItem(Visibility.Collapsed, ctl.PivotXAMLItem);
             }
             else
             {
                 ctl.PivotXAMLItem.Visibility = Visibility.Visible;
+                ctl.AddOrRemovePivotItem(Visibility.Visible, ctl.PivotXAMLItem);
             }
 
             ctl.HandleFooterVisibility();
@@ -40,10 +44,12 @@ public sealed partial class ControlExample : OptionsPageControl
             if (string.IsNullOrEmpty((string)e.NewValue) && string.IsNullOrEmpty(ctl.Xaml))
             {
                 ctl.PivotXAMLItem.Visibility = Visibility.Collapsed;
+                ctl.AddOrRemovePivotItem(Visibility.Collapsed, ctl.PivotXAMLItem);
             }
             else
             {
                 ctl.PivotXAMLItem.Visibility = Visibility.Visible;
+                ctl.AddOrRemovePivotItem(Visibility.Visible, ctl.PivotXAMLItem);
             }
 
             ctl.HandleFooterVisibility();
@@ -66,10 +72,13 @@ public sealed partial class ControlExample : OptionsPageControl
             if (string.IsNullOrEmpty((string)e.NewValue) && string.IsNullOrEmpty(ctl.CSharpSource))
             {
                 ctl.PivotCSharpItem.Visibility = Visibility.Collapsed;
+                ctl.AddOrRemovePivotItem(Visibility.Collapsed, ctl.PivotCSharpItem);
+
             }
             else
             {
                 ctl.PivotCSharpItem.Visibility = Visibility.Visible;
+                ctl.AddOrRemovePivotItem(Visibility.Visible, ctl.PivotCSharpItem);
             }
             ctl.HandleFooterVisibility();
         }
@@ -91,21 +100,40 @@ public sealed partial class ControlExample : OptionsPageControl
             if (string.IsNullOrEmpty((string)e.NewValue) && string.IsNullOrEmpty(ctl.CSharp))
             {
                 ctl.PivotCSharpItem.Visibility = Visibility.Collapsed;
+                ctl.AddOrRemovePivotItem(Visibility.Collapsed, ctl.PivotCSharpItem);
             }
             else
             {
                 ctl.PivotCSharpItem.Visibility = Visibility.Visible;
+                ctl.AddOrRemovePivotItem(Visibility.Visible, ctl.PivotCSharpItem);
             }
 
             ctl.HandleFooterVisibility();
         }
     }
-
+    private void AddOrRemovePivotItem(Visibility visibility, PivotItem pivotItem)
+    {
+        if (visibility == Visibility.Collapsed)
+        {
+            pivot.Items.Remove(pivot.Items.Single(p => ((PivotItem)p).Equals(pivotItem)));
+        }
+        else
+        {
+            if (!pivot.Items.Any(p => ((PivotItem)p).Equals(pivotItem)))
+            {
+                pivot.Items.Add(pivotItem);
+            }
+        }
+    }
     private void HandleFooterVisibility()
     {
         if (string.IsNullOrEmpty(CSharpSource) && string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(Xaml) && string.IsNullOrEmpty(XamlSource))
         {
             FooterVisibility = Visibility.Collapsed;
+            foreach (var item in pivot.Items)
+            {
+                pivot.Items.Remove(item);
+            }
         }
         else
         {
