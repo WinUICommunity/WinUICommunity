@@ -15,13 +15,29 @@
         <StaticResource x:Key="ExpanderContentBackground"
                         ResourceKey="LayerFillColorDefaultBrush" />
     </wuc:OptionsPageControl.Resources>
+    <wuc:OptionsPageControl.Bar>
+        <StackPanel>
+            <Button Width="32"
+                    Height="32"
+                    Padding="4"
+                    HorizontalAlignment="Center"
+                    Click="ToggleTheme_Click"
+                    Style="{StaticResource SubtleButtonStyle}"
+                    ToolTipService.ToolTip="Toggle theme">
+                <Button.Content>
+                    <FontIcon FontSize="16"
+                              Glyph="&#xE793;" />
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </wuc:OptionsPageControl.Bar>
     <wuc:OptionsPageControl.BarFooter>
         <StackPanel>
             <Button Width="32"
                     Height="32"
                     Padding="0,0,0,2"
                     HorizontalAlignment="Center"
-                    Click="Button_Click"
+                    Click="ViewCode_Click"
                     Style="{StaticResource AccentButtonStyle}"
                     ToolTipService.ToolTip="View code">
                 <Button.Content>

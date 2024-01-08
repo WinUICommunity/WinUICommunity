@@ -357,7 +357,7 @@ Themes\Styles\TextBlock.xaml
                 </win:Expander.Resources>
                 <win:Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="0,1,0,0">
                   <win:ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <win:ContentControl MaxHeight="{TemplateBinding FooterMaxHeight}" Margin="16" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Content="{TemplateBinding Footer}" />
+                    <win:ContentControl MaxHeight="{TemplateBinding FooterMaxHeight}" Margin="{TemplateBinding FooterContentMargin}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Content="{TemplateBinding Footer}" />
                   </win:ScrollViewer>
                 </win:Grid>
               </win:Expander>

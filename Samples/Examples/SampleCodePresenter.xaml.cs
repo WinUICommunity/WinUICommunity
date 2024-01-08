@@ -199,7 +199,7 @@ public sealed partial class SampleCodePresenter : UserControl
 
         return formatter;
     }
-
+    
     private void UpdateFormatterDarkThemeColors(RichTextBlockFormatter formatter)
     {
         // Replace the default dark theme resources with ones that more closely align to VS Code dark theme.

@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using DemoApp;
+using Microsoft.UI.Xaml;
 
 namespace WinUICommunity.DemoApp.Examples;
 public sealed partial class ControlExample : OptionsPageControl
@@ -120,5 +121,21 @@ public sealed partial class ControlExample : OptionsPageControl
     {
         this.InitializeComponent();
         HandleFooterVisibility();
+    }
+
+    private void ViewCode_Click(object sender, RoutedEventArgs e)
+    {
+        IsFooterExpanded = !IsFooterExpanded;
+    }
+    private void ToggleTheme_Click(object sender, RoutedEventArgs e)
+    {
+        if (ActualTheme == ElementTheme.Dark)
+        {
+            RequestedTheme = ElementTheme.Light;
+        }
+        else
+        {
+            RequestedTheme = ElementTheme.Dark;
+        }
     }
 }
