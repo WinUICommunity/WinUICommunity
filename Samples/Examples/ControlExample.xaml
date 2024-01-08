@@ -7,6 +7,29 @@
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                         xmlns:wuc="using:WinUICommunity"
                         mc:Ignorable="d">
+    <local:OptionsPageControl.Resources>
+        <Thickness x:Key="ExpanderChevronMargin">0</Thickness>
+        <x:Double x:Key="ExpanderChevronButtonSize">0</x:Double>
+        <Thickness x:Key="ExpanderHeaderBorderThickness">0,0,0,0</Thickness>
+        <StaticResource x:Key="ExpanderContentBackground"
+                        ResourceKey="LayerFillColorDefaultBrush" />
+    </local:OptionsPageControl.Resources>
+    <wuc:OptionsPageControl.BarFooter>
+        <StackPanel>
+            <Button Width="32"
+                    Height="32"
+                    Padding="0,0,0,2"
+                    HorizontalAlignment="Center"
+                    Click="Button_Click"
+                    Style="{StaticResource AccentButtonStyle}"
+                    ToolTipService.ToolTip="View code">
+                <Button.Content>
+                    <PathIcon VerticalAlignment="Center"
+                              Data="{StaticResource CodeIcon}" />
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </wuc:OptionsPageControl.BarFooter>
     <wuc:OptionsPageControl.Footer>
         <Pivot x:Name="pivot"
                x:DefaultBindMode="OneWay">
