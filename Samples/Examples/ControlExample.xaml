@@ -6,14 +6,15 @@
                         xmlns:local="using:WinUICommunity.DemoApp.Examples"
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                         xmlns:wuc="using:WinUICommunity"
+                        FooterContentMargin="16,0,16,10"
                         mc:Ignorable="d">
-    <local:OptionsPageControl.Resources>
+    <wuc:OptionsPageControl.Resources>
         <Thickness x:Key="ExpanderChevronMargin">0</Thickness>
         <x:Double x:Key="ExpanderChevronButtonSize">0</x:Double>
         <Thickness x:Key="ExpanderHeaderBorderThickness">0,0,0,0</Thickness>
         <StaticResource x:Key="ExpanderContentBackground"
                         ResourceKey="LayerFillColorDefaultBrush" />
-    </local:OptionsPageControl.Resources>
+    </wuc:OptionsPageControl.Resources>
     <wuc:OptionsPageControl.BarFooter>
         <StackPanel>
             <Button Width="32"
