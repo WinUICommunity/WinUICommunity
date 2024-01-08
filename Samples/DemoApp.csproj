@@ -30,7 +30,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  <ItemGroup>
+    <Content Include="ControlPagesSampleCode\**\*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <!-- 
     Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
     Tools extension to be activated for this project even if the Windows App SDK Nuget
@@ -66,8 +70,5 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ColorCode.Core" Version="2.0.15" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ControlPagesSampleCode\" />
   </ItemGroup>
 </Project>
