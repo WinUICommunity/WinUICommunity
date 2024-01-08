@@ -12,6 +12,7 @@ public class ThemeService : IThemeService
                                .WithVersioning(VersioningResultAction.RenameAndLoadDefault);
     public Window CurrentWindow { get; set; }
     public SystemBackdrop CurrentSystemBackdrop { get; set; }
+    private bool changeThemeWithoutSave = false;
     public ElementTheme ActualTheme
     {
         get
@@ -38,10 +39,13 @@ public class ThemeService : IThemeService
             {
                 element.RequestedTheme = value;
             }
-            if (this.useAutoSave)
+            if (!changeThemeWithoutSave)
             {
-                Settings.ElementTheme = value;
-                Settings?.Save();
+                if (this.useAutoSave)
+                {
+                    Settings.ElementTheme = value;
+                    Settings?.Save();
+                }
             }
         }
     }
@@ -369,6 +373,16 @@ public class ThemeService : IThemeService
 
     public void SetCurrentTheme(ElementTheme elementTheme)
     {
+        changeThemeWithoutSave = false;
+        if (RootTheme != elementTheme)
+        {
+            RootTheme = elementTheme;
+        }
+    }
+
+    public void SetCurrentThemeWithoutSave(ElementTheme elementTheme)
+    {
+        changeThemeWithoutSave = true;
         if (RootTheme != elementTheme)
         {
             RootTheme = elementTheme;
@@ -387,10 +401,7 @@ public class ThemeService : IThemeService
         if (selectedTheme != null)
         {
             var currentTheme = GeneralHelper.GetEnum<ElementTheme>(selectedTheme);
-            if (RootTheme != currentTheme)
-            {
-                RootTheme = currentTheme;
-            }
+            SetCurrentTheme(currentTheme);
         }
     }
 
@@ -432,10 +443,7 @@ public class ThemeService : IThemeService
         if (selectedTheme != null)
         {
             var currentTheme = GeneralHelper.GetEnum<ElementTheme>(selectedTheme);
-            if (RootTheme != currentTheme)
-            {
-                RootTheme = currentTheme;
-            }
+            SetCurrentTheme(currentTheme);
         }
     }
 

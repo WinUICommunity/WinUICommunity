@@ -26,6 +26,7 @@ public interface IThemeService
     void ResetCaptionButtonColors(Window window);
     void UpdateSystemCaptionButton(Window window);
     void SetCurrentTheme(ElementTheme elementTheme);
+    void SetCurrentThemeWithoutSave(ElementTheme elementTheme);
     void OnThemeComboBoxSelectionChanged(object sender);
     void SetThemeComboBoxDefaultItem(ComboBox themeComboBox);
     void OnBackdropComboBoxSelectionChanged(object sender);
