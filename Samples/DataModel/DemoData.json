@@ -46,7 +46,7 @@
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.RainbowFramePage",
           "Title": "Rainbow Frame",
-          "Subtitle": "a window with Rainbow Frame",
+          "Subtitle": "A window with Rainbow Frame",
           "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
           "ImagePath": "ms-appx:///Assets/Fluent/frame.png"
         },
@@ -109,7 +109,7 @@
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.PrintPage",
           "Title": "Print",
-          "Subtitle": "see how you can print data in winui 3",
+          "Subtitle": "See how you can print data in winui 3",
           "ImageIconPath": "ms-appx:///Assets/Fluent/print.png",
           "ImagePath": "ms-appx:///Assets/Fluent/print.png"
         },
