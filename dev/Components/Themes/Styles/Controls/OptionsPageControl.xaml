@@ -124,7 +124,7 @@
                                     <ScrollViewer HorizontalAlignment="Stretch"
                                                   VerticalAlignment="Stretch">
                                         <ContentControl MaxHeight="{TemplateBinding FooterMaxHeight}"
-                                                        Margin="16"
+                                                        Margin="{TemplateBinding FooterContentMargin}"
                                                         HorizontalContentAlignment="Stretch"
                                                         VerticalContentAlignment="Stretch"
                                                         Content="{TemplateBinding Footer}" />

@@ -31,6 +31,9 @@ public partial class OptionsPageControl : Control
     public static readonly DependencyProperty FooterHorizontalAlignmentProperty =
         DependencyProperty.Register(nameof(FooterHorizontalAlignment), typeof(HorizontalAlignment), typeof(OptionsPageControl), new PropertyMetadata(HorizontalAlignment.Left));
 
+    public static readonly DependencyProperty FooterContentMarginProperty =
+        DependencyProperty.Register(nameof(FooterContentMargin), typeof(Thickness), typeof(OptionsPageControl), new PropertyMetadata(new Thickness(16)));
+
     public static readonly DependencyProperty PaneProperty =
         DependencyProperty.Register(nameof(Pane), typeof(object), typeof(OptionsPageControl), new PropertyMetadata(null, OnPaneChanged));
 
@@ -115,6 +118,13 @@ public partial class OptionsPageControl : Control
         get { return (HorizontalAlignment)GetValue(FooterHorizontalAlignmentProperty); }
         set { SetValue(FooterHorizontalAlignmentProperty, value); }
     }
+
+    public Thickness FooterContentMargin
+    {
+        get { return (Thickness)GetValue(FooterContentMarginProperty); }
+        set { SetValue(FooterContentMarginProperty, value); }
+    }
+
     public object? Pane
     {
         get => (object?)GetValue(PaneProperty);
