@@ -44,7 +44,8 @@
             <ContentPresenter x:Name="CodePresenter"
                               Loaded="CodePresenter_Loaded" />
         </ScrollViewer>
-        <wuc:CopyButton x:Name="CopyCodeButton" Margin="0,0,10,5"
+        <wuc:CopyButton x:Name="CopyCodeButton"
+                        Margin="0,0,10,5"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Click="CopyCodeButton_Click"
