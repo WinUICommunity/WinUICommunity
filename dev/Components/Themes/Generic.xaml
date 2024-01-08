@@ -9,6 +9,7 @@ Controls\Ported\SettingsExpander\SettingsExpander.xaml
 Controls\Ported\TitleBar\TitleBar.xaml
 Themes\Styles\Button.xaml
 Themes\Styles\Common.xaml
+Themes\Styles\Controls\CopyButton.xaml
 Themes\Styles\Controls\Divider.xaml
 Themes\Styles\Controls\FlyoutMenuButton.xaml
 Themes\Styles\Controls\Gravatar.xaml
@@ -16,6 +17,7 @@ Themes\Styles\Controls\Growl.xaml
 Themes\Styles\Controls\InlineAutoCompleteTextBox.xaml
 Themes\Styles\Controls\IsEnabledTextBlock.xaml
 Themes\Styles\Controls\KeyVisual.xaml
+Themes\Styles\Controls\OptionsPageControl.xaml
 Themes\Styles\Controls\SettingsGroup.xaml
 Themes\Styles\Controls\Shield.xaml
 Themes\Styles\Controls\SimpleSettingsGroup.xaml
@@ -295,6 +297,70 @@ Themes\Styles\TextBlock.xaml
             <win:Grid>
               <win:Rectangle x:Name="ContentHolder" Height="{TemplateBinding Height}" MinWidth="{TemplateBinding MinWidth}" Fill="{TemplateBinding Background}" RadiusX="4" RadiusY="4" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}" />
               <win:ContentPresenter x:Name="KeyPresenter" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" />
+            </win:Grid>
+          </win:Grid>
+        </win:ControlTemplate>
+      </win:Setter.Value>
+    </win:Setter>
+  </win:Style>
+  <win:Style x:Key="DefaultOptionsPageControlStyle" TargetType="local:OptionsPageControl">
+    <win:Setter Property="Template">
+      <win:Setter.Value>
+        <win:ControlTemplate TargetType="local:OptionsPageControl">
+          <win:Grid CornerRadius="0">
+            <win:Grid.RowDefinitions>
+              <win:RowDefinition Height="*" />
+              <win:RowDefinition Height="Auto" />
+            </win:Grid.RowDefinitions>
+            <win:Grid x:Name="MainCard" VerticalAlignment="Stretch" Background="{ThemeResource LayerFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="{TemplateBinding MainCardBorderThickness}" CornerRadius="{TemplateBinding MainCardCornerRadius}">
+              <win:Grid.RowDefinitions>
+                <win:RowDefinition Height="*" />
+                <win:RowDefinition Height="Auto" />
+                <win:RowDefinition Height="Auto" />
+              </win:Grid.RowDefinitions>
+              <win:Grid.ColumnDefinitions>
+                <win:ColumnDefinition Width="*" />
+                <win:ColumnDefinition Width="Auto" />
+              </win:Grid.ColumnDefinitions>
+              <win:Grid x:Name="OptionsPanel" Grid.Column="1" VerticalAlignment="Stretch" Background="{ThemeResource LayerFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1,0,0,0">
+                <win:Grid.ColumnDefinitions>
+                  <win:ColumnDefinition Width="*" />
+                  <win:ColumnDefinition Width="Auto" />
+                </win:Grid.ColumnDefinitions>
+                <win:ScrollViewer Grid.Row="0" Grid.Column="0" MinWidth="{TemplateBinding PaneMinWidth}" Padding="{TemplateBinding PanePadding}" IsEnabled="{TemplateBinding IsBarEnabled}" Visibility="{TemplateBinding PaneVisibility}">
+                  <win:ContentControl HorizontalContentAlignment="Stretch" Content="{TemplateBinding Pane}" />
+                </win:ScrollViewer>
+                <win:Grid x:Name="FixedOptionsBar" Grid.Column="1" Padding="4" HorizontalAlignment="Right" Background="{ThemeResource LayerFillColorAltBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1,0,0,0" RowSpacing="8">
+                  <win:Grid.RowDefinitions>
+                    <win:RowDefinition Height="*" />
+                    <win:RowDefinition Height="Auto" />
+                  </win:Grid.RowDefinitions>
+                  <win:Grid.ColumnDefinitions>
+                    <win:ColumnDefinition Width="Auto" />
+                    <win:ColumnDefinition Width="Auto" />
+                    <win:ColumnDefinition Width="Auto" />
+                  </win:Grid.ColumnDefinitions>
+                  <win:ContentControl x:Name="FixedOptionsBarContent" Grid.Row="0" Width="{TemplateBinding BarMinWidth}" VerticalAlignment="Top" HorizontalContentAlignment="{TemplateBinding BarHorizontalContentAlignment}" Content="{TemplateBinding Bar}" IsEnabled="{TemplateBinding IsBarEnabled}" />
+                  <win:ContentControl x:Name="FixedOptionsBarFooter" Grid.Row="1" Width="{TemplateBinding BarMinWidth}" VerticalAlignment="Bottom" HorizontalContentAlignment="{TemplateBinding BarHorizontalContentAlignment}" Content="{TemplateBinding BarFooter}" IsEnabled="{TemplateBinding IsBarEnabled}" />
+                </win:Grid>
+              </win:Grid>
+              <win:Grid x:Name="ContentPageHolder" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
+                <!--  A solidbackground we enable when toggling themes. WinUI uses a lot of translucent brushes and might look weird  -->
+                <win:Border Background="{ThemeResource SolidBackgroundFillColorBaseBrush}" CornerRadius="8,0,0,8" Visibility="Collapsed" />
+                <win:ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                  <win:ContentControl Margin="16" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Content="{TemplateBinding Content}" />
+                </win:ScrollViewer>
+              </win:Grid>
+              <win:Expander x:Name="PART_FooterExpander" Grid.Row="2" Grid.ColumnSpan="3" MinHeight="0" Margin="0,-1,0,0" Padding="0,0,0,0" HorizontalAlignment="Stretch" HorizontalContentAlignment="{TemplateBinding FooterHorizontalAlignment}" BorderBrush="Transparent" BorderThickness="0,1,0,0" CornerRadius="0,0,8,8" Header="{TemplateBinding FooterHeader}" IsEnabled="{TemplateBinding IsFooterEnabled}" IsExpanded="{TemplateBinding IsFooterExpanded}" Visibility="{TemplateBinding FooterVisibility}">
+                <win:Expander.Resources>
+                  <win:Thickness x:Key="ExpanderChevronMargin">20,0,4,0</win:Thickness>
+                </win:Expander.Resources>
+                <win:Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="0,1,0,0">
+                  <win:ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <win:ContentControl MaxHeight="{TemplateBinding FooterMaxHeight}" Margin="16" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Content="{TemplateBinding Footer}" />
+                  </win:ScrollViewer>
+                </win:Grid>
+              </win:Expander>
             </win:Grid>
           </win:Grid>
         </win:ControlTemplate>
@@ -1135,6 +1201,147 @@ Themes\Styles\TextBlock.xaml
   <win:Style x:Key="SuccessBorderPanelStyle" BasedOn="{StaticResource BaseBorderInfoPanelStyle}" TargetType="Border">
     <win:Setter Property="Background" Value="{ThemeResource InfoBarSuccessSeverityBackgroundBrush}" />
   </win:Style>
+  <win:Style x:Key="DefaultCopyButtonStyle" TargetType="local:CopyButton">
+    <win:Setter Property="Background" Value="{ThemeResource ButtonBackground}" />
+    <win:Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
+    <win:Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+    <win:Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
+    <win:Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}" />
+    <win:Setter Property="Padding" Value="6" />
+    <win:Setter Property="FontSize" Value="16" />
+    <win:Setter Property="AutomationProperties.Name" Value="Copy to clipboard" />
+    <win:Setter Property="ToolTipService.ToolTip" Value="Copy to clipboard" />
+    <win:Setter Property="HorizontalAlignment" Value="Left" />
+    <win:Setter Property="VerticalAlignment" Value="Center" />
+    <win:Setter Property="FontFamily" Value="{ThemeResource SymbolThemeFontFamily}" />
+    <win:Setter Property="FontWeight" Value="Normal" />
+    <win:Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+    <win:Setter Property="FocusVisualMargin" Value="-3" />
+    <win:Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
+    <win:Setter Property="Template">
+      <win:Setter.Value>
+        <win:ControlTemplate TargetType="Button">
+          <win:Grid x:Name="RootGrid" Padding="{TemplateBinding Padding}" AnimatedIcon.State="Normal" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" BackgroundSizing="{TemplateBinding BackgroundSizing}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
+            <win:Grid.Resources>
+              <win:Storyboard x:Name="CopyToClipboardSuccessAnimation">
+                <win:DoubleAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="(UIElement.Opacity)" Duration="0:0:1.433">
+                  <win:DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="1.0" />
+                  <win:SplineDoubleKeyFrame KeySpline="0.33,0.0 0.67,1.0" KeyTime="0:0:0.133" Value="0.0" />
+                  <win:DiscreteDoubleKeyFrame KeyTime="0:0:1.3" Value="0.0" />
+                  <win:SplineDoubleKeyFrame KeySpline="1.0,0.0 1.0,1.0" KeyTime="0:0:1.433" Value="1.0" />
+                </win:DoubleAnimationUsingKeyFrames>
+                <win:DoubleAnimationUsingKeyFrames Storyboard.TargetName="CopyToClipboardTextScaleTransform" Storyboard.TargetProperty="(ScaleX)" Duration="0:0:1.2">
+                  <win:DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="1.0" />
+                  <win:SplineDoubleKeyFrame KeySpline="0.13,0.0 0.0,1.0" KeyTime="0:0:0.133" Value="0.273" />
+                  <win:DiscreteDoubleKeyFrame KeyTime="0:0:1.167" Value="0.273" />
+                  <win:LinearDoubleKeyFrame KeyTime="0:0:1.2" Value="1.0" />
+                </win:DoubleAnimationUsingKeyFrames>
+                <win:DoubleAnimationUsingKeyFrames Storyboard.TargetName="CopyToClipboardTextScaleTransform" Storyboard.TargetProperty="(ScaleY)" Duration="0:0:1.2">
+                  <win:DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="1.0" />
+                  <win:SplineDoubleKeyFrame KeySpline="0.13,0.0 0.0,1.0" KeyTime="0:0:0.133" Value="0.273" />
+                  <win:DiscreteDoubleKeyFrame KeyTime="0:0:1.167" Value="0.273" />
+                  <win:LinearDoubleKeyFrame KeyTime="0:0:1.2" Value="1.0" />
+                </win:DoubleAnimationUsingKeyFrames>
+                <win:DoubleAnimationUsingKeyFrames Storyboard.TargetName="CopySuccessGlyph" Storyboard.TargetProperty="(UIElement.Opacity)" Duration="0:0:1.3">
+                  <win:DiscreteDoubleKeyFrame KeyTime="0:0:0.133" Value="0.0" />
+                  <win:SplineDoubleKeyFrame KeySpline="0.33,0.0 0.67,1.0" KeyTime="0:0:0.267" Value="1.0" />
+                  <win:DiscreteDoubleKeyFrame KeyTime="0:0:1.167" Value="1.0" />
+                  <win:SplineDoubleKeyFrame KeySpline="1.0,0.0 0.98,1.0" KeyTime="0:0:1.3" Value="0.0" />
+                </win:DoubleAnimationUsingKeyFrames>
+                <win:DoubleAnimationUsingKeyFrames Storyboard.TargetName="CopyToClipboardSuccessTextScaleTransform" Storyboard.TargetProperty="(ScaleX)" Duration="0:0:0.333">
+                  <win:DiscreteDoubleKeyFrame KeyTime="0:0:0.133" Value="0.385" />
+                  <win:SplineDoubleKeyFrame KeySpline="0.39,0.0 0.63,1.0" KeyTime="0:0:0.267" Value="1.146" />
+                  <win:SplineDoubleKeyFrame KeySpline="0.55,0.0 0.02,1.0" KeyTime="0:0:0.333" Value="1.0" />
+                </win:DoubleAnimationUsingKeyFrames>
+                <win:DoubleAnimationUsingKeyFrames Storyboard.TargetName="CopyToClipboardSuccessTextScaleTransform" Storyboard.TargetProperty="(ScaleY)" Duration="0:0:0.333">
+                  <win:DiscreteDoubleKeyFrame KeyTime="0:0:0.133" Value="0.385" />
+                  <win:SplineDoubleKeyFrame KeySpline="0.39,0.0 0.63,1.0" KeyTime="0:0:0.267" Value="1.146" />
+                  <win:SplineDoubleKeyFrame KeySpline="0.55,0.0 0.02,1.0" KeyTime="0:0:0.333" Value="1.0" />
+                </win:DoubleAnimationUsingKeyFrames>
+              </win:Storyboard>
+            </win:Grid.Resources>
+            <win:Grid.BackgroundTransition>
+              <win:BrushTransition Duration="0:0:0.083" />
+            </win:Grid.BackgroundTransition>
+            <win:VisualStateManager.VisualStateGroups>
+              <win:VisualStateGroup x:Name="CommonStates">
+                <win:VisualState x:Name="Normal" />
+                <win:VisualState x:Name="PointerOver">
+                  <win:Storyboard>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPointerOver}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="CopySuccessGlyph" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                  </win:Storyboard>
+                  <win:VisualState.Setters>
+                    <win:Setter Target="ContentPresenter.(AnimatedIcon.State)" Value="PointerOver" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+                <win:VisualState x:Name="Pressed">
+                  <win:Storyboard>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPressed}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="CopySuccessGlyph" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                  </win:Storyboard>
+                  <win:VisualState.Setters>
+                    <win:Setter Target="ContentPresenter.(AnimatedIcon.State)" Value="Pressed" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+                <win:VisualState x:Name="Disabled">
+                  <win:Storyboard>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="BorderBrush">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                    <win:ObjectAnimationUsingKeyFrames Storyboard.TargetName="CopySuccessGlyph" Storyboard.TargetProperty="Foreground">
+                      <win:DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}" />
+                    </win:ObjectAnimationUsingKeyFrames>
+                  </win:Storyboard>
+                  <win:VisualState.Setters>
+                    <!--  DisabledVisual Should be handled by the control, not the animated icon.  -->
+                    <win:Setter Target="ContentPresenter.(AnimatedIcon.State)" Value="Normal" />
+                  </win:VisualState.Setters>
+                </win:VisualState>
+              </win:VisualStateGroup>
+            </win:VisualStateManager.VisualStateGroups>
+            <win:ContentPresenter x:Name="ContentPresenter" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" RenderTransformOrigin=".5,.5">
+              <win:ContentPresenter.RenderTransform>
+                <win:ScaleTransform x:Name="CopyToClipboardTextScaleTransform" />
+              </win:ContentPresenter.RenderTransform>
+            </win:ContentPresenter>
+            <win:ContentPresenter x:Name="CopySuccessGlyph" Foreground="{TemplateBinding Foreground}" Opacity="0" RenderTransformOrigin=".5,.5">
+              <win:ContentPresenter.RenderTransform>
+                <win:ScaleTransform x:Name="CopyToClipboardSuccessTextScaleTransform" />
+              </win:ContentPresenter.RenderTransform>
+              <win:FontIcon FontSize="{TemplateBinding FontSize}" Glyph="" />
+            </win:ContentPresenter>
+          </win:Grid>
+        </win:ControlTemplate>
+      </win:Setter.Value>
+    </win:Setter>
+  </win:Style>
   <win:Style x:Key="DefaultFlyoutMenuButtonStyle" TargetType="local:FlyoutMenuButton">
     <win:Setter Property="HorizontalAlignment" Value="Stretch" />
     <win:Setter Property="VerticalAlignment" Value="Stretch" />
@@ -1443,6 +1650,7 @@ Themes\Styles\TextBlock.xaml
     <win:Setter Property="FontSize" Value="9" />
     <win:Setter Property="HorizontalContentAlignment" Value="Center" />
   </win:Style>
+  <win:Style BasedOn="{StaticResource DefaultOptionsPageControlStyle}" TargetType="local:OptionsPageControl" />
   <local:TextBlockTemplateSelector x:Key="HeaderTemplateSelector" TextBlockTemplate="{StaticResource HeaderTextBlockTemplate}" />
   <local:TextBlockTemplateSelector x:Key="DescriptionTemplateSelector" TextBlockTemplate="{StaticResource DescriptionTextBlockTemplate}" />
   <win:Style TargetType="local:SettingsGroup">
@@ -2523,6 +2731,7 @@ Themes\Styles\TextBlock.xaml
       </win:Setter.Value>
     </win:Setter>
   </win:Style>
+  <win:Style BasedOn="{StaticResource DefaultCopyButtonStyle}" TargetType="local:CopyButton" />
   <win:Style BasedOn="{StaticResource DefaultFlyoutMenuButtonStyle}" TargetType="local:FlyoutMenuButton" />
   <win:Style BasedOn="{StaticResource DefaultSettingsCardStyle}" TargetType="local:SettingsCard" />
   <win:Style x:Key="DefaultSettingsExpanderStyle" TargetType="local:SettingsExpander">
