@@ -36,7 +36,7 @@ public partial class OptionsPageControl : Control
     private static void OnIsFooterExpanderChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctl = (OptionsPageControl)d;
-        if (ctl != null)
+        if (ctl != null && ctl._footerExpander != null)
         {
             ctl._footerExpander.IsExpanded = (bool)e.NewValue;
         }
