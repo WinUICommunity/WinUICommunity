@@ -1,6 +1,9 @@
-﻿namespace WinUICommunity;
+﻿using Microsoft.UI.Xaml.Markup;
+
+namespace WinUICommunity;
 
 [TemplatePart(Name = nameof(PART_FooterExpander), Type = typeof(Expander))]
+[ContentProperty(Name = nameof(Content))]
 public partial class OptionsPageControl : Control
 {
     private string PART_FooterExpander = "PART_FooterExpander";
