@@ -3,11 +3,14 @@
 namespace WinUICommunity;
 
 [TemplatePart(Name = nameof(PART_FooterExpander), Type = typeof(Expander))]
+[TemplatePart(Name = nameof(PART_HeaderTextPresenter), Type = typeof(TextBlock))]
 [ContentProperty(Name = nameof(Content))]
 public partial class OptionsPageControl : Control
 {
     private string PART_FooterExpander = "PART_FooterExpander";
+    private string PART_HeaderTextPresenter = "PART_HeaderTextPresenter";
     private Expander _footerExpander;
+    private TextBlock _headerTextBlock;
 
     public OptionsPageControl()
     {
@@ -18,8 +21,25 @@ public partial class OptionsPageControl : Control
     {
         base.OnApplyTemplate();
         _footerExpander = GetTemplateChild(PART_FooterExpander) as Expander;
+        _headerTextBlock = GetTemplateChild(PART_HeaderTextPresenter) as TextBlock;
+
+        if (_headerTextBlock != null)
+        {
+            if (string.IsNullOrEmpty(_headerTextBlock.Text))
+            {
+                _headerTextBlock.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 
+    private static void OnHeaderTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctl = (OptionsPageControl)d;
+        if (ctl != null && ctl._headerTextBlock != null)
+        {
+            ctl._headerTextBlock.Visibility = string.IsNullOrEmpty((string)e.NewValue) ? Visibility.Collapsed : Visibility.Visible;
+        }
+    }
     private static void OnPaneChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctl = (OptionsPageControl)d;

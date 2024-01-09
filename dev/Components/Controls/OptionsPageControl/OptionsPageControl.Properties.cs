@@ -1,6 +1,10 @@
-﻿namespace WinUICommunity;
+﻿
+namespace WinUICommunity;
 public partial class OptionsPageControl : Control
 {
+    public static readonly DependencyProperty HeaderTextProperty =
+        DependencyProperty.Register(nameof(HeaderText), typeof(string), typeof(OptionsPageControl), new PropertyMetadata(null, OnHeaderTextChanged));
+
     public static readonly DependencyProperty MainCardCornerRadiusProperty =
           DependencyProperty.Register(nameof(MainCardCornerRadius), typeof(CornerRadius), typeof(OptionsPageControl), new PropertyMetadata(new CornerRadius(8)));
 
@@ -60,6 +64,12 @@ public partial class OptionsPageControl : Control
 
     public static readonly DependencyProperty IsBarEnabledProperty =
         DependencyProperty.Register(nameof(IsBarEnabled), typeof(bool), typeof(OptionsPageControl), new PropertyMetadata(true));
+
+    public string HeaderText
+    {
+        get { return (string)GetValue(HeaderTextProperty); }
+        set { SetValue(HeaderTextProperty, value); }
+    }
 
     public CornerRadius MainCardCornerRadius
     {

@@ -309,10 +309,11 @@ Themes\Styles\TextBlock.xaml
         <win:ControlTemplate TargetType="local:OptionsPageControl">
           <win:Grid CornerRadius="0">
             <win:Grid.RowDefinitions>
-              <win:RowDefinition Height="*" />
               <win:RowDefinition Height="Auto" />
+              <win:RowDefinition Height="*" />
             </win:Grid.RowDefinitions>
-            <win:Grid x:Name="MainCard" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{ThemeResource LayerFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="{TemplateBinding MainCardBorderThickness}" CornerRadius="{TemplateBinding MainCardCornerRadius}">
+            <win:TextBlock x:Name="PART_HeaderTextPresenter" Margin="0,12" AutomationProperties.HeadingLevel="Level3" Style="{ThemeResource BodyStrongTextBlockStyle}" Text="{TemplateBinding HeaderText}" />
+            <win:Grid x:Name="MainCard" Grid.Row="1" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{ThemeResource LayerFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="{TemplateBinding MainCardBorderThickness}" CornerRadius="{TemplateBinding MainCardCornerRadius}">
               <win:Grid.RowDefinitions>
                 <win:RowDefinition Height="*" />
                 <win:RowDefinition Height="Auto" />

@@ -11,7 +11,8 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample CSharpSource="Features/DividerPage_Part1_cs.txt">
+            <local:ControlExample CSharpSource="Features/DividerPage_Part1_cs.txt"
+                                  HeaderText="Example 1">
                 <StackPanel Margin="10"
                             Spacing="10">
                     <wuc:Divider />
@@ -38,7 +39,8 @@
                                  LineStrokeThickness="2" />
                 </StackPanel>
             </local:ControlExample>
-            <local:ControlExample CSharpSource="Features/DividerPage_Part2_cs.txt">
+            <local:ControlExample CSharpSource="Features/DividerPage_Part2_cs.txt"
+                                  HeaderText="Example 2">
                 <StackPanel Margin="10"
                             Spacing="10">
                     <wuc:Divider HorizontalContentAlignment="Left"

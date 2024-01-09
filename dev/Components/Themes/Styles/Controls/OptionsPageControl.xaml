@@ -13,10 +13,16 @@
                 <ControlTemplate TargetType="local:OptionsPageControl">
                     <Grid CornerRadius="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
+                        <TextBlock x:Name="PART_HeaderTextPresenter"
+                                   Margin="0,12"
+                                   AutomationProperties.HeadingLevel="Level3"
+                                   Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                   Text="{TemplateBinding HeaderText}" />
                         <Grid x:Name="MainCard"
+                              Grid.Row="1"
                               HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalAlignment}"
                               Background="{ThemeResource LayerFillColorDefaultBrush}"
