@@ -69,9 +69,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Remove="ControlPagesSampleCode\Features\CheckUpdatePage_cs.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="ColorCode.Core" Version="2.0.15" />
   </ItemGroup>
 </Project>

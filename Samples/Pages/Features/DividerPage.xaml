@@ -3,82 +3,86 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="using:WinUICommunity.DemoApp.Pages"
+      xmlns:local="using:WinUICommunity.DemoApp.Examples"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
-
-    <StackPanel Margin="10"
-                wuc:PanelAttach.ChildrenTransitions="Default"
-                Spacing="10">
-        <StackPanel Orientation="Horizontal"
+    <ScrollViewer>
+        <StackPanel Margin="10"
+                    wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <StackPanel Width="300">
-                <wuc:Divider />
-                <wuc:Divider Content="Title" />
-                <wuc:Divider ContentPadding="0">
-                    <Button Content="More" />
-                </wuc:Divider>
-                <wuc:Divider LineStroke="{ThemeResource AccentAAFillColorDefaultBrush}"
-                             LineStrokeThickness="2" />
-                <wuc:Divider LineStroke="{ThemeResource SystemFillColorCriticalBrush}"
-                             LineStrokeThickness="2" />
+            <local:ControlExample CSharpSource="Features/DividerPage_Part1_cs.txt">
+                <StackPanel Margin="10"
+                            Spacing="10">
+                    <wuc:Divider />
+                    <wuc:Divider Content="Title" />
+                    <wuc:Divider ContentPadding="0">
+                        <Button Content="More" />
+                    </wuc:Divider>
+                    <wuc:Divider LineStroke="{ThemeResource AccentAAFillColorDefaultBrush}"
+                                 LineStrokeThickness="2" />
+                    <wuc:Divider LineStroke="{ThemeResource SystemFillColorCriticalBrush}"
+                                 LineStrokeThickness="2" />
 
-                <wuc:Divider LineStrokeDashArray="2,2" />
-                <wuc:Divider Content="Title"
-                             LineStrokeDashArray="2,2"
-                             LineStrokeThickness="2" />
-                <wuc:Divider Content="Title"
-                             LineStroke="{ThemeResource AccentAAFillColorDefaultBrush}"
-                             LineStrokeDashArray="2,2"
-                             LineStrokeThickness="2" />
-                <wuc:Divider Content="Title"
-                             LineStroke="{ThemeResource SystemFillColorCriticalBrush}"
-                             LineStrokeDashArray="2,2"
-                             LineStrokeThickness="2" />
-            </StackPanel>
-            <StackPanel Width="300">
-                <wuc:Divider HorizontalContentAlignment="Left"
-                             Content="Title" />
-                <wuc:Divider HorizontalContentAlignment="Right"
-                             Content="Title"
-                             ContentPadding="10,0" />
-                <StackPanel Orientation="Horizontal">
-                    <Button Content="Button" />
-                    <wuc:Divider MaxHeight="16"
-                                 Orientation="Vertical" />
-                    <Button Content="Button" />
-                    <wuc:Divider MaxHeight="16"
-                                 Orientation="Vertical" />
-                    <Button Content="Button" />
-                </StackPanel>
-                <StackPanel Margin="0,16,0,0"
-                            Orientation="Horizontal">
-                    <Button Content="Button" />
-                    <wuc:Divider MaxHeight="16"
-                                 LineStrokeThickness="2"
-                                 Orientation="Vertical" />
-                    <Button Content="Button" />
-                    <wuc:Divider MaxHeight="16"
-                                 LineStrokeThickness="2"
-                                 Orientation="Vertical" />
-                    <Button Content="Button" />
-                </StackPanel>
-                <StackPanel Margin="0,16,0,0"
-                            Orientation="Horizontal">
-                    <Button Content="Button" />
-                    <wuc:Divider MaxHeight="16"
-                                 LineStroke="{ThemeResource AccentAAFillColorTertiaryBrush}"
-                                 LineStrokeThickness="2"
-                                 Orientation="Vertical" />
-                    <Button Content="Button" />
-                    <wuc:Divider MaxHeight="16"
+                    <wuc:Divider LineStrokeDashArray="2,2" />
+                    <wuc:Divider Content="Title"
+                                 LineStrokeDashArray="2,2"
+                                 LineStrokeThickness="2" />
+                    <wuc:Divider Content="Title"
+                                 LineStroke="{ThemeResource AccentAAFillColorDefaultBrush}"
+                                 LineStrokeDashArray="2,2"
+                                 LineStrokeThickness="2" />
+                    <wuc:Divider Content="Title"
                                  LineStroke="{ThemeResource SystemFillColorCriticalBrush}"
-                                 LineStrokeThickness="2"
-                                 Orientation="Vertical" />
-                    <Button Content="Button" />
+                                 LineStrokeDashArray="2,2"
+                                 LineStrokeThickness="2" />
                 </StackPanel>
-            </StackPanel>
+            </local:ControlExample>
+            <local:ControlExample CSharpSource="Features/DividerPage_Part2_cs.txt">
+                <StackPanel Margin="10"
+                            Spacing="10">
+                    <wuc:Divider HorizontalContentAlignment="Left"
+                                 Content="Title" />
+                    <wuc:Divider HorizontalContentAlignment="Right"
+                                 Content="Title"
+                                 ContentPadding="10,0" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Button" />
+                        <wuc:Divider MaxHeight="16"
+                                     Orientation="Vertical" />
+                        <Button Content="Button" />
+                        <wuc:Divider MaxHeight="16"
+                                     Orientation="Vertical" />
+                        <Button Content="Button" />
+                    </StackPanel>
+                    <StackPanel Margin="0,16,0,0"
+                                Orientation="Horizontal">
+                        <Button Content="Button" />
+                        <wuc:Divider MaxHeight="16"
+                                     LineStrokeThickness="2"
+                                     Orientation="Vertical" />
+                        <Button Content="Button" />
+                        <wuc:Divider MaxHeight="16"
+                                     LineStrokeThickness="2"
+                                     Orientation="Vertical" />
+                        <Button Content="Button" />
+                    </StackPanel>
+                    <StackPanel Margin="0,16,0,0"
+                                Orientation="Horizontal">
+                        <Button Content="Button" />
+                        <wuc:Divider MaxHeight="16"
+                                     LineStroke="{ThemeResource AccentAAFillColorTertiaryBrush}"
+                                     LineStrokeThickness="2"
+                                     Orientation="Vertical" />
+                        <Button Content="Button" />
+                        <wuc:Divider MaxHeight="16"
+                                     LineStroke="{ThemeResource SystemFillColorCriticalBrush}"
+                                     LineStrokeThickness="2"
+                                     Orientation="Vertical" />
+                        <Button Content="Button" />
+                    </StackPanel>
+                </StackPanel>
+            </local:ControlExample>
         </StackPanel>
-    </StackPanel>
+    </ScrollViewer>
 </Page>
