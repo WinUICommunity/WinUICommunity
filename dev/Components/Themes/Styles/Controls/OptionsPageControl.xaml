@@ -17,7 +17,8 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid x:Name="MainCard"
-                              VerticalAlignment="Stretch"
+                              HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalAlignment}"
                               Background="{ThemeResource LayerFillColorDefaultBrush}"
                               BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                               BorderThickness="{TemplateBinding MainCardBorderThickness}"
@@ -62,6 +63,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -77,7 +79,7 @@
                                                     Content="{TemplateBinding Bar}"
                                                     IsEnabled="{TemplateBinding IsBarEnabled}" />
                                     <ContentControl x:Name="FixedOptionsBarFooter"
-                                                    Grid.Row="1"
+                                                    Grid.Row="2"
                                                     Width="{TemplateBinding BarMinWidth}"
                                                     VerticalAlignment="Bottom"
                                                     HorizontalContentAlignment="{TemplateBinding BarHorizontalContentAlignment}"
@@ -119,17 +121,12 @@
                                 <Expander.Resources>
                                     <Thickness x:Key="ExpanderChevronMargin">20,0,4,0</Thickness>
                                 </Expander.Resources>
-                                <Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-                                      BorderThickness="0,1,0,0">
-                                    <ScrollViewer HorizontalAlignment="Stretch"
-                                                  VerticalAlignment="Stretch">
-                                        <ContentControl MaxHeight="{TemplateBinding FooterMaxHeight}"
-                                                        Margin="{TemplateBinding FooterContentMargin}"
-                                                        HorizontalContentAlignment="Stretch"
-                                                        VerticalContentAlignment="Stretch"
-                                                        Content="{TemplateBinding Footer}" />
-                                    </ScrollViewer>
-                                </Grid>
+                                <ContentControl MaxHeight="{TemplateBinding FooterMaxHeight}"
+                                                Margin="{TemplateBinding FooterContentMargin}"
+                                                HorizontalContentAlignment="Stretch"
+                                                VerticalContentAlignment="Stretch"
+                                                Content="{TemplateBinding Footer}" />
+
                             </Expander>
                         </Grid>
                     </Grid>

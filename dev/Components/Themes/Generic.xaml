@@ -312,7 +312,7 @@ Themes\Styles\TextBlock.xaml
               <win:RowDefinition Height="*" />
               <win:RowDefinition Height="Auto" />
             </win:Grid.RowDefinitions>
-            <win:Grid x:Name="MainCard" VerticalAlignment="Stretch" Background="{ThemeResource LayerFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="{TemplateBinding MainCardBorderThickness}" CornerRadius="{TemplateBinding MainCardCornerRadius}">
+            <win:Grid x:Name="MainCard" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{ThemeResource LayerFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="{TemplateBinding MainCardBorderThickness}" CornerRadius="{TemplateBinding MainCardCornerRadius}">
               <win:Grid.RowDefinitions>
                 <win:RowDefinition Height="*" />
                 <win:RowDefinition Height="Auto" />
@@ -334,6 +334,7 @@ Themes\Styles\TextBlock.xaml
                   <win:Grid.RowDefinitions>
                     <win:RowDefinition Height="*" />
                     <win:RowDefinition Height="Auto" />
+                    <win:RowDefinition Height="Auto" />
                   </win:Grid.RowDefinitions>
                   <win:Grid.ColumnDefinitions>
                     <win:ColumnDefinition Width="Auto" />
@@ -341,7 +342,7 @@ Themes\Styles\TextBlock.xaml
                     <win:ColumnDefinition Width="Auto" />
                   </win:Grid.ColumnDefinitions>
                   <win:ContentControl x:Name="FixedOptionsBarContent" Grid.Row="0" Width="{TemplateBinding BarMinWidth}" VerticalAlignment="Top" HorizontalContentAlignment="{TemplateBinding BarHorizontalContentAlignment}" Content="{TemplateBinding Bar}" IsEnabled="{TemplateBinding IsBarEnabled}" />
-                  <win:ContentControl x:Name="FixedOptionsBarFooter" Grid.Row="1" Width="{TemplateBinding BarMinWidth}" VerticalAlignment="Bottom" HorizontalContentAlignment="{TemplateBinding BarHorizontalContentAlignment}" Content="{TemplateBinding BarFooter}" IsEnabled="{TemplateBinding IsBarEnabled}" />
+                  <win:ContentControl x:Name="FixedOptionsBarFooter" Grid.Row="2" Width="{TemplateBinding BarMinWidth}" VerticalAlignment="Bottom" HorizontalContentAlignment="{TemplateBinding BarHorizontalContentAlignment}" Content="{TemplateBinding BarFooter}" IsEnabled="{TemplateBinding IsBarEnabled}" />
                 </win:Grid>
               </win:Grid>
               <win:Grid x:Name="ContentPageHolder" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}">
@@ -355,11 +356,7 @@ Themes\Styles\TextBlock.xaml
                 <win:Expander.Resources>
                   <win:Thickness x:Key="ExpanderChevronMargin">20,0,4,0</win:Thickness>
                 </win:Expander.Resources>
-                <win:Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="0,1,0,0">
-                  <win:ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <win:ContentControl MaxHeight="{TemplateBinding FooterMaxHeight}" Margin="{TemplateBinding FooterContentMargin}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Content="{TemplateBinding Footer}" />
-                  </win:ScrollViewer>
-                </win:Grid>
+                <win:ContentControl MaxHeight="{TemplateBinding FooterMaxHeight}" Margin="{TemplateBinding FooterContentMargin}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Content="{TemplateBinding Footer}" />
               </win:Expander>
             </win:Grid>
           </win:Grid>

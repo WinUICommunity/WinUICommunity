@@ -6,6 +6,8 @@
                         xmlns:local="using:WinUICommunity.DemoApp.Examples"
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                         xmlns:wuc="using:WinUICommunity"
+                        Margin="20"
+                        VerticalAlignment="Top"
                         FooterContentMargin="16,0,16,10"
                         mc:Ignorable="d">
     <wuc:OptionsPageControl.Resources>
@@ -46,27 +48,28 @@
         </StackPanel>
     </wuc:OptionsPageControl.BarFooter>
     <wuc:OptionsPageControl.Footer>
-        <Pivot x:Name="pivot"
-               x:DefaultBindMode="OneWay">
-            <PivotItem x:Name="PivotXAMLItem">
-                <PivotItem.Header>
-                    <TextBlock Style="{ThemeResource BaseTextBlockStyle}"
-                               Text="XAML" />
-                </PivotItem.Header>
-                <local:SampleCodePresenter x:Name="XamlPresenter"
-                                           Code="{x:Bind Xaml}"
-                                           CodeSourceFile="{x:Bind XamlSource}" />
-            </PivotItem>
-            <PivotItem x:Name="PivotCSharpItem">
-                <PivotItem.Header>
-                    <TextBlock Style="{ThemeResource BaseTextBlockStyle}"
-                               Text="C#" />
-                </PivotItem.Header>
-                <local:SampleCodePresenter x:Name="CSharpPresenter"
-                                           Code="{x:Bind CSharp}"
-                                           CodeSourceFile="{x:Bind CSharpSource}"
-                                           SampleType="CSharp" />
-            </PivotItem>
-        </Pivot>
+        <Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+              BorderThickness="0,1,0,0">
+            <Pivot x:Name="pivot"
+                   x:DefaultBindMode="OneWay">
+                <Pivot.Resources>
+                    <x:Double x:Key="PivotHeaderItemFontSize">14</x:Double>
+                </Pivot.Resources>
+                <PivotItem x:Name="PivotXAMLItem"
+                           Header="XAML">
+                    <local:SampleCodePresenter x:Name="XamlPresenter"
+                                               Code="{x:Bind Xaml}"
+                                               CodeSourceFile="{x:Bind XamlSource}" />
+                </PivotItem>
+                <PivotItem x:Name="PivotCSharpItem"
+                           Header="C#">
+                    <local:SampleCodePresenter x:Name="CSharpPresenter"
+                                               Code="{x:Bind CSharp}"
+                                               CodeSourceFile="{x:Bind CSharpSource}"
+                                               SampleType="CSharp" />
+                </PivotItem>
+            </Pivot>
+
+        </Grid>
     </wuc:OptionsPageControl.Footer>
 </wuc:OptionsPageControl>
