@@ -65,7 +65,7 @@ public sealed partial class PrintPage : Page
                 printHelperOptions.AddDisplayOption(StandardPrintTaskOptions.Orientation);
             }
 
-            await _printHelper.ShowPrintUIAsync(WinRT.Interop.WindowNative.GetWindowHandle(App.currentWindow), "Windows Community Toolkit Sample App", printHelperOptions, true);
+            await _printHelper.ShowPrintUIAsync(WinRT.Interop.WindowNative.GetWindowHandle(App.currentWindow), "Sample", printHelperOptions, true);
         }
         else
         {

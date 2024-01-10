@@ -142,13 +142,6 @@
           "ImagePath": "ms-appx:///Assets/Fluent/update.png"
         },
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.PresenterPage",
-          "Title": "AppWindow Presenter",
-          "Subtitle": "Work with Window.AppWindow",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/window.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/window.png"
-        },
-        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.InlineAutoCompleteTextBoxPage",
           "Title": "Inline AutoComplete TextBox",
           "Subtitle": "Inline AutoComplete TextBox",

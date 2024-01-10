@@ -1,0 +1,17 @@
+﻿private List<string> DemoSuggestions { get; } = new();
+
+private void UpdateDemoSuggestions()
+{
+    DemoSuggestions.Clear();
+
+    string[]? additionals = AdditionalSuggestions.Text.Split('\u002C');
+    // Luke Skywalker,Leia Organa,Han Solo,Chewbacca,Obi-Wan Kenobi,R2-D2,C-3PO,Darth Vader,😎😊😁
+
+    Random random = new();
+
+    foreach (string item in additionals)
+    {
+        int index = random.Next(0, DemoSuggestions.Count);
+        DemoSuggestions.Insert(index, item);
+    }
+}

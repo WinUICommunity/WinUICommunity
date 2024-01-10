@@ -42,6 +42,7 @@
                       VerticalScrollBarVisibility="Auto"
                       VerticalScrollMode="Auto">
             <ContentPresenter x:Name="CodePresenter"
+                              Margin="0,0,0,15"
                               Loaded="CodePresenter_Loaded" />
         </ScrollViewer>
         <wuc:CopyButton x:Name="CopyCodeButton"
