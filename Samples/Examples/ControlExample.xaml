@@ -6,7 +6,7 @@
                         xmlns:local="using:WinUICommunity.DemoApp.Examples"
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                         xmlns:wuc="using:WinUICommunity"
-                        Margin="20"
+                        Margin="10,0,10,15"
                         VerticalAlignment="Top"
                         FooterContentMargin="16,0,16,10"
                         mc:Ignorable="d">
