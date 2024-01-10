@@ -2,15 +2,19 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:WinUICommunity.DemoApp.Examples"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
-
-    <TabView>
-        <TabView.TabItems>
-            <TabViewItem Name="tabviewItem1"
-                         Header="NavigationView"
-                         Loaded="tabviewItem1_Loaded">
+    <ScrollViewer>
+        <StackPanel Margin="10"
+                    wuc:PanelAttach.ChildrenTransitions="Default"
+                    Spacing="10">
+            <local:ControlExample CSharpSource="Features/NavigationManagerPage_cs.txt"
+                                  DocPage="navigationService"
+                                  DocType="Core"
+                                  HeaderText="Simple NavigationView"
+                                  XamlSource="Features/NavigationManagerPage_xaml.txt">
                 <NavigationView x:Name="navigationView">
                     <NavigationView.AutoSuggestBox>
                         <AutoSuggestBox Name="autoSuggestBox"
@@ -30,10 +34,12 @@
                     </NavigationView.MenuItems>
                     <Frame x:Name="shellFrame" />
                 </NavigationView>
-            </TabViewItem>
-            <TabViewItem Name="tabViewItem2"
-                         Header="NavigationView With Json"
-                         Loaded="tabViewItem2_Loaded">
+            </local:ControlExample>
+            <local:ControlExample CSharpSource="Features/NavigationManagerPage_Json_cs.txt"
+                                  DocPage="navigationService"
+                                  DocType="Core"
+                                  HeaderText="NavigationView with Json File"
+                                  XamlSource="Features/NavigationManagerPage_Json_xaml.txt">
                 <NavigationView x:Name="NavigationViewControl"
                                 IsTabStop="False"
                                 IsTitleBarAutoPaddingEnabled="True"
@@ -49,7 +55,7 @@
                     </NavigationView.AutoSuggestBox>
                     <Frame x:Name="rootFrame" />
                 </NavigationView>
-            </TabViewItem>
-        </TabView.TabItems>
-    </TabView>
+            </local:ControlExample>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

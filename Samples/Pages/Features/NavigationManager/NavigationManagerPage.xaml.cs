@@ -14,9 +14,16 @@ public sealed partial class NavigationManagerPage : Page
     {
         this.InitializeComponent();
         Instance = this;
+        Loaded += NavigationManagerPage_Loaded;
     }
 
-    private void tabviewItem1_Loaded(object sender, RoutedEventArgs e)
+    private void NavigationManagerPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        InitNavigationView();
+        InitNavigationViewWithJson();
+    }
+
+    private void InitNavigationView()
     {
         var pageService = new myPageService();
         pageService.SetDefaultPage(typeof(HomeLandingsPage));
@@ -31,7 +38,7 @@ public sealed partial class NavigationManagerPage : Page
         navigationViewService.ConfigAutoSuggestBox(autoSuggestBox);
     }
 
-    private void tabViewItem2_Loaded(object sender, RoutedEventArgs e)
+    private void InitNavigationViewWithJson()
     {
         jsonNavigationViewService = new JsonNavigationViewService();
         jsonNavigationViewService.Initialize(NavigationViewControl, rootFrame);

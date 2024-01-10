@@ -1,5 +1,4 @@
 ﻿using DemoApp;
-using DemoApp.Pages;
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -16,7 +15,6 @@ public sealed partial class AllLandingsPage : Page
     {
         allLandingsPage.GetData(App.Current.JsonNavigationViewService.DataSource);
     }
-
 
     private void allLandingsPage_OnItemClick(object sender, RoutedEventArgs e)
     {
