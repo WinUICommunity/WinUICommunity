@@ -30,7 +30,7 @@ public partial class OptionsPageControl : Control
         DependencyProperty.Register(nameof(FooterHeader), typeof(object), typeof(OptionsPageControl), new PropertyMetadata(null));
 
     public static readonly DependencyProperty FooterMaxHeightProperty =
-        DependencyProperty.Register("FooterMaxHeight", typeof(double), typeof(OptionsPageControl), new PropertyMetadata(400.0));
+        DependencyProperty.Register(nameof(FooterMaxHeight), typeof(double), typeof(OptionsPageControl), new PropertyMetadata(400.0));
 
     public static readonly DependencyProperty FooterHorizontalAlignmentProperty =
         DependencyProperty.Register(nameof(FooterHorizontalAlignment), typeof(HorizontalAlignment), typeof(OptionsPageControl), new PropertyMetadata(HorizontalAlignment.Left));
@@ -43,6 +43,9 @@ public partial class OptionsPageControl : Control
 
     public static readonly DependencyProperty PaneMinWidthProperty =
        DependencyProperty.Register(nameof(PaneMinWidth), typeof(double), typeof(OptionsPageControl), new PropertyMetadata(286.0));
+
+    public static readonly DependencyProperty PaneMaxWidthProperty =
+       DependencyProperty.Register(nameof(PaneMaxWidth), typeof(double), typeof(OptionsPageControl), new PropertyMetadata(320.0));
 
     public static readonly DependencyProperty PanePaddingProperty =
         DependencyProperty.Register(nameof(PanePadding), typeof(Thickness), typeof(OptionsPageControl), new PropertyMetadata(new Thickness(16)));
@@ -145,6 +148,12 @@ public partial class OptionsPageControl : Control
     {
         get { return (double)GetValue(PaneMinWidthProperty); }
         set { SetValue(PaneMinWidthProperty, value); }
+    }
+
+    public double PaneMaxWidth
+    {
+        get { return (double)GetValue(PaneMaxWidthProperty); }
+        set { SetValue(PaneMaxWidthProperty, value); }
     }
 
     public Thickness PanePadding

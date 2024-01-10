@@ -328,7 +328,7 @@ Themes\Styles\TextBlock.xaml
                   <win:ColumnDefinition Width="*" />
                   <win:ColumnDefinition Width="Auto" />
                 </win:Grid.ColumnDefinitions>
-                <win:ScrollViewer Grid.Row="0" Grid.Column="0" MinWidth="{TemplateBinding PaneMinWidth}" Padding="{TemplateBinding PanePadding}" IsEnabled="{TemplateBinding IsBarEnabled}" Visibility="{TemplateBinding PaneVisibility}">
+                <win:ScrollViewer Grid.Row="0" Grid.Column="0" MinWidth="{TemplateBinding PaneMinWidth}" MaxWidth="{TemplateBinding PaneMaxWidth}" Padding="{TemplateBinding PanePadding}" IsEnabled="{TemplateBinding IsBarEnabled}" Visibility="{TemplateBinding PaneVisibility}">
                   <win:ContentControl HorizontalContentAlignment="Stretch" Content="{TemplateBinding Pane}" />
                 </win:ScrollViewer>
                 <win:Grid x:Name="FixedOptionsBar" Grid.Column="1" Padding="4" HorizontalAlignment="Right" Background="{ThemeResource LayerFillColorAltBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1,0,0,0" RowSpacing="8">

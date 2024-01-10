@@ -52,6 +52,7 @@
                                 <ScrollViewer Grid.Row="0"
                                               Grid.Column="0"
                                               MinWidth="{TemplateBinding PaneMinWidth}"
+                                              MaxWidth="{TemplateBinding PaneMaxWidth}"
                                               Padding="{TemplateBinding PanePadding}"
                                               IsEnabled="{TemplateBinding IsBarEnabled}"
                                               Visibility="{TemplateBinding PaneVisibility}">
