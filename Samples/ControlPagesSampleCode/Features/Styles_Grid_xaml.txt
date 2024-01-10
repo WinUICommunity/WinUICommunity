@@ -1,0 +1,6 @@
+﻿<Grid Width="100"
+        Height="100"
+        Style="{ThemeResource GridPanel}" />
+<Grid Width="100"
+        Height="100"
+        Style="{ThemeResource GridCardPanel}" />

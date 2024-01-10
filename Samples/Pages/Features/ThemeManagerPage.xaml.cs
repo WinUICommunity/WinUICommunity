@@ -28,7 +28,7 @@ public sealed partial class ThemeManagerPage : Page
     {
         App.Current.ThemeService.OnBackdropComboBoxSelectionChanged(sender);
     }
-    private void SettingsPageControl_Loaded(object sender, RoutedEventArgs e)
+    private void Page_Loaded(object sender, RoutedEventArgs e)
     {
         App.Current.ThemeService.SetThemeRadioButtonDefaultItem(themePanel);
         App.Current.ThemeService.SetBackdropRadioButtonDefaultItem(backdropPanel);

@@ -1,0 +1,26 @@
+﻿<StackPanel Orientation="Horizontal"
+            Spacing="10">
+    <StackPanel x:Name="themePanel"
+                Margin="10">
+        <RadioButton Checked="OnThemeRadioButtonChecked"
+                        Content="Light"
+                        Tag="Light" />
+        <RadioButton Checked="OnThemeRadioButtonChecked"
+                        Content="Dark"
+                        Tag="Dark" />
+        <RadioButton Checked="OnThemeRadioButtonChecked"
+                        Content="Use system setting"
+                        Tag="Default" />
+    </StackPanel>
+
+    <ComboBox Name="cmbTheme"
+                SelectionChanged="cmbTheme_SelectionChanged">
+        <ComboBoxItem Content="Light"
+                        Tag="Light" />
+        <ComboBoxItem Content="Dark"
+                        Tag="Dark" />
+        <ComboBoxItem Content="Default"
+                        Tag="Default" />
+    </ComboBox>
+
+</StackPanel>

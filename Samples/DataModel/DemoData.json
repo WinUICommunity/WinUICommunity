@@ -65,7 +65,7 @@
           "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
         },
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.SwitchPresenter",
+          "UniqueId": "WinUICommunity.DemoApp.Pages.SwitchPresenterPage",
           "Title": "SwitchPresenter",
           "Subtitle": "SwitchPresenter",
           "ImageIconPath": "ms-appx:///Assets/Fluent/switchPresenter.png",

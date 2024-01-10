@@ -1,9 +1,9 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 
 namespace WinUICommunity.DemoApp.Pages;
-public sealed partial class SwitchPresenter : Page
+public sealed partial class SwitchPresenterPage : Page
 {
-    public SwitchPresenter()
+    public SwitchPresenterPage()
     {
         this.InitializeComponent();
     }

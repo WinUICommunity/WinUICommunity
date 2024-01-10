@@ -1,0 +1,45 @@
+﻿<StackPanel Orientation="Horizontal"
+            Spacing="10">
+    <StackPanel x:Name="backdropPanel"
+                Margin="10">
+        <RadioButton Checked="OnBackdropRadioButtonChecked"
+                        Content="None"
+                        Tag="None" />
+        <RadioButton Checked="OnBackdropRadioButtonChecked"
+                        Content="Mica"
+                        Tag="Mica" />
+        <RadioButton Checked="OnBackdropRadioButtonChecked"
+                        Content="MicaAlt"
+                        Tag="MicaAlt" />
+        <RadioButton Checked="OnBackdropRadioButtonChecked"
+                        Content="Desktop Acrylic"
+                        Tag="DesktopAcrylic" />
+        <RadioButton Checked="OnBackdropRadioButtonChecked"
+                        Content="Acrylic Base"
+                        Tag="AcrylicBase" />
+        <RadioButton Checked="OnBackdropRadioButtonChecked"
+                        Content="Acrylic Thin"
+                        Tag="AcrylicThin" />
+        <RadioButton Checked="OnBackdropRadioButtonChecked"
+                        Content="Transparent"
+                        Tag="Transparent" />
+    </StackPanel>
+
+    <ComboBox Name="cmbBackdrop"
+                SelectionChanged="cmbBackdrop_SelectionChanged">
+        <ComboBoxItem Content="None"
+                        Tag="None" />
+        <ComboBoxItem Content="Mica"
+                        Tag="Mica" />
+        <ComboBoxItem Content="MicaAlt"
+                        Tag="MicaAlt" />
+        <ComboBoxItem Content="Desktop Acrylic"
+                        Tag="DesktopAcrylic" />
+        <ComboBoxItem Content="Acrylic Base"
+                        Tag="AcrylicBase" />
+        <ComboBoxItem Content="Acrylic Thin"
+                        Tag="AcrylicThin" />
+        <ComboBoxItem Content="Transparent"
+                        Tag="Transparent" />
+    </ComboBox>
+</StackPanel>

@@ -1,0 +1,10 @@
+﻿<Border Height="50"
+        Style="{ThemeResource BorderPanel}" />
+<Border Height="50"
+        Style="{ThemeResource InfoBorderPanelStyle}" />
+<Border Height="50"
+        Style="{ThemeResource WarningBorderPanelStyle}" />
+<Border Height="50"
+        Style="{ThemeResource ErrorBorderPanelStyle}" />
+<Border Height="50"
+        Style="{ThemeResource SuccessBorderPanelStyle}" />

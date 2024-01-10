@@ -1,0 +1,24 @@
+﻿// App.xaml.cs
+
+public IThemeService ThemeService { get; set; }
+ThemeService = new ThemeService();
+ThemeService.Initialize(currentWindow);
+ThemeService.ConfigBackdrop(BackdropType.Mica);
+
+// Page
+
+private void OnThemeRadioButtonChecked(object sender, RoutedEventArgs e)
+{
+    App.Current.ThemeService.OnThemeRadioButtonChecked(sender);
+}
+
+private void cmbTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    App.Current.ThemeService.OnThemeComboBoxSelectionChanged(sender);
+}
+
+private void Page_Loaded()
+{
+    App.Current.ThemeService.SetThemeRadioButtonDefaultItem(themePanel);
+    App.Current.ThemeService.SetThemeComboBoxDefaultItem(cmbTheme);
+}

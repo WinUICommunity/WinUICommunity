@@ -1,0 +1,22 @@
+﻿// App.xaml.cs
+
+public IThemeService ThemeService { get; set; }
+ThemeService = new ThemeService();
+ThemeService.Initialize(currentWindow);
+ThemeService.ConfigElementTheme(ElementTheme.Default);
+
+// Page
+
+private void OnBackdropRadioButtonChecked(object sender, RoutedEventArgs e)
+{
+    App.Current.ThemeService.OnBackdropRadioButtonChecked(sender);
+}
+private void cmbBackdrop_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    App.Current.ThemeService.OnBackdropComboBoxSelectionChanged(sender);
+}
+private void Page_Loaded()
+{
+    App.Current.ThemeService.SetBackdropRadioButtonDefaultItem(backdropPanel);
+    App.Current.ThemeService.SetBackdropComboBoxDefaultItem(cmbBackdrop);
+}
