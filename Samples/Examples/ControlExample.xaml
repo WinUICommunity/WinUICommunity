@@ -22,13 +22,20 @@
                     Padding="4"
                     HorizontalAlignment="Center"
                     Click="ToggleTheme_Click"
+                    Content="{wuc:FontIcon GlyphCode=E793,
+                                           FontSize=16}"
                     Style="{StaticResource SubtleButtonStyle}"
-                    ToolTipService.ToolTip="Toggle theme">
-                <Button.Content>
-                    <FontIcon FontSize="16"
-                              Glyph="&#xE793;" />
-                </Button.Content>
-            </Button>
+                    ToolTipService.ToolTip="Toggle theme" />
+            <Button x:Name="btnGoToDoc"
+                    Width="32"
+                    Height="32"
+                    Padding="4"
+                    HorizontalAlignment="Center"
+                    Click="GoToDoc_Click"
+                    Content="{wuc:FontIcon GlyphName=Document,
+                                           FontSize=16}"
+                    Style="{StaticResource SubtleButtonStyle}"
+                    ToolTipService.ToolTip="Go To Documentation" />
         </StackPanel>
     </wuc:OptionsPageControl.Bar>
     <wuc:OptionsPageControl.BarFooter>

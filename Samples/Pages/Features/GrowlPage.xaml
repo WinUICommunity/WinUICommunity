@@ -12,6 +12,7 @@
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
             <local:ControlExample CSharpSource="Features/GrowlPage_Part1_cs.txt"
+                                  DocPage="controls/growl"
                                   HeaderText="In-App Growl"
                                   XamlSource="Features/GrowlPage_xaml.txt">
                 <StackPanel Orientation="Horizontal">
@@ -43,6 +44,7 @@
                 </local:ControlExample.Pane>
             </local:ControlExample>
             <local:ControlExample CSharpSource="Features/GrowlPage_Part2_cs.txt"
+                                  DocPage="controls/growl"
                                   HeaderText="Growl Global">
                 <StackPanel Orientation="Horizontal">
                     <InfoBar Title="Growl will be shown outside the app"

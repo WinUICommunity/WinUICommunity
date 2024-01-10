@@ -11,7 +11,9 @@
                      IsClosable="False"
                      IsOpen="True"
                      Severity="Warning" />
-            <local:ControlExample CSharpSource="Features/CheckUpdatePage_cs.txt">
+            <local:ControlExample CSharpSource="Features/CheckUpdatePage_cs.txt"
+                                  DocPage="helpers/updateHelper"
+                                  DocType="Core">
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <Button HorizontalAlignment="Stretch"

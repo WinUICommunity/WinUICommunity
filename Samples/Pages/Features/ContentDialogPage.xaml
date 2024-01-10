@@ -11,7 +11,8 @@
                      IsClosable="False"
                      IsOpen="True"
                      Severity="Informational" />
-            <local:ControlExample>
+            <local:ControlExample DocPage="extensions/generalExtension/#ContentDialogExtension"
+                                  DocType="Core">
                 <local:ControlExample.CSharp>
                     <x:String>
                         await contentDialog.ShowAsyncQueue();

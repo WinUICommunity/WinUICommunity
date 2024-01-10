@@ -11,7 +11,7 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample>
+            <local:ControlExample DocPage="controls/gravatar">
                 <local:ControlExample.Xaml>
                     <x:String>
                         &lt;wuc:Gravatar Id="WinUICommunity" /&gt;

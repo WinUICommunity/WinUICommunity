@@ -11,7 +11,9 @@
                      IsOpen="True"
                      Message="Try in Unpackaged Mode, for Packaged you need to Register CLSID"
                      Severity="Warning" />
-            <local:ControlExample CSharpSource="Features/AppNotificationPage_cs.txt">
+            <local:ControlExample CSharpSource="Features/AppNotificationPage_cs.txt"
+                                  DocPage="helpers/appNotification"
+                                  DocType="Core">
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <Button Name="btnToast1"

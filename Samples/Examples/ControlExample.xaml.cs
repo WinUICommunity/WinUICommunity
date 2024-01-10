@@ -1,12 +1,81 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using DemoApp;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Windows.System;
 
 namespace WinUICommunity.DemoApp.Examples;
 public sealed partial class ControlExample : OptionsPageControl
 {
-    public static readonly DependencyProperty XamlProperty = DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnXamlChanged));
+    public static readonly DependencyProperty DocTypeProperty =
+        DependencyProperty.Register("DocType", typeof(DocType), typeof(ControlExample), new PropertyMetadata(DocType.Components));
+
+    public static readonly DependencyProperty DocPageProperty =
+        DependencyProperty.Register(nameof(DocPage), typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnDocPageChanged));
+
+    public static readonly DependencyProperty XamlProperty =
+        DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnXamlChanged));
+
+    public static readonly DependencyProperty XamlSourceProperty =
+        DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnXamlSourceChanged));
+
+    public static readonly DependencyProperty CSharpProperty =
+        DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnCSharpChanged));
+
+    public static readonly DependencyProperty CSharpSourceProperty =
+        DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnCSharpSourceChanged));
+
+    public DocType DocType
+    {
+        get { return (DocType)GetValue(DocTypeProperty); }
+        set { SetValue(DocTypeProperty, value); }
+    }
+
+    public string DocPage
+    {
+        get { return (string)GetValue(DocPageProperty); }
+        set { SetValue(DocPageProperty, value); }
+    }
+
+    public string Xaml
+    {
+        get { return (string)GetValue(XamlProperty); }
+        set { SetValue(XamlProperty, value); }
+    }
+
+    public string XamlSource
+    {
+        get { return (string)GetValue(XamlSourceProperty); }
+        set { SetValue(XamlSourceProperty, value); }
+    }
+
+    public string CSharp
+    {
+        get { return (string)GetValue(CSharpProperty); }
+        set { SetValue(CSharpProperty, value); }
+    }
+
+    public string CSharpSource
+    {
+        get { return (string)GetValue(CSharpSourceProperty); }
+        set { SetValue(CSharpSourceProperty, value); }
+    }
+    private static void OnDocPageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctl = (ControlExample)d;
+        if (ctl != null && ctl.btnGoToDoc != null)
+        {
+            if (string.IsNullOrEmpty(ctl.DocPage))
+            {
+                ctl.btnGoToDoc.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ctl.btnGoToDoc.Visibility = Visibility.Visible;
+            }
+        }
+    }
 
     private static void OnXamlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
@@ -17,14 +86,6 @@ public sealed partial class ControlExample : OptionsPageControl
         }
     }
 
-    public string Xaml
-    {
-        get { return (string)GetValue(XamlProperty); }
-        set { SetValue(XamlProperty, value); }
-    }
-
-    public static readonly DependencyProperty XamlSourceProperty = DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnXamlSourceChanged));
-
     private static void OnXamlSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctl = (ControlExample)d;
@@ -33,14 +94,6 @@ public sealed partial class ControlExample : OptionsPageControl
             ctl.HandlePivotItemVisibility(ctl.Xaml, ctl.XamlSource, ctl.PivotXAMLItem);
         }
     }
-
-    public string XamlSource
-    {
-        get { return (string)GetValue(XamlSourceProperty); }
-        set { SetValue(XamlSourceProperty, value); }
-    }
-
-    public static readonly DependencyProperty CSharpProperty = DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnCSharpChanged));
 
     private static void OnCSharpChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
@@ -51,14 +104,6 @@ public sealed partial class ControlExample : OptionsPageControl
         }
     }
 
-    public string CSharp
-    {
-        get { return (string)GetValue(CSharpProperty); }
-        set { SetValue(CSharpProperty, value); }
-    }
-
-    public static readonly DependencyProperty CSharpSourceProperty = DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnCSharpSourceChanged));
-
     private static void OnCSharpSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctl = (ControlExample)d;
@@ -67,6 +112,22 @@ public sealed partial class ControlExample : OptionsPageControl
             ctl.HandlePivotItemVisibility(ctl.CSharp, ctl.CSharpSource, ctl.PivotCSharpItem);
         }
     }
+
+    public ControlExample()
+    {
+        this.InitializeComponent();
+        Loaded += ControlExample_Loaded;
+    }
+
+    private void ControlExample_Loaded(object sender, RoutedEventArgs e)
+    {
+        OnCSharpChanged(this, null);
+        OnCSharpSourceChanged(this, null);
+        OnXamlChanged(this, null);
+        OnXamlSourceChanged(this, null);
+        OnDocPageChanged(this, null);
+    }
+
     private void AddOrRemovePivotItem(Visibility visibility, PivotItem pivotItem)
     {
         if (visibility == Visibility.Collapsed)
@@ -84,6 +145,7 @@ public sealed partial class ControlExample : OptionsPageControl
             }
         }
     }
+
     private void HandleFooterVisibility()
     {
         if (string.IsNullOrEmpty(CSharpSource) && string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(Xaml) && string.IsNullOrEmpty(XamlSource))
@@ -101,6 +163,7 @@ public sealed partial class ControlExample : OptionsPageControl
             FooterVisibility = Visibility.Visible;
         }
     }
+
     private void HandlePivotItemVisibility(string firstValue, string secondValue, PivotItem pivotItem)
     {
         if (string.IsNullOrEmpty(firstValue) && string.IsNullOrEmpty(secondValue))
@@ -115,24 +178,6 @@ public sealed partial class ControlExample : OptionsPageControl
         }
 
         HandleFooterVisibility();
-    }
-    public string CSharpSource
-    {
-        get { return (string)GetValue(CSharpSourceProperty); }
-        set { SetValue(CSharpSourceProperty, value); }
-    }
-    public ControlExample()
-    {
-        this.InitializeComponent();
-        Loaded += ControlExample_Loaded;
-    }
-
-    private void ControlExample_Loaded(object sender, RoutedEventArgs e)
-    {
-        OnCSharpChanged(this, null);
-        OnCSharpSourceChanged(this, null);
-        OnXamlChanged(this, null);
-        OnXamlSourceChanged(this, null);
     }
 
     private void ViewCode_Click(object sender, RoutedEventArgs e)
@@ -150,4 +195,32 @@ public sealed partial class ControlExample : OptionsPageControl
             App.Current.ThemeService.SetCurrentThemeWithoutSave(ElementTheme.Dark);
         }
     }
+    private async void GoToDoc_Click(object sender, RoutedEventArgs e)
+    {
+        string docTypeValue = null;
+        switch (DocType)
+        {
+            case DocType.Core:
+                docTypeValue = "winUICommunityCore";
+                break;
+            case DocType.Components:
+                docTypeValue = "winUICommunityComponents";
+                break;
+            case DocType.LandingPages:
+                docTypeValue = "winUICommunityLandingPages";
+                break;
+            case DocType.ContextMenuExtensions:
+                docTypeValue = "winUICommunityContextMenuExtensions";
+                break;
+        }
+
+        await Launcher.LaunchUriAsync(new Uri($"https://ghost1372.github.io/{docTypeValue}/{DocPage}"));
+    }
+}
+public enum DocType
+{
+    Core,
+    Components,
+    LandingPages,
+    ContextMenuExtensions
 }

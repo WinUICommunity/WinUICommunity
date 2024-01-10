@@ -20,7 +20,8 @@
                      IsClosable="False"
                      IsOpen="True"
                      Severity="Informational" />
-            <local:ControlExample>
+            <local:ControlExample DocPage="dynamicLanguage"
+                                  DocType="Core">
                 <local:ControlExample.CSharp>
                     <x:String>
                         Localizer.Get().SetLanguage("fa-IR");

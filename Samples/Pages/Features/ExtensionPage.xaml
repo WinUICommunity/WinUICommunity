@@ -12,7 +12,9 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample HeaderText="EnumValuesExtension">
+            <local:ControlExample DocPage="extensions/enumValueExtension"
+                                  DocType="Core"
+                                  HeaderText="EnumValuesExtension">
                 <local:ControlExample.Xaml>
                     <x:String>
                         &lt;ComboBox ItemsSource="{wuc:EnumValues Type=enum:Animal}"/&gt;
@@ -38,7 +40,9 @@
                               SelectedIndex="0" />
                 </StackPanel>
             </local:ControlExample>
-            <local:ControlExample HeaderText="TextBoxExtensions"
+            <local:ControlExample DocPage="extensions/textBoxExtension"
+                                  DocType="Core"
+                                  HeaderText="TextBoxExtensions"
                                   XamlSource="Features/ExtensionPage_Part1_xaml.txt">
                 <StackPanel Margin="10"
                             Spacing="10">
@@ -88,7 +92,9 @@
                     </TextBlock>
                 </StackPanel>
             </local:ControlExample>
-            <local:ControlExample HeaderText="Mask"
+            <local:ControlExample DocPage="extensions/textBoxExtension/#Text-mask"
+                                  DocType="Core"
+                                  HeaderText="Mask"
                                   XamlSource="Features/ExtensionPage_Part2_xaml.txt">
                 <StackPanel Margin="10"
                             Spacing="10">

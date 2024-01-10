@@ -12,6 +12,8 @@
                      IsOpen="True"
                      Severity="Informational" />
             <local:ControlExample CSharpSource="Features/CommandObservablePage_cs.txt"
+                                  DocPage="command"
+                                  DocType="Core"
                                   XamlSource="Features/CommandObservablePage_xaml.txt">
                 <StackPanel>
                     <Button HorizontalAlignment="Center"

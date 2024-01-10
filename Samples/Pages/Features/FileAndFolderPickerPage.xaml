@@ -12,6 +12,8 @@
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
             <local:ControlExample CSharpSource="Features/FileAndFolderPickerPage_Part1_cs.txt"
+                                  DocPage="helpers/fileAndFolderPickerHelper/#PickSaveFileAsync"
+                                  DocType="Core"
                                   HeaderText="PickSaveFileAsync">
                 <StackPanel Margin="10"
                             Spacing="10">
@@ -24,6 +26,8 @@
             </local:ControlExample>
 
             <local:ControlExample CSharpSource="Features/FileAndFolderPickerPage_Part2_cs.txt"
+                                  DocPage="helpers/fileAndFolderPickerHelper/#PickMultipleFilesAsync"
+                                  DocType="Core"
                                   HeaderText="PickMultipleFilesAsync">
                 <StackPanel Margin="10"
                             Spacing="10">
@@ -35,6 +39,8 @@
                 </StackPanel>
             </local:ControlExample>
             <local:ControlExample CSharpSource="Features/FileAndFolderPickerPage_Part3_cs.txt"
+                                  DocPage="helpers/fileAndFolderPickerHelper/#PickSingleFileAsync"
+                                  DocType="Core"
                                   HeaderText="PickSingleFileAsync">
                 <StackPanel Margin="10"
                             Spacing="10">
@@ -46,6 +52,8 @@
                 </StackPanel>
             </local:ControlExample>
             <local:ControlExample CSharpSource="Features/FileAndFolderPickerPage_Part4_cs.txt"
+                                  DocPage="helpers/fileAndFolderPickerHelper/#PickSingleFolderAsync"
+                                  DocType="Core"
                                   HeaderText="PickSingleFolderAsync">
                 <StackPanel Margin="10"
                             Spacing="10">
