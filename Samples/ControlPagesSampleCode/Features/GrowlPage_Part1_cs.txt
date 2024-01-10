@@ -1,0 +1,48 @@
+﻿Growl.Info("Hello");
+
+// OR
+
+Growl.Info("Hello", "Info");
+
+// OR
+
+Growl.Ask("Hello", (s, e) =>
+{
+    Growl.Info("Clicked");
+    return true;
+});
+
+// GrowlInfo
+
+Growl.Warning(new GrowlInfo
+{
+    ShowDateTime = true,
+    StaysOpen = true,
+    IsClosable = false,
+    Title = "Hello",
+    Message = "Warning with GrowlInfo"
+});
+
+// Token
+
+Growl.ErrorWithToken("Hello", "Test");
+
+// OR
+
+Growl.Success(new GrowlInfo
+{
+    ShowDateTime = true,
+    StaysOpen = true,
+    IsClosable = false,
+    Title = "Hello",
+    Message = "Success with GrowlInfo",
+    Token = "Test"
+});
+
+// Clear
+
+Growl.Clear();
+
+// OR (if you use Token)
+
+Growl.Clear("Test");

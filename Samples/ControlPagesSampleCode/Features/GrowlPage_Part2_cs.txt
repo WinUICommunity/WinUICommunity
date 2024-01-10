@@ -1,0 +1,28 @@
+﻿Growl.InfoGlobal("Hello");
+
+// OR
+
+Growl.WarningGlobal("Hello", "Warning");
+
+// OR
+
+Growl.AskGlobal("Hello", (s, e) =>
+{
+    Growl.Info("Clicked");
+    return true;
+});
+
+// GrowlInfo
+
+Growl.InfoGlobal(new GrowlInfo
+{
+    ShowDateTime = true,
+    StaysOpen = true,
+    IsClosable = false,
+    Title = "Hello",
+    Message = "Info with GrowlInfo"
+});
+
+// Clear
+
+Growl.ClearGlobal();
