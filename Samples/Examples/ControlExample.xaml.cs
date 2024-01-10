@@ -13,18 +13,7 @@ public sealed partial class ControlExample : OptionsPageControl
         var ctl = (ControlExample)d;
         if (ctl != null)
         {
-            if (string.IsNullOrEmpty((string)e.NewValue) && string.IsNullOrEmpty(ctl.XamlSource))
-            {
-                ctl.PivotXAMLItem.Visibility = Visibility.Collapsed;
-                ctl.AddOrRemovePivotItem(Visibility.Collapsed, ctl.PivotXAMLItem);
-            }
-            else
-            {
-                ctl.PivotXAMLItem.Visibility = Visibility.Visible;
-                ctl.AddOrRemovePivotItem(Visibility.Visible, ctl.PivotXAMLItem);
-            }
-
-            ctl.HandleFooterVisibility();
+            ctl.HandlePivotItemVisibility(ctl.Xaml, ctl.XamlSource, ctl.PivotXAMLItem);
         }
     }
 
@@ -41,18 +30,7 @@ public sealed partial class ControlExample : OptionsPageControl
         var ctl = (ControlExample)d;
         if (ctl != null)
         {
-            if (string.IsNullOrEmpty((string)e.NewValue) && string.IsNullOrEmpty(ctl.Xaml))
-            {
-                ctl.PivotXAMLItem.Visibility = Visibility.Collapsed;
-                ctl.AddOrRemovePivotItem(Visibility.Collapsed, ctl.PivotXAMLItem);
-            }
-            else
-            {
-                ctl.PivotXAMLItem.Visibility = Visibility.Visible;
-                ctl.AddOrRemovePivotItem(Visibility.Visible, ctl.PivotXAMLItem);
-            }
-
-            ctl.HandleFooterVisibility();
+            ctl.HandlePivotItemVisibility(ctl.Xaml, ctl.XamlSource, ctl.PivotXAMLItem);
         }
     }
 
@@ -69,18 +47,7 @@ public sealed partial class ControlExample : OptionsPageControl
         var ctl = (ControlExample)d;
         if (ctl != null)
         {
-            if (string.IsNullOrEmpty((string)e.NewValue) && string.IsNullOrEmpty(ctl.CSharpSource))
-            {
-                ctl.PivotCSharpItem.Visibility = Visibility.Collapsed;
-                ctl.AddOrRemovePivotItem(Visibility.Collapsed, ctl.PivotCSharpItem);
-
-            }
-            else
-            {
-                ctl.PivotCSharpItem.Visibility = Visibility.Visible;
-                ctl.AddOrRemovePivotItem(Visibility.Visible, ctl.PivotCSharpItem);
-            }
-            ctl.HandleFooterVisibility();
+            ctl.HandlePivotItemVisibility(ctl.CSharp, ctl.CSharpSource, ctl.PivotCSharpItem);
         }
     }
 
@@ -97,25 +64,17 @@ public sealed partial class ControlExample : OptionsPageControl
         var ctl = (ControlExample)d;
         if (ctl != null)
         {
-            if (string.IsNullOrEmpty((string)e.NewValue) && string.IsNullOrEmpty(ctl.CSharp))
-            {
-                ctl.PivotCSharpItem.Visibility = Visibility.Collapsed;
-                ctl.AddOrRemovePivotItem(Visibility.Collapsed, ctl.PivotCSharpItem);
-            }
-            else
-            {
-                ctl.PivotCSharpItem.Visibility = Visibility.Visible;
-                ctl.AddOrRemovePivotItem(Visibility.Visible, ctl.PivotCSharpItem);
-            }
-
-            ctl.HandleFooterVisibility();
+            ctl.HandlePivotItemVisibility(ctl.CSharp, ctl.CSharpSource, ctl.PivotCSharpItem);
         }
     }
     private void AddOrRemovePivotItem(Visibility visibility, PivotItem pivotItem)
     {
         if (visibility == Visibility.Collapsed)
         {
-            pivot.Items.Remove(pivot.Items.Single(p => ((PivotItem)p).Equals(pivotItem)));
+            if (pivot.Items.Any(p => ((PivotItem)p).Equals(pivotItem)))
+            {
+                pivot.Items.Remove(pivotItem);
+            }
         }
         else
         {
@@ -129,6 +88,7 @@ public sealed partial class ControlExample : OptionsPageControl
     {
         if (string.IsNullOrEmpty(CSharpSource) && string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(Xaml) && string.IsNullOrEmpty(XamlSource))
         {
+            btnViewCode.Visibility = Visibility.Collapsed;
             FooterVisibility = Visibility.Collapsed;
             foreach (var item in pivot.Items)
             {
@@ -137,8 +97,24 @@ public sealed partial class ControlExample : OptionsPageControl
         }
         else
         {
+            btnViewCode.Visibility = Visibility.Visible;
             FooterVisibility = Visibility.Visible;
         }
+    }
+    private void HandlePivotItemVisibility(string firstValue, string secondValue, PivotItem pivotItem)
+    {
+        if (string.IsNullOrEmpty(firstValue) && string.IsNullOrEmpty(secondValue))
+        {
+            pivotItem.Visibility = Visibility.Collapsed;
+            AddOrRemovePivotItem(Visibility.Collapsed, pivotItem);
+        }
+        else
+        {
+            PivotXAMLItem.Visibility = Visibility.Visible;
+            AddOrRemovePivotItem(Visibility.Visible, pivotItem);
+        }
+
+        HandleFooterVisibility();
     }
     public string CSharpSource
     {
@@ -149,6 +125,11 @@ public sealed partial class ControlExample : OptionsPageControl
     {
         this.InitializeComponent();
         HandleFooterVisibility();
+
+        OnCSharpChanged(this, null);
+        OnCSharpSourceChanged(this, null);
+        OnXamlChanged(this, null);
+        OnXamlSourceChanged(this, null);
     }
 
     private void ViewCode_Click(object sender, RoutedEventArgs e)
