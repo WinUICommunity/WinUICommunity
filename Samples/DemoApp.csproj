@@ -11,10 +11,12 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Version>6.0.1</Version>
+    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <NoWarn>WMC1506;CS8632</NoWarn>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <GITHUB_ACTIONS>false</GITHUB_ACTIONS>
     <UseRidGraph>true</UseRidGraph>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 
   <ItemGroup>

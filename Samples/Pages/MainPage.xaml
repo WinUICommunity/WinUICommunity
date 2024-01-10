@@ -3,6 +3,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:DemoApp"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
@@ -13,14 +14,15 @@
         </Grid.RowDefinitions>
 
         <wuc:TitleBar x:Name="appTitleBar"
+                      Title="{x:Bind local:App.Current.Title, Mode=OneWay}"
                       BackButtonClick="appTitleBar_BackButtonClick"
                       IsBackButtonVisible="True"
                       IsPaneButtonVisible="True"
                       PaneButtonClick="appTitleBar_PaneButtonClick"
-                      Subtitle="v5.0">
+                      Subtitle="{x:Bind local:App.Current.Version, Mode=OneWay}">
             <wuc:TitleBar.Icon>
                 <BitmapIcon ShowAsMonochrome="False"
-                            UriSource="ms-appx:///Assets/Fluent/logo.png" />
+                            UriSource="ms-appx:///Assets/icon.png" />
             </wuc:TitleBar.Icon>
         </wuc:TitleBar>
         <NavigationView x:Name="NavView"

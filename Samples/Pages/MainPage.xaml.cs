@@ -13,7 +13,6 @@ public sealed partial class MainPage : Page
     {
         this.InitializeComponent();
         appTitleBar.Window = App.currentWindow;
-        appTitleBar.Title = App.Current.Title;
         Instance = this;
 
         App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);

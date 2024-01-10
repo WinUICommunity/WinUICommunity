@@ -26,7 +26,8 @@ public partial class App : Application
     public IThemeService ThemeService { get; set; }
     private NotificationManager notificationManager;
     public new static App Current => (App)Application.Current;
-    public string Title { get; set; } = "DemoApp";
+    public string Title { get; set; } = "WinUICommunity Gallery";
+    public string Version { get; set; } = AssemblyInfoHelper.GetAppInfo().Version;
     public App()
     {
         this.InitializeComponent();
@@ -47,8 +48,8 @@ public partial class App : Application
         currentWindow = new Window();
         currentWindow.AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
         currentWindow.AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
-        currentWindow.Title = Title;
-
+        currentWindow.AppWindow.Title = currentWindow.Title = Title;
+        currentWindow.AppWindow.SetIcon("Assets/icon.ico");
         if (currentWindow.Content is not Frame rootFrame)
         {
             // Create a Frame to act as the navigation context and navigate to the first page

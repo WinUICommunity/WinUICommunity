@@ -4,8 +4,8 @@
       "UniqueId": "Features",
       "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
       "Title": "Features",
-      "ImageIconPath": "ms-appx:///Assets/Fluent/logo.png",
-      "ImagePath": "ms-appx:///Assets/Fluent/logo.png",
+      "ImageIconPath": "ms-appx:///Assets/icon.png",
+      "ImagePath": "ms-appx:///Assets/icon.png",
       "IsSpecialSection": false,
       "Items": [
         {
