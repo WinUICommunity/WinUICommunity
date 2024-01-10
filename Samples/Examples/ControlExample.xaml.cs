@@ -124,8 +124,11 @@ public sealed partial class ControlExample : OptionsPageControl
     public ControlExample()
     {
         this.InitializeComponent();
-        HandleFooterVisibility();
+        Loaded += ControlExample_Loaded;
+    }
 
+    private void ControlExample_Loaded(object sender, RoutedEventArgs e)
+    {
         OnCSharpChanged(this, null);
         OnCSharpSourceChanged(this, null);
         OnXamlChanged(this, null);
