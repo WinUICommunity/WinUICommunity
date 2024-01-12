@@ -1,0 +1,11 @@
+﻿global using Microsoft.UI.Xaml;
+global using Microsoft.UI.Xaml.Controls;
+global using Microsoft.Graphics.Canvas.Brushes;
+global using Microsoft.Graphics.Canvas.Effects;
+global using Microsoft.Graphics.Canvas;
+global using System.Numerics;
+global using Microsoft.UI.Xaml.Media.Animation;
+global using Microsoft.Graphics.Canvas.UI.Xaml;
+global using Microsoft.Graphics.Canvas.UI;
+global using Microsoft.UI;
+global using Windows.UI;
