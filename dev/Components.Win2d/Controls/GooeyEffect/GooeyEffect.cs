@@ -60,12 +60,12 @@ public partial class GooeyEffect : Control
     }
     private void UpdateAnimation()
     {
-        var easingFunction = new ExponentialEase { EasingMode = this.EasingMode };
+        var easingFunction = new ExponentialEase { EasingMode = this.Easing };
 
         _leftTimeline =
-            new Vector2Timeline(new Vector2(Convert.ToSingle(SecondTimeLineFromX), Convert.ToSingle(SecondTimeLineFromY)), new Vector2(Convert.ToSingle(SecondTimeLineToX), Convert.ToSingle(SecondTimeLineToY)), Duration, null, true, true, easingFunction);
+            new Vector2Timeline(new Vector2(Convert.ToSingle(SecondaryTimeLineFromX), Convert.ToSingle(SecondaryTimeLineFromY)), new Vector2(Convert.ToSingle(SecondaryTimeLineToX), Convert.ToSingle(SecondaryTimeLineToY)), Duration, null, true, true, easingFunction);
         _rightTimeline =
-            new Vector2Timeline(new Vector2(Convert.ToSingle(FirstTimeLineFromX), Convert.ToSingle(FirstTimeLineFromY)), new Vector2(Convert.ToSingle(FirstTimeLineToX), Convert.ToSingle(FirstTimeLineToY)), Duration, null, true, true, easingFunction);
+            new Vector2Timeline(new Vector2(Convert.ToSingle(PrimaryTimeLineFromX), Convert.ToSingle(PrimaryTimeLineFromY)), new Vector2(Convert.ToSingle(PrimaryTimeLineToX), Convert.ToSingle(PrimaryTimeLineToY)), Duration, null, true, true, easingFunction);
     }
 
     private void OnCanvasSizeChanged(object sender, SizeChangedEventArgs e)
@@ -76,8 +76,8 @@ public partial class GooeyEffect : Control
     private void OnCreateResource(CanvasControl sender, CanvasCreateResourcesEventArgs args)
     {
         _startTime = DateTime.Now;
-        _leftBrush = new CanvasSolidColorBrush(sender, SecondColorBrush);
-        _rightBrush = new CanvasSolidColorBrush(sender, FirstColorBrush);
+        _leftBrush = new CanvasSolidColorBrush(sender, SecondaryFill);
+        _rightBrush = new CanvasSolidColorBrush(sender, PrimaryFill);
         _blurEffect = new GaussianBlurEffect
         {
             BlurAmount = Convert.ToSingle(this.BlurAmount),
@@ -118,8 +118,8 @@ public partial class GooeyEffect : Control
         var totalTime = DateTime.Now - _startTime;
         using (var drawingSession = source.CreateDrawingSession())
         {
-            drawingSession.FillCircle(_centerPoint + _leftTimeline.GetCurrentValue(totalTime), Convert.ToSingle(SecondRadius), _leftBrush);
-            drawingSession.FillCircle(_centerPoint + _rightTimeline.GetCurrentValue(totalTime), Convert.ToSingle(FirstRadius), _rightBrush);
+            drawingSession.FillCircle(_centerPoint + _leftTimeline.GetCurrentValue(totalTime), Convert.ToSingle(SecondaryRadius), _leftBrush);
+            drawingSession.FillCircle(_centerPoint + _rightTimeline.GetCurrentValue(totalTime), Convert.ToSingle(PrimaryRadius), _rightBrush);
         }
 
         _blurEffect.Source = source;

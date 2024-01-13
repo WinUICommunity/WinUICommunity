@@ -99,7 +99,7 @@ public partial class GooeyFooterEffect : Control
     private void OnCreateResource(CanvasControl sender, CanvasCreateResourcesEventArgs args)
     {
         _startTime = DateTime.Now;
-        _brush = new CanvasSolidColorBrush(sender, ColorBrush);
+        _brush = new CanvasSolidColorBrush(sender, Fill);
         _blurEffect = new GaussianBlurEffect
         {
             BlurAmount = Convert.ToSingle(this.BlurAmount)

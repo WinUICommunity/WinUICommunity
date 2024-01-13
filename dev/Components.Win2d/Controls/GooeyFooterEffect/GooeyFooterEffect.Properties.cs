@@ -41,12 +41,12 @@ public partial class GooeyFooterEffect
         set { SetValue(BlurAmountProperty, value); }
     }
 
-    public static readonly DependencyProperty ColorBrushProperty =
-       DependencyProperty.Register(nameof(ColorBrush), typeof(Color), typeof(GooeyFooterEffect), new PropertyMetadata(Color.FromArgb(255, 237, 85, 101), OnResourcePropertyValueChanged));
-    public Color ColorBrush
+    public static readonly DependencyProperty FillProperty =
+       DependencyProperty.Register(nameof(Fill), typeof(Color), typeof(GooeyFooterEffect), new PropertyMetadata(Color.FromArgb(255, 237, 85, 101), OnResourcePropertyValueChanged));
+    public Color Fill
     {
-        get { return (Color)GetValue(ColorBrushProperty); }
-        set { SetValue(ColorBrushProperty, value); }
+        get { return (Color)GetValue(FillProperty); }
+        set { SetValue(FillProperty, value); }
     }
 
     public static readonly DependencyProperty BubbleProperty =

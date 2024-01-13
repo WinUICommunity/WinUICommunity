@@ -80,7 +80,7 @@ public partial class TextMorphEffect : Control
         _texts = Text.Split(Delimiter);
 
         var i = 0;
-        var easingFunction = new QuarticEase { EasingMode = this.EasingMode };
+        var easingFunction = new QuarticEase { EasingMode = this.Easing };
         _morphItems = _texts.Select(t =>
         {
             return new TextMorphItem

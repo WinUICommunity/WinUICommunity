@@ -5,12 +5,12 @@ using Windows.UI.Text;
 namespace WinUICommunity;
 public partial class TextMorphEffect
 {
-    public static readonly DependencyProperty EasingModeProperty =
-        DependencyProperty.Register(nameof(EasingMode), typeof(EasingMode), typeof(TextMorphEffect), new PropertyMetadata(EasingMode.EaseOut, OnAnimationChanged));
-    public EasingMode EasingMode
+    public static readonly DependencyProperty EasingProperty =
+        DependencyProperty.Register(nameof(Easing), typeof(EasingMode), typeof(TextMorphEffect), new PropertyMetadata(EasingMode.EaseOut, OnAnimationChanged));
+    public EasingMode Easing
     {
-        get { return (EasingMode)GetValue(EasingModeProperty); }
-        set { SetValue(EasingModeProperty, value); }
+        get { return (EasingMode)GetValue(EasingProperty); }
+        set { SetValue(EasingProperty, value); }
     }
 
     public static readonly DependencyProperty TimeLineFromProperty =

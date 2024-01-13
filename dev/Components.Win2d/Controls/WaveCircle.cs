@@ -23,7 +23,7 @@ public class WaveCircle : FrameworkElement
     }
     
     public static readonly DependencyProperty IsReverseAnimationProperty =
-        DependencyProperty.Register("IsReverseAnimation", typeof(bool), typeof(WaveCircle), new PropertyMetadata(false, OnIsReverseAnimationChanged));
+        DependencyProperty.Register(nameof(IsReverseAnimation), typeof(bool), typeof(WaveCircle), new PropertyMetadata(false, OnIsReverseAnimationChanged));
 
     public bool IsReverseAnimation
     {
