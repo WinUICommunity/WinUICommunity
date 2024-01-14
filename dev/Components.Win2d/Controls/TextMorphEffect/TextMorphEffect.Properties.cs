@@ -70,7 +70,7 @@ public partial class TextMorphEffect
     }
 
     public static readonly DependencyProperty DelimiterProperty =
-        DependencyProperty.Register(nameof(Delimiter), typeof(string), typeof(TextMorphEffect), new PropertyMetadata(" ", OnTextChanged));
+        DependencyProperty.Register(nameof(Delimiter), typeof(string), typeof(TextMorphEffect), new PropertyMetadata(",", OnTextChanged));
     public string Delimiter
     {
         get { return (string)GetValue(DelimiterProperty); }

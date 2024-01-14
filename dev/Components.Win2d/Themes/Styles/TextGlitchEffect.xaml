@@ -39,4 +39,22 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="local:TextGlitchEffect3">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TextGlitchEffect3">
+                    <Rectangle
+                        x:Name="PART_TextBackground"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        Fill="{TemplateBinding Background}"
+                        Opacity="{TemplateBinding Opacity}"
+                        Stroke="{TemplateBinding BorderBrush}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

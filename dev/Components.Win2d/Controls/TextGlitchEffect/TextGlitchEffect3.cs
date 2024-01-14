@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Composition;
+﻿using System.Diagnostics;
+using Microsoft.UI.Composition;
+using Microsoft.UI.Text;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
@@ -6,7 +8,7 @@ using Microsoft.UI.Xaml.Shapes;
 namespace WinUICommunity;
 
 [TemplatePart(Name = nameof(PART_TextBackground), Type = typeof(Rectangle))]
-public partial class TextGlitchEffect2 : Control
+public partial class TextGlitchEffect3 : Control
 {
     private string PART_TextBackground = "PART_TextBackground";
     private Rectangle _rectangle;
@@ -14,14 +16,13 @@ public partial class TextGlitchEffect2 : Control
     private TextToBrushWrapper primaryWrapper;
     private TextToBrushWrapper secondaryWrapper;
     private TextToBrushWrapper tertiaryWrapper;
-    private Storyboard _storyboard1;
-    private Storyboard _storyboard2;
-    private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    private Storyboard _storyboard;
+    private static async void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        var ctl = (TextGlitchEffect2)d;
+        var ctl = (TextGlitchEffect3)d;
         if (ctl != null)
         {
-            ctl.UpdateTextEffect();
+            await ctl.UpdateTextEffectAsync();
         }
     }
 
@@ -43,24 +44,25 @@ public partial class TextGlitchEffect2 : Control
         return _rectangle;
     }
 
-    private void TextGlitchEffect_SizeChanged(object sender, SizeChangedEventArgs e)
+    private async void TextGlitchEffect_SizeChanged(object sender, SizeChangedEventArgs e)
     {
-        UpdateTextEffect();
+        await UpdateTextEffectAsync();
     }
 
-    private void UpdateTextEffect()
+    private async Task UpdateTextEffectAsync()
     {
         if (_rectangle == null)
         {
             return;
         }
 
-        primaryWrapper = CreateTextToBrushWrapper(PrimaryForeground, PrimaryBackground, 2, PrimaryShadowColor);
-        secondaryWrapper = CreateTextToBrushWrapper(SecondaryForeground, SecondaryBackground, -2, SecondaryShadowColor);
+        primaryWrapper = CreateTextToBrushWrapper(PrimaryForeground, PrimaryBackground, 3, PrimaryShadowColor);
+        secondaryWrapper = CreateTextToBrushWrapper(SecondaryForeground, SecondaryBackground, -3, SecondaryShadowColor);
         secondaryWrapper.Brush.Offset = new Vector2(-7f, 0);
 
         tertiaryWrapper = CreateTextToBrushWrapper(TertiaryForeground, TertiaryBackground, 0, TertiaryShadowColor);
 
+        
         if (PrimaryTextToBrushWrapper != null)
         {
             primaryWrapper = PrimaryTextToBrushWrapper;
@@ -81,12 +83,17 @@ public partial class TextGlitchEffect2 : Control
             return;
         }
 
+        var (redBrush, redMaskBrush) = CreateMaskedBrush(primaryWrapper.Brush);
+        var (blueBrush, blueMaskBrush) = CreateMaskedBrush(secondaryWrapper.Brush);
+
         var containerVisual = Compositor.CreateContainerVisual();
         var foregroundVisual = Compositor.CreateSpriteVisual();
-        foregroundVisual.Brush = CreateBrush(secondaryWrapper.Brush, primaryWrapper.Brush, BlendEffect);
+
+        foregroundVisual.Brush = CreateBrush(blueBrush, redBrush, BlendEffect);
         foregroundVisual.Size = new Vector2(Convert.ToSingle(RenderSize.Width), Convert.ToSingle(RenderSize.Height));
         containerVisual.Children.InsertAtBottom(foregroundVisual);
 
+        tertiaryWrapper = CreateTextToBrushWrapper(TertiaryForeground, TertiaryBackground, 0, TertiaryShadowColor);
 
         var textVisual = Compositor.CreateSpriteVisual();
         textVisual.Brush = tertiaryWrapper.Brush;
@@ -97,19 +104,31 @@ public partial class TextGlitchEffect2 : Control
         lineVisual.Brush = Compositor.CreateColorBrush(LineColor);
         lineVisual.Size = new Vector2(Convert.ToSingle(RenderSize.Width), Convert.ToSingle(LineHeight));
         containerVisual.Children.InsertAtTop(lineVisual);
-
         ElementCompositionPreview.SetElementChildVisual(_rectangle, containerVisual);
 
         StopAnimation(lineVisual);
-        
-        _storyboard1 = StartHeightAnimation(primaryWrapper, new List<(double, double)> { (0, 1), (20, 80), (60, 15), (100, 105) }, TimeSpan.FromSeconds(1), TimeSpan.Zero);
-        _storyboard2 = StartHeightAnimation(secondaryWrapper, new List<(double, double)> { (0, 110), (20, 112.5), (35, 30), (50, 100), (60, 50), (70, 85), (80, 55), (100, 1) }, TimeSpan.FromSeconds(1.5), TimeSpan.Zero);
-        StartOffsetAnimation(lineVisual, TimeSpan.FromSeconds(3), TimeSpan.Zero);
-    }
+        StopAnimation(redMaskBrush);
+        StopAnimation(blueMaskBrush);
 
-    private void TextGlitchEffect_Loaded(object sender, RoutedEventArgs e)
+        _storyboard = StartHeightAnimation(secondaryWrapper, new List<(double, double)> { (18, 110), (20, 112.5), (25, 110) }, StoryBoardAnimationDuration, TimeSpan.Zero);
+        StartOffseteAnimation(lineVisual, OffsetAnimationDuration, TimeSpan.Zero);
+        StartScaleAnimation(redMaskBrush, new List<(float, float)> { (0, 0.01f), (.20f, .73f), (.60f, .14f), (1, .95f) }, PrimaryScaleAnimationDuration, TimeSpan.Zero);
+        StartScaleAnimation(blueMaskBrush,new List<(float, float)> { (0, 1), (.20f, 1), (.35f, .27f), (.50f, .91f), (.60f, .45f), (.70f, .77f), (.80f, .5f), (1, 0) }, SecondaryScaleAnimationDuration, TimeSpan.Zero);
+        var index = 0;
+        var words = primaryWrapper.Text.Split(Delimiter);
+        while (true)
+        {
+            primaryWrapper.Text = words[index % words.Length];
+            secondaryWrapper.Text = words[index % words.Length];
+            tertiaryWrapper.Text = words[index % words.Length];
+            await Task.Delay(Delay);
+            index++;
+        }
+    }
+    
+    private async void TextGlitchEffect_Loaded(object sender, RoutedEventArgs e)
     {
-        UpdateTextEffect();
+        await UpdateTextEffectAsync();
     }
 
     public TextToBrushWrapper CreateTextToBrushWrapper(Color fontColor, Brush background, double shadowOffsetX, Color shadowColor)
@@ -124,7 +143,9 @@ public partial class TextGlitchEffect2 : Control
             Background = background,
             ShadowBlurAmount = 0,
             ShadowOffsetX = shadowOffsetX,
-            ShadowColor = shadowColor
+            ShadowColor = shadowColor,
+            FontFamily = new FontFamily("Arial, Helvetica"),
+            FontWeight = FontWeights.Thin
         };
         result.Brush.VerticalAlignmentRatio = 0;
         return result;
@@ -147,9 +168,30 @@ public partial class TextGlitchEffect2 : Control
         return compositionBrush;
     }
 
+    private (CompositionBrush, CompositionSurfaceBrush) CreateMaskedBrush(CompositionBrush source)
+    {
+        var compositor = Compositor;
+        var effect = new AlphaMaskEffect
+        {
+            Source = new CompositionEffectSourceParameter("Source"),
+            AlphaMask = new CompositionEffectSourceParameter("Mask")
+        };
+
+        var opacityMaskSurface = LoadedImageSurface.StartLoadFromUri(new Uri("ms-appx:///Assets/mask.Png"));
+        var opacityBrush = Compositor.CreateSurfaceBrush(opacityMaskSurface);
+        opacityBrush.Stretch = CompositionStretch.UniformToFill;
+
+        var effectFactory = compositor.CreateEffectFactory(effect);
+        var compositionBrush = effectFactory.CreateBrush();
+        compositionBrush.SetSourceParameter("Source", source);
+        compositionBrush.SetSourceParameter("Mask", opacityBrush);
+        return (compositionBrush, opacityBrush);
+    }
+
     private Storyboard StartHeightAnimation(TextToBrushWrapper brush, List<(double, double)> keyFrames, TimeSpan duration, TimeSpan delay)
     {
         var storyboard = new Storyboard();
+
         var animation = new DoubleAnimationUsingKeyFrames();
         animation.EnableDependentAnimation = true;
         Storyboard.SetTarget(animation, brush);
@@ -167,7 +209,7 @@ public partial class TextGlitchEffect2 : Control
         return storyboard;
     }
 
-    private void StartOffsetAnimation(SpriteVisual visual, TimeSpan duration, TimeSpan delay)
+    private void StartOffseteAnimation(SpriteVisual visual, TimeSpan duration, TimeSpan delay)
     {
         var offsetAnimation = Compositor.CreateVector3KeyFrameAnimation();
         offsetAnimation.Duration = duration;
@@ -188,6 +230,18 @@ public partial class TextGlitchEffect2 : Control
         visual.StartAnimation(nameof(CompositionSurfaceBrush.Offset), offsetAnimation);
     }
 
+    private void StartScaleAnimation(CompositionSurfaceBrush brush, List<(float, float)> keyFrames, TimeSpan duration, TimeSpan delay)
+    {
+        var offsetAnimation = Compositor.CreateVector2KeyFrameAnimation();
+        offsetAnimation.Duration = duration;
+        offsetAnimation.DelayTime = delay;
+        offsetAnimation.IterationBehavior = AnimationIterationBehavior.Forever;
+
+        foreach (var item in keyFrames) offsetAnimation.InsertKeyFrame(item.Item1, new Vector2(1, item.Item2 * 2));
+
+        brush.StartAnimation(nameof(CompositionSurfaceBrush.Scale), offsetAnimation);
+    }
+
     private void StopAnimation(SpriteVisual visual)
     {
         if (visual != null)
@@ -195,14 +249,17 @@ public partial class TextGlitchEffect2 : Control
             visual.StopAnimation(nameof(CompositionSurfaceBrush.Offset));
         }
 
-        if (_storyboard1 != null)
+        if (_storyboard != null)
         {
-            _storyboard1.Stop();
+            _storyboard.Stop();
         }
+    }
 
-        if (_storyboard2 != null)
+    private void StopAnimation(CompositionSurfaceBrush compositionSurfaceBrush)
+    {
+        if (compositionSurfaceBrush != null)
         {
-            _storyboard2.Stop();
+            compositionSurfaceBrush.StopAnimation(nameof(CompositionSurfaceBrush.Scale));
         }
     }
 }
