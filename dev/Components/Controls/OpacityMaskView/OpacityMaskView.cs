@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using System.Numerics;
+using Windows.UI;
 
 namespace WinUICommunity;
 
