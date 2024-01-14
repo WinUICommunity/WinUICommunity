@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.UI.Composition;
+﻿using Microsoft.UI.Composition;
 using Microsoft.UI.Text;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
