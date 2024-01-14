@@ -1,4 +1,6 @@
-﻿using Microsoft.Graphics.Canvas.Geometry;
+﻿// https://github.com/DinoChan
+
+using Microsoft.Graphics.Canvas.Geometry;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml.Hosting;
 using Windows.Foundation;

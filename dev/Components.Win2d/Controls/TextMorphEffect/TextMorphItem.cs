@@ -1,4 +1,6 @@
-﻿namespace WinUICommunity;
+﻿// https://github.com/DinoChan
+
+namespace WinUICommunity;
 public class TextMorphItem
 {
     public string Text { get; set; }

@@ -1,4 +1,6 @@
-﻿using Windows.Foundation;
+﻿// https://github.com/cnbluefire
+
+using Windows.Foundation;
 using Microsoft.UI.Xaml.Media;
 
 namespace WinUICommunity;

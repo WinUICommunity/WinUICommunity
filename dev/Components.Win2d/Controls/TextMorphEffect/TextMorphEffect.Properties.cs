@@ -1,4 +1,6 @@
-﻿using Microsoft.Graphics.Canvas.Text;
+﻿// https://github.com/DinoChan
+
+using Microsoft.Graphics.Canvas.Text;
 using Microsoft.UI.Text;
 using Windows.UI.Text;
 

@@ -1,4 +1,6 @@
-﻿using Windows.Foundation;
+﻿// https://github.com/DinoChan
+
+using Windows.Foundation;
 using Windows.Graphics;
 using Microsoft.Graphics.Canvas.Geometry;
 using Microsoft.Graphics.Canvas.Text;

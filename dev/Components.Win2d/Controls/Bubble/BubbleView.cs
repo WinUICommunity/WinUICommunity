@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿// https://github.com/cnbluefire
+
 using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Graphics.Display;
@@ -155,7 +156,6 @@ public class BubbleView : Control
 
     private void DisplayInformation_DisplayContentsInvalidated(DisplayInformation sender, object args)
     {
-        Debug.WriteLine("Display Contents Invalidated");
         ResetDevices(false);
     }
 

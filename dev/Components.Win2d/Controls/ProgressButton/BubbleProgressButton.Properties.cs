@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml.Media;
+﻿// https://github.com/DinoChan
+
+using Microsoft.UI.Xaml.Media;
 
 namespace WinUICommunity;
 

@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Composition;
+﻿// https://github.com/DinoChan
+
+using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;

@@ -1,4 +1,6 @@
-﻿namespace WinUICommunity;
+﻿// https://github.com/cnbluefire
+
+namespace WinUICommunity;
 
 [TemplatePart(Name = nameof(PART_Canvas), Type = typeof(CanvasControl))]
 public partial class GooeyFooterEffect : Control

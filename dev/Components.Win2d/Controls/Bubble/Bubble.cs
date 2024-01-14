@@ -1,4 +1,6 @@
-﻿using Windows.Foundation;
+﻿// https://github.com/cnbluefire
+
+using Windows.Foundation;
 using Microsoft.Graphics.Canvas.UI.Composition;
 using Microsoft.Graphics.DirectX;
 using Microsoft.UI.Composition;

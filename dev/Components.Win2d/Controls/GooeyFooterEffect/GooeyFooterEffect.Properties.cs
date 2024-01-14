@@ -1,4 +1,6 @@
-﻿namespace WinUICommunity;
+﻿// https://github.com/DinoChan
+
+namespace WinUICommunity;
 public partial class GooeyFooterEffect
 {
     public static readonly DependencyProperty TimeLineFromProperty =
