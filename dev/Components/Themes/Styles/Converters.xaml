@@ -14,4 +14,7 @@
     <local:CornerRadiusSplitConverter x:Key="CornerRadiusSplitConverter" />
 
     <local:LineDashStrokeArrayConverter x:Key="LineDashStrokeArrayConverter" />
+
+    <local:WaveProgressBarValueToPercentConverter x:Key="WaveProgressBarValueToPercentConverter" />
+
 </ResourceDictionary>

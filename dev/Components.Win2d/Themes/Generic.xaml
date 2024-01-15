@@ -73,6 +73,8 @@ Themes\Styles\TextMorphEffect.xaml
     </Setter>
   </Style>
   <Style TargetType="local:Particle">
+    <Setter Property="LineColor" Value="{ThemeResource SystemBaseMediumLowColor}" />
+    <Setter Property="ParticleColor" Value="{ThemeResource SystemBaseLowColor}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:Particle">
