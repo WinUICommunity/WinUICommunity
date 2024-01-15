@@ -19,7 +19,7 @@
     <Win2dVersion>1.1.1</Win2dVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.WinUI.Animations" Version="8.0.240109" />
+    <PackageReference Include="CommunityToolkit.WinUI.Media" Version="8.0.240109" />
     <PackageReference Include="Microsoft.Graphics.Win2D" Version="$(Win2dVersion)" />
     <PackageReference Include="XAMLTools.MSBuild" Version="1.0.0-alpha0143">
       <PrivateAssets>all</PrivateAssets>
