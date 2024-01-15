@@ -11,6 +11,7 @@ Themes\Styles\GooeyButton.xaml
 Themes\Styles\GooeyButtonItem.xaml
 Themes\Styles\GooeyEffect.xaml
 Themes\Styles\GooeyFooterEffect.xaml
+Themes\Styles\Particle.xaml
 Themes\Styles\TextBlockStrokeView.xaml
 Themes\Styles\TextGlitchEffect.xaml
 Themes\Styles\TextMorphEffect.xaml
@@ -66,6 +67,15 @@ Themes\Styles\TextMorphEffect.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:GooeyFooterEffect">
+          <win2d:CanvasControl x:Name="PART_Canvas" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:Particle">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:Particle">
           <win2d:CanvasControl x:Name="PART_Canvas" />
         </ControlTemplate>
       </Setter.Value>
