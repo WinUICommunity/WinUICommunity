@@ -16,12 +16,12 @@ public class WaveCircle : FrameworkElement
         set { SetValue(ColorBrushProperty, value); }
     }
 
-    public static readonly DependencyProperty IsAnimationProperty =
-        DependencyProperty.Register(nameof(IsAnimation), typeof(bool), typeof(WaveCircle), new PropertyMetadata(false, OnAnimationChanged));
-    public bool IsAnimation
+    public static readonly DependencyProperty IsAnimateProperty =
+        DependencyProperty.Register(nameof(IsAnimate), typeof(bool), typeof(WaveCircle), new PropertyMetadata(false, OnAnimationChanged));
+    public bool IsAnimate
     {
-        get { return (bool)GetValue(IsAnimationProperty); }
-        set { SetValue(IsAnimationProperty, value); }
+        get { return (bool)GetValue(IsAnimateProperty); }
+        set { SetValue(IsAnimateProperty, value); }
     }
     
     public static readonly DependencyProperty IsReverseAnimationProperty =
@@ -38,8 +38,8 @@ public class WaveCircle : FrameworkElement
         var ctl = (WaveCircle)d;
         if (ctl != null)
         {
-            ctl.IsAnimation = !ctl.IsAnimation;
-            ctl.IsAnimation = !ctl.IsAnimation;
+            ctl.IsAnimate = !ctl.IsAnimate;
+            ctl.IsAnimate = !ctl.IsAnimate;
         }
     }
 
@@ -57,7 +57,7 @@ public class WaveCircle : FrameworkElement
         var ctl = (WaveCircle)d;
         if (ctl != null)
         {
-            ctl.DrawWaveCircle(ctl.RenderSize, ctl.IsAnimation);
+            ctl.DrawWaveCircle(ctl.RenderSize, ctl.IsAnimate);
         }
     }
 
@@ -108,7 +108,7 @@ public class WaveCircle : FrameworkElement
     }
     private void OnSizeChanged(object sender, SizeChangedEventArgs e)
     {
-        DrawWaveCircle(e.NewSize, IsAnimation);
+        DrawWaveCircle(e.NewSize, IsAnimate);
     }
 
     public void DrawWaveCircle(Size size, bool isAnimation)

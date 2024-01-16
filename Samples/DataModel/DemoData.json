@@ -42,6 +42,13 @@
           "Subtitle": "Bubble",
           "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
           "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.WaveCirclePage",
+          "Title": "WaveCircle",
+          "Subtitle": "WaveCircle",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
         }
       ]
     },

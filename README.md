@@ -196,6 +196,9 @@ download and install our vsix package from Marketplace:
 
 ## History
 
+### WaveCircle /Win2d
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/WaveCircle.gif)
+
 ### Bubble /Win2d
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/Bubble.gif)
 
