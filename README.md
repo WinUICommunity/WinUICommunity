@@ -239,7 +239,7 @@ download and install our vsix package from Marketplace:
 ## History
 
 ### OpacityMaskView
-![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OpacityMaskView.gif)
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OpacityMaskView.png)
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OpacityMaskView2.gif)
 
 ### AutoScrollView
