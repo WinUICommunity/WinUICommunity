@@ -3,7 +3,7 @@
     {
       "UniqueId": "Win2dFeatures",
       "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
-      "Title": "Win2d Features",
+      "Title": "Features (Win2D)",
       "SecondaryTitle": "",
       "ImageIconPath": "ms-appx:///Assets/Fluent/canvas.png",
       "ImagePath": "ms-appx:///Assets/Fluent/canvas.png",
@@ -61,8 +61,8 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.BubblePage",
           "Title": "Bubble",
           "Subtitle": "Bubble",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/bubble.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/bubble.png"
+          "ImageIconPath": "ms-appx:///Assets/Fluent/canvas.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/canvas.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.GooeyPage",
