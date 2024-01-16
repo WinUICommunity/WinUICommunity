@@ -78,6 +78,14 @@ public partial class Watermark : Control
         await LoadMarkImage();
     }
 
+    public async Task LoadMarkImage(Uri uri)
+    {
+        if (IsImage)
+        {
+            _canvasBitmap = await CanvasBitmap.LoadAsync(_Canvas, uri);
+            _Canvas.Invalidate();
+        }
+    }
     private async Task LoadMarkImage()
     {
         if (IsImage && _Canvas != null)

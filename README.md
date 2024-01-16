@@ -196,6 +196,10 @@ download and install our vsix package from Marketplace:
 
 ## History
 
+### Watermark /Win2d
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/Watermark.gif)
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/Watermark2.gif)
+
 ### BlurAnimationHelper /Win2d
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/BlurAnimationHelper.gif)
 

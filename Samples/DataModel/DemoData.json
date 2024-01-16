@@ -63,6 +63,13 @@
           "Subtitle": "Blur Animation Helper",
           "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
           "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.WatermarkPage",
+          "Title": "Watermark",
+          "Subtitle": "Watermark a Text or Image",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
         }
       ]
     },
