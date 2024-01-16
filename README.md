@@ -196,6 +196,15 @@ download and install our vsix package from Marketplace:
 
 ## History
 
+### GooeyButton /Win2d
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/GooeyButton.gif)
+
+### GooeyEffect /Win2d
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/GooeyEffect.gif)
+
+### GooeyFooterEffect /Win2d
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/GooeyFooterEffect.gif)
+
 ### WaveCircle /Win2d
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/WaveCircle.gif)
 
