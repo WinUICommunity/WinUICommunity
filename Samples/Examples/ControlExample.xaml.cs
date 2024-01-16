@@ -221,6 +221,7 @@ public enum DocType
 {
     Core,
     Components,
+    Win2d,
     LandingPages,
     ContextMenuExtensions
 }

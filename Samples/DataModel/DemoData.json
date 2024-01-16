@@ -1,6 +1,24 @@
 ﻿{
   "Groups": [
     {
+      "UniqueId": "Win2dFeatures",
+      "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
+      "Title": "Win2d Features",
+      "SecondaryTitle": "",
+      "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+      "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png",
+      "Items": [
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.TextMorphEffectPage",
+          "Title": "TextMorphEffect",
+          "Subtitle": "Text Morhp Effect",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        }
+       
+      ]
+    },
+    {
       "UniqueId": "Features",
       "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
       "Title": "Features",
@@ -29,7 +47,7 @@
           "ImageIconPath": "ms-appx:///Assets/Fluent/gravatar.png",
           "ImagePath": "ms-appx:///Assets/Fluent/gravatar.png"
         },
-         {
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.GrowlPage",
           "Title": "Growl",
           "Subtitle": "Growl",
