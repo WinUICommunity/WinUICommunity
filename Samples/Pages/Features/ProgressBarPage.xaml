@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="WinUICommunity.DemoApp.Pages.ProgressBarPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:WinUICommunity.DemoApp.Examples"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:wuc="using:WinUICommunity"
+      mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel Margin="10"
+                    wuc:PanelAttach.ChildrenTransitions="Default"
+                    Spacing="10">
+            <local:ControlExample DocPage="controls/waveProgressBar"
+                                  HeaderText="WaveProgressBar">
+                <local:ControlExample.Xaml>
+                    <x:String>
+                        &lt;wuc:WaveProgressBar Value="35"/&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
+                <local:ControlExample.Pane>
+                    <StackPanel Spacing="10">
+                        <ToggleSwitch x:Name="tgText"
+                                      IsOn="True" />
+                        <Slider x:Name="slPrg"
+                                Header="Progress"
+                                Value="35" />
+                        <Slider x:Name="slThickness"
+                                Header="Wave Thickness"
+                                Value="2" />
+                    </StackPanel>
+                </local:ControlExample.Pane>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="5">
+                    <wuc:WaveProgressBar ShowText="{x:Bind tgText.IsOn, Mode=OneWay}"
+                                         WaveThickness="{x:Bind slThickness.Value, Mode=OneWay}"
+                                         Value="{x:Bind slPrg.Value, Mode=OneWay}" />
+                    <wuc:WaveProgressBar ShowText="{x:Bind tgText.IsOn, Mode=OneWay}"
+                                         WaveFill="{ThemeResource SystemFillColorCriticalBrush}"
+                                         WaveThickness="{x:Bind slThickness.Value, Mode=OneWay}"
+                                         Value="{x:Bind slPrg.Value, Mode=OneWay}" />
+
+                </StackPanel>
+            </local:ControlExample>
+            <local:ControlExample DocPage="controls/progressRing"
+                                  HeaderText="ProgressRing">
+                <local:ControlExample.Xaml>
+                    <x:String>
+                        &lt;wuc:ProgressRing IsActive="True" /&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
+                <local:ControlExample.Pane>
+                    <StackPanel Spacing="10">
+                        <ToggleSwitch x:Name="tgActive"
+                                      Header="IsActive"
+                                      IsOn="True" />
+                    </StackPanel>
+                </local:ControlExample.Pane>
+                <wuc:ProgressRing IsActive="{x:Bind tgActive.IsOn, Mode=OneWay}" />
+            </local:ControlExample>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

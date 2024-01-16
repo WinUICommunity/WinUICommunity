@@ -82,11 +82,25 @@
       "IsSpecialSection": false,
       "Items": [
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.DividerPage",
-          "Title": "Divider",
-          "Subtitle": "Divider",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/divider.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/divider.png"
+          "UniqueId": "WinUICommunity.DemoApp.Pages.AutoScrollViewPage",
+          "Title": "AutoScrollView",
+          "Subtitle": "AutoScrollView",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ProgressBarPage",
+          "Title": "Progress",
+          "Subtitle": "ProgressRing, WaveProgressBar",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        },
+        {
+        "UniqueId": "WinUICommunity.DemoApp.Pages.DividerPage",
+        "Title": "Divider",
+        "Subtitle": "Divider",
+        "ImageIconPath": "ms-appx:///Assets/Fluent/divider.png",
+        "ImagePath": "ms-appx:///Assets/Fluent/divider.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ShieldPage",

@@ -118,7 +118,7 @@
                                CenterPointX="{x:Bind CenterPointX2.Value, Mode=OneWay}"
                                CenterPointY="{x:Bind CenterPointY2.Value, Mode=OneWay}"
                                IsImage="True"
-                               MarkImage="ms-appx:///WinUICommunity.DemoApp/Assets/icon.png"
+                               MarkImage="ms-appx:///Assets/icon.png"
                                MarkScale="{x:Bind MarkScale2.Value, Mode=OneWay}"
                                UseScale="{x:Bind UseScale2.IsOn, Mode=OneWay}" />
             </local:ControlExample>

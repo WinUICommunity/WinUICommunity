@@ -7,6 +7,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
+
     <ScrollViewer>
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
