@@ -209,14 +209,6 @@ Themes\Styles\Watermark.xaml
       <Setter.Value>
         <ControlTemplate TargetType="local:BubbleButton">
           <Grid x:Name="RootGrid">
-            <local:BubbleView x:Name="BubbleView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="{TemplateBinding BubbleForeground}" />
-            <Grid x:Name="ContentGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" local:VisualExtensions.IsBindCenterPoint="True">
-              <ContentPresenter x:Name="ContentPresenter" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" AnimatedIcon.State="Normal" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" BackgroundSizing="{TemplateBinding BackgroundSizing}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" CornerRadius="{TemplateBinding CornerRadius}" Foreground="{TemplateBinding Foreground}">
-                <ContentPresenter.BackgroundTransition>
-                  <BrushTransition Duration="0:0:0.083" />
-                </ContentPresenter.BackgroundTransition>
-              </ContentPresenter>
-            </Grid>
             <VisualStateManager.VisualStateGroups>
               <VisualStateGroup x:Name="CommonStates">
                 <VisualState x:Name="Normal">
@@ -275,6 +267,14 @@ Themes\Styles\Watermark.xaml
                 </VisualState>
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
+            <local:BubbleView x:Name="BubbleView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="{TemplateBinding BubbleForeground}" />
+            <Grid x:Name="ContentGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" local:VisualExtensions.IsBindCenterPoint="True">
+              <ContentPresenter x:Name="ContentPresenter" Padding="{TemplateBinding Padding}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" AnimatedIcon.State="Normal" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" BackgroundSizing="{TemplateBinding BackgroundSizing}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" CornerRadius="{TemplateBinding CornerRadius}" Foreground="{TemplateBinding Foreground}">
+                <ContentPresenter.BackgroundTransition>
+                  <BrushTransition Duration="0:0:0.083" />
+                </ContentPresenter.BackgroundTransition>
+              </ContentPresenter>
+            </Grid>
           </Grid>
         </ControlTemplate>
       </Setter.Value>

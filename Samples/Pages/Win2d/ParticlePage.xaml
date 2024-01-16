@@ -26,14 +26,13 @@
                         <NumberBox x:Name="nbDensity"
                                    Header="Density"
                                    Maximum="9"
-                                   Minimum="1"
+                                   Minimum="1" ValueChanged="nbDensity_ValueChanged"
                                    PlaceholderText="Density"
                                    SpinButtonPlacementMode="Inline"
                                    Value="6" />
                     </StackPanel>
                 </local:ControlExample.Pane>
-                <wuc:Particle Density="{x:Bind nbDensity.Value, Mode=OneWay}"
-                              IsPointerEnable="{x:Bind tgMouseHover.IsOn, Mode=OneWay}" />
+                <wuc:Particle x:Name="particle" IsPointerEnable="{x:Bind tgMouseHover.IsOn, Mode=OneWay}" />
             </local:ControlExample>
         </StackPanel>
     </ScrollViewer>

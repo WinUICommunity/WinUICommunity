@@ -35,6 +35,13 @@
           "Subtitle": "Particle",
           "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
           "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.BubblePage",
+          "Title": "Bubble",
+          "Subtitle": "Bubble",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
         }
       ]
     },
