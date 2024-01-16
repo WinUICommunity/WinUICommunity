@@ -32,4 +32,9 @@
       <Visible>True</Visible>
     </XAMLCombineItems>
   </ItemGroup>
+  <ItemGroup>
+    <Content Update="Assets\mask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
