@@ -49,6 +49,13 @@
           "Subtitle": "WaveCircle",
           "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
           "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.GooeyPage",
+          "Title": "Gooey",
+          "Subtitle": "Gooey",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
         }
       ]
     },

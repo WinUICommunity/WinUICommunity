@@ -502,7 +502,7 @@ public sealed class GooeyButton : ItemsControl
     private bool OnInvoked()
     {
         var args = new GooeyButtonInvokedEventArgs();
-        Invoked.Invoke(this, args);
+        Invoked?.Invoke(this, args);
         return args.Cancel;
     }
 
