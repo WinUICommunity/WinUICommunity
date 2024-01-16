@@ -196,6 +196,10 @@ download and install our vsix package from Marketplace:
 
 ## History
 
+### TextMorphEffect
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TextMorphEffect.gif)
+
+
 ### FontIcon Extension : Choose Fluent Icons (more than 1400) with Name or Code
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FontIconGlyph.png)
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FontIconGlyph2.png)
