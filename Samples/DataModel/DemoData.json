@@ -10,8 +10,15 @@
       "Items": [
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.TextMorphEffectPage",
-          "Title": "TextMorphEffect",
+          "Title": "Text Morph Effect",
           "Subtitle": "Text Morhp Effect",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.TextGlitchEffectPage",
+          "Title": "Text Glitch Effect",
+          "Subtitle": "Text Glitch Effect",
           "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
           "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
         }

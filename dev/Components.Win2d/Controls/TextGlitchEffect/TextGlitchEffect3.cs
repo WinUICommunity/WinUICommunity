@@ -35,6 +35,8 @@ public partial class TextGlitchEffect3 : Control
         {
             Loaded -= TextGlitchEffect_Loaded;
             Loaded += TextGlitchEffect_Loaded;
+            _rectangle.SizeChanged -= TextGlitchEffect_SizeChanged;
+            _rectangle.SizeChanged += TextGlitchEffect_SizeChanged;
             SizeChanged -= TextGlitchEffect_SizeChanged;
             SizeChanged += TextGlitchEffect_SizeChanged;
         }

@@ -14,7 +14,7 @@ public partial class TextGlitchEffect
     }
 
     public new static readonly DependencyProperty FontSizeProperty =
-        DependencyProperty.Register(nameof(FontSize), typeof(double), typeof(TextGlitchEffect), new PropertyMetadata(72, OnValueChanged));
+        DependencyProperty.Register(nameof(FontSize), typeof(double), typeof(TextGlitchEffect), new PropertyMetadata(72.0, OnValueChanged));
     public new double FontSize
     {
         get { return (double)GetValue(FontSizeProperty); }

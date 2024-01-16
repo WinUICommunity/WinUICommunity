@@ -196,6 +196,9 @@ download and install our vsix package from Marketplace:
 
 ## History
 
+### TextGlitchEffect
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TextGlitchEffect.gif)
+
 ### TextMorphEffect
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TextMorphEffect.gif)
 
