@@ -89,6 +89,13 @@
           "ImagePath": "ms-appx:///Assets/Fluent/autoScrollView.png"
         },
         {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.OpacityMaskViewPage",
+          "Title": "OpacityMaskView",
+          "Subtitle": "OpacityMaskView",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/backdrop.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/backdrop.png"
+        },
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ProgressBarPage",
           "Title": "Progress",
           "Subtitle": "ProgressRing, WaveProgressBar",
@@ -96,11 +103,11 @@
           "ImagePath": "ms-appx:///Assets/Fluent/waveProgressBar.png"
         },
         {
-        "UniqueId": "WinUICommunity.DemoApp.Pages.DividerPage",
-        "Title": "Divider",
-        "Subtitle": "Divider",
-        "ImageIconPath": "ms-appx:///Assets/Fluent/divider.png",
-        "ImagePath": "ms-appx:///Assets/Fluent/divider.png"
+          "UniqueId": "WinUICommunity.DemoApp.Pages.DividerPage",
+          "Title": "Divider",
+          "Subtitle": "Divider",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/divider.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/divider.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ShieldPage",

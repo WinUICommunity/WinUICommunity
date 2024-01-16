@@ -119,6 +119,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 Components Includes custom controls and styles.
 
 - AutoScrollView
+- OpacityMaskView
 - ProgressRing
 - WaveProgressBar
 - Divider
@@ -236,6 +237,10 @@ download and install our vsix package from Marketplace:
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
 ## History
+
+### OpacityMaskView
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OpacityMaskView.gif)
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OpacityMaskView2.gif)
 
 ### AutoScrollView
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/AutoScrollView.gif)

@@ -1,0 +1,7 @@
+﻿private void Button_Click(object sender, RoutedEventArgs e)
+{
+    if (EffectButtonAnimation.GetCurrentState() != Microsoft.UI.Xaml.Media.Animation.ClockState.Active)
+    {
+        EffectButtonAnimation.Begin();
+    }
+}
