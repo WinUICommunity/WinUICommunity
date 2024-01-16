@@ -196,6 +196,9 @@ download and install our vsix package from Marketplace:
 
 ## History
 
+### Particle /Win2d
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/Particle.gif)
+
 ### TextBlockStrokeView /Win2d
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TextBlockStrokeView.gif)
 
