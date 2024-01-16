@@ -110,6 +110,9 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
+- AutoScrollView
+- ProgressRing
+- WaveProgressBar
 - Divider
 - Shield
 - Gravatar
@@ -147,7 +150,6 @@ After installing, add the following resource to app.xaml
 ```
 
 For more info See the [Components](dev/Components/README.md) and [Docs](https://ghost1372.github.io/winUICommunityComponents/)
-
 
 ### LandingPages
 Create a landing page in the style of WinUI 3 and WinUI-Gallery very quickly and easily
