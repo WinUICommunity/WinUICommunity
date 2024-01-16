@@ -12,7 +12,7 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample DocPage="controls/TextMorphEffect"
+            <local:ControlExample DocPage="controls/textMorphEffect"
                                   DocType="Win2d">
                 <local:ControlExample.Xaml>
                     <x:String>

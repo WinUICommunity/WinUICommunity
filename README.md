@@ -196,12 +196,14 @@ download and install our vsix package from Marketplace:
 
 ## History
 
-### TextGlitchEffect
+### TextBlockStrokeView /Win2d
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TextBlockStrokeView.gif)
+
+### TextGlitchEffect /Win2d
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TextGlitchEffect.gif)
 
-### TextMorphEffect
+### TextMorphEffect /Win2d
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TextMorphEffect.gif)
-
 
 ### FontIcon Extension : Choose Fluent Icons (more than 1400) with Name or Code
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FontIconGlyph.png)

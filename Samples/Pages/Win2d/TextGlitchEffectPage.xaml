@@ -12,7 +12,7 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample DocPage="controls/TextGlitchEffect"
+            <local:ControlExample DocPage="controls/textGlitchEffect"
                                   DocType="Win2d"
                                   HeaderText="Example 1">
                 <local:ControlExample.Xaml>
@@ -33,7 +33,7 @@
                                       Text="{x:Bind txt.Text, Mode=OneWay}" />
             </local:ControlExample>
 
-            <local:ControlExample DocPage="controls/TextGlitchEffect"
+            <local:ControlExample DocPage="controls/textGlitchEffect"
                                   DocType="Win2d"
                                   HeaderText="Example 2">
                 <local:ControlExample.Xaml>
@@ -53,7 +53,7 @@
                                        Text="{x:Bind txt2.Text, Mode=OneWay}" />
             </local:ControlExample>
 
-            <local:ControlExample DocPage="controls/TextGlitchEffect"
+            <local:ControlExample DocPage="controls/textGlitchEffect"
                                   DocType="Win2d"
                                   HeaderText="Example 3">
                 <local:ControlExample.Xaml>

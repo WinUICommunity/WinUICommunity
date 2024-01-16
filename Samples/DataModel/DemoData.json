@@ -21,8 +21,14 @@
           "Subtitle": "Text Glitch Effect",
           "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
           "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.TextBlockStrokeViewPage",
+          "Title": "TextBlock Stroke View",
+          "Subtitle": "TextBlock Stroke View",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
         }
-       
       ]
     },
     {
