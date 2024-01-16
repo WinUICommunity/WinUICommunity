@@ -151,6 +151,37 @@ After installing, add the following resource to app.xaml
 
 For more info See the [Components](dev/Components/README.md) and [Docs](https://ghost1372.github.io/winUICommunityComponents/)
 
+### Win2D
+Experience WinUI 3 quickly and easily with the help of Win2D Components, Everything you need to develop an application is gathered in one place.
+
+Components Includes custom controls and styles.
+
+- WaveCircle
+- BlurAnimationHelper
+- Watermark
+- TextMorphEffect
+- TextGlitchEffect
+- TextBlockStrokeView
+- Particle
+- BubbleButton
+- BubbleProgressButton
+- GooeyFooterEffect
+- GooeyEffect
+- GooeyButton
+
+#### Install
+```
+Install-Package WinUICommunity.Win2D
+```
+After installing, add the following resource to app.xaml
+
+```xml
+<ResourceDictionary Source="ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml" />
+```
+
+For more info See the [Win2D](dev/Win2D/README.md) and [Docs](https://ghost1372.github.io/winUICommunityWin2D/)
+
+
 ### LandingPages
 Create a landing page in the style of WinUI 3 and WinUI-Gallery very quickly and easily
 
