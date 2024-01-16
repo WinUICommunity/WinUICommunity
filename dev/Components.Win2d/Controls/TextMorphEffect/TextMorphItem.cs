@@ -1,7 +1,7 @@
 ﻿// https://github.com/DinoChan
 
 namespace WinUICommunity;
-public class TextMorphItem
+internal class TextMorphItem
 {
     public string Text { get; set; }
     public DoubleTimeline Timeline { get; set; }

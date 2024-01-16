@@ -23,6 +23,10 @@ public partial class TextMorphEffect : Control
         var ctl = (TextMorphEffect)d;
         if (ctl != null && ctl._Canvas != null)
         {
+            if (double.IsNaN(ctl.BlurAmount))
+            {
+                ctl.BlurAmount = 0f;
+            }
             ctl._Canvas.Invalidate();
         }
     }
@@ -88,7 +92,7 @@ public partial class TextMorphEffect : Control
             return new TextMorphItem
             {
                 Text = t,
-                Timeline = new DoubleTimeline(TimeLineFrom, TimeLineTo, Duration, TimeSpan.FromSeconds(BeginTime.TotalSeconds + i++ * 1.7), this.AutoReverse, this.Forever,
+                Timeline = new DoubleTimeline(TimeLineFrom, TimeLineTo, Duration, TimeSpan.FromSeconds(BeginTime.TotalSeconds + i++ * 1.7), this.AutoReverse, false,
                     easingFunction)
             };
         }).Reverse().ToList();
@@ -114,6 +118,11 @@ public partial class TextMorphEffect : Control
 
     private void OnCreateResource(CanvasControl sender, CanvasCreateResourcesEventArgs args)
     {
+        if (double.IsNaN(BlurAmount))
+        {
+            BlurAmount = 0f;
+        }
+
         _blurEffect = new GaussianBlurEffect
         {
             BlurAmount = Convert.ToSingle(this.BlurAmount)

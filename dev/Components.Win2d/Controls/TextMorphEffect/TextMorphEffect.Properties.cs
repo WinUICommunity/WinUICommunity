@@ -103,14 +103,6 @@ public partial class TextMorphEffect
         set { SetValue(HorizontalAlignmentProperty, value); }
     }
 
-    public static readonly DependencyProperty ForeverProperty =
-        DependencyProperty.Register(nameof(Forever), typeof(bool), typeof(TextMorphEffect), new PropertyMetadata(false, OnAnimationChanged));
-    public bool Forever
-    {
-        get { return (bool)GetValue(ForeverProperty); }
-        set { SetValue(ForeverProperty, value); }
-    }
-
     public static readonly DependencyProperty AutoReverseProperty =
         DependencyProperty.Register(nameof(AutoReverse), typeof(bool), typeof(TextMorphEffect), new PropertyMetadata(true, OnAnimationChanged));
     public bool AutoReverse
