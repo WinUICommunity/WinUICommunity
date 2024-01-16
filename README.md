@@ -27,6 +27,14 @@
   <img alt="Components-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Components?logo=nuget&label=Components%20Downloads&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Components"/>
 </a>
 
+<a href="https://www.nuget.org/packages/WinUICommunity.Win2D">
+  <img alt="WinUICommunity.Win2D-Version" src="https://img.shields.io/nuget/v/WinUICommunity.Win2D?logo=nuget&label=Win2D&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Win2D"/>
+</a> 
+
+<a href="https://www.nuget.org/packages/WinUICommunity.Win2D">
+  <img alt="Win2D-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Win2D?logo=nuget&label=Win2D%20Downloads&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Win2D"/>
+</a>
+
 <a href="https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions">
   <img alt="ContextMenuExtensions-Version" src="https://img.shields.io/nuget/v/WinUICommunity.ContextMenuExtensions?logo=nuget&label=ContextMenuExtensions&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.ContextMenuExtensions"/>
 </a> 
