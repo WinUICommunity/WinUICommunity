@@ -206,6 +206,9 @@ public sealed partial class ControlExample : OptionsPageControl
             case DocType.Components:
                 docTypeValue = "winUICommunityComponents";
                 break;
+            case DocType.Win2d:
+                docTypeValue = "winUICommunityWin2d";
+                break;
             case DocType.LandingPages:
                 docTypeValue = "winUICommunityLandingPages";
                 break;

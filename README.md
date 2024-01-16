@@ -187,7 +187,7 @@ After installing, add the following resource to app.xaml
 <ResourceDictionary Source="ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml" />
 ```
 
-For more info See the [Win2D](dev/Win2D/README.md) and [Docs](https://ghost1372.github.io/winUICommunityWin2D/)
+For more info See the [Win2D](dev/Win2D/README.md) and [Docs](https://ghost1372.github.io/winUICommunityWin2d/)
 
 
 ### LandingPages
