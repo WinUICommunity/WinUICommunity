@@ -46,13 +46,13 @@
   </ItemGroup>
   <ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'false'">
     <ProjectReference Include="..\dev\Components\Components.csproj" />
-    <ProjectReference Include="..\dev\Components.Win2d\Components.Win2d.csproj" />
+    <ProjectReference Include="..\dev\Win2D\Win2D.csproj" />
     <ProjectReference Include="..\dev\Core\Core.csproj" />
     <ProjectReference Include="..\dev\LandingPages\LandingPages.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <PackageReference Include="WinUICommunity.Components" Version="*" />
-    <PackageReference Include="WinUICommunity.Components.Win2d" Version="*" />
+    <PackageReference Include="WinUICommunity.Win2D" Version="*" />
     <PackageReference Include="WinUICommunity.Core" Version="*" />
     <PackageReference Include="WinUICommunity.LandingPages" Version="*" />
   </ItemGroup>

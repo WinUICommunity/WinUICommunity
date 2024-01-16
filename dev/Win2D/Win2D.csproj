@@ -4,7 +4,7 @@
     <NoWarn>CS8632</NoWarn>
     <Version>6.1.0</Version>
     <IsTrimmable>false</IsTrimmable>
-    <Namespace>WinUICommunity.Components.Win2d</Namespace>
+    <Namespace>WinUICommunity.Win2D</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
     <AssemblyName>$(Namespace)</AssemblyName>

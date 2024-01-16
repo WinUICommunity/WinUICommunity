@@ -9,11 +9,11 @@
     <a href="https://www.nuget.org/profiles/WinUICommunity">
         <img alt="WinuiCommunity Nugets" src="https://img.shields.io/badge/WinUICommunity-Nugets-green"></img>
     </a> 
-    <a href="https://www.nuget.org/packages/WinUICommunity.Components.Win2d">
-        <img alt="nuget-version" src="https://img.shields.io/nuget/v/WinUICommunity.Components.Win2d.svg"></img>
+    <a href="https://www.nuget.org/packages/WinUICommunity.Win2d">
+        <img alt="nuget-version" src="https://img.shields.io/nuget/v/WinUICommunity.Win2d.svg"></img>
     </a> 
-    <a href="https://www.nuget.org/packages/WinUICommunity.Components.Win2d">
-        <img alt="Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Components.Win2d?color=brightgreen&label=Installs"></img>
+    <a href="https://www.nuget.org/packages/WinUICommunity.Win2d">
+        <img alt="Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Win2d?color=brightgreen&label=Installs"></img>
     </a> 
     <a href="https://ghost1372.github.io/winUICommunity/">
         <img alt="Docs" src="https://img.shields.io/badge/Document-Here-critical"></img>
@@ -29,20 +29,20 @@
 </p>
 <br>
 
-# Components.Win2d
+# Win2d
  
-### Experience WinUI 3 quickly and easily with the help of Components.Win2d, Everything you need to develop an application is gathered in one place.
+### Experience WinUI 3 quickly and easily with the help of Win2d Components, Everything you need to develop an application is gathered in one place.
 
 
 ## Install
 ```
-Install-Package WinUICommunity.Components.Win2d
+Install-Package WinUICommunity.Win2D
 ```
 
 After installing, add the following resource to app.xaml
 
 ```xml
-<ResourceDictionary Source="ms-appx:///WinUICommunity.Components.Win2d/Themes/Generic.xaml" />
+<ResourceDictionary Source="ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml" />
 ```
 
 ## Demo
@@ -52,6 +52,3 @@ See the [Demo](https://github.com/WinUICommunity/WinUICommunity) app to see how 
 ## Documentation
 
 See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
-
-## Available Features
-

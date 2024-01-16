@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp", "Samples\DemoApp.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Components", "dev\Components\Components.csproj", "{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Components.Win2d", "dev\Components.Win2d\Components.Win2d.csproj", "{8A78D961-AFBB-4C7B-940F-81C944C50E3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win2D", "dev\Win2D\Win2D.csproj", "{8A78D961-AFBB-4C7B-940F-81C944C50E3E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6F361F19-8D50-4094-AE95-B59CC13676D0}"
 	ProjectSection(SolutionItems) = preProject
