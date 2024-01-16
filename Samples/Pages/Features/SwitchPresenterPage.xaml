@@ -50,7 +50,7 @@
                     Spacing="10">
             <local:ControlExample DocPage="controls/switchPresenter"
                                   HeaderText="Loading Example"
-                                  XamlSource="Features/SwitchPresenterPage_Loading_xaml.txt">
+                                  XamlSource="Features/SwitchPresenter/SwitchPresenterPage_Loading_xaml.txt">
                 <local:ControlExample.Pane>
                     <ToggleSwitch x:Name="LoadingState" />
                 </local:ControlExample.Pane>
@@ -91,7 +91,7 @@
 
             <local:ControlExample DocPage="controls/switchPresenter"
                                   HeaderText="Example 1"
-                                  XamlSource="Features/SwitchPresenterPage_Part1_xaml.txt">
+                                  XamlSource="Features/SwitchPresenter/SwitchPresenterPage_Part1_xaml.txt">
                 <local:ControlExample.Pane>
                     <RadioButtons x:Name="radio">
                         <RadioButton Content="Square"
@@ -147,7 +147,7 @@
 
             <local:ControlExample DocPage="controls/switchPresenter"
                                   HeaderText="Example 2"
-                                  XamlSource="Features/SwitchPresenterPage_Part2_xaml.txt">
+                                  XamlSource="Features/SwitchPresenter/SwitchPresenterPage_Part2_xaml.txt">
                 <local:ControlExample.Pane>
                     <ComboBox x:Name="Lookup"
                               Margin="0,0,0,8"
@@ -196,10 +196,10 @@
                 </StackPanel>
             </local:ControlExample>
 
-            <local:ControlExample CSharpSource="Features/SwitchPresenterPage_Part3_cs.txt"
+            <local:ControlExample CSharpSource="Features/SwitchPresenter/SwitchPresenterPage_Part3_cs.txt"
                                   DocPage="controls/switchPresenter"
                                   HeaderText="Example 3"
-                                  XamlSource="Features/SwitchPresenterPage_Part3_xaml.txt">
+                                  XamlSource="Features/SwitchPresenter/SwitchPresenterPage_Part3_xaml.txt">
                 <local:ControlExample.Pane>
                     <ComboBox x:Name="AnimalPicker"
                               Header="Pick an Animal"

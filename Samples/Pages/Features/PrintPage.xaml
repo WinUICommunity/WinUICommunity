@@ -19,10 +19,10 @@
                      IsClosable="False"
                      IsOpen="True"
                      Severity="Warning" />
-            <local:ControlExample CSharpSource="Features/PrintPage_cs.txt"
+            <local:ControlExample CSharpSource="Features/Print/PrintPage_cs.txt"
                                   DocPage="helpers/printHelper"
                                   DocType="Core"
-                                  XamlSource="Features/PrintPage_xaml.txt">
+                                  XamlSource="Features/Print/PrintPage_xaml.txt">
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <ToggleSwitch Name="ShowOrientationSwitch"

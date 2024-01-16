@@ -16,11 +16,11 @@
                      IsClosable="False"
                      IsOpen="True"
                      Severity="Warning" />
-            <local:ControlExample CSharpSource="Features/ThemeManagerPage_Theme_cs.txt"
+            <local:ControlExample CSharpSource="Features/ThemeManager/ThemeManagerPage_Theme_cs.txt"
                                   DocPage="themeService"
                                   DocType="Core"
                                   HeaderText="Theme"
-                                  XamlSource="Features/ThemeManagerPage_Theme_xaml.txt">
+                                  XamlSource="Features/ThemeManager/ThemeManagerPage_Theme_xaml.txt">
                 <StackPanel Orientation="Horizontal"
                             Spacing="10">
                     <StackPanel x:Name="themePanel"
@@ -46,11 +46,11 @@
                     </ComboBox>
                 </StackPanel>
             </local:ControlExample>
-            <local:ControlExample CSharpSource="Features/ThemeManagerPage_Backdrop_cs.txt"
+            <local:ControlExample CSharpSource="Features/ThemeManager/ThemeManagerPage_Backdrop_cs.txt"
                                   DocPage="themeService"
                                   DocType="Core"
                                   HeaderText="Backdrop"
-                                  XamlSource="Features/ThemeManagerPage_Backdrop_xaml.txt">
+                                  XamlSource="Features/ThemeManager/ThemeManagerPage_Backdrop_xaml.txt">
                 <StackPanel Orientation="Horizontal"
                             Spacing="10">
                     <StackPanel x:Name="backdropPanel"

@@ -11,10 +11,10 @@
                      IsClosable="False"
                      IsOpen="True"
                      Severity="Informational" />
-            <local:ControlExample CSharpSource="Features/CommandObservablePage_cs.txt"
+            <local:ControlExample CSharpSource="Features/Command/CommandObservablePage_cs.txt"
                                   DocPage="command"
                                   DocType="Core"
-                                  XamlSource="Features/CommandObservablePage_xaml.txt">
+                                  XamlSource="Features/Command/CommandObservablePage_xaml.txt">
                 <StackPanel>
                     <Button HorizontalAlignment="Center"
                             Command="{x:Bind Vm.ItemInvokedCommand}"

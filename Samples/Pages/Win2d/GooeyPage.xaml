@@ -12,11 +12,11 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample CSharpSource="Features/GooeyPage_cs.txt"
+            <local:ControlExample CSharpSource="Win2d/GooeyPage_cs.txt"
                                   DocPage="controls/gooey"
                                   DocType="Win2d"
                                   HeaderText="GooeyButton"
-                                  XamlSource="Features/GooeyPage_xaml.txt">
+                                  XamlSource="Win2d/GooeyPage_xaml.txt">
 
                 <wuc:GooeyButton x:Name="gooeyButton"
                                  HorizontalAlignment="Center"

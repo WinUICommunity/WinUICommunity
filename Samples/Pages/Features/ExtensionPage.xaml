@@ -43,7 +43,7 @@
             <local:ControlExample DocPage="extensions/textBoxExtension"
                                   DocType="Core"
                                   HeaderText="TextBoxExtensions"
-                                  XamlSource="Features/ExtensionPage_Part1_xaml.txt">
+                                  XamlSource="Features/Extension/ExtensionPage_Part1_xaml.txt">
                 <StackPanel Margin="10"
                             Spacing="10">
                     <TextBox Name="PhoneNumberValidator"
@@ -95,7 +95,7 @@
             <local:ControlExample DocPage="extensions/textBoxExtension/#Text-mask"
                                   DocType="Core"
                                   HeaderText="Mask"
-                                  XamlSource="Features/ExtensionPage_Part2_xaml.txt">
+                                  XamlSource="Features/Extension/ExtensionPage_Part2_xaml.txt">
                 <StackPanel Margin="10"
                             Spacing="10">
                     <TextBox wuc:TextBoxExtensions.Mask="9a9a-a9a*"

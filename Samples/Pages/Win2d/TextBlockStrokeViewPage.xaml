@@ -14,7 +14,7 @@
                     Spacing="10">
             <local:ControlExample DocPage="controls/textBlockStrokeView"
                                   DocType="Win2d"
-                                  XamlSource="Features/TextBlockStrokeViewPage_xaml.txt">
+                                  XamlSource="Win2d/TextBlockStrokeViewPage_xaml.txt">
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <TextBox x:Name="txt"

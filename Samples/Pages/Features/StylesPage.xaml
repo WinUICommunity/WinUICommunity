@@ -17,7 +17,7 @@
                             wuc:PanelAttach.ChildrenTransitions="Default"
                             Spacing="10">
                     <local:ControlExample DocPage="styles"
-                                          XamlSource="Features/Styles_xaml.txt">
+                                          XamlSource="Features/Styles/Styles_xaml.txt">
                         <StackPanel Margin="10"
                                     Spacing="10">
                             <TextBlock Style="{StaticResource OobeSubtitleStyle}"
@@ -42,7 +42,7 @@
 
                     <local:ControlExample DocPage="styles/#Border"
                                           HeaderText="Border"
-                                          XamlSource="Features/Styles_Border_xaml.txt">
+                                          XamlSource="Features/Styles/Styles_Border_xaml.txt">
                         <StackPanel Margin="10"
                                     Spacing="10">
                             <Border Height="50"
@@ -60,7 +60,7 @@
 
                     <local:ControlExample DocPage="styles/#Grid"
                                           HeaderText="Grid"
-                                          XamlSource="Features/Styles_Grid_xaml.txt">
+                                          XamlSource="Features/Styles/Styles_Grid_xaml.txt">
                         <StackPanel Margin="10"
                                     Spacing="10">
                             <Grid Width="100"

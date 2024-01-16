@@ -11,10 +11,10 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample CSharpSource="Features/GrowlPage_Part1_cs.txt"
+            <local:ControlExample CSharpSource="Features/Growl/GrowlPage_Part1_cs.txt"
                                   DocPage="controls/growl"
                                   HeaderText="In-App Growl"
-                                  XamlSource="Features/GrowlPage_xaml.txt">
+                                  XamlSource="Features/Growl/GrowlPage_xaml.txt">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel MinWidth="340"
                                 wuc:Growl.GrowlParent="True" />
@@ -43,7 +43,7 @@
                     </StackPanel>
                 </local:ControlExample.Pane>
             </local:ControlExample>
-            <local:ControlExample CSharpSource="Features/GrowlPage_Part2_cs.txt"
+            <local:ControlExample CSharpSource="Features/Growl/GrowlPage_Part2_cs.txt"
                                   DocPage="controls/growl"
                                   HeaderText="Growl Global">
                 <StackPanel Orientation="Horizontal">

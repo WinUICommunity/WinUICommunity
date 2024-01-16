@@ -7,9 +7,9 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample CSharpSource="Features/InlineAutoCompleteTextBoxPage_cs.txt"
+            <local:ControlExample CSharpSource="Features/InlineAutoComplete/InlineAutoCompleteTextBoxPage_cs.txt"
                                   DocPage="controls/inlineAutoCompleteTextBox"
-                                  XamlSource="Features/InlineAutoCompleteTextBoxPage_xaml.txt">
+                                  XamlSource="Features/InlineAutoComplete/InlineAutoCompleteTextBoxPage_xaml.txt">
                 <local:ControlExample.Pane>
                     <StackPanel HorizontalAlignment="Stretch"
                                 Spacing="10">

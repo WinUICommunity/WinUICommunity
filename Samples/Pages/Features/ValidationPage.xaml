@@ -18,9 +18,9 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample CSharpSource="Features/ValidationPage_cs.txt"
+            <local:ControlExample CSharpSource="Features/Validation/ValidationPage_cs.txt"
                                   DocPage="validation"
-                                  XamlSource="Features/ValidationPage_xaml.txt">
+                                  XamlSource="Features/Validation/ValidationPage_xaml.txt">
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <TextBox x:Name="NameBox"

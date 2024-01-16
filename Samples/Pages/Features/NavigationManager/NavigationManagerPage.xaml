@@ -10,11 +10,11 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample CSharpSource="Features/NavigationManagerPage_cs.txt"
+            <local:ControlExample CSharpSource="Features/NavigationManager/NavigationManagerPage_cs.txt"
                                   DocPage="navigationService"
                                   DocType="Core"
                                   HeaderText="Simple NavigationView"
-                                  XamlSource="Features/NavigationManagerPage_xaml.txt">
+                                  XamlSource="Features/NavigationManager/NavigationManagerPage_xaml.txt">
                 <NavigationView x:Name="navigationView">
                     <NavigationView.AutoSuggestBox>
                         <AutoSuggestBox Name="autoSuggestBox"
@@ -35,11 +35,11 @@
                     <Frame x:Name="shellFrame" />
                 </NavigationView>
             </local:ControlExample>
-            <local:ControlExample CSharpSource="Features/NavigationManagerPage_Json_cs.txt"
+            <local:ControlExample CSharpSource="Features/NavigationManager/NavigationManagerPage_Json_cs.txt"
                                   DocPage="navigationService"
                                   DocType="Core"
                                   HeaderText="NavigationView with Json File"
-                                  XamlSource="Features/NavigationManagerPage_Json_xaml.txt">
+                                  XamlSource="Features/NavigationManager/NavigationManagerPage_Json_xaml.txt">
                 <NavigationView x:Name="NavigationViewControl"
                                 IsTabStop="False"
                                 IsTitleBarAutoPaddingEnabled="True"

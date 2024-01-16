@@ -14,7 +14,7 @@
                     Spacing="10">
             <local:ControlExample DocPage="controls/autoScrollView"
                                   HeaderText="TextBlock"
-                                  XamlSource="Features/AutoScrollViewPage_Part1_xaml.txt">
+                                  XamlSource="Features/AutoScrollView/AutoScrollViewPage_Part1_xaml.txt">
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <ToggleSwitch x:Name="tgPlay"
@@ -28,7 +28,7 @@
             </local:ControlExample>
             <local:ControlExample DocPage="controls/autoScrollView"
                                   HeaderText="Button Content"
-                                  XamlSource="Features/AutoScrollViewPage_Part2_xaml.txt">
+                                  XamlSource="Features/AutoScrollView/AutoScrollViewPage_Part2_xaml.txt">
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <ToggleSwitch x:Name="tgPlay2"
@@ -48,7 +48,7 @@
             </local:ControlExample>
             <local:ControlExample DocPage="controls/autoScrollView"
                                   HeaderText="Run Fast"
-                                  XamlSource="Features/AutoScrollViewPage_Part3_xaml.txt">
+                                  XamlSource="Features/AutoScrollView/AutoScrollViewPage_Part3_xaml.txt">
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <ToggleSwitch x:Name="tgPlay3"
@@ -69,7 +69,7 @@
             </local:ControlExample>
             <local:ControlExample DocPage="controls/autoScrollView"
                                   HeaderText="With OpacityMaskView"
-                                  XamlSource="Features/AutoScrollViewPage_Part4_xaml.txt">
+                                  XamlSource="Features/AutoScrollView/AutoScrollViewPage_Part4_xaml.txt">
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <ToggleSwitch x:Name="tgPlay4"
@@ -93,7 +93,7 @@
                     </wuc:AutoScrollView>
                 </wuc:OpacityMaskView>
             </local:ControlExample>
-            <local:ControlExample CSharpSource="Features/AutoScrollViewPage_Part5_cs.txt"
+            <local:ControlExample CSharpSource="Features/AutoScrollView/AutoScrollViewPage_Part5_cs.txt"
                                   DocPage="controls/autoScrollView"
                                   HeaderText="With Hover Effect"
                                   XamlSource="Features/AutoScrollViewPage_Part5_xaml.txt">

@@ -13,7 +13,7 @@
                     Spacing="10">
             <local:ControlExample DocPage="controls/settingsGroup"
                                   HeaderText="Example 1"
-                                  XamlSource="Features/SettingsGroup_Part1_xaml.txt">
+                                  XamlSource="Features/Settings/SettingsGroup_Part1_xaml.txt">
                 <wuc:SettingsGroup Description="Recent and commonly used settings"
                                    Header="Recommended settings">
                     <wuc:SettingsGroup.Items>
@@ -31,7 +31,7 @@
             </local:ControlExample>
             <local:ControlExample DocPage="controls/settingsGroup"
                                   HeaderText="Example 2"
-                                  XamlSource="Features/SettingsGroup_Part2_xaml.txt">
+                                  XamlSource="Features/Settings/SettingsGroup_Part2_xaml.txt">
                 <wuc:SettingsGroup Description="Make sure OneDrive is installed on your PC so you can see your storage details here"
                                    Header="Cloud storage"
                                    HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/oneDrive.png}">
@@ -42,7 +42,7 @@
             </local:ControlExample>
             <local:ControlExample DocPage="controls/settingsGroup"
                                   HeaderText="Example 3"
-                                  XamlSource="Features/SettingsGroup_Part3_xaml.txt">
+                                  XamlSource="Features/Settings/SettingsGroup_Part3_xaml.txt">
                 <wuc:SettingsGroup Description="Manage, add, and remove devices"
                                    Header="Bluetooth devices">
                     <wuc:SettingsGroup.Items>

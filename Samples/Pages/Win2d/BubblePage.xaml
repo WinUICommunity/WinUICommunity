@@ -35,11 +35,11 @@
                                   Content="Button" />
             </local:ControlExample>
 
-            <local:ControlExample CSharpSource="Features/BubblePage_cs.txt"
+            <local:ControlExample CSharpSource="Win2d/BubblePage_cs.txt"
                                   DocPage="controls/bubble"
                                   DocType="Win2d"
                                   HeaderText="BubbleProgressButton"
-                                  XamlSource="Features/BubblePage_xaml.txt">
+                                  XamlSource="Win2d/BubblePage_xaml.txt">
 
                 <StackPanel Orientation="Horizontal"
                             Spacing="10">

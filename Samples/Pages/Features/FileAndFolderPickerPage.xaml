@@ -11,7 +11,7 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample CSharpSource="Features/FileAndFolderPickerPage_Part1_cs.txt"
+            <local:ControlExample CSharpSource="Features/FileAndFolderPicker/FileAndFolderPickerPage_Part1_cs.txt"
                                   DocPage="helpers/fileAndFolderPickerHelper/#PickSaveFileAsync"
                                   DocType="Core"
                                   HeaderText="PickSaveFileAsync">
@@ -25,7 +25,7 @@
                 </StackPanel>
             </local:ControlExample>
 
-            <local:ControlExample CSharpSource="Features/FileAndFolderPickerPage_Part2_cs.txt"
+            <local:ControlExample CSharpSource="Features/FileAndFolderPicker/FileAndFolderPickerPage_Part2_cs.txt"
                                   DocPage="helpers/fileAndFolderPickerHelper/#PickMultipleFilesAsync"
                                   DocType="Core"
                                   HeaderText="PickMultipleFilesAsync">
@@ -38,7 +38,7 @@
                                HorizontalAlignment="Center" />
                 </StackPanel>
             </local:ControlExample>
-            <local:ControlExample CSharpSource="Features/FileAndFolderPickerPage_Part3_cs.txt"
+            <local:ControlExample CSharpSource="Features/FileAndFolderPicker/FileAndFolderPickerPage_Part3_cs.txt"
                                   DocPage="helpers/fileAndFolderPickerHelper/#PickSingleFileAsync"
                                   DocType="Core"
                                   HeaderText="PickSingleFileAsync">
@@ -51,7 +51,7 @@
                                HorizontalAlignment="Center" />
                 </StackPanel>
             </local:ControlExample>
-            <local:ControlExample CSharpSource="Features/FileAndFolderPickerPage_Part4_cs.txt"
+            <local:ControlExample CSharpSource="Features/FileAndFolderPicker/FileAndFolderPickerPage_Part4_cs.txt"
                                   DocPage="helpers/fileAndFolderPickerHelper/#PickSingleFolderAsync"
                                   DocType="Core"
                                   HeaderText="PickSingleFolderAsync">

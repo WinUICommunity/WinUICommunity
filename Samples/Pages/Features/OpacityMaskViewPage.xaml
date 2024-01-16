@@ -116,7 +116,7 @@
                     Spacing="10">
             <local:ControlExample DocPage="controls/opacityMaskView"
                                   HeaderText="OpacityMaskView"
-                                  XamlSource="Features/OpacityMaskViewPage_Part1_xaml.txt">
+                                  XamlSource="Features/OpacityMaskView/OpacityMaskViewPage_Part1_xaml.txt">
                 <wuc:OpacityMaskView MaxHeight="500"
                                      Margin="0,20"
                                      Padding="0"
@@ -137,10 +137,10 @@
                 </wuc:OpacityMaskView>
             </local:ControlExample>
 
-            <local:ControlExample CSharpSource="Features/OpacityMaskViewPage_cs.txt"
+            <local:ControlExample CSharpSource="Features/OpacityMaskView/OpacityMaskViewPage_cs.txt"
                                   DocPage="controls/opacityMaskView"
                                   HeaderText="EffectButton"
-                                  XamlSource="Features/OpacityMaskViewPage_Part2_xaml.txt">
+                                  XamlSource="Features/OpacityMaskView/OpacityMaskViewPage_Part2_xaml.txt">
                 <wuc:OpacityMaskView Margin="0,20"
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Center">

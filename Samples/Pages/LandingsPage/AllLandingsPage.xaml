@@ -10,10 +10,10 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample CSharpSource="Features/AllLandingsPage_cs.txt"
+            <local:ControlExample CSharpSource="LandingsPage/AllLandingsPage_cs.txt"
                                   DocPage="allLandingPage"
                                   DocType="LandingPages"
-                                  XamlSource="Features/AllLandingsPage_xaml.txt">
+                                  XamlSource="LandingsPage/AllLandingsPage_xaml.txt">
                 <wuc:AllLandingPage x:Name="allLandingsPage"
                                     HeaderImage="{ThemeResource HeaderCover}"
                                     HeaderText="All"

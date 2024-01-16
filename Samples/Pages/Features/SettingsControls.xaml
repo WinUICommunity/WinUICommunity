@@ -24,7 +24,7 @@
                     Spacing="10">
             <local:ControlExample DocPage="controls/settingsCard"
                                   HeaderText="SettingsPage"
-                                  XamlSource="Features/SettingsControl_Part1_xaml.txt">
+                                  XamlSource="Features/Settings/SettingsControl_Part1_xaml.txt">
                 <StackPanel Margin="10"
                             Spacing="10">
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
@@ -113,7 +113,7 @@
             </local:ControlExample>
             <local:ControlExample DocPage="controls/settingsCard"
                                   HeaderText="Clickable SettingsCard"
-                                  XamlSource="Features/SettingsControl_Part2_xaml.txt">
+                                  XamlSource="Features/Settings/SettingsControl_Part2_xaml.txt">
                 <StackPanel Margin="10"
                             Spacing="10">
                     <wuc:SettingsCard x:Name="settingsCard1"
@@ -142,7 +142,7 @@
             </local:ControlExample>
             <local:ControlExample DocPage="controls/settingsCard"
                                   HeaderText="SettingsCard"
-                                  XamlSource="Features/SettingsControl_Part3_xaml.txt">
+                                  XamlSource="Features/Settings/SettingsControl_Part3_xaml.txt">
                 <StackPanel Margin="10"
                             Spacing="10">
                     <TextBlock Margin="1,0,0,4"
@@ -198,7 +198,7 @@
             </local:ControlExample>
             <local:ControlExample DocPage="controls/settingsCard"
                                   HeaderText="SettingsExpander ItemsSource"
-                                  XamlSource="Features/SettingsControl_Part4_xaml.txt">
+                                  XamlSource="Features/Settings/SettingsControl_Part4_xaml.txt">
                 <StackPanel Margin="10"
                             Spacing="10">
                     <wuc:SettingsExpander Margin="20"
@@ -246,7 +246,7 @@
             </local:ControlExample>
             <local:ControlExample DocPage="controls/settingsCard"
                                   HeaderText="SettingsExpander"
-                                  XamlSource="Features/SettingsControl_Part5_xaml.txt">
+                                  XamlSource="Features/Settings/SettingsControl_Part5_xaml.txt">
                 <StackPanel Margin="10"
                             Spacing="10">
                     <wuc:SettingsExpander x:Name="settingsCard"
