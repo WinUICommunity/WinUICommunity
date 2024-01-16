@@ -5,71 +5,71 @@
       "SectionId": "WinUICommunity.DemoApp.Pages.DemoSectionPage",
       "Title": "Win2d Features",
       "SecondaryTitle": "",
-      "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-      "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png",
+      "ImageIconPath": "ms-appx:///Assets/Fluent/canvas.png",
+      "ImagePath": "ms-appx:///Assets/Fluent/canvas.png",
       "Items": [
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.TextMorphEffectPage",
-          "Title": "Text Morph Effect",
-          "Subtitle": "Text Morhp Effect",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
-        },
-        {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.TextGlitchEffectPage",
-          "Title": "Text Glitch Effect",
-          "Subtitle": "Text Glitch Effect",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
-        },
-        {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.TextBlockStrokeViewPage",
-          "Title": "TextBlock Stroke View",
-          "Subtitle": "TextBlock Stroke View",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
-        },
-        {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.ParticlePage",
-          "Title": "Particle",
-          "Subtitle": "Particle",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
-        },
-        {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.BubblePage",
-          "Title": "Bubble",
-          "Subtitle": "Bubble",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
-        },
-        {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.WaveCirclePage",
-          "Title": "WaveCircle",
-          "Subtitle": "WaveCircle",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
-        },
-        {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.GooeyPage",
-          "Title": "Gooey",
-          "Subtitle": "Gooey",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+          "UniqueId": "WinUICommunity.DemoApp.Pages.WatermarkPage",
+          "Title": "Watermark",
+          "Subtitle": "Watermark a Text or Image",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/watermark.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/watermark.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.BlurAnimationPage",
           "Title": "Blur Animation Helper",
           "Subtitle": "Blur Animation Helper",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+          "ImageIconPath": "ms-appx:///Assets/Fluent/backdrop.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/backdrop.png"
         },
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.WatermarkPage",
-          "Title": "Watermark",
-          "Subtitle": "Watermark a Text or Image",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+          "UniqueId": "WinUICommunity.DemoApp.Pages.TextMorphEffectPage",
+          "Title": "Text Morph Effect",
+          "Subtitle": "Text Morhp Effect",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/morph.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/morph.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.TextGlitchEffectPage",
+          "Title": "Text Glitch Effect",
+          "Subtitle": "Text Glitch Effect",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/styles.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.TextBlockStrokeViewPage",
+          "Title": "TextBlock Stroke View",
+          "Subtitle": "TextBlock Stroke View",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/autoSuggestBox.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/autoSuggestBox.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ParticlePage",
+          "Title": "Particle",
+          "Subtitle": "Particle",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/particle.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/particle.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.WaveCirclePage",
+          "Title": "WaveCircle",
+          "Subtitle": "WaveCircle",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/canvas.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/canvas.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.BubblePage",
+          "Title": "Bubble",
+          "Subtitle": "Bubble",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/bubble.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/bubble.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.GooeyPage",
+          "Title": "Gooey",
+          "Subtitle": "Gooey",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/gooey.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/gooey.png"
         }
       ]
     },
@@ -85,15 +85,15 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.AutoScrollViewPage",
           "Title": "AutoScrollView",
           "Subtitle": "AutoScrollView",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+          "ImageIconPath": "ms-appx:///Assets/Fluent/autoScrollView.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/autoScrollView.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ProgressBarPage",
           "Title": "Progress",
           "Subtitle": "ProgressRing, WaveProgressBar",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+          "ImageIconPath": "ms-appx:///Assets/Fluent/waveProgressBar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/waveProgressBar.png"
         },
         {
         "UniqueId": "WinUICommunity.DemoApp.Pages.DividerPage",
