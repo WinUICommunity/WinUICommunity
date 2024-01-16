@@ -196,6 +196,16 @@ download and install our vsix package from Marketplace:
 
 ## History
 
+### AutoScrollView
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/AutoScrollView.gif)
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/AutoScrollView2.gif)
+
+### ProgressRing
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/ProgressRing.gif)
+
+### WaveProgressBar
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/WaveProgressBar.gif)
+
 ### Watermark /Win2d
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/Watermark.gif)
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/Watermark2.gif)
