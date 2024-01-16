@@ -183,6 +183,7 @@ Themes\Styles\Watermark.xaml
     </Setter>
   </Style>
   <Style TargetType="local:TextMorphEffect">
+    <Setter Property="ColorBrush" Value="{ThemeResource SystemBaseMediumHighColor}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:TextMorphEffect">

@@ -34,7 +34,8 @@
                                    Maximum="10"
                                    Minimum="0"
                                    PlaceholderText="Blur Amount"
-                                   SpinButtonPlacementMode="Inline" />
+                                   SpinButtonPlacementMode="Inline"
+                                   Value="1" />
                     </StackPanel>
                 </local:ControlExample.Pane>
                 <wuc:TextMorphEffect BlurAmount="{x:Bind nbBlur.Value, Mode=OneWay}"

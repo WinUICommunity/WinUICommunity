@@ -119,7 +119,7 @@ public partial class TextMorphEffect
         set { SetValue(BlurAmountProperty, value); }
     }
     public static readonly DependencyProperty ColorBrushProperty =
-       DependencyProperty.Register(nameof(ColorBrush), typeof(Color), typeof(TextMorphEffect), new PropertyMetadata(Colors.Black, OnPropertyChanged));
+       DependencyProperty.Register(nameof(ColorBrush), typeof(Color), typeof(TextMorphEffect), new PropertyMetadata(null, OnPropertyChanged));
     public Color ColorBrush
     {
         get { return (Color)GetValue(ColorBrushProperty); }
