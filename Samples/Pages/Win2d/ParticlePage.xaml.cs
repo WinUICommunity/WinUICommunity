@@ -11,6 +11,9 @@ public sealed partial class ParticlePage : Page
 
     private void nbDensity_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
-        particle.Density = Convert.ToInt32(args.NewValue);
+        if (particle != null)
+        {
+            particle.Density = Convert.ToInt32(args.NewValue);
+        }
     }
 }

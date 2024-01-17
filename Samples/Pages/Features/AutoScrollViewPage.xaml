@@ -96,7 +96,7 @@
             <local:ControlExample CSharpSource="Features/AutoScrollView/AutoScrollViewPage_Part5_cs.txt"
                                   DocPage="controls/autoScrollView"
                                   HeaderText="With Hover Effect"
-                                  XamlSource="Features/AutoScrollViewPage_Part5_xaml.txt">
+                                  XamlSource="Features/AutoScrollView/AutoScrollViewPage_Part5_xaml.txt">
                 <wuc:AutoScrollView x:Name="AutoScrollHoverEffectView"
                                     Margin="0,20"
                                     IsPlaying="False"
