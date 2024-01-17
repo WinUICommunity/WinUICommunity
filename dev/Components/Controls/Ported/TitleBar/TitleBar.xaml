@@ -170,9 +170,13 @@
                                     Grid.Column="1"
                                     Orientation="Horizontal">
                             <Button x:Name="PART_BackButton"
+                                    Width="{TemplateBinding BackButtonWidth}"
+                                    Margin="{TemplateBinding BackButtonMargin}"
                                     Style="{ThemeResource TitleBarBackButtonStyle}"
                                     ToolTipService.ToolTip="{TemplateBinding BackButtonTooltipText}" />
                             <Button x:Name="PART_PaneButton"
+                                    Width="{TemplateBinding PaneButtonWidth}"
+                                    Margin="{TemplateBinding PaneButtonMargin}"
                                     Style="{StaticResource TitleBarPaneToggleButtonStyle}"
                                     ToolTipService.ToolTip="{TemplateBinding PaneButtonTooltipText}" />
                         </StackPanel>
@@ -186,7 +190,7 @@
                                           Content="{TemplateBinding Content}" />
                         <ContentPresenter x:Name="PART_FooterPresenter"
                                           Grid.Column="7"
-                                          Margin="4,0,8,0"
+                                          Margin="{TemplateBinding FooterMargin}"
                                           HorizontalContentAlignment="Right"
                                           Content="{TemplateBinding Footer}" />
 
