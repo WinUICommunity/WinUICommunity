@@ -4,6 +4,7 @@ using WinRT;
 namespace WinUICommunity;
 public class TransparentBackdrop : CompositionBrushBackdrop
 {
+    public TransparentKind Kind { get; set; }
     private WindowMessageMonitor? monitor;
     private Windows.UI.Composition.CompositionColorBrush? brush;
 
@@ -51,6 +52,12 @@ public class TransparentBackdrop : CompositionBrushBackdrop
 
         var hdc = NativeMethods.GetDC(new IntPtr((nint)hWnd));
         ClearBackground((nint)hWnd, hdc);
+        switch (Kind)
+        {
+            case TransparentKind.Full:
+                WindowHelper.SetWindowCornerRadius((nint)hWnd, NativeValues.DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_DONOTROUND);
+                break;
+        }
     }
     protected override void OnTargetDisconnected(ICompositionSupportsSystemBackdrop disconnectedTarget)
     {
@@ -107,4 +114,10 @@ public class TransparentBackdrop : CompositionBrushBackdrop
             e.Result = 0;
         }
     }
+}
+
+public enum TransparentKind
+{
+    Base,
+    Full
 }
