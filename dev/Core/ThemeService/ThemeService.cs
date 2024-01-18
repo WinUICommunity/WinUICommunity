@@ -10,14 +10,14 @@ public class ThemeService : IThemeService
     internal static CoreSettings Settings = JsonSettings.Configure<CoreSettings>()
                                .WithRecovery(RecoveryAction.RenameAndLoadDefault)
                                .WithVersioning(VersioningResultAction.RenameAndLoadDefault);
-    public Window CurrentWindow { get; set; }
+    public Window Window { get; set; }
     public SystemBackdrop CurrentSystemBackdrop { get; set; }
     private bool changeThemeWithoutSave = false;
     public ElementTheme ActualTheme
     {
         get
         {
-            if (CurrentWindow != null && CurrentWindow.Content is FrameworkElement element)
+            if (Window != null && Window.Content is FrameworkElement element)
             {
                 if (element.RequestedTheme != ElementTheme.Default)
                 {
@@ -31,11 +31,11 @@ public class ThemeService : IThemeService
     {
         get
         {
-            return CurrentWindow != null && CurrentWindow.Content is FrameworkElement element ? element.RequestedTheme : ElementTheme.Default;
+            return Window != null && Window.Content is FrameworkElement element ? element.RequestedTheme : ElementTheme.Default;
         }
         set
         {
-            if (CurrentWindow != null && CurrentWindow.Content is FrameworkElement element)
+            if (Window != null && Window.Content is FrameworkElement element)
             {
                 element.RequestedTheme = value;
             }
@@ -63,9 +63,9 @@ public class ThemeService : IThemeService
         {
             return;
         }
-        CurrentWindow = window;
+        Window = window;
 
-        if (CurrentWindow.Content is FrameworkElement element)
+        if (Window.Content is FrameworkElement element)
         {
             GeneralHelper.SetPreferredAppMode(element.ActualTheme);
             element.ActualThemeChanged += OnActualThemeChanged;
@@ -95,7 +95,7 @@ public class ThemeService : IThemeService
 
     public void ConfigBackdrop(BackdropType backdropType = BackdropType.Mica, bool force = false)
     {
-        if (CurrentWindow == null)
+        if (Window == null)
         {
             return;
         }
@@ -110,16 +110,230 @@ public class ThemeService : IThemeService
 
         if (backdropType != BackdropType.None)
         {
-            var systemBackdrop = GetCurrentSystemBackdropFromLocalConfig(backdropType, force);
+            var systemBackdrop = GetSystemBackdropFromLocalConfig(backdropType, force);
             CurrentSystemBackdrop = systemBackdrop;
-            SetWindowBackdrop(systemBackdrop);
-            SetBackdropFallBackColorForWindows10(CurrentWindow);
+            SetWindowSystemBackdrop(systemBackdrop);
+            SetBackdropFallBackColorForWindows10(Window);
 
             CurrentBackdropType = GetBackdropType(systemBackdrop);
         }
         else
         {
             CurrentBackdropType = BackdropType.None;
+        }
+    }
+
+    public void SetBackdropTintColor(Color color)
+    {
+        var backdrop = GetSystemBackdrop();
+        if (backdrop != null)
+        {
+            if (backdrop is MicaBackdrop mica)
+            {
+                mica.TintColor = color;
+            }
+            else if (backdrop is AcrylicBackdrop acrylic)
+            {
+                acrylic.TintColor = color;
+            }
+        }
+
+        if (this.useAutoSave && Settings.BackdropTintColor != color)
+        {
+            Settings.BackdropTintColor = color;
+            Settings?.Save();
+        }
+    }
+
+    public void SetBackdropFallBackColor(Color color)
+    {
+        var backdrop = GetSystemBackdrop();
+        if (backdrop != null)
+        {
+            if (backdrop is MicaBackdrop mica)
+            {
+                mica.FallbackColor = color;
+            }
+            else if (backdrop is AcrylicBackdrop acrylic)
+            {
+                acrylic.FallbackColor = color;
+            }
+        }
+
+        if (this.useAutoSave && Settings.BackdropFallBackColor != color)
+        {
+            Settings.BackdropFallBackColor = color;
+            Settings?.Save();
+        }
+    }
+
+    public void SetBackdropTintOpacity(float opacity)
+    {
+        var backdrop = GetSystemBackdrop();
+        if (backdrop != null)
+        {
+            if (backdrop is MicaBackdrop mica)
+            {
+                mica.TintOpacity = opacity;
+            }
+            else if (backdrop is AcrylicBackdrop acrylic)
+            {
+                acrylic.TintOpacity = opacity;
+            }
+        }
+
+        if (this.useAutoSave && Settings.BackdropTintOpacity != opacity)
+        {
+            Settings.BackdropTintOpacity = opacity;
+            Settings?.Save();
+        }
+    }
+
+    public void SetBackdropLuminosityOpacity(float opacity)
+    {
+        var backdrop = GetSystemBackdrop();
+        if (backdrop != null)
+        {
+            if (backdrop is MicaBackdrop mica)
+            {
+                mica.LuminosityOpacity = opacity;
+            }
+            else if (backdrop is AcrylicBackdrop acrylic)
+            {
+                acrylic.LuminosityOpacity = opacity;
+            }
+        }
+
+        if (this.useAutoSave && Settings.BackdropLuminosityOpacity != opacity)
+        {
+            Settings.BackdropLuminosityOpacity = opacity;
+            Settings?.Save();
+        }
+    }
+
+    public void ConfigBackdropTintColor(Color color, bool force = false)
+    {
+        if (useAutoSave && Settings.IsBackdropTintColorFirstRun)
+        {
+            Settings.BackdropTintColor = color;
+            Settings.IsBackdropTintColorFirstRun = false;
+            Settings.Save();
+        }
+
+        var backdrop = GetSystemBackdrop();
+        if (backdrop != null)
+        {
+            var colorFromConfig = GetBackdropTintColorFromLocalConfig(color, force);
+            if (backdrop is MicaBackdrop mica)
+            {
+                mica.TintColor = colorFromConfig;
+            }
+            else if (backdrop is AcrylicBackdrop acrylic)
+            {
+                acrylic.TintColor = colorFromConfig;
+            }
+        }
+    }
+
+    public void ConfigBackdropFallBackColor(Color color, bool force = false)
+    {
+        if (useAutoSave && Settings.IsBackdropFallBackColorFirstRun)
+        {
+            Settings.BackdropFallBackColor = color;
+            Settings.IsBackdropFallBackColorFirstRun = false;
+            Settings.Save();
+        }
+
+        var backdrop = GetSystemBackdrop();
+        if (backdrop != null)
+        {
+            Color colorFromConfig = GetBackdropFallBackColorFromLocalConfig(color, force);
+
+            if (backdrop is MicaBackdrop mica)
+            {
+                mica.FallbackColor = colorFromConfig;
+            }
+            else if (backdrop is AcrylicBackdrop acrylic)
+            {
+                acrylic.FallbackColor = colorFromConfig;
+            }
+
+            if (!force)
+            {
+                if (this.useAutoSave && Settings.BackdropFallBackColor != color)
+                {
+                    Settings.BackdropFallBackColor = color;
+                    Settings?.Save();
+                }
+            }
+        }
+    }
+
+    public void ConfigBackdropTintOpacity(float opacity, bool force = false)
+    {
+        if (useAutoSave && Settings.IsBackdropTintOpacityFirstRun)
+        {
+            Settings.BackdropTintOpacity = opacity;
+            Settings.IsBackdropTintOpacityFirstRun = false;
+            Settings.Save();
+        }
+
+        var backdrop = GetSystemBackdrop();
+        if (backdrop != null)
+        {
+            float opacityFromConfig = GetBackdropTintOpacityFromLocalConfig(opacity, force);
+
+            if (backdrop is MicaBackdrop mica)
+            {
+                mica.TintOpacity = opacityFromConfig;
+            }
+            else if (backdrop is AcrylicBackdrop acrylic)
+            {
+                acrylic.TintOpacity = opacityFromConfig;
+            }
+
+            if (!force)
+            {
+                if (this.useAutoSave && Settings.BackdropTintOpacity != opacity)
+                {
+                    Settings.BackdropTintOpacity = opacity;
+                    Settings?.Save();
+                }
+            }
+        }
+    }
+
+    public void ConfigBackdropLuminosityOpacity(float opacity, bool force = false)
+    {
+        if (useAutoSave && Settings.IsBackdropLuminosityOpacityFirstRun)
+        {
+            Settings.BackdropLuminosityOpacity = opacity;
+            Settings.IsBackdropLuminosityOpacityFirstRun = false;
+            Settings.Save();
+        }
+
+        var backdrop = GetSystemBackdrop();
+        if (backdrop != null)
+        {
+            float opacityFromConfig = GetBackdropLuminosityOpacityFromLocalConfig(opacity, force);
+
+            if (backdrop is MicaBackdrop mica)
+            {
+                mica.LuminosityOpacity = opacityFromConfig;
+            }
+            else if (backdrop is AcrylicBackdrop acrylic)
+            {
+                acrylic.LuminosityOpacity = opacityFromConfig;
+            }
+
+            if (!force)
+            {
+                if (this.useAutoSave && Settings.BackdropLuminosityOpacity != opacity)
+                {
+                    Settings.BackdropLuminosityOpacity = opacity;
+                    Settings?.Save();
+                }
+            }
         }
     }
 
@@ -134,11 +348,11 @@ public class ThemeService : IThemeService
 
         if (useAutoSave)
         {
-            SetCurrentTheme(GetCurrentThemeFromLocalConfig(elementTheme, force));
+            SetElementTheme(GetElementThemeFromLocalConfig(elementTheme, force));
         }
         else
         {
-            SetCurrentTheme(elementTheme);
+            SetElementTheme(elementTheme);
         }
     }
 
@@ -153,7 +367,7 @@ public class ThemeService : IThemeService
         UpdateSystemCaptionButtonColors();
     }
 
-    public BackdropType GetCurrentBackdropType()
+    public BackdropType GetBackdropType()
     {
         return CurrentBackdropType;
     }
@@ -175,13 +389,15 @@ public class ThemeService : IThemeService
             case BackdropType.AcrylicThin:
                 return new AcrylicBackdrop() { Kind = DesktopAcrylicKind.Thin };
             case BackdropType.Transparent:
-                return new TransparentBackdrop();
+                return new TransparentBackdrop() { Kind = TransparentKind.Base };
+            case BackdropType.TransparentFull:
+                return new TransparentBackdrop() { Kind = TransparentKind.Full };
             default:
                 return null;
         }
     }
 
-    public SystemBackdrop GetCurrentSystemBackdrop()
+    public SystemBackdrop GetSystemBackdrop()
     {
         return CurrentSystemBackdrop;
     }
@@ -196,7 +412,8 @@ public class ThemeService : IThemeService
         }
         else if (backdropType == typeof(TransparentBackdrop))
         {
-            return BackdropType.Transparent;
+            var transparent = (TransparentBackdrop)systemBackdrop;
+            return transparent.Kind == TransparentKind.Full ? BackdropType.TransparentFull : BackdropType.Transparent;
         }
         else if (backdropType == typeof(AcrylicBackdrop))
         {
@@ -213,17 +430,17 @@ public class ThemeService : IThemeService
         }
     }
 
-    public void SetCurrentSystemBackdrop(BackdropType backdropType)
+    public void SetBackdropType(BackdropType backdropType)
     {
         var systemBackdrop = GetSystemBackdrop(backdropType);
         CurrentBackdropType = backdropType;
 
         if (Settings.BackdropType != backdropType)
         {
-            SetWindowBackdrop(systemBackdrop);
+            SetWindowSystemBackdrop(systemBackdrop);
         }
 
-        SetBackdropFallBackColorForWindows10(CurrentWindow);
+        SetBackdropFallBackColorForWindows10(Window);
 
         if (this.useAutoSave && Settings.BackdropType != backdropType)
         {
@@ -232,18 +449,40 @@ public class ThemeService : IThemeService
         }
     }
 
-    private void SetWindowBackdrop(SystemBackdrop systemBackdrop)
+    private void SetWindowSystemBackdrop(SystemBackdrop systemBackdrop)
     {
-        CurrentWindow.SystemBackdrop = systemBackdrop;
+        Window.SystemBackdrop = systemBackdrop;
     }
 
-    private SystemBackdrop GetCurrentSystemBackdropFromLocalConfig(BackdropType backdropType, bool ForceBackdrop)
+    private SystemBackdrop GetSystemBackdropFromLocalConfig(BackdropType backdropType, bool ForceBackdrop)
     {
         BackdropType currentBackdrop = this.useAutoSave ? Settings.BackdropType : backdropType;
         return ForceBackdrop ? GetSystemBackdrop(backdropType) : GetSystemBackdrop(currentBackdrop);
     }
 
-    private ElementTheme GetCurrentThemeFromLocalConfig(ElementTheme theme, bool forceTheme)
+    private Color GetBackdropTintColorFromLocalConfig(Color color, bool ForceColor)
+    {
+        Color currentColor = this.useAutoSave ? Settings.BackdropTintColor : color;
+        return ForceColor ? color : currentColor;
+    }
+
+    private Color GetBackdropFallBackColorFromLocalConfig(Color color, bool ForceColor)
+    {
+        Color currentColor = this.useAutoSave ? Settings.BackdropFallBackColor : color;
+        return ForceColor ? color : currentColor;
+    }
+    private float GetBackdropTintOpacityFromLocalConfig(float opacity, bool ForceOpacity)
+    {
+        float currentOpacity = this.useAutoSave ? Settings.BackdropTintOpacity : opacity;
+        return ForceOpacity ? opacity : currentOpacity;
+    }
+
+    private float GetBackdropLuminosityOpacityFromLocalConfig(float opacity, bool ForceOpacity)
+    {
+        float currentOpacity = this.useAutoSave ? Settings.BackdropLuminosityOpacity : opacity;
+        return ForceOpacity ? opacity : currentOpacity;
+    }
+    private ElementTheme GetElementThemeFromLocalConfig(ElementTheme theme, bool forceTheme)
     {
         var currentTheme = Settings.ElementTheme;
         return forceTheme ? theme : currentTheme;
@@ -365,13 +604,13 @@ public class ThemeService : IThemeService
 
     private void UpdateSystemCaptionButtonColors()
     {
-        if (CurrentWindow != null)
+        if (Window != null)
         {
-            UpdateSystemCaptionButton(CurrentWindow);
+            UpdateSystemCaptionButton(Window);
         }
     }
 
-    public void SetCurrentTheme(ElementTheme elementTheme)
+    public void SetElementTheme(ElementTheme elementTheme)
     {
         changeThemeWithoutSave = false;
         if (RootTheme != elementTheme)
@@ -380,7 +619,7 @@ public class ThemeService : IThemeService
         }
     }
 
-    public void SetCurrentThemeWithoutSave(ElementTheme elementTheme)
+    public void SetElementThemeWithoutSave(ElementTheme elementTheme)
     {
         changeThemeWithoutSave = true;
         if (RootTheme != elementTheme)
@@ -389,7 +628,7 @@ public class ThemeService : IThemeService
         }
     }
 
-    public ElementTheme GetCurrentTheme()
+    public ElementTheme GetElementTheme()
     {
         return RootTheme;
     }
@@ -401,7 +640,7 @@ public class ThemeService : IThemeService
         if (selectedTheme != null)
         {
             var currentTheme = GeneralHelper.GetEnum<ElementTheme>(selectedTheme);
-            SetCurrentTheme(currentTheme);
+            SetElementTheme(currentTheme);
         }
     }
 
@@ -422,13 +661,13 @@ public class ThemeService : IThemeService
         if (selectedBackdrop != null)
         {
             var backdrop = GeneralHelper.GetEnum<BackdropType>(selectedBackdrop);
-            SetCurrentSystemBackdrop(backdrop);
+            SetBackdropType(backdrop);
         }
     }
 
     public void SetBackdropComboBoxDefaultItem(ComboBox backdropComboBox)
     {
-        var currentBackdrop = GetBackdropType(GetCurrentSystemBackdrop()).ToString();
+        var currentBackdrop = GetBackdropType(GetSystemBackdrop()).ToString();
 
         var item = backdropComboBox.Items.Cast<ComboBoxItem>().FirstOrDefault(c => c?.Tag?.ToString() == currentBackdrop);
         if ((ComboBoxItem)backdropComboBox.SelectedItem != item)
@@ -443,7 +682,7 @@ public class ThemeService : IThemeService
         if (selectedTheme != null)
         {
             var currentTheme = GeneralHelper.GetEnum<ElementTheme>(selectedTheme);
-            SetCurrentTheme(currentTheme);
+            SetElementTheme(currentTheme);
         }
     }
 
@@ -459,13 +698,13 @@ public class ThemeService : IThemeService
         if (selectedBackdrop != null)
         {
             var backdrop = GeneralHelper.GetEnum<BackdropType>(selectedBackdrop);
-            SetCurrentSystemBackdrop(backdrop);
+            SetBackdropType(backdrop);
         }
     }
 
     public void SetBackdropRadioButtonDefaultItem(Panel BackdropPanel)
     {
-        var currentBackdrop = GetBackdropType(GetCurrentSystemBackdrop()).ToString();
+        var currentBackdrop = GetBackdropType(GetSystemBackdrop()).ToString();
 
         BackdropPanel.Children.Cast<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentBackdrop).IsChecked = true;
     }
@@ -473,10 +712,5 @@ public class ThemeService : IThemeService
     public ElementTheme GetActualTheme()
     {
         return ActualTheme;
-    }
-
-    public ElementTheme GetRootTheme()
-    {
-        return RootTheme;
     }
 }

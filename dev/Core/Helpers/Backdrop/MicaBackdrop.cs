@@ -2,20 +2,20 @@
 using Microsoft.UI.Composition.SystemBackdrops;
 
 namespace WinUICommunity;
-public class AcrylicBackdrop : SystemBackdrop
+public class MicaBackdrop : SystemBackdrop
 {
-    public DesktopAcrylicController acrylicController = new DesktopAcrylicController();
+    public MicaController micaController = new MicaController();
 
-    private DesktopAcrylicKind kind;
-    public DesktopAcrylicKind Kind
+    private MicaKind kind;
+    public MicaKind Kind
     {
         get { return kind; }
         set
         {
             kind = value;
-            if (acrylicController != null)
+            if (micaController != null)
             {
-                acrylicController.Kind = value;
+                micaController.Kind = value;
             }
         }
     }
@@ -28,9 +28,9 @@ public class AcrylicBackdrop : SystemBackdrop
         set
         {
             tintColor = value;
-            if (acrylicController != null)
+            if (micaController != null)
             {
-                acrylicController.TintColor = value;
+                micaController.TintColor = value;
             }
         }
     }
@@ -43,9 +43,9 @@ public class AcrylicBackdrop : SystemBackdrop
         set
         {
             fallbackColor = value;
-            if (acrylicController != null)
+            if (micaController != null)
             {
-                acrylicController.FallbackColor = value;
+                micaController.FallbackColor = value;
             }
         }
     }
@@ -58,9 +58,9 @@ public class AcrylicBackdrop : SystemBackdrop
         set
         {
             tintOpacity = value;
-            if (acrylicController != null)
+            if (micaController != null)
             {
-                acrylicController.TintOpacity = value;
+                micaController.TintOpacity = value;
             }
         }
     }
@@ -73,27 +73,28 @@ public class AcrylicBackdrop : SystemBackdrop
         set
         {
             luminosityOpacity = value;
-            if (acrylicController != null)
+            if (micaController != null)
             {
-                acrylicController.LuminosityOpacity = value;
+                micaController.LuminosityOpacity = value;
             }
         }
     }
+
     protected override void OnTargetConnected(ICompositionSupportsSystemBackdrop connectedTarget, XamlRoot xamlRoot)
     {
         base.OnTargetConnected(connectedTarget, xamlRoot);
 
         // Set configuration.
         SystemBackdropConfiguration defaultConfig = GetDefaultSystemBackdropConfiguration(connectedTarget, xamlRoot);
-        acrylicController.SetSystemBackdropConfiguration(defaultConfig);
+        micaController.SetSystemBackdropConfiguration(defaultConfig);
 
         // Add target.
-        acrylicController.AddSystemBackdropTarget(connectedTarget);
+        micaController.AddSystemBackdropTarget(connectedTarget);
     }
     protected override void OnTargetDisconnected(ICompositionSupportsSystemBackdrop disconnectedTarget)
     {
         base.OnTargetDisconnected(disconnectedTarget);
-        acrylicController.RemoveSystemBackdropTarget(disconnectedTarget);
-        acrylicController = null;
+        micaController.RemoveSystemBackdropTarget(disconnectedTarget);
+        micaController = null;
     }
 }

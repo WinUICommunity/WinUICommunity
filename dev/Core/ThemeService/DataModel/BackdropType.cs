@@ -7,5 +7,6 @@ public enum BackdropType
     DesktopAcrylic,
     AcrylicThin,
     AcrylicBase,
-    Transparent
+    Transparent,
+    TransparentFull
 }

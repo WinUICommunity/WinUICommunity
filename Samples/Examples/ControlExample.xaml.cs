@@ -188,11 +188,11 @@ public sealed partial class ControlExample : OptionsPageControl
     {
         if (ActualTheme == ElementTheme.Dark)
         {
-            App.Current.ThemeService.SetCurrentThemeWithoutSave(ElementTheme.Light);
+            App.Current.ThemeService.SetElementThemeWithoutSave(ElementTheme.Light);
         }
         else
         {
-            App.Current.ThemeService.SetCurrentThemeWithoutSave(ElementTheme.Dark);
+            App.Current.ThemeService.SetElementThemeWithoutSave(ElementTheme.Dark);
         }
     }
     private async void GoToDoc_Click(object sender, RoutedEventArgs e)
