@@ -8,7 +8,7 @@ using WinUICommunity;
 using WinUICommunity.DemoApp.Pages;
 
 namespace DemoApp.Pages;
-internal class myPageService : PageService
+internal class myPageService : PageServiceEx
 {
     public myPageService()
     {

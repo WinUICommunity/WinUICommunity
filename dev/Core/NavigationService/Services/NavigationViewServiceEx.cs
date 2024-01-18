@@ -2,11 +2,11 @@
 
 namespace WinUICommunity;
 
-public class NavigationViewService : INavigationViewService
+public class NavigationViewServiceEx : INavigationViewServiceEx
 {
-    private readonly INavigationService _navigationService;
+    private readonly INavigationServiceEx _navigationService;
 
-    private readonly IPageService _pageService;
+    private readonly IPageServiceEx _pageService;
 
     private NavigationView? _navigationView;
     private AutoSuggestBox? _autoSuggestBox;
@@ -17,7 +17,7 @@ public class NavigationViewService : INavigationViewService
 
     private string _notFoundString;
 
-    public NavigationViewService(INavigationService navigationService, IPageService pageService)
+    public NavigationViewServiceEx(INavigationServiceEx navigationService, IPageServiceEx pageService)
     {
         _navigationService = navigationService;
         _pageService = pageService;
@@ -69,7 +69,7 @@ public class NavigationViewService : INavigationViewService
         {
             var item = args.ChosenSuggestion as string;
             var matches = GetNavigationViewItems(_navigationView.MenuItems, item);
-            var pageType = matches.GetValue(NavigationHelper.NavigateToProperty);
+            var pageType = matches.GetValue(NavigationHelperEx.NavigateToProperty);
             if (pageType != null)
             {
                 _navigationService.NavigateTo(pageType.ToString());
@@ -114,7 +114,7 @@ public class NavigationViewService : INavigationViewService
 
         foreach (NavigationViewItem item in items)
         {
-            if (item.Content.ToString().ToLowerInvariant().Contains(query) && item.GetValue(NavigationHelper.NavigateToProperty) != null)
+            if (item.Content.ToString().ToLowerInvariant().Contains(query) && item.GetValue(NavigationHelperEx.NavigateToProperty) != null)
             {
                 yield return item;
             }
@@ -191,7 +191,7 @@ public class NavigationViewService : INavigationViewService
         {
             var selectedItem = args.InvokedItemContainer as NavigationViewItem;
 
-            if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
+            if (selectedItem?.GetValue(NavigationHelperEx.NavigateToProperty) is string pageKey)
             {
                 _navigationService.NavigateTo(pageKey);
             }
@@ -219,7 +219,7 @@ public class NavigationViewService : INavigationViewService
 
     private bool IsMenuItemForPageType(NavigationViewItem menuItem, Type sourcePageType)
     {
-        if (menuItem.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
+        if (menuItem.GetValue(NavigationHelperEx.NavigateToProperty) is string pageKey)
         {
             return _pageService.GetPageType(pageKey) == sourcePageType;
         }

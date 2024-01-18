@@ -23,13 +23,13 @@
                     </NavigationView.AutoSuggestBox>
                     <NavigationView.MenuItems>
                         <NavigationViewItem Margin="0,0,12,0"
-                                            wuc:NavigationHelper.NavigateTo="GeneralPage"
+                                            wuc:NavigationHelperEx.NavigateTo="GeneralPage"
                                             Content="General" />
                         <NavigationViewItem Margin="0,0,12,0"
-                                            wuc:NavigationHelper.NavigateTo="AwakePage"
+                                            wuc:NavigationHelperEx.NavigateTo="AwakePage"
                                             Content="Awake" />
                         <NavigationViewItem Margin="0,0,12,0"
-                                            wuc:NavigationHelper.NavigateTo="FancyZonesPage"
+                                            wuc:NavigationHelperEx.NavigateTo="FancyZonesPage"
                                             Content="FancyZone" />
                     </NavigationView.MenuItems>
                     <Frame x:Name="shellFrame" />

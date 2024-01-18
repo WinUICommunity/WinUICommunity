@@ -2,9 +2,9 @@
 
 namespace WinUICommunity;
 
-public class NavigationService : INavigationService
+public class NavigationServiceEx : INavigationServiceEx
 {
-    private readonly IPageService _pageService;
+    private readonly IPageServiceEx _pageService;
     private object? _lastParameterUsed;
     private Frame? _frame;
 
@@ -36,7 +36,7 @@ public class NavigationService : INavigationService
 
     public Window Window { get; set; }
 
-    public NavigationService(IPageService pageService)
+    public NavigationServiceEx(IPageServiceEx pageService)
     {
         _pageService = pageService;
     }
@@ -63,7 +63,7 @@ public class NavigationService : INavigationService
         {
             var vmBeforeNavigation = _frame.GetPageViewModel();
             _frame.GoBack();
-            if (vmBeforeNavigation is INavigationAware navigationAware)
+            if (vmBeforeNavigation is INavigationAwareEx navigationAware)
             {
                 navigationAware.OnNavigatedFrom();
             }
@@ -86,7 +86,7 @@ public class NavigationService : INavigationService
             if (navigated)
             {
                 _lastParameterUsed = parameter;
-                if (vmBeforeNavigation is INavigationAware navigationAware)
+                if (vmBeforeNavigation is INavigationAwareEx navigationAware)
                 {
                     navigationAware.OnNavigatedFrom();
                 }
@@ -108,7 +108,7 @@ public class NavigationService : INavigationService
                 frame.BackStack.Clear();
             }
 
-            if (frame.GetPageViewModel() is INavigationAware navigationAware)
+            if (frame.GetPageViewModel() is INavigationAwareEx navigationAware)
             {
                 navigationAware.OnNavigatedTo(e.Parameter);
             }

@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public interface INavigationAware
+public interface INavigationAwareEx
 {
     void OnNavigatedTo(object parameter);
 

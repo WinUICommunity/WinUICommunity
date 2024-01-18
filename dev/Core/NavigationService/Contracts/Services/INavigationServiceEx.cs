@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public interface INavigationService
+public interface INavigationServiceEx
 {
     event NavigatedEventHandler Navigated;
 

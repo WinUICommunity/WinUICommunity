@@ -74,7 +74,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     {
         if (navigationViewItem != null)
         {
-            var parent = navigationViewItem.GetValue(NavigationHelper.ParentProperty) as NavigationViewItem;
+            var parent = navigationViewItem.GetValue(NavigationHelperEx.ParentProperty) as NavigationViewItem;
             if (parent != null)
             {
                 parent.IsExpanded = true;
@@ -180,7 +180,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             }
             else
             {
-                if (selectedItem?.GetValue(NavigationHelper.NavigateToProperty) is string pageKey)
+                if (selectedItem?.GetValue(NavigationHelperEx.NavigateToProperty) is string pageKey)
                 {
                     var dataItem = selectedItem?.DataContext as DataItem;
                     NavigateTo(pageKey, dataItem);
@@ -191,7 +191,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
     public NavigationViewItem GetSelectedItem(NavigationViewItem navigationViewItem)
     {
-        var rootItem = navigationViewItem?.GetValue(NavigationHelper.NavigateToProperty) as string;
+        var rootItem = navigationViewItem?.GetValue(NavigationHelperEx.NavigateToProperty) as string;
 
         if (!string.IsNullOrEmpty(rootItem))
         {
@@ -199,7 +199,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             {
                 if (baseItem is NavigationViewItem item)
                 {
-                    var subItem = item?.GetValue(NavigationHelper.NavigateToProperty) as string;
+                    var subItem = item?.GetValue(NavigationHelperEx.NavigateToProperty) as string;
 
                     if (rootItem.Equals(subItem))
                     {
@@ -226,7 +226,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 {
                     if (baseItem is NavigationViewItem item)
                     {
-                        var subItem = item.GetValue(NavigationHelper.NavigateToProperty) as string;
+                        var subItem = item.GetValue(NavigationHelperEx.NavigateToProperty) as string;
 
                         if (rootItem.Equals(subItem))
                         {
@@ -255,7 +255,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 {
                     if (baseItem is NavigationViewItem item)
                     {
-                        var subItem = item.GetValue(NavigationHelper.NavigateToProperty) as string;
+                        var subItem = item.GetValue(NavigationHelperEx.NavigateToProperty) as string;
 
                         if (rootItem.Equals(subItem))
                         {
@@ -284,7 +284,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         {
             if (item is NavigationViewItem navigationViewItem)
             {
-                string navigatedToValue = NavigationHelper.GetNavigateTo(navigationViewItem);
+                string navigatedToValue = NavigationHelperEx.GetNavigateTo(navigationViewItem);
                 var pageType = _pageService.GetPageType(navigatedToValue);
                 if (pageType == currentPageType)
                 {

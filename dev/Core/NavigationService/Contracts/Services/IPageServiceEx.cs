@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public interface IPageService
+public interface IPageServiceEx
 {
     Type GetPageType(string key);
 

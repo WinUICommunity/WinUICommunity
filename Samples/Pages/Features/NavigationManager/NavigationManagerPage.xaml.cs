@@ -28,12 +28,12 @@ public sealed partial class NavigationManagerPage : Page
         var pageService = new myPageService();
         pageService.SetDefaultPage(typeof(HomeLandingsPage));
         pageService.SetSettingsPage(typeof(GeneralPage));
-        INavigationViewService navigationViewService;
-        INavigationService navigationService;
+        INavigationViewServiceEx navigationViewService;
+        INavigationServiceEx navigationService;
 
-        navigationService = new NavigationService(pageService);
+        navigationService = new NavigationServiceEx(pageService);
         navigationService.Frame = shellFrame;
-        navigationViewService = new NavigationViewService(navigationService, pageService);
+        navigationViewService = new NavigationViewServiceEx(navigationService, pageService);
         navigationViewService.Initialize(navigationView);
         navigationViewService.ConfigAutoSuggestBox(autoSuggestBox);
     }

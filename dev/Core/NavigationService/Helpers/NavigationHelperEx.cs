@@ -7,19 +7,19 @@
 //
 // Usage in code:
 // NavigationHelper.SetNavigateTo(navigationViewItem, typeof(MainViewModel).FullName);
-public class NavigationHelper
+public class NavigationHelperEx
 {
     public static string GetNavigateTo(NavigationViewItem item) => (string)item.GetValue(NavigateToProperty);
 
     public static void SetNavigateTo(NavigationViewItem item, string value) => item.SetValue(NavigateToProperty, value);
 
     public static readonly DependencyProperty NavigateToProperty =
-        DependencyProperty.RegisterAttached("NavigateTo", typeof(string), typeof(NavigationHelper), new PropertyMetadata(null));
+        DependencyProperty.RegisterAttached("NavigateTo", typeof(string), typeof(NavigationHelperEx), new PropertyMetadata(null));
 
     public static NavigationViewItem GetParent(NavigationViewItem item) => (NavigationViewItem)item.GetValue(ParentProperty);
 
     public static void SetParent(NavigationViewItem item, NavigationViewItem value) => item.SetValue(ParentProperty, value);
 
     public static readonly DependencyProperty ParentProperty =
-        DependencyProperty.RegisterAttached("Parent", typeof(NavigationViewItem), typeof(NavigationHelper), new PropertyMetadata(null));
+        DependencyProperty.RegisterAttached("Parent", typeof(NavigationViewItem), typeof(NavigationHelperEx), new PropertyMetadata(null));
 }

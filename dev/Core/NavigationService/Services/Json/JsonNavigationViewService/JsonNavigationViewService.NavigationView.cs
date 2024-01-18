@@ -39,7 +39,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 }
             }
 
-            NavigationHelper.SetNavigateTo(navigationViewItem, navItem.UniqueId + navItem.Parameter?.ToString());
+            NavigationHelperEx.SetNavigateTo(navigationViewItem, navItem.UniqueId + navItem.Parameter?.ToString());
             navigationViewItem.InfoBadge = GetInfoBadge(navItem);
             AutomationProperties.SetName(navigationViewItem, GetLocalizedText(navItem.Title, navItem.UsexUid));
 
@@ -47,7 +47,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             {
                 if (hasTopLevel)
                 {
-                    NavigationHelper.SetParent(navigationViewItem, topLevelItem);
+                    NavigationHelperEx.SetParent(navigationViewItem, topLevelItem);
                     topLevelItem.MenuItems.Add(navigationViewItem);
                 }
                 else
@@ -71,7 +71,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             }
             else
             {
-                NavigationHelper.SetParent(navigationViewItem, parentNavItem);
+                NavigationHelperEx.SetParent(navigationViewItem, parentNavItem);
                 if (navItem.IsNavigationViewItemHeader)
                 {
                     parentNavItem.MenuItems.Add(new NavigationViewItemHeader { Content = navigationViewItem.Content });
@@ -158,7 +158,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                         }
                     }
 
-                    NavigationHelper.SetNavigateTo(topLevelItem, group.UniqueId);
+                    NavigationHelperEx.SetNavigateTo(topLevelItem, group.UniqueId);
                     AutomationProperties.SetName(topLevelItem, GetLocalizedText(group.Title, group.UsexUid));
                     topLevelItem.InfoBadge = GetInfoBadge(group);
 

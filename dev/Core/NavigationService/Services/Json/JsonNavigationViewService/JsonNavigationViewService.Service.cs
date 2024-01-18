@@ -57,7 +57,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         {
             var vmBeforeNavigation = _frame.GetPageViewModel();
             _frame.GoBack();
-            if (vmBeforeNavigation is INavigationAware navigationAware)
+            if (vmBeforeNavigation is INavigationAwareEx navigationAware)
             {
                 navigationAware.OnNavigatedFrom();
             }
@@ -94,7 +94,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             if (navigated)
             {
                 _lastParameterUsed = parameter;
-                if (vmBeforeNavigation is INavigationAware navigationAware)
+                if (vmBeforeNavigation is INavigationAwareEx navigationAware)
                 {
                     navigationAware.OnNavigatedFrom();
                 }
@@ -116,7 +116,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 frame.BackStack.Clear();
             }
 
-            if (frame.GetPageViewModel() is INavigationAware navigationAware)
+            if (frame.GetPageViewModel() is INavigationAwareEx navigationAware)
             {
                 navigationAware.OnNavigatedTo(e.Parameter);
             }

@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public interface INavigationViewService
+public interface INavigationViewServiceEx
 {
     IList<object>? MenuItems
     {
