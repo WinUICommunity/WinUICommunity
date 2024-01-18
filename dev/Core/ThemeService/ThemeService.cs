@@ -389,9 +389,7 @@ public class ThemeService : IThemeService
             case BackdropType.AcrylicThin:
                 return new AcrylicBackdrop() { Kind = DesktopAcrylicKind.Thin };
             case BackdropType.Transparent:
-                return new TransparentBackdrop() { Kind = TransparentKind.Base };
-            case BackdropType.TransparentFull:
-                return new TransparentBackdrop() { Kind = TransparentKind.Full };
+                return new TransparentBackdrop();
             default:
                 return null;
         }
@@ -412,8 +410,7 @@ public class ThemeService : IThemeService
         }
         else if (backdropType == typeof(TransparentBackdrop))
         {
-            var transparent = (TransparentBackdrop)systemBackdrop;
-            return transparent.Kind == TransparentKind.Full ? BackdropType.TransparentFull : BackdropType.Transparent;
+            return BackdropType.Transparent;
         }
         else if (backdropType == typeof(AcrylicBackdrop))
         {
