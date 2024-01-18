@@ -195,17 +195,20 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
         if (!string.IsNullOrEmpty(rootItem))
         {
-            foreach (NavigationViewItem item in _navigationView.MenuItems)
+            foreach (var baseItem in _navigationView.MenuItems)
             {
-                var subItem = item?.GetValue(NavigationHelper.NavigateToProperty) as string;
+                if (baseItem is NavigationViewItem item)
+                {
+                    var subItem = item?.GetValue(NavigationHelper.NavigateToProperty) as string;
 
-                if (rootItem.Equals(subItem))
-                {
-                    return item;
-                }
-                if (item.MenuItems.Count > 0)
-                {
-                    GetSelectedItem(item);
+                    if (rootItem.Equals(subItem))
+                    {
+                        return item;
+                    }
+                    if (item.MenuItems.Count > 0)
+                    {
+                        GetSelectedItem(item);
+                    }
                 }
             }
         }
