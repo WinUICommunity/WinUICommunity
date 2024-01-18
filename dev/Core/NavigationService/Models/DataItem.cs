@@ -20,7 +20,7 @@ public class DataItem
     public DataItem(string uniqueId, string sectionId, string title, string secondaryTitle, object parameter, string apiNamespace,
         string subtitle, string imagePath, string imageIconPath, string badgeString, string description,
         string content, bool isNew, bool isUpdated, bool isPreview, bool hideItem,
-        bool hideNavigationViewItem, bool usexUid, DataInfoBadge dataInfoBadge,
+        bool hideNavigationViewItem, bool usexUid, bool isNavigationViewItemHeader, DataInfoBadge dataInfoBadge,
         ObservableCollection<DataLink> links, ObservableCollection<string> extra)
     {
         UniqueId = uniqueId;
@@ -41,6 +41,7 @@ public class DataItem
         HideItem = hideItem;
         HideNavigationViewItem = hideNavigationViewItem;
         UsexUid = usexUid;
+        IsNavigationViewItemHeader = isNavigationViewItemHeader;
         DataInfoBadge = dataInfoBadge;
         Links = links;
         Extra = extra;
@@ -69,6 +70,7 @@ public class DataItem
     public DataInfoBadge DataInfoBadge { get; set; }
     public bool IncludedInBuild { get; set; } = true;
     public bool AutoIncludedInBuild { get; set; }
+    public bool IsNavigationViewItemHeader { get; set; }
     public bool UsexUid { get; set; }
     public override string ToString()
     {

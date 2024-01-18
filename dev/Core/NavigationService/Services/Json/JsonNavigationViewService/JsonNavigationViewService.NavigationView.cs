@@ -58,14 +58,28 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                     }
                     else
                     {
-                        _navigationView.MenuItems.Add(navigationViewItem);
+                        if (navItem.IsNavigationViewItemHeader)
+                        {
+                            _navigationView.MenuItems.Add(new NavigationViewItemHeader { Content = navItem.Content });
+                        }
+                        else
+                        {
+                            _navigationView.MenuItems.Add(navigationViewItem);
+                        }
                     }
                 }
             }
             else
             {
                 NavigationHelper.SetParent(navigationViewItem, parentNavItem);
-                parentNavItem.MenuItems.Add(navigationViewItem);
+                if (navItem.IsNavigationViewItemHeader)
+                {
+                    parentNavItem.MenuItems.Add(new NavigationViewItemHeader { Content = navigationViewItem.Content });
+                }
+                else
+                {
+                    parentNavItem.MenuItems.Add(navigationViewItem);
+                }
             }
 
             if (navItem.Items != null && navItem.Items.Count > 0)
@@ -156,7 +170,14 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                     }
                     else
                     {
-                        _navigationView.MenuItems.Add(topLevelItem);
+                        if (group.IsNavigationViewItemHeader)
+                        {
+                            _navigationView.MenuItems.Add(new NavigationViewItemHeader { Content = topLevelItem.Content });
+                        }
+                        else
+                        {
+                            _navigationView.MenuItems.Add(topLevelItem);
+                        }
                     }
                 }
             }

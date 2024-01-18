@@ -176,6 +176,7 @@ public class DataSource
                         false,
                         false,
                         false,
+                        false,
                         item.DataInfoBadge);
                     group.Items = item.Items;
                     SectionGroups.Add(group);

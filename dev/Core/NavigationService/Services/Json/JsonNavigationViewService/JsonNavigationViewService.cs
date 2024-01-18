@@ -219,21 +219,24 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             var rootItem = dataItem.UniqueId + dataItem.Parameter?.ToString();
             if (!string.IsNullOrEmpty(rootItem))
             {
-                foreach (NavigationViewItem item in items)
+                foreach (var baseItem in items)
                 {
-                    var subItem = item.GetValue(NavigationHelper.NavigateToProperty) as string;
-
-                    if (rootItem.Equals(subItem))
+                    if (baseItem is NavigationViewItem item)
                     {
-                        return item;
-                    }
+                        var subItem = item.GetValue(NavigationHelper.NavigateToProperty) as string;
 
-                    if (item.MenuItems.Any())
-                    {
-                        var selectedItem = GetSelectedItem(item.MenuItems, dataItem, null);
-                        if (selectedItem != null)
+                        if (rootItem.Equals(subItem))
                         {
-                            return selectedItem;
+                            return item;
+                        }
+
+                        if (item.MenuItems.Any())
+                        {
+                            var selectedItem = GetSelectedItem(item.MenuItems, dataItem, null);
+                            if (selectedItem != null)
+                            {
+                                return selectedItem;
+                            }
                         }
                     }
                 }
@@ -245,21 +248,24 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             var rootItem = dataGroup.UniqueId;
             if (!string.IsNullOrEmpty(rootItem))
             {
-                foreach (NavigationViewItem item in items)
+                foreach (var baseItem in items)
                 {
-                    var subItem = item.GetValue(NavigationHelper.NavigateToProperty) as string;
-
-                    if (rootItem.Equals(subItem))
+                    if (baseItem is NavigationViewItem item)
                     {
-                        return item;
-                    }
+                        var subItem = item.GetValue(NavigationHelper.NavigateToProperty) as string;
 
-                    if (item.MenuItems.Any())
-                    {
-                        var selectedItem = GetSelectedItem(item.MenuItems, null, dataGroup);
-                        if (selectedItem != null)
+                        if (rootItem.Equals(subItem))
                         {
-                            return selectedItem;
+                            return item;
+                        }
+
+                        if (item.MenuItems.Any())
+                        {
+                            var selectedItem = GetSelectedItem(item.MenuItems, null, dataGroup);
+                            if (selectedItem != null)
+                            {
+                                return selectedItem;
+                            }
                         }
                     }
                 }

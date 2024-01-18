@@ -7,7 +7,7 @@ public class DataGroup
     public DataGroup(string uniqueId, string sectionId, string title, string secondaryTitle,
         string subtitle, string imagePath, string imageIconPath, string description,
         string apiNamespace, bool isSpecialSection, bool hideGroup, bool showItemsWithoutGroup,
-        bool isExpanded, bool isFooterNavigationViewItem, bool usexUid, DataInfoBadge dataInfoBadge)
+        bool isExpanded, bool isFooterNavigationViewItem, bool isNavigationViewItemHeader, bool usexUid, DataInfoBadge dataInfoBadge)
     {
         UniqueId = uniqueId;
         SectionId = sectionId;
@@ -23,6 +23,7 @@ public class DataGroup
         ShowItemsWithoutGroup = showItemsWithoutGroup;
         IsExpanded = isExpanded;
         IsFooterNavigationViewItem = isFooterNavigationViewItem;
+        IsNavigationViewItemHeader = isNavigationViewItemHeader;
         UsexUid = usexUid;
         Order = false;
         OrderByDescending = false;
@@ -44,6 +45,7 @@ public class DataGroup
     public bool HideGroup { get; set; }
     public bool ShowItemsWithoutGroup { get; set; }
     public bool IsFooterNavigationViewItem { get; set; }
+    public bool IsNavigationViewItemHeader { get; set; }
     public bool UsexUid { get; set; }
     public bool Order { get; set; }
     public bool OrderByDescending { get; set; }
