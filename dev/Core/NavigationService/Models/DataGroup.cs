@@ -24,6 +24,8 @@ public class DataGroup
         IsExpanded = isExpanded;
         IsFooterNavigationViewItem = isFooterNavigationViewItem;
         UsexUid = usexUid;
+        Order = false;
+        OrderByDescending = false;
         DataInfoBadge = dataInfoBadge;
         Items = new ObservableCollection<DataItem>();
     }
@@ -43,6 +45,8 @@ public class DataGroup
     public bool ShowItemsWithoutGroup { get; set; }
     public bool IsFooterNavigationViewItem { get; set; }
     public bool UsexUid { get; set; }
+    public bool Order { get; set; }
+    public bool OrderByDescending { get; set; }
     public ObservableCollection<DataItem> Items { get; set; }
     public DataInfoBadge DataInfoBadge { get; set; }
     public override string ToString()

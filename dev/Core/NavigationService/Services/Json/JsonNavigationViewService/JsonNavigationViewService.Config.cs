@@ -3,16 +3,43 @@
 namespace WinUICommunity;
 public partial class JsonNavigationViewService : IJsonNavigationViewService
 {
-    public void ConfigJson(string jsonFilePath, bool autoIncludedInBuild = false, PathType pathType = PathType.Relative)
+    private void ConfigJsonBase(string jsonFilePath, bool orderRootItems, bool orderByDescending, bool autoIncludedInBuild, PathType pathType)
     {
         JsonFilePath = jsonFilePath;
         _pathType = pathType;
         _autoIncludedInBuild = autoIncludedInBuild;
         DataSource = new DataSource();
 
-        AddNavigationMenuItems();
+        AddNavigationMenuItems(orderRootItems, orderByDescending);
+    }
+    public void ConfigJson(string jsonFilePath)
+    {
+        ConfigJsonBase(jsonFilePath, true, false, false, PathType.Relative);
     }
 
+    public void ConfigJson(string jsonFilePath, bool orderRootItems)
+    {
+        ConfigJsonBase(jsonFilePath, orderRootItems, false, false, PathType.Relative);
+    }
+    public void ConfigJson(string jsonFilePath, bool orderRootItems, bool orderByDescending)
+    {
+        ConfigJsonBase(jsonFilePath, orderRootItems, orderByDescending, false, PathType.Relative);
+    }
+
+    public void ConfigJson(string jsonFilePath, PathType pathType)
+    {
+        ConfigJsonBase(jsonFilePath, true, false, false, pathType);
+    }
+
+    public void ConfigJson(string jsonFilePath, bool autoIncludedInBuild, PathType pathType)
+    {
+        ConfigJsonBase(jsonFilePath, true, false, autoIncludedInBuild, pathType);
+    }
+
+    public void ConfigJson(string jsonFilePath, bool orderRootItems, bool orderByDescending, bool autoIncludedInBuild, PathType pathType)
+    {
+        ConfigJsonBase(jsonFilePath, orderRootItems, orderByDescending, autoIncludedInBuild, pathType);
+    }
     public void ConfigAutoSuggestBox(AutoSuggestBox autoSuggestBox, bool useItemTemplate = true, string autoSuggestBoxNotFoundString = null, string autoSuggestBoxNotFoundImagePath = null)
     {
         _autoSuggestBox = autoSuggestBox;

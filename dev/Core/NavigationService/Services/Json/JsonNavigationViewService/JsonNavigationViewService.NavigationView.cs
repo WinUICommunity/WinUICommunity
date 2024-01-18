@@ -3,10 +3,22 @@
 namespace WinUICommunity;
 public partial class JsonNavigationViewService : IJsonNavigationViewService
 {
-    private void AddNavigationViewItemsRecursively(IEnumerable<DataItem> navItems, bool isFooterNavigationViewItem, bool hasTopLevel, string pageKey, NavigationViewItem parentNavItem = null)
+    private void AddNavigationViewItemsRecursively(IEnumerable<DataItem> navItems, bool isFooterNavigationViewItem, bool hasTopLevel, bool order, bool orderByDescending, string pageKey, NavigationViewItem parentNavItem = null)
     {
         if (_navigationView == null)
             return;
+
+        if (order && hasTopLevel)
+        {
+            if (orderByDescending)
+            {
+                navItems = navItems.OrderByDescending(i => i.Title);
+            }
+            else
+            {
+                navItems = navItems.OrderBy(i => i.Title);
+            }
+        }
 
         foreach (var navItem in navItems)
         {
@@ -58,24 +70,60 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
             if (navItem.Items != null && navItem.Items.Count > 0)
             {
-                AddNavigationViewItemsRecursively(navItem.Items, isFooterNavigationViewItem, hasTopLevel, navItem.UniqueId, navigationViewItem);
+                AddNavigationViewItemsRecursively(navItem.Items, isFooterNavigationViewItem, hasTopLevel, order, orderByDescending, navItem.UniqueId, navigationViewItem);
             }
         }
     }
 
     private void AddNavigationMenuItems()
     {
+        AddNavigationMenuItemsBase(true, false);
+    }
+    private void AddNavigationMenuItems(bool orderRootItems)
+    {
+        AddNavigationMenuItemsBase(orderRootItems, false);
+    }
+    private void AddNavigationMenuItems(bool orderRootItems, bool orderByDescending)
+    {
+        AddNavigationMenuItemsBase(orderRootItems, orderByDescending);
+    }
+    private void AddNavigationMenuItemsBase(bool orderRootItems, bool orderByDescending)
+    {
         if (_navigationView == null)
             return;
 
         DataSource.GetDataAsync(JsonFilePath, _pathType, _autoIncludedInBuild).ContinueWith(t =>
         {
-            foreach (var group in DataSource.Groups.OrderBy(i => i.Title).Where(i => !i.IsSpecialSection && !i.HideGroup))
+            var dataGroup = DataSource.Groups.Where(i => !i.IsSpecialSection && !i.HideGroup);
+            if (orderRootItems)
             {
+                if (orderByDescending)
+                {
+                    dataGroup = dataGroup.OrderByDescending(i => i.Title);
+                }
+                else
+                {
+                    dataGroup = dataGroup.OrderBy(i => i.Title);
+                }
+            }
+            foreach (var group in dataGroup)
+            {
+                var dataItem = group.Items.Where(i => !i.HideNavigationViewItem);
+                if (group.Order)
+                {
+                    if (group.OrderByDescending)
+                    {
+                        dataItem = dataItem.OrderByDescending(i => i.Title);
+                    }
+                    else
+                    {
+                        dataItem = dataItem.OrderBy(i => i.Title);
+                    }
+                }
+
                 if (group.ShowItemsWithoutGroup)
                 {
-                    var items = group.Items.Where(i => !i.HideNavigationViewItem);
-                    AddNavigationViewItemsRecursively(items, group.IsFooterNavigationViewItem, false, group.UniqueId);
+                    AddNavigationViewItemsRecursively(dataItem, group.IsFooterNavigationViewItem, false, group.Order, group.OrderByDescending, group.UniqueId);
                 }
                 else
                 {
@@ -100,8 +148,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                     AutomationProperties.SetName(topLevelItem, GetLocalizedText(group.Title, group.UsexUid));
                     topLevelItem.InfoBadge = GetInfoBadge(group);
 
-                    var items = group.Items.Where(i => !i.HideNavigationViewItem);
-                    AddNavigationViewItemsRecursively(items, group.IsFooterNavigationViewItem, true, group.UniqueId);
+                    AddNavigationViewItemsRecursively(dataItem, group.IsFooterNavigationViewItem, true, group.Order, group.OrderByDescending, group.UniqueId);
 
                     if (group.IsFooterNavigationViewItem)
                     {
