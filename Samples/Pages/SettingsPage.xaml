@@ -3,6 +3,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:DemoApp"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
@@ -24,9 +25,10 @@
                                   Tag="Default" />
                 </ComboBox>
             </wuc:SettingsCard>
-            <wuc:SettingsCard Description="Change Application System Backdrop"
-                              Header="Materials"
-                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/backdrop.png}">
+            <wuc:SettingsExpander Description="Change Application System Backdrop"
+                                  Header="Materials"
+                                  HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/backdrop.png}"
+                                  IsExpanded="True">
                 <ComboBox x:Name="CmbBackdrop"
                           SelectionChanged="cmbBackdrop_SelectionChanged">
                     <ComboBoxItem Content="None"
@@ -44,7 +46,75 @@
                     <ComboBoxItem Content="Transparent"
                                   Tag="Transparent" />
                 </ComboBox>
-            </wuc:SettingsCard>
+
+                <wuc:SettingsExpander.Items>
+                    <wuc:SettingsExpander Description="Add tint to your window to make your experience more personalized."
+                                          Header="TintColor"
+                                          HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/tint.png}">
+                        <Button Padding="0">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="24"
+                                        Height="24"
+                                        Margin="4"
+                                        Background="Gray"
+                                        CornerRadius="4">
+                                    <Grid>
+                                        <PathIcon Data="M0 6 L0 0 L6 0 L6 6 L12 6 L12 0 L18 0 L18 6 L12 6 L12 12 L18 12 L18 6 L24 6 L24 12 L18 12 L18 18 L24 18 L24 24 L6 24 L6 18 L0 18 L0 12 L6 12 L6 18 L12 18 L12 24 L18 24 L18 18 L12 18 L12 12 L6 12 L6 6 Z"
+                                                  Foreground="LightGray" />
+                                        <Rectangle x:Name="TintBox"
+                                                   Fill="{x:Bind local:App.Current.ThemeService.GetBackdropTintBrush()}" />
+                                    </Grid>
+                                </Border>
+                                <FontIcon Margin="8,4,10,4"
+                                          FontSize="12"
+                                          Glyph="&#xE70D;" />
+                            </StackPanel>
+                            <Button.Flyout>
+                                <Flyout>
+                                    <ColorPicker ColorChanged="ColorPicker_ColorChanged"
+                                                 IsAlphaEnabled="True"
+                                                 IsAlphaSliderVisible="True"
+                                                 IsAlphaTextInputVisible="True"
+                                                 IsColorPreviewVisible="True"
+                                                 IsColorSliderVisible="True"
+                                                 IsMoreButtonVisible="True" />
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                        <wuc:SettingsExpander.Items>
+                            <wuc:SettingsCard>
+                                <wuc:SettingsCard.Description>
+                                    <wuc:ColorPalette Margin="5,5,0,0"
+                                                      HorizontalAlignment="Left"
+                                                      ItemClick="ColorPalette_ItemClick"
+                                                      ItemWidth="32"
+                                                      Palette="Rectangle"
+                                                      ShowHeader="False"
+                                                      Color="NormalLarge" />
+                                </wuc:SettingsCard.Description>
+                            </wuc:SettingsCard>
+                            <wuc:SettingsCard Header="TintOpacity"
+                                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/tintOpacity.png}">
+                                <StackPanel Orientation="Horizontal"
+                                            Spacing="12">
+                                    <Slider x:Name="TintOpacitySlider"
+                                            VerticalAlignment="Center"
+                                            IsThumbToolTipEnabled="False"
+                                            Maximum="1"
+                                            Minimum="0"
+                                            StepFrequency="0.01"
+                                            ValueChanged="TintOpacitySlider_ValueChanged"
+                                            Value="{x:Bind GetTintOpacity(), Mode=OneWay}" />
+                                    <TextBlock MinWidth="50"
+                                               VerticalAlignment="Center"
+                                               Text="{x:Bind TintOpacitySlider.Value, Mode=OneWay, Converter={StaticResource NumberToPercentageConverter}, ConverterParameter=WithPercentageSymbol}" />
+                                </StackPanel>
+                            </wuc:SettingsCard>
+                        </wuc:SettingsExpander.Items>
+                    </wuc:SettingsExpander>
+
+                </wuc:SettingsExpander.Items>
+            </wuc:SettingsExpander>
             <wuc:SettingsCard ActionIcon="{wuc:BitmapIcon Source=Assets/Fluent/external.png}"
                               Click="SettingsCard_Click"
                               Description="Change Windows Accent Color"

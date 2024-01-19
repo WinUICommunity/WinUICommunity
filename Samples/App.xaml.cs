@@ -61,6 +61,8 @@ public partial class App : Application
         ThemeService.Initialize(currentWindow);
         ThemeService.ConfigBackdrop(BackdropType.Mica);
         ThemeService.ConfigElementTheme(ElementTheme.Default);
+        ThemeService.ConfigBackdropTintColor();
+        ThemeService.ConfigBackdropTintOpacity();
 
         if (!PackageHelper.IsPackaged)
         {
@@ -68,6 +70,7 @@ public partial class App : Application
         }
         await InitializeLocalizer("fa-IR", "en-US");
 
+       
         // Ensure the current window is active
         currentWindow.Activate();
     }
