@@ -6,11 +6,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="using:WinUICommunity"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="This"
              mc:Ignorable="d">
     <UserControl.Resources>
         <DataTemplate x:Key="ColorPaletteTabViewTemplate"
                       x:DataType="local:ColorPaletteItem">
             <Grid Width="{Binding ElementName=This, Path=DataContext.ItemWidth}"
+                  MinWidth="100"
                   AutomationProperties.Name="{x:Bind Name, Mode=OneWay}"
                   BorderBrush="{ThemeResource ControlElevationBorderBrush}"
                   BorderThickness="1"
@@ -78,7 +80,8 @@
                 </Grid.RowDefinitions>
                 <!--  Background  -->
                 <Border Grid.RowSpan="2"
-                        Background="{x:Bind Hex, Converter={StaticResource StringToBrushConverter}, Mode=OneWay}" />
+                        Background="{x:Bind Hex, Converter={StaticResource StringToBrushConverter}, Mode=OneWay}"
+                        CornerRadius="250" />
 
                 <!--  File area  -->
                 <Border Grid.Row="1"
@@ -106,6 +109,8 @@
                     BorderBrush="{ThemeResource ControlElevationBorderBrush}"
                     BorderThickness="1"
                     CornerRadius="{Binding ElementName=This, Path=DataContext.RectangleCornerRadius}"
+                    PointerEntered="Border_PointerEntered"
+                    PointerExited="Border_PointerExited"
                     ToolTipService.ToolTip="{x:Bind Name, Mode=OneWay}" />
         </DataTemplate>
 

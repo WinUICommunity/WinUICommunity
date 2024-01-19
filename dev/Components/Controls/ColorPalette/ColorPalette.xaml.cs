@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Windows.UI;
 
 namespace WinUICommunity;
 public sealed partial class ColorPalette : UserControl
@@ -35,7 +36,7 @@ public sealed partial class ColorPalette : UserControl
         DependencyProperty.Register(nameof(RectangleCornerRadius), typeof(CornerRadius), typeof(ColorPalette), new PropertyMetadata(new CornerRadius(0)));
 
     public static readonly DependencyProperty ColorProperty =
-        DependencyProperty.Register(nameof(Color), typeof(ColorType), typeof(ColorType), new PropertyMetadata(ColorType.Light, OnColorChanged));
+        DependencyProperty.Register(nameof(Color), typeof(ColorType), typeof(ColorType), new PropertyMetadata(ColorType.Normal, OnColorChanged));
 
     public static readonly DependencyProperty ColorPaleteTypeProperty =
         DependencyProperty.Register(nameof(Palette), typeof(PaletteType), typeof(ColorPalette), new PropertyMetadata(PaletteType.TabView, OnPaletteChanged));
@@ -90,23 +91,8 @@ public sealed partial class ColorPalette : UserControl
             case ColorType.Normal:
                 gridView.ItemsSource = ColorPaletteNormalResources();
                 break;
-            case ColorType.Light:
-                gridView.ItemsSource = ColorPaletteLightResources;
-                break;
-            case ColorType.Dark:
-                gridView.ItemsSource = ColorPaletteDarkResources;
-                break;
-            case ColorType.LightAndDark:
-                gridView.ItemsSource = ColorPaletteDarkAndLightResources();
-                break;
-            case ColorType.LightAndNormal:
-                gridView.ItemsSource = ColorPaletteLightAndNormalResources();
-                break;
-            case ColorType.DarkAndNormal:
-                gridView.ItemsSource = ColorPaletteDarkAndNormalResources();
-                break;
-            case ColorType.LightAndDarkAndNormal:
-                gridView.ItemsSource = ColorPaletteLightAndDarkAndNormalResources();
+            case ColorType.NormalLarge:
+                gridView.ItemsSource = ColorPaletteNormalLargeResources();
                 break;
         }
     }
@@ -137,288 +123,38 @@ public sealed partial class ColorPalette : UserControl
         gridView.ItemTemplate = dataTemplate;
     }
     
-    private ObservableCollection<ColorPaletteItem> ColorPaletteLightAndDarkAndNormalResources()
-    {
-        var list = new ObservableCollection<ColorPaletteItem>();
-        for (int i = 0; i < ColorPaletteLightResources.Count; i++)
-        {
-            list.Add(ColorPaletteLightResources[i]);
-            list.Add(ColorPaletteDarkResources[i]);
-            list.Add(ColorPaletteNormalResources()[i]);
-        }
-        return list;
-    }
-    private ObservableCollection<ColorPaletteItem> ColorPaletteDarkAndNormalResources()
-    {
-        var list = new ObservableCollection<ColorPaletteItem>();
-        for (int i = 0; i < ColorPaletteDarkResources.Count; i++)
-        {
-            list.Add(ColorPaletteDarkResources[i]);
-            list.Add(ColorPaletteNormalResources()[i]);
-        }
-        return list;
-    }
-    private ObservableCollection<ColorPaletteItem> ColorPaletteLightAndNormalResources()
-    {
-        var list = new ObservableCollection<ColorPaletteItem>();
-        for (int i = 0; i < ColorPaletteLightResources.Count; i++)
-        {
-            list.Add(ColorPaletteLightResources[i]);
-            list.Add(ColorPaletteNormalResources()[i]);
-        }
-        return list;
-    }
-    public ObservableCollection<ColorPaletteItem> ColorPaletteDarkAndLightResources()
-    {
-        var list = new ObservableCollection<ColorPaletteItem>();
-        for (int i = 0; i < ColorPaletteDarkResources.Count; i++)
-        {
-            list.Add(ColorPaletteDarkResources[i]);
-            list.Add(ColorPaletteLightResources[i]);
-        }
-        return list;
-    }
     public ObservableCollection<ColorPaletteItem> ColorPaletteNormalResources()
     {
         var list = new ObservableCollection<ColorPaletteItem>();
-        for (int i = 0; i < ColorPaletteDarkResources.Count; i++)
+        for (int i = 0; i < TintColorsList.Count; i++)
         {
             list.Add(new ColorPaletteItem
             {
-                Name = ColorPaletteDarkResources[i].Name,
-                Hex = ColorPaletteDarkResources[i].ActualHex,
-                ActualHex = ColorPaletteDarkResources[i].ActualHex,
+                Hex = TintColorsList[i],
+                ActualHex = TintColorsList[i],
             });
         }
         return list;
     }
-    public ObservableCollection<ColorPaletteItem> ColorPaletteLightResources { get; } = new ObservableCollection<ColorPaletteItem>()
+    public ObservableCollection<ColorPaletteItem> ColorPaletteNormalLargeResources()
+    {
+        var list = new ObservableCollection<ColorPaletteItem>();
+        for (int i = 0; i < TintColorsListLarge.Count; i++)
         {
-            new ColorPaletteItem
+            list.Add(new ColorPaletteItem
             {
-                ActualHex = "#000000", /* Transparent */
-                Hex = "#00000000", /* Transparent */
-                Name = "Transparent"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#f44336", /* #f44336 */
-                Hex = "#32f44336", /* #f44336 */
-                Name = "Red"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#e91e63", /* #e91e63 */
-                Hex = "#32e91e63", /* #e91e63 */
-                Name = "Pink"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#673ab7", /* #673ab7 */
-                Hex = "#32673ab7", /* #673ab7 */
-                Name = "Purple"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#3f51b5", /* #3f51b5 */
-                Hex = "#323f51b5", /* #3f51b5 */
-                Name = "Indigo"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#2196f3", /* #2196f3 */
-                Hex = "#322196f3", /* #2196f3 */
-                Name = "Blue"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#03a9f4", /* #03a9f4 */
-                Hex = "#3203a9f4", /* #03a9f4 */
-                Name = "Light Blue"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#00bcd4", /* #00bcd4 */
-                Hex = "#3200bcd4", /* #00bcd4 */
-                Name = "Cyan"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#009688", /* #009688 */
-                Hex = "#32009688", /* #009688 */
-                Name = "Teal"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#4caf50", /* #4caf50 */
-                Hex = "#324caf50", /* #4caf50 */
-                Name = "Green"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#8bc34a", /* #8bc34a */
-                Hex = "#328bc34a", /* #8bc34a */
-                Name = "Light Green"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#cddc39", /* #cddc39 */
-                Hex = "#32cddc39", /* #cddc39 */
-                Name = "Lime"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#ffeb3b", /* #ffeb3b */
-                Hex = "#32ffeb3b", /* #ffeb3b */
-                Name = "Yellow"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#ffc107", /* #ffc107 */
-                Hex = "#32ffc107", /* #ffc107 */
-                Name = "Amber"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#ff9800", /* #ff9800 */
-                Hex = "#32ff9800", /* #ff9800 */
-                Name = "Orange"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#ff5722", /* #ff5722 */
-                Hex = "#32ff5722", /* #ff5722 */
-                Name = "Deep Orange"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#795548", /* #795548 */
-                Hex = "#32795548", /* #795548 */
-                Name = "Brown"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#9e9e9e", /* #9e9e9e */
-                Hex = "#329e9e9e", /* #9e9e9e */
-                Name = "Grey"
-            }
-        };
-    public ObservableCollection<ColorPaletteItem> ColorPaletteDarkResources { get; } = new ObservableCollection<ColorPaletteItem>()
-        {
-            new ColorPaletteItem
-            {
-                ActualHex = "#000000", /* Transparent */
-                Hex = "#00000000", /* Transparent */
-                Name = "Transparent"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#f44336", /* #f44336 */
-                Hex = "#64f44336", /* #f44336 */
-                Name = "Dark Red"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#e91e63", /* #e91e63 */
-                Hex = "#64e91e63", /* #e91e63 */
-                Name = "Dark Pink"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#673ab7", /* #673ab7 */
-                Hex = "#64673ab7", /* #673ab7 */
-                Name = "Dark Purple"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#3f51b5", /* #3f51b5 */
-                Hex = "#643f51b5", /* #3f51b5 */
-                Name = "Dark Indigo"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#2196f3", /* #2196f3 */
-                Hex = "#642196f3", /* #2196f3 */
-                Name = "Dark Blue"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#03a9f4", /* #03a9f4 */
-                Hex = "#6403a9f4", /* #03a9f4 */
-                Name = "Dark Light Blue"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#00bcd4", /* #00bcd4 */
-                Hex = "#6400bcd4", /* #00bcd4 */
-                Name = "Dark Cyan"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#009688", /* #009688 */
-                Hex = "#64009688", /* #009688 */
-                Name = "Dark Teal"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#4caf50", /* #4caf50 */
-                Hex = "#644caf50", /* #4caf50 */
-                Name = "Dark Green"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#8bc34a", /* #8bc34a */
-                Hex = "#648bc34a", /* #8bc34a */
-                Name = "Dark Light Green"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#cddc39", /* #cddc39 */
-                Hex = "#64cddc39", /* #cddc39 */
-                Name = "Dark Lime"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#ffeb3b", /* #ffeb3b */
-                Hex = "#64ffeb3b", /* #ffeb3b */
-                Name = "Dark Yellow"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#ffc107", /* #ffc107 */
-                Hex = "#64ffc107", /* #ffc107 */
-                Name = "Dark Amber"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#ff9800", /* #ff9800 */
-                Hex = "#64ff9800", /* #ff9800 */
-                Name = "Dark Orange"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#ff5722", /* #ff5722 */
-                Hex = "#64ff5722", /* #ff5722 */
-                Name = "Dark Deep Orange"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#795548", /* #795548 */
-                Hex = "#64795548", /* #795548 */
-                Name = "Dark Brown"
-            },
-            new ColorPaletteItem
-            {
-                ActualHex = "#9e9e9e", /* #9e9e9e */
-                Hex = "#649e9e9e", /* #9e9e9e */
-                Name = "Dark Grey"
-            }
-        };
+                Hex = GeneralHelper.GetHexFromColor(TintColorsListLarge[i]),
+                ActualHex = GeneralHelper.GetHexFromColor(TintColorsListLarge[i]),
+            });
+        }
+        return list;
+    }
+
     public ColorPalette()
     {
         this.InitializeComponent();
         DataContext = this;
-        Color = ColorType.Light;
+        Color = ColorType.Normal;
         if (ItemsSource != null)
         {
             gridView.ItemsSource = ItemsSource;
@@ -426,6 +162,79 @@ public sealed partial class ColorPalette : UserControl
 
         Palette = PaletteType.TabView;
     }
+
+    private readonly List<string> TintColorsList = new()
+    {
+        "#f44336",
+        "#e91e63",
+        "#9c27b0",
+        "#673ab7",
+        "#3f51b5",
+        "#2196f3",
+        "#03a9f4",
+        "#00bcd4",
+        "#009688",
+        "#4caf50",
+        "#8bc34a",
+        "#cddc39",
+        "#ffeb3b",
+        "#ffc107",
+        "#ff9800",
+        "#ff5722",
+        "#795548",
+        "#9e9e9e"
+    };
+    public ObservableCollection<Color> TintColorsListLarge { get; } = new()
+    {
+        Windows.UI.Color.FromArgb(255, 255, 185, 0),
+        Windows.UI.Color.FromArgb(255, 255, 140, 0),
+        Windows.UI.Color.FromArgb(255, 247, 99, 12),
+        Windows.UI.Color.FromArgb(255, 202, 80, 16),
+        Windows.UI.Color.FromArgb(255, 218, 59, 1),
+        Windows.UI.Color.FromArgb(255, 239, 105, 80),
+        Windows.UI.Color.FromArgb(255, 209, 52, 56),
+        Windows.UI.Color.FromArgb(255, 255, 67, 67),
+        Windows.UI.Color.FromArgb(255, 231, 72, 86),
+        Windows.UI.Color.FromArgb(255, 232, 17, 35),
+        Windows.UI.Color.FromArgb(255, 234, 0, 94),
+        Windows.UI.Color.FromArgb(255, 195, 0, 82),
+        Windows.UI.Color.FromArgb(255, 227, 0, 140),
+        Windows.UI.Color.FromArgb(255, 191, 0, 119),
+        Windows.UI.Color.FromArgb(255, 194, 57, 179),
+        Windows.UI.Color.FromArgb(255, 154, 0, 137),
+        Windows.UI.Color.FromArgb(255, 0, 120, 212),
+        Windows.UI.Color.FromArgb(255, 0, 99, 177),
+        Windows.UI.Color.FromArgb(255, 142, 140, 216),
+        Windows.UI.Color.FromArgb(255, 107, 105, 214),
+        Windows.UI.Color.FromArgb(255, 135, 100, 184),
+        Windows.UI.Color.FromArgb(255, 116, 77, 169),
+        Windows.UI.Color.FromArgb(255, 177, 70, 194),
+        Windows.UI.Color.FromArgb(255, 136, 23, 152),
+        Windows.UI.Color.FromArgb(255, 0, 153, 188),
+        Windows.UI.Color.FromArgb(255, 45, 125, 154),
+        Windows.UI.Color.FromArgb(255, 0, 183, 195),
+        Windows.UI.Color.FromArgb(255, 3, 131, 135),
+        Windows.UI.Color.FromArgb(255, 0, 178, 148),
+        Windows.UI.Color.FromArgb(255, 1, 133, 116),
+        Windows.UI.Color.FromArgb(255, 0, 204, 106),
+        Windows.UI.Color.FromArgb(255, 16, 137, 62),
+        Windows.UI.Color.FromArgb(255, 122, 117, 116),
+        Windows.UI.Color.FromArgb(255, 93, 90, 88),
+        Windows.UI.Color.FromArgb(255, 104, 118, 138),
+        Windows.UI.Color.FromArgb(255, 81, 92, 107),
+        Windows.UI.Color.FromArgb(255, 86, 124, 115),
+        Windows.UI.Color.FromArgb(255, 72, 104, 96),
+        Windows.UI.Color.FromArgb(255, 73, 130, 5),
+        Windows.UI.Color.FromArgb(255, 16, 124, 16),
+        Windows.UI.Color.FromArgb(255, 118, 118, 118),
+        Windows.UI.Color.FromArgb(255, 76, 74, 72),
+        Windows.UI.Color.FromArgb(255, 105, 121, 126),
+        Windows.UI.Color.FromArgb(255, 74, 84, 89),
+        Windows.UI.Color.FromArgb(255, 100, 124, 100),
+        Windows.UI.Color.FromArgb(255, 82, 94, 84),
+        Windows.UI.Color.FromArgb(255, 132, 117, 69),
+        Windows.UI.Color.FromArgb(255, 126, 115, 95)
+    };
 
     private void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -448,10 +257,5 @@ public enum PaletteType
 public enum ColorType
 {
     Normal,
-    Light,
-    Dark,
-    LightAndDark,
-    LightAndNormal,
-    DarkAndNormal,
-    LightAndDarkAndNormal
+    NormalLarge,
 }

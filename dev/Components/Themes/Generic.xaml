@@ -489,6 +489,7 @@ Themes\Styles\TextBlock.xaml
   <local:WaveProgressBarValueToPercentConverter x:Key="WaveProgressBarValueToPercentConverter" />
   <local:StringToBrushConverter x:Key="StringToBrushConverter" />
   <local:WidthToHalfHeightConverter x:Key="WidthToHalfHeightConverter" />
+  <local:NumberToPercentageConverter x:Key="NumberToPercentageConverter" />
   <x:Double x:Key="SecondaryTextFontSize">12</x:Double>
   <x:Double x:Key="HeaderTextFontSize">12</x:Double>
   <Style x:Key="RightAlignedCompactToggleSwitchStyle" BasedOn="{StaticResource DefaultToggleSwitchStyle}" TargetType="ToggleSwitch">
