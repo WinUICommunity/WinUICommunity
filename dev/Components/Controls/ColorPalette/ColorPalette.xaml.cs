@@ -132,6 +132,7 @@ public sealed partial class ColorPalette : UserControl
             {
                 Hex = TintColorsList[i],
                 ActualHex = TintColorsList[i],
+                Color = GeneralHelper.GetColorFromHex(TintColorsList[i]),
             });
         }
         return list;
@@ -143,11 +144,13 @@ public sealed partial class ColorPalette : UserControl
         {
             Hex = TintColorsList[0],
             ActualHex = TintColorsList[0],
+            Color = GeneralHelper.GetColorFromHex(TintColorsList[0]),
         });
         list.Add(new ColorPaletteItem
         {
             Hex = TintColorsList[1],
             ActualHex = TintColorsList[1],
+            Color = GeneralHelper.GetColorFromHex(TintColorsList[1]),
         });
         for (int i = 0; i < TintColorsListLarge.Count; i++)
         {
@@ -155,6 +158,7 @@ public sealed partial class ColorPalette : UserControl
             {
                 Hex = GeneralHelper.GetHexFromColor(TintColorsListLarge[i]),
                 ActualHex = GeneralHelper.GetHexFromColor(TintColorsListLarge[i]),
+                Color = TintColorsListLarge[i],
             });
         }
         return list;
