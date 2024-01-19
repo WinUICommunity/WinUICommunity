@@ -1,7 +1,4 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 public partial class FlyoutMenuButton : Button
 {
     /// <summary>
