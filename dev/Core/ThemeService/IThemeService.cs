@@ -2,33 +2,44 @@
 namespace WinUICommunity;
 public interface IThemeService
 {
-    void Initialize(Window window, bool useAutoSave = true, string filename = null);
-    void ConfigBackdrop(BackdropType backdropType = BackdropType.Mica, bool force = false);
-    void ConfigBackdropTintColor(Color color, bool force = false);
-    void ConfigBackdropFallBackColor(Color color, bool force = false);
-    void ConfigBackdropTintOpacity(float opacity, bool force = false);
-    void ConfigBackdropLuminosityOpacity(float opacity, bool force = false);
-    void ConfigElementTheme(ElementTheme elementTheme = ElementTheme.Default, bool force = false);
-    void ConfigTitleBar(TitleBarCustomization titleBarCustomization);
-    void ConfigBackdropFallBackColorForWindow10(Brush? brush);
-
     delegate void ActualThemeChangedEventHandler(FrameworkElement sender, object args);
     event ActualThemeChangedEventHandler ActualThemeChanged;
 
     Window Window { get; set; }
     SystemBackdrop CurrentSystemBackdrop { get; set; }
     BackdropType CurrentBackdropType { get; set; }
-    SystemBackdrop GetSystemBackdrop(BackdropType backdropType);
+
+    void Initialize(Window window, bool useAutoSave = true, string filename = null);
+    void ConfigBackdrop(BackdropType backdropType = BackdropType.Mica, bool force = false);
+    void ConfigBackdropTintColor();
+    void ConfigBackdropTintColor(Color color, bool force = false);
+    void ConfigBackdropFallBackColor();
+    void ConfigBackdropFallBackColor(Color color, bool force = false);
+    void ConfigBackdropTintOpacity();
+    void ConfigBackdropTintOpacity(float opacity, bool force = false);
+    void ConfigBackdropLuminosityOpacity();
+    void ConfigBackdropLuminosityOpacity(float opacity, bool force = false);
+    void ConfigElementTheme(ElementTheme elementTheme = ElementTheme.Default, bool force = false);
+    void ConfigTitleBar(TitleBarCustomization titleBarCustomization);
+    void ConfigBackdropFallBackColorForWindow10(Brush? brush);
+
     SystemBackdrop GetSystemBackdrop();
-    BackdropType GetBackdropType(SystemBackdrop systemBackdrop);
+    SystemBackdrop GetSystemBackdrop(BackdropType backdropType);
     BackdropType GetBackdropType();
+    BackdropType GetBackdropType(SystemBackdrop systemBackdrop);
     ElementTheme GetElementTheme();
+    ElementTheme GetActualTheme();
+    Color GetDefaultBackdropFallBackColor();
+    Color GetDefaultBackdropTintColor();
+    float GetDefaultBackdropLuminosityOpacity();
+    float GetDefaultBackdropTintOpacity();
 
     void SetBackdropType(BackdropType backdropType);
     void SetBackdropLuminosityOpacity(float opacity);
     void SetBackdropTintOpacity(float opacity);
     void SetBackdropFallBackColor(Color color);
     void SetBackdropTintColor(Color color);
+
     bool IsDarkTheme();
     void UpdateSystemCaptionButtonForAppWindow(Window window);
     void ResetCaptionButtonColors(Window window);
@@ -43,5 +54,4 @@ public interface IThemeService
     void SetThemeRadioButtonDefaultItem(Panel ThemePanel);
     void OnBackdropRadioButtonChecked(object sender);
     void SetBackdropRadioButtonDefaultItem(Panel BackdropPanel);
-    ElementTheme GetActualTheme();
 }
