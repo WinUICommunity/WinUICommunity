@@ -30,22 +30,29 @@ public interface IThemeService
     ElementTheme GetElementTheme();
     ElementTheme GetActualTheme();
     Color GetDefaultBackdropFallBackColor();
+    Color GetBackdropFallBackColor();
+    Brush GetBackdropFallBackBrush();
     Color GetDefaultBackdropTintColor();
+    Color GetBackdropTintColor();
+    Brush GetBackdropTintBrush();
     float GetDefaultBackdropLuminosityOpacity();
+    float GetBackdropLuminosityOpacity();
     float GetDefaultBackdropTintOpacity();
+    float GetBackdropTintOpacity();
 
     void SetBackdropType(BackdropType backdropType);
     void SetBackdropLuminosityOpacity(float opacity);
     void SetBackdropTintOpacity(float opacity);
     void SetBackdropFallBackColor(Color color);
     void SetBackdropTintColor(Color color);
+    void SetElementTheme(ElementTheme elementTheme);
+    void SetElementThemeWithoutSave(ElementTheme elementTheme);
 
     bool IsDarkTheme();
     void UpdateSystemCaptionButtonForAppWindow(Window window);
     void ResetCaptionButtonColors(Window window);
     void UpdateSystemCaptionButton(Window window);
-    void SetElementTheme(ElementTheme elementTheme);
-    void SetElementThemeWithoutSave(ElementTheme elementTheme);
+    void ResetBackdropProperties();
     void OnThemeComboBoxSelectionChanged(object sender);
     void SetThemeComboBoxDefaultItem(ComboBox themeComboBox);
     void OnBackdropComboBoxSelectionChanged(object sender);

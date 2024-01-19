@@ -216,4 +216,20 @@ public partial class ThemeService : IThemeService
             UpdateSystemCaptionButton(Window);
         }
     }
+
+    public void ResetBackdropProperties()
+    {
+        var backdrop = GetSystemBackdrop();
+        if (backdrop != null)
+        {
+            if (backdrop is MicaBackdrop mica)
+            {
+                mica.micaController.ResetProperties();
+            }
+            else if (backdrop is AcrylicBackdrop acrylic)
+            {
+                acrylic.acrylicController.ResetProperties();
+            }
+        }
+    }
 }

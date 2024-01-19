@@ -121,6 +121,20 @@ public partial class ThemeService
         return 0.5f;
     }
 
+    public float GetBackdropTintOpacity()
+    {
+        var controller = GetSystemBackdrop();
+        if (controller is MicaBackdrop mica)
+        {
+            return mica.micaController.TintOpacity;
+        }
+        else if (controller is AcrylicBackdrop acrylic)
+        {
+            return acrylic.acrylicController.TintOpacity;
+        }
+        return 0.5f;
+    }
+
     public float GetDefaultBackdropLuminosityOpacity()
     {
         var controller = ResetBackdrop();
@@ -131,6 +145,20 @@ public partial class ThemeService
         else if (controller is DesktopAcrylicController acrylic)
         {
             return acrylic.LuminosityOpacity;
+        }
+        return 1f;
+    }
+
+    public float GetBackdropLuminosityOpacity()
+    {
+        var controller = GetSystemBackdrop();
+        if (controller is MicaBackdrop mica)
+        {
+            return mica.micaController.LuminosityOpacity;
+        }
+        else if (controller is AcrylicBackdrop acrylic)
+        {
+            return acrylic.acrylicController.LuminosityOpacity;
         }
         return 1f;
     }
@@ -149,6 +177,25 @@ public partial class ThemeService
         return Colors.Transparent;
     }
 
+    public Color GetBackdropTintColor()
+    {
+        var controller = GetSystemBackdrop();
+        if (controller is MicaBackdrop mica)
+        {
+            return mica.micaController.TintColor;
+        }
+        else if (controller is AcrylicBackdrop acrylic)
+        {
+            return acrylic.acrylicController.TintColor;
+        }
+        return Colors.Transparent;
+    }
+
+    public Brush GetBackdropTintBrush()
+    {
+        return new SolidColorBrush(GetBackdropTintColor());
+    }
+
     public Color GetDefaultBackdropFallBackColor()
     {
         var controller = ResetBackdrop();
@@ -161,5 +208,24 @@ public partial class ThemeService
             return acrylic.FallbackColor;
         }
         return Colors.Transparent;
+    }
+
+    public Color GetBackdropFallBackColor()
+    {
+        var controller = GetSystemBackdrop();
+        if (controller is MicaBackdrop mica)
+        {
+            return mica.micaController.FallbackColor;
+        }
+        else if (controller is AcrylicBackdrop acrylic)
+        {
+            return acrylic.acrylicController.FallbackColor;
+        }
+        return Colors.Transparent;
+    }
+
+    public Brush GetBackdropFallBackBrush()
+    {
+        return new SolidColorBrush(GetBackdropFallBackColor());
     }
 }
