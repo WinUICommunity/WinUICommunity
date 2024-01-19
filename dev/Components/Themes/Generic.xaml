@@ -487,6 +487,8 @@ Themes\Styles\TextBlock.xaml
   <local:CornerRadiusSplitConverter x:Key="CornerRadiusSplitConverter" />
   <local:LineDashStrokeArrayConverter x:Key="LineDashStrokeArrayConverter" />
   <local:WaveProgressBarValueToPercentConverter x:Key="WaveProgressBarValueToPercentConverter" />
+  <local:StringToBrushConverter x:Key="StringToBrushConverter" />
+  <local:WidthToHalfHeightConverter x:Key="WidthToHalfHeightConverter" />
   <x:Double x:Key="SecondaryTextFontSize">12</x:Double>
   <x:Double x:Key="HeaderTextFontSize">12</x:Double>
   <win:Style x:Key="RightAlignedCompactToggleSwitchStyle" BasedOn="{StaticResource DefaultToggleSwitchStyle}" TargetType="ToggleSwitch">

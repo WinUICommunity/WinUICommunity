@@ -4,17 +4,13 @@
                     xmlns:local="using:WinUICommunity">
 
     <local:ValidationEnabledConverter x:Name="CanValidateConverter" />
-
     <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"
                                      FalseValue="Collapsed"
                                      TrueValue="Visible" />
-
     <local:GridLengthConverter x:Key="GridLengthConverter" />
-
     <local:CornerRadiusSplitConverter x:Key="CornerRadiusSplitConverter" />
-
     <local:LineDashStrokeArrayConverter x:Key="LineDashStrokeArrayConverter" />
-
     <local:WaveProgressBarValueToPercentConverter x:Key="WaveProgressBarValueToPercentConverter" />
-
+    <local:StringToBrushConverter x:Key="StringToBrushConverter" />
+    <local:WidthToHalfHeightConverter x:Key="WidthToHalfHeightConverter" />
 </ResourceDictionary>
