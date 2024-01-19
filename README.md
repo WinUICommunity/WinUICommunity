@@ -238,6 +238,9 @@ download and install our vsix package from Marketplace:
 
 ## History
 
+### ThemeService / Backdrop TintColor
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TintColor.gif)
+
 ### OpacityMaskView
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OpacityMaskView.png)
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OpacityMaskView2.gif)
