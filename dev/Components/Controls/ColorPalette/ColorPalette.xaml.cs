@@ -139,6 +139,16 @@ public sealed partial class ColorPalette : UserControl
     public ObservableCollection<ColorPaletteItem> ColorPaletteNormalLargeResources()
     {
         var list = new ObservableCollection<ColorPaletteItem>();
+        list.Add(new ColorPaletteItem
+        {
+            Hex = TintColorsList[0],
+            ActualHex = TintColorsList[0],
+        });
+        list.Add(new ColorPaletteItem
+        {
+            Hex = TintColorsList[1],
+            ActualHex = TintColorsList[1],
+        });
         for (int i = 0; i < TintColorsListLarge.Count; i++)
         {
             list.Add(new ColorPaletteItem
@@ -163,8 +173,10 @@ public sealed partial class ColorPalette : UserControl
         Palette = PaletteType.TabView;
     }
 
-    private readonly List<string> TintColorsList = new()
+    private readonly ObservableCollection<string> TintColorsList = new()
     {
+        "#00000000",
+        "#000000",
         "#f44336",
         "#e91e63",
         "#9c27b0",
