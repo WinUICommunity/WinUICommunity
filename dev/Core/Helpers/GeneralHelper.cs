@@ -90,6 +90,10 @@ public partial class GeneralHelper
 
     public static Color GetColorFromHex(string hexaColor)
     {
+        if (hexaColor.Length == 7) // 6-digit hexa color
+        {
+            hexaColor = hexaColor.Insert(1, "FF"); // insert FF as alpha value
+        }
         return
             Color.FromArgb(
               Convert.ToByte(hexaColor.Substring(1, 2), 16),
