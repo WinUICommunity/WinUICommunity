@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="using:WinUICommunity"
-                    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+                    xmlns:local="using:WinUICommunity">
     <local:Bool2CornerRadiusConverter x:Key="Bool2CornerRadiusConverter" />
 
     <DataTemplate x:Key="HeaderTextBlockTemplate">
@@ -68,18 +67,18 @@
                                      Margin="10,10,0,5"
                                      HorizontalAlignment="Left">
                                 <ContentPresenter x:Name="PART_HeaderIconPresenter"
-                                                  win:AutomationProperties.AccessibilityView="Raw"
-                                                  win:HighContrastAdjustment="None"
+                                                  AutomationProperties.AccessibilityView="Raw"
                                                   Content="{TemplateBinding HeaderIcon}"
-                                                  FontFamily="{ThemeResource ContentControlThemeFontFamily}" />
+                                                  FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                                                  HighContrastAdjustment="None" />
                             </Viewbox>
                             <ContentPresenter x:Name="PART_HeaderPresenter"
                                               Grid.Row="1"
                                               Margin="10,10,0,0"
-                                              win:HighContrastAdjustment="None"
                                               Content="{TemplateBinding Header}"
                                               ContentTemplateSelector="{StaticResource HeaderTemplateSelector}"
                                               FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                                              HighContrastAdjustment="None"
                                               TextWrapping="Wrap" />
                             <ContentPresenter x:Name="PART_DescriptionPresenter"
                                               Grid.Row="2"
