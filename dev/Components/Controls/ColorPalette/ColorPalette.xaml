@@ -109,8 +109,6 @@
                     BorderBrush="{ThemeResource ControlElevationBorderBrush}"
                     BorderThickness="1"
                     CornerRadius="{Binding ElementName=This, Path=DataContext.RectangleCornerRadius}"
-                    PointerEntered="Border_PointerEntered"
-                    PointerExited="Border_PointerExited"
                     ToolTipService.ToolTip="{x:Bind Name, Mode=OneWay}" />
         </DataTemplate>
 
