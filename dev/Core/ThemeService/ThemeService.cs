@@ -11,6 +11,9 @@ public partial class ThemeService : IThemeService
                                .WithRecovery(RecoveryAction.RenameAndLoadDefault)
                                .WithVersioning(VersioningResultAction.RenameAndLoadDefault);
 
+    internal class AcrylicThin : DesktopAcrylicBackdrop { }
+    internal class AcrylicBase : DesktopAcrylicBackdrop { }
+
     public readonly string ConfigFilePath = "CommonAppConfig.json";
     public event IThemeService.ActualThemeChangedEventHandler ActualThemeChanged;
     private bool changeThemeWithoutSave = false;
@@ -93,20 +96,6 @@ public partial class ThemeService : IThemeService
         }
 
         Settings.LoadNow(AppConfigPath);
-    }
-
-    private ISystemBackdropController ResetBackdrop()
-    {
-        var backdrop = GetSystemBackdrop();
-        if (backdrop is MicaBackdrop)
-        {
-            return new MicaBackdrop().micaController;
-        }
-        else if (backdrop is AcrylicBackdrop)
-        {
-            return new AcrylicBackdrop().acrylicController;
-        }
-        return null;
     }
 
     private void OnActualThemeChanged(FrameworkElement sender, object args)
@@ -214,31 +203,6 @@ public partial class ThemeService : IThemeService
         if (Window != null)
         {
             UpdateSystemCaptionButton(Window);
-        }
-    }
-
-    public void ResetBackdropProperties()
-    {
-        var backdrop = GetSystemBackdrop();
-        if (backdrop != null)
-        {
-            if (backdrop is MicaBackdrop mica)
-            {
-                mica.micaController.ResetProperties();
-            }
-            else if (backdrop is AcrylicBackdrop acrylic)
-            {
-                acrylic.acrylicController.ResetProperties();
-            }
-
-            if (this.useAutoSave)
-            {
-                Settings.BackdropFallBackColor = GetDefaultBackdropFallBackColor();
-                Settings.BackdropTintColor = GetDefaultBackdropTintColor();
-                Settings.BackdropTintOpacity = GetDefaultBackdropTintOpacity();
-                Settings.BackdropLuminosityOpacity = GetDefaultBackdropLuminosityOpacity();
-                Settings?.Save();
-            }
         }
     }
 }

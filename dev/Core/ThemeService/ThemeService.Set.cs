@@ -1,94 +1,6 @@
 ﻿namespace WinUICommunity;
 public partial class ThemeService
 {
-    public void SetBackdropTintColor(Color color)
-    {
-        var backdrop = GetSystemBackdrop();
-        if (backdrop != null)
-        {
-            if (backdrop is MicaBackdrop mica)
-            {
-                mica.TintColor = color;
-            }
-            else if (backdrop is AcrylicBackdrop acrylic)
-            {
-                acrylic.TintColor = color;
-            }
-        }
-
-        if (this.useAutoSave && Settings.BackdropTintColor != color)
-        {
-            Settings.BackdropTintColor = color;
-            Settings?.Save();
-        }
-    }
-
-    public void SetBackdropFallBackColor(Color color)
-    {
-        var backdrop = GetSystemBackdrop();
-        if (backdrop != null)
-        {
-            if (backdrop is MicaBackdrop mica)
-            {
-                mica.FallbackColor = color;
-            }
-            else if (backdrop is AcrylicBackdrop acrylic)
-            {
-                acrylic.FallbackColor = color;
-            }
-        }
-
-        if (this.useAutoSave && Settings.BackdropFallBackColor != color)
-        {
-            Settings.BackdropFallBackColor = color;
-            Settings?.Save();
-        }
-    }
-
-    public void SetBackdropTintOpacity(float opacity)
-    {
-        var backdrop = GetSystemBackdrop();
-        if (backdrop != null)
-        {
-            if (backdrop is MicaBackdrop mica)
-            {
-                mica.TintOpacity = opacity;
-            }
-            else if (backdrop is AcrylicBackdrop acrylic)
-            {
-                acrylic.TintOpacity = opacity;
-            }
-        }
-
-        if (this.useAutoSave && Settings.BackdropTintOpacity != opacity)
-        {
-            Settings.BackdropTintOpacity = opacity;
-            Settings?.Save();
-        }
-    }
-
-    public void SetBackdropLuminosityOpacity(float opacity)
-    {
-        var backdrop = GetSystemBackdrop();
-        if (backdrop != null)
-        {
-            if (backdrop is MicaBackdrop mica)
-            {
-                mica.LuminosityOpacity = opacity;
-            }
-            else if (backdrop is AcrylicBackdrop acrylic)
-            {
-                acrylic.LuminosityOpacity = opacity;
-            }
-        }
-
-        if (this.useAutoSave && Settings.BackdropLuminosityOpacity != opacity)
-        {
-            Settings.BackdropLuminosityOpacity = opacity;
-            Settings?.Save();
-        }
-    }
-
     private void SetWindowSystemBackdrop(SystemBackdrop systemBackdrop)
     {
         Window.SystemBackdrop = systemBackdrop;
@@ -101,7 +13,20 @@ public partial class ThemeService
 
         if (Settings.BackdropType != backdropType)
         {
-            SetWindowSystemBackdrop(systemBackdrop);
+            if (systemBackdrop is AcrylicBase)
+            {
+                SetWindowSystemBackdrop(null);
+                new AcrylicBackdropHelper(Window).TrySetAcrylicBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
+            }
+            else if (systemBackdrop is AcrylicThin)
+            {
+                SetWindowSystemBackdrop(null);
+                new AcrylicBackdropHelper(Window).TrySetAcrylicBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
+            }
+            else
+            {
+                SetWindowSystemBackdrop(systemBackdrop);
+            }
         }
 
         SetBackdropFallBackColorForWindows10(Window);

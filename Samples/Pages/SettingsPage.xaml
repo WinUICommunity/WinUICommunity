@@ -50,7 +50,8 @@
                 <wuc:SettingsExpander.Items>
                     <wuc:SettingsExpander Description="Add tint to your window to make your experience more personalized."
                                           Header="TintColor"
-                                          HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/tint.png}">
+                                          HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/tint.png}"
+                                          IsEnabled="False">
                         <Button Padding="0">
                             <StackPanel Orientation="Horizontal">
                                 <Border Width="24"
@@ -61,8 +62,7 @@
                                     <Grid>
                                         <PathIcon Data="M0 6 L0 0 L6 0 L6 6 L12 6 L12 0 L18 0 L18 6 L12 6 L12 12 L18 12 L18 6 L24 6 L24 12 L18 12 L18 18 L24 18 L24 24 L6 24 L6 18 L0 18 L0 12 L6 12 L6 18 L12 18 L12 24 L18 24 L18 18 L12 18 L12 12 L6 12 L6 6 Z"
                                                   Foreground="LightGray" />
-                                        <Rectangle x:Name="TintBox"
-                                                   Fill="{x:Bind local:App.Current.ThemeService.GetBackdropTintBrush()}" />
+                                        <Rectangle x:Name="TintBox" />
                                     </Grid>
                                 </Border>
                                 <FontIcon Margin="8,4,10,4"
@@ -71,8 +71,7 @@
                             </StackPanel>
                             <Button.Flyout>
                                 <Flyout>
-                                    <ColorPicker ColorChanged="ColorPicker_ColorChanged"
-                                                 IsAlphaEnabled="True"
+                                    <ColorPicker IsAlphaEnabled="True"
                                                  IsAlphaSliderVisible="True"
                                                  IsAlphaTextInputVisible="True"
                                                  IsColorPreviewVisible="True"
@@ -86,29 +85,11 @@
                                 <wuc:SettingsCard.Description>
                                     <wuc:ColorPalette Margin="5,5,0,0"
                                                       HorizontalAlignment="Left"
-                                                      ItemClick="ColorPalette_ItemClick"
                                                       ItemWidth="32"
                                                       Palette="Rectangle"
                                                       ShowHeader="False"
                                                       Color="NormalLarge" />
                                 </wuc:SettingsCard.Description>
-                            </wuc:SettingsCard>
-                            <wuc:SettingsCard Header="TintOpacity"
-                                              HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/tintOpacity.png}">
-                                <StackPanel Orientation="Horizontal"
-                                            Spacing="12">
-                                    <Slider x:Name="TintOpacitySlider"
-                                            VerticalAlignment="Center"
-                                            IsThumbToolTipEnabled="False"
-                                            Maximum="1"
-                                            Minimum="0"
-                                            StepFrequency="0.01"
-                                            ValueChanged="TintOpacitySlider_ValueChanged"
-                                            Value="{x:Bind GetTintOpacity(), Mode=OneWay}" />
-                                    <TextBlock MinWidth="50"
-                                               VerticalAlignment="Center"
-                                               Text="{x:Bind TintOpacitySlider.Value, Mode=OneWay, Converter={StaticResource NumberToPercentageConverter}, ConverterParameter=WithPercentageSymbol}" />
-                                </StackPanel>
                             </wuc:SettingsCard>
                         </wuc:SettingsExpander.Items>
                     </wuc:SettingsExpander>

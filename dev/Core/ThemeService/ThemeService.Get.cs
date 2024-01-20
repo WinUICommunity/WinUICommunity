@@ -31,9 +31,9 @@ public partial class ThemeService
             case BackdropType.DesktopAcrylic:
                 return new DesktopAcrylicBackdrop();
             case BackdropType.AcrylicBase:
-                return new AcrylicBackdrop() { Kind = DesktopAcrylicKind.Base };
+                return new AcrylicBase();
             case BackdropType.AcrylicThin:
-                return new AcrylicBackdrop() { Kind = DesktopAcrylicKind.Thin };
+                return new AcrylicThin();
             case BackdropType.Transparent:
                 return new TransparentBackdrop();
             default:
@@ -58,10 +58,13 @@ public partial class ThemeService
         {
             return BackdropType.Transparent;
         }
-        else if (backdropType == typeof(AcrylicBackdrop))
+        else if (backdropType == typeof(AcrylicBase))
         {
-            var acrylic = (AcrylicBackdrop)systemBackdrop;
-            return acrylic.Kind == DesktopAcrylicKind.Thin ? BackdropType.AcrylicThin : BackdropType.AcrylicBase;
+            return BackdropType.AcrylicBase;
+        }
+        else if (backdropType == typeof(AcrylicThin))
+        {
+            return BackdropType.AcrylicThin;
         }
         else if (backdropType == typeof(DesktopAcrylicBackdrop))
         {
@@ -79,153 +82,9 @@ public partial class ThemeService
         return ForceBackdrop ? GetSystemBackdrop(backdropType) : GetSystemBackdrop(currentBackdrop);
     }
 
-    private Color GetBackdropTintColorFromLocalConfig(Color color, bool ForceColor)
-    {
-        Color currentColor = this.useAutoSave ? Settings.BackdropTintColor : color;
-        return ForceColor ? color : currentColor;
-    }
-
-    private Color GetBackdropFallBackColorFromLocalConfig(Color color, bool ForceColor)
-    {
-        Color currentColor = this.useAutoSave ? Settings.BackdropFallBackColor : color;
-        return ForceColor ? color : currentColor;
-    }
-    private float GetBackdropTintOpacityFromLocalConfig(float opacity, bool ForceOpacity)
-    {
-        float currentOpacity = this.useAutoSave ? Settings.BackdropTintOpacity : opacity;
-        return ForceOpacity ? opacity : currentOpacity;
-    }
-
-    private float GetBackdropLuminosityOpacityFromLocalConfig(float opacity, bool ForceOpacity)
-    {
-        float currentOpacity = this.useAutoSave ? Settings.BackdropLuminosityOpacity : opacity;
-        return ForceOpacity ? opacity : currentOpacity;
-    }
     private ElementTheme GetElementThemeFromLocalConfig(ElementTheme theme, bool forceTheme)
     {
         var currentTheme = Settings.ElementTheme;
         return forceTheme ? theme : currentTheme;
-    }
-
-    public float GetDefaultBackdropTintOpacity()
-    {
-        var controller = ResetBackdrop();
-        if (controller is MicaController mica)
-        {
-            return mica.TintOpacity;
-        }
-        else if (controller is DesktopAcrylicController acrylic)
-        {
-            return acrylic.TintOpacity;
-        }
-        return 0.5f;
-    }
-
-    public float GetBackdropTintOpacity()
-    {
-        var controller = GetSystemBackdrop();
-        if (controller is MicaBackdrop mica)
-        {
-            return mica.micaController.TintOpacity;
-        }
-        else if (controller is AcrylicBackdrop acrylic)
-        {
-            return acrylic.acrylicController.TintOpacity;
-        }
-        return 0.5f;
-    }
-
-    public float GetDefaultBackdropLuminosityOpacity()
-    {
-        var controller = ResetBackdrop();
-        if (controller is MicaController mica)
-        {
-            return mica.LuminosityOpacity;
-        }
-        else if (controller is DesktopAcrylicController acrylic)
-        {
-            return acrylic.LuminosityOpacity;
-        }
-        return 1f;
-    }
-
-    public float GetBackdropLuminosityOpacity()
-    {
-        var controller = GetSystemBackdrop();
-        if (controller is MicaBackdrop mica)
-        {
-            return mica.micaController.LuminosityOpacity;
-        }
-        else if (controller is AcrylicBackdrop acrylic)
-        {
-            return acrylic.acrylicController.LuminosityOpacity;
-        }
-        return 1f;
-    }
-
-    public Color GetDefaultBackdropTintColor()
-    {
-        var controller = ResetBackdrop();
-        if (controller is MicaController mica)
-        {
-            return mica.TintColor;
-        }
-        else if (controller is DesktopAcrylicController acrylic)
-        {
-            return acrylic.TintColor;
-        }
-        return Colors.Transparent;
-    }
-
-    public Color GetBackdropTintColor()
-    {
-        var controller = GetSystemBackdrop();
-        if (controller is MicaBackdrop mica)
-        {
-            return mica.micaController.TintColor;
-        }
-        else if (controller is AcrylicBackdrop acrylic)
-        {
-            return acrylic.acrylicController.TintColor;
-        }
-        return Colors.Transparent;
-    }
-
-    public Brush GetBackdropTintBrush()
-    {
-        return new SolidColorBrush(GetBackdropTintColor());
-    }
-
-    public Color GetDefaultBackdropFallBackColor()
-    {
-        var controller = ResetBackdrop();
-        if (controller is MicaController mica)
-        {
-            return mica.FallbackColor;
-        }
-        else if (controller is DesktopAcrylicController acrylic)
-        {
-            return acrylic.FallbackColor;
-        }
-        return Colors.Transparent;
-    }
-
-    public Color GetBackdropFallBackColor()
-    {
-        var controller = GetSystemBackdrop();
-        if (controller is MicaBackdrop mica)
-        {
-            return mica.micaController.FallbackColor;
-        }
-        else if (controller is AcrylicBackdrop acrylic)
-        {
-            return acrylic.acrylicController.FallbackColor;
-        }
-        return Colors.Transparent;
-    }
-
-    public Brush GetBackdropFallBackBrush()
-    {
-        return new SolidColorBrush(GetBackdropFallBackColor());
     }
 }
