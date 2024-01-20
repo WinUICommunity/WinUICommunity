@@ -9,6 +9,9 @@ public class PageServiceEx : IPageServiceEx
 
     public virtual Type GetPageType(string key)
     {
+        if (key == null)
+            return null;
+
         Type? pageType;
         lock (_pageKeyToTypeMap)
         {
