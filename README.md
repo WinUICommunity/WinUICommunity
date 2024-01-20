@@ -289,6 +289,10 @@ download and install our vsix package from Marketplace:
 ### TextMorphEffect /Win2d
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TextMorphEffect.gif)
 
+### TitleBar
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TitleBar.png)
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TitleBar2.gif)
+
 ### FontIcon Extension : Choose Fluent Icons (more than 1400) with Name or Code
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FontIconGlyph.png)
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FontIconGlyph2.png)
