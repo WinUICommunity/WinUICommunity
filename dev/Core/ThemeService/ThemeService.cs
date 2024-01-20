@@ -231,11 +231,14 @@ public partial class ThemeService : IThemeService
                 acrylic.acrylicController.ResetProperties();
             }
 
-            Settings.BackdropFallBackColor = GetDefaultBackdropFallBackColor();
-            Settings.BackdropTintColor = GetDefaultBackdropTintColor();
-            Settings.BackdropTintOpacity = GetDefaultBackdropTintOpacity();
-            Settings.BackdropLuminosityOpacity = GetDefaultBackdropLuminosityOpacity();
-            Settings.Save();
+            if (this.useAutoSave)
+            {
+                Settings.BackdropFallBackColor = GetDefaultBackdropFallBackColor();
+                Settings.BackdropTintColor = GetDefaultBackdropTintColor();
+                Settings.BackdropTintOpacity = GetDefaultBackdropTintOpacity();
+                Settings.BackdropLuminosityOpacity = GetDefaultBackdropLuminosityOpacity();
+                Settings?.Save();
+            }
         }
     }
 }
