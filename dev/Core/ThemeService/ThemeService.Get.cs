@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Composition.SystemBackdrops;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 public partial class ThemeService
 {
     public ElementTheme GetElementTheme()
@@ -25,9 +23,9 @@ public partial class ThemeService
             case BackdropType.None:
                 return null;
             case BackdropType.Mica:
-                return new MicaBackdrop();
+                return new MicaBase();
             case BackdropType.MicaAlt:
-                return new MicaBackdrop { Kind = MicaKind.BaseAlt };
+                return new MicaBaseAlt();
             case BackdropType.DesktopAcrylic:
                 return new DesktopAcrylicBackdrop();
             case BackdropType.AcrylicBase:
@@ -49,10 +47,13 @@ public partial class ThemeService
     public BackdropType GetBackdropType(SystemBackdrop systemBackdrop)
     {
         var backdropType = systemBackdrop?.GetType();
-        if (backdropType == typeof(MicaBackdrop))
+        if (backdropType == typeof(MicaBase))
         {
-            var mica = (MicaBackdrop)systemBackdrop;
-            return mica.Kind == MicaKind.BaseAlt ? BackdropType.MicaAlt : BackdropType.Mica;
+            return BackdropType.Mica;
+        }
+        else if (backdropType == typeof(MicaBaseAlt))
+        {
+            return BackdropType.MicaAlt;
         }
         else if (backdropType == typeof(TransparentBackdrop))
         {

@@ -1,5 +1,4 @@
-﻿using Microsoft.UI.Composition.SystemBackdrops;
-using Nucs.JsonSettings;
+﻿using Nucs.JsonSettings;
 using Nucs.JsonSettings.Fluent;
 using Nucs.JsonSettings.Modulation;
 using Nucs.JsonSettings.Modulation.Recovery;
@@ -13,6 +12,8 @@ public partial class ThemeService : IThemeService
 
     internal class AcrylicThin : DesktopAcrylicBackdrop { }
     internal class AcrylicBase : DesktopAcrylicBackdrop { }
+    internal class MicaBase : MicaBackdrop { }
+    internal class MicaBaseAlt : MicaBackdrop { }
 
     public readonly string ConfigFilePath = "CommonAppConfig.json";
     public event IThemeService.ActualThemeChangedEventHandler ActualThemeChanged;

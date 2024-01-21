@@ -1,5 +1,4 @@
-﻿
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 public interface IThemeService
 {
     delegate void ActualThemeChangedEventHandler(FrameworkElement sender, object args);

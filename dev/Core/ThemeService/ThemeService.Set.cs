@@ -1,9 +1,48 @@
 ﻿namespace WinUICommunity;
 public partial class ThemeService
 {
+    AcrylicSystemBackdrop _acrylic;
+    MicaSystemBackdrop _mica;
     private void SetWindowSystemBackdrop(SystemBackdrop systemBackdrop)
     {
-        Window.SystemBackdrop = systemBackdrop;
+        Window.SystemBackdrop = null;
+        if (_acrylic != null)
+        {
+            _acrylic.Disconnect();
+            _acrylic = null;
+        }
+        if (_mica != null)
+        {
+            _mica.Disconnect();
+            _mica = null;
+        }
+
+        if (systemBackdrop is AcrylicBase)
+        {
+            _acrylic = new AcrylicSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
+            _acrylic.TrySetAcrylicBackdrop();
+        }
+        else if (systemBackdrop is AcrylicThin)
+        {
+            
+            _acrylic = new AcrylicSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
+            _acrylic.TrySetAcrylicBackdrop();
+        }
+        else if (systemBackdrop is MicaBase)
+        {
+            
+            _mica = new MicaSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base);
+            _mica.TrySetMicaBackdrop();
+        }
+        else if (systemBackdrop is MicaBaseAlt)
+        {
+            _mica = new MicaSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt);
+            _mica.TrySetMicaBackdrop();
+        }
+        else
+        {
+            Window.SystemBackdrop = systemBackdrop;
+        }
     }
 
     public void SetBackdropType(BackdropType backdropType)
@@ -13,20 +52,7 @@ public partial class ThemeService
 
         if (Settings.BackdropType != backdropType)
         {
-            if (systemBackdrop is AcrylicBase)
-            {
-                SetWindowSystemBackdrop(null);
-                new AcrylicBackdropHelper(Window).TrySetAcrylicBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
-            }
-            else if (systemBackdrop is AcrylicThin)
-            {
-                SetWindowSystemBackdrop(null);
-                new AcrylicBackdropHelper(Window).TrySetAcrylicBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
-            }
-            else
-            {
-                SetWindowSystemBackdrop(systemBackdrop);
-            }
+            SetWindowSystemBackdrop(systemBackdrop);
         }
 
         SetBackdropFallBackColorForWindows10(Window);

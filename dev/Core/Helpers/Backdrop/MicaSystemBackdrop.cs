@@ -1,54 +1,61 @@
-﻿
-using Microsoft.UI.Composition.SystemBackdrops;
+﻿using Microsoft.UI.Composition.SystemBackdrops;
 using WinRT;
 
 namespace WinUICommunity;
-
-public class AcrylicBackdropHelper
+internal class MicaSystemBackdrop
 {
     public Window window;
     public WindowsSystemDispatcherQueueHelper m_wsdqHelper;
-    public DesktopAcrylicController m_acrylicController;
+    public MicaController micaController;
     public SystemBackdropConfiguration m_configurationSource;
-
-    public AcrylicBackdropHelper(Window window)
+    public MicaKind kind;
+    public MicaSystemBackdrop(Window window, MicaKind kind)
     {
         this.window = window;
+        this.kind = kind;
     }
 
-    public DesktopAcrylicKind GetDesktopAcrylicKind()
+    public void Disconnect()
     {
-        return m_acrylicController.Kind;
+        window.Activated -= Window_Activated;
+        window.Closed -= Window_Closed;
+        ((FrameworkElement)window.Content).ActualThemeChanged -= Window_ThemeChanged;
+        micaController.RemoveAllSystemBackdropTargets();
+        micaController.ResetProperties();
+        micaController.Dispose();
+        micaController = null;
     }
-
-    public bool TrySetAcrylicBackdrop(DesktopAcrylicKind acrylicKind)
+    public bool TrySetMicaBackdrop()
     {
-        if (DesktopAcrylicController.IsSupported())
+        if (MicaController.IsSupported())
         {
             m_wsdqHelper = new WindowsSystemDispatcherQueueHelper();
             m_wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
 
             // Hooking up the policy object
             m_configurationSource = new SystemBackdropConfiguration();
+            window.Activated -= Window_Activated;
             window.Activated += Window_Activated;
+            window.Closed -= Window_Closed;
             window.Closed += Window_Closed;
+            ((FrameworkElement)window.Content).ActualThemeChanged -= Window_ThemeChanged;
             ((FrameworkElement)window.Content).ActualThemeChanged += Window_ThemeChanged;
 
             // Initial configuration state.
             m_configurationSource.IsInputActive = true;
             SetConfigurationSourceTheme();
 
-            m_acrylicController = new DesktopAcrylicController();
-            m_acrylicController.Kind = acrylicKind;
+            micaController = new MicaController();
+            micaController.Kind = kind;
 
             // Enable the system backdrop.
             // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
-            m_acrylicController.AddSystemBackdropTarget(window.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
-            m_acrylicController.SetSystemBackdropConfiguration(m_configurationSource);
+            micaController.AddSystemBackdropTarget(window.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
+            micaController.SetSystemBackdropConfiguration(m_configurationSource);
             return true; // succeeded
         }
 
-        return false; // Acrylic is not supported on this system
+        return false; // Mica is not supported on this system
     }
 
     private void Window_Activated(object sender, WindowActivatedEventArgs args)
@@ -60,10 +67,10 @@ public class AcrylicBackdropHelper
     {
         // Make sure any Mica/Acrylic controller is disposed so it doesn't try to
         // use this closed window.
-        if (m_acrylicController != null)
+        if (micaController != null)
         {
-            m_acrylicController.Dispose();
-            m_acrylicController = null;
+            micaController.Dispose();
+            micaController = null;
         }
         window.Activated -= Window_Activated;
         m_configurationSource = null;

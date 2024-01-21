@@ -20,10 +20,11 @@ public partial class ThemeService
         {
             var systemBackdrop = GetSystemBackdropFromLocalConfig(backdropType, force);
             CurrentSystemBackdrop = systemBackdrop;
+            CurrentBackdropType = GetBackdropType(systemBackdrop);
+
             SetWindowSystemBackdrop(systemBackdrop);
             SetBackdropFallBackColorForWindows10(Window);
 
-            CurrentBackdropType = GetBackdropType(systemBackdrop);
         }
         else
         {
