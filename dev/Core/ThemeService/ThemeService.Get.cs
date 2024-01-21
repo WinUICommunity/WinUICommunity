@@ -23,15 +23,15 @@ public partial class ThemeService
             case BackdropType.None:
                 return null;
             case BackdropType.Mica:
-                return new MicaBase();
+                return new MicaSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base);
             case BackdropType.MicaAlt:
-                return new MicaBaseAlt();
+                return new MicaSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt);
             case BackdropType.DesktopAcrylic:
                 return new DesktopAcrylicBackdrop();
             case BackdropType.AcrylicBase:
-                return new AcrylicBase();
+                return new AcrylicSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
             case BackdropType.AcrylicThin:
-                return new AcrylicThin();
+                return new AcrylicSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
             case BackdropType.Transparent:
                 return new TransparentBackdrop();
             default:
@@ -47,25 +47,17 @@ public partial class ThemeService
     public BackdropType GetBackdropType(SystemBackdrop systemBackdrop)
     {
         var backdropType = systemBackdrop?.GetType();
-        if (backdropType == typeof(MicaBase))
+        if (systemBackdrop is MicaSystemBackdrop mica)
         {
-            return BackdropType.Mica;
-        }
-        else if (backdropType == typeof(MicaBaseAlt))
-        {
-            return BackdropType.MicaAlt;
+            return mica.kind == Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base ? BackdropType.Mica : BackdropType.MicaAlt;
         }
         else if (backdropType == typeof(TransparentBackdrop))
         {
             return BackdropType.Transparent;
         }
-        else if (backdropType == typeof(AcrylicBase))
+        else if (systemBackdrop is AcrylicSystemBackdrop acrylic)
         {
-            return BackdropType.AcrylicBase;
-        }
-        else if (backdropType == typeof(AcrylicThin))
-        {
-            return BackdropType.AcrylicThin;
+            return acrylic.kind == Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base ? BackdropType.AcrylicBase : BackdropType.AcrylicThin;
         }
         else if (backdropType == typeof(DesktopAcrylicBackdrop))
         {

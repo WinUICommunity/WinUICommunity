@@ -17,27 +17,15 @@ public partial class ThemeService
             _mica = null;
         }
 
-        if (systemBackdrop is AcrylicBase)
+        if (systemBackdrop is AcrylicSystemBackdrop acrylic)
         {
-            _acrylic = new AcrylicSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
-            _acrylic.TrySetAcrylicBackdrop();
+            _acrylic = acrylic;
+            acrylic.TrySetAcrylicBackdrop();
         }
-        else if (systemBackdrop is AcrylicThin)
+        else if (systemBackdrop is MicaSystemBackdrop mica)
         {
-            
-            _acrylic = new AcrylicSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
-            _acrylic.TrySetAcrylicBackdrop();
-        }
-        else if (systemBackdrop is MicaBase)
-        {
-            
-            _mica = new MicaSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base);
-            _mica.TrySetMicaBackdrop();
-        }
-        else if (systemBackdrop is MicaBaseAlt)
-        {
-            _mica = new MicaSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt);
-            _mica.TrySetMicaBackdrop();
+            _mica = mica;
+            mica.TrySetMicaBackdrop();
         }
         else
         {

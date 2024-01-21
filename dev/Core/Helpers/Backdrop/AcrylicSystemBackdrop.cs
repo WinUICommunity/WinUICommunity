@@ -2,7 +2,7 @@
 using WinRT;
 
 namespace WinUICommunity;
-internal class AcrylicSystemBackdrop
+internal class AcrylicSystemBackdrop : DesktopAcrylicBackdrop
 {
     public Window window;
     public WindowsSystemDispatcherQueueHelper m_wsdqHelper;

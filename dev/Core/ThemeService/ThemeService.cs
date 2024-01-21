@@ -10,11 +10,6 @@ public partial class ThemeService : IThemeService
                                .WithRecovery(RecoveryAction.RenameAndLoadDefault)
                                .WithVersioning(VersioningResultAction.RenameAndLoadDefault);
 
-    internal class AcrylicThin : DesktopAcrylicBackdrop { }
-    internal class AcrylicBase : DesktopAcrylicBackdrop { }
-    internal class MicaBase : MicaBackdrop { }
-    internal class MicaBaseAlt : MicaBackdrop { }
-
     public readonly string ConfigFilePath = "CommonAppConfig.json";
     public event IThemeService.ActualThemeChangedEventHandler ActualThemeChanged;
     private bool changeThemeWithoutSave = false;

@@ -2,7 +2,7 @@
 using WinRT;
 
 namespace WinUICommunity;
-internal class MicaSystemBackdrop
+internal class MicaSystemBackdrop : MicaBackdrop
 {
     public Window window;
     public WindowsSystemDispatcherQueueHelper m_wsdqHelper;
