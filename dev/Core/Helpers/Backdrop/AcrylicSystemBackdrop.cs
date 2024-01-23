@@ -5,10 +5,23 @@ namespace WinUICommunity;
 public sealed class AcrylicSystemBackdrop : SystemBackdrop
 {
     public readonly DesktopAcrylicKind Kind;
-    private ISystemBackdropControllerWithTargets systemBackdropController;
+    private DesktopAcrylicController acrylicController;
 
     public SystemBackdropConfiguration BackdropConfiguration { get; private set; }
 
+    private Color _color;
+    public Color TintColor
+    {
+        get { return _color; }
+        set
+        {
+            _color = value;
+            if (acrylicController != null)
+            {
+                acrylicController.TintColor = value;
+            }
+        }
+    }
     public AcrylicSystemBackdrop(DesktopAcrylicKind desktopAcrylicKind)
     {
         Kind = desktopAcrylicKind;
@@ -18,10 +31,10 @@ public sealed class AcrylicSystemBackdrop : SystemBackdrop
     {
         base.OnTargetConnected(connectedTarget, xamlRoot);
 
-        systemBackdropController = new DesktopAcrylicController() { Kind = this.Kind };
-        systemBackdropController.AddSystemBackdropTarget(connectedTarget);
+        acrylicController = new DesktopAcrylicController() { Kind = this.Kind };
+        acrylicController.AddSystemBackdropTarget(connectedTarget);
         BackdropConfiguration = GetDefaultSystemBackdropConfiguration(connectedTarget, xamlRoot);
-        systemBackdropController.SetSystemBackdropConfiguration(BackdropConfiguration);
+        acrylicController.SetSystemBackdropConfiguration(BackdropConfiguration);
     }
 
     protected override void OnDefaultSystemBackdropConfigurationChanged(ICompositionSupportsSystemBackdrop target, XamlRoot xamlRoot)
@@ -34,10 +47,10 @@ public sealed class AcrylicSystemBackdrop : SystemBackdrop
     {
         base.OnTargetDisconnected(disconnectedTarget);
 
-        if (systemBackdropController is not null)
+        if (acrylicController is not null)
         {
-            systemBackdropController.RemoveSystemBackdropTarget(disconnectedTarget);
-            systemBackdropController = null;
+            acrylicController.RemoveSystemBackdropTarget(disconnectedTarget);
+            acrylicController = null;
         }
     }
 }

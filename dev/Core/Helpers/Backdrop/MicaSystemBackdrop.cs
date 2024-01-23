@@ -5,10 +5,23 @@ namespace WinUICommunity;
 public sealed class MicaSystemBackdrop : SystemBackdrop
 {
     public readonly MicaKind Kind;
-    private ISystemBackdropControllerWithTargets systemBackdropController;
+    private MicaController micaController;
 
     public SystemBackdropConfiguration BackdropConfiguration { get; private set; }
 
+    private Color _color;
+    public Color TintColor
+    {
+        get { return _color; }
+        set
+        {
+            _color = value;
+            if (micaController != null)
+            {
+                micaController.TintColor = value;
+            }
+        }
+    }
     public MicaSystemBackdrop(MicaKind micaKind)
     {
         Kind = micaKind;
@@ -18,10 +31,10 @@ public sealed class MicaSystemBackdrop : SystemBackdrop
     {
         base.OnTargetConnected(connectedTarget, xamlRoot);
 
-        systemBackdropController = new MicaController() { Kind = this.Kind };
-        systemBackdropController.AddSystemBackdropTarget(connectedTarget);
+        micaController = new MicaController() { Kind = this.Kind };
+        micaController.AddSystemBackdropTarget(connectedTarget);
         BackdropConfiguration = GetDefaultSystemBackdropConfiguration(connectedTarget, xamlRoot);
-        systemBackdropController.SetSystemBackdropConfiguration(BackdropConfiguration);
+        micaController.SetSystemBackdropConfiguration(BackdropConfiguration);
     }
 
     protected override void OnDefaultSystemBackdropConfigurationChanged(ICompositionSupportsSystemBackdrop target, XamlRoot xamlRoot)
@@ -34,10 +47,10 @@ public sealed class MicaSystemBackdrop : SystemBackdrop
     {
         base.OnTargetDisconnected(disconnectedTarget);
 
-        if (systemBackdropController is not null)
+        if (micaController is not null)
         {
-            systemBackdropController.RemoveSystemBackdropTarget(disconnectedTarget);
-            systemBackdropController = null;
+            micaController.RemoveSystemBackdropTarget(disconnectedTarget);
+            micaController = null;
         }
     }
 }
