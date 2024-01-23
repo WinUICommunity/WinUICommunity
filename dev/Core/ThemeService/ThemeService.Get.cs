@@ -1,4 +1,6 @@
-﻿namespace WinUICommunity;
+﻿using Microsoft.UI.Composition.SystemBackdrops;
+
+namespace WinUICommunity;
 public partial class ThemeService
 {
     public ElementTheme GetElementTheme()
@@ -13,7 +15,7 @@ public partial class ThemeService
 
     public SystemBackdrop GetSystemBackdrop()
     {
-        return CurrentSystemBackdrop;
+        return Window.SystemBackdrop;
     }
 
     public SystemBackdrop GetSystemBackdrop(BackdropType backdropType)
@@ -23,15 +25,15 @@ public partial class ThemeService
             case BackdropType.None:
                 return null;
             case BackdropType.Mica:
-                return new MicaSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base);
+                return new MicaSystemBackdrop(MicaKind.Base);
             case BackdropType.MicaAlt:
-                return new MicaSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt);
+                return new MicaSystemBackdrop(MicaKind.BaseAlt);
             case BackdropType.DesktopAcrylic:
                 return new DesktopAcrylicBackdrop();
             case BackdropType.AcrylicBase:
-                return new AcrylicSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
+                return new AcrylicSystemBackdrop(DesktopAcrylicKind.Base);
             case BackdropType.AcrylicThin:
-                return new AcrylicSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
+                return new AcrylicSystemBackdrop(DesktopAcrylicKind.Thin);
             case BackdropType.Transparent:
                 return new TransparentBackdrop();
             default:
@@ -41,25 +43,24 @@ public partial class ThemeService
 
     public BackdropType GetBackdropType()
     {
-        return CurrentBackdropType;
+        return GetBackdropType(Window.SystemBackdrop);
     }
 
     public BackdropType GetBackdropType(SystemBackdrop systemBackdrop)
     {
-        var backdropType = systemBackdrop?.GetType();
         if (systemBackdrop is MicaSystemBackdrop mica)
         {
-            return mica.kind == Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base ? BackdropType.Mica : BackdropType.MicaAlt;
+            return mica.micaBackdropKind == MicaKind.Base ? BackdropType.Mica : BackdropType.MicaAlt;
         }
-        else if (backdropType == typeof(TransparentBackdrop))
+        else if (systemBackdrop is TransparentBackdrop)
         {
             return BackdropType.Transparent;
         }
         else if (systemBackdrop is AcrylicSystemBackdrop acrylic)
         {
-            return acrylic.kind == Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base ? BackdropType.AcrylicBase : BackdropType.AcrylicThin;
+            return acrylic.desktopAcrylicBackdropKind == DesktopAcrylicKind.Base ? BackdropType.AcrylicBase : BackdropType.AcrylicThin;
         }
-        else if (backdropType == typeof(DesktopAcrylicBackdrop))
+        else if (systemBackdrop is DesktopAcrylicBackdrop)
         {
             return BackdropType.DesktopAcrylic;
         }

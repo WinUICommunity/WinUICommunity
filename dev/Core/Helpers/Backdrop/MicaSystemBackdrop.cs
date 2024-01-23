@@ -1,96 +1,43 @@
-﻿using Microsoft.UI.Composition.SystemBackdrops;
-using WinRT;
+﻿using Microsoft.UI.Composition;
+using Microsoft.UI.Composition.SystemBackdrops;
 
 namespace WinUICommunity;
-internal class MicaSystemBackdrop : MicaBackdrop
+public sealed class MicaSystemBackdrop : SystemBackdrop
 {
-    public Window window;
-    public WindowsSystemDispatcherQueueHelper m_wsdqHelper;
-    public MicaController micaController;
-    public SystemBackdropConfiguration m_configurationSource;
-    public MicaKind kind;
-    public MicaSystemBackdrop(Window window, MicaKind kind)
+    public readonly MicaKind micaBackdropKind;
+    private ISystemBackdropControllerWithTargets systemBackdropController;
+
+    public SystemBackdropConfiguration BackdropConfiguration { get; private set; }
+
+    public MicaSystemBackdrop(MicaKind micaKind)
     {
-        this.window = window;
-        this.kind = kind;
+        micaBackdropKind = micaKind;
     }
 
-    public void Disconnect()
+    protected override void OnTargetConnected(ICompositionSupportsSystemBackdrop connectedTarget, XamlRoot xamlRoot)
     {
-        window.Activated -= Window_Activated;
-        window.Closed -= Window_Closed;
-        ((FrameworkElement)window.Content).ActualThemeChanged -= Window_ThemeChanged;
-        micaController.RemoveAllSystemBackdropTargets();
-        micaController.ResetProperties();
-        micaController.Dispose();
-        micaController = null;
+        base.OnTargetConnected(connectedTarget, xamlRoot);
+
+        systemBackdropController = new MicaController() { Kind = micaBackdropKind };
+        systemBackdropController.AddSystemBackdropTarget(connectedTarget);
+        BackdropConfiguration = GetDefaultSystemBackdropConfiguration(connectedTarget, xamlRoot);
+        systemBackdropController.SetSystemBackdropConfiguration(BackdropConfiguration);
     }
-    public bool TrySetMicaBackdrop()
+
+    protected override void OnDefaultSystemBackdropConfigurationChanged(ICompositionSupportsSystemBackdrop target, XamlRoot xamlRoot)
     {
-        if (MicaController.IsSupported())
+        if (target != null)
+            base.OnDefaultSystemBackdropConfigurationChanged(target, xamlRoot);
+    }
+
+    protected override void OnTargetDisconnected(ICompositionSupportsSystemBackdrop disconnectedTarget)
+    {
+        base.OnTargetDisconnected(disconnectedTarget);
+
+        if (systemBackdropController is not null)
         {
-            m_wsdqHelper = new WindowsSystemDispatcherQueueHelper();
-            m_wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
-
-            // Hooking up the policy object
-            m_configurationSource = new SystemBackdropConfiguration();
-            window.Activated -= Window_Activated;
-            window.Activated += Window_Activated;
-            window.Closed -= Window_Closed;
-            window.Closed += Window_Closed;
-            ((FrameworkElement)window.Content).ActualThemeChanged -= Window_ThemeChanged;
-            ((FrameworkElement)window.Content).ActualThemeChanged += Window_ThemeChanged;
-
-            // Initial configuration state.
-            m_configurationSource.IsInputActive = true;
-            SetConfigurationSourceTheme();
-
-            micaController = new MicaController();
-            micaController.Kind = kind;
-
-            // Enable the system backdrop.
-            // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
-            micaController.AddSystemBackdropTarget(window.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
-            micaController.SetSystemBackdropConfiguration(m_configurationSource);
-            return true; // succeeded
-        }
-
-        return false; // Mica is not supported on this system
-    }
-
-    private void Window_Activated(object sender, WindowActivatedEventArgs args)
-    {
-        m_configurationSource.IsInputActive = args.WindowActivationState != WindowActivationState.Deactivated;
-    }
-
-    private void Window_Closed(object sender, WindowEventArgs args)
-    {
-        // Make sure any Mica/Acrylic controller is disposed so it doesn't try to
-        // use this closed window.
-        if (micaController != null)
-        {
-            micaController.Dispose();
-            micaController = null;
-        }
-        window.Activated -= Window_Activated;
-        m_configurationSource = null;
-    }
-
-    private void Window_ThemeChanged(FrameworkElement sender, object args)
-    {
-        if (m_configurationSource != null)
-        {
-            SetConfigurationSourceTheme();
-        }
-    }
-
-    private void SetConfigurationSourceTheme()
-    {
-        switch (((FrameworkElement)window.Content).ActualTheme)
-        {
-            case ElementTheme.Dark: m_configurationSource.Theme = SystemBackdropTheme.Dark; break;
-            case ElementTheme.Light: m_configurationSource.Theme = SystemBackdropTheme.Light; break;
-            case ElementTheme.Default: m_configurationSource.Theme = SystemBackdropTheme.Default; break;
+            systemBackdropController.RemoveSystemBackdropTarget(disconnectedTarget);
+            systemBackdropController = null;
         }
     }
 }

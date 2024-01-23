@@ -1,97 +1,43 @@
-﻿using Microsoft.UI.Composition.SystemBackdrops;
-using WinRT;
+﻿using Microsoft.UI.Composition;
+using Microsoft.UI.Composition.SystemBackdrops;
 
 namespace WinUICommunity;
-internal class AcrylicSystemBackdrop : DesktopAcrylicBackdrop
+public sealed class AcrylicSystemBackdrop : SystemBackdrop
 {
-    public Window window;
-    public WindowsSystemDispatcherQueueHelper m_wsdqHelper;
-    public DesktopAcrylicController acrylicController;
-    public SystemBackdropConfiguration m_configurationSource;
-    public DesktopAcrylicKind kind;
-    public AcrylicSystemBackdrop(Window window, DesktopAcrylicKind kind)
+    public readonly DesktopAcrylicKind desktopAcrylicBackdropKind;
+    private ISystemBackdropControllerWithTargets systemBackdropController;
+
+    public SystemBackdropConfiguration BackdropConfiguration { get; private set; }
+
+    public AcrylicSystemBackdrop(DesktopAcrylicKind desktopAcrylicKind)
     {
-        this.window = window;
-        this.kind = kind;
+        desktopAcrylicBackdropKind = desktopAcrylicKind;
     }
 
-    public void Disconnect()
+    protected override void OnTargetConnected(ICompositionSupportsSystemBackdrop connectedTarget, XamlRoot xamlRoot)
     {
-        window.Activated -= Window_Activated;
-        window.Closed -= Window_Closed;
-        ((FrameworkElement)window.Content).ActualThemeChanged -= Window_ThemeChanged;
-        acrylicController.RemoveAllSystemBackdropTargets();
-        acrylicController.ResetProperties();
-        acrylicController.Dispose();
-        acrylicController = null;
+        base.OnTargetConnected(connectedTarget, xamlRoot);
+
+        systemBackdropController = new DesktopAcrylicController() { Kind = desktopAcrylicBackdropKind };
+        systemBackdropController.AddSystemBackdropTarget(connectedTarget);
+        BackdropConfiguration = GetDefaultSystemBackdropConfiguration(connectedTarget, xamlRoot);
+        systemBackdropController.SetSystemBackdropConfiguration(BackdropConfiguration);
     }
-    public bool TrySetAcrylicBackdrop()
+
+    protected override void OnDefaultSystemBackdropConfigurationChanged(ICompositionSupportsSystemBackdrop target, XamlRoot xamlRoot)
     {
-        if (DesktopAcrylicController.IsSupported())
+        if (target != null)
+            base.OnDefaultSystemBackdropConfigurationChanged(target, xamlRoot);
+    }
+
+    protected override void OnTargetDisconnected(ICompositionSupportsSystemBackdrop disconnectedTarget)
+    {
+        base.OnTargetDisconnected(disconnectedTarget);
+
+        if (systemBackdropController is not null)
         {
-            m_wsdqHelper = new WindowsSystemDispatcherQueueHelper();
-            m_wsdqHelper.EnsureWindowsSystemDispatcherQueueController();
-
-            // Hooking up the policy object
-            m_configurationSource = new SystemBackdropConfiguration();
-            window.Activated -= Window_Activated;
-            window.Activated += Window_Activated;
-            window.Closed -= Window_Closed;
-            window.Closed += Window_Closed;
-            ((FrameworkElement)window.Content).ActualThemeChanged -= Window_ThemeChanged;
-            ((FrameworkElement)window.Content).ActualThemeChanged += Window_ThemeChanged;
-
-            // Initial configuration state.
-            m_configurationSource.IsInputActive = true;
-            SetConfigurationSourceTheme();
-
-            acrylicController = new DesktopAcrylicController();
-            acrylicController.Kind = kind;
-
-            // Enable the system backdrop.
-            // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
-            acrylicController.AddSystemBackdropTarget(window.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
-            acrylicController.SetSystemBackdropConfiguration(m_configurationSource);
-            return true; // succeeded
-        }
-
-        return false; // Acrylic is not supported on this system
-    }
-
-    private void Window_Activated(object sender, WindowActivatedEventArgs args)
-    {
-        m_configurationSource.IsInputActive = args.WindowActivationState != WindowActivationState.Deactivated;
-    }
-
-    private void Window_Closed(object sender, WindowEventArgs args)
-    {
-        // Make sure any Mica/Acrylic controller is disposed so it doesn't try to
-        // use this closed window.
-        if (acrylicController != null)
-        {
-            acrylicController.Dispose();
-            acrylicController = null;
-        }
-        window.Activated -= Window_Activated;
-        m_configurationSource = null;
-    }
-
-    private void Window_ThemeChanged(FrameworkElement sender, object args)
-    {
-        if (m_configurationSource != null)
-        {
-            SetConfigurationSourceTheme();
-        }
-    }
-
-    private void SetConfigurationSourceTheme()
-    {
-        switch (((FrameworkElement)window.Content).ActualTheme)
-        {
-            case ElementTheme.Dark: m_configurationSource.Theme = SystemBackdropTheme.Dark; break;
-            case ElementTheme.Light: m_configurationSource.Theme = SystemBackdropTheme.Light; break;
-            case ElementTheme.Default: m_configurationSource.Theme = SystemBackdropTheme.Default; break;
+            systemBackdropController.RemoveSystemBackdropTarget(disconnectedTarget);
+            systemBackdropController = null;
         }
     }
 }
-

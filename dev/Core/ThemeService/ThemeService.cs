@@ -15,11 +15,9 @@ public partial class ThemeService : IThemeService
     private bool changeThemeWithoutSave = false;
     private bool useAutoSave;
     private string filename;
-    public BackdropType CurrentBackdropType { get; set; }
     private TitleBarCustomization titleBarCustomization;
     private Brush? backdropFallBackColorForWindows10;
     public Window Window { get; set; }
-    public SystemBackdrop CurrentSystemBackdrop { get; set; }
 
     public ElementTheme ActualTheme
     {

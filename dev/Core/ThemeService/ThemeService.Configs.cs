@@ -13,22 +13,14 @@ public partial class ThemeService
             Settings.BackdropType = backdropType;
             Settings.IsBackdropFirstRun = false;
             Settings.Save();
-            CurrentBackdropType = backdropType;
         }
 
         if (backdropType != BackdropType.None)
         {
             var systemBackdrop = GetSystemBackdropFromLocalConfig(backdropType, force);
-            CurrentSystemBackdrop = systemBackdrop;
-            CurrentBackdropType = GetBackdropType(systemBackdrop);
 
             SetWindowSystemBackdrop(systemBackdrop);
-            SetBackdropFallBackColorForWindows10(Window);
-
-        }
-        else
-        {
-            CurrentBackdropType = BackdropType.None;
+            SetBackdropFallBackColorForUnSupportedOS();
         }
     }
 
@@ -51,7 +43,7 @@ public partial class ThemeService
         }
     }
 
-    public void ConfigBackdropFallBackColorForWindow10(Brush brush)
+    public void ConfigBackdropFallBackColorForUnSupportedOS(Brush brush)
     {
         backdropFallBackColorForWindows10 = brush;
     }

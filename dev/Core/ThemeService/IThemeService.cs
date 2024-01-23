@@ -5,14 +5,11 @@ public interface IThemeService
     event ActualThemeChangedEventHandler ActualThemeChanged;
 
     Window Window { get; set; }
-    SystemBackdrop CurrentSystemBackdrop { get; set; }
-    BackdropType CurrentBackdropType { get; set; }
-
     void Initialize(Window window, bool useAutoSave = true, string filename = null);
     void ConfigBackdrop(BackdropType backdropType = BackdropType.Mica, bool force = false);
     void ConfigElementTheme(ElementTheme elementTheme = ElementTheme.Default, bool force = false);
     void ConfigTitleBar(TitleBarCustomization titleBarCustomization);
-    void ConfigBackdropFallBackColorForWindow10(Brush? brush);
+    void ConfigBackdropFallBackColorForUnSupportedOS(Brush? brush);
 
     SystemBackdrop GetSystemBackdrop();
     SystemBackdrop GetSystemBackdrop(BackdropType backdropType);
