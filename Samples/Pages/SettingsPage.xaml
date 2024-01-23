@@ -47,7 +47,7 @@
                                   Tag="Transparent" />
                 </ComboBox>
 
-                <wuc:SettingsExpander.Items>
+                <wuc:SettingsExpander.ItemsHeader>
                     <wuc:SettingsExpander Description="Add tint to your window to make your experience more personalized."
                                           Header="TintColor"
                                           HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/tint.png}"
@@ -80,7 +80,7 @@
                                 </Flyout>
                             </Button.Flyout>
                         </Button>
-                        <wuc:SettingsExpander.Items>
+                        <wuc:SettingsExpander.ItemsHeader>
                             <wuc:SettingsCard>
                                 <wuc:SettingsCard.Description>
                                     <wuc:ColorPalette Margin="5,5,0,0"
@@ -91,10 +91,10 @@
                                                       Color="NormalLarge" />
                                 </wuc:SettingsCard.Description>
                             </wuc:SettingsCard>
-                        </wuc:SettingsExpander.Items>
+                        </wuc:SettingsExpander.ItemsHeader>
                     </wuc:SettingsExpander>
 
-                </wuc:SettingsExpander.Items>
+                </wuc:SettingsExpander.ItemsHeader>
             </wuc:SettingsExpander>
             <wuc:SettingsCard ActionIcon="{wuc:BitmapIcon Source=Assets/Fluent/external.png}"
                               Click="SettingsCard_Click"
