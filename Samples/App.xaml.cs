@@ -61,6 +61,8 @@ public partial class App : Application
         ThemeService.Initialize(currentWindow);
         ThemeService.ConfigBackdrop(BackdropType.Mica);
         ThemeService.ConfigElementTheme(ElementTheme.Default);
+        ThemeService.ConfigTintColor();
+        ThemeService.ConfigFallbackColor();
 
         if (!PackageHelper.IsPackaged)
         {

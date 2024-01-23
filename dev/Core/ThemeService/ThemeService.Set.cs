@@ -92,6 +92,12 @@ public partial class ThemeService
             {
                 acrylic.TintColor = color;
             }
+
+            if (useAutoSave && Settings.BackdropTintColor != color)
+            {
+                Settings.BackdropTintColor = color;
+                Settings?.Save();
+            }
         }
     }
 
@@ -107,6 +113,12 @@ public partial class ThemeService
             else if (systemBackdrop is AcrylicSystemBackdrop acrylic)
             {
                 acrylic.FallbackColor = color;
+            }
+
+            if (useAutoSave && Settings.BackdropFallBackColor != color)
+            {
+                Settings.BackdropFallBackColor = color;
+                Settings?.Save();
             }
         }
     }

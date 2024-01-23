@@ -76,6 +76,18 @@ public partial class ThemeService
         return ForceBackdrop ? GetSystemBackdrop(backdropType) : GetSystemBackdrop(currentBackdrop);
     }
 
+    private Color GetBackdropTintColorFromLocalConfig(Color color, bool ForceTintColor)
+    {
+        Color tintColor = this.useAutoSave ? Settings.BackdropTintColor : color;
+        return ForceTintColor ? color : tintColor;
+    }
+
+    private Color GetBackdropFallbackColorFromLocalConfig(Color color, bool ForceFallbackColor)
+    {
+        Color fallbackColor = this.useAutoSave ? Settings.BackdropFallBackColor : color;
+        return ForceFallbackColor ? color : fallbackColor;
+    }
+
     private ElementTheme GetElementThemeFromLocalConfig(ElementTheme theme, bool forceTheme)
     {
         var currentTheme = Settings.ElementTheme;

@@ -7,6 +7,10 @@ public interface IThemeService
     Window Window { get; set; }
     void Initialize(Window window, bool useAutoSave = true, string filename = null);
     void ConfigBackdrop(BackdropType backdropType = BackdropType.Mica, bool force = false);
+    void ConfigTintColor(Color color, bool force = false);
+    void ConfigTintColor();
+    void ConfigFallbackColor(Color color, bool force = false);
+    void ConfigFallbackColor();
     void ConfigElementTheme(ElementTheme elementTheme = ElementTheme.Default, bool force = false);
     void ConfigTitleBar(TitleBarCustomization titleBarCustomization);
     void ConfigBackdropFallBackColorForUnSupportedOS(Brush? brush);
