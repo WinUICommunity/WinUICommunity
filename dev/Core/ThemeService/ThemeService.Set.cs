@@ -6,7 +6,31 @@ public partial class ThemeService
     private void SetWindowSystemBackdrop(SystemBackdrop systemBackdrop)
     {
         Window.SystemBackdrop = null;
-        Window.SystemBackdrop = systemBackdrop;
+        if (_acrylic != null)
+        {
+            _acrylic.Disconnect();
+            _acrylic = null;
+        }
+        if (_mica != null)
+        {
+            _mica.Disconnect();
+            _mica = null;
+        }
+
+        if (systemBackdrop is AcrylicSystemBackdrop acrylic)
+        {
+            _acrylic = acrylic;
+            acrylic.TrySetAcrylicBackdrop();
+        }
+        else if (systemBackdrop is MicaSystemBackdrop mica)
+        {
+            _mica = mica;
+            mica.TrySetMicaBackdrop();
+        }
+        else
+        {
+            Window.SystemBackdrop = systemBackdrop;
+        }
     }
 
     public void SetBackdropType(BackdropType backdropType)
