@@ -78,4 +78,36 @@ public partial class ThemeService
             RootTheme = elementTheme;
         }
     }
+
+    public void SetBackdropTintColor(Color color)
+    {
+        var systemBackdrop = Window.SystemBackdrop;
+        if (systemBackdrop != null)
+        {
+            if (systemBackdrop is MicaSystemBackdrop mica)
+            {
+                mica.TintColor = color;
+            }
+            else if (systemBackdrop is AcrylicSystemBackdrop acrylic)
+            {
+                acrylic.TintColor = color;
+            }
+        }
+    }
+
+    public void SetBackdropFallbackColor(Color color)
+    {
+        var systemBackdrop = Window.SystemBackdrop;
+        if (systemBackdrop != null)
+        {
+            if (systemBackdrop is MicaSystemBackdrop mica)
+            {
+                mica.FallbackColor = color;
+            }
+            else if (systemBackdrop is AcrylicSystemBackdrop acrylic)
+            {
+                acrylic.FallbackColor = color;
+            }
+        }
+    }
 }

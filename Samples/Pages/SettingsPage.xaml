@@ -50,8 +50,7 @@
                 <wuc:SettingsExpander.ItemsHeader>
                     <wuc:SettingsExpander Description="Add tint to your window to make your experience more personalized."
                                           Header="TintColor"
-                                          HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/tint.png}"
-                                          IsEnabled="False">
+                                          HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/tint.png}">
                         <Button Padding="0">
                             <StackPanel Orientation="Horizontal">
                                 <Border Width="24"
@@ -71,11 +70,8 @@
                             </StackPanel>
                             <Button.Flyout>
                                 <Flyout>
-                                    <ColorPicker IsAlphaEnabled="True"
-                                                 IsAlphaSliderVisible="True"
-                                                 IsAlphaTextInputVisible="True"
-                                                 IsColorPreviewVisible="True"
-                                                 IsColorSliderVisible="True"
+                                    <ColorPicker ColorChanged="ColorPicker_ColorChanged"
+                                                 IsAlphaEnabled="True"
                                                  IsMoreButtonVisible="True" />
                                 </Flyout>
                             </Button.Flyout>

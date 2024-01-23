@@ -32,4 +32,9 @@ public sealed partial class SettingsPage : Page
     {
         _ = await Launcher.LaunchUriAsync(new Uri("ms-settings:colors"));
     }
+
+    private void ColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
+    {
+        App.Current.ThemeService.SetBackdropTintColor(args.NewColor);
+    }
 }

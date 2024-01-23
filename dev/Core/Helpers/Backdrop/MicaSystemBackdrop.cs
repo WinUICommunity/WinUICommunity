@@ -4,21 +4,42 @@ using Microsoft.UI.Composition.SystemBackdrops;
 namespace WinUICommunity;
 public sealed class MicaSystemBackdrop : SystemBackdrop
 {
+    public readonly static Color Default_TintColor_Dark = Color.FromArgb(0xff, 0x20, 0x20, 0x20);
+    public readonly static Color Default_TintColor_Light = Color.FromArgb(0xff, 0xf3, 0xf3, 0xf3);
+    public readonly static Color Default_TintColor_MicaAlt_Dark = Color.FromArgb(0xff, 0x0a, 0x0a, 0x0a);
+    public readonly static Color Default_TintColor_MicaAlt_Light = Color.FromArgb(0xff, 0xda, 0xda, 0xda);
+    public readonly static Color Default_FallbackColor_MicaAlt_Dark = Color.FromArgb(0xff, 0x20, 0x20, 0x20);
+    public readonly static Color Default_FallbackColor_MicaAlt_Light = Color.FromArgb(0xff, 0xe8, 0xe8, 0xe8);
+
     public readonly MicaKind Kind;
     private MicaController micaController;
 
     public SystemBackdropConfiguration BackdropConfiguration { get; private set; }
 
-    private Color _color;
+    private Color tintColor;
     public Color TintColor
     {
-        get { return _color; }
+        get { return tintColor; }
         set
         {
-            _color = value;
+            tintColor = value;
             if (micaController != null)
             {
                 micaController.TintColor = value;
+            }
+        }
+    }
+
+    private Color fallbackColor;
+    public Color FallbackColor
+    {
+        get { return fallbackColor; }
+        set
+        {
+            fallbackColor = value;
+            if (micaController != null)
+            {
+                micaController.FallbackColor = value;
             }
         }
     }

@@ -19,6 +19,9 @@ public interface IThemeService
     ElementTheme GetActualTheme();
 
     void SetBackdropType(BackdropType backdropType);
+    void SetBackdropTintColor(Color color);
+    void SetBackdropFallbackColor(Color color);
+
     void SetElementTheme(ElementTheme elementTheme);
     void SetElementThemeWithoutSave(ElementTheme elementTheme);
 
