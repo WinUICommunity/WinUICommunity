@@ -4,21 +4,21 @@ using Microsoft.UI.Composition.SystemBackdrops;
 namespace WinUICommunity;
 public sealed class MicaSystemBackdrop : SystemBackdrop
 {
-    public readonly MicaKind micaBackdropKind;
+    public readonly MicaKind Kind;
     private ISystemBackdropControllerWithTargets systemBackdropController;
 
     public SystemBackdropConfiguration BackdropConfiguration { get; private set; }
 
     public MicaSystemBackdrop(MicaKind micaKind)
     {
-        micaBackdropKind = micaKind;
+        Kind = micaKind;
     }
 
     protected override void OnTargetConnected(ICompositionSupportsSystemBackdrop connectedTarget, XamlRoot xamlRoot)
     {
         base.OnTargetConnected(connectedTarget, xamlRoot);
 
-        systemBackdropController = new MicaController() { Kind = micaBackdropKind };
+        systemBackdropController = new MicaController() { Kind = this.Kind };
         systemBackdropController.AddSystemBackdropTarget(connectedTarget);
         BackdropConfiguration = GetDefaultSystemBackdropConfiguration(connectedTarget, xamlRoot);
         systemBackdropController.SetSystemBackdropConfiguration(BackdropConfiguration);

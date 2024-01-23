@@ -4,21 +4,21 @@ using Microsoft.UI.Composition.SystemBackdrops;
 namespace WinUICommunity;
 public sealed class AcrylicSystemBackdrop : SystemBackdrop
 {
-    public readonly DesktopAcrylicKind desktopAcrylicBackdropKind;
+    public readonly DesktopAcrylicKind Kind;
     private ISystemBackdropControllerWithTargets systemBackdropController;
 
     public SystemBackdropConfiguration BackdropConfiguration { get; private set; }
 
     public AcrylicSystemBackdrop(DesktopAcrylicKind desktopAcrylicKind)
     {
-        desktopAcrylicBackdropKind = desktopAcrylicKind;
+        Kind = desktopAcrylicKind;
     }
 
     protected override void OnTargetConnected(ICompositionSupportsSystemBackdrop connectedTarget, XamlRoot xamlRoot)
     {
         base.OnTargetConnected(connectedTarget, xamlRoot);
 
-        systemBackdropController = new DesktopAcrylicController() { Kind = desktopAcrylicBackdropKind };
+        systemBackdropController = new DesktopAcrylicController() { Kind = this.Kind };
         systemBackdropController.AddSystemBackdropTarget(connectedTarget);
         BackdropConfiguration = GetDefaultSystemBackdropConfiguration(connectedTarget, xamlRoot);
         systemBackdropController.SetSystemBackdropConfiguration(BackdropConfiguration);

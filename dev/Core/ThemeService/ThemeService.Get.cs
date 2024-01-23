@@ -50,7 +50,7 @@ public partial class ThemeService
     {
         if (systemBackdrop is MicaSystemBackdrop mica)
         {
-            return mica.micaBackdropKind == MicaKind.Base ? BackdropType.Mica : BackdropType.MicaAlt;
+            return mica.Kind == MicaKind.Base ? BackdropType.Mica : BackdropType.MicaAlt;
         }
         else if (systemBackdrop is TransparentBackdrop)
         {
@@ -58,7 +58,7 @@ public partial class ThemeService
         }
         else if (systemBackdrop is AcrylicSystemBackdrop acrylic)
         {
-            return acrylic.desktopAcrylicBackdropKind == DesktopAcrylicKind.Base ? BackdropType.AcrylicBase : BackdropType.AcrylicThin;
+            return acrylic.Kind == DesktopAcrylicKind.Base ? BackdropType.AcrylicBase : BackdropType.AcrylicThin;
         }
         else if (systemBackdrop is DesktopAcrylicBackdrop)
         {
