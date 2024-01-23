@@ -23,15 +23,15 @@ public partial class ThemeService
             case BackdropType.None:
                 return null;
             case BackdropType.Mica:
-                return new MicaSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base);
+                return new MicaSystemBackdrop(Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base);
             case BackdropType.MicaAlt:
-                return new MicaSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt);
+                return new MicaSystemBackdrop(Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt);
             case BackdropType.DesktopAcrylic:
                 return new DesktopAcrylicBackdrop();
             case BackdropType.AcrylicBase:
-                return new AcrylicSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
+                return new AcrylicSystemBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Base);
             case BackdropType.AcrylicThin:
-                return new AcrylicSystemBackdrop(Window, Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
+                return new AcrylicSystemBackdrop(Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicKind.Thin);
             case BackdropType.Transparent:
                 return new TransparentBackdrop();
             default:
