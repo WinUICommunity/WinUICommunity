@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <NoWarn>CS8632</NoWarn>
-    <Version>6.2.0</Version>
+    <Version>6.3.0</Version>
     <IsTrimmable>false</IsTrimmable>
     <Namespace>WinUICommunity.Components</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
