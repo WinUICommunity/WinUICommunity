@@ -50,7 +50,8 @@
                 <wuc:SettingsExpander.ItemsHeader>
                     <wuc:SettingsExpander Description="Add tint to your window to make your experience more personalized."
                                           Header="TintColor"
-                                          HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/tint.png}">
+                                          HeaderIcon="{wuc:BitmapIcon Source=Assets/Fluent/tint.png}"
+                                          IsEnabled="False">
                         <Button Padding="0">
                             <StackPanel Orientation="Horizontal">
                                 <Border Width="24"
