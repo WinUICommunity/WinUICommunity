@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 
 namespace WinUICommunity;
@@ -26,7 +27,14 @@ public class SettingsCardAutomationPeer : FrameworkElementAutomationPeer
     /// <returns>The control type.</returns>
     protected override AutomationControlType GetAutomationControlTypeCore()
     {
-        return AutomationControlType.Group;
+        if (Owner is SettingsCard settingsCard && settingsCard.IsClickEnabled)
+        {
+            return AutomationControlType.Button;
+        }
+        else
+        {
+            return AutomationControlType.Group;
+        }
     }
 
     /// <summary>
@@ -36,7 +44,28 @@ public class SettingsCardAutomationPeer : FrameworkElementAutomationPeer
     /// <returns>The string that contains the name.</returns>
     protected override string GetClassNameCore()
     {
-        string classNameCore = Owner.GetType().Name;
-        return classNameCore;
+        return Owner.GetType().Name;
+    }
+
+    protected override string GetNameCore()
+    {
+        // We only want to announce the button card name if it is clickable, else it's just a regular card that does not receive focus
+        if (Owner is SettingsCard owner && owner.IsClickEnabled)
+        {
+            string name = AutomationProperties.GetName(owner);
+            if (!string.IsNullOrEmpty(name))
+            {
+                return name;
+            }
+            else
+            {
+                if (owner.Header is string headerString && !string.IsNullOrEmpty(headerString))
+                {
+                    return headerString;
+                }
+            }
+        }
+
+        return base.GetNameCore();
     }
 }

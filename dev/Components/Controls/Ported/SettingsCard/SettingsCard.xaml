@@ -77,7 +77,7 @@
             <StaticResource x:Key="SettingsCardForegroundPointerOver"
                             ResourceKey="SystemColorHighlightColorBrush" />
             <StaticResource x:Key="SettingsCardForegroundPressed"
-                            ResourceKey="SystemColorHighlightTextColorBrush" />
+                            ResourceKey="SystemColorHighlightColorBrush" />
             <StaticResource x:Key="SettingsCardForegroundDisabled"
                             ResourceKey="SystemControlDisabledBaseMediumLowBrush" />
 
@@ -90,8 +90,8 @@
             <StaticResource x:Key="SettingsCardBorderBrushDisabled"
                             ResourceKey="SystemControlDisabledTransparentBrush" />
         </ResourceDictionary>
-
     </ResourceDictionary.ThemeDictionaries>
+
     <Thickness x:Key="SettingsCardBorderThickness">1</Thickness>
     <Thickness x:Key="SettingsCardPadding">16,16,16,16</Thickness>
     <x:Double x:Key="SettingsCardMinWidth">148</x:Double>

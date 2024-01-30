@@ -2,10 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
-using Microsoft.UI.Xaml.Controls;
 
 namespace WinUICommunity;
 
@@ -30,7 +28,7 @@ public partial class SettingsExpander : Control
     protected override void OnApplyTemplate()
     {
         base.OnApplyTemplate();
-        RegisterAutomation();
+        SetAccessibleName();
 
         if (_itemsRepeater != null)
         {
@@ -48,11 +46,11 @@ public partial class SettingsExpander : Control
         }
     }
 
-    private void RegisterAutomation()
+    private void SetAccessibleName()
     {
-        if (Header is string headerString && headerString != string.Empty)
+        if (string.IsNullOrEmpty(AutomationProperties.GetName(this)))
         {
-            if (!string.IsNullOrEmpty(headerString) && string.IsNullOrEmpty(AutomationProperties.GetName(this)))
+            if (Header is string headerString && !string.IsNullOrEmpty(headerString))
             {
                 AutomationProperties.SetName(this, headerString);
             }
