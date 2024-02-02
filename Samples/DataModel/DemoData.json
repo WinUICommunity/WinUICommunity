@@ -99,8 +99,8 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.ProgressBarPage",
           "Title": "Progress",
           "Subtitle": "ProgressRing, WaveProgressBar",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/waveProgressBar.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/waveProgressBar.png"
+          "ImageIconPath": "ms-appx:///Assets/Fluent/progressBar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/progressBar.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.DividerPage",

@@ -59,6 +59,41 @@
                 </local:ControlExample.Pane>
                 <wuc:ProgressRing IsActive="{x:Bind tgActive.IsOn, Mode=OneWay}" />
             </local:ControlExample>
+
+            <local:ControlExample DocPage="controls/loadingIndicator"
+                                  HeaderText="LoadingIndicator">
+                <local:ControlExample.Xaml>
+                    <x:String>
+                        &lt;wuc:LoadingIndicator IsActive="True" /&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
+                <local:ControlExample.Pane>
+                    <StackPanel Spacing="10">
+                        <ToggleSwitch x:Name="tgActive2"
+                                      Header="IsActive"
+                                      IsOn="True" />
+                    </StackPanel>
+                </local:ControlExample.Pane>
+                <wuc:UniformGrid ColumnSpacing="10"
+                                 Columns="5"
+                                 RowSpacing="10">
+                    <wuc:LoadingIndicator IsActive="{x:Bind tgActive2.IsOn, Mode=OneWay}" />
+                    <wuc:LoadingIndicator IsActive="{x:Bind tgActive2.IsOn, Mode=OneWay}"
+                                          Mode="Arcs" />
+                    <wuc:LoadingIndicator IsActive="{x:Bind tgActive2.IsOn, Mode=OneWay}"
+                                          Mode="ArcsRing" />
+                    <wuc:LoadingIndicator IsActive="{x:Bind tgActive2.IsOn, Mode=OneWay}"
+                                          Mode="DoubleBounce" />
+                    <wuc:LoadingIndicator IsActive="{x:Bind tgActive2.IsOn, Mode=OneWay}"
+                                          Mode="FlipPlane" />
+                    <wuc:LoadingIndicator IsActive="{x:Bind tgActive2.IsOn, Mode=OneWay}"
+                                          Mode="Pulse" />
+                    <wuc:LoadingIndicator IsActive="{x:Bind tgActive2.IsOn, Mode=OneWay}"
+                                          Mode="Ring" />
+                    <wuc:LoadingIndicator IsActive="{x:Bind tgActive2.IsOn, Mode=OneWay}"
+                                          Mode="ThreeDots" />
+                </wuc:UniformGrid>
+            </local:ControlExample>
         </StackPanel>
     </ScrollViewer>
 </Page>
