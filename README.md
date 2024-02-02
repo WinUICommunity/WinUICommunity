@@ -80,7 +80,15 @@
 <br>
 
 # WinUICommunity
- Useful Classes, controls, styles and codes for WinUI 3
+WinUICommunity is a collection of useful classes, controls, styles, and codes for WinUI 3, the modern native UI platform for Windows 10+. With WinUICommunity, you can:
+
+- Create a WinUI 3 app in less than a minute with the built-in project templates and scaffolding tools.
+- Customize the appearance of your app with various themes, such as rainbow, dark, light, and more.
+- Enhance your UI with custom controls.
+- Leverage the power of Win2D, a DirectX-based graphics library for WinUI, to create stunning effects, such as particle, gooey, watermark, etc.
+- Access native Windows APIs from your WinUI app with the PInvoke helper class.
+- Simplify common tasks, such as navigation, theme, update, notification, etc. with the helper classes and extensions.
+
 ## Documentation
 
 See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
