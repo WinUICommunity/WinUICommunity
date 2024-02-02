@@ -13,6 +13,8 @@
     <x:Double x:Key="SettingsExpanderChevronButtonWidth">32</x:Double>
     <x:Double x:Key="SettingsExpanderChevronButtonHeight">32</x:Double>
 
+    <local:CornerRadiusConverter x:Key="CornerRadiusConverter" />
+
     <Style x:Key="DefaultSettingsExpanderItemStyle"
            BasedOn="{StaticResource DefaultSettingsCardStyle}"
            TargetType="local:SettingsCard">
@@ -86,7 +88,7 @@
                                                     IsClickEnabled="False" />
                             </Expander.Header>
                             <Expander.Content>
-                                <Grid>
+                                <Grid CornerRadius="{Binding CornerRadius, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource CornerRadiusConverter}}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
