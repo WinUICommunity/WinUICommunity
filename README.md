@@ -118,6 +118,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
+- IndeterminateProgressBar
 - LoadingIndicator
 - AutoScrollView
 - OpacityMaskView
