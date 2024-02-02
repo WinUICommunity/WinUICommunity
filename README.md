@@ -239,6 +239,9 @@ download and install our vsix package from Marketplace:
 
 ## History
 
+### IndeterminateProgressBar
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/IndeterminateProgressBar.gif)
+
 ### LoadingIndicator
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/LoadingIndicator.gif)
 

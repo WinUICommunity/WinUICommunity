@@ -64,7 +64,7 @@
                                   HeaderText="LoadingIndicator">
                 <local:ControlExample.Xaml>
                     <x:String>
-                        &lt;wuc:LoadingIndicator IsActive="True" /&gt;
+                        &lt;wuc:LoadingIndicator /&gt;
                     </x:String>
                 </local:ControlExample.Xaml>
                 <local:ControlExample.Pane>
@@ -93,6 +93,30 @@
                     <wuc:LoadingIndicator IsActive="{x:Bind tgActive2.IsOn, Mode=OneWay}"
                                           Mode="ThreeDots" />
                 </wuc:UniformGrid>
+            </local:ControlExample>
+            <local:ControlExample DocPage="controls/indeterminateProgressBar"
+                                  HeaderText="IndeterminateProgressBar">
+                <local:ControlExample.Xaml>
+                    <x:String>
+                        &lt;wuc:IndeterminateProgressBar /&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
+                <local:ControlExample.Pane>
+                    <StackPanel Spacing="10">
+                        <ToggleSwitch x:Name="tgActive3"
+                                      Header="IsActive"
+                                      IsOn="True" />
+                    </StackPanel>
+                </local:ControlExample.Pane>
+                <StackPanel Spacing="10">
+                    <wuc:IndeterminateProgressBar IsActive="{x:Bind tgActive3.IsOn, Mode=OneWay}" />
+                    <wuc:IndeterminateProgressBar DotHeight="8"
+                                                  DotWidth="8"
+                                                  IsActive="{x:Bind tgActive3.IsOn, Mode=OneWay}" />
+                    <wuc:IndeterminateProgressBar DotRadiusX="0"
+                                                  DotRadiusY="0"
+                                                  IsActive="{x:Bind tgActive3.IsOn, Mode=OneWay}" />
+                </StackPanel>
             </local:ControlExample>
         </StackPanel>
     </ScrollViewer>
