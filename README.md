@@ -118,6 +118,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
+- LoadingIndicator
 - AutoScrollView
 - OpacityMaskView
 - ProgressRing
@@ -237,6 +238,9 @@ download and install our vsix package from Marketplace:
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
 ## History
+
+### LoadingIndicator
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/LoadingIndicator.gif)
 
 ### ThemeService / Backdrop TintColor
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TintColor.gif)
