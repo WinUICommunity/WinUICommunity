@@ -82,6 +82,13 @@
       "IsSpecialSection": false,
       "Items": [
         {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.PagerControlPage",
+          "Title": "PagerControl",
+          "Subtitle": "PagerControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/pagerControl.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/pagerControl.png"
+        },
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.AutoScrollViewPage",
           "Title": "AutoScrollView",
           "Subtitle": "AutoScrollView",

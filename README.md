@@ -126,6 +126,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
+- PagerControl
 - IndeterminateProgressBar
 - LoadingIndicator
 - AutoScrollView
@@ -247,6 +248,9 @@ download and install our vsix package from Marketplace:
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
 ## History
+
+### PagerControl
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/PagerControl.png)
 
 ### IndeterminateProgressBar
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/IndeterminateProgressBar.gif)
