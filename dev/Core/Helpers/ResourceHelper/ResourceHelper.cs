@@ -72,7 +72,7 @@ public class ResourceHelper : IResourceHelper
 
     private string GetStringBase(string key, string language, string filename)
     {
-        if (string.IsNullOrEmpty(language))
+        if (!string.IsNullOrEmpty(language))
         {
             ResourceContext.QualifierValues["Language"] = language;
         }
