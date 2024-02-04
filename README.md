@@ -112,6 +112,8 @@ See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
  - NavigationService
  - RainbowFrame
  - ThemeService
+ - PickCredential
+ - RequestWindowsPIN
  - And More...
 
 #### Install
@@ -248,6 +250,12 @@ download and install our vsix package from Marketplace:
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
 ## History
+
+### PickCredential
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/CredentialPicker.png)
+
+### RequestWindowsPIN
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/RequestOSPin.png)
 
 ### PagerControl
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/PagerControl.png)

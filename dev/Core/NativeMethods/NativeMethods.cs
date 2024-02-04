@@ -4,6 +4,9 @@ using static WinUICommunity.NativeValues;
 namespace WinUICommunity;
 public static partial class NativeMethods
 {
+    [DllImport(ExternDll.Kernel32, SetLastError = true, CharSet = CharSet.Unicode)]
+    public static extern bool GetComputerName(StringBuilder lpBuffer, ref uint nSize);
+
     [DllImport(ExternDll.User32, EntryPoint = "FindWindowExW", SetLastError = true, CharSet = CharSet.Unicode)]
     public static extern IntPtr FindWindowEx(IntPtr hWndParent, IntPtr hWndChildAfter, string lpszClass, string lpszWindow);
 
