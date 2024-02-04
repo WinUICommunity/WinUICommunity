@@ -9,6 +9,34 @@
       "ImagePath": "ms-appx:///Assets/Fluent/canvas.png",
       "Items": [
         {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.TiledImageBrushPage",
+          "Title": "TiledImageBrush",
+          "Subtitle": "TiledImageBrush",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/watermark.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/watermark.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ShadowTextControlPage",
+          "Title": "ShadowTextControl",
+          "Subtitle": "ShadowTextControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/styles.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.OutlineTextControlPage",
+          "Title": "OutlineTextControl",
+          "Subtitle": "OutlineTextControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/frame.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ColorfulShadowTextControlPage",
+          "Title": "ColorfulShadowTextControl",
+          "Subtitle": "ColorfulShadowTextControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/styles.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
+        },
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.WatermarkPage",
           "Title": "Watermark",
           "Subtitle": "Watermark a Text or Image",
@@ -81,6 +109,34 @@
       "ImagePath": "ms-appx:///Assets/icon.png",
       "IsSpecialSection": false,
       "Items": [
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.CredentialHelperPage",
+          "Title": "CredentialHelper",
+          "Subtitle": "CredentialHelper",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/contentDialog.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/contentDialog.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.CompositionHelperPage",
+          "Title": "CompositionHelper",
+          "Subtitle": "CompositionHelper",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/backdrop.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/backdrop.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.FlipSidePage",
+          "Title": "FlipSide",
+          "Subtitle": "FlipSide",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/autoScrollView.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/autoScrollView.png"
+        },
+        {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.SpringAnimationTextBlockPage",
+          "Title": "SpringAnimationTextBlock",
+          "Subtitle": "SpringAnimationTextBlock",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/autoScrollView.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/autoScrollView.png"
+        },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.PagerControlPage",
           "Title": "PagerControl",

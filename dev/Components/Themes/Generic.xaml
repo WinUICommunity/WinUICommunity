@@ -12,6 +12,7 @@ Themes\Styles\Button.xaml
 Themes\Styles\Common.xaml
 Themes\Styles\Controls\CopyButton.xaml
 Themes\Styles\Controls\Divider.xaml
+Themes\Styles\Controls\FlipSide.xaml
 Themes\Styles\Controls\FlyoutMenuButton.xaml
 Themes\Styles\Controls\Gravatar.xaml
 Themes\Styles\Controls\Growl.xaml
@@ -26,6 +27,7 @@ Themes\Styles\Controls\RedirectVisualView.xaml
 Themes\Styles\Controls\SettingsGroup.xaml
 Themes\Styles\Controls\Shield.xaml
 Themes\Styles\Controls\SimpleSettingsGroup.xaml
+Themes\Styles\Controls\SpringAnimationTextBlock.xaml
 Themes\Styles\Controls\Validation.xaml
 Themes\Styles\Controls\WaveProgressBar.xaml
 Themes\Styles\Converters.xaml
@@ -236,6 +238,35 @@ Themes\Styles\TextBlock.xaml
             <ContentPresenter x:Name="PART_Content" Grid.Column="1" Margin="{TemplateBinding ContentPadding}" VerticalAlignment="Center" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" />
             <Line x:Name="PART_RightLine" Grid.Column="2" VerticalAlignment="Center" Stretch="Fill" Stroke="{TemplateBinding LineStroke}" StrokeDashArray="{Binding LineStrokeDashArray, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource LineDashStrokeArrayConverter}}" StrokeEndLineCap="Square" StrokeStartLineCap="Square" StrokeThickness="{TemplateBinding LineStrokeThickness}" X2="1" />
             <Line x:Name="PART_StretchLine" Grid.ColumnSpan="3" HorizontalAlignment="Center" Stretch="Fill" Stroke="{TemplateBinding LineStroke}" StrokeDashArray="{Binding LineStrokeDashArray, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource LineDashStrokeArrayConverter}}" StrokeEndLineCap="Square" StrokeStartLineCap="Square" StrokeThickness="{TemplateBinding LineStrokeThickness}" Visibility="Collapsed" Y2="1" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:FlipSide">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:FlipSide">
+          <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="FlipStates">
+                <VisualState x:Name="Slide1">
+                  <VisualState.Setters>
+                    <Setter Target="Side1Content.IsHitTestVisible" Value="True" />
+                    <Setter Target="Side2Content.IsHitTestVisible" Value="False" />
+                  </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Slide2">
+                  <VisualState.Setters>
+                    <Setter Target="Side1Content.IsHitTestVisible" Value="False" />
+                    <Setter Target="Side2Content.IsHitTestVisible" Value="True" />
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <ContentPresenter x:Name="Side1Content" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding Side1}" IsHitTestVisible="True" />
+            <ContentPresenter x:Name="Side2Content" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding Side2}" IsHitTestVisible="False" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>
@@ -1146,6 +1177,47 @@ Themes\Styles\TextBlock.xaml
               <ContentPresenter Margin="4,0" VerticalAlignment="Center" Content="{TemplateBinding Status}" Foreground="{TemplateBinding Foreground}" />
             </Border>
           </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:SpringAnimationTextBlock">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:SpringAnimationTextBlock">
+          <Viewbox Grid.Row="1">
+            <Grid x:Name="PART_RootElement" RenderTransformOrigin="0.5,0.5">
+              <Grid.RenderTransform>
+                <CompositeTransform Rotation="{TemplateBinding TextRotation}" />
+              </Grid.RenderTransform>
+              <Grid>
+                <Grid x:Name="PART_FocusTopVisual">
+                  <Grid.Clip>
+                    <RectangleGeometry Rect="-1000,-1000,3920,1525" />
+                  </Grid.Clip>
+                  <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding TopTextBlock}" />
+                </Grid>
+                <Grid x:Name="PART_FocusBottomVisual">
+                  <Grid.Clip>
+                    <RectangleGeometry Rect="-1000,525,3920,1525" />
+                  </Grid.Clip>
+                  <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding TopTextBlock}" />
+                </Grid>
+                <Grid x:Name="PART_RelaxTopVisual">
+                  <Grid.Clip>
+                    <RectangleGeometry Rect="-1000,-1000,3920,1525" />
+                  </Grid.Clip>
+                  <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding BottomTextBlock}" />
+                </Grid>
+                <Grid x:Name="PART_RelaxBottomVisual">
+                  <Grid.Clip>
+                    <RectangleGeometry Rect="-1000,525,3920,1525" />
+                  </Grid.Clip>
+                  <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding BottomTextBlock}" />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Viewbox>
         </ControlTemplate>
       </Setter.Value>
     </Setter>

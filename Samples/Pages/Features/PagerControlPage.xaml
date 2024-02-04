@@ -12,6 +12,10 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
+            <InfoBar Title="It will be removed with the release of WASDK v1.5"
+                     IsClosable="False"
+                     IsOpen="True"
+                     Severity="Warning" />
             <local:ControlExample DocPage="controls/pagerControl"
                                   HeaderText="PagerControl/Auto (NumberBox)">
                 <wuc:PagerControl NumberOfPages="10" />
