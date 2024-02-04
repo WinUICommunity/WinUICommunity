@@ -126,7 +126,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
-- PagerControl
+- PagerControl [It will be removed with the release of WASDK v1.5]
 - IndeterminateProgressBar
 - LoadingIndicator
 - AutoScrollView
@@ -250,6 +250,8 @@ download and install our vsix package from Marketplace:
 ## History
 
 ### PagerControl
+It will be removed with the release of WASDK v1.5
+
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/PagerControl.png)
 
 ### IndeterminateProgressBar
@@ -312,6 +314,7 @@ download and install our vsix package from Marketplace:
 ### TitleBar
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TitleBar.png)
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TitleBar2.gif)
+![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/TitleBar.png)
 
 ### FontIcon Extension : Choose Fluent Icons (more than 1400) with Name or Code
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FontIconGlyph.png)
@@ -335,9 +338,6 @@ download and install our vsix package from Marketplace:
 ### Acrylic Backdrop
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/AcrylicBaseBackdrop.png)
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/AcrylicThinBackdrop.png)
-
-### Titlebar
-![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/TitleBar.png)
 
 ### Options Page Control
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OptionsPageControl.png)
