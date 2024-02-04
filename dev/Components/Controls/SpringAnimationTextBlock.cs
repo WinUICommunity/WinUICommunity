@@ -4,11 +4,11 @@ using Microsoft.UI.Xaml.Hosting;
 
 namespace WinUICommunity;
 
-[TemplatePart(Name = nameof(PART_FocusBottomVisual), Type = typeof(Visual))]
-[TemplatePart(Name = nameof(PART_FocusTopVisual), Type = typeof(Visual))]
-[TemplatePart(Name = nameof(PART_RelaxBottomVisual), Type = typeof(Visual))]
-[TemplatePart(Name = nameof(PART_RelaxTopVisual), Type = typeof(Visual))]
-[TemplatePart(Name = nameof(PART_RootElement), Type = typeof(FrameworkElement))]
+[TemplatePart(Name = nameof(PART_FocusBottomVisual), Type = typeof(Grid))]
+[TemplatePart(Name = nameof(PART_FocusTopVisual), Type = typeof(Grid))]
+[TemplatePart(Name = nameof(PART_RelaxBottomVisual), Type = typeof(Grid))]
+[TemplatePart(Name = nameof(PART_RelaxTopVisual), Type = typeof(Grid))]
+[TemplatePart(Name = nameof(PART_RootElement), Type = typeof(Grid))]
 public class SpringAnimationTextBlock : Control
 {
     private string PART_FocusBottomVisual = "PART_FocusBottomVisual";
@@ -21,7 +21,7 @@ public class SpringAnimationTextBlock : Control
     private Visual _focusTopVisual;
     private Visual _relaxBottomVisual;
     private Visual _relaxTopVisual;
-    private FrameworkElement _rootElement;
+    private Grid _rootElement;
 
     private Compositor _compositor;
 
@@ -83,12 +83,12 @@ public class SpringAnimationTextBlock : Control
 
         _compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
 
-        var focusBottomVisual = GetTemplateChild(PART_FocusBottomVisual) as UIElement;
-        var focusTopVisual = GetTemplateChild(PART_FocusTopVisual) as UIElement;
-        var relaxBottomVisual = GetTemplateChild(PART_RelaxBottomVisual) as UIElement;
-        var relaxTopVisual = GetTemplateChild(PART_RelaxTopVisual) as UIElement;
+        var focusBottomVisual = GetTemplateChild(PART_FocusBottomVisual) as Grid;
+        var focusTopVisual = GetTemplateChild(PART_FocusTopVisual) as Grid;
+        var relaxBottomVisual = GetTemplateChild(PART_RelaxBottomVisual) as Grid;
+        var relaxTopVisual = GetTemplateChild(PART_RelaxTopVisual) as Grid;
 
-        _rootElement = GetTemplateChild(PART_RootElement) as FrameworkElement;
+        _rootElement = GetTemplateChild(PART_RootElement) as Grid;
 
         _focusTopVisual = ElementCompositionPreview.GetElementVisual(focusTopVisual);
         _focusBottomVisual = ElementCompositionPreview.GetElementVisual(focusBottomVisual);
