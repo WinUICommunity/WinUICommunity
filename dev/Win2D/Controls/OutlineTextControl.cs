@@ -7,27 +7,27 @@ using Microsoft.UI.Xaml.Hosting;
 
 namespace WinUICommunity;
 
-public class OutlineText : Control
+public class OutlineTextControl : Control
 {
     public static readonly DependencyProperty DashStyleProperty =
-        DependencyProperty.Register(nameof(DashStyle), typeof(CanvasDashStyle), typeof(OutlineText), new PropertyMetadata(default(CanvasDashStyle), OnDashStyleChanged));
+        DependencyProperty.Register(nameof(DashStyle), typeof(CanvasDashStyle), typeof(OutlineTextControl), new PropertyMetadata(default(CanvasDashStyle), OnDashStyleChanged));
 
     public static readonly DependencyProperty FontColorProperty =
-        DependencyProperty.Register(nameof(FontColor), typeof(Color), typeof(OutlineText), new PropertyMetadata(Colors.Black, OnFontColorChanged));
+        DependencyProperty.Register(nameof(FontColor), typeof(Color), typeof(OutlineTextControl), new PropertyMetadata(Colors.Black, OnFontColorChanged));
 
     public static readonly DependencyProperty OutlineColorProperty =
-        DependencyProperty.Register(nameof(OutlineColor), typeof(Color), typeof(OutlineText), new PropertyMetadata(Colors.Black, OnOutlineColorChanged));
+        DependencyProperty.Register(nameof(OutlineColor), typeof(Color), typeof(OutlineTextControl), new PropertyMetadata(Colors.Black, OnOutlineColorChanged));
 
     public static readonly DependencyProperty ShowNonOutlineTextProperty =
-        DependencyProperty.Register(nameof(ShowNonOutlineText), typeof(bool), typeof(OutlineText), new PropertyMetadata(default(bool), OnShowNonOutlineTextChanged));
+        DependencyProperty.Register(nameof(ShowNonOutlineText), typeof(bool), typeof(OutlineTextControl), new PropertyMetadata(default(bool), OnShowNonOutlineTextChanged));
 
     public static readonly DependencyProperty StrokeWidthProperty =
-        DependencyProperty.Register(nameof(StrokeWidth), typeof(double), typeof(OutlineText), new PropertyMetadata(default(double), OnStrokeWidthChanged));
+        DependencyProperty.Register(nameof(StrokeWidth), typeof(double), typeof(OutlineTextControl), new PropertyMetadata(default(double), OnStrokeWidthChanged));
 
     public static readonly DependencyProperty TextProperty =
-        DependencyProperty.Register(nameof(Text), typeof(string), typeof(OutlineText), new PropertyMetadata(default(string), OnTextChanged));
+        DependencyProperty.Register(nameof(Text), typeof(string), typeof(OutlineTextControl), new PropertyMetadata(default(string), OnTextChanged));
 
-    public OutlineText()
+    public OutlineTextControl()
     {
         var graphicsDevice = CanvasComposition.CreateCompositionGraphicsDevice(Compositor, CanvasDevice.GetSharedDevice());
         var spriteTextVisual = Compositor.CreateSpriteVisual();
@@ -177,7 +177,7 @@ public class OutlineText : Control
         if (oldValue == newValue)
             return;
 
-        var target = obj as OutlineText;
+        var target = obj as OutlineTextControl;
         target?.OnDashStyleChanged(oldValue, newValue);
     }
 
@@ -188,7 +188,7 @@ public class OutlineText : Control
         if (oldValue == newValue)
             return;
 
-        var target = obj as OutlineText;
+        var target = obj as OutlineTextControl;
         target?.OnFontColorChanged(oldValue, newValue);
     }
 
@@ -199,7 +199,7 @@ public class OutlineText : Control
         if (oldValue == newValue)
             return;
 
-        var target = obj as OutlineText;
+        var target = obj as OutlineTextControl;
         target?.OnOutlineColorChanged(oldValue, newValue);
     }
 
@@ -210,7 +210,7 @@ public class OutlineText : Control
         if (oldValue == newValue)
             return;
 
-        var target = obj as OutlineText;
+        var target = obj as OutlineTextControl;
         target?.OnShowNonOutlineTextChanged(oldValue, newValue);
     }
 
@@ -221,7 +221,7 @@ public class OutlineText : Control
         if (oldValue == newValue)
             return;
 
-        var target = obj as OutlineText;
+        var target = obj as OutlineTextControl;
         target?.OnStrokeWidthChanged(oldValue, newValue);
     }
 
@@ -232,7 +232,7 @@ public class OutlineText : Control
         if (oldValue == newValue)
             return;
 
-        var target = obj as OutlineText;
+        var target = obj as OutlineTextControl;
         target?.OnTextChanged(oldValue, newValue);
     }
 }
