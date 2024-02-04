@@ -25,16 +25,16 @@ public class SpringAnimationTextBlock : Control
 
     private Compositor _compositor;
 
-    public TextBlock FocusTextBlock
+    public TextBlock TopTextBlock
     {
-        get { return (TextBlock)GetValue(FocusTextBlockProperty); }
-        set { SetValue(FocusTextBlockProperty, value); }
+        get { return (TextBlock)GetValue(TopTextBlockProperty); }
+        set { SetValue(TopTextBlockProperty, value); }
     }
 
-    public TextBlock RelaxTextBlock
+    public TextBlock BottomTextBlock
     {
-        get { return (TextBlock)GetValue(RelaxTextBlockProperty); }
-        set { SetValue(RelaxTextBlockProperty, value); }
+        get { return (TextBlock)GetValue(BottomTextBlockProperty); }
+        set { SetValue(BottomTextBlockProperty, value); }
     }
 
     public bool IsActive
@@ -49,11 +49,11 @@ public class SpringAnimationTextBlock : Control
         set { SetValue(TextRotationProperty, value); }
     }
 
-    public static readonly DependencyProperty FocusTextBlockProperty =
-        DependencyProperty.Register(nameof(FocusTextBlock), typeof(TextBlock), typeof(SpringAnimationTextBlock), new PropertyMetadata(default(TextBlock)));
+    public static readonly DependencyProperty TopTextBlockProperty =
+        DependencyProperty.Register(nameof(TopTextBlock), typeof(TextBlock), typeof(SpringAnimationTextBlock), new PropertyMetadata(default(TextBlock)));
 
-    public static readonly DependencyProperty RelaxTextBlockProperty =
-        DependencyProperty.Register(nameof(RelaxTextBlock), typeof(TextBlock), typeof(SpringAnimationTextBlock), new PropertyMetadata(default(TextBlock)));
+    public static readonly DependencyProperty BottomTextBlockProperty =
+        DependencyProperty.Register(nameof(BottomTextBlock), typeof(TextBlock), typeof(SpringAnimationTextBlock), new PropertyMetadata(default(TextBlock)));
 
     public static readonly DependencyProperty IsActiveProperty =
         DependencyProperty.Register(nameof(IsActive), typeof(bool), typeof(SpringAnimationTextBlock), new PropertyMetadata(false, OnIsActiveChanged));
