@@ -1,7 +1,4 @@
-﻿using System.Numerics;
-using Microsoft.UI.Xaml.Media.Animation;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public class Vector2Timeline
 {

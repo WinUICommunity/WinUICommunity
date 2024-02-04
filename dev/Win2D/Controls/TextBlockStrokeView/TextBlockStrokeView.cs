@@ -1,7 +1,4 @@
-﻿using Microsoft.UI.Composition;
-using Microsoft.UI.Xaml.Hosting;
-using Microsoft.UI.Xaml.Markup;
-using Microsoft.UI.Xaml.Media;
+﻿using Microsoft.UI.Xaml.Markup;
 using Microsoft.UI.Xaml.Shapes;
 
 namespace WinUICommunity;

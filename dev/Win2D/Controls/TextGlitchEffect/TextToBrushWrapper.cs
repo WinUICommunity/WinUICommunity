@@ -2,13 +2,6 @@
 
 using Windows.Foundation;
 using Windows.Graphics;
-using Microsoft.Graphics.Canvas.Geometry;
-using Microsoft.Graphics.Canvas.Text;
-using Microsoft.Graphics.Canvas.UI.Composition;
-using Microsoft.Graphics.DirectX;
-using Microsoft.UI.Composition;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Hosting;
 
 namespace WinUICommunity;
 

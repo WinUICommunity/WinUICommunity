@@ -1,7 +1,5 @@
 ﻿// https://github.com/DinoChan
 
-using Microsoft.UI.Xaml.Media;
-
 namespace WinUICommunity;
 public partial class TextGlitchEffect3
 {

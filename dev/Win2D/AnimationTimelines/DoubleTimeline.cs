@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Xaml.Media.Animation;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public class DoubleTimeline
 {

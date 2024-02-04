@@ -1,7 +1,4 @@
-﻿
-using Microsoft.UI.Xaml.Media;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 public partial class TextBlockStrokeView : Control
 {
     public bool Animate

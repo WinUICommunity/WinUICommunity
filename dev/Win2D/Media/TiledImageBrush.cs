@@ -1,8 +1,4 @@
-﻿using Microsoft.UI.Composition;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Imaging;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public class TiledImageBrush : XamlCompositionBrushBase
 {

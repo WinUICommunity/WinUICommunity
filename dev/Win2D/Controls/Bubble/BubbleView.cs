@@ -3,10 +3,6 @@
 using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Graphics.Display;
-using Microsoft.Graphics.Canvas.UI.Composition;
-using Microsoft.UI.Composition;
-using Microsoft.UI.Xaml.Hosting;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 
 namespace WinUICommunity;

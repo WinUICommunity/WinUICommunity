@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Xaml.Hosting;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public static class VisualExtensions
 {

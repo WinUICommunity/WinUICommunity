@@ -1,6 +1,4 @@
-﻿using Microsoft.Graphics.Canvas.Text;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 public partial class Watermark
 {
     public static readonly DependencyProperty MarkProperty =

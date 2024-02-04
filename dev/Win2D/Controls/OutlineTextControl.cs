@@ -1,11 +1,4 @@
-﻿using Microsoft.Graphics.Canvas.Geometry;
-using Microsoft.Graphics.Canvas.Text;
-using Microsoft.Graphics.Canvas.UI.Composition;
-using Microsoft.Graphics.DirectX;
-using Microsoft.UI.Composition;
-using Microsoft.UI.Xaml.Hosting;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public class OutlineTextControl : Control
 {

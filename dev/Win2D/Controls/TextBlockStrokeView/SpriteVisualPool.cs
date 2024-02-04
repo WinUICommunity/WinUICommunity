@@ -1,7 +1,4 @@
-﻿using Microsoft.UI.Composition;
-using Microsoft.UI.Xaml.Media;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 internal class SpriteVisualPool : DependencyObject, IDisposable
 {

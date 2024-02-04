@@ -1,6 +1,4 @@
-﻿using Microsoft.Graphics.Canvas.Text;
-using Microsoft.UI.Xaml.Markup;
-using Microsoft.UI.Xaml.Media;
+﻿using Microsoft.UI.Xaml.Markup;
 using Windows.Foundation;
 
 namespace WinUICommunity;

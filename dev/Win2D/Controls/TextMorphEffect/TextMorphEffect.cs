@@ -1,7 +1,5 @@
 ﻿// https://github.com/DinoChan
 
-using Microsoft.Graphics.Canvas.Text;
-
 namespace WinUICommunity;
 
 [TemplatePart(Name = nameof(PART_Canvas), Type = typeof(CanvasControl))]

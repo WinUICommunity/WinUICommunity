@@ -1,7 +1,6 @@
 ﻿// https://github.com/cnbluefire
 
 using Microsoft.UI.Xaml.Markup;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 
 namespace WinUICommunity;

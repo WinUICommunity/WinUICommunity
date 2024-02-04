@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Composition;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 internal static class Extensions
 {
