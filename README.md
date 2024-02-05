@@ -130,6 +130,7 @@ Components Includes custom controls and styles.
 
 - SpringAnimationTextBlock
 - FlipSide
+- LongShadowTextBlock
 - PagerControl [It will be removed with the release of WASDK v1.5]
 - IndeterminateProgressBar
 - LoadingIndicator
@@ -256,6 +257,18 @@ download and install our vsix package from Marketplace:
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
 ## History
+
+### TiledImageBrush
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TiledImageBrush.png)
+
+### OutlineTextControl
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OutlineTextControl.png)
+
+### FlipSide
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FlipSide.gif)
+
+### LongShadowTextBlock
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/LongShadowTextBlock.png)
 
 ### PickCredential
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/CredentialPicker.png)
