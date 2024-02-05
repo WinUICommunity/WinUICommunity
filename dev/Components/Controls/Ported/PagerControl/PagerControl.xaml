@@ -21,7 +21,7 @@
                             ResourceKey="TextFillColorDisabledBrush" />
         </ResourceDictionary>
 
-        <ResourceDictionary x:Key="Dark">
+        <ResourceDictionary x:Key="Default">
             <StaticResource x:Key="PagerControlSelectionIndicatorForeground"
                             ResourceKey="AccentFillColorDefaultBrush" />
             <StaticResource x:Key="PagerControlPageNavigationButtonBackgroundPointerOver"
