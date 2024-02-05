@@ -21,6 +21,7 @@ Themes\Styles\Controls\InlineAutoCompleteTextBox.xaml
 Themes\Styles\Controls\IsEnabledTextBlock.xaml
 Themes\Styles\Controls\KeyVisual.xaml
 Themes\Styles\Controls\LoadingIndicator.xaml
+Themes\Styles\Controls\LongShadowTextBlock.xaml
 Themes\Styles\Controls\OptionsPageControl.xaml
 Themes\Styles\Controls\ProgressRing.xaml
 Themes\Styles\Controls\RedirectVisualView.xaml
@@ -1052,6 +1053,18 @@ Themes\Styles\TextBlock.xaml
               </Canvas>
             </Grid>
           </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:LongShadowTextBlock">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:LongShadowTextBlock">
+          <Grid>
+            <Rectangle x:Name="PART_ShadowElement" />
+            <ContentPresenter x:Name="PART_TextBlock" Content="{TemplateBinding TextBlock}" />
+          </Grid>
         </ControlTemplate>
       </Setter.Value>
     </Setter>

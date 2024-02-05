@@ -110,6 +110,13 @@
       "IsSpecialSection": false,
       "Items": [
         {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.LongShadowTextBlockPage",
+          "Title": "LongShadowTextBlock",
+          "Subtitle": "LongShadowTextBlock",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/morph.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/morph.png"
+        },
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.CredentialHelperPage",
           "Title": "CredentialHelper",
           "Subtitle": "CredentialHelper",

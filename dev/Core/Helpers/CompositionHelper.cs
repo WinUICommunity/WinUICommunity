@@ -6,6 +6,11 @@ public static class CompositionHelper
 {
     public static void MakeLongShadow(int depth, float opacity, TextBlock textElement, FrameworkElement shadowElement, Color color)
     {
+        if (textElement == null || shadowElement == null)
+        {
+            return;
+        }
+
         var textVisual = ElementCompositionPreview.GetElementVisual(textElement);
         var compositor = textVisual.Compositor;
         var containerVisual = compositor.CreateContainerVisual();
