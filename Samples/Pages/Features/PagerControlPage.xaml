@@ -18,15 +18,30 @@
                      Severity="Warning" />
             <local:ControlExample DocPage="controls/pagerControl"
                                   HeaderText="PagerControl/Auto (NumberBox)">
+                <local:ControlExample.Xaml>
+                    <x:String>
+                        &lt;wuc:PagerControl NumberOfPages="10"/&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
                 <wuc:PagerControl NumberOfPages="10" />
             </local:ControlExample>
             <local:ControlExample DocPage="controls/pagerControl"
                                   HeaderText="PagerControl/ButtonPanel">
+                <local:ControlExample.Xaml>
+                    <x:String>
+                        &lt;wuc:PagerControl DisplayMode="ButtonPanel" NumberOfPages="10"/&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
                 <wuc:PagerControl DisplayMode="ButtonPanel"
                                   NumberOfPages="10" />
             </local:ControlExample>
             <local:ControlExample DocPage="controls/pagerControl"
                                   HeaderText="PagerControl/ComboBox">
+                <local:ControlExample.Xaml>
+                    <x:String>
+                        &lt;wuc:PagerControl DisplayMode="ComboBox" NumberOfPages="10"/&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
                 <wuc:PagerControl DisplayMode="ComboBox"
                                   NumberOfPages="10" />
             </local:ControlExample>

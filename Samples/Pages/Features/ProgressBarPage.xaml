@@ -64,7 +64,7 @@
                                   HeaderText="LoadingIndicator">
                 <local:ControlExample.Xaml>
                     <x:String>
-                        &lt;wuc:LoadingIndicator /&gt;
+                        &lt;wuc:LoadingIndicator Mode="DoubleBounce" /&gt;
                     </x:String>
                 </local:ControlExample.Xaml>
                 <local:ControlExample.Pane>
