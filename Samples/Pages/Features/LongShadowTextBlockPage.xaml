@@ -15,12 +15,12 @@
             <local:ControlExample DocPage="controls/longShadowTextBlock">
                 <local:ControlExample.Xaml>
                     <x:String>
-                        &lt;wuc:LongShadowTextBlock Depth="{x:Bind slDepth.Value, Mode=OneWay}"
-                        TextOpacity="{x:Bind slOpacity.Value, Mode=OneWay}"
+                        &lt;wuc:LongShadowTextBlock Depth="100"
+                        TextOpacity="0.3"
                         Color="GreenYellow"&gt;
                         &lt;wuc:LongShadowTextBlock.TextBlock&gt;
                         &lt;TextBlock FontSize="148"
-                        Text="{x:Bind txt.Text, Mode=OneWay}" /&gt;
+                        Text="00:10:45" /&gt;
                         &lt;/wuc:LongShadowTextBlock.TextBlock&gt;
                         &lt;/wuc:LongShadowTextBlock&gt;
                     </x:String>
@@ -29,13 +29,18 @@
                     <StackPanel Spacing="10">
                         <TextBox x:Name="txt"
                                  Header="Text"
-                                 PlaceholderText="Text" />
+                                 PlaceholderText="Text"
+                                 Text="00:10:45" />
                         <Slider x:Name="slOpacity"
                                 Header="Opacity"
-                                TickFrequency="0.01"
+                                Maximum="1.0"
+                                Minimum="0"
+                                TickFrequency="0.1"
                                 Value="0.3" />
                         <Slider x:Name="slDepth"
                                 Header="Depth"
+                                Maximum="500"
+                                Minimum="0"
                                 TickFrequency="1"
                                 Value="100" />
                     </StackPanel>
@@ -44,7 +49,7 @@
                                          TextOpacity="{x:Bind slOpacity.Value, Mode=OneWay}"
                                          Color="GreenYellow">
                     <wuc:LongShadowTextBlock.TextBlock>
-                        <TextBlock FontSize="148"
+                        <TextBlock FontSize="100"
                                    Text="{x:Bind txt.Text, Mode=OneWay}" />
                     </wuc:LongShadowTextBlock.TextBlock>
                 </wuc:LongShadowTextBlock>
