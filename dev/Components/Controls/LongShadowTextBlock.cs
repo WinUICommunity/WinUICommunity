@@ -79,10 +79,17 @@ public class LongShadowTextBlock : Control
         base.OnApplyTemplate();
 
         _shadowElement = GetTemplateChild(PART_ShadowElement) as Rectangle;
+        SizeChanged -= LongShadowTextBlock_SizeChanged;
+        SizeChanged += LongShadowTextBlock_SizeChanged;
 
         UnregisterPropertyChangedCallback(TextBlock.TextProperty, _textblockTextChanged);
         _textblockTextChanged = RegisterPropertyChangedCallback(TextBlock.TextProperty, OnTextBlockTextChanged);
 
+        CompositionHelper.MakeLongShadow(Depth, Convert.ToSingle(TextOpacity), TextBlock, _shadowElement, Color);
+    }
+
+    private void LongShadowTextBlock_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
         CompositionHelper.MakeLongShadow(Depth, Convert.ToSingle(TextOpacity), TextBlock, _shadowElement, Color);
     }
 
