@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="WinUICommunity.DemoApp.Pages.LongShadowTextBlockPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:WinUICommunity.DemoApp.Examples"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:wuc="using:WinUICommunity"
+      mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel Margin="10"
+                    wuc:PanelAttach.ChildrenTransitions="Default"
+                    Spacing="10">
+            <local:ControlExample DocPage="controls/longShadowTextBlock">
+                <local:ControlExample.Xaml>
+                    <x:String>
+                        &lt;wuc:LongShadowTextBlock Depth="{x:Bind slDepth.Value, Mode=OneWay}"
+                        TextOpacity="{x:Bind slOpacity.Value, Mode=OneWay}"
+                        Color="GreenYellow"&gt;
+                        &lt;wuc:LongShadowTextBlock.TextBlock&gt;
+                        &lt;TextBlock FontSize="148"
+                        Text="{x:Bind txt.Text, Mode=OneWay}" /&gt;
+                        &lt;/wuc:LongShadowTextBlock.TextBlock&gt;
+                        &lt;/wuc:LongShadowTextBlock&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
+                <local:ControlExample.Pane>
+                    <StackPanel Spacing="10">
+                        <TextBox x:Name="txt"
+                                 Header="Text"
+                                 PlaceholderText="Text" />
+                        <Slider x:Name="slOpacity"
+                                Header="Opacity"
+                                TickFrequency="0.01"
+                                Value="0.3" />
+                        <Slider x:Name="slDepth"
+                                Header="Depth"
+                                TickFrequency="1"
+                                Value="100" />
+                    </StackPanel>
+                </local:ControlExample.Pane>
+                <wuc:LongShadowTextBlock Depth="{x:Bind (x:Int32)slDepth.Value, Mode=OneWay}"
+                                         TextOpacity="{x:Bind slOpacity.Value, Mode=OneWay}"
+                                         Color="GreenYellow">
+                    <wuc:LongShadowTextBlock.TextBlock>
+                        <TextBlock FontSize="148"
+                                   Text="{x:Bind txt.Text, Mode=OneWay}" />
+                    </wuc:LongShadowTextBlock.TextBlock>
+                </wuc:LongShadowTextBlock>
+            </local:ControlExample>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
