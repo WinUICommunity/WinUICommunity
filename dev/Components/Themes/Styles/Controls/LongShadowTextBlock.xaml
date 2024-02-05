@@ -9,7 +9,8 @@
                 <ControlTemplate TargetType="local:LongShadowTextBlock">
                     <Grid>
                         <Rectangle x:Name="PART_ShadowElement" />
-                        <ContentPresenter x:Name="PART_TextBlock" Content="{TemplateBinding TextBlock}" />
+                        <ContentPresenter x:Name="PART_TextBlock"
+                                          Content="{TemplateBinding TextBlock}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
