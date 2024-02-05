@@ -1198,7 +1198,7 @@ Themes\Styles\TextBlock.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:SpringAnimationTextBlock">
-          <Viewbox Grid.Row="1">
+          <Viewbox>
             <Grid x:Name="PART_RootElement" RenderTransformOrigin="0.5,0.5">
               <Grid.RenderTransform>
                 <CompositeTransform Rotation="{TemplateBinding TextRotation}" />
@@ -1208,25 +1208,25 @@ Themes\Styles\TextBlock.xaml
                   <Grid.Clip>
                     <RectangleGeometry Rect="-1000,-1000,3920,1525" />
                   </Grid.Clip>
-                  <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding TopTextBlock}" />
+                  <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" Text="{TemplateBinding TopText}" />
                 </Grid>
                 <Grid x:Name="PART_FocusBottomVisual">
                   <Grid.Clip>
                     <RectangleGeometry Rect="-1000,525,3920,1525" />
                   </Grid.Clip>
-                  <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding TopTextBlock}" />
+                  <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" Text="{TemplateBinding TopText}" />
                 </Grid>
                 <Grid x:Name="PART_RelaxTopVisual">
                   <Grid.Clip>
                     <RectangleGeometry Rect="-1000,-1000,3920,1525" />
                   </Grid.Clip>
-                  <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding BottomTextBlock}" />
+                  <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" Text="{TemplateBinding BottomText}" />
                 </Grid>
                 <Grid x:Name="PART_RelaxBottomVisual">
                   <Grid.Clip>
                     <RectangleGeometry Rect="-1000,525,3920,1525" />
                   </Grid.Clip>
-                  <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding BottomTextBlock}" />
+                  <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" Text="{TemplateBinding BottomText}" />
                 </Grid>
               </Grid>
             </Grid>
