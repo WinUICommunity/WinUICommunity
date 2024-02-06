@@ -12,5 +12,6 @@
                          HeaderOverlayImage="{ThemeResource HeaderCover}"
                          HeaderSubtitleText="Windows App SDK 1.4"
                          HeaderText="WinUICommunity Gallery"
+                         HeaderImageHeight="250"
                          OnItemClick="LandingsPage_OnItemClick" />
 </Page>
