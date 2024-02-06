@@ -7,9 +7,10 @@
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
 
-    <wuc:AllLandingPage x:Name="allLandingsPage"
-                        HeaderImage="{ThemeResource HeaderCover}"
-                        HeaderOverlayImage="{ThemeResource HeaderCover}"
-                        HeaderText="DemoApp"
-                        OnItemClick="allLandingsPage_OnItemClick" />
+    <wuc:MainLandingPage x:Name="landingsPage"
+                         HeaderImage="{ThemeResource HeaderCover}"
+                         HeaderOverlayImage="{ThemeResource HeaderCover}"
+                         HeaderSubtitleText="Windows App SDK 1.4"
+                         HeaderText="WinUICommunity Gallery"
+                         OnItemClick="LandingsPage_OnItemClick" />
 </Page>

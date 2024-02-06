@@ -12,6 +12,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.TiledImageBrushPage",
           "Title": "TiledImageBrush",
           "Subtitle": "TiledImageBrush",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/watermark.png",
           "ImagePath": "ms-appx:///Assets/Fluent/watermark.png"
         },
@@ -19,6 +20,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.OutlineTextControlPage",
           "Title": "OutlineTextControl",
           "Subtitle": "OutlineTextControl",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
           "ImagePath": "ms-appx:///Assets/Fluent/frame.png"
         },
@@ -26,6 +28,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.WatermarkPage",
           "Title": "Watermark",
           "Subtitle": "Watermark a Text or Image",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/watermark.png",
           "ImagePath": "ms-appx:///Assets/Fluent/watermark.png"
         },
@@ -33,6 +36,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.BlurAnimationPage",
           "Title": "Blur Animation Helper",
           "Subtitle": "Blur Animation Helper",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/backdrop.png",
           "ImagePath": "ms-appx:///Assets/Fluent/backdrop.png"
         },
@@ -54,6 +58,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.TextBlockStrokeViewPage",
           "Title": "TextBlock Stroke View",
           "Subtitle": "TextBlock Stroke View",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/autoSuggestBox.png",
           "ImagePath": "ms-appx:///Assets/Fluent/autoSuggestBox.png"
         },
@@ -99,6 +104,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.ColorfulShimmingEffectPage",
           "Title": "ColorfulShimmingEffect",
           "Subtitle": "ColorfulShimmingEffect",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/morph.png",
           "ImagePath": "ms-appx:///Assets/Fluent/morph.png"
         },
@@ -106,6 +112,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.LongShadowTextBlockPage",
           "Title": "LongShadowTextBlock",
           "Subtitle": "LongShadowTextBlock",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/morph.png",
           "ImagePath": "ms-appx:///Assets/Fluent/morph.png"
         },
@@ -113,6 +120,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.CredentialHelperPage",
           "Title": "CredentialHelper",
           "Subtitle": "CredentialHelper",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/contentDialog.png",
           "ImagePath": "ms-appx:///Assets/Fluent/contentDialog.png"
         },
@@ -120,6 +128,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.CompositionHelperPage",
           "Title": "CompositionHelper",
           "Subtitle": "CompositionHelper",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/backdrop.png",
           "ImagePath": "ms-appx:///Assets/Fluent/backdrop.png"
         },
@@ -127,6 +136,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.FlipSidePage",
           "Title": "FlipSide",
           "Subtitle": "FlipSide",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/autoScrollView.png",
           "ImagePath": "ms-appx:///Assets/Fluent/autoScrollView.png"
         },
@@ -134,6 +144,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.PagerControlPage",
           "Title": "PagerControl",
           "Subtitle": "PagerControl",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/pagerControl.png",
           "ImagePath": "ms-appx:///Assets/Fluent/pagerControl.png"
         },
@@ -141,6 +152,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.AutoScrollViewPage",
           "Title": "AutoScrollView",
           "Subtitle": "AutoScrollView",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/autoScrollView.png",
           "ImagePath": "ms-appx:///Assets/Fluent/autoScrollView.png"
         },
@@ -148,6 +160,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.OpacityMaskViewPage",
           "Title": "OpacityMaskView",
           "Subtitle": "OpacityMaskView",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/backdrop.png",
           "ImagePath": "ms-appx:///Assets/Fluent/backdrop.png"
         },
@@ -155,6 +168,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.ProgressBarPage",
           "Title": "Progress",
           "Subtitle": "ProgressRing, WaveProgressBar",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/progressBar.png",
           "ImagePath": "ms-appx:///Assets/Fluent/progressBar.png"
         },
@@ -162,6 +176,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.DividerPage",
           "Title": "Divider",
           "Subtitle": "Divider",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/divider.png",
           "ImagePath": "ms-appx:///Assets/Fluent/divider.png"
         },
@@ -169,6 +184,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.ShieldPage",
           "Title": "Shield",
           "Subtitle": "Shield",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/shield.png",
           "ImagePath": "ms-appx:///Assets/Fluent/shield.png"
         },
@@ -176,6 +192,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.GravatarPage",
           "Title": "Gravatar",
           "Subtitle": "Gravatar",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/gravatar.png",
           "ImagePath": "ms-appx:///Assets/Fluent/gravatar.png"
         },
@@ -183,6 +200,7 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.GrowlPage",
           "Title": "Growl",
           "Subtitle": "Growl",
+          "IsNew": true,
           "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
           "ImagePath": "ms-appx:///Assets/Fluent/frame.png"
         },

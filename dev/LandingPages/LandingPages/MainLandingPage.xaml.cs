@@ -122,6 +122,15 @@ public sealed partial class MainLandingPage : ItemsPageBase
         set => SetValue(LazyLoadingThresholdProperty, value);
     }
 
+    public Thickness HeaderContentMargin
+    {
+        get { return (Thickness)GetValue(HeaderContentMarginProperty); }
+        set { SetValue(HeaderContentMarginProperty, value); }
+    }
+
+    public static readonly DependencyProperty HeaderContentMarginProperty =
+        DependencyProperty.Register(nameof(HeaderContentMargin), typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(36,100,0,0)));
+
     public static readonly DependencyProperty HeaderSubtitleFontSizeProperty = DependencyProperty.Register("HeaderSubtitleFontSize", typeof(double), typeof(MainLandingPage), new PropertyMetadata(18.0));
     public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(MainLandingPage), new PropertyMetadata(40.0));
     public static readonly DependencyProperty PreviewGroupTextProperty = DependencyProperty.Register("PreviewGroupText", typeof(string), typeof(MainLandingPage), new PropertyMetadata("Preview"));

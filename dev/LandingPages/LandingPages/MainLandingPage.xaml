@@ -47,9 +47,9 @@
                   SelectionMode="None">
             <GridView.Header>
                 <Grid x:Name="HeaderGrid"
-                      Margin="{x:Bind HeaderMargin}">
+                      Margin="{x:Bind HeaderMargin, Mode=OneWay}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="204" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <local:HomePageHeaderImage Grid.RowSpan="2"
@@ -63,7 +63,7 @@
                                                PlaceholderSource="{x:Bind PlaceholderSource, Mode=OneWay}" />
 
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
-                    <StackPanel Margin="36,0,0,0"
+                    <StackPanel Margin="{x:Bind HeaderContentMargin, Mode=OneWay}"
                                 VerticalAlignment="Center"
                                 Orientation="Vertical">
                         <TextBlock x:Name="smallHeaderSubtitleText"

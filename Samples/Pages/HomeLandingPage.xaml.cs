@@ -14,11 +14,11 @@ public sealed partial class HomeLandingPage : Page
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
-        allLandingsPage.GetData(App.Current.JsonNavigationViewService.DataSource);
-        allLandingsPage.OrderBy(i => i.Title);
+        landingsPage.GetData(App.Current.JsonNavigationViewService.DataSource);
+        landingsPage.OrderBy(i => i.Title);
     }
 
-    private void allLandingsPage_OnItemClick(object sender, RoutedEventArgs e)
+    private void LandingsPage_OnItemClick(object sender, RoutedEventArgs e)
     {
         var args = (ItemClickEventArgs)e;
         var item = (DataItem)args.ClickedItem;
