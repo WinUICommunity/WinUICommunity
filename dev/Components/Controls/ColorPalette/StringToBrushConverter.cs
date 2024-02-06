@@ -9,7 +9,7 @@ internal sealed class StringToBrushConverter : IValueConverter
         if (value is not string strValue)
             return null;
 
-        return new SolidColorBrush(GeneralHelper.GetColorFromHex(strValue));
+        return new SolidColorBrush(ColorHelper.GetColorFromHex(strValue));
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, string language)

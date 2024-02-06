@@ -93,7 +93,7 @@ public class RainbowFrame : IRainbowFrame
     {
         _frameTimer?.Stop();
         _frameTimer = null;
-        ChangeFrameColor(GeneralHelper.ColorToUInt(color));
+        ChangeFrameColor(ColorHelper.ColorToUInt(color));
     }
 
     public void ChangeFrameColor(uint color)
@@ -132,7 +132,7 @@ public class RainbowFrame : IRainbowFrame
     {
         var saturateAndToColor = new Func<float, float, float, uint>((a, b, c) =>
         {
-            return GeneralHelper.ColorToUInt(new Color
+            return ColorHelper.ColorToUInt(new Color
             {
                 R = (byte)(255f * Math.Clamp(a, 0f, 1f)),
                 G = (byte)(255f * Math.Clamp(b, 0f, 1f)),
