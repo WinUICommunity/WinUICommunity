@@ -52,7 +52,8 @@
                                   HeaderText="Loading Example"
                                   XamlSource="Features/SwitchPresenter/SwitchPresenterPage_Loading_xaml.txt">
                 <local:ControlExample.Pane>
-                    <ToggleSwitch x:Name="LoadingState" />
+                    <ToggleSwitch x:Name="LoadingState"
+                                  Header="IsLoading" />
                 </local:ControlExample.Pane>
                 <StackPanel Margin="10"
                             Spacing="10">
@@ -93,7 +94,8 @@
                                   HeaderText="Example 1"
                                   XamlSource="Features/SwitchPresenter/SwitchPresenterPage_Part1_xaml.txt">
                 <local:ControlExample.Pane>
-                    <RadioButtons x:Name="radio">
+                    <RadioButtons x:Name="radio"
+                                  Header="Options">
                         <RadioButton Content="Square"
                                      Tag="square" />
                         <RadioButton Content="Circle"

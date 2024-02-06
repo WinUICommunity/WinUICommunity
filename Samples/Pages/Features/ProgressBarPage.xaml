@@ -22,6 +22,7 @@
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <ToggleSwitch x:Name="tgText"
+                                      Header="ShowText"
                                       IsOn="True" />
                         <Slider x:Name="slPrg"
                                 Header="Progress"

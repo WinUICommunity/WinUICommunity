@@ -27,7 +27,8 @@
                 </local:ControlExample.Xaml>
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
-                        <ToggleSwitch x:Name="tg" />
+                        <ToggleSwitch x:Name="tg"
+                                      Header="IsFlipped" />
                     </StackPanel>
                 </local:ControlExample.Pane>
                 <wuc:FlipSide IsFlipped="{x:Bind tg.IsOn, Mode=OneWay}">

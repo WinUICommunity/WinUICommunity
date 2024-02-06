@@ -18,6 +18,7 @@
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <ToggleSwitch x:Name="tgPlay"
+                                      Header="IsPlay"
                                       IsOn="True" />
                     </StackPanel>
                 </local:ControlExample.Pane>
@@ -32,6 +33,7 @@
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <ToggleSwitch x:Name="tgPlay2"
+                                      Header="IsPlay"
                                       IsOn="True" />
                     </StackPanel>
                 </local:ControlExample.Pane>
@@ -52,6 +54,7 @@
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <ToggleSwitch x:Name="tgPlay3"
+                                      Header="IsPlay"
                                       IsOn="True" />
                         <Slider x:Name="slSpeed"
                                 Header="ScrollingPixelsPreSecond"
@@ -73,6 +76,7 @@
                 <local:ControlExample.Pane>
                     <StackPanel Spacing="10">
                         <ToggleSwitch x:Name="tgPlay4"
+                                      Header="IsPlay"
                                       IsOn="True" />
                     </StackPanel>
                 </local:ControlExample.Pane>
