@@ -128,7 +128,6 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
-- SpringAnimationTextBlock
 - FlipSide
 - LongShadowTextBlock
 - PagerControl [It will be removed with the release of WASDK v1.5]

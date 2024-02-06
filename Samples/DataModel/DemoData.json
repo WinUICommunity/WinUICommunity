@@ -16,6 +16,13 @@
           "ImagePath": "ms-appx:///Assets/Fluent/watermark.png"
         },
         {
+          "UniqueId": "WinUICommunity.DemoApp.Pages.ColorfulShadowTextControlPage",
+          "Title": "ColorfulShadowTextControl",
+          "Subtitle": "ColorfulShadowTextControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/styles.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
+        },
+        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.ShadowTextControlPage",
           "Title": "ShadowTextControl",
           "Subtitle": "ShadowTextControl",
@@ -28,13 +35,6 @@
           "Subtitle": "OutlineTextControl",
           "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
           "ImagePath": "ms-appx:///Assets/Fluent/frame.png"
-        },
-        {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.ColorfulShadowTextControlPage",
-          "Title": "ColorfulShadowTextControl",
-          "Subtitle": "ColorfulShadowTextControl",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/styles.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
         },
         {
           "UniqueId": "WinUICommunity.DemoApp.Pages.WatermarkPage",
@@ -134,13 +134,6 @@
           "UniqueId": "WinUICommunity.DemoApp.Pages.FlipSidePage",
           "Title": "FlipSide",
           "Subtitle": "FlipSide",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/autoScrollView.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/autoScrollView.png"
-        },
-        {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.SpringAnimationTextBlockPage",
-          "Title": "SpringAnimationTextBlock",
-          "Subtitle": "SpringAnimationTextBlock",
           "ImageIconPath": "ms-appx:///Assets/Fluent/autoScrollView.png",
           "ImagePath": "ms-appx:///Assets/Fluent/autoScrollView.png"
         },
