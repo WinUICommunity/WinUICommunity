@@ -16,20 +16,6 @@
           "ImagePath": "ms-appx:///Assets/Fluent/watermark.png"
         },
         {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.ColorfulShadowTextControlPage",
-          "Title": "ColorfulShadowTextControl",
-          "Subtitle": "ColorfulShadowTextControl",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/styles.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
-        },
-        {
-          "UniqueId": "WinUICommunity.DemoApp.Pages.ShadowTextControlPage",
-          "Title": "ShadowTextControl",
-          "Subtitle": "ShadowTextControl",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/styles.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
-        },
-        {
           "UniqueId": "WinUICommunity.DemoApp.Pages.OutlineTextControlPage",
           "Title": "OutlineTextControl",
           "Subtitle": "OutlineTextControl",
