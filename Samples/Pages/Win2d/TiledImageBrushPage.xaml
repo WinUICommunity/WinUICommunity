@@ -13,13 +13,12 @@
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
             <local:ControlExample DocPage="media/tiledImageBrush"
-                                  DocType="Win2d"
-                                  RequestedTheme="Dark">
+                                  DocType="Win2d">
                 <local:ControlExample.Xaml>
                     <x:String>
                         &lt;Rectangle &gt;
                         &lt;Rectangle.Fill&gt;
-                        &lt;wuc:TiledImageBrush Source="ms-appx:///Assets/flutter.png" /&gt;
+                        &lt;wuc:TiledImageBrush Source="ms-appx:///Assets/cloud.png" /&gt;
                         &lt;/Rectangle.Fill&gt;
                         &lt;/Rectangle &gt;
                     </x:String>
@@ -27,7 +26,7 @@
 
                 <Rectangle>
                     <Rectangle.Fill>
-                        <wuc:TiledImageBrush Source="ms-appx:///Assets/flutter.png" />
+                        <wuc:TiledImageBrush Source="ms-appx:///Assets/cloud.png" />
                     </Rectangle.Fill>
                 </Rectangle>
             </local:ControlExample>
