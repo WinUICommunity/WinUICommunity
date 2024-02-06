@@ -128,6 +128,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
+- ColorfulShimmingEffect
 - FlipSide
 - LongShadowTextBlock
 - PagerControl [It will be removed with the release of WASDK v1.5]
@@ -256,6 +257,9 @@ download and install our vsix package from Marketplace:
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
 ## History
+
+### ColorfulShimmingEffect
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/ColorfulShimmingEffect.gif)
 
 ### TiledImageBrush
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TiledImageBrush.png)

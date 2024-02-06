@@ -10,6 +10,7 @@ Controls\Ported\SettingsExpander\SettingsExpander.xaml
 Controls\Ported\TitleBar\TitleBar.xaml
 Themes\Styles\Button.xaml
 Themes\Styles\Common.xaml
+Themes\Styles\Controls\ColorfulShimmingEffect.xaml
 Themes\Styles\Controls\CopyButton.xaml
 Themes\Styles\Controls\Divider.xaml
 Themes\Styles\Controls\FlipSide.xaml
@@ -217,6 +218,17 @@ Themes\Styles\TextBlock.xaml
     <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
     <Setter Property="Orientation" Value="Horizontal" />
     <Setter Property="Spacing" Value="8" />
+  </Style>
+  <Style TargetType="local:ColorfulShimmingEffect">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:ColorfulShimmingEffect">
+          <StackPanel x:Name="PART_Root">
+            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{TemplateBinding Content}" />
+          </StackPanel>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
   </Style>
   <Style TargetType="local:Divider">
     <Setter Property="Margin" Value="0,24" />
