@@ -15,13 +15,13 @@
             <local:ControlExample DocPage="controls/flipSide">
                 <local:ControlExample.Xaml>
                     <x:String>
-                        &lt;wuc:FlipSide IsFlipped="True" &gt;
-                        &lt;wuc:FlipSide.Side1&gt;
-                        &lt;TextBlock Text="Side 1" /&gt;
-                        &lt;/wuc:FlipSide.Side1&gt;
-                        &lt;wuc:FlipSide.Side2&gt;
-                        &lt;TextBlock Text="Side 2" /&gt;
-                        &lt;/wuc:FlipSide.Side2&gt;
+                        &lt;wuc:FlipSide IsFlipped="True" &gt; #nl#
+                        &lt;wuc:FlipSide.Side1&gt; #nl#
+                        &lt;TextBlock Text="Side 1" /&gt; #nl#
+                        &lt;/wuc:FlipSide.Side1&gt; #nl#
+                        &lt;wuc:FlipSide.Side2&gt; #nl#
+                        &lt;TextBlock Text="Side 2" /&gt; #nl#
+                        &lt;/wuc:FlipSide.Side2&gt; #nl#
                         &lt;/wuc:FlipSide &gt;
                     </x:String>
                 </local:ControlExample.Xaml>

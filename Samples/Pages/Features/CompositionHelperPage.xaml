@@ -22,12 +22,9 @@
                 </local:ControlExample.CSharp>
                 <local:ControlExample.Xaml>
                     <x:String>
-                        &lt;Grid&gt;
-                        &lt;Rectangle x:Name="ShadowElement" / &gt;
-                        &lt;TextBlock x:Name="TextBlockElement"
-                        FontSize="148"
-                        FontWeight="Bold"
-                        Text="00:10:15" /&gt;
+                        &lt;Grid&gt; #nl#
+                        &lt;Rectangle x:Name="ShadowElement" / &gt; #nl#
+                        &lt;TextBlock x:Name="TextBlockElement" FontSize="148" FontWeight="Bold" Text="00:10:15" /&gt; #nl#
                         &lt;/Grid &gt;
                     </x:String>
                 </local:ControlExample.Xaml>

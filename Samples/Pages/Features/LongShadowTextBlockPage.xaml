@@ -15,13 +15,10 @@
             <local:ControlExample DocPage="controls/longShadowTextBlock">
                 <local:ControlExample.Xaml>
                     <x:String>
-                        &lt;wuc:LongShadowTextBlock Depth="100"
-                        TextOpacity="0.3"
-                        Color="GreenYellow"&gt;
-                        &lt;wuc:LongShadowTextBlock.TextBlock&gt;
-                        &lt;TextBlock FontSize="148"
-                        Text="00:10:45" /&gt;
-                        &lt;/wuc:LongShadowTextBlock.TextBlock&gt;
+                        &lt;wuc:LongShadowTextBlock Depth="100" TextOpacity="0.3" Color="GreenYellow"&gt; #nl#
+                        &lt;wuc:LongShadowTextBlock.TextBlock&gt; #nl#
+                        &lt;TextBlock FontSize="148" Text="00:10:45" /&gt; #nl#
+                        &lt;/wuc:LongShadowTextBlock.TextBlock&gt; #nl#
                         &lt;/wuc:LongShadowTextBlock&gt;
                     </x:String>
                 </local:ControlExample.Xaml>

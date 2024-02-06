@@ -24,7 +24,7 @@
                                   DocType="Core">
                 <local:ControlExample.CSharp>
                     <x:String>
-                        Localizer.Get().SetLanguage("fa-IR");
+                        Localizer.Get().SetLanguage("fa-IR");#nl#
                         var localizedText = Localizer.Get().GetLocalizedStrings("langDetail").FirstOrDefault();
                     </x:String>
                 </local:ControlExample.CSharp>
