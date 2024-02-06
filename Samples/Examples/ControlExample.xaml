@@ -13,7 +13,7 @@
     <wuc:OptionsPageControl.Resources>
         <Thickness x:Key="ExpanderChevronMargin">0</Thickness>
         <x:Double x:Key="ExpanderChevronButtonSize">0</x:Double>
-        <Thickness x:Key="ExpanderHeaderBorderThickness">0,0,0,0</Thickness>
+        <Thickness x:Key="ExpanderHeaderBorderThickness">0,1,0,0</Thickness>
     </wuc:OptionsPageControl.Resources>
     <wuc:OptionsPageControl.Bar>
         <StackPanel>
@@ -57,7 +57,7 @@
     </wuc:OptionsPageControl.BarFooter>
     <wuc:OptionsPageControl.Footer>
         <Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-              BorderThickness="0,1,0,0">
+              BorderThickness="0">
             <Pivot x:Name="pivot"
                    x:DefaultBindMode="OneWay">
                 <Pivot.Resources>
