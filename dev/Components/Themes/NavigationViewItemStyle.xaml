@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals">
+                    xmlns:animatedvisuals="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
+                    xmlns:local="using:WinUICommunity">
 
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
@@ -138,6 +139,8 @@
     <x:Double x:Key="NavigationViewItemOnLeftMinHeight">36</x:Double>
     <Thickness x:Key="NavigationViewCompactItemContentPresenterMargin">2,0,0,0</Thickness>
     <Thickness x:Key="NavigationViewItemContentPresenterMargin">2,0,0,2</Thickness>
+    <Thickness x:Key="NavigationViewItemExpandChevronMargin">0</Thickness>
+    <Thickness x:Key="NavigationViewItemExPadding">0</Thickness>
 
     <Style x:Key="MUX_NavigationViewItemPresenterStyleWhenOnLeftPane"
            TargetType="NavigationViewItemPresenter">
@@ -154,6 +157,7 @@
                     <Grid x:Name="LayoutRoot"
                           MinHeight="{ThemeResource NavigationViewItemOnLeftMinHeight}"
                           Margin="{ThemeResource NavigationViewItemButtonMargin}"
+                          Padding="{ThemeResource NavigationViewItemExPadding}"
                           Background="{TemplateBinding Background}"
                           BorderThickness="{ThemeResource NavigationViewItemBorderThickness}"
                           Control.IsTemplateFocusTarget="True"
@@ -530,7 +534,8 @@
         </Setter>
     </Style>
 
-    <Style TargetType="NavigationViewItem">
+    <Style x:Key="NavigationViewItemExBaseStyle"
+           TargetType="NavigationViewItem">
         <Setter Property="Foreground" Value="{ThemeResource NavigationViewItemForeground}" />
         <Setter Property="Background" Value="{ThemeResource NavigationViewItemBackground}" />
         <Setter Property="BorderBrush" Value="{ThemeResource NavigationViewItemBorderBrush}" />
@@ -543,10 +548,10 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="TabNavigation" Value="Once" />
         <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="NavigationViewItem">
-
                     <Grid x:Name="NVIRootGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
@@ -674,5 +679,25 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="NavigationViewItemTopLevelStyle"
+           BasedOn="{StaticResource NavigationViewItemExBaseStyle}"
+           TargetType="NavigationViewItem">
+        <Setter Property="local:NavigationViewItemAttach.IsSubItem" Value="False" />
+
+    </Style>
+    <Style x:Key="NavigationViewItemSubLevelStyle"
+           BasedOn="{StaticResource NavigationViewItemExBaseStyle}"
+           TargetType="NavigationViewItem">
+        <Setter Property="local:NavigationViewItemAttach.IsSubItem" Value="True" />
+    </Style>
+
+    <local:NavigationViewItemStyleSelector x:Key="NavigationViewItemStyleSelector"
+                                           SubLevelTemplate="{StaticResource NavigationViewItemSubLevelStyle}"
+                                           TopLevelTemplate="{StaticResource NavigationViewItemTopLevelStyle}" />
+
+    <Style TargetType="NavigationView">
+        <Setter Property="MenuItemContainerStyleSelector" Value="{StaticResource NavigationViewItemStyleSelector}" />
     </Style>
 </ResourceDictionary>

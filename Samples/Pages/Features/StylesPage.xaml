@@ -8,6 +8,7 @@
       xmlns:models="using:WinUICommunity.DemoApp.Models"
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
+
     <TabView Margin="10"
              IsAddTabButtonVisible="False">
         <TabViewItem Header="General"
@@ -200,6 +201,28 @@
                         </TabView>
                     </local:ControlExample>
                 </StackPanel>
+            </ScrollViewer>
+        </TabViewItem>
+        <TabViewItem Header="NavigationViewItem"
+                     IsClosable="False">
+            <TabViewItem.Resources>
+                <ResourceDictionary Source="ms-appx:///WinUICommunity.Components/Themes/NavigationViewItemStyle.xaml" />
+            </TabViewItem.Resources>
+            <ScrollViewer>
+                <Grid Margin="10">
+                    <NavigationView PaneDisplayMode="Left">
+                        <NavigationView.MenuItems>
+                            <NavigationViewItem Content="Item 1" />
+                            <NavigationViewItem Content="Item 2" />
+                            <NavigationViewItem Content="Item 3">
+                                <NavigationViewItem.MenuItems>
+                                    <NavigationViewItem Content="Sub Item 1" />
+                                    <NavigationViewItem Content="Sub Item 2" />
+                                </NavigationViewItem.MenuItems>
+                            </NavigationViewItem>
+                        </NavigationView.MenuItems>
+                    </NavigationView>
+                </Grid>
             </ScrollViewer>
         </TabViewItem>
     </TabView>

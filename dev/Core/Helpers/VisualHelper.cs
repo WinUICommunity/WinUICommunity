@@ -30,4 +30,17 @@ public static class VisualHelper
             }
         }
     }
+
+    public static T FindParentOfType<T>(DependencyObject item)
+    {
+        while (item != null)
+        {
+            item = VisualTreeHelper.GetParent(item);
+            if (item is T expectedParent)
+            {
+                return expectedParent;
+            }
+        }
+        return default;
+    }
 }
