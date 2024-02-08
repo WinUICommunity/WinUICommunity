@@ -128,6 +128,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
+- NavigationViewItem Style
 - ColorfulShimmingEffect
 - FlipSide
 - LongShadowTextBlock
@@ -182,9 +183,7 @@ Experience WinUI 3 quickly and easily with the help of Win2D Components, Everyth
 Components Includes custom controls and styles.
 
 - TiledImageBrush
-- ShadowTextControl
 - OutlineTextControl
-- ColorfulShadowTextControl
 - WaveCircle
 - BlurAnimationHelper
 - Watermark
@@ -258,14 +257,17 @@ download and install our vsix package from Marketplace:
 
 ## History
 
+### NavigationViewItem Style
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/NavigationViewItemStyle.gif)
+
 ### ColorfulShimmingEffect
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/ColorfulShimmingEffect.gif)
 
-### TiledImageBrush
-![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TiledImageBrush.png)
+### TiledImageBrush /Win2d
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TiledImageBrush.png)
 
-### OutlineTextControl
-![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/OutlineTextControl.png)
+### OutlineTextControl /Win2d
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/OutlineTextControl.png)
 
 ### FlipSide
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FlipSide.gif)
