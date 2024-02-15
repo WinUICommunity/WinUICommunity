@@ -230,29 +230,6 @@ Themes\Styles\TextBlock.xaml
       </Setter.Value>
     </Setter>
   </Style>
-  <Style TargetType="local:Divider">
-    <Setter Property="Margin" Value="0,24" />
-    <Setter Property="LineStroke" Value="{ThemeResource DividerStrokeColorDefaultBrush}" />
-    <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
-    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="local:Divider">
-          <Grid>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition x:Name="PART_ColumnStart" Width="*" />
-              <ColumnDefinition Width="Auto" />
-              <ColumnDefinition x:Name="PART_ColumnEnd" Width="*" />
-            </Grid.ColumnDefinitions>
-            <Line x:Name="PART_LeftLine" VerticalAlignment="Center" Stretch="Fill" Stroke="{TemplateBinding LineStroke}" StrokeDashArray="{Binding LineStrokeDashArray, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource LineDashStrokeArrayConverter}}" StrokeEndLineCap="Square" StrokeStartLineCap="Square" StrokeThickness="{TemplateBinding LineStrokeThickness}" X2="1" />
-            <ContentPresenter x:Name="PART_Content" Grid.Column="1" Margin="{TemplateBinding ContentPadding}" VerticalAlignment="Center" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" />
-            <Line x:Name="PART_RightLine" Grid.Column="2" VerticalAlignment="Center" Stretch="Fill" Stroke="{TemplateBinding LineStroke}" StrokeDashArray="{Binding LineStrokeDashArray, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource LineDashStrokeArrayConverter}}" StrokeEndLineCap="Square" StrokeStartLineCap="Square" StrokeThickness="{TemplateBinding LineStrokeThickness}" X2="1" />
-            <Line x:Name="PART_StretchLine" Grid.ColumnSpan="3" HorizontalAlignment="Center" Stretch="Fill" Stroke="{TemplateBinding LineStroke}" StrokeDashArray="{Binding LineStrokeDashArray, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource LineDashStrokeArrayConverter}}" StrokeEndLineCap="Square" StrokeStartLineCap="Square" StrokeThickness="{TemplateBinding LineStrokeThickness}" Visibility="Collapsed" Y2="1" />
-          </Grid>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
   <Style TargetType="local:FlipSide">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="Template">
@@ -1177,82 +1154,6 @@ Themes\Styles\TextBlock.xaml
     <TextBlock FontFamily="{ThemeResource ContentControlThemeFontFamily}" Style="{ThemeResource BodyTextBlockStyle}" Text="{Binding}" />
   </DataTemplate>
   <SolidColorBrush x:Key="ShieldBorderBrush" Color="{ThemeResource CardStrokeColorDefaultBrush}" />
-  <Style TargetType="local:Shield">
-    <Setter Property="BorderBrush" Value="{ThemeResource ShieldBorderBrush}" />
-    <Setter Property="Height" Value="20" />
-    <Setter Property="BorderThickness" Value="0" />
-    <Setter Property="Foreground" Value="{ThemeResource TextOnAccentFillColorDefault}" />
-    <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
-    <Setter Property="Color" Value="{ThemeResource AccentAAFillColorTertiaryBrush}" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="local:Shield">
-          <Grid>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="Auto" />
-              <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" Background="#555" CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource CornerRadiusSplitConverter}, ConverterParameter='1,0,0,1'}">
-              <ContentPresenter Margin="4,0" VerticalAlignment="Center" Content="{TemplateBinding Subject}" Foreground="{TemplateBinding Foreground}" />
-            </Border>
-            <Border Grid.Column="1" Background="{TemplateBinding Color}" CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource CornerRadiusSplitConverter}, ConverterParameter='0,1,1,0'}">
-              <ContentPresenter Margin="4,0" VerticalAlignment="Center" Content="{TemplateBinding Status}" Foreground="{TemplateBinding Foreground}" />
-            </Border>
-          </Grid>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-  <Style TargetType="local:WaveProgressBar">
-    <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
-    <Setter Property="WaveFill" Value="{ThemeResource AccentAAFillColorDefaultBrush}" />
-    <Setter Property="Background" Value="{ThemeResource CardStrokeColorDefaultSolidBrush}" />
-    <Setter Property="WaveStroke" Value="{ThemeResource AccentAAFillColorSecondaryBrush}" />
-    <Setter Property="Width" Value="100" />
-    <Setter Property="WaveThickness" Value="2" />
-    <Setter Property="BorderThickness" Value="1" />
-    <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
-    <Setter Property="Text" Value="{Binding Value, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource WaveProgressBarValueToPercentConverter}}" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="local:WaveProgressBar">
-          <StackPanel>
-            <VisualStateManager.VisualStateGroups>
-              <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal" />
-                <VisualState x:Name="Indeterminate">
-                  <Storyboard RepeatBehavior="Forever">
-                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Wave" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)">
-                      <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-400" />
-                    </DoubleAnimationUsingKeyFrames>
-                  </Storyboard>
-                </VisualState>
-              </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
-            <Border Windows10version1809:CornerRadius="90,90,90,90" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-              <Viewbox>
-                <Border x:Name="PART_Clip" Width="200" Height="200" Windows10version1809:CornerRadius="100,100,100,100">
-                  <Path x:Name="PART_Wave" Width="600" Height="250" Margin="0,0,-400,-20" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="{TemplateBinding WaveFill}" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Stroke="{TemplateBinding WaveStroke}" StrokeThickness="{TemplateBinding WaveThickness}" UseLayoutRounding="False">
-                    <Path.Data>
-                      <PathGeometry>
-                        <PathFigure StartPoint="0,1">
-                          <PolyBezierSegment Points="0.5,1 0.5,0 1,0" />
-                          <PolyBezierSegment Points="1.5,0 1.5,1 2,1" />
-                          <PolyBezierSegment Points="2.5,1 2.5,0 3,0" />
-                          <PolyLineSegment Points="3,0 3,10, 0,10 0,1" />
-                        </PathFigure>
-                      </PathGeometry>
-                    </Path.Data>
-                  </Path>
-                </Border>
-              </Viewbox>
-            </Border>
-            <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="{Binding Value, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource WaveProgressBarValueToPercentConverter}}" Visibility="{Binding ShowText, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BoolToVisibilityConverter}}" />
-          </StackPanel>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
   <local:ValidationEnabledConverter x:Name="CanValidateConverter" />
   <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" FalseValue="Collapsed" TrueValue="Visible" />
   <local:GridLengthConverter x:Key="GridLengthConverter" />
@@ -2477,6 +2378,29 @@ Themes\Styles\TextBlock.xaml
       </Setter.Value>
     </Setter>
   </Style>
+  <Style TargetType="local:Divider">
+    <Setter Property="Margin" Value="0,24" />
+    <Setter Property="LineStroke" Value="{ThemeResource DividerStrokeColorDefaultBrush}" />
+    <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:Divider">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition x:Name="PART_ColumnStart" Width="*" />
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition x:Name="PART_ColumnEnd" Width="*" />
+            </Grid.ColumnDefinitions>
+            <Line x:Name="PART_LeftLine" VerticalAlignment="Center" Stretch="Fill" Stroke="{TemplateBinding LineStroke}" StrokeDashArray="{Binding LineStrokeDashArray, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource LineDashStrokeArrayConverter}}" StrokeEndLineCap="Square" StrokeStartLineCap="Square" StrokeThickness="{TemplateBinding LineStrokeThickness}" X2="1" />
+            <ContentPresenter x:Name="PART_Content" Grid.Column="1" Margin="{TemplateBinding ContentPadding}" VerticalAlignment="Center" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" />
+            <Line x:Name="PART_RightLine" Grid.Column="2" VerticalAlignment="Center" Stretch="Fill" Stroke="{TemplateBinding LineStroke}" StrokeDashArray="{Binding LineStrokeDashArray, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource LineDashStrokeArrayConverter}}" StrokeEndLineCap="Square" StrokeStartLineCap="Square" StrokeThickness="{TemplateBinding LineStrokeThickness}" X2="1" />
+            <Line x:Name="PART_StretchLine" Grid.ColumnSpan="3" HorizontalAlignment="Center" Stretch="Fill" Stroke="{TemplateBinding LineStroke}" StrokeDashArray="{Binding LineStrokeDashArray, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource LineDashStrokeArrayConverter}}" StrokeEndLineCap="Square" StrokeStartLineCap="Square" StrokeThickness="{TemplateBinding LineStrokeThickness}" Visibility="Collapsed" Y2="1" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
   <Style x:Key="DefaultFlyoutMenuButtonStyle" TargetType="local:FlyoutMenuButton">
     <Setter Property="HorizontalAlignment" Value="Stretch" />
     <Setter Property="VerticalAlignment" Value="Stretch" />
@@ -3125,6 +3049,32 @@ Themes\Styles\TextBlock.xaml
       </Setter.Value>
     </Setter>
   </Style>
+  <Style TargetType="local:Shield">
+    <Setter Property="BorderBrush" Value="{ThemeResource ShieldBorderBrush}" />
+    <Setter Property="Height" Value="20" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Foreground" Value="{ThemeResource TextOnAccentFillColorDefault}" />
+    <Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
+    <Setter Property="Color" Value="{ThemeResource AccentAAFillColorTertiaryBrush}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:Shield">
+          <Grid>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Background="#555" CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource CornerRadiusSplitConverter}, ConverterParameter='1,0,0,1'}">
+              <ContentPresenter Margin="4,0" VerticalAlignment="Center" Content="{TemplateBinding Subject}" Foreground="{TemplateBinding Foreground}" />
+            </Border>
+            <Border Grid.Column="1" Background="{TemplateBinding Color}" CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource CornerRadiusSplitConverter}, ConverterParameter='0,1,1,0'}">
+              <ContentPresenter Margin="4,0" VerticalAlignment="Center" Content="{TemplateBinding Status}" Foreground="{TemplateBinding Foreground}" />
+            </Border>
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
   <Style TargetType="local:SimpleSettingsGroup">
     <Setter Property="ItemsPanel">
       <Setter.Value>
@@ -3336,6 +3286,56 @@ Themes\Styles\TextBlock.xaml
             <contract7Present:ContentPresenter x:Name="DescriptionPresenter" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Load="False" AutomationProperties.AccessibilityView="Raw" Content="{TemplateBinding Description}" Foreground="{ThemeResource SystemControlDescriptionTextForegroundBrush}" />
             <ItemsRepeater x:Name="ErrorsRepeater" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Load="False" ItemTemplate="{Binding Path=(local:Validation.ErrorTemplate), RelativeSource={RelativeSource TemplatedParent}}" ItemsSource="{Binding Path=(local:Validation.Errors), RelativeSource={RelativeSource TemplatedParent}}" />
           </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="local:WaveProgressBar">
+    <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+    <Setter Property="WaveFill" Value="{ThemeResource AccentAAFillColorDefaultBrush}" />
+    <Setter Property="Background" Value="{ThemeResource CardStrokeColorDefaultSolidBrush}" />
+    <Setter Property="WaveStroke" Value="{ThemeResource AccentAAFillColorSecondaryBrush}" />
+    <Setter Property="Width" Value="100" />
+    <Setter Property="WaveThickness" Value="2" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}" />
+    <Setter Property="Text" Value="{Binding Value, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource WaveProgressBarValueToPercentConverter}}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:WaveProgressBar">
+          <StackPanel>
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="CommonStates">
+                <VisualState x:Name="Normal" />
+                <VisualState x:Name="Indeterminate">
+                  <Storyboard RepeatBehavior="Forever">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Wave" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)">
+                      <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-400" />
+                    </DoubleAnimationUsingKeyFrames>
+                  </Storyboard>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border Windows10version1809:CornerRadius="90,90,90,90" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+              <Viewbox>
+                <Border x:Name="PART_Clip" Width="200" Height="200" Windows10version1809:CornerRadius="100,100,100,100">
+                  <Path x:Name="PART_Wave" Width="600" Height="250" Margin="0,0,-400,-20" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="{TemplateBinding WaveFill}" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Stroke="{TemplateBinding WaveStroke}" StrokeThickness="{TemplateBinding WaveThickness}" UseLayoutRounding="False">
+                    <Path.Data>
+                      <PathGeometry>
+                        <PathFigure StartPoint="0,1">
+                          <PolyBezierSegment Points="0.5,1 0.5,0 1,0" />
+                          <PolyBezierSegment Points="1.5,0 1.5,1 2,1" />
+                          <PolyBezierSegment Points="2.5,1 2.5,0 3,0" />
+                          <PolyLineSegment Points="3,0 3,10, 0,10 0,1" />
+                        </PathFigure>
+                      </PathGeometry>
+                    </Path.Data>
+                  </Path>
+                </Border>
+              </Viewbox>
+            </Border>
+            <TextBlock Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="{Binding Value, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource WaveProgressBarValueToPercentConverter}}" Visibility="{Binding ShowText, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BoolToVisibilityConverter}}" />
+          </StackPanel>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
