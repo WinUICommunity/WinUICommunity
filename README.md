@@ -180,7 +180,7 @@ For more info See the [Components](dev/Components/README.md) and [Docs](https://
 ### Win2D
 Experience WinUI 3 quickly and easily with the help of Win2D Components, Everything you need to develop an application is gathered in one place.
 
-Components Includes custom controls and styles.
+Win2d Includes custom controls and styles.
 
 - TiledImageBrush
 - OutlineTextControl

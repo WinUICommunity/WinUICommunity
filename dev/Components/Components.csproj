@@ -1,17 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <NoWarn>CS8632</NoWarn>
-    <Version>6.3.0</Version>
+    <Version>6.4.0</Version>
     <IsTrimmable>false</IsTrimmable>
     <Namespace>WinUICommunity.Components</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
     <AssemblyName>$(Namespace)</AssemblyName>
-    <Description>Windows 11 settings page in WinUI 3 apps With many useful controls and styles</Description>
+    <Description>
+      Experience WinUI 3 quickly and easily with the help of Components, Everything you need to develop an application is gathered in one place. Components Includes custom controls and styles.
+    </Description>
     <PackageTags>winui winui3 win11 xaml SettingsUI Components settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="XAMLTools.MSBuild" Version="1.0.0-alpha0143">
+    <PackageReference Include="XAMLTools.MSBuild" Version="1.0.0-alpha0164">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
