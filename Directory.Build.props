@@ -28,7 +28,9 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <TargetFrameworks>net8.0-windows10.0.22621.0</TargetFrameworks>
   </PropertyGroup>
-  
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <EnableMsixTooling>true</EnableMsixTooling>
+  </PropertyGroup>
   <!-- The NuGet versions of dependencies to build against. -->
   <ItemGroup>
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.240211001" />

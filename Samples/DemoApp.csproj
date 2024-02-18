@@ -44,18 +44,13 @@
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
   </ItemGroup>
-  <ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'false'">
+  <ItemGroup>
     <ProjectReference Include="..\dev\Components\Components.csproj" />
     <ProjectReference Include="..\dev\Win2D\Win2D.csproj" />
     <ProjectReference Include="..\dev\Core\Core.csproj" />
     <ProjectReference Include="..\dev\LandingPages\LandingPages.csproj" />
   </ItemGroup>
-  <ItemGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <PackageReference Include="WinUICommunity.Components" Version="*" />
-    <PackageReference Include="WinUICommunity.Win2D" Version="*" />
-    <PackageReference Include="WinUICommunity.Core" Version="*" />
-    <PackageReference Include="WinUICommunity.LandingPages" Version="*" />
-  </ItemGroup>
+
   <!-- 
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
     Explorer "Package and Publish" context menu entry to be enabled for this project even if 
