@@ -1,0 +1,120 @@
+﻿name: GitHub Release Publisher
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  # Configuring Project
+  PROJECT_PATH: Samples/DemoApp.csproj
+  APP_NAME: WinUICommunity-Gallery
+
+  # Configuring Dotnet Build Commands
+  PUBLISH_OUTPUT_FOLDER: publish
+  PUBLISH_SELF_CONTAINED: false
+  PUBLISH_SINGLE_FILE: false
+  PUBLISH_READY_TO_RUN: false
+  PUBLISH_TRIMMED: false
+
+  # Configuring GitHub Release
+  IS_PRE_RELEASE: false
+  SKIP_IF_RELEASE_EXIST: true
+  MAKE_LATEST: false
+  ALLOW_UPDATES: false
+  ARTIFACT_ERRORS_FAIL_BUILD: false
+
+jobs:
+  build:
+    runs-on: windows-latest
+    outputs: # For accessing them from 'release' job
+      app-version: ${{ steps.get-version.outputs.version }}
+      IS_PRE_RELEASE: ${{ env.IS_PRE_RELEASE }}
+    strategy:
+      matrix:
+        platform: [x64, x86] # Change platform if you want to build only a specific platform
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-dotnet@v4
+      with:
+       dotnet-version: '8.0.x'
+
+    # Reading version tag from the csproj file.
+    - uses: kzrnm/get-net-sdk-project-versions-action@v2
+      id: get-version
+      with:
+        proj-path: ${{ env.PROJECT_PATH }}
+
+    # Building with configured commands
+    - run: dotnet publish ${{ env.PROJECT_PATH }} -c Release -r win-${{ matrix.platform }} /p:GITHUB_ACTIONS=true -p:Platform=${{ matrix.platform }} --self-contained ${{ env.PUBLISH_SELF_CONTAINED }} -p:PublishSingleFile=${{ env.PUBLISH_SINGLE_FILE }} -p:PublishReadyToRun=${{ env.PUBLISH_READY_TO_RUN }} -p:PublishTrimmed=${{ env.PUBLISH_TRIMMED }} --output ${{ env.PUBLISH_OUTPUT_FOLDER }}/${{ matrix.platform }}
+
+    # Zipping folder and all files
+    - uses: vimtor/action-zip@v1.2
+      with:
+        files: ${{ env.PUBLISH_OUTPUT_FOLDER }}/${{ matrix.platform }}
+        recursive: true
+        dest: ${{ env.APP_NAME }}-v${{ steps.get-version.outputs.version }}-${{ matrix.platform }}.zip
+
+    # Uploading all zip files to access them in the 'release' job
+    - uses: actions/upload-artifact@v4
+      with:
+        name: artifacts-${{ matrix.platform }}
+        path: ${{ env.APP_NAME }}-v${{ steps.get-version.outputs.version }}-${{ matrix.platform }}.zip
+
+    # Checking version suffix for words like [alpha, beta, preview, and experiment]. Marking the release as a pre-release if any exists.
+    - run: echo "IS_PRE_RELEASE=true" >> $env:GITHUB_ENV    
+      if: contains(fromJson('["alpha", "beta", "preview", "experiment"]'), steps.get-version.outputs.version-suffix)
+    
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      # Read some variables from the 'build' job
+      APP_VERSION: ${{ needs.build.outputs.app-version }}
+      IS_PRE_RELEASE: ${{ needs.build.outputs.IS_PRE_RELEASE }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Downloading all zip files into the GitHub root directory (uploaded in 'build' job)
+      - uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+
+      # Configuring git to create a tag
+      - run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+
+          TAG_NAME="v${{ env.APP_VERSION }}"
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+
+      # Installing a package for generating a changelog file
+      - run: npm install -g auto-changelog  
+      - run: auto-changelog --commit-limit false --starting-version v${{ env.APP_VERSION }} --ending-version v${{ env.APP_VERSION }} --hide-credit  
+      
+      # Creating a Release in GitHub
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "${{ env.APP_NAME }}-v${{ env.APP_VERSION }}-*.zip"
+          bodyFile: "CHANGELOG.md"
+          name: v${{ env.APP_VERSION }}
+          tag: v${{ env.APP_VERSION }}
+          prerelease: ${{ env.IS_PRE_RELEASE }}
+          skipIfReleaseExists: ${{ env.SKIP_IF_RELEASE_EXIST }}
+          makeLatest: ${{ env.MAKE_LATEST }}
+          allowUpdates: ${{ env.ALLOW_UPDATES }}
+          artifactErrorsFailBuild: ${{ env.ARTIFACT_ERRORS_FAIL_BUILD }}
+
+
+
+      # - uses: softprops/action-gh-release@v1
+      #   with:
+      #     name: v${{ env.APP_VERSION }}
+      #     tag_name: v${{ env.APP_VERSION }}
+      #     body_path: CHANGELOG.md
+      #     prerelease: ${{ env.PUBLISH_PRE_RELEASE }}
+      #     files: |
+      #       ${{ env.APP_NAME }}-v${{ env.APP_VERSION }}-*.zip
