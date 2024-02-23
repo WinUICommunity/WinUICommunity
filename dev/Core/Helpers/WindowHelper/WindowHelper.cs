@@ -47,8 +47,11 @@ public partial class WindowHelper
 
     public static void SetWindowCornerRadius(IntPtr hwnd, NativeValues.DWM_WINDOW_CORNER_PREFERENCE cornerPreference)
     {
-        var attribute = NativeValues.DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
-        var preference = (uint)cornerPreference;
-        NativeMethods.DwmSetWindowAttribute(hwnd, attribute, ref preference, sizeof(uint));
+        if (OSVersionHelper.IsWindows11_22000_OrGreater)
+        {
+            var attribute = NativeValues.DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
+            var preference = (uint)cornerPreference;
+            NativeMethods.DwmSetWindowAttribute(hwnd, attribute, ref preference, sizeof(uint));
+        }
     }
 }
