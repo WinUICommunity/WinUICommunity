@@ -372,7 +372,7 @@ public partial class PagerControl : Control
 
     private void RaiseSelectedIndexChanged()
     {
-        var args = new PagerControlSelectedIndexChangedEventArgs(lastSelectedPageIndex, SelectedPageIndex);
+        var args = new PagerControlSelectedIndexChangedEventArgs(SelectedPageIndex, lastSelectedPageIndex);
         SelectedIndexChanged?.Invoke(this, args);
     }
 
