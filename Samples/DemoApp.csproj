@@ -10,9 +10,8 @@
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
-    <Version>6.5.0-preview1</Version>
+    <Version>6.4.1</Version>
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
-    <NoWarn>WMC1506;CS8632</NoWarn>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <GITHUB_ACTIONS>false</GITHUB_ACTIONS>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>

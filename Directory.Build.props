@@ -6,7 +6,8 @@
     <UseWinUI>true</UseWinUI>
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Latest</LangVersion>
-
+    <NoWarn>WMC1506;CA1416;CS8632;CS0414</NoWarn>
+    
     <OutputPath>$(SolutionDir)output\$(MSBuildProjectName)\</OutputPath>
 
     <!-- The NuGet package options -->
