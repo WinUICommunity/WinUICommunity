@@ -13,6 +13,8 @@ public interface IThemeService
     void ConfigFallbackColor();
     void ConfigElementTheme(ElementTheme elementTheme = ElementTheme.Default, bool force = false);
     void ConfigTitleBar(TitleBarCustomization titleBarCustomization);
+
+    [Obsolete("Mica backdrop automatically applies a fallback color, so there is no need to set it. this method will be removed in next version.")]
     void ConfigBackdropFallBackColorForUnSupportedOS(Brush? brush);
 
     SystemBackdrop GetSystemBackdrop();
