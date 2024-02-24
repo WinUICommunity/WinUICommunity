@@ -104,7 +104,7 @@ See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
 
 ## Contributors
 
-<a href="https://github.com/WinUICommunity/WinUICommunity/graphs/contributors">
+<a href="https://github.com/WinUICommunity/WinUICommunity/graphs/contributors?anon=1">
   <img src="https://contrib.rocks/image?repo=WinUICommunity/WinUICommunity" />
 </a>
 
