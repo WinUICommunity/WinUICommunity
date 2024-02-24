@@ -45,6 +45,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
     - uses: actions/setup-dotnet@v4
       with:
        dotnet-version: '8.0.x'
@@ -114,6 +117,8 @@ jobs:
       IS_PRE_RELEASE: ${{ needs.build.outputs.IS_PRE_RELEASE }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       # Downloading all zip files into the GitHub root directory (uploaded in 'build' job)
       - uses: actions/download-artifact@v4
@@ -143,7 +148,7 @@ jobs:
           
       # Installing a package for generating a changelog file
       - run: npm install -g auto-changelog  
-      - run: auto-changelog --commit-limit false --starting-version v${{ env.APP_VERSION }} --ending-version v${{ env.APP_VERSION }} --hide-credit  
+      - run: auto-changelog --tag-pattern .+ --commit-limit false --starting-version v${{ env.APP_VERSION }} --ending-version v${{ env.APP_VERSION }} --hide-credit  
       
       # Creating a Release in GitHub
       - uses: ncipollo/release-action@v1
