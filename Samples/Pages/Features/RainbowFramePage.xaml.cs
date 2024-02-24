@@ -1,9 +1,8 @@
-﻿using System;
-using DemoApp;
-using Microsoft.UI;
+﻿using Microsoft.UI;
 using Microsoft.UI.Xaml.Controls;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 
 public sealed partial class RainbowFramePage : Page
 {

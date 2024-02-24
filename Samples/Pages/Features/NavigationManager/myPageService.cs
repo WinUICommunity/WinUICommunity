@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using WinUICommunity;
-using WinUICommunity.DemoApp.Pages;
 
-namespace DemoApp.Pages;
+namespace WinUIGallery.Pages;
 internal class myPageService : PageServiceEx
 {
     public myPageService()

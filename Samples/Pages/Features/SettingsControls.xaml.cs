@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.ObjectModel;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 
 public class MyDataModel
 {

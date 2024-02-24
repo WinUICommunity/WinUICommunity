@@ -3,8 +3,9 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.VisualBasic;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 
 public sealed partial class GooeyPage : Page
 {

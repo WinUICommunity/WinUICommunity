@@ -1,17 +1,17 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using System.Linq;
-using System;
 using System.Reflection;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using ColorCode;
-using System.IO;
-using DemoApp;
 using ColorCode.Common;
+using System;
+using System.Linq;
+using System.IO;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Examples;
+namespace WinUIGallery.Examples;
 public enum SampleCodePresenterType
 {
     XAML,

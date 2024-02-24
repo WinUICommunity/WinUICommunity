@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 
 public sealed partial class OpacityMaskViewPage : Page
 {

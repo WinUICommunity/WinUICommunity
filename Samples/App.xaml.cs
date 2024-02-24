@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-
-using DemoApp.Pages;
+﻿using WinUIGallery.Pages;
 
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
@@ -13,10 +8,13 @@ using Microsoft.Windows.AppNotifications;
 using Windows.Storage;
 
 using WinUICommunity;
-using WinUICommunity.DemoApp.AppNotification;
-using WinUICommunity.DemoApp.Pages;
+using WinUIGallery.AppNotification;
+using System.Threading.Tasks;
+using System;
+using System.IO;
+using System.Collections.Generic;
 
-namespace DemoApp;
+namespace WinUIGallery;
 
 public partial class App : Application
 {

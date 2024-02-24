@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using DemoApp;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Windows.System;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Examples;
+namespace WinUIGallery.Examples;
 public sealed partial class ControlExample : OptionsPageControl
 {
     public static readonly DependencyProperty DocTypeProperty =

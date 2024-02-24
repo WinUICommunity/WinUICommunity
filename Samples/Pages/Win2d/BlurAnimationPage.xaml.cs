@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.UI.Xaml.Controls;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 public sealed partial class BlurAnimationPage : Page
 {
     public BlurAnimationPage()

@@ -1,7 +1,7 @@
-﻿<Page x:Class="WinUICommunity.DemoApp.Pages.PrintPage"
+﻿<Page x:Class="WinUIGallery.Pages.PrintPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:local="using:WinUICommunity.DemoApp.Examples"
+      xmlns:local="using:WinUIGallery.Examples"
       xmlns:wuc="using:WinUICommunity">
     <ScrollViewer>
         <StackPanel Margin="10"

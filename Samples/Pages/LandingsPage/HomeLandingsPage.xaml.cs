@@ -1,10 +1,8 @@
-﻿using DemoApp;
-using DemoApp.Pages;
-
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 
 public sealed partial class HomeLandingsPage : Page
 {

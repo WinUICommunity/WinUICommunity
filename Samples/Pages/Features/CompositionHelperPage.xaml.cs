@@ -1,7 +1,8 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using Windows.UI;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 
 public sealed partial class CompositionHelperPage : Page
 {
@@ -9,6 +10,5 @@ public sealed partial class CompositionHelperPage : Page
     {
         this.InitializeComponent();
         CompositionHelper.MakeLongShadow(188, 0.3f, TextBlockElement, ShadowElement, Color.FromArgb(255, 250, 110, 93));
-
     }
 }

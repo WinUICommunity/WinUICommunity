@@ -67,7 +67,7 @@
 <img alt="github-releaseDownload" src="https://img.shields.io/github/downloads/WinUICommunity/WinUICommunity/total?logo=github&label=github%20release%20downloads"/>
 <img alt="githubrepo-size" src="https://img.shields.io/github/repo-size/WinUICommunity/WinUICommunity?logo=github"/>
 <img alt="license" src="https://img.shields.io/github/license/WinUICommunity/WinUICommunity"/>
-<img alt="build" src="https://img.shields.io/github/actions/workflow/status/WinUICommunity/WinUICommunity/PublishDemoApp.yml?logo=github"/>
+<img alt="build" src="https://img.shields.io/github/actions/workflow/status/WinUICommunity/WinUICommunity/dotnet-release.yml?logo=github"/>
 </p>
 
 <br>

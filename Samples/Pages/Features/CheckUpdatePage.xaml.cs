@@ -1,7 +1,8 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using System;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 
 public sealed partial class CheckUpdatePage : Page
 {

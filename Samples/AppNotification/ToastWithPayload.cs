@@ -1,10 +1,9 @@
-﻿using DemoApp;
+﻿using Microsoft.Windows.AppNotifications;
 
-using Microsoft.Windows.AppNotifications;
+using WinUIGallery.Pages;
+using WinUICommunity;
 
-using WinUICommunity.DemoApp.Pages;
-
-namespace WinUICommunity.DemoApp.AppNotification;
+namespace WinUIGallery.AppNotification;
 public class ToastWithPayload : IScenario
 {
     private static ToastWithPayload _Instance;

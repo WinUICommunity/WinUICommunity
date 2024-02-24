@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Pages.Features;
+namespace WinUIGallery.Pages.Features;
 
 public class CommandObservableViewModel : Observable
 {

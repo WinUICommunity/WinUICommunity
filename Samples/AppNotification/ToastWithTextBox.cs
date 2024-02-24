@@ -1,7 +1,8 @@
 ﻿using Microsoft.Windows.AppNotifications;
-using WinUICommunity.DemoApp.Pages;
+using WinUIGallery.Pages;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.AppNotification;
+namespace WinUIGallery.AppNotification;
 public class ToastWithTextBox : IScenario
 {
     private static ToastWithTextBox _Instance;

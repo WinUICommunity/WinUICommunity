@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Controls;
-using WinUICommunity.DemoApp.Pages.Features;
+using WinUIGallery.Pages.Features;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 
 public sealed partial class CommandObservablePage : Page
 {

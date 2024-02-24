@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using DemoApp;
 using Microsoft.UI.Xaml.Controls;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 public sealed partial class FileAndFolderPickerPage : Page
 {
     public FileAndFolderPickerPage()

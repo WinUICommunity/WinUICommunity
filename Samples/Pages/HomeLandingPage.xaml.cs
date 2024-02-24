@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml.Navigation;
 
 using WinUICommunity;
 
-namespace DemoApp.Pages;
+namespace WinUIGallery.Pages;
 public sealed partial class HomeLandingPage : Page
 {
     public HomeLandingPage()

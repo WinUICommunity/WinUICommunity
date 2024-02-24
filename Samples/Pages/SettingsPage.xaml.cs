@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Windows.System;
 
-namespace DemoApp.Pages;
+namespace WinUIGallery.Pages;
 public sealed partial class SettingsPage : Page
 {
     public SettingsPage()

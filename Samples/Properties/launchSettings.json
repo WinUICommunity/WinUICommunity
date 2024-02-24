@@ -1,9 +1,9 @@
-{
+﻿{
   "profiles": {
-    "DemoApp (Package)": {
+    "WinUIGallery (Package)": {
       "commandName": "MsixPackage"
     },
-    "DemoApp (Unpackaged)": {
+    "WinUIGallery (Unpackaged)": {
       "commandName": "Project"
     }
   }

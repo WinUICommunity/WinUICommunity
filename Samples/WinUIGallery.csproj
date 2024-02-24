@@ -3,7 +3,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <RootNamespace>WinUICommunity.DemoApp</RootNamespace>
+    <RootNamespace>WinUIGallery</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>

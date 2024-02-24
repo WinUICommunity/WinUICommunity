@@ -8,8 +8,9 @@ using Windows.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System.Collections.Generic;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Examples;
+namespace WinUIGallery.Examples;
 public class RichTextBlockFormatter : CodeColorizerBase
 {
     /// <summary>

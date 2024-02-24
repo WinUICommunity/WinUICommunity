@@ -1,6 +1,6 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 
 public sealed partial class TextGlitchEffectPage : Page
 {

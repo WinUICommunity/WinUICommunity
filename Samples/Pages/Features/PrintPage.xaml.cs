@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
-
-using DemoApp;
-
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 using Windows.Graphics.Printing;
+using WinUICommunity;
 
-namespace WinUICommunity.DemoApp.Pages;
+namespace WinUIGallery.Pages;
 public sealed partial class PrintPage : Page
 {
 #if WINDOWS10_0_18362_0_OR_GREATER
