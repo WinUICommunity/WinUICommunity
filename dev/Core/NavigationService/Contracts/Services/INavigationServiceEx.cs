@@ -1,4 +1,6 @@
-﻿namespace WinUICommunity;
+﻿using Microsoft.UI.Xaml.Media.Animation;
+
+namespace WinUICommunity;
 
 public interface INavigationServiceEx
 {
@@ -19,7 +21,8 @@ public interface INavigationServiceEx
         get; set;
     }
 
-    bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false);
+    bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null);
+    bool NavigateTo(Type pageType, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null);
 
     bool GoBack();
 }

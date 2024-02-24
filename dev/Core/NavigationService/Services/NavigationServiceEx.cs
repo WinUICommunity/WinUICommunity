@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
+using Microsoft.UI.Xaml.Media.Animation;
+
 namespace WinUICommunity;
 
 public class NavigationServiceEx : INavigationServiceEx
@@ -74,15 +76,29 @@ public class NavigationServiceEx : INavigationServiceEx
         return false;
     }
 
-    public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
+    public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null)
     {
         var pageType = _pageService.GetPageType(pageKey);
+        return Navigate(pageType, parameter, clearNavigation, transitionInfo);
+    }
+
+    public bool NavigateTo(Type pageType, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null)
+    {
+        return Navigate(pageType, parameter, clearNavigation, transitionInfo);
+    }
+
+    public bool Navigate(Type pageType, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null)
+    {
+        if (pageType == null)
+        {
+            return false;
+        }
 
         if (_frame != null && (_frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed))))
         {
             _frame.Tag = clearNavigation;
             var vmBeforeNavigation = _frame.GetPageViewModel();
-            var navigated = _frame.Navigate(pageType, parameter);
+            var navigated = _frame.Navigate(pageType, parameter, transitionInfo);
             if (navigated)
             {
                 _lastParameterUsed = parameter;
