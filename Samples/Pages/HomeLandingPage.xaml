@@ -10,7 +10,7 @@
     <wuc:MainLandingPage x:Name="landingsPage"
                          HeaderImage="{ThemeResource HeaderCover}"
                          HeaderOverlayImage="{ThemeResource HeaderCover}"
-                         HeaderSubtitleText="Windows App SDK 1.4"
+                         HeaderSubtitleText="Windows App SDK 1.5"
                          HeaderText="WinUICommunity Gallery"
                          HeaderImageHeight="250"
                          OnItemClick="LandingsPage_OnItemClick" />
