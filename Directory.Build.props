@@ -10,6 +10,9 @@
     
     <OutputPath>$(SolutionDir)output\$(MSBuildProjectName)\</OutputPath>
 
+    <!-- will be remove in next version -->
+    <ShouldComputeInputPris>true</ShouldComputeInputPris>
+    
     <!-- The NuGet package version -->
     <XAMLToolsVersion>1.0.0-alpha0167</XAMLToolsVersion>
     <CommunityToolkitMediaVersion>8.0.240109</CommunityToolkitMediaVersion>
