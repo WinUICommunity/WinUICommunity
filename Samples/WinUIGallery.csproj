@@ -14,9 +14,10 @@
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <GITHUB_ACTIONS>false</GITHUB_ACTIONS>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)'=='true'">
-    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <WindowsPackageType>None</WindowsPackageType>
   </PropertyGroup>
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
