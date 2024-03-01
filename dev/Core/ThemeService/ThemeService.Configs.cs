@@ -20,7 +20,6 @@ public partial class ThemeService
             var systemBackdrop = GetSystemBackdropFromLocalConfig(backdropType, force);
 
             SetWindowSystemBackdrop(systemBackdrop);
-            SetBackdropFallBackColorForUnSupportedOS();
         }
     }
 
@@ -141,11 +140,6 @@ public partial class ThemeService
         {
             SetElementTheme(elementTheme);
         }
-    }
-
-    public void ConfigBackdropFallBackColorForUnSupportedOS(Brush brush)
-    {
-        backdropFallBackColorForWindows10 = brush;
     }
 
     public void ConfigTitleBar(TitleBarCustomization titleBarCustomization)

@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Composition.SystemBackdrops;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 public partial class ThemeService
 {
     private void SetWindowSystemBackdrop(SystemBackdrop systemBackdrop)
@@ -26,41 +24,8 @@ public partial class ThemeService
         {
             SetWindowSystemBackdrop(systemBackdrop);
         }
-
-        SetBackdropFallBackColorForUnSupportedOS();
     }
-
-    private void SetBackdropFallBackColorForUnSupportedOS()
-    {
-        var currentBackdropType = GetBackdropType();
-        if ((currentBackdropType == BackdropType.Mica ||
-            currentBackdropType == BackdropType.MicaAlt) &&
-            !MicaController.IsSupported())
-        {
-            SetBackdropFallBackColorForUnSupportedOSBase();
-        }
-        else if ((currentBackdropType == BackdropType.AcrylicBase ||
-            currentBackdropType == BackdropType.AcrylicThin ||
-            currentBackdropType == BackdropType.DesktopAcrylic) &&
-            !DesktopAcrylicController.IsSupported())
-        {
-            SetBackdropFallBackColorForUnSupportedOSBase();
-        }
-        
-    }
-    private void SetBackdropFallBackColorForUnSupportedOSBase()
-    {
-        if (backdropFallBackColorForWindows10 != null)
-        {
-            var content = Window.Content;
-            if (content != null)
-            {
-                var element = Window.Content as FrameworkElement;
-                dynamic panel = (dynamic)element;
-                panel.Background = backdropFallBackColorForWindows10;
-            }
-        }
-    }
+    
     public void SetElementTheme(ElementTheme elementTheme)
     {
         changeThemeWithoutSave = false;
