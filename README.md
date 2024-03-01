@@ -283,7 +283,7 @@ download and install our vsix package from Marketplace:
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/RequestOSPin.png)
 
 ### PagerControl
-It will be removed with the release of WASDK v1.5
+It will be removed with the release of WASDK v1.6
 
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/PagerControl.png)
 
