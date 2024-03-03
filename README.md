@@ -256,6 +256,8 @@ download and install our vsix package from Marketplace:
 
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
+![WinUICommunityTemplates](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/1.png)
+
 ## History
 
 ### NavigationViewItem Style
