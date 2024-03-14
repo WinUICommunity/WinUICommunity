@@ -1,4 +1,4 @@
-﻿using WinUIGallery.Pages;
+﻿using WinUICommunityGallery.Pages;
 
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
@@ -8,13 +8,13 @@ using Microsoft.Windows.AppNotifications;
 using Windows.Storage;
 
 using WinUICommunity;
-using WinUIGallery.AppNotification;
+using WinUICommunityGallery.AppNotification;
 using System.Threading.Tasks;
 using System;
 using System.IO;
 using System.Collections.Generic;
 
-namespace WinUIGallery;
+namespace WinUICommunityGallery;
 
 public partial class App : Application
 {

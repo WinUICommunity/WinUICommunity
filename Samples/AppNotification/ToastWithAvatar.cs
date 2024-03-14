@@ -1,8 +1,8 @@
 ﻿using Microsoft.Windows.AppNotifications;
-using WinUIGallery.Pages;
+using WinUICommunityGallery.Pages;
 using WinUICommunity;
 
-namespace WinUIGallery.AppNotification;
+namespace WinUICommunityGallery.AppNotification;
 public class ToastWithAvatar : IScenario
 {
     private static ToastWithAvatar _Instance;
