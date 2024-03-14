@@ -7,7 +7,7 @@ using System.Collections;
 using System.Linq;
 using Microsoft.UI.Xaml;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 public sealed partial class ValidationPage : Page
 {
     public UserInfo UserInfo { get; } = new();

@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.UI.Xaml.Controls;
-using WinUIGallery.Models;
+using WinUICommunityGallery.Models;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 public sealed partial class StylesPage : Page
 {
     public ObservableCollection<ColorFormatModel> ColorFormats { get; set; } = new ObservableCollection<ColorFormatModel>();

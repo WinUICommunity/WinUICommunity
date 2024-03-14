@@ -1,6 +1,6 @@
 ﻿using WinUICommunity;
 
-namespace WinUIGallery.Models;
+namespace WinUICommunityGallery.Models;
 
 public class ColorFormatModel : Observable
 {

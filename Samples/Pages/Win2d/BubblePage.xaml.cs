@@ -5,7 +5,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Animation;
 using WinUICommunity;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 
 public sealed partial class BubblePage : Page
 {

@@ -5,7 +5,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.VisualBasic;
 using WinUICommunity;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 
 public sealed partial class GooeyPage : Page
 {

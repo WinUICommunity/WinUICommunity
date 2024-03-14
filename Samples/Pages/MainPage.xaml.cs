@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 public sealed partial class MainPage : Page
 {
     internal static MainPage Instance { get; private set; }

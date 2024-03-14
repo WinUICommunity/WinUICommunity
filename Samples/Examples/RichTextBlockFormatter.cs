@@ -10,7 +10,7 @@ using Microsoft.UI.Xaml.Controls;
 using System.Collections.Generic;
 using WinUICommunity;
 
-namespace WinUIGallery.Examples;
+namespace WinUICommunityGallery.Examples;
 public class RichTextBlockFormatter : CodeColorizerBase
 {
     /// <summary>

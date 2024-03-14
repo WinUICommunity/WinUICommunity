@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LandingPages", "dev\Landing
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContextMenuExtensions", "dev\ContextMenuExtensions\ContextMenuExtensions.csproj", "{313A9EFC-9B4D-4082-A54F-88D78D458A0D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUIGallery", "Samples\WinUIGallery.csproj", "{60D02545-DF30-4449-BB8A-059845AA3910}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinUICommunityGallery", "Samples\WinUICommunityGallery.csproj", "{60D02545-DF30-4449-BB8A-059845AA3910}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Components", "dev\Components\Components.csproj", "{B79F3A01-5AB6-4E0A-A06F-70BBFD6EBEDC}"
 EndProject

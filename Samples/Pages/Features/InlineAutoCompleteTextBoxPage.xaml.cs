@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 public sealed partial class InlineAutoCompleteTextBoxPage : Page
 {
     public InlineAutoCompleteTextBoxPage()

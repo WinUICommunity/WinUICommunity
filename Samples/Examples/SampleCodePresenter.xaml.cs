@@ -11,7 +11,7 @@ using System.Linq;
 using System.IO;
 using WinUICommunity;
 
-namespace WinUIGallery.Examples;
+namespace WinUICommunityGallery.Examples;
 public enum SampleCodePresenterType
 {
     XAML,

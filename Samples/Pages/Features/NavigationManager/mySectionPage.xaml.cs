@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Navigation;
 using WinUICommunity;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 public sealed partial class mySectionPage : Page
 {
     public mySectionPage()

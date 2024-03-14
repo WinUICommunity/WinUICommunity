@@ -12,7 +12,7 @@
                             Description="Learn how to work with controls and styles."
                             Link="https://ghost1372.github.io/winUICommunity/">
                 <wuc:HeaderTile.Source>
-                    <Image Source="/Assets/HomeHeaderTiles/Header-WinUIGallery.png" />
+                    <Image Source="/Assets/HomeHeaderTiles/Header-WinUICommunityGallery.png" />
                 </wuc:HeaderTile.Source>
             </wuc:HeaderTile>
             <wuc:HeaderTile Title="Components"

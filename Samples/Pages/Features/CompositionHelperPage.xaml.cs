@@ -2,7 +2,7 @@
 using Windows.UI;
 using WinUICommunity;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 
 public sealed partial class CompositionHelperPage : Page
 {

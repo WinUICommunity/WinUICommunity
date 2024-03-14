@@ -2,7 +2,7 @@
   "Groups": [
     {
       "UniqueId": "Features",
-      "SectionId": "WinUIGallery.Pages.mySectionPage",
+      "SectionId": "WinUICommunityGallery.Pages.mySectionPage",
       "Title": "Features pages",
       "IsSpecialSection": false,
       "DataInfoBadge": {
@@ -11,7 +11,7 @@
       },
       "Items": [
         {
-          "UniqueId": "WinUIGallery.Pages.AppNotificationPage",
+          "UniqueId": "WinUICommunityGallery.Pages.AppNotificationPage",
           "Title": "App Notification",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "you can use AppNotificationPage for Sending Toast Notification.",
@@ -29,7 +29,7 @@
           }
         },
         {
-          "UniqueId": "WinUIGallery.Pages.CheckUpdatePage",
+          "UniqueId": "WinUICommunityGallery.Pages.CheckUpdatePage",
           "Title": "Check Update",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "you can use UpdateHelper for checking application updates from github release page.",
@@ -48,7 +48,7 @@
           }
         },
         {
-          "UniqueId": "WinUIGallery.Pages.CommandObservablePage",
+          "UniqueId": "WinUICommunityGallery.Pages.CommandObservablePage",
           "Title": "Observable and RelayCommand",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "Observable: inherited from INotifyPropertyChanged. - RelayCommand: inherited from ICommand.",
@@ -61,7 +61,7 @@
           }
         },
         {
-          "UniqueId": "WinUIGallery.Pages.ContentDialogPage",
+          "UniqueId": "WinUICommunityGallery.Pages.ContentDialogPage",
           "Title": "Content Dialog",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "With the help of ShowAsyncQueue extension you can open multiple ContentDialogs.",
@@ -74,7 +74,7 @@
           }
         },
         {
-          "UniqueId": "WinUIGallery.Pages.DynamicLanguagePage",
+          "UniqueId": "WinUICommunityGallery.Pages.DynamicLanguagePage",
           "Title": "Dynamic Language",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "With the help of DynamicLanguage you can create a dynamic multi language app.",
@@ -92,7 +92,7 @@
           }
         },
         {
-          "UniqueId": "WinUIGallery.Pages.InlineAutoCompleteTextBoxPage",
+          "UniqueId": "WinUICommunityGallery.Pages.InlineAutoCompleteTextBoxPage",
           "Title": "Inline AutoCompleteTextBox",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "Inline AutoCompleteTextBox",
@@ -113,7 +113,7 @@
           }
         },
         {
-          "UniqueId": "WinUIGallery.Pages.SettingsControls",
+          "UniqueId": "WinUICommunityGallery.Pages.SettingsControls",
           "Title": "Settings Controls",
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "SettingsControls from Labs",
@@ -131,18 +131,18 @@
     },
     {
       "UniqueId": "Settings",
-      "SectionId": "WinUIGallery.Pages.mySectionPage",
+      "SectionId": "WinUICommunityGallery.Pages.mySectionPage",
       "Title": "Settings pages",
       "SecondaryTitle": "Test SecondaryTitle",
       "Items": [
         {
           "UniqueId": "Settings2",
-          "SectionId": "WinUIGallery.Pages.mySectionPage",
+          "SectionId": "WinUICommunityGallery.Pages.mySectionPage",
           "Title": "Settings pages2",
           "SecondaryTitle": "Test SecondaryTitle",
           "Items": [
             {
-              "UniqueId": "WinUIGallery.Pages.KeyboardManagerPage",
+              "UniqueId": "WinUICommunityGallery.Pages.KeyboardManagerPage",
               "Title": "Oobe Page",
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
@@ -151,7 +151,7 @@
               "IsUpdated": true
             },
             {
-              "UniqueId": "WinUIGallery.Pages.ImageResizerPage",
+              "UniqueId": "WinUICommunityGallery.Pages.ImageResizerPage",
               "Title": "Oobe Page",
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
@@ -160,7 +160,7 @@
               "IsUpdated": true
             },
             {
-              "UniqueId": "WinUIGallery.Pages.FancyZonesPage",
+              "UniqueId": "WinUICommunityGallery.Pages.FancyZonesPage",
               "Title": "Oobe Page",
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
@@ -170,12 +170,12 @@
             },
             {
               "UniqueId": "Settings3",
-              "SectionId": "WinUIGallery.Pages.mySectionPage",
+              "SectionId": "WinUICommunityGallery.Pages.mySectionPage",
               "Title": "Settings pages3",
               "SecondaryTitle": "Test SecondaryTitle",
               "Items": [
                 {
-                  "UniqueId": "WinUIGallery.Pages.OobePage",
+                  "UniqueId": "WinUICommunityGallery.Pages.OobePage",
                   "Title": "Oobe Page",
                   "SecondaryTitle": "Test SecondaryTitle",
                   "Subtitle": "Settings Page with a Hero Image",
@@ -184,7 +184,7 @@
                   "IsUpdated": true
                 },
                 {
-                  "UniqueId": "WinUIGallery.Pages.ColorPickerPage",
+                  "UniqueId": "WinUICommunityGallery.Pages.ColorPickerPage",
                   "Title": "Oobe Page",
                   "SecondaryTitle": "Test SecondaryTitle",
                   "Subtitle": "Settings Page with a Hero Image",
@@ -194,12 +194,12 @@
                 },
                 {
                   "UniqueId": "Settings4",
-                  "SectionId": "WinUIGallery.Pages.mySectionPage",
+                  "SectionId": "WinUICommunityGallery.Pages.mySectionPage",
                   "Title": "Settings pages4",
                   "SecondaryTitle": "Test SecondaryTitle",
                   "Items": [
                     {
-                      "UniqueId": "WinUIGallery.Pages.OobePage",
+                      "UniqueId": "WinUICommunityGallery.Pages.OobePage",
                       "Title": "Oobe Page",
                       "SecondaryTitle": "Test SecondaryTitle",
                       "Subtitle": "Settings Page with a Hero Image",
@@ -208,7 +208,7 @@
                       "IsUpdated": true
                     },
                     {
-                      "UniqueId": "WinUIGallery.Pages.AwakePage",
+                      "UniqueId": "WinUICommunityGallery.Pages.AwakePage",
                       "Title": "Oobe Page",
                       "SecondaryTitle": "Test SecondaryTitle",
                       "Subtitle": "Settings Page with a Hero Image",

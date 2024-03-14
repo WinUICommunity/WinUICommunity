@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Windows.System;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 
 public sealed partial class ShieldPage : Page
 {

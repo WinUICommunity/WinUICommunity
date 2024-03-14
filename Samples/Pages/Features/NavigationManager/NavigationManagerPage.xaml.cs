@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using WinUICommunity;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 
 public sealed partial class NavigationManagerPage : Page
 {

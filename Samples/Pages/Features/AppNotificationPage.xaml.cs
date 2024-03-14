@@ -1,9 +1,9 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using WinUIGallery.AppNotification;
+using WinUICommunityGallery.AppNotification;
 using WinUICommunity;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 public sealed partial class AppNotificationPage : Page
 {
     internal static AppNotificationPage Instance;

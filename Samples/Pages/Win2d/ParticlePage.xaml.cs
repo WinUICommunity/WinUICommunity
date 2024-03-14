@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.UI.Xaml.Controls;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 public sealed partial class ParticlePage : Page
 {
     public ParticlePage()

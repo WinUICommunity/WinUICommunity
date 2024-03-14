@@ -1,8 +1,8 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using System.Collections.ObjectModel;
-using WinUIGallery.Models;
+using WinUICommunityGallery.Models;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 
 public sealed partial class ColorPickerPage : Page
 {

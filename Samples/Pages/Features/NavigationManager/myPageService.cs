@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using WinUICommunity;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 internal class myPageService : PageServiceEx
 {
     public myPageService()

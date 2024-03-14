@@ -5,7 +5,7 @@ using Microsoft.UI.Xaml.Controls;
 using Windows.Graphics.Printing;
 using WinUICommunity;
 
-namespace WinUIGallery.Pages;
+namespace WinUICommunityGallery.Pages;
 public sealed partial class PrintPage : Page
 {
 #if WINDOWS10_0_18362_0_OR_GREATER

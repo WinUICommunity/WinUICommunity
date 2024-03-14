@@ -8,7 +8,7 @@ permissions:
 
 env:
   # Configuring Project
-  PROJECT_PATH: Samples/WinUIGallery.csproj
+  PROJECT_PATH: Samples/WinUICommunityGallery.csproj
   APP_NAME: WinUICommunity-Gallery
 
   # Check Tag
