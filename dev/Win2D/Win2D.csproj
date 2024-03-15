@@ -15,7 +15,7 @@
     <TargetFrameworks>net8.0-windows10.0.22621.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework.Contains(windows10.0.22621))' == 'true'">
-    <Win2dVersion>1.1.1</Win2dVersion>
+    <Win2dVersion>1.2.0</Win2dVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.WinUI.Media" Version="$(CommunityToolkitMediaVersion)" />
