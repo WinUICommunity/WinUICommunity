@@ -129,6 +129,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 
 Components Includes custom controls and styles.
 
+- SelectorBarSegmented
 - NavigationViewItem Style
 - ColorfulShimmingEffect
 - FlipSide
@@ -259,6 +260,9 @@ download and install our vsix package from Marketplace:
 ![WinUICommunityTemplates](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/1.png)
 
 ## History
+
+### SelectorBarSegmented / Experimental
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/SelectorBarSegmented.png)
 
 ### NavigationViewItem Style
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/NavigationViewItemStyle.gif)
