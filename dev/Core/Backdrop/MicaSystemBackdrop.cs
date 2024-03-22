@@ -43,6 +43,10 @@ public sealed class MicaSystemBackdrop : SystemBackdrop
             }
         }
     }
+
+    public MicaSystemBackdrop() : this(MicaKind.Base)
+    {
+    }
     public MicaSystemBackdrop(MicaKind micaKind)
     {
         Kind = micaKind;

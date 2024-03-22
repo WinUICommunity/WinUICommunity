@@ -41,6 +41,11 @@ public sealed class AcrylicSystemBackdrop : SystemBackdrop
             }
         }
     }
+
+    public AcrylicSystemBackdrop() : this(DesktopAcrylicKind.Default)
+    {
+        
+    }
     public AcrylicSystemBackdrop(DesktopAcrylicKind desktopAcrylicKind)
     {
         Kind = desktopAcrylicKind;
