@@ -28,6 +28,34 @@ public sealed class AcrylicSystemBackdrop : SystemBackdrop
         }
     }
 
+    private float tintOpacity;
+    public float TintOpacity
+    {
+        get { return tintOpacity; }
+        set
+        {
+            tintOpacity = value;
+            if (acrylicController != null)
+            {
+                acrylicController.TintOpacity = value;
+            }
+        }
+    }
+
+    private float luminosityOpacity;
+    public float LuminosityOpacity
+    {
+        get { return luminosityOpacity; }
+        set
+        {
+            luminosityOpacity = value;
+            if (acrylicController != null)
+            {
+                acrylicController.LuminosityOpacity = value;
+            }
+        }
+    }
+
     private Color fallbackColor;
     public Color FallbackColor
     {

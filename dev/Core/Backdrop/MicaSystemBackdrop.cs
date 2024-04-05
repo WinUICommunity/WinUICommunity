@@ -30,6 +30,34 @@ public sealed class MicaSystemBackdrop : SystemBackdrop
         }
     }
 
+    private float tintOpacity;
+    public float TintOpacity
+    {
+        get { return tintOpacity; }
+        set
+        {
+            tintOpacity = value;
+            if (micaController != null)
+            {
+                micaController.TintOpacity = value;
+            }
+        }
+    }
+
+    private float luminosityOpacity;
+    public float LuminosityOpacity
+    {
+        get { return luminosityOpacity; }
+        set
+        {
+            luminosityOpacity = value;
+            if (micaController != null)
+            {
+                micaController.LuminosityOpacity = value;
+            }
+        }
+    }
+
     private Color fallbackColor;
     public Color FallbackColor
     {
