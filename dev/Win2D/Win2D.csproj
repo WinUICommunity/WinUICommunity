@@ -1,21 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0-windows10.0.19041.0;net6.0-windows10.0.22621.0;net7.0-windows10.0.19041.0;net7.0-windows10.0.22621.0;net8.0-windows10.0.19041.0;net8.0-windows10.0.22621.0</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(Configuration)' == 'Release' ">net6.0-windows10.0.19041.0;net6.0-windows10.0.22621.0;net7.0-windows10.0.19041.0;net7.0-windows10.0.22621.0;net8.0-windows10.0.19041.0;net8.0-windows10.0.22621.0</TargetFrameworks>
     <Version>6.7.0</Version>
     <IsTrimmable>false</IsTrimmable>
     <Namespace>WinUICommunity.Win2D</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
     <AssemblyName>$(Namespace)</AssemblyName>
-    <Win2dVersion>1.0.5.1</Win2dVersion>
     <Description>Experience WinUI 3 quickly and easily with the help of Win2D Components, Everything you need to develop an application is gathered in one place. Win2d Includes custom controls, styles and effects with win2d.</Description>
     <PackageTags>winui win2d winui3 win11 xaml SettingsUI Components settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <TargetFrameworks>net8.0-windows10.0.22621.0</TargetFrameworks>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework.Contains(windows10.0.22621))' == 'true'">
-    <Win2dVersion>1.2.0</Win2dVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.WinUI.Media" Version="$(CommunityToolkitMediaVersion)" />

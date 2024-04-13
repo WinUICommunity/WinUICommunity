@@ -15,9 +15,7 @@
     <GITHUB_ACTIONS>false</GITHUB_ACTIONS>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)'=='true'">
-    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsPackageType Condition="'$(GITHUB_ACTIONS)'=='true'">None</WindowsPackageType>
   </PropertyGroup>
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
@@ -26,16 +24,15 @@
     <Content Include="DataModel\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\**\*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="ControlPagesSampleCode\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Strings\**\*.resw">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Assets\**\*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <!-- 
     Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
@@ -61,12 +58,6 @@
     <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
 
-  <!-- Copy the String folder to output directory -->
-  <ItemGroup>
-    <Content Include="Strings\**\*.resw">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ColorCode.Core" Version="2.0.15" />
   </ItemGroup>
