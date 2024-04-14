@@ -70,104 +70,118 @@
 <img alt="build" src="https://img.shields.io/github/actions/workflow/status/WinUICommunity/WinUICommunity/dotnet-release.yml?logo=github"/>
 </p>
 
-<br>
-<p align="center">
-	<b>🙌 Donate Bitcoin with <a href="https://link.trustwallet.com/send?coin=0&address=bc1qzs4kt4aeqym6gsde669g5rksv4swjhzjqqp23a">Trust</a>🙌</b><br>
-	<b>🙌 Donate ETH with <a href="https://link.trustwallet.com/send?coin=60&address=0x40Db4476c1D498b167f76A2c7ED9D45b65eb5d0C">Trust</a>🙌</b><br><br>
-	<b>🙌 Bitcoin: bc1qzs4kt4aeqym6gsde669g5rksv4swjhzjqqp23a<br></b>
-	<b>🙌 ETH: 0x40Db4476c1D498b167f76A2c7ED9D45b65eb5d0C</b>
-</p>
-<br>
+---
 
-# WinUICommunity
+### 🌟 Support My Work! 🌟
+> [!IMPORTANT]
+> 🌟 I pour my heart and soul into creating useful apps and tools. If you’ve found my work helpful or interesting, consider supporting me by making a donation. 🌟
+
+|Trust Wallet|Address|
+|-|-|
+|<a href="https://link.trustwallet.com/send?coin=0&address=bc1qzs4kt4aeqym6gsde669g5rksv4swjhzjqqp23a">Bitcoin</a>|bc1qzs4kt4aeqym6gsde669g5rksv4swjhzjqqp23a|
+|<a href="https://link.trustwallet.com/send?coin=60&address=0x40Db4476c1D498b167f76A2c7ED9D45b65eb5d0C">ETH</a>|0x40Db4476c1D498b167f76A2c7ED9D45b65eb5d0C|
+
+---
+
+# 🚀 WinUICommunity 🚀
+Welcome to WinUICommunity Core, your go-to toolkit for building WinUI 3 applications with ease. Whether you’re a seasoned developer or just starting out, we’ve got you covered! 🎉
+
 WinUICommunity is a collection of useful classes, controls, styles, and codes for WinUI 3, the modern native UI platform for Windows 10+. With WinUICommunity, you can:
 
-- Create a WinUI 3 app in less than a minute with the built-in project templates and scaffolding tools.
-- Customize the appearance of your app with various themes, such as rainbow, dark, light, and more.
-- Enhance your UI with custom controls.
-- Leverage the power of Win2D, a DirectX-based graphics library for WinUI, to create stunning effects, such as particle, gooey, watermark, etc.
-- Access native Windows APIs from your WinUI app with the PInvoke helper class.
-- Simplify common tasks, such as navigation, theme, update, notification, etc. with the helper classes and extensions.
+- ✨ Create a WinUI 3 app in less than a minute with the built-in project templates and scaffolding tools.
+- ✨ Customize the appearance of your app with various themes, such as rainbow, dark, light, and more.
+- ✨ Enhance your UI with custom controls.
+- ✨ Leverage the power of Win2D, a DirectX-based graphics library for WinUI, to create stunning effects, such as particle, gooey, watermark, etc.
+- ✨ Access native Windows APIs from your WinUI app with the PInvoke helper class.
+- ✨ Simplify common tasks, such as navigation, theme, update, notification, etc. with the helper classes and extensions.
 
-## Documentation
+### 📚 Explore Our Documentation! 📚
+> [!TIP]
+>  Need help getting started with our app? Our comprehensive documentation site covers everything you need to know. Whether you’re a beginner or an experienced user, you’ll find answers, tutorials, and tips to enhance your experience. From installation instructions to advanced features, we’ve got you covered. Happy exploring! 🚀
+>  👉 [Documentation](https://ghost1372.github.io/winUICommunity/) 👈
 
-See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
-## Namespace
- For use in the Xaml:
- ```xml 
- xmlns:wuc="using:WinUICommunity"
- ```
- For use in the Csharp:
- ```csharp
- using WinUICommunity;
- ```
 
-## Usage
+### 🚀 Explore Our Gallery App 🚀
 
-### Core
+> [!NOTE]
+>  Want to see WinUICommunity in action? Head over to our Gallery App for a hands-on experience. You’ll find practical examples, usage scenarios, and interactive demos that showcase the power of our toolkit.[Galery App](Samples)
+
+
+### 🧑‍💻 Contributing 🧑‍💻
+Found a bug? Want to contribute? We’d love your input!
+Happy coding! 🖥️💡
+
+---
+
+## 🔥 Core 🔥
  Experience WinUI 3 quickly and easily with the help of Core, Everything you need to develop an application is gathered in one place. Helpers, Extensions...
- - Converter
- - DynamicLanguage
- - Extensions
- - Helpers
- - NavigationService
- - RainbowFrame
- - ThemeService
- - PickCredential
- - RequestWindowsPIN
- - And More...
 
-#### Install
+### ⚡ What’s Inside? ⚡
+ - ✨ Converter
+ - ✨ DynamicLanguage
+ - ✨ Extensions
+ - ✨ Helpers
+ - ✨ NavigationService
+ - ✨ RainbowFrame
+ - ✨ ThemeService
+ - ✨ PickCredential
+ - ✨ RequestWindowsPIN
+ - 🚀 And More...
+
+#### 💻 Installation | Nuget
 ```
 Install-Package WinUICommunity.Core
 ```
 
-For more info See the [Core](dev/Core/README.md) and [Docs](https://ghost1372.github.io/winUICommunityCore/)
+> [!WARNING]
+>  For more info See the [Core](dev/Core/README.md) and [Docs](https://ghost1372.github.io/winUICommunityCore/)
 
-### Components
+---
+
+## 🔥 Components 🔥
 Experience WinUI 3 quickly and easily with the help of Components, Everything you need to develop an application is gathered in one place.
-
 Components Includes custom controls and styles.
 
-- SelectorBarSegmented
-- NavigationViewItem Style
-- ColorfulShimmingEffect
-- FlipSide
-- LongShadowTextBlock
-- PagerControl [It will be removed with the release of WASDK v1.5]
-- IndeterminateProgressBar
-- LoadingIndicator
-- AutoScrollView
-- OpacityMaskView
-- ProgressRing
-- WaveProgressBar
-- Divider
-- Shield
-- Gravatar
-- FlyoutMenuButton
-- Growl
-- InlineAutoCompleteTextBox
-- IsEnabledTextBlock
-- KeyVisual
-- OOBEPageControl
-- Shortcut
-- Validation
-- WrapPanel
-- CheckBoxWithDescription
-- OptionsPageControl
-- TitleBar
-- SettingsCard
-- SettingsExpander
-- SettingsGroup
-- SwitchPresenter
-- UniformGrid
-- InfoBar Style
-- Grid Style
-- StackPanel Style
-- Border Style
-- Subtle Button Style
+### ⚡ What’s Inside? ⚡
+- ✨ SelectorBarSegmented
+- ✨ NavigationViewItem Style
+- ✨ ColorfulShimmingEffect
+- ✨ FlipSide
+- ✨ LongShadowTextBlock
+- ✨ PagerControl [It will be removed with the release of WASDK v1.5]
+- ✨ IndeterminateProgressBar
+- ✨ LoadingIndicator
+- ✨ AutoScrollView
+- ✨ OpacityMaskView
+- ✨ ProgressRing
+- ✨ WaveProgressBar
+- ✨ Divider
+- ✨ Shield
+- ✨ Gravatar
+- ✨ FlyoutMenuButton
+- ✨ Growl
+- ✨ InlineAutoCompleteTextBox
+- ✨ IsEnabledTextBlock
+- ✨ KeyVisual
+- ✨ OOBEPageControl
+- ✨ Shortcut
+- ✨ Validation
+- ✨ WrapPanel
+- ✨ CheckBoxWithDescription
+- ✨ OptionsPageControl
+- ✨ TitleBar
+- ✨ SettingsCard
+- ✨ SettingsExpander
+- ✨ SettingsGroup
+- ✨ SwitchPresenter
+- ✨ UniformGrid
+- ✨ InfoBar Style
+- ✨ Grid Style
+- ✨ StackPanel Style
+- ✨ Border Style
+- ✨ Subtle Button Style
 
-#### Install
+#### 💻 Installation | Nuget
 ```
 Install-Package WinUICommunity.Components
 ```
@@ -177,29 +191,32 @@ After installing, add the following resource to app.xaml
 <ResourceDictionary Source="ms-appx:///WinUICommunity.Components/Themes/Generic.xaml" />
 ```
 
-For more info See the [Components](dev/Components/README.md) and [Docs](https://ghost1372.github.io/winUICommunityComponents/)
+> [!WARNING]
+>  For more info See the [Components](dev/Components/README.md) and [Docs](https://ghost1372.github.io/winUICommunityComponents/) 
 
-### Win2D
+---
+
+## 🔥 Win2D 🔥
 Experience WinUI 3 quickly and easily with the help of Win2D Components, Everything you need to develop an application is gathered in one place.
-
 Win2d Includes custom controls and styles.
 
-- TiledImageBrush
-- OutlineTextControl
-- WaveCircle
-- BlurAnimationHelper
-- Watermark
-- TextMorphEffect
-- TextGlitchEffect
-- TextBlockStrokeView
-- Particle
-- BubbleButton
-- BubbleProgressButton
-- GooeyFooterEffect
-- GooeyEffect
-- GooeyButton
+### ⚡ What’s Inside? ⚡
+- ✨ TiledImageBrush
+- ✨ OutlineTextControl
+- ✨ WaveCircle
+- ✨ BlurAnimationHelper
+- ✨ Watermark
+- ✨ TextMorphEffect
+- ✨ TextGlitchEffect
+- ✨ TextBlockStrokeView
+- ✨ Particle
+- ✨ BubbleButton
+- ✨ BubbleProgressButton
+- ✨ GooeyFooterEffect
+- ✨ GooeyEffect
+- ✨ GooeyButton
 
-#### Install
+#### 💻 Installation | Nuget
 ```
 Install-Package WinUICommunity.Win2D
 ```
@@ -209,16 +226,18 @@ After installing, add the following resource to app.xaml
 <ResourceDictionary Source="ms-appx:///WinUICommunity.Win2D/Themes/Generic.xaml" />
 ```
 
-For more info See the [Win2D](dev/Win2D/README.md) and [Docs](https://ghost1372.github.io/winUICommunityWin2d/)
+> [!WARNING]
+>  For more info See the [Win2D](dev/Win2D/README.md) and [Docs](https://ghost1372.github.io/winUICommunityWin2d/)
 
+---
 
-### LandingPages
+## 🔥 LandingPages 🔥
 Create a landing page in the style of WinUI 3 and WinUI-Gallery very quickly and easily
+### ⚡ What’s Inside? ⚡
+- ✨ HomeLandingPage
+- ✨ AllLandingPage
 
-- HomeLandingPage
-- AllLandingPage
-
-#### Install
+#### 💻 Installation | Nuget
 ```
 Install-Package WinUICommunity.LandingPages
 ```
@@ -229,35 +248,35 @@ After installing, add the following resource to app.xaml
 <ResourceDictionary Source="ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml" />
 ```
 
-For more info See the [LandingPages](dev/LandingPages/README.md) and [Docs](https://ghost1372.github.io/winUICommunityLandingPages/)
+> [!WARNING]
+>  For more info See the [LandingPages](dev/LandingPages/README.md) and [Docs](https://ghost1372.github.io/winUICommunityLandingPages/)
 
-### ContextMenuExtensions
+---
+
+## 🔥 ContextMenuExtensions 🔥
 add a new ContextMenu for Windows 11/10.
 
-#### Install
+#### 💻 Installation | Nuget
 ```
 Install-Package WinUICommunity.ContextMenuExtensions
 ```
 
-For more info See the [ContextMenuExtensions](dev/ContextMenuExtensions/README.md) and [Docs](https://ghost1372.github.io/winUICommunityContextMenuExtensions/)
+> [!WARNING]
+>  For more info See the [ContextMenuExtensions](dev/ContextMenuExtensions/README.md) and [Docs](https://ghost1372.github.io/winUICommunityContextMenuExtensions/)
 
+---
 
-## Demo
+## 🥷 [Project Templates](https://github.com/winUICommunity/WinUICommunity-Templates) 🥷
 
-See the [Demo](Samples) app to see how to use it
-
-
-## Project Templates
-
-for creating a new project easily, you can use our project templates:
-
-download and install our vsix package from Marketplace:
-
-[WinUICommunity](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates)
+> [!TIP]
+> 🔥 Create a new project easily with your custom options, you can use our project templates and wizard! 
+> Download and install our VSIX extension from [Marketplace](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates)
 
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/Demo-WinUICommunityTemplates.png)
 
 ![WinUICommunityTemplates](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunity-Templates/1.png)
+
+---
 
 ## History
 
