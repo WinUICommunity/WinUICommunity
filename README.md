@@ -1,74 +1,33 @@
-﻿<p align="left">
-<img alt="dotnet" src="https://img.shields.io/badge/%3E%3DNet%206.0-version?logo=dotnet&label=.Net"/>
-<img alt="OS" src="https://img.shields.io/badge/%3E%3DWindows%2010%20Build%201809-version?logo=windows&label=Supported%20OS&color=orange"/>
-<img alt="IDE-version" src="https://img.shields.io/badge/2022-Version?logo=visual%20studio&label=Visual%20Studio&color=purple"/>
-
-<a href="https://github.com/WinUICommunity">
-  <img alt="projects" src="https://img.shields.io/badge/WinUICommunity-Projects?logo=github&label=Projects&link=https%3A%2F%2Fgithub.com%2FWinUICommunity"/>
-</a> 
-
-<a href="https://www.nuget.org/profiles/WinUICommunity">
-  <img alt="WinUICommunity Nugets" src="https://img.shields.io/badge/WinUICommunity-Version?logo=nuget&label=Nuget&link=https%3A%2F%2Fwww.nuget.org%2Fprofiles%2FWinUICommunity"/>
-</a> 
-
-<a href="https://www.nuget.org/packages/WinUICommunity.Core">
-  <img alt="Core-Version" src="https://img.shields.io/nuget/v/WinUICommunity.Core?logo=nuget&label=Core&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Core"/>
-</a> 
-
-<a href="https://www.nuget.org/packages/WinUICommunity.Core">
-  <img alt="Core-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Core?logo=nuget&label=Core%20Downloads&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Core"/>
-</a>
-
-<a href="https://www.nuget.org/packages/WinUICommunity.Components">
-  <img alt="WinUICommunity.Components-Version" src="https://img.shields.io/nuget/v/WinUICommunity.Components?logo=nuget&label=Components&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Components"/>
-</a> 
-
-<a href="https://www.nuget.org/packages/WinUICommunity.Components">
-  <img alt="Components-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Components?logo=nuget&label=Components%20Downloads&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Components"/>
-</a>
-
-<a href="https://www.nuget.org/packages/WinUICommunity.Win2D">
-  <img alt="WinUICommunity.Win2D-Version" src="https://img.shields.io/nuget/v/WinUICommunity.Win2D?logo=nuget&label=Win2D&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Win2D"/>
-</a> 
-
-<a href="https://www.nuget.org/packages/WinUICommunity.Win2D">
-  <img alt="Win2D-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Win2D?logo=nuget&label=Win2D%20Downloads&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.Win2D"/>
-</a>
-
-<a href="https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions">
-  <img alt="ContextMenuExtensions-Version" src="https://img.shields.io/nuget/v/WinUICommunity.ContextMenuExtensions?logo=nuget&label=ContextMenuExtensions&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.ContextMenuExtensions"/>
-</a> 
-
-<a href="https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions">
-  <img alt="ContextMenuExtensions-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.ContextMenuExtensions?logo=nuget&label=ContextMenuExtensions%20Downloads&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.ContextMenuExtensions"/>
-</a>
-
-<a href="https://www.nuget.org/packages/WinUICommunity.LandingPages">
-  <img alt="LandingPages-Version" src="https://img.shields.io/nuget/v/WinUICommunity.LandingPages?logo=nuget&label=LandingPages&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.LandingPages"/>
-</a> 
-
-<a href="https://www.nuget.org/packages/WinUICommunity.LandingPages">
- <img alt="LandingPages-Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.LandingPages?logo=nuget&label=LandingPages%20Downloads&link=https%3A%2F%2Fwww.nuget.org%2Fpackages%2FWinUICommunity.LandingPages"/>
-</a>
-
-<a href="https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates">
- <img alt="WinUICommunityTemplates-Downloads" src="https://img.shields.io/visual-studio-marketplace/d/MahdiHosseini.WinUICommunityTemplates?logo=visual%20studio&label=Marketplace%20Downloads&link=https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3DMahdiHosseini.WinUICommunityTemplates"/>
-</a>
-
-<a href="https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates">
- <img alt="WinUICommunityTemplates-Installs" src="https://img.shields.io/visual-studio-marketplace/i/MahdiHosseini.WinUICommunityTemplates?logo=visual%20studio&label=Marketplace%20Installs&link=https%3A%2F%2Fmarketplace.visualstudio.com%2Fitems%3FitemName%3DMahdiHosseini.WinUICommunityTemplates"/>
-</a>
-
-<a href="https://ghost1372.github.io/winUICommunity/">
- <img alt="Docs" src="https://img.shields.io/badge/Read%20the%20Docs-Version?logo=markdown&label=Docs&color=red&link=https%3A%2F%2Fghost1372.github.io%2FwinUICommunity%2F"/>
-</a> 
-
-<img alt="releaseDate" src="https://img.shields.io/github/release-date/WinUICommunity/WinUICommunity?logo=github&link=https%3A%2F%2Fgithub.com%2FWinUICommunity%2FWinUICommunity%2Freleases"/>
-<img alt="github-releaseDownload" src="https://img.shields.io/github/downloads/WinUICommunity/WinUICommunity/total?logo=github&label=github%20release%20downloads"/>
+﻿<p align="center">
+<img alt="dotnet" src="https://img.shields.io/badge/%3E%3DNet%206.0-version?logo=dotnet&label=.Net&color=blue"/>
+<img alt="OS" src="https://img.shields.io/badge/%3E%3DWindows%2010%20Build%201809-version?logo=windows&label=Supported%20OS&color=blue"/>
+<img alt="IDE-version" src="https://img.shields.io/badge/2022-Version?logo=visual%20studio&label=Visual%20Studio&color=blue"/>
 <img alt="githubrepo-size" src="https://img.shields.io/github/repo-size/WinUICommunity/WinUICommunity?logo=github"/>
+<br>
+<a href="https://github.com/WinUICommunity">
+ <img alt="Projects" src="https://img.shields.io/badge/Projects-%20?logo=github&label=All%20WinUICommunity&color=blue"/>
+</a>
+<a href="https://www.nuget.org/profiles/WinUICommunity">
+ <img alt="Packages" src="https://img.shields.io/badge/Packages-%20?logo=nuget&label=All%20Nuget&color=blue"/>
+</a>
+<br>
+<img alt="releaseDate" src="https://img.shields.io/github/release-date/WinUICommunity/WinUICommunity?logo=github&link=https%3A%2F%2Fgithub.com%2FWinUICommunity%2FWinUICommunity%2Freleases"/>
 <img alt="license" src="https://img.shields.io/github/license/WinUICommunity/WinUICommunity"/>
+<a href="https://ghost1372.github.io/winUICommunity/">
+ <img alt="Docs" src="https://img.shields.io/badge/See Here-Version?logo=markdown&label=Document&color=red&link=https%3A%2F%2Fghost1372.github.io%2FwinUICommunity%2F"/>
+</a> 
 <img alt="build" src="https://img.shields.io/github/actions/workflow/status/WinUICommunity/WinUICommunity/dotnet-release.yml?logo=github"/>
 </p>
+
+|Packages|Download/Installation|Documentation|
+|:---|:---|:---:|
+|[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/MahdiHosseini.WinUICommunityTemplates?label=WinUICommunity-Templates)](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates)|[![Marketplace](https://img.shields.io/visual-studio-marketplace/d/MahdiHosseini.WinUICommunityTemplates?logo=visual%20studio&label=WinUICommunity-Templates)](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://github.com/WinUICommunity/WinUICommunity-Templates)|
+||||
+|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.Core?label=Core)](https://www.nuget.org/packages/WinUICommunity.Core)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.Core?label=Core)](https://www.nuget.org/packages/WinUICommunity.Core)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://ghost1372.github.io/winUICommunityCore)|
+|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.Components?label=Components)](https://www.nuget.org/packages/WinUICommunity.Components)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.Components?label=Components)](https://www.nuget.org/packages/WinUICommunity.Components)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://ghost1372.github.io/winUICommunityComponents/)|
+|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.Win2D?label=Win2D)](https://www.nuget.org/packages/WinUICommunity.Win2D)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.Win2D?label=Win2D&color)](https://www.nuget.org/packages/WinUICommunity.Win2D)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://ghost1372.github.io/winUICommunityWin2d)|
+|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.ContextMenuExtensions?label=ContextMenuExtensions)](https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.ContextMenuExtensions?label=ContextMenuExtensions)](https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://ghost1372.github.io/winUICommunityContextMenuExtensions)|
+|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.LandingPages?label=LandingPages)](https://www.nuget.org/packages/WinUICommunity.LandingPages)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.LandingPages?label=LandingPages)](https://www.nuget.org/packages/WinUICommunity.LandingPages)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://ghost1372.github.io/winUICommunityLandingPages)|
 
 ---
 
