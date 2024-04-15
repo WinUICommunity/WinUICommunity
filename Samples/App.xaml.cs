@@ -24,7 +24,7 @@ public partial class App : Application
     public IThemeService ThemeService { get; set; }
     private NotificationManager notificationManager;
     public new static App Current => (App)Application.Current;
-    public string Title { get; set; } = "WinUICommunity Gallery";
+    public string Title { get; set; } = "WinUICommunity Gallery App";
     public string Version { get; set; } = AssemblyInfoHelper.GetAppInfo().Version;
     public App()
     {
