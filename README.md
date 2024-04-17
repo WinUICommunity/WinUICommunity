@@ -63,8 +63,12 @@ WinUICommunity is a collection of useful classes, controls, styles, and codes fo
 ### 🚀 Explore Our Gallery App 🚀
 
 > [!NOTE]
->  Want to see WinUICommunity in action? Head over to our Gallery App for a hands-on experience. You’ll find practical examples, usage scenarios, and interactive demos that showcase the power of our toolkit.[Galery App](Samples)
+>  Want to see WinUICommunity in action? Head over to our Gallery App for a hands-on experience. You’ll find practical examples, usage scenarios, and interactive demos that showcase the power of our toolkit. See [Galery App Source Code](Samples) or Download from Microsoft Store.
 
+<a href="https://apps.microsoft.com/detail/WUC%20Gallery%20App/9mswnv3wmqc1?launch=true
+	&mode=mini">
+	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
+</a>
 
 ### 🧑‍💻 Contributing 🧑‍💻
 Found a bug? Want to contribute? We’d love your input!
