@@ -16,9 +16,9 @@ namespace WinUICommunity;
 [TemplatePart(Name = nameof(PART_ContentPresenter), Type = typeof(ContentPresenter))]
 public partial class TitleBar : Control
 {
-    WindowMessageMonitor monitor;
-    WindowMessageMonitor inputNonClientPointerSourceMonitor;
-    MenuFlyout MenuFlyout;
+    WindowMessageMonitor? monitor;
+    WindowMessageMonitor? inputNonClientPointerSourceMonitor;
+    MenuFlyout? MenuFlyout;
     ContentPresenter? PART_ContentPresenter;
     ContentPresenter? PART_FooterPresenter;
     private void SetWASDKTitleBar()
@@ -34,7 +34,7 @@ public partial class TitleBar : Control
 
             ConfigPresenter();
 
-            if (this.ContextFlyout != null && this.ContextFlyout is MenuFlyout menuFlyout)
+            if (this.ContextFlyout is not null && this.ContextFlyout is MenuFlyout menuFlyout)
             {
                 this.MenuFlyout = menuFlyout;
                 monitor = new WindowMessageMonitor(this.Window);
@@ -161,27 +161,20 @@ public partial class TitleBar : Control
 
     public void SetDragRegionForCustomTitleBar()
     {
-        if (AutoConfigureCustomTitleBar && Window != null)
+        if (AutoConfigureCustomTitleBar && Window is not null)
         {
             ClearDragRegions(NonClientRegionKind.Passthrough);
-            SetDragRegion(NonClientRegionKind.Passthrough, PART_ContentPresenter, PART_FooterPresenter, PART_ButtonHolder);
+            var items = new FrameworkElement?[] { PART_ContentPresenter, PART_FooterPresenter, PART_ButtonHolder };
+            var validItems = items.Where(x => x is not null).Select(x => x!).ToArray(); // Prune null items
+            SetDragRegion(NonClientRegionKind.Passthrough, validItems);
         }
-    }
-
-    public double GetRasterizationScaleForElement(UIElement element)
-    {
-        if (element.XamlRoot != null)
-        {
-            return element.XamlRoot.RasterizationScale;
-        }
-        return 0.0;
     }
     
     public void SetDragRegion(NonClientRegionKind nonClientRegionKind, params FrameworkElement[] frameworkElements)
     {
         var nonClientInputSrc = InputNonClientPointerSource.GetForWindowId(Window.AppWindow.Id);
         List<Windows.Graphics.RectInt32> rects = new List<Windows.Graphics.RectInt32>();
-        var scale = GetRasterizationScaleForElement(this);
+        var scale = GeneralHelper.GetRasterizationScaleForElement(this);
 
         foreach (var frameworkElement in frameworkElements)
         {
@@ -227,7 +220,7 @@ public partial class TitleBar : Control
                 FlyoutShowOptions options = new FlyoutShowOptions();
                 options.Position = new Windows.Foundation.Point(0, 15);
                 options.ShowMode = FlyoutShowMode.Standard;
-                MenuFlyout.ShowAt(null, options);
+                MenuFlyout?.ShowAt(null, options);
                 e.Result = 0;
                 e.Handled = true;
             }
@@ -236,7 +229,7 @@ public partial class TitleBar : Control
                 FlyoutShowOptions options = new FlyoutShowOptions();
                 options.Position = new Windows.Foundation.Point(0, 45);
                 options.ShowMode = FlyoutShowMode.Standard;
-                MenuFlyout.ShowAt(null, options);
+                MenuFlyout?.ShowAt(null, options);
                 e.Result = 0;
                 e.Handled = true;
             }
@@ -247,7 +240,7 @@ public partial class TitleBar : Control
     {
         if (e.MessageType == NativeValues.WindowMessage.WM_NCLBUTTONDOWN)
         {
-            if (MenuFlyout.IsOpen)
+            if (MenuFlyout?.IsOpen ?? false)
             {
                 MenuFlyout.Hide();
             }
@@ -261,7 +254,7 @@ public partial class TitleBar : Control
             new Windows.Foundation.Point((pt.X - this.Window.AppWindow.Position.X - 8) / XamlRoot.RasterizationScale, (pt.Y - this.Window.AppWindow.Position.Y) / XamlRoot.RasterizationScale) :
             new Windows.Foundation.Point(pt.X - this.Window.AppWindow.Position.X - 8, pt.Y - this.Window.AppWindow.Position.Y);
 
-            MenuFlyout.ShowAt(this, options);
+            MenuFlyout?.ShowAt(this, options);
             e.Result = 0;
             e.Handled = true;
         }
