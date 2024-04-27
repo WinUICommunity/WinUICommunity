@@ -14,7 +14,7 @@ public sealed partial class MainPage : Page
         Instance = this;
 
         App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
-        App.Current.JsonNavigationViewService.ConfigJson("DataModel/DemoData.json");
+        App.Current.JsonNavigationViewService.ConfigJson("DataModel/AppData.json");
         App.Current.JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));
         App.Current.JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));
         App.Current.JsonNavigationViewService.ConfigSectionPage(typeof(DemoSectionPage));

@@ -1,0 +1,228 @@
+﻿{
+  "Groups": [
+    {
+      "UniqueId": "Features",
+      "SectionId": "WinUICommunityGallery.Pages.mySectionPage",
+      "Title": "Features pages",
+      "IsSpecialSection": false,
+      "DataInfoBadge": {
+        "BadgeValue": "10",
+        "BadgeStyle": "SuccessValueInfoBadgeStyle"
+      },
+      "Items": [
+        {
+          "UniqueId": "WinUICommunityGallery.Pages.AppNotificationPage",
+          "Title": "App Notification",
+          "SecondaryTitle": "Test SecondaryTitle",
+          "Subtitle": "you can use AppNotificationPage for Sending Toast Notification.",
+          "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+          "Links": [
+            {
+              "Title": "AppNotificationPage",
+              "Uri": "https://ghost1372.github.io/winUICommunity/helpers/appNotification/"
+            }
+          ],
+          "DataInfoBadge": {
+            "BadgeValue": "10",
+            "HideNavigationViewInfoBadge": true
+          }
+        },
+        {
+          "UniqueId": "WinUICommunityGallery.Pages.CheckUpdatePage",
+          "Title": "Check Update",
+          "SecondaryTitle": "Test SecondaryTitle",
+          "Subtitle": "you can use UpdateHelper for checking application updates from github release page.",
+          "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+          "IsUpdated": true,
+          "Links": [
+            {
+              "Title": "CheckUpdatePage",
+              "Uri": "https://ghost1372.github.io/winUICommunity/helpers/updateHelper/"
+            }
+          ],
+          "DataInfoBadge": {
+            "BadgeStyle": "SuccessIconInfoBadgeStyle",
+            "BadgeSymbolIcon": "Sync"
+          }
+        },
+        {
+          "UniqueId": "WinUICommunityGallery.Pages.CommandObservablePage",
+          "Title": "Observable and RelayCommand",
+          "SecondaryTitle": "Test SecondaryTitle",
+          "Subtitle": "Observable: inherited from INotifyPropertyChanged. - RelayCommand: inherited from ICommand.",
+          "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+          "IsUpdated": true,
+          "DataInfoBadge": {
+            "BadgeStyle": "SuccessIconInfoBadgeStyle",
+            "BadgeBitmapIcon": "ms-appx:///Assets/Modules/PT.png"
+          }
+        },
+        {
+          "UniqueId": "WinUICommunityGallery.Pages.ContentDialogPage",
+          "Title": "Content Dialog",
+          "SecondaryTitle": "Test SecondaryTitle",
+          "Subtitle": "With the help of ShowAsyncQueue extension you can open multiple ContentDialogs.",
+          "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+          "IsUpdated": true,
+          "DataInfoBadge": {
+            "BadgeStyle": "SuccessIconInfoBadgeStyle",
+            "BadgeFontIconGlyph": "E710"
+          }
+        },
+        {
+          "UniqueId": "WinUICommunityGallery.Pages.DynamicLanguagePage",
+          "Title": "Dynamic Language",
+          "SecondaryTitle": "Test SecondaryTitle",
+          "Subtitle": "With the help of DynamicLanguage you can create a dynamic multi language app.",
+          "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+          "IsUpdated": true,
+          "Links": [
+            {
+              "Title": "DynamicLanguagePage",
+              "Uri": "https://ghost1372.github.io/winUICommunity/tools/dynamicLanguage/"
+            }
+          ],
+          "DataInfoBadge": {
+            "BadgeStyle": "SuccessDotInfoBadgeStyle"
+          }
+        },
+        {
+          "UniqueId": "WinUICommunityGallery.Pages.InlineAutoCompleteTextBoxPage",
+          "Title": "Inline AutoCompleteTextBox",
+          "SecondaryTitle": "Test SecondaryTitle",
+          "Subtitle": "Inline AutoCompleteTextBox",
+          "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+          "IsUpdated": true,
+          "Links": [
+            {
+              "Title": "InlineAutoCompleteTextBoxPage",
+              "Uri": "https://ghost1372.github.io/winUICommunity/controls/inlineAutoCompleteTextBox/"
+            }
+          ],
+          "DataInfoBadge": {
+            "BadgeStyle": "SuccessIconInfoBadgeStyle",
+            "BadgeFontIconGlyph": "E710",
+            "BadgeWidth": 64,
+            "BadgeHeight": 64
+          }
+        },
+        {
+          "UniqueId": "WinUICommunityGallery.Pages.SettingsControls",
+          "Title": "Settings Controls",
+          "SecondaryTitle": "Test SecondaryTitle",
+          "Subtitle": "SettingsControls from Labs",
+          "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+          "IsNew": true,
+          "Links": [
+            {
+              "Title": "SettingsControls",
+              "Uri": "https://ghost1372.github.io/winUICommunity/settingsControls/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "UniqueId": "Settings",
+      "SectionId": "WinUICommunityGallery.Pages.mySectionPage",
+      "Title": "Settings pages",
+      "SecondaryTitle": "Test SecondaryTitle",
+      "Items": [
+        {
+          "UniqueId": "Settings2",
+          "SectionId": "WinUICommunityGallery.Pages.mySectionPage",
+          "Title": "Settings pages2",
+          "SecondaryTitle": "Test SecondaryTitle",
+          "Items": [
+            {
+              "UniqueId": "WinUICommunityGallery.Pages.KeyboardManagerPage",
+              "Title": "Oobe Page",
+              "SecondaryTitle": "Test SecondaryTitle",
+              "Subtitle": "Settings Page with a Hero Image",
+              "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+              "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+              "IsUpdated": true
+            },
+            {
+              "UniqueId": "WinUICommunityGallery.Pages.ImageResizerPage",
+              "Title": "Oobe Page",
+              "SecondaryTitle": "Test SecondaryTitle",
+              "Subtitle": "Settings Page with a Hero Image",
+              "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+              "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+              "IsUpdated": true
+            },
+            {
+              "UniqueId": "WinUICommunityGallery.Pages.FancyZonesPage",
+              "Title": "Oobe Page",
+              "SecondaryTitle": "Test SecondaryTitle",
+              "Subtitle": "Settings Page with a Hero Image",
+              "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+              "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+              "IsUpdated": true
+            },
+            {
+              "UniqueId": "Settings3",
+              "SectionId": "WinUICommunityGallery.Pages.mySectionPage",
+              "Title": "Settings pages3",
+              "SecondaryTitle": "Test SecondaryTitle",
+              "Items": [
+                {
+                  "UniqueId": "WinUICommunityGallery.Pages.OobePage",
+                  "Title": "Oobe Page",
+                  "SecondaryTitle": "Test SecondaryTitle",
+                  "Subtitle": "Settings Page with a Hero Image",
+                  "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+                  "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+                  "IsUpdated": true
+                },
+                {
+                  "UniqueId": "WinUICommunityGallery.Pages.ColorPickerPage",
+                  "Title": "Oobe Page",
+                  "SecondaryTitle": "Test SecondaryTitle",
+                  "Subtitle": "Settings Page with a Hero Image",
+                  "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+                  "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+                  "IsUpdated": true
+                },
+                {
+                  "UniqueId": "Settings4",
+                  "SectionId": "WinUICommunityGallery.Pages.mySectionPage",
+                  "Title": "Settings pages4",
+                  "SecondaryTitle": "Test SecondaryTitle",
+                  "Items": [
+                    {
+                      "UniqueId": "WinUICommunityGallery.Pages.OobePage",
+                      "Title": "Oobe Page",
+                      "SecondaryTitle": "Test SecondaryTitle",
+                      "Subtitle": "Settings Page with a Hero Image",
+                      "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+                      "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+                      "IsUpdated": true
+                    },
+                    {
+                      "UniqueId": "WinUICommunityGallery.Pages.AwakePage",
+                      "Title": "Oobe Page",
+                      "SecondaryTitle": "Test SecondaryTitle",
+                      "Subtitle": "Settings Page with a Hero Image",
+                      "ImagePath": "ms-appx:///Assets/Modules/PT.png",
+                      "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
+                      "IsUpdated": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

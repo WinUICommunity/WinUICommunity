@@ -42,7 +42,7 @@ public sealed partial class NavigationManagerPage : Page
     {
         jsonNavigationViewService = new JsonNavigationViewService();
         jsonNavigationViewService.Initialize(NavigationViewControl, rootFrame);
-        jsonNavigationViewService.ConfigJson("DataModel/AppData.json");
+        jsonNavigationViewService.ConfigJson("DataModel/SampleAppData.json");
         jsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingsPage));
         jsonNavigationViewService.ConfigSettingsPage(typeof(GeneralPage));
         jsonNavigationViewService.ConfigSectionPage(typeof(mySectionPage));
