@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-
 using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
@@ -10,7 +9,8 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     private AutoSuggestBox? _autoSuggestBox;
 
     public IList<object>? MenuItems => _navigationView?.MenuItems;
-
+    public IList<object>? FooterMenuItems => _navigationView?.FooterMenuItems;
+    private IList<object>? _menuItemsWithFooterMenuItems => MenuItems.Concat(FooterMenuItems).ToList();
     public object? SettingsItem => _navigationView?.SettingsItem;
 
     private readonly JsonPageService _pageService = new();
@@ -55,11 +55,11 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             NavigationViewItem selectedItem = null;
             if (dataGroup == null && dataItem == null)
             {
-                selectedItem = GetSelectedItem(_navigationView.MenuItems, e.SourcePageType);
+                selectedItem = GetSelectedItem(_menuItemsWithFooterMenuItems, e.SourcePageType);
             }
             else
             {
-                selectedItem = GetSelectedItem(_navigationView.MenuItems, dataItem, dataGroup);
+                selectedItem = GetSelectedItem(_menuItemsWithFooterMenuItems, dataItem, dataGroup);
             }
 
             if (selectedItem != null)
@@ -195,7 +195,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
         if (!string.IsNullOrEmpty(rootItem))
         {
-            foreach (var baseItem in _navigationView.MenuItems)
+            foreach (var baseItem in _menuItemsWithFooterMenuItems)
             {
                 if (baseItem is NavigationViewItem item)
                 {

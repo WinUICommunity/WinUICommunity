@@ -99,7 +99,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
     private void ConfigPages()
     {
-        _pageService.GetPages(MenuItems);
+        _pageService.GetPages(_menuItemsWithFooterMenuItems);
         _pageService.SetDefaultPage(_defaultPage);
         _pageService.SetSettingsPage(_settingsPage);
         _pageService.SetSectionPage(_sectionPage);
