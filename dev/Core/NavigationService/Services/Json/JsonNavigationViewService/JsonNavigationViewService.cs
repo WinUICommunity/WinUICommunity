@@ -10,7 +10,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
     public IList<object>? MenuItems => _navigationView?.MenuItems;
     public IList<object>? FooterMenuItems => _navigationView?.FooterMenuItems;
-    private IList<object>? _menuItemsWithFooterMenuItems => MenuItems.Concat(FooterMenuItems).ToList();
+    private IList<object>? _menuItemsWithFooterMenuItems => MenuItems?.Concat(FooterMenuItems)?.ToList();
     public object? SettingsItem => _navigationView?.SettingsItem;
 
     private readonly JsonPageService _pageService = new();
