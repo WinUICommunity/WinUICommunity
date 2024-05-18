@@ -43,44 +43,50 @@ public partial class PagerControl : Control
 
     ~PagerControl()
     {
-        if (rootGrid != null)
+        try
         {
-            rootGrid.KeyDown -= RootGrid_KeyDown;
-            rootGrid = null;
-        }
-        if (firstPageButton != null)
-        {
-            firstPageButton.Click -= FirstPageButton_Click;
-            firstPageButton = null;
-        }
-        if (previousPageButton != null)
-        {
-            previousPageButton.Click -= PreviousPageButton_Click;
-            previousPageButton = null;
-        }
-        if (nextPageButton != null)
-        {
-            nextPageButton.Click -= NextPageButton_Click;
-            nextPageButton = null;
-        }
-        if (lastPageButton != null)
-        {
-            lastPageButton.Click -= LastPageButton_Click;
-            lastPageButton = null;
-        }
-        if (comboBox != null)
-        {
-            comboBox.SelectionChanged -= ComboBox_SelectionChanged;
-            comboBox = null;
-        }
-        if (numberBox != null)
-        {
-            numberBox.ValueChanged -= NumberBox_ValueChanged;
-            numberBox = null;
-        }
+            if (rootGrid != null)
+            {
+                rootGrid.KeyDown -= RootGrid_KeyDown;
+                rootGrid = null;
+            }
+            if (firstPageButton != null)
+            {
+                firstPageButton.Click -= FirstPageButton_Click;
+                firstPageButton = null;
+            }
+            if (previousPageButton != null)
+            {
+                previousPageButton.Click -= PreviousPageButton_Click;
+                previousPageButton = null;
+            }
+            if (nextPageButton != null)
+            {
+                nextPageButton.Click -= NextPageButton_Click;
+                nextPageButton = null;
+            }
+            if (lastPageButton != null)
+            {
+                lastPageButton.Click -= LastPageButton_Click;
+                lastPageButton = null;
+            }
+            if (comboBox != null)
+            {
+                comboBox.SelectionChanged -= ComboBox_SelectionChanged;
+                comboBox = null;
+            }
+            if (numberBox != null)
+            {
+                numberBox.ValueChanged -= NumberBox_ValueChanged;
+                numberBox = null;
+            }
 
-        numberPanelRepeater = null;
-        selectedPageIndicator = null;
+            numberPanelRepeater = null;
+            selectedPageIndicator = null;
+        }
+        catch (Exception)
+        {
+        }
     }
 
     protected override void OnApplyTemplate()
