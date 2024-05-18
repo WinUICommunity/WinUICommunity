@@ -13,8 +13,16 @@
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
             <local:ControlExample HeaderText="SelectorBarSegmented">
+                <local:ControlExample.Xaml>
+                    &lt;wuc:SelectorBarSegmented&gt;#nl#
+                    &lt;SelectorBarItem Icon="Find" IsSelected="True" Text="Item 1" /&gt;#nl#
+                    &lt;SelectorBarItem Icon="Home" Text="Item 2" /&gt;#nl#
+                    &lt;SelectorBarItem Icon="Home" Text="Item 3" /&gt;#nl#
+                    &lt;/wuc:SelectorBarSegmented&gt;#nl#
+                </local:ControlExample.Xaml>
                 <wuc:SelectorBarSegmented>
-                    <SelectorBarItem Icon="Find" IsSelected="True"
+                    <SelectorBarItem Icon="Find"
+                                     IsSelected="True"
                                      Text="Item 1" />
                     <SelectorBarItem Icon="Home"
                                      Text="Item 2" />

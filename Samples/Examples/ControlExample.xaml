@@ -67,10 +67,12 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <SelectorBar x:Name="selectorBarControl">
-                <SelectorBarItem Loaded="SelectorBarItem_Loaded"
+                <SelectorBarItem x:Name="selectorBarXamlItem"
+                                 Loaded="SelectorBarItem_Loaded"
                                  Tag="XAML"
                                  Text="XAML" />
-                <SelectorBarItem Loaded="SelectorBarItem_Loaded"
+                <SelectorBarItem x:Name="selectorBarCSharpItem"
+                                 Loaded="SelectorBarItem_Loaded"
                                  Tag="C#"
                                  Text="C#" />
             </SelectorBar>

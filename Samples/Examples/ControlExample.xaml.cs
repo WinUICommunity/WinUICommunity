@@ -15,16 +15,16 @@ public sealed partial class ControlExample : OptionsPageControl
         DependencyProperty.Register(nameof(DocPage), typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnDocPageChanged));
 
     public static readonly DependencyProperty XamlProperty =
-        DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnXamlChanged));
 
     public static readonly DependencyProperty XamlSourceProperty =
-        DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
+        DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnXamlChanged));
 
     public static readonly DependencyProperty CSharpProperty =
-        DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
+        DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnCSharpChanged));
 
     public static readonly DependencyProperty CSharpSourceProperty =
-        DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
+        DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnCSharpChanged));
 
     public DocType DocType
     {
@@ -77,6 +77,22 @@ public sealed partial class ControlExample : OptionsPageControl
         }
     }
 
+    private static void OnXamlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctrl = (ControlExample)d;
+        if (ctrl != null)
+        {
+            ctrl.SelectorBarItem_Loaded(ctrl.selectorBarXamlItem, null);
+        }
+    }
+    private static void OnCSharpChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctrl = (ControlExample)d;
+        if (ctrl != null)
+        {
+            ctrl.SelectorBarItem_Loaded(ctrl.selectorBarCSharpItem, null);
+        }
+    }
     public ControlExample()
     {
         this.InitializeComponent();
@@ -129,17 +145,11 @@ public sealed partial class ControlExample : OptionsPageControl
         var item = sender as SelectorBarItem;
         if (item.Tag.Equals("XAML"))
         {
-            if (string.IsNullOrEmpty(Xaml) && string.IsNullOrEmpty(XamlSource))
-            {
-                item.Visibility = Visibility.Collapsed;
-            }
+            item.Visibility = string.IsNullOrEmpty(Xaml) && string.IsNullOrEmpty(XamlSource) ? Visibility.Collapsed : Visibility.Visible;
         }
         else if (item.Tag.Equals("C#"))
         {
-            if (string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(CSharpSource))
-            {
-                item.Visibility = Visibility.Collapsed;
-            }
+            item.Visibility = string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(CSharpSource) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         var firstVisibileItem = selectorBarControl.Items.Where(x => x.Visibility == Visibility.Visible).FirstOrDefault();
