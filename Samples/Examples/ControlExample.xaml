@@ -2,6 +2,7 @@
 <wuc:OptionsPageControl x:Class="WinUICommunityGallery.Examples.ControlExample"
                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:animations="using:CommunityToolkit.WinUI.Animations"
                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                         xmlns:local="using:WinUICommunityGallery.Examples"
                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -9,11 +10,31 @@
                         Margin="10,0,10,15"
                         VerticalAlignment="Top"
                         FooterContentMargin="16,0,16,10"
+                        FooterHeader="Source code"
+                        FooterHorizontalAlignment="Stretch"
                         mc:Ignorable="d">
     <wuc:OptionsPageControl.Resources>
-        <Thickness x:Key="ExpanderChevronMargin">0</Thickness>
-        <x:Double x:Key="ExpanderChevronButtonSize">0</x:Double>
-        <Thickness x:Key="ExpanderHeaderBorderThickness">0,1,0,0</Thickness>
+        <Thickness x:Key="ExpanderHeaderBorderThickness">0,1,0,1</Thickness>
+        <animations:ImplicitAnimationSet x:Name="ShowTransitions">
+            <animations:OffsetAnimation EasingMode="EaseOut"
+                                        From="0,24,0"
+                                        To="0"
+                                        Duration="0:0:0.4" />
+            <animations:OpacityAnimation EasingMode="EaseOut"
+                                         From="0"
+                                         To="1"
+                                         Duration="0:0:0.2" />
+        </animations:ImplicitAnimationSet>
+        <animations:ImplicitAnimationSet x:Name="HideTransitions">
+            <animations:OffsetAnimation EasingMode="EaseOut"
+                                        From="0"
+                                        To="0,24,0"
+                                        Duration="0:0:0.2" />
+            <animations:OpacityAnimation EasingMode="EaseOut"
+                                         From="1"
+                                         To="0"
+                                         Duration="0:0:0.1" />
+        </animations:ImplicitAnimationSet>
     </wuc:OptionsPageControl.Resources>
     <wuc:OptionsPageControl.Bar>
         <StackPanel>
@@ -38,46 +59,40 @@
                     ToolTipService.ToolTip="Go To Documentation" />
         </StackPanel>
     </wuc:OptionsPageControl.Bar>
-    <wuc:OptionsPageControl.BarFooter>
-        <StackPanel>
-            <Button x:Name="btnViewCode"
-                    Width="32"
-                    Height="32"
-                    Padding="0,0,0,2"
-                    HorizontalAlignment="Center"
-                    Click="ViewCode_Click"
-                    Style="{StaticResource AccentButtonStyle}"
-                    ToolTipService.ToolTip="View code">
-                <Button.Content>
-                    <PathIcon VerticalAlignment="Center"
-                              Data="{StaticResource CodeIcon}" />
-                </Button.Content>
-            </Button>
-        </StackPanel>
-    </wuc:OptionsPageControl.BarFooter>
     <wuc:OptionsPageControl.Footer>
         <Grid BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
               BorderThickness="0">
-            <Pivot x:Name="pivot"
-                   x:DefaultBindMode="OneWay">
-                <Pivot.Resources>
-                    <x:Double x:Key="PivotHeaderItemFontSize">14</x:Double>
-                </Pivot.Resources>
-                <PivotItem x:Name="PivotXAMLItem"
-                           Header="XAML">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <SelectorBar x:Name="selectorBarControl">
+                <SelectorBarItem Loaded="SelectorBarItem_Loaded"
+                                 Tag="XAML"
+                                 Text="XAML" />
+                <SelectorBarItem Loaded="SelectorBarItem_Loaded"
+                                 Tag="C#"
+                                 Text="C#" />
+            </SelectorBar>
+            <wuc:SwitchPresenter Grid.Row="1"
+                                 x:DefaultBindMode="OneWay"
+                                 Value="{Binding SelectedItem.Tag, ElementName=selectorBarControl}">
+                <wuc:Case Value="XAML">
                     <local:SampleCodePresenter x:Name="XamlPresenter"
+                                               animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                                               animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
                                                Code="{x:Bind Xaml}"
                                                CodeSourceFile="{x:Bind XamlSource}" />
-                </PivotItem>
-                <PivotItem x:Name="PivotCSharpItem"
-                           Header="C#">
+                </wuc:Case>
+                <wuc:Case Value="C#">
                     <local:SampleCodePresenter x:Name="CSharpPresenter"
+                                               animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
+                                               animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
                                                Code="{x:Bind CSharp}"
                                                CodeSourceFile="{x:Bind CSharpSource}"
                                                SampleType="CSharp" />
-                </PivotItem>
-            </Pivot>
-
+                </wuc:Case>
+            </wuc:SwitchPresenter>
         </Grid>
     </wuc:OptionsPageControl.Footer>
 </wuc:OptionsPageControl>

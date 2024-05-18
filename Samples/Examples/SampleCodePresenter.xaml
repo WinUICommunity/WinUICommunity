@@ -22,31 +22,19 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="SampleProgrammingLanguageState">
-                <VisualState x:Name="InlineSample">
-                    <VisualState.Setters>
-                        <Setter Target="CodeScrollViewer.(Grid.Row)" Value="0" />
-                        <Setter Target="CodeScrollViewer.HorizontalScrollMode" Value="Disabled" />
-                        <Setter Target="CodeScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-                        <Setter Target="CopyCodeButton.(Grid.Column)" Value="1" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
         <ScrollViewer x:Name="CodeScrollViewer"
-                      Margin="0,10"
                       VerticalAlignment="{Binding VerticalContentAlignment, Mode=OneWay}"
                       HorizontalScrollBarVisibility="Auto"
                       HorizontalScrollMode="Auto"
                       VerticalScrollBarVisibility="Auto"
                       VerticalScrollMode="Auto">
             <ContentPresenter x:Name="CodePresenter"
-                              Margin="0,0,0,15"
+                              Margin="0,10"
                               Loaded="CodePresenter_Loaded" />
         </ScrollViewer>
         <wuc:CopyButton x:Name="CopyCodeButton"
-                        Margin="0,0,10,5"
+                        Grid.Column="1"
+                        Margin="5,0,0,0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Click="CopyCodeButton_Click"

@@ -15,16 +15,16 @@ public sealed partial class ControlExample : OptionsPageControl
         DependencyProperty.Register(nameof(DocPage), typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnDocPageChanged));
 
     public static readonly DependencyProperty XamlProperty =
-        DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnXamlChanged));
+        DependencyProperty.Register("Xaml", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
 
     public static readonly DependencyProperty XamlSourceProperty =
-        DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnXamlSourceChanged));
+        DependencyProperty.Register("XamlSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
 
     public static readonly DependencyProperty CSharpProperty =
-        DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null, OnCSharpChanged));
+        DependencyProperty.Register("CSharp", typeof(string), typeof(ControlExample), new PropertyMetadata(null));
 
     public static readonly DependencyProperty CSharpSourceProperty =
-        DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null, OnCSharpSourceChanged));
+        DependencyProperty.Register("CSharpSource", typeof(object), typeof(ControlExample), new PropertyMetadata(null));
 
     public DocType DocType
     {
@@ -77,42 +77,6 @@ public sealed partial class ControlExample : OptionsPageControl
         }
     }
 
-    private static void OnXamlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-    {
-        var ctl = (ControlExample)d;
-        if (ctl != null)
-        {
-            ctl.HandlePivotItemVisibility(ctl.Xaml, ctl.XamlSource, ctl.PivotXAMLItem);
-        }
-    }
-
-    private static void OnXamlSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-    {
-        var ctl = (ControlExample)d;
-        if (ctl != null)
-        {
-            ctl.HandlePivotItemVisibility(ctl.Xaml, ctl.XamlSource, ctl.PivotXAMLItem);
-        }
-    }
-
-    private static void OnCSharpChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-    {
-        var ctl = (ControlExample)d;
-        if (ctl != null)
-        {
-            ctl.HandlePivotItemVisibility(ctl.CSharp, ctl.CSharpSource, ctl.PivotCSharpItem);
-        }
-    }
-
-    private static void OnCSharpSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-    {
-        var ctl = (ControlExample)d;
-        if (ctl != null)
-        {
-            ctl.HandlePivotItemVisibility(ctl.CSharp, ctl.CSharpSource, ctl.PivotCSharpItem);
-        }
-    }
-
     public ControlExample()
     {
         this.InitializeComponent();
@@ -121,69 +85,9 @@ public sealed partial class ControlExample : OptionsPageControl
 
     private void ControlExample_Loaded(object sender, RoutedEventArgs e)
     {
-        OnCSharpChanged(this, null);
-        OnCSharpSourceChanged(this, null);
-        OnXamlChanged(this, null);
-        OnXamlSourceChanged(this, null);
         OnDocPageChanged(this, null);
     }
 
-    private void AddOrRemovePivotItem(Visibility visibility, PivotItem pivotItem)
-    {
-        if (visibility == Visibility.Collapsed)
-        {
-            if (pivot.Items.Any(p => ((PivotItem)p).Equals(pivotItem)))
-            {
-                pivot.Items.Remove(pivotItem);
-            }
-        }
-        else
-        {
-            if (!pivot.Items.Any(p => ((PivotItem)p).Equals(pivotItem)))
-            {
-                pivot.Items.Add(pivotItem);
-            }
-        }
-    }
-
-    private void HandleFooterVisibility()
-    {
-        if (string.IsNullOrEmpty(CSharpSource) && string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(Xaml) && string.IsNullOrEmpty(XamlSource))
-        {
-            btnViewCode.Visibility = Visibility.Collapsed;
-            FooterVisibility = Visibility.Collapsed;
-            foreach (var item in pivot.Items)
-            {
-                pivot.Items.Remove(item);
-            }
-        }
-        else
-        {
-            btnViewCode.Visibility = Visibility.Visible;
-            FooterVisibility = Visibility.Visible;
-        }
-    }
-
-    private void HandlePivotItemVisibility(string firstValue, string secondValue, PivotItem pivotItem)
-    {
-        if (string.IsNullOrEmpty(firstValue) && string.IsNullOrEmpty(secondValue))
-        {
-            pivotItem.Visibility = Visibility.Collapsed;
-            AddOrRemovePivotItem(Visibility.Collapsed, pivotItem);
-        }
-        else
-        {
-            PivotXAMLItem.Visibility = Visibility.Visible;
-            AddOrRemovePivotItem(Visibility.Visible, pivotItem);
-        }
-
-        HandleFooterVisibility();
-    }
-
-    private void ViewCode_Click(object sender, RoutedEventArgs e)
-    {
-        IsFooterExpanded = !IsFooterExpanded;
-    }
     private void ToggleTheme_Click(object sender, RoutedEventArgs e)
     {
         if (ActualTheme == ElementTheme.Dark)
@@ -218,6 +122,31 @@ public sealed partial class ControlExample : OptionsPageControl
         }
 
         await Launcher.LaunchUriAsync(new Uri($"https://ghost1372.github.io/{docTypeValue}/{DocPage}"));
+    }
+
+    private void SelectorBarItem_Loaded(object sender, RoutedEventArgs e)
+    {
+        var item = sender as SelectorBarItem;
+        if (item.Tag.Equals("XAML"))
+        {
+            if (string.IsNullOrEmpty(Xaml) && string.IsNullOrEmpty(XamlSource))
+            {
+                item.Visibility = Visibility.Collapsed;
+            }
+        }
+        else if (item.Tag.Equals("C#"))
+        {
+            if (string.IsNullOrEmpty(CSharp) && string.IsNullOrEmpty(CSharpSource))
+            {
+                item.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        var firstVisibileItem = selectorBarControl.Items.Where(x => x.Visibility == Visibility.Visible).FirstOrDefault();
+        if (firstVisibileItem != null)
+        {
+            firstVisibileItem.IsSelected = true;
+        }
     }
 }
 public enum DocType
