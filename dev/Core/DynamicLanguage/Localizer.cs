@@ -1,5 +1,6 @@
 ﻿namespace WinUICommunity;
 
+[Obsolete("This Feature will be removed after WASDK v1.6 released")]
 public sealed partial class Localizer : ILocalizer, IDisposable
 {
     public static readonly DependencyProperty UidProperty = DependencyProperty.RegisterAttached(

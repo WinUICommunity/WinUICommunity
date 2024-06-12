@@ -142,6 +142,7 @@ public partial class ThemeService
         }
     }
 
+    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     public void ConfigTitleBar(TitleBarCustomization titleBarCustomization)
     {
         this.titleBarCustomization = titleBarCustomization;

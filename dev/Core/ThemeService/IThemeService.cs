@@ -12,6 +12,8 @@ public interface IThemeService
     void ConfigFallbackColor(Color color, bool force = false);
     void ConfigFallbackColor();
     void ConfigElementTheme(ElementTheme elementTheme = ElementTheme.Default, bool force = false);
+
+    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     void ConfigTitleBar(TitleBarCustomization titleBarCustomization);
     SystemBackdrop GetSystemBackdrop();
     SystemBackdrop GetSystemBackdrop(BackdropType backdropType);
@@ -28,8 +30,14 @@ public interface IThemeService
     void SetElementThemeWithoutSave(ElementTheme elementTheme);
 
     bool IsDarkTheme();
+
+    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     void UpdateSystemCaptionButtonForAppWindow(Window window);
+
+    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     void ResetCaptionButtonColors(Window window);
+
+    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     void UpdateSystemCaptionButton(Window window);
     void OnThemeComboBoxSelectionChanged(object sender);
     void SetThemeComboBoxDefaultItem(ComboBox themeComboBox);

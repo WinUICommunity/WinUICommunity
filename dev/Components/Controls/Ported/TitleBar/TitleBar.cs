@@ -25,6 +25,8 @@ namespace WinUICommunity;
 [TemplatePart(Name = nameof(PART_LeftPaddingColumn), Type = typeof(ColumnDefinition))]
 [TemplatePart(Name = nameof(PART_RightPaddingColumn), Type = typeof(ColumnDefinition))]
 [TemplatePart(Name = nameof(PART_ButtonHolder), Type = typeof(StackPanel))]
+[Obsolete("This Feature will be removed after WASDK v1.6 released")]
+
 public partial class TitleBar : Control
 {
     private const string PartBackButton = "PART_BackButton";

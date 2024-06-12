@@ -105,6 +105,7 @@ public partial class ThemeService : IThemeService
             : RootTheme == ElementTheme.Dark;
     }
 
+    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     public void UpdateSystemCaptionButtonForAppWindow(Window window)
     {
         var titleBar = window.AppWindow.TitleBar;
@@ -154,6 +155,7 @@ public partial class ThemeService : IThemeService
         }
     }
 
+    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     public void ResetCaptionButtonColors(Window window)
     {
         var res = Application.Current.Resources;
@@ -175,6 +177,7 @@ public partial class ThemeService : IThemeService
         WindowHelper.ReActivateWindow(window);
     }
 
+    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     public void UpdateSystemCaptionButton(Window window)
     {
         if (this.titleBarCustomization != null)
@@ -191,6 +194,7 @@ public partial class ThemeService : IThemeService
         }
     }
 
+    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     private void UpdateSystemCaptionButtonColors()
     {
         if (Window != null)

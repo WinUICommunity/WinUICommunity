@@ -1,5 +1,6 @@
 ﻿namespace WinUICommunity;
 
+[Obsolete("This Class will be removed after WASDK v1.6 released")]
 public class TitleBarButtons
 {
     public Color? BackgroundColor { get; set; }

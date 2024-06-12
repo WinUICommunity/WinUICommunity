@@ -2,6 +2,8 @@
 
 namespace WinUICommunity;
 
+[Obsolete("This Feature will be removed after WASDK v1.6 released")]
+
 public partial class LocalizerBuilder
 {
     private record StringResourceItem(string Name, string Value, string Comment);
