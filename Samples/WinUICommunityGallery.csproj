@@ -10,7 +10,7 @@
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
-    <Version>6.8.0</Version>
+    <Version>6.9.0</Version>
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <GITHUB_ACTIONS>false</GITHUB_ACTIONS>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
