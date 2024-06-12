@@ -16,9 +16,6 @@
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Latest</LangVersion>
     <NoWarn>WMC1506;CA1416;CS8632;CS0414</NoWarn>
-
-    <!-- will be remove in next version -->
-    <ShouldComputeInputPris>true</ShouldComputeInputPris>
     
     <!-- The NuGet package version -->
     <XAMLToolsVersion>1.0.0-alpha0167</XAMLToolsVersion>
@@ -40,7 +37,7 @@
 
   <!-- The NuGet versions of dependencies to build against. -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240428000" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240607001" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.3233" />
   </ItemGroup>
   
