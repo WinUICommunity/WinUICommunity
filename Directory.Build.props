@@ -20,6 +20,7 @@
     <!-- The NuGet package version -->
     <XAMLToolsVersion>1.0.0-alpha0167</XAMLToolsVersion>
     <CommunityToolkitMediaVersion>8.0.240109</CommunityToolkitMediaVersion>
+    <NewtonsoftJsonVersion>13.0.3</NewtonsoftJsonVersion>
     
     <!-- The NuGet package options -->
     <PackageIcon>icon.png</PackageIcon>
