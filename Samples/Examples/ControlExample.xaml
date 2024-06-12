@@ -84,6 +84,7 @@
                                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"
                                                animations:Implicit.ShowAnimations="{StaticResource ShowTransitions}"
                                                Code="{x:Bind Xaml}"
+                                               SampleType="XAML"
                                                CodeSourceFile="{x:Bind XamlSource}" />
                 </wuc:Case>
                 <wuc:Case Value="C#">
