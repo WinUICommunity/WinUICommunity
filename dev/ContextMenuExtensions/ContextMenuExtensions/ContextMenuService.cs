@@ -1,4 +1,6 @@
-﻿namespace WinUICommunity;
+﻿using System.Reflection;
+
+namespace WinUICommunity;
 
 public class ContextMenuService
 {
@@ -232,5 +234,21 @@ public class ContextMenuService
     {
         var folder = await GetMenusFolderAsync();
         await folder.DeleteAsync();
+    }
+
+    public void ReplaceMenu(ContextMenuItem menuItem, ContextMenuItem newMenuItem)
+    {
+        PropertyInfo[] propsSource = typeof(ContextMenuItem).GetProperties();
+        foreach (PropertyInfo infoSource in propsSource)
+        {
+            object value = infoSource.GetValue(newMenuItem, null);
+            infoSource.SetValue(menuItem, value, null);
+        }
+    }
+
+    public async Task RefreshMenuAsync(ContextMenuItem menuItem)
+    {
+        var newMenuItem = await ReadAsync(menuItem.File);
+        ReplaceMenu(menuItem, newMenuItem);
     }
 }
