@@ -106,6 +106,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 Components Includes custom controls and styles.
 
 ### ⚡ What’s Inside? ⚡
+- ✨ PinBox
 - ✨ SelectorBarSegmented
 - ✨ NavigationViewItem Style
 - ✨ ColorfulShimmingEffect
@@ -243,7 +244,10 @@ Install-Package WinUICommunity.ContextMenuExtensions
 
 ## History
 
-### SelectorBarSegmented / Experimental
+### PinBox
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/PinBox.gif)
+
+### SelectorBarSegmented
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/SelectorBarSegmented.png)
 
 ### NavigationViewItem Style
