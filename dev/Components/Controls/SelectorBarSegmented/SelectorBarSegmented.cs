@@ -36,7 +36,7 @@ public class SelectorBarSegmented : SelectorBar
     {
         if (value < 0)
         {
-            SelectedItem = null;
+            SelectedItem = Items.Where(item => item.IsSelected = true).FirstOrDefault();
         }
         else
         {
