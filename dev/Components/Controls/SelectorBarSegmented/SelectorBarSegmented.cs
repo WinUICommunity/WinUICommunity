@@ -1,4 +1,5 @@
-﻿namespace WinUICommunity;
+﻿
+namespace WinUICommunity;
 
 [TemplatePart(Name = nameof(PART_ItemsView), Type = typeof(ItemsView))]
 public class SelectorBarSegmented : SelectorBar
@@ -12,6 +13,36 @@ public class SelectorBarSegmented : SelectorBar
 
     public IReadOnlyList<object> SelectedItems { get; internal set; }
 
+    public int SelectedIndex
+    {
+        get { return (int)GetValue(SelectedIndexProperty); }
+        set { SetValue(SelectedIndexProperty, value); }
+    }
+
+    public static readonly DependencyProperty SelectedIndexProperty =
+        DependencyProperty.Register(nameof(SelectedIndex), typeof(int), typeof(SelectorBarSegmented), new PropertyMetadata(-1, OnSelectedIndexChanged));
+
+    private static void OnSelectedIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctl = (SelectorBarSegmented)d;
+        if (ctl != null)
+        {
+            var value = (int)e.NewValue;
+
+            ctl.UpdateSelectedIndex(value);
+        }
+    }
+    private void UpdateSelectedIndex(int value)
+    {
+        if (value < 0)
+        {
+            SelectedItem = null;
+        }
+        else
+        {
+            SelectedItem = Items[value];
+        }
+    }
     public ItemsViewSelectionMode SelectionMode
     {
         get { return (ItemsViewSelectionMode)GetValue(SelectionModeProperty); }
@@ -70,6 +101,7 @@ public class SelectorBarSegmented : SelectorBar
             _ItemsView.SelectionChanged += _ItemsView_SelectionChanged;
         }
         UpdateItemsView(Orientation);
+
     }
 
     private void _ItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs args)
