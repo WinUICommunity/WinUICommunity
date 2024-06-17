@@ -13,7 +13,7 @@
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
 
-            <local:ControlExample DocPage="controls/shield">
+            <local:ControlExample DocPage="controls/pinBox">
                 <local:ControlExample.Xaml>
                     <x:String>
                         &lt;wuc:PinBox /&gt;
@@ -49,17 +49,17 @@
                                  Header="Placeholder Text"
                                  PlaceholderText="Placeholder Text" />
 
-                        <NumberBox x:Name="numberBox"
-                                   Header="Password Length"
+                        <NumberBox Header="Password Length"
                                    Minimum="1"
                                    SpinButtonPlacementMode="Inline"
-                                   ValueChanged="NumberBox_ValueChanged" />
+                                   ValueChanged="NumberBox_ValueChanged"
+                                   Value="4" />
 
-                        <Slider x:Name="slider"
-                                Maximum="100"
+                        <Slider Maximum="100"
                                 Minimum="0"
                                 StepFrequency="1"
-                                ValueChanged="slider_ValueChanged" />
+                                ValueChanged="Slider_ValueChanged"
+                                Value="12" />
 
                         <ComboBox x:Name="cmbOrientation"
                                   Header="Orientation"

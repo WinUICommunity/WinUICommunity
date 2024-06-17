@@ -9,15 +9,6 @@ public sealed partial class PinBoxPage : Page
     public PinBoxPage()
     {
         this.InitializeComponent();
-        Loaded += PinBoxPage_Loaded;
-    }
-
-    private void PinBoxPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        numberBox.Value = 4;
-        slider.Value = 12;
-        pinBox.PasswordLength = Convert.ToInt32(numberBox.Value);
-        pinBox.ItemSpacing = slider.Value;
     }
 
     public Orientation GetOrientation(int index)
@@ -35,13 +26,19 @@ public sealed partial class PinBoxPage : Page
         return (PinBoxFocusMode)index;
     }
 
-    private void slider_ValueChanged(object sender, Microsoft.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
-    {
-        pinBox.ItemSpacing = e.NewValue;
-    }
-
     private void NumberBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
-        pinBox.PasswordLength = Convert.ToInt32(args.NewValue);
+        if (pinBox != null)
+        {
+            pinBox.PasswordLength = Convert.ToInt32(args.NewValue);
+        }
+    }
+
+    private void Slider_ValueChanged(object sender, Microsoft.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+    {
+        if (pinBox != null)
+        {
+            pinBox.ItemSpacing = e.NewValue;
+        }
     }
 }
