@@ -1,10 +1,6 @@
-﻿using Microsoft.UI.Xaml.Media;
-using Windows.Foundation.Metadata;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 [TemplatePart(Name = nameof(PART_ItemsView), Type = typeof(ItemsView))]
-[Experimental]
 public class SelectorBarSegmented : SelectorBar
 {
     private string PART_ItemsView = "PART_ItemsView";
