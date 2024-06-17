@@ -101,6 +101,14 @@
       "IsSpecialSection": false,
       "Items": [
         {
+          "UniqueId": "WinUICommunityGallery.Pages.PinBoxPage",
+          "Title": "PinBox",
+          "Subtitle": "PinBox",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/passwordBox.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/passwordBox.png"
+        },
+        {
           "UniqueId": "WinUICommunityGallery.Pages.SelectorBarSegmentedPage",
           "Title": "SelectorBarSegmented",
           "Subtitle": "SelectorBarSegmented",

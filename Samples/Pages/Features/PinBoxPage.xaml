@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="WinUICommunityGallery.Pages.PinBoxPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:WinUICommunityGallery.Examples"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:wuc="using:WinUICommunity"
+      mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel Margin="10"
+                    wuc:PanelAttach.ChildrenTransitions="Default"
+                    Spacing="10">
+
+            <local:ControlExample DocPage="controls/shield">
+                <local:ControlExample.Xaml>
+                    <x:String>
+                        &lt;wuc:PinBox /&gt;
+                    </x:String>
+                </local:ControlExample.Xaml>
+                <StackPanel Margin="10"
+                            Spacing="10">
+                    <wuc:PinBox x:Name="pinBox"
+                                Description="{x:Bind txtDesc.Description, Mode=OneWay}"
+                                FocusMode="{x:Bind GetFocusMode(cmbFocusMode.SelectedIndex), Mode=OneWay}"
+                                Header="{x:Bind txtHeader.Text, Mode=OneWay}"
+                                Orientation="{x:Bind GetOrientation(cmbOrientation.SelectedIndex), Mode=OneWay}"
+                                PasswordChar="{x:Bind txtPassChar.Text, Mode=OneWay}"
+                                PasswordRevealMode="{x:Bind GetPasswordRevealMode(cmbPassReveal.SelectedIndex), Mode=OneWay}"
+                                PlaceholderText="{x:Bind txtPlaceholder.Text, Mode=OneWay}"
+                                ShowError="{x:Bind tgShowError.IsOn, Mode=OneWay}"
+                                ShowSuccess="{x:Bind tgShowSuccess.IsOn, Mode=OneWay}" />
+                </StackPanel>
+
+                <local:ControlExample.Pane>
+                    <StackPanel Spacing="10">
+                        <TextBox x:Name="txtHeader"
+                                 Header="Header"
+                                 PlaceholderText="Header" />
+                        <TextBox x:Name="txtDesc"
+                                 Header="Description"
+                                 PlaceholderText="Description" />
+                        <TextBox x:Name="txtPassChar"
+                                 Header="Password Char"
+                                 PlaceholderText="Password Char"
+                                 Text="●" />
+                        <TextBox x:Name="txtPlaceholder"
+                                 Header="Placeholder Text"
+                                 PlaceholderText="Placeholder Text" />
+
+                        <NumberBox x:Name="numberBox"
+                                   Header="Password Length"
+                                   Minimum="1"
+                                   SpinButtonPlacementMode="Inline"
+                                   ValueChanged="NumberBox_ValueChanged" />
+
+                        <Slider x:Name="slider"
+                                Maximum="100"
+                                Minimum="0"
+                                StepFrequency="1"
+                                ValueChanged="slider_ValueChanged" />
+
+                        <ComboBox x:Name="cmbOrientation"
+                                  Header="Orientation"
+                                  SelectedIndex="1">
+                            <ComboBoxItem Content="Vertical" />
+                            <ComboBoxItem Content="Horizontal" />
+                        </ComboBox>
+
+                        <ComboBox x:Name="cmbPassReveal"
+                                  Header="Password Reveal Mode"
+                                  SelectedIndex="0">
+                            <ComboBoxItem Content="Hidden" />
+                            <ComboBoxItem Content="Peek" />
+                            <ComboBoxItem Content="Visible" />
+                        </ComboBox>
+
+                        <ComboBox x:Name="cmbFocusMode"
+                                  Header="Focus Mode"
+                                  SelectedIndex="1">
+                            <ComboBoxItem Content="Normal" />
+                            <ComboBoxItem Content="Complete" />
+                        </ComboBox>
+
+                        <ToggleSwitch x:Name="tgShowSuccess"
+                                      Header="Show Success" />
+                        <ToggleSwitch x:Name="tgShowError"
+                                      Header="Show Error" />
+                    </StackPanel>
+                </local:ControlExample.Pane>
+            </local:ControlExample>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
