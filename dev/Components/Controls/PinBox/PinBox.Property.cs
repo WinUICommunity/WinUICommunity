@@ -48,8 +48,7 @@ public partial class PinBox
     }
 
     public static readonly DependencyProperty ItemSpacingProperty = DependencyProperty.Register(
-        nameof(ItemSpacing), typeof(double), typeof(PinBox), new PropertyMetadata(12.0));
-
+        nameof(ItemSpacing), typeof(double), typeof(PinBox), new PropertyMetadata(12.0, OnItemSpacingChanged));
 
     public double ItemWidth
     {

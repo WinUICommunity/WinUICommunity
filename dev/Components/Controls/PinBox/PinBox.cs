@@ -119,6 +119,7 @@ public partial class PinBox : Control
         {
             ctl.CreatePinBoxes((int)e.NewValue);
             ctl.UpdatePinBoxes(ctl.GetPassword(), (int)e.NewValue);
+            ctl.UpdateOrientation(ctl.Orientation);
         }
     }
 
@@ -143,6 +144,15 @@ public partial class PinBox : Control
             {
                 box.PasswordChar = ctl.GetPasswordChar((string)e.NewValue);
             }
+        }
+    }
+
+    private static void OnItemSpacingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctl = (PinBox)d;
+        if (ctl != null)
+        {
+            ctl.UpdateOrientation(ctl.Orientation);
         }
     }
 
