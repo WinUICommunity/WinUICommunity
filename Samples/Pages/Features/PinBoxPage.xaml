@@ -22,7 +22,7 @@
                 <StackPanel Margin="10"
                             Spacing="10">
                     <wuc:PinBox x:Name="pinBox"
-                                Description="{x:Bind txtDesc.Description, Mode=OneWay}"
+                                Description="{x:Bind txtDesc.Text, Mode=OneWay}"
                                 FocusMode="{x:Bind GetFocusMode(cmbFocusMode.SelectedIndex), Mode=OneWay}"
                                 Header="{x:Bind txtHeader.Text, Mode=OneWay}"
                                 Orientation="{x:Bind GetOrientation(cmbOrientation.SelectedIndex), Mode=OneWay}"
