@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using WinUICommunity;
 
@@ -24,6 +25,11 @@ public sealed partial class PinBoxPage : Page
     public PinBoxFocusMode GetFocusMode(int index)
     {
         return (PinBoxFocusMode)index;
+    }
+
+    public HorizontalAlignment GetHorizontalAlignment(int index)
+    {
+        return (HorizontalAlignment)index;
     }
 
     private void NumberBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
