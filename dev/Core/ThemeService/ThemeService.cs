@@ -1,4 +1,5 @@
-﻿using Nucs.JsonSettings;
+﻿using Microsoft.UI.Xaml;
+using Nucs.JsonSettings;
 using Nucs.JsonSettings.Fluent;
 using Nucs.JsonSettings.Modulation;
 using Nucs.JsonSettings.Modulation.Recovery;
@@ -15,7 +16,6 @@ public partial class ThemeService : IThemeService
     private bool changeThemeWithoutSave = false;
     private bool useAutoSave;
     private string filename;
-    private TitleBarCustomization titleBarCustomization;
     public Window Window { get; set; }
 
     public ElementTheme ActualTheme
@@ -106,56 +106,6 @@ public partial class ThemeService : IThemeService
     }
 
     [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    public void UpdateSystemCaptionButtonForAppWindow(Window window)
-    {
-        var titleBar = window.AppWindow.TitleBar;
-        if (titleBarCustomization?.LightTitleBarButtons == null && titleBarCustomization?.DarkTitleBarButtons == null)
-        {
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            if (IsDarkTheme())
-            {
-                titleBar.ButtonForegroundColor = Colors.White;
-                titleBar.ButtonInactiveForegroundColor = Colors.DarkGray;
-            }
-            else
-            {
-                titleBar.ButtonForegroundColor = Colors.Black;
-                titleBar.ButtonInactiveForegroundColor = Colors.DarkGray;
-            }
-        }
-        else
-        {
-            if (IsDarkTheme())
-            {
-                titleBar.BackgroundColor = titleBarCustomization?.DarkTitleBarButtons?.BackgroundColor;
-                titleBar.ForegroundColor = titleBarCustomization?.DarkTitleBarButtons?.ForegroundColor;
-                titleBar.ButtonForegroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonForegroundColor;
-                titleBar.ButtonBackgroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonBackgroundColor;
-                titleBar.ButtonHoverBackgroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonHoverBackgroundColor;
-                titleBar.ButtonHoverForegroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonHoverForegroundColor;
-                titleBar.ButtonInactiveBackgroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonInactiveBackgroundColor;
-                titleBar.ButtonInactiveForegroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonInactiveForegroundColor;
-                titleBar.ButtonPressedBackgroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonPressedBackgroundColor;
-                titleBar.ButtonPressedForegroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonPressedForegroundColor;
-            }
-            else
-            {
-                titleBar.BackgroundColor = titleBarCustomization?.LightTitleBarButtons?.BackgroundColor;
-                titleBar.ForegroundColor = titleBarCustomization?.LightTitleBarButtons?.ForegroundColor;
-                titleBar.ButtonForegroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonForegroundColor;
-                titleBar.ButtonBackgroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonBackgroundColor;
-                titleBar.ButtonHoverBackgroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonHoverBackgroundColor;
-                titleBar.ButtonHoverForegroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonHoverForegroundColor;
-                titleBar.ButtonInactiveBackgroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonInactiveBackgroundColor;
-                titleBar.ButtonInactiveForegroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonInactiveForegroundColor;
-                titleBar.ButtonPressedBackgroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonPressedBackgroundColor;
-                titleBar.ButtonPressedForegroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonPressedForegroundColor;
-            }
-        }
-    }
-
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     public void ResetCaptionButtonColors(Window window)
     {
         var res = Application.Current.Resources;
@@ -178,28 +128,23 @@ public partial class ThemeService : IThemeService
     }
 
     [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    public void UpdateSystemCaptionButton(Window window)
-    {
-        if (this.titleBarCustomization != null)
-        {
-            switch (this.titleBarCustomization.TitleBarWindowType)
-            {
-                case TitleBarWindowType.None:
-                    ResetCaptionButtonColors(window);
-                    break;
-                case TitleBarWindowType.AppWindow:
-                    UpdateSystemCaptionButtonForAppWindow(window);
-                    break;
-            }
-        }
-    }
-
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
     private void UpdateSystemCaptionButtonColors()
     {
         if (Window != null)
         {
-            UpdateSystemCaptionButton(Window);
+            var titleBar = Window.AppWindow.TitleBar;
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            if (IsDarkTheme())
+            {
+                titleBar.ButtonForegroundColor = Colors.White;
+                titleBar.ButtonInactiveForegroundColor = Colors.DarkGray;
+            }
+            else
+            {
+                titleBar.ButtonForegroundColor = Colors.Black;
+                titleBar.ButtonInactiveForegroundColor = Colors.DarkGray;
+            }
         }
     }
 }
