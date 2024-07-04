@@ -18,7 +18,6 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     private Type _defaultPage { get; set; }
     private Type _settingsPage { get; set; }
     private Type _sectionPage { get; set; }
-    public ILocalizer Localizer { get; set; }
     public ResourceManager ResourceManager { get; set; }
     public ResourceContext ResourceContext { get; set; }
 
