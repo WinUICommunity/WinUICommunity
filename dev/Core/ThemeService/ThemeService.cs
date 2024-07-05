@@ -1,5 +1,4 @@
-﻿using Microsoft.UI.Xaml;
-using Nucs.JsonSettings;
+﻿using Nucs.JsonSettings;
 using Nucs.JsonSettings.Fluent;
 using Nucs.JsonSettings.Modulation;
 using Nucs.JsonSettings.Modulation.Recovery;
@@ -77,7 +76,7 @@ public partial class ThemeService : IThemeService
             AppName = appInfo.NameAndVersion;
         }
 
-        string RootPath = Path.Combine(PathHelper.GetLocalFolderPath(), AppName);
+        string RootPath = Path.Combine(PathHelper.GetApplicationDataFolderPath(), AppName);
         string AppConfigPath = Path.Combine(RootPath, ConfigFilePath);
 
         this.useAutoSave = useAutoSave;
@@ -94,57 +93,13 @@ public partial class ThemeService : IThemeService
     private void OnActualThemeChanged(FrameworkElement sender, object args)
     {
         GeneralHelper.SetPreferredAppMode(sender.ActualTheme);
-        UpdateSystemCaptionButtonColors();
         ActualThemeChanged?.Invoke(sender, args);
     }
-
+    
     public bool IsDarkTheme()
     {
         return RootTheme == ElementTheme.Default
             ? Application.Current.RequestedTheme == ApplicationTheme.Dark
             : RootTheme == ElementTheme.Dark;
-    }
-
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    public void ResetCaptionButtonColors(Window window)
-    {
-        var res = Application.Current.Resources;
-
-        window.AppWindow.TitleBar.BackgroundColor = null;
-        window.AppWindow.TitleBar.ButtonBackgroundColor = null;
-        window.AppWindow.TitleBar.ButtonInactiveBackgroundColor = null;
-        window.AppWindow.TitleBar.ButtonHoverBackgroundColor = null;
-        window.AppWindow.TitleBar.ButtonPressedBackgroundColor = null;
-        window.AppWindow.TitleBar.ForegroundColor = null;
-        window.AppWindow.TitleBar.ButtonForegroundColor = null;
-        window.AppWindow.TitleBar.ButtonInactiveForegroundColor = null;
-        window.AppWindow.TitleBar.ButtonHoverForegroundColor = null;
-        window.AppWindow.TitleBar.ButtonPressedForegroundColor = null;
-        res["WindowCaptionBackground"] = res["SystemControlBackgroundBaseLowBrush"];
-        res["WindowCaptionBackgroundDisabled"] = res["SystemControlBackgroundBaseLowBrush"];
-        res["WindowCaptionForeground"] = res["SystemControlForegroundBaseHighBrush"];
-        res["WindowCaptionForegroundDisabled"] = res["SystemControlDisabledBaseMediumLowBrush"];
-        WindowHelper.ReActivateWindow(window);
-    }
-
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    private void UpdateSystemCaptionButtonColors()
-    {
-        if (Window != null)
-        {
-            var titleBar = Window.AppWindow.TitleBar;
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            if (IsDarkTheme())
-            {
-                titleBar.ButtonForegroundColor = Colors.White;
-                titleBar.ButtonInactiveForegroundColor = Colors.DarkGray;
-            }
-            else
-            {
-                titleBar.ButtonForegroundColor = Colors.Black;
-                titleBar.ButtonInactiveForegroundColor = Colors.DarkGray;
-            }
-        }
     }
 }
