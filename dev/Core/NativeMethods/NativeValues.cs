@@ -22,7 +22,8 @@ public static class NativeValues
             MsImg = "msimg32.dll",
             NTdll = "ntdll.dll",
             DwmApi = "dwmapi.dll",
-            UxTheme = "uxtheme.dll";
+            UxTheme = "uxtheme.dll",
+            ComCtl32 = "comctl32.dll";
     }
 
     public const int

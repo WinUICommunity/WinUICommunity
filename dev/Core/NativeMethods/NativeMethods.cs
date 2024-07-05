@@ -171,14 +171,17 @@ public static partial class NativeMethods
     [DllImport(ExternDll.Gdi32, SetLastError = true)]
     public static extern bool DeleteObject(IntPtr hObject);
 
-    [DllImport("comctl32.dll", SetLastError = true)]
+    [DllImport(ExternDll.ComCtl32, SetLastError = true)]
     public static extern IntPtr DefSubclassProc(IntPtr hWnd, uint uMsg, nuint wParam, nint lParam);
 
-    [DllImport("comctl32.dll", SetLastError = true)]
+    [DllImport(ExternDll.ComCtl32, SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool SetWindowSubclass(IntPtr hWnd, SUBCLASSPROC pfnSubclass, nuint uIdSubclass, nuint dwRefData);
 
-    [DllImport("comctl32.dll", SetLastError = true)]
+    [DllImport(ExternDll.ComCtl32, SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool RemoveWindowSubclass(IntPtr hWnd, SUBCLASSPROC pfnSubclass, nuint uIdSubclass);
+
+    [DllImport(ExternDll.UxTheme, SetLastError = true, EntryPoint = "#138")]
+    public static extern bool ShouldSystemUseDarkMode();
 }
