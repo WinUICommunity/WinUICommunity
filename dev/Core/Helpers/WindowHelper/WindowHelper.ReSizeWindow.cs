@@ -50,22 +50,9 @@ public partial class WindowHelper
         }
     }
 
-    /// <summary>
-    /// Set Window Width and Height
-    /// </summary>
-    /// <param name="hwnd"></param>
-    /// <param name="width"></param>
-    /// <param name="height"></param>
     public static void SetWindowSize(Window window, int width, int height)
     {
-        var hwnd = WindowNative.GetWindowHandle(window);
-        // Win32 uses pixels and WinUI 3 uses effective pixels, so you should apply the DPI scale factor
-        var dpi = NativeMethods.GetDpiForWindow(hwnd);
-        var scalingFactor = (float)dpi / 96;
-        width = (int)(width * scalingFactor);
-        height = (int)(height * scalingFactor);
-
-        NativeMethods.SetWindowPos(hwnd, NativeValues.HWND_TOP_IntPtr, 0, 0, width, height, NativeValues.SetWindowPosFlags.SWP_NOMOVE);
+        window.AppWindow.Resize(new Windows.Graphics.SizeInt32(width, height));
     }
 
     public static void MoveAndResizeCenterScreen(Window window, int width, int height)
