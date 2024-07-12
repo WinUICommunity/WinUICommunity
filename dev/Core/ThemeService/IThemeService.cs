@@ -37,4 +37,6 @@ public interface IThemeService
     void SetThemeRadioButtonDefaultItem(Panel ThemePanel);
     void OnBackdropRadioButtonChecked(object sender);
     void SetBackdropRadioButtonDefaultItem(Panel BackdropPanel);
+    void UpdateCaptionButtons();
+    void UpdateCaptionButtons(Window window);
 }

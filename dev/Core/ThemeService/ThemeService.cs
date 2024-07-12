@@ -17,6 +17,13 @@ public partial class ThemeService : IThemeService
     private string filename;
     public Window Window { get; set; }
 
+    public ThemeService() { }
+    public ThemeService(Window window)
+    {
+        Initialize(window);
+        ConfigElementTheme();
+        ConfigBackdrop();
+    }
     public ElementTheme ActualTheme
     {
         get
@@ -30,6 +37,42 @@ public partial class ThemeService : IThemeService
             }
             return GeneralHelper.GetEnum<ElementTheme>(Application.Current.RequestedTheme.ToString());
         }
+    }
+    public void UpdateCaptionButtons()
+    {
+        UpdateCaptionButtons(Window);
+    }
+
+    public void UpdateCaptionButtons(Window window)
+    {
+        if (window == null)
+            return;
+
+        var res = Application.Current.Resources;
+        Windows.UI.Color buttonForegroundColor;
+        Windows.UI.Color buttonHoverForegroundColor;
+
+        Windows.UI.Color buttonHoverBackgroundColor;
+        if (ActualTheme == ElementTheme.Dark)
+        {
+            buttonForegroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#FFFFFF");
+            buttonHoverForegroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#FFFFFF");
+
+            buttonHoverBackgroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#0FFFFFFF");
+        }
+        else
+        {
+            buttonForegroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#191919");
+            buttonHoverForegroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#191919");
+
+            buttonHoverBackgroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#09000000");
+        }
+        res["WindowCaptionForeground"] = buttonForegroundColor;
+
+        window.AppWindow.TitleBar.ButtonForegroundColor = buttonForegroundColor;
+        window.AppWindow.TitleBar.ButtonHoverForegroundColor = buttonHoverForegroundColor;
+
+        window.AppWindow.TitleBar.ButtonHoverBackgroundColor = buttonHoverBackgroundColor;
     }
     public ElementTheme RootTheme
     {
