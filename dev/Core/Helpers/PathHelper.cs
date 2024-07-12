@@ -10,7 +10,7 @@ public partial class PathHelper
         return file.Path;
     }
 
-    public static string GetFullPathToExe()
+    public static string GetFullPathToExeFolder()
     {
         var path = AppDomain.CurrentDomain.BaseDirectory;
         var pos = path.LastIndexOf("\\");
@@ -19,7 +19,7 @@ public partial class PathHelper
 
     public static string GetFullPathToAsset(string assetName)
     {
-        return GetFullPathToExe() + "\\Assets\\" + assetName;
+        return GetFullPathToExeFolder() + "\\Assets\\" + assetName;
     }
 
     /// <summary>
