@@ -37,7 +37,7 @@ public partial class WindowHelper
             window.Content = frame = new Frame();
             return (window, frame);
         }
-        return (null, null);
+        return (window, null);
     }
 
     public static void SetWindowCornerRadius(Window window, NativeValues.DWM_WINDOW_CORNER_PREFERENCE cornerPreference)
