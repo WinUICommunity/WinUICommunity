@@ -1,18 +1,18 @@
 ﻿namespace WinUICommunity;
 public static class ColorHelper
 {
-    public static Color GetColorFromHex(string hexaColor)
+    public static Color GetColorFromHex(string hexColor)
     {
-        if (hexaColor.Length == 7) // 6-digit hexa color
+        if (hexColor.Length == 7) // 6-digit hex color
         {
-            hexaColor = hexaColor.Insert(1, "FF"); // insert FF as alpha value
+            hexColor = hexColor.Insert(1, "FF"); // insert FF as alpha value
         }
         return
             Color.FromArgb(
-              Convert.ToByte(hexaColor.Substring(1, 2), 16),
-                Convert.ToByte(hexaColor.Substring(3, 2), 16),
-                Convert.ToByte(hexaColor.Substring(5, 2), 16),
-                Convert.ToByte(hexaColor.Substring(7, 2), 16)
+              Convert.ToByte(hexColor.Substring(1, 2), 16),
+                Convert.ToByte(hexColor.Substring(3, 2), 16),
+                Convert.ToByte(hexColor.Substring(5, 2), 16),
+                Convert.ToByte(hexColor.Substring(7, 2), 16)
             );
     }
     public static uint ColorToUInt(Color color)
