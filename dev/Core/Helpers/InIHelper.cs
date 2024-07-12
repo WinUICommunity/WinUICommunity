@@ -10,7 +10,7 @@ public class InIHelper
 
     private string GetAssemblyName()
     {
-        return Application.Current.GetType().Assembly.GetName().Name;
+        return Assembly.GetEntryAssembly().GetName().Name;
     }
 
     /// <summary>
