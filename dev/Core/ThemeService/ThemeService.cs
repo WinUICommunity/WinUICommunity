@@ -96,13 +96,21 @@ public partial class ThemeService : IThemeService
             }
         }
     }
-    
+
+    public void AutoInitialize(Window window)
+    {
+        Initialize(window);
+        ConfigElementTheme();
+        ConfigBackdrop();
+    }
+
     public void Initialize(Window window, bool useAutoSave = true, string filename = null)
     {
         if (window == null)
         {
             return;
         }
+
         Window = window;
 
         if (Window.Content is FrameworkElement element)

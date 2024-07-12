@@ -5,6 +5,7 @@ public interface IThemeService
     event ActualThemeChangedEventHandler ActualThemeChanged;
 
     Window Window { get; set; }
+    void AutoInitialize(Window window);
     void Initialize(Window window, bool useAutoSave = true, string filename = null);
     void ConfigBackdrop(BackdropType backdropType = BackdropType.Mica, bool force = false);
     void ConfigTintColor(Color color, bool force = false);
