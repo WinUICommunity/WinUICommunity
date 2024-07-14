@@ -27,9 +27,6 @@
     <Content Include="ControlPagesSampleCode\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Strings\**\*.resw">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Assets\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

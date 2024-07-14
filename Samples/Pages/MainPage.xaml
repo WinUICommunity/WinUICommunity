@@ -13,18 +13,18 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <wuc:TitleBar x:Name="appTitleBar"
+        <TitleBar x:Name="AppTitleBar"
                       Title="{x:Bind local:App.Current.Title, Mode=OneWay}"
-                      BackButtonClick="appTitleBar_BackButtonClick"
+                      BackButtonClick="AppTitleBar_BackButtonClick"
                       IsBackButtonVisible="True"
                       IsPaneButtonVisible="True"
-                      PaneButtonClick="appTitleBar_PaneButtonClick"
+                      PaneButtonClick="AppTitleBar_PaneButtonClick"
                       Subtitle="{x:Bind local:App.Current.Version, Mode=OneWay}">
-            <wuc:TitleBar.Icon>
+            <TitleBar.Icon>
                 <BitmapIcon ShowAsMonochrome="False"
                             UriSource="ms-appx:///Assets/icon.png" />
-            </wuc:TitleBar.Icon>
-        </wuc:TitleBar>
+            </TitleBar.Icon>
+        </TitleBar>
         <NavigationView x:Name="NavView"
                         Grid.Row="1"
                         IsBackButtonVisible="Collapsed"
