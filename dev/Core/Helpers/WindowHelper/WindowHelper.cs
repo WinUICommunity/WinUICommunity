@@ -96,4 +96,15 @@ public partial class WindowHelper
         NativeMethods.GetClassName(hwnd, sb, sb.Capacity - 1);
         return sb.ToString();
     }
+
+    public static AppWindow GetCurrentAppWindow()
+    {
+        var tops = GetProcessWindows();
+
+        var firstWinUI3 = tops.FirstOrDefault(w => w.ClassName == "WinUIDesktopWin32WindowClass");
+
+        var windowId = Win32Interop.GetWindowIdFromWindow(firstWinUI3.Handle);
+
+        return AppWindow.GetFromWindowId(windowId);
+    }
 }

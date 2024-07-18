@@ -1,5 +1,4 @@
-﻿
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 public class TitleBarAttach
 {
     public static bool GetIsMaximizable(DependencyObject obj)
@@ -19,13 +18,7 @@ public class TitleBarAttach
     {
         if (d is UIElement appTitleBar && appTitleBar != null)
         {
-            var tops = WindowHelper.GetProcessWindows();
-
-            var firstWinUI3 = tops.FirstOrDefault(w => w.ClassName == "WinUIDesktopWin32WindowClass");
-
-            var windowId = Win32Interop.GetWindowIdFromWindow(firstWinUI3.Handle);
-
-            var appWindow = AppWindow.GetFromWindowId(windowId);
+            var appWindow = WindowHelper.GetCurrentAppWindow();
 
             ((OverlappedPresenter)appWindow.Presenter).IsMaximizable = (bool)e.NewValue;
         }
@@ -49,13 +42,7 @@ public class TitleBarAttach
     {
         if (d is UIElement appTitleBar && appTitleBar != null)
         {
-            var tops = WindowHelper.GetProcessWindows();
-
-            var firstWinUI3 = tops.FirstOrDefault(w => w.ClassName == "WinUIDesktopWin32WindowClass");
-
-            var windowId = Win32Interop.GetWindowIdFromWindow(firstWinUI3.Handle);
-
-            var appWindow = AppWindow.GetFromWindowId(windowId);
+            var appWindow = WindowHelper.GetCurrentAppWindow();
 
             ((OverlappedPresenter)appWindow.Presenter).IsMinimizable = (bool)e.NewValue;
         }
@@ -79,13 +66,7 @@ public class TitleBarAttach
     {
         if (d is UIElement appTitleBar && appTitleBar != null)
         {
-            var tops = WindowHelper.GetProcessWindows();
-
-            var firstWinUI3 = tops.FirstOrDefault(w => w.ClassName == "WinUIDesktopWin32WindowClass");
-
-            var windowId = Win32Interop.GetWindowIdFromWindow(firstWinUI3.Handle);
-
-            var appWindow = AppWindow.GetFromWindowId(windowId);
+            var appWindow = WindowHelper.GetCurrentAppWindow();
 
             ((OverlappedPresenter)appWindow.Presenter).IsAlwaysOnTop = (bool)e.NewValue;
         }
@@ -109,13 +90,7 @@ public class TitleBarAttach
     {
         if (d is UIElement appTitleBar && appTitleBar != null)
         {
-            var tops = WindowHelper.GetProcessWindows();
-
-            var firstWinUI3 = tops.FirstOrDefault(w => w.ClassName == "WinUIDesktopWin32WindowClass");
-
-            var windowId = Win32Interop.GetWindowIdFromWindow(firstWinUI3.Handle);
-
-            var appWindow = AppWindow.GetFromWindowId(windowId);
+            var appWindow = WindowHelper.GetCurrentAppWindow();
 
             ((OverlappedPresenter)appWindow.Presenter).IsResizable = (bool)e.NewValue;
         }
@@ -138,13 +113,7 @@ public class TitleBarAttach
     {
         if (d is UIElement appTitleBar && appTitleBar != null)
         {
-            var tops = WindowHelper.GetProcessWindows();
-
-            var firstWinUI3 = tops.FirstOrDefault(w => w.ClassName == "WinUIDesktopWin32WindowClass");
-
-            var windowId = Win32Interop.GetWindowIdFromWindow(firstWinUI3.Handle);
-
-            var appWindow = AppWindow.GetFromWindowId(windowId);
+            var appWindow = WindowHelper.GetCurrentAppWindow();
 
             var value = (bool)e.NewValue;
 
@@ -158,6 +127,29 @@ public class TitleBarAttach
                 ((OverlappedPresenter)appWindow.Presenter).SetBorderAndTitleBar(false, false);
                 ((OverlappedPresenter)appWindow.Presenter).IsResizable = false;
             }
+        }
+    }
+
+    public static TitleBarHeightOption GetTitleBarHeightOption(DependencyObject obj)
+    {
+        return (TitleBarHeightOption)obj.GetValue(TitleBarHeightOptionProperty);
+    }
+
+    public static void SetTitleBarHeightOption(DependencyObject obj, TitleBarHeightOption value)
+    {
+        obj.SetValue(TitleBarHeightOptionProperty, value);
+    }
+
+    public static readonly DependencyProperty TitleBarHeightOptionProperty =
+        DependencyProperty.RegisterAttached("TitleBarHeightOption", typeof(TitleBarHeightOption), typeof(TitleBarAttach), new PropertyMetadata(TitleBarHeightOption.Standard, OnTitleBarHeightOptionChanged));
+
+    private static void OnTitleBarHeightOptionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        if (d is UIElement appTitleBar && appTitleBar != null)
+        {
+            var appWindow = WindowHelper.GetCurrentAppWindow();
+
+            appWindow.TitleBar.PreferredHeightOption = (TitleBarHeightOption)e.NewValue;
         }
     }
 }
