@@ -1,4 +1,5 @@
-﻿using WinRT.Interop;
+﻿using System.Diagnostics;
+using WinRT.Interop;
 
 namespace WinUICommunity;
 
@@ -53,5 +54,46 @@ public partial class WindowHelper
             var preference = (uint)cornerPreference;
             NativeMethods.DwmSetWindowAttribute(hwnd, attribute, ref preference, sizeof(uint));
         }
+    }
+
+    public static IReadOnlyList<Win32Window> GetTopLevelWindows()
+    {
+        var list = new List<Win32Window>();
+        NativeMethods.EnumWindows((h, l) =>
+        {
+            list.Add(new Win32Window(h));
+            return true;
+        }, IntPtr.Zero);
+        return list.AsReadOnly();
+    }
+
+    public static IReadOnlyList<Win32Window> GetProcessWindows()
+    {
+        var process = Process.GetCurrentProcess();
+        var list = new List<Win32Window>();
+        NativeMethods.EnumWindows((h, l) =>
+        {
+            var window = new Win32Window(h);
+            if (window.ProcessId == process.Id)
+            {
+                list.Add(window);
+            }
+            return true;
+        }, IntPtr.Zero);
+        return list.AsReadOnly();
+    }
+
+    public static string GetWindowText(IntPtr hwnd)
+    {
+        var sb = new StringBuilder(1024);
+        NativeMethods.GetWindowText(hwnd, sb, sb.Capacity - 1);
+        return sb.ToString();
+    }
+
+    public static string GetClassName(IntPtr hwnd)
+    {
+        var sb = new StringBuilder(256);
+        NativeMethods.GetClassName(hwnd, sb, sb.Capacity - 1);
+        return sb.ToString();
     }
 }

@@ -184,4 +184,22 @@ public static partial class NativeMethods
 
     [DllImport(ExternDll.UxTheme, SetLastError = true, EntryPoint = "#138")]
     public static extern bool ShouldSystemUseDarkMode();
+
+
+    public delegate bool EnumWindowsProc(IntPtr hwnd, IntPtr lParam);
+
+    [DllImport(ExternDll.User32, SetLastError = true)]
+    public static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
+
+    [DllImport(ExternDll.User32)]
+    public static extern int GetWindowThreadProcessId(IntPtr handle, out int processId);
+
+    [DllImport(ExternDll.User32)]
+    public static extern bool IsWindowEnabled(IntPtr hwnd);
+
+    [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+    public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
+    [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+    public static extern int GetClassName(IntPtr hWnd, StringBuilder lpClassName, int nMaxCount);
 }
