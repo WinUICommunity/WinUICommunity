@@ -35,7 +35,7 @@ public sealed partial class PrintPage : Page
         // Printing is not supported on this device
         ContentDialog noPrintingDialog = new ContentDialog()
         {
-            XamlRoot = App.currentWindow.Content.XamlRoot,
+            XamlRoot = App.CurrentWindow.Content.XamlRoot,
             Title = "Printing is not supported",
             Content = "\nSorry, printing is not supported on this device.",
             PrimaryButtonText = "OK"

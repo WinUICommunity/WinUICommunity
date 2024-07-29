@@ -67,7 +67,7 @@ public partial class WindowHelper
         return list.AsReadOnly();
     }
 
-    public static IReadOnlyList<Win32Window> GetProcessWindows()
+    public static IReadOnlyList<Win32Window> GetProcessWindowList()
     {
         var process = Process.GetCurrentProcess();
         var list = new List<Win32Window>();
@@ -99,7 +99,7 @@ public partial class WindowHelper
 
     public static AppWindow GetCurrentAppWindow()
     {
-        var tops = GetProcessWindows();
+        var tops = GetProcessWindowList();
 
         var firstWinUI3 = tops.FirstOrDefault(w => w.ClassName == "WinUIDesktopWin32WindowClass");
 

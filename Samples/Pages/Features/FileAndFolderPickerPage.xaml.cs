@@ -14,7 +14,7 @@ public sealed partial class FileAndFolderPickerPage : Page
     {
         var ext = new Dictionary<string, IList<string>>();
         ext.Add("Plain Text", new List<string>() { ".txt" });
-        var picker = await FileAndFolderPickerHelper.PickSaveFileAsync(App.currentWindow, ext);
+        var picker = await FileAndFolderPickerHelper.PickSaveFileAsync(App.CurrentWindow, ext);
         if (picker != null)
         {
             txtRes1.Text = picker.Path;
@@ -24,7 +24,7 @@ public sealed partial class FileAndFolderPickerPage : Page
     private async void btnPickMultipleFilesAsync_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         var fileTypeFilter = new List<string> { ".txt", ".rtf" };
-        var picker = await FileAndFolderPickerHelper.PickMultipleFilesAsync(App.currentWindow, fileTypeFilter);
+        var picker = await FileAndFolderPickerHelper.PickMultipleFilesAsync(App.CurrentWindow, fileTypeFilter);
         if (picker != null)
         {
             foreach (var item in picker)
@@ -37,7 +37,7 @@ public sealed partial class FileAndFolderPickerPage : Page
     private async void btnPickSingleFileAsync_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         var fileTypeFilter = new List<string> { ".txt", ".rtf" };
-        var picker = await FileAndFolderPickerHelper.PickSingleFileAsync(App.currentWindow, fileTypeFilter);
+        var picker = await FileAndFolderPickerHelper.PickSingleFileAsync(App.CurrentWindow, fileTypeFilter);
         if (picker != null)
         {
             txtRes3.Text = picker.Path;
@@ -46,7 +46,7 @@ public sealed partial class FileAndFolderPickerPage : Page
 
     private async void btnPickSingleFolderAsync_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        var picker = await FileAndFolderPickerHelper.PickSingleFolderAsync(App.currentWindow);
+        var picker = await FileAndFolderPickerHelper.PickSingleFolderAsync(App.CurrentWindow);
         if (picker != null)
         {
             txtRes4.Text = picker.Path;

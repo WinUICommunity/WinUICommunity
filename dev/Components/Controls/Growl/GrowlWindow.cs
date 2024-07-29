@@ -47,7 +47,7 @@ public class GrowlWindow : Window
 
         int margin = 10;
         var displayArea = DisplayArea.GetFromWindowId(AppWindow.Id, DisplayAreaFallback.Nearest);
-        var scale = GeneralHelper.GetRasterizationScaleForElement(GrowlPanel);
+        var scale = GeneralHelper.GetElementRasterizationScale(GrowlPanel);
         GrowlWidth = (int)(GrowlWidth * scale);
         var xPosition = displayArea.WorkArea.Width - GrowlWidth - margin;
 

@@ -15,7 +15,7 @@ public partial class GeneralHelper
     /// </summary>
     /// <param name="glyph"></param>
     /// <returns></returns>
-    public static char GetGlyphUnicodeChar(string glyph)
+    public static char GetGlyphCharacter(string glyph)
     {
         var unicodeValue = Convert.ToInt32(glyph, 16);
         return Convert.ToChar(unicodeValue);
@@ -45,7 +45,7 @@ public partial class GeneralHelper
         NativeMethods.FlushMenuThemes();
     }
 
-    public static double GetRasterizationScaleForElement(UIElement element)
+    public static double GetElementRasterizationScale(UIElement element)
     {
         if (element.XamlRoot != null)
         {

@@ -10,8 +10,8 @@ public sealed partial class MainPage : Page
     public MainPage()
     {
         this.InitializeComponent();
-        App.currentWindow.ExtendsContentIntoTitleBar = true;
-        App.currentWindow.SetTitleBar(AppTitleBar);
+        App.CurrentWindow.ExtendsContentIntoTitleBar = true;
+        App.CurrentWindow.SetTitleBar(AppTitleBar);
         Instance = this;
 
         App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
