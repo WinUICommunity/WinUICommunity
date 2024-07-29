@@ -1,7 +1,7 @@
 ﻿namespace WinUICommunity;
 public partial class PresenterHelper
 {
-    public static void SetOverlappedPresenterState(AppWindow appWindow, OverlappedPresenterState overlappedPresenterState)
+    public static void SetPresenterState(AppWindow appWindow, OverlappedPresenterState overlappedPresenterState)
     {
         if (appWindow.Presenter is OverlappedPresenter presenter)
         {
@@ -20,7 +20,7 @@ public partial class PresenterHelper
         }
     }
 
-    public static void SetOverlappedPresenter(AppWindow appWindow, OverlappedPresenter overlappedPresenter)
+    public static void SetPresenter(AppWindow appWindow, OverlappedPresenter overlappedPresenter)
     {
         appWindow.SetPresenter(overlappedPresenter);
     }

@@ -127,7 +127,7 @@ public partial class ThemeService : IThemeService
             AppName = appInfo.NameAndVersion;
         }
 
-        string RootPath = Path.Combine(PathHelper.GetApplicationDataFolderPath(), AppName);
+        string RootPath = Path.Combine(PathHelper.GetAppDataFolderPath(), AppName);
         string AppConfigPath = Path.Combine(RootPath, ConfigFilePath);
 
         this.useAutoSave = useAutoSave;

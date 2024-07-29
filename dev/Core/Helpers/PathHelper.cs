@@ -27,7 +27,7 @@ public partial class PathHelper
     /// </summary>
     /// <param name="forceUnpackagedMode"></param>
     /// <returns></returns>
-    public static string GetApplicationDataFolderPath(bool forceUnpackagedMode = false)
+    public static string GetAppDataFolderPath(bool forceUnpackagedMode = false)
     {
         var unpackaged = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         if (forceUnpackagedMode)
