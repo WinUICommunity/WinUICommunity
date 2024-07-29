@@ -119,11 +119,11 @@ public partial class ThemeService : IThemeService
             element.ActualThemeChanged += OnActualThemeChanged;
         }
 
-        var appInfo = AssemblyInfoHelper.GetAppInfo(NameType.CurrentAssemblyVersion, VersionType.AssemblyInformationalVersion);
+        var appInfo = AssemblyInfoHelper.GetAppDetails(NameType.CurrentAssemblyVersion, VersionType.AssemblyInformationalVersion);
         string AppName = appInfo.NameAndVersion;
         if (string.IsNullOrEmpty(appInfo.Version))
         {
-            appInfo = AssemblyInfoHelper.GetAppInfo(NameType.CurrentAssemblyVersion, VersionType.CurrentAssemblyVersion);
+            appInfo = AssemblyInfoHelper.GetAppDetails(NameType.CurrentAssemblyVersion, VersionType.CurrentAssemblyVersion);
             AppName = appInfo.NameAndVersion;
         }
 
