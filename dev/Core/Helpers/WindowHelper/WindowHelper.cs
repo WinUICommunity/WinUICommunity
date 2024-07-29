@@ -107,4 +107,79 @@ public partial class WindowHelper
 
         return AppWindow.GetFromWindowId(windowId);
     }
+
+    /// <summary>
+    /// Use XamlRoot
+    /// </summary>
+    /// <param name="uIElement"></param>
+    /// <returns></returns>
+    public static AppWindow GetAppWindow(UIElement uIElement)
+    {
+        if (uIElement == null)
+        {
+            return null;
+        }
+
+        return AppWindow.GetFromWindowId(uIElement.XamlRoot.ContentIslandEnvironment.AppWindowId);
+    }
+
+    /// <summary>
+    /// Use Microsoft.UI.Composition.Visual
+    /// </summary>
+    /// <param name="uIElement"></param>
+    /// <returns></returns>
+    public static AppWindow GetAppWindow2(UIElement uIElement)
+    {
+        if (uIElement == null)
+        {
+            return null;
+        }
+
+        Microsoft.UI.Composition.Visual visual = Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(uIElement);
+        var ci = Microsoft.UI.Content.ContentIsland.FindAllForCompositor(visual.Compositor);
+        if (ci[0] != null)
+        {
+            return AppWindow.GetFromWindowId(ci[0].Environment.AppWindowId);
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Use XamlRoot
+    /// </summary>
+    /// <param name="uIElement"></param>
+    /// <returns></returns>
+    public static IntPtr GetWindowHandle(UIElement uIElement)
+    {
+        if (uIElement == null)
+        {
+            return IntPtr.Zero;
+        }
+
+        return Win32Interop.GetWindowFromWindowId(uIElement.XamlRoot.ContentIslandEnvironment.AppWindowId);
+    }
+
+    /// <summary>
+    /// Use Microsoft.UI.Composition.Visual
+    /// </summary>
+    /// <param name="uIElement"></param>
+    /// <returns></returns>
+    public static IntPtr GetWindowHandle2(UIElement uIElement)
+    {
+        if (uIElement == null)
+        {
+            return IntPtr.Zero;
+        }
+
+        Microsoft.UI.Composition.Visual visual = Microsoft.UI.Xaml.Hosting.ElementCompositionPreview.GetElementVisual(uIElement);
+        var ci = Microsoft.UI.Content.ContentIsland.FindAllForCompositor(visual.Compositor);
+        if (ci[0] != null)
+        {
+            return Win32Interop.GetWindowFromWindowId(ci[0].Environment.AppWindowId);
+
+        }
+
+        return IntPtr.Zero;
+    }
 }

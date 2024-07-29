@@ -106,20 +106,26 @@ public partial class GeneralHelper
         return char.ConvertFromUtf32(codePoint);
     }
 
+    public static void SetApplicationLayoutRTL(IntPtr windowHandle)
+    {
+        int exstyle = NativeMethods.GetWindowLong(windowHandle, NativeValues.GWL_EXSTYLE);
+        NativeMethods.SetWindowLong(windowHandle, NativeValues.GWL_EXSTYLE, exstyle | NativeValues.WS_EX_LAYOUTRTL);
+    }
     public static void SetApplicationLayoutRTL(Window window)
     {
         IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
-
-        int exstyle = NativeMethods.GetWindowLong(hWnd, NativeValues.GWL_EXSTYLE);
-        NativeMethods.SetWindowLong(hWnd, NativeValues.GWL_EXSTYLE, exstyle | NativeValues.WS_EX_LAYOUTRTL);
+        SetApplicationLayoutRTL(hWnd);
     }
 
+    public static void SetApplicationLayoutLTR(IntPtr windowHandle)
+    {
+        int exstyle = NativeMethods.GetWindowLong(windowHandle, NativeValues.GWL_EXSTYLE);
+        NativeMethods.SetWindowLong(windowHandle, NativeValues.GWL_EXSTYLE, exstyle | NativeValues.WS_EX_LAYOUTLTR);
+    }
     public static void SetApplicationLayoutLTR(Window window)
     {
         IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
-
-        int exstyle = NativeMethods.GetWindowLong(hWnd, NativeValues.GWL_EXSTYLE);
-        NativeMethods.SetWindowLong(hWnd, NativeValues.GWL_EXSTYLE, exstyle | NativeValues.WS_EX_LAYOUTLTR);
+        SetApplicationLayoutLTR(hWnd);
     }
 
     public static string GetDecodedStringFromHtml(string text)
