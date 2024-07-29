@@ -10,16 +10,26 @@ public partial class PathHelper
         return file.Path;
     }
 
-    public static string GetFullPathToExeFolder()
-    {
-        var path = AppDomain.CurrentDomain.BaseDirectory;
-        var pos = path.LastIndexOf("\\");
-        return path.Substring(0, pos);
-    }
-
+    /// <summary>
+    /// Return Full Path to Assets folder even if your app is SelfContained/SingleFile
+    /// Normal Mode: App/bin/Assets
+    /// SelfContained/SingleFile: Temp/net/xx/Assets
+    /// </summary>
+    /// <returns></returns>
     public static string GetFullPathToAsset(string assetName)
     {
-        return GetFullPathToExeFolder() + "\\Assets\\" + assetName;
+        return Path.Combine(AppContext.BaseDirectory, "Assets", assetName);
+    }
+
+    /// <summary>
+    /// Return Full Path to Exe even if your app is SelfContained/SingleFile
+    /// Normal Mode: App/bin/App.exe
+    /// SelfContained/SingleFile: Temp/net/xx/App.exe
+    /// </summary>
+    /// <returns></returns>
+    public static string GetFullPathToExe()
+    {
+        return Path.Combine(AppContext.BaseDirectory, ProcessInfoHelper.GetProcess().MainModule.ModuleName);
     }
 
     /// <summary>
@@ -36,6 +46,12 @@ public partial class PathHelper
         return PackageHelper.IsPackaged ? ApplicationData.Current.LocalFolder.Path : unpackaged;
     }
 
+    /// <summary>
+    /// Use P/Invoke for getting Full Path To Exe
+    /// Normal Mode: App/bin/App.exe
+    /// SelfContained/SingleFile: App/bin/App.exe
+    /// </summary>
+    /// <returns></returns>
     public static string GetExecutablePathNative()
     {
         var sb = new StringBuilder(MAX_PATH);
