@@ -16,16 +16,20 @@ public partial class WindowHelper
     public static void ReActivateWindow(Window window)
     {
         var hwnd = WindowNative.GetWindowHandle(window);
+        ReActivateWindow(hwnd);
+    }
+    public static void ReActivateWindow(IntPtr windowHandle)
+    {
         var activeWindow = NativeMethods.GetActiveWindow();
-        if (hwnd == activeWindow)
+        if (windowHandle == activeWindow)
         {
-            NativeMethods.SendMessage(hwnd, NativeValues.WM_ACTIVATE, NativeValues.WA_INACTIVE, IntPtr.Zero);
-            NativeMethods.SendMessage(hwnd, NativeValues.WM_ACTIVATE, NativeValues.WA_ACTIVE, IntPtr.Zero);
+            NativeMethods.SendMessage(windowHandle, NativeValues.WM_ACTIVATE, NativeValues.WA_INACTIVE, IntPtr.Zero);
+            NativeMethods.SendMessage(windowHandle, NativeValues.WM_ACTIVATE, NativeValues.WA_ACTIVE, IntPtr.Zero);
         }
         else
         {
-            NativeMethods.SendMessage(hwnd, NativeValues.WM_ACTIVATE, NativeValues.WA_ACTIVE, IntPtr.Zero);
-            NativeMethods.SendMessage(hwnd, NativeValues.WM_ACTIVATE, NativeValues.WA_INACTIVE, IntPtr.Zero);
+            NativeMethods.SendMessage(windowHandle, NativeValues.WM_ACTIVATE, NativeValues.WA_ACTIVE, IntPtr.Zero);
+            NativeMethods.SendMessage(windowHandle, NativeValues.WM_ACTIVATE, NativeValues.WA_INACTIVE, IntPtr.Zero);
         }
     }
 
