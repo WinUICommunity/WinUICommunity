@@ -5,12 +5,16 @@ namespace WinUICommunity;
 
 public partial class WindowHelper
 {
-    public static void SwitchToThisWindow(object target)
+    public static void SwitchToThisWindow(Window window)
     {
-        if (target != null)
+        if (window != null)
         {
-            NativeMethods.SwitchToThisWindow(WindowNative.GetWindowHandle(target), true);
+            NativeMethods.SwitchToThisWindow(WindowNative.GetWindowHandle(window), true);
         }
+    }
+    public static void SwitchToThisWindow(IntPtr windowHandle)
+    {
+        NativeMethods.SwitchToThisWindow(windowHandle, true);
     }
 
     public static void ReActivateWindow(Window window)
