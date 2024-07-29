@@ -4,9 +4,11 @@ namespace WinUICommunity;
 public static class ProcessInfoHelper
 {
     private static readonly FileVersionInfo _fileVersionInfo;
+    private static readonly Process _process;
     static ProcessInfoHelper()
     {
         using var process = Process.GetCurrentProcess();
+        _process = process;
         _fileVersionInfo = process.MainModule.FileVersionInfo;
     }
     public static string GetVersionString => GetVersion()?.ToString();
@@ -17,6 +19,11 @@ public static class ProcessInfoHelper
     public static FileVersionInfo GetFileVersionInfo()
     {
         return _fileVersionInfo;
+    }
+
+    public static Process GetProcess()
+    {
+        return _process;
     }
 
     public static string GetProductName()
