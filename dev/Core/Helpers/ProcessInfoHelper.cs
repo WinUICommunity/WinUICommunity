@@ -11,7 +11,10 @@ public static class ProcessInfoHelper
         _process = process;
         _fileVersionInfo = process.MainModule.FileVersionInfo;
     }
-    public static string GetVersionString => GetVersion()?.ToString();
+    public static string Version => GetVersion()?.ToString();
+    public static string VersionWithPrefix => $"v{Version}";
+    public static string ProductName => _fileVersionInfo?.ProductName;
+    public static string ProductNameAndVersion => $"{ProductName} {VersionWithPrefix}";
     public static Version GetVersion()
     {
         return new Version(_fileVersionInfo.FileMajorPart, _fileVersionInfo.FileMinorPart, _fileVersionInfo.FileBuildPart, _fileVersionInfo.FilePrivatePart);
@@ -20,19 +23,8 @@ public static class ProcessInfoHelper
     {
         return _fileVersionInfo;
     }
-
     public static Process GetProcess()
     {
         return _process;
-    }
-
-    public static string GetProductName()
-    {
-        return _fileVersionInfo.ProductName;
-    }
-
-    public static string GetProductNameAndVersion()
-    {
-        return $"{_fileVersionInfo.ProductName} v{GetVersion().ToString()}";
     }
 }
