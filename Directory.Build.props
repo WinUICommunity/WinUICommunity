@@ -15,11 +15,11 @@
     <UseWinUI>true</UseWinUI>
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Latest</LangVersion>
-    <NoWarn>WMC1506;CA1416;CS8632;CS0414</NoWarn>
-    
+    <NoWarn>WMC1506;WMC0001;CA1416;CS8632;CS0414;NU1903;NU1902</NoWarn>
+
     <!-- The NuGet package version -->
     <XAMLToolsVersion>1.0.0-alpha0167</XAMLToolsVersion>
-    <CommunityToolkitMediaVersion>8.0.240109</CommunityToolkitMediaVersion>
+    <CommunityToolkitMediaVersion>8.1.240821</CommunityToolkitMediaVersion>
     <NewtonsoftJsonVersion>13.0.3</NewtonsoftJsonVersion>
     
     <!-- The NuGet package options -->
@@ -38,7 +38,7 @@
 
   <!-- The NuGet versions of dependencies to build against. -->
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240607001" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240829007" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.3233" />
   </ItemGroup>
   

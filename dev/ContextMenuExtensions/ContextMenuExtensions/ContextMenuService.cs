@@ -13,11 +13,17 @@ public class ContextMenuService
         var result = new List<ContextMenuItem>(files.Count);
         foreach (var file in files)
         {
+            if (!file.Name.EndsWith(".json") && !file.Name.EndsWith(".json.disabled"))
+            {
+                continue;
+            }
+
             var content = await FileIO.ReadTextAsync(file);
             try
             {
                 var item = ConvertMenuFromJson(content);
                 item.File = file;
+                item.Enabled = IsEnabled(item);
                 result.Add(item);
             }
             catch (Exception e)
@@ -35,11 +41,6 @@ public class ContextMenuService
         return result;
     }
 
-    private async Task<StorageFile> CreateMenuFileAsync(string name)
-    {
-        var folder = await GetMenusFolderAsync();
-        return await folder.CreateFileAsync(name, CreationCollisionOption.ReplaceExisting);
-    }
     private async Task<StorageFile> CreateMenuFileAsync(string name, CreationCollisionOption creationCollisionOption)
     {
         var folder = await GetMenusFolderAsync();
@@ -62,6 +63,16 @@ public class ContextMenuService
 
     public async Task SaveAsync(ContextMenuItem item)
     {
+        await SaveAsyncInternal(item, CreationCollisionOption.ReplaceExisting);
+    }
+
+    public async Task SaveAsync(ContextMenuItem item, CreationCollisionOption creationCollisionOption)
+    {
+        await SaveAsyncInternal(item, creationCollisionOption);
+    }
+
+    private async Task SaveAsyncInternal(ContextMenuItem item, CreationCollisionOption creationCollisionOption)
+    {
         if (null == item)
         {
             throw new Exception("Menu is null");
@@ -77,15 +88,15 @@ public class ContextMenuService
         if (menuFile == null)
         {
             var fileName = $"{item.Title}.json";
-            menuFile = await CreateMenuFileAsync(fileName);
+            menuFile = await CreateMenuFileAsync(fileName, creationCollisionOption);
         }
 
         var content = ConvertMenuToJson(item);
         await FileIO.WriteTextAsync(menuFile, content);
 
         item.File = menuFile;
+        item.Enabled = true;
     }
-
     public async Task<ContextMenuItem> ReadAsync(StorageFile menuFile)
     {
         if (null == menuFile)
@@ -143,6 +154,48 @@ public class ContextMenuService
         }
     }
 
+    public bool IsEnabled(ContextMenuItem item)
+    {
+        if (null == item)
+        {
+            throw new Exception("Menu is null");
+        }
+        return item.File?.Name.EndsWith(".json") == true;
+    }
+
+    public async Task<StorageFile> EnableAsync(ContextMenuItem item, bool enabled)
+    {
+        if (null == item)
+        {
+            throw new Exception("Menu is null");
+        }
+
+        var file = (item?.File) ?? throw new Exception("Menu file is null");
+        var fileName = file.Name;
+
+        if (enabled)
+        {
+            if (fileName.EndsWith(".json.disabled"))
+            {
+                fileName = fileName.Substring(0, fileName.Length - ".disabled".Length);
+            }
+        }
+        else
+        {
+            if (fileName.EndsWith(".json"))
+            {
+                fileName += ".disabled";
+            }
+        }
+
+        if (file.Name != fileName)
+        {
+            await file.RenameAsync(fileName, NameCollisionOption.FailIfExists);
+        }
+
+        return file;
+    }
+
     public async Task BuildToCacheAsync()
     {
         var configFolder = await GetMenusFolderAsync();
@@ -153,7 +206,12 @@ public class ContextMenuService
 
         for (var i = 0; i < files.Count; i++)
         {
-            var content = await FileIO.ReadTextAsync(files[i]);
+            var file = files[i];
+            if (!file.Name.EndsWith(".json"))
+            {
+                continue;
+            }
+            var content = await FileIO.ReadTextAsync(file);
             menus[i.ToString()] = content;
         }
     }
@@ -178,8 +236,8 @@ public class ContextMenuService
         if (menu.AcceptDirectoryFlag == (int)DirectoryMatchFlagEnum.None && menu.AcceptDirectory)
         {
             menu.AcceptDirectoryFlag = (int)DirectoryMatchFlagEnum.Directory |
-                                       (int)DirectoryMatchFlagEnum.Background |
-                                       (int)DirectoryMatchFlagEnum.Desktop;
+                                        (int)DirectoryMatchFlagEnum.Background |
+                                        (int)DirectoryMatchFlagEnum.Desktop;
         }
 
         return menu;
