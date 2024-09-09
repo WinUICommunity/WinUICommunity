@@ -26,7 +26,7 @@ public class ContextMenuService
                 item.Enabled = IsEnabled(item);
                 result.Add(item);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 var item = new ContextMenuItem
                 {
