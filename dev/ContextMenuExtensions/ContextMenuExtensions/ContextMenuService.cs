@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public class ContextMenuService
+public partial class ContextMenuService
 {
     private const string MenusFolderName = "custom_commands";
 

@@ -4,7 +4,7 @@ using Newtonsoft.Json.Serialization;
 namespace WinUICommunity;
 
 [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy), ItemNullValueHandling = NullValueHandling.Ignore)]
-public class ContextMenuItem : ContextMenuBaseModel
+public partial class ContextMenuItem : ContextMenuBaseModel
 {
     [JsonIgnore] public StorageFile File { get; set; }
 

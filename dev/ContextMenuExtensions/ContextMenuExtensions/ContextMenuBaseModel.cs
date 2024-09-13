@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class ContextMenuBaseModel : INotifyPropertyChanged
+public partial class ContextMenuBaseModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 

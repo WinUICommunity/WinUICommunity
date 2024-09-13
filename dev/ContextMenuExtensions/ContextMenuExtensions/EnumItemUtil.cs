@@ -1,7 +1,7 @@
 ﻿using System.Collections.Immutable;
 
 namespace WinUICommunity;
-public static class EnumItemUtil
+public static partial class EnumItemUtil
 {
     public static IReadOnlyList<EnumItem> GetEnumItems<T>() where T : struct
     {
