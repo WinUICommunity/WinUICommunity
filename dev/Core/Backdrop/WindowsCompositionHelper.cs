@@ -32,7 +32,7 @@ internal static partial class WindowsCompositionHelper
         var options = new NativeValues.DispatcherQueueOptions2();
         options.apartmentType = NativeValues.DISPATCHERQUEUE_THREAD_APARTMENTTYPE.DQTAT_COM_STA;
         options.threadType = NativeValues.DISPATCHERQUEUE_THREAD_TYPE.DQTYPE_THREAD_CURRENT;
-        options.dwSize = Marshal.SizeOf(typeof(NativeValues.DispatcherQueueOptions));
+        options.dwSize = Marshal.SizeOf<NativeValues.DispatcherQueueOptions>();
 
         NativeMethods.CreateDispatcherQueueController(options, out var raw);
 

@@ -21,7 +21,7 @@ public static partial class UpdateHelper
         var response = await client.GetAsync(url);
         response.EnsureSuccessStatusCode();
         var responseBody = await response.Content.ReadAsStringAsync();
-        var result = JsonSerializer.Deserialize<UpdateInfo>(responseBody);
+        var result = JsonSerializer.Deserialize<UpdateInfo>(responseBody, UpdateHelperJsonContext.Default.UpdateInfo);
 
         if (result != null)
         {
