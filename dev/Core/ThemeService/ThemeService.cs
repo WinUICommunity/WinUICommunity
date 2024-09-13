@@ -15,9 +15,15 @@ public partial class ThemeService : IThemeService
     private bool changeThemeWithoutSave = false;
     private bool useAutoSave;
     private string filename;
-    private TitleBarCustomization titleBarCustomization;
     public Window Window { get; set; }
 
+    public ThemeService() { }
+    public ThemeService(Window window)
+    {
+        Initialize(window);
+        ConfigElementTheme();
+        ConfigBackdrop();
+    }
     public ElementTheme ActualTheme
     {
         get
@@ -31,6 +37,42 @@ public partial class ThemeService : IThemeService
             }
             return GeneralHelper.GetEnum<ElementTheme>(Application.Current.RequestedTheme.ToString());
         }
+    }
+    public void UpdateCaptionButtons()
+    {
+        UpdateCaptionButtons(Window);
+    }
+
+    public void UpdateCaptionButtons(Window window)
+    {
+        if (window == null)
+            return;
+
+        var res = Application.Current.Resources;
+        Windows.UI.Color buttonForegroundColor;
+        Windows.UI.Color buttonHoverForegroundColor;
+
+        Windows.UI.Color buttonHoverBackgroundColor;
+        if (ActualTheme == ElementTheme.Dark)
+        {
+            buttonForegroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#FFFFFF");
+            buttonHoverForegroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#FFFFFF");
+
+            buttonHoverBackgroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#0FFFFFFF");
+        }
+        else
+        {
+            buttonForegroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#191919");
+            buttonHoverForegroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#191919");
+
+            buttonHoverBackgroundColor = WinUICommunity.ColorHelper.GetColorFromHex("#09000000");
+        }
+        res["WindowCaptionForeground"] = buttonForegroundColor;
+
+        window.AppWindow.TitleBar.ButtonForegroundColor = buttonForegroundColor;
+        window.AppWindow.TitleBar.ButtonHoverForegroundColor = buttonHoverForegroundColor;
+
+        window.AppWindow.TitleBar.ButtonHoverBackgroundColor = buttonHoverBackgroundColor;
     }
     public ElementTheme RootTheme
     {
@@ -54,13 +96,21 @@ public partial class ThemeService : IThemeService
             }
         }
     }
-    
+
+    public void AutoInitialize(Window window)
+    {
+        Initialize(window);
+        ConfigElementTheme();
+        ConfigBackdrop();
+    }
+
     public void Initialize(Window window, bool useAutoSave = true, string filename = null)
     {
         if (window == null)
         {
             return;
         }
+
         Window = window;
 
         if (Window.Content is FrameworkElement element)
@@ -69,15 +119,15 @@ public partial class ThemeService : IThemeService
             element.ActualThemeChanged += OnActualThemeChanged;
         }
 
-        var appInfo = AssemblyInfoHelper.GetAppInfo(NameType.CurrentAssemblyVersion, VersionType.AssemblyInformationalVersion);
+        var appInfo = AssemblyInfoHelper.GetAppDetails(NameType.CurrentAssemblyVersion, VersionType.AssemblyInformationalVersion);
         string AppName = appInfo.NameAndVersion;
         if (string.IsNullOrEmpty(appInfo.Version))
         {
-            appInfo = AssemblyInfoHelper.GetAppInfo(NameType.CurrentAssemblyVersion, VersionType.CurrentAssemblyVersion);
+            appInfo = AssemblyInfoHelper.GetAppDetails(NameType.CurrentAssemblyVersion, VersionType.CurrentAssemblyVersion);
             AppName = appInfo.NameAndVersion;
         }
 
-        string RootPath = Path.Combine(PathHelper.GetLocalFolderPath(), AppName);
+        string RootPath = Path.Combine(PathHelper.GetAppDataFolderPath(), AppName);
         string AppConfigPath = Path.Combine(RootPath, ConfigFilePath);
 
         this.useAutoSave = useAutoSave;
@@ -94,112 +144,13 @@ public partial class ThemeService : IThemeService
     private void OnActualThemeChanged(FrameworkElement sender, object args)
     {
         GeneralHelper.SetPreferredAppMode(sender.ActualTheme);
-        UpdateSystemCaptionButtonColors();
         ActualThemeChanged?.Invoke(sender, args);
     }
-
+    
     public bool IsDarkTheme()
     {
         return RootTheme == ElementTheme.Default
             ? Application.Current.RequestedTheme == ApplicationTheme.Dark
             : RootTheme == ElementTheme.Dark;
-    }
-
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    public void UpdateSystemCaptionButtonForAppWindow(Window window)
-    {
-        var titleBar = window.AppWindow.TitleBar;
-        if (titleBarCustomization?.LightTitleBarButtons == null && titleBarCustomization?.DarkTitleBarButtons == null)
-        {
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            if (IsDarkTheme())
-            {
-                titleBar.ButtonForegroundColor = Colors.White;
-                titleBar.ButtonInactiveForegroundColor = Colors.DarkGray;
-            }
-            else
-            {
-                titleBar.ButtonForegroundColor = Colors.Black;
-                titleBar.ButtonInactiveForegroundColor = Colors.DarkGray;
-            }
-        }
-        else
-        {
-            if (IsDarkTheme())
-            {
-                titleBar.BackgroundColor = titleBarCustomization?.DarkTitleBarButtons?.BackgroundColor;
-                titleBar.ForegroundColor = titleBarCustomization?.DarkTitleBarButtons?.ForegroundColor;
-                titleBar.ButtonForegroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonForegroundColor;
-                titleBar.ButtonBackgroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonBackgroundColor;
-                titleBar.ButtonHoverBackgroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonHoverBackgroundColor;
-                titleBar.ButtonHoverForegroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonHoverForegroundColor;
-                titleBar.ButtonInactiveBackgroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonInactiveBackgroundColor;
-                titleBar.ButtonInactiveForegroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonInactiveForegroundColor;
-                titleBar.ButtonPressedBackgroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonPressedBackgroundColor;
-                titleBar.ButtonPressedForegroundColor = titleBarCustomization?.DarkTitleBarButtons?.ButtonPressedForegroundColor;
-            }
-            else
-            {
-                titleBar.BackgroundColor = titleBarCustomization?.LightTitleBarButtons?.BackgroundColor;
-                titleBar.ForegroundColor = titleBarCustomization?.LightTitleBarButtons?.ForegroundColor;
-                titleBar.ButtonForegroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonForegroundColor;
-                titleBar.ButtonBackgroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonBackgroundColor;
-                titleBar.ButtonHoverBackgroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonHoverBackgroundColor;
-                titleBar.ButtonHoverForegroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonHoverForegroundColor;
-                titleBar.ButtonInactiveBackgroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonInactiveBackgroundColor;
-                titleBar.ButtonInactiveForegroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonInactiveForegroundColor;
-                titleBar.ButtonPressedBackgroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonPressedBackgroundColor;
-                titleBar.ButtonPressedForegroundColor = titleBarCustomization?.LightTitleBarButtons?.ButtonPressedForegroundColor;
-            }
-        }
-    }
-
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    public void ResetCaptionButtonColors(Window window)
-    {
-        var res = Application.Current.Resources;
-
-        window.AppWindow.TitleBar.BackgroundColor = null;
-        window.AppWindow.TitleBar.ButtonBackgroundColor = null;
-        window.AppWindow.TitleBar.ButtonInactiveBackgroundColor = null;
-        window.AppWindow.TitleBar.ButtonHoverBackgroundColor = null;
-        window.AppWindow.TitleBar.ButtonPressedBackgroundColor = null;
-        window.AppWindow.TitleBar.ForegroundColor = null;
-        window.AppWindow.TitleBar.ButtonForegroundColor = null;
-        window.AppWindow.TitleBar.ButtonInactiveForegroundColor = null;
-        window.AppWindow.TitleBar.ButtonHoverForegroundColor = null;
-        window.AppWindow.TitleBar.ButtonPressedForegroundColor = null;
-        res["WindowCaptionBackground"] = res["SystemControlBackgroundBaseLowBrush"];
-        res["WindowCaptionBackgroundDisabled"] = res["SystemControlBackgroundBaseLowBrush"];
-        res["WindowCaptionForeground"] = res["SystemControlForegroundBaseHighBrush"];
-        res["WindowCaptionForegroundDisabled"] = res["SystemControlDisabledBaseMediumLowBrush"];
-        WindowHelper.ReActivateWindow(window);
-    }
-
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    public void UpdateSystemCaptionButton(Window window)
-    {
-        if (this.titleBarCustomization != null)
-        {
-            switch (this.titleBarCustomization.TitleBarWindowType)
-            {
-                case TitleBarWindowType.None:
-                    ResetCaptionButtonColors(window);
-                    break;
-                case TitleBarWindowType.AppWindow:
-                    UpdateSystemCaptionButtonForAppWindow(window);
-                    break;
-            }
-        }
-    }
-
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    private void UpdateSystemCaptionButtonColors()
-    {
-        if (Window != null)
-        {
-            UpdateSystemCaptionButton(Window);
-        }
     }
 }

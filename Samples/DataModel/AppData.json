@@ -284,25 +284,11 @@
           "ImagePath": "ms-appx:///Assets/Fluent/navigationView.png"
         },
         {
-          "UniqueId": "WinUICommunityGallery.Pages.DynamicLanguagePage",
-          "Title": "Dynamic Language",
-          "Subtitle": "Change Application Language Realtime",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/language.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/language.png"
-        },
-        {
           "UniqueId": "WinUICommunityGallery.Pages.PrintPage",
           "Title": "Print",
           "Subtitle": "See how you can print data in winui 3",
           "ImageIconPath": "ms-appx:///Assets/Fluent/print.png",
           "ImagePath": "ms-appx:///Assets/Fluent/print.png"
-        },
-        {
-          "UniqueId": "WinUICommunityGallery.Pages.AppNotificationPage",
-          "Title": "App Notification",
-          "Subtitle": "Send Notification in Window",
-          "ImageIconPath": "ms-appx:///Assets/Fluent/notification.png",
-          "ImagePath": "ms-appx:///Assets/Fluent/notification.png"
         },
         {
           "UniqueId": "WinUICommunityGallery.Pages.ContentDialogPage",

@@ -23,14 +23,14 @@ public class FontIconSourceExtension : TextIconExtension
         {
             if (GlyphCode != GlyphCode.None)
             {
-                Glyph = $"{GeneralHelper.GetGlyphUnicodeChar(GlyphCode.ToString())}";
+                Glyph = $"{GeneralHelper.GetGlyphCharacter(GlyphCode.ToString())}";
             }
 
             if (GlyphName != GlyphName.None)
             {
                 var glyphNameIndex = (int)GlyphName;
                 var glyphCode = (GlyphCode)glyphNameIndex;
-                Glyph = $"{GeneralHelper.GetGlyphUnicodeChar(glyphCode.ToString())}";
+                Glyph = $"{GeneralHelper.GetGlyphCharacter(glyphCode.ToString())}";
             }
         }
 

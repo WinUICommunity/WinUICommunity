@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <NoWarn>CS8632</NoWarn>
     <Version>6.9.0</Version>
     <IsTrimmable>false</IsTrimmable>
     <Namespace>WinUICommunity.Components</Namespace>
@@ -27,9 +26,6 @@
       <TargetFile>Themes\Generic.xaml</TargetFile>
       <Visible>True</Visible>
     </XAMLCombineItems>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Remove="Assets\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">

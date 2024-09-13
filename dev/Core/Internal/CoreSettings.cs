@@ -4,8 +4,8 @@ using Nucs.JsonSettings.Modulation;
 namespace WinUICommunity;
 internal class CoreSettings : JsonSettings, IVersionable
 {
-    [EnforcedVersion("6.3.0.0")]
-    public Version Version { get; set; } = new Version(6, 3, 0, 0);
+    [EnforcedVersion("7.0.0.0")]
+    public Version Version { get; set; } = new Version(7, 0, 0, 0);
     public override string FileName { get; set; }
     public ElementTheme ElementTheme { get; set; } = ElementTheme.Default;
     public BackdropType BackdropType { get; set; } = BackdropType.None;

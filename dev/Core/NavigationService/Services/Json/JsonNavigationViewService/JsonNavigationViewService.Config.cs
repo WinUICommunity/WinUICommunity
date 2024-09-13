@@ -110,11 +110,6 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         }
     }
 
-    public void ConfigLocalizer(ILocalizer localizer)
-    {
-        Localizer = localizer;
-    }
-
     public void ConfigLocalizer(ResourceManager resourceManager, ResourceContext resourceContext)
     {
         ResourceManager = resourceManager;

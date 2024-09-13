@@ -26,10 +26,9 @@ public partial class WindowHelper
     {
         this.Window = window;
     }
-
     public void RegisterWindowMinMax()
     {
-        monitor = new WindowMessageMonitor(Window);
+        monitor = new WindowMessageMonitor(this.Window);
         monitor.WindowMessageReceived -= Monitor_WindowMessageReceived;
         monitor.WindowMessageReceived += Monitor_WindowMessageReceived;
     }
@@ -38,6 +37,7 @@ public partial class WindowHelper
         if (e.MessageType == NativeValues.WindowMessage.WM_GETMINMAXINFO)
         {
             var dpi = NativeMethods.GetDpiForWindow(WindowNative.GetWindowHandle(Window));
+            
             var scalingFactor = (float)dpi / 96;
 
             var minMaxInfo = Marshal.PtrToStructure<NativeValues.MINMAXINFO>(e.Message.LParam);
@@ -50,22 +50,9 @@ public partial class WindowHelper
         }
     }
 
-    /// <summary>
-    /// Set Window Width and Height
-    /// </summary>
-    /// <param name="hwnd"></param>
-    /// <param name="width"></param>
-    /// <param name="height"></param>
-    public static void SetWindowSize(Window window, int width, int height)
+    public static void SetWindowSize(AppWindow appWindow, int width, int height)
     {
-        var hwnd = WindowNative.GetWindowHandle(window);
-        // Win32 uses pixels and WinUI 3 uses effective pixels, so you should apply the DPI scale factor
-        var dpi = NativeMethods.GetDpiForWindow(hwnd);
-        var scalingFactor = (float)dpi / 96;
-        width = (int)(width * scalingFactor);
-        height = (int)(height * scalingFactor);
-
-        NativeMethods.SetWindowPos(hwnd, NativeValues.HWND_TOP_IntPtr, 0, 0, width, height, NativeValues.SetWindowPosFlags.SWP_NOMOVE);
+        appWindow.Resize(new Windows.Graphics.SizeInt32(width, height));
     }
 
     public static void MoveAndResizeCenterScreen(Window window, int width, int height)
@@ -87,8 +74,8 @@ public partial class WindowHelper
         window.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32((int)x, (int)y, (int)(width * scale), (int)(height * scale)));
     }
 
-    public static void Move(Window window, int x, int y)
+    public static void Move(AppWindow appWindow, int x, int y)
     {
-        window.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(x, y, window.AppWindow.Size.Width, window.AppWindow.Size.Height));
+        appWindow.MoveAndResize(new Windows.Graphics.RectInt32(x, y, appWindow.Size.Width, appWindow.Size.Height));
     }
 }

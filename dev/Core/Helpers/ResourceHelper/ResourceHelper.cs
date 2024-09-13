@@ -63,18 +63,14 @@ public class ResourceHelper : IResourceHelper
 
     public void SetLanguage(string language)
     {
-        ResourceContext.QualifierValues["Language"] = language;
-        if (PackageHelper.IsPackaged)
-        {
-            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = language;
-        }
+        Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = language;
     }
 
     private string GetStringBase(string key, string language, string filename)
     {
         if (!string.IsNullOrEmpty(language))
         {
-            ResourceContext.QualifierValues["Language"] = language;
+            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = language;
         }
         var candidate = ResourceManager.MainResourceMap.TryGetValue($"{filename}/{key}", ResourceContext);
         return candidate != null ? candidate.ValueAsString : key;

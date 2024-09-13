@@ -10,7 +10,8 @@ public sealed partial class MainPage : Page
     public MainPage()
     {
         this.InitializeComponent();
-        appTitleBar.Window = App.currentWindow;
+        App.CurrentWindow.ExtendsContentIntoTitleBar = true;
+        App.CurrentWindow.SetTitleBar(AppTitleBar);
         Instance = this;
 
         App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
@@ -21,7 +22,7 @@ public sealed partial class MainPage : Page
         App.Current.JsonNavigationViewService.ConfigAutoSuggestBox(ControlsSearchBox);
     }
 
-    private void appTitleBar_BackButtonClick(object sender, RoutedEventArgs e)
+    private void AppTitleBar_BackButtonClick(object sender, RoutedEventArgs e)
     {
         if (NavFrame.CanGoBack)
         {
@@ -29,13 +30,13 @@ public sealed partial class MainPage : Page
         }
     }
 
-    private void appTitleBar_PaneButtonClick(object sender, RoutedEventArgs e)
+    private void AppTitleBar_PaneButtonClick(object sender, RoutedEventArgs e)
     {
         NavView.IsPaneOpen = !NavView.IsPaneOpen;
     }
 
     private void NavFrame_Navigated(object sender, NavigationEventArgs e)
     {
-        appTitleBar.IsBackButtonVisible = NavFrame.CanGoBack;
+        AppTitleBar.IsBackButtonVisible = NavFrame.CanGoBack;
     }
 }

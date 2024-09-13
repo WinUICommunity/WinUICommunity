@@ -5,6 +5,7 @@ public interface IThemeService
     event ActualThemeChangedEventHandler ActualThemeChanged;
 
     Window Window { get; set; }
+    void AutoInitialize(Window window);
     void Initialize(Window window, bool useAutoSave = true, string filename = null);
     void ConfigBackdrop(BackdropType backdropType = BackdropType.Mica, bool force = false);
     void ConfigTintColor(Color color, bool force = false);
@@ -13,8 +14,6 @@ public interface IThemeService
     void ConfigFallbackColor();
     void ConfigElementTheme(ElementTheme elementTheme = ElementTheme.Default, bool force = false);
 
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    void ConfigTitleBar(TitleBarCustomization titleBarCustomization);
     SystemBackdrop GetSystemBackdrop();
     SystemBackdrop GetSystemBackdrop(BackdropType backdropType);
     BackdropType GetBackdropType();
@@ -31,14 +30,6 @@ public interface IThemeService
 
     bool IsDarkTheme();
 
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    void UpdateSystemCaptionButtonForAppWindow(Window window);
-
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    void ResetCaptionButtonColors(Window window);
-
-    [Obsolete("This Method will be removed after WASDK v1.6 released")]
-    void UpdateSystemCaptionButton(Window window);
     void OnThemeComboBoxSelectionChanged(object sender);
     void SetThemeComboBoxDefaultItem(ComboBox themeComboBox);
     void OnBackdropComboBoxSelectionChanged(object sender);
@@ -47,4 +38,6 @@ public interface IThemeService
     void SetThemeRadioButtonDefaultItem(Panel ThemePanel);
     void OnBackdropRadioButtonChecked(object sender);
     void SetBackdropRadioButtonDefaultItem(Panel BackdropPanel);
+    void UpdateCaptionButtons();
+    void UpdateCaptionButtons(Window window);
 }

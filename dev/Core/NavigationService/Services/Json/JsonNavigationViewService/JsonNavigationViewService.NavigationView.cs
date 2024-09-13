@@ -292,14 +292,10 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         {
             if (usexUid)
             {
-                if (Localizer == null && ResourceManager != null && ResourceContext != null)
+                if (ResourceManager != null && ResourceContext != null)
                 {
                     var candidate = ResourceManager.MainResourceMap.TryGetValue($"Resources/{input}", ResourceContext);
                     return candidate != null ? candidate.ValueAsString : input;
-                }
-                else if (ResourceManager == null && Localizer != null)
-                {
-                    return Localizer.GetLocalizedString(input);
                 }
             }
         }

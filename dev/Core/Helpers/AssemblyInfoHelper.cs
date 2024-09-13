@@ -1,7 +1,7 @@
 ﻿namespace WinUICommunity;
 public partial class AssemblyInfoHelper
 {
-    internal static T GetCustomAttributeFromAssembly<T>(Assembly assembly) where T : Attribute
+    internal static T GetAssemblyCustomAttribute<T>(Assembly assembly) where T : Attribute
     {
         if (assembly == null)
         {
@@ -19,14 +19,14 @@ public partial class AssemblyInfoHelper
         }
     }
 
-    public static T GetCustomAttribute<T>() where T : Attribute
+    public static T GetCurrentAssemblyCustomAttribute<T>() where T : Attribute
     {
-        return GetCustomAttributeFromAssembly<T>(null);
+        return GetAssemblyCustomAttribute<T>(null);
     }
 
-    public static T GetCustomAttribute<T>(Assembly assembly) where T : Attribute
+    public static T GetCurrentAssemblyCustomAttribute<T>(Assembly assembly) where T : Attribute
     {
-        return GetCustomAttributeFromAssembly<T>(assembly);
+        return GetAssemblyCustomAttribute<T>(assembly);
     }
 
     internal static string GetVersionInfoBase(VersionType versionType, Assembly assembly)
@@ -59,7 +59,7 @@ public partial class AssemblyInfoHelper
     /// </summary>
     /// <param name="versionType"></param>
     /// <returns></returns>
-    public static string GetAssemblyVersion(VersionType versionType = VersionType.AssemblyInformationalVersion)
+    public static string GetVersion(VersionType versionType = VersionType.AssemblyInformationalVersion)
     {
         return GetVersionInfoBase(versionType, null);
     }
@@ -74,7 +74,7 @@ public partial class AssemblyInfoHelper
     /// <param name="versionType"></param>
     /// <param name="assembly">Default is GetEntryAssembly</param>
     /// <returns></returns>
-    public static string GetAssemblyVersion(VersionType versionType, Assembly assembly)
+    public static string GetVersion(VersionType versionType, Assembly assembly)
     {
         return GetVersionInfoBase(versionType, assembly);
     }
@@ -122,7 +122,7 @@ public partial class AssemblyInfoHelper
     internal static (string Name, string Version, string NameAndVersion) GetAppInfoBase(NameType nameType, VersionType versionType, Assembly assembly)
     {
         var name = GetAppName(nameType, assembly);
-        var version = GetAssemblyVersion(versionType, assembly);
+        var version = GetVersion(versionType, assembly);
         var nameAndVersion = $"{name} v{version}";
         return (name, version, nameAndVersion);
     }
@@ -134,7 +134,7 @@ public partial class AssemblyInfoHelper
     /// <param name="nameType"></param>
     /// <param name="versionType"></param>
     /// <returns></returns>
-    public static (string Name, string Version, string NameAndVersion) GetAppInfo(NameType nameType = NameType.EntryAssemblyVersion, VersionType versionType = VersionType.AssemblyInformationalVersion)
+    public static (string Name, string Version, string NameAndVersion) GetAppDetails(NameType nameType = NameType.EntryAssemblyVersion, VersionType versionType = VersionType.AssemblyInformationalVersion)
     {
         return GetAppInfoBase(nameType, versionType, null);
     }
@@ -147,7 +147,7 @@ public partial class AssemblyInfoHelper
     /// <param name="versionType"></param>
     /// <param name="assembly"></param>
     /// <returns></returns>
-    public static (string Name, string Version, string NameAndVersion) GetAppInfo(NameType nameType, VersionType versionType, Assembly assembly)
+    public static (string Name, string Version, string NameAndVersion) GetAppDetails(NameType nameType, VersionType versionType, Assembly assembly)
     {
         return GetAppInfoBase(nameType, versionType, assembly);
     }

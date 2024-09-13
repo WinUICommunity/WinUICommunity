@@ -27,9 +27,6 @@
 	  </XAMLCombineItems>
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="Assets\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 </Project>
