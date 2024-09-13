@@ -14,6 +14,7 @@
     <UseWinUI>true</UseWinUI>
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Latest</LangVersion>
+    <IsAotCompatible>true</IsAotCompatible>
     <NoWarn>WMC1506;WMC0001;CA1416;CS8632;CS0067;CS0414;NU1903;NU1902</NoWarn>
 
     <!-- The NuGet package version -->
