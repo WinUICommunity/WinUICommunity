@@ -9,6 +9,6 @@ public delegate void ImageExOpenedEventHandler(object sender, ImageExOpenedEvent
 /// <summary>
 /// Provides data for the <see cref="ImageEx"/> ImageOpened event.
 /// </summary>
-public class ImageExOpenedEventArgs : EventArgs
+public partial class ImageExOpenedEventArgs : EventArgs
 {
 }

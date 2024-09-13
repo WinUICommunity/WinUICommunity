@@ -9,7 +9,7 @@ public delegate void ImageExFailedEventHandler(object sender, ImageExFailedEvent
 /// <summary>
 /// Provides data for the <see cref="ImageEx"/> ImageFailed event.
 /// </summary>
-public class ImageExFailedEventArgs : EventArgs
+public partial class ImageExFailedEventArgs : EventArgs
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ImageExFailedEventArgs"/> class.

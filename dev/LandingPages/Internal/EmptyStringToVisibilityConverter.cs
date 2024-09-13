@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Data;
 
 namespace WinUICommunity;
-public class EmptyStringToVisibilityConverter : IValueConverter
+public partial class EmptyStringToVisibilityConverter : IValueConverter
 {
     public Visibility EmptyValue { get; set; } = Visibility.Collapsed;
     public Visibility NonEmptyValue { get; set; } = Visibility.Visible;
