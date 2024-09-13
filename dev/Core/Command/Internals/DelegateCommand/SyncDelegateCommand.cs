@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-internal sealed class SyncDelegateCommand : IDelegateCommand
+internal sealed partial class SyncDelegateCommand : IDelegateCommand
 {
     private readonly Action<object?> _execute;
     private readonly Func<object?, bool> _canExecute;

@@ -7,7 +7,7 @@ namespace WinUICommunity;
 /// <summary>
 /// Helpers for working with strings and string representations.
 /// </summary>
-public static class StringExtensions
+public static partial class StringExtensions
 {
     /// <summary>
     /// Regular expression for matching a phone number.

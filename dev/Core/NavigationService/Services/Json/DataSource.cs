@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace WinUICommunity;
 
-public class DataSource
+public partial class DataSource
 {
     private static readonly object _lock = new();
 

@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class JsonPageService : PageServiceEx
+public partial class JsonPageService : PageServiceEx
 {
     public string SectionPageKey { get; set; } = nameof(SectionPageKey);
 

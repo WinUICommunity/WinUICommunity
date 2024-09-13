@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public static class ContentDialogEx
+public static partial class ContentDialogEx
 {
     private static TaskCompletionSource<ContentDialog> _contentDialogShowRequest;
 

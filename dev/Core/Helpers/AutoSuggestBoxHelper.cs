@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public static class AutoSuggestBoxHelper
+public static partial class AutoSuggestBoxHelper
 {
     private static string NoResult = "No result found";
 

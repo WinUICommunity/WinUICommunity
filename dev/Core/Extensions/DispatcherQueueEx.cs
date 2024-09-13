@@ -3,7 +3,7 @@ namespace WinUICommunity;
 /// <summary>
 /// Helpers for executing code in a <see cref="DispatcherQueue"/>.
 /// </summary>
-public static class DispatcherQueueExtensions
+public static partial class DispatcherQueueExtensions
 {
     /// <summary>
     /// Invokes a given function on the target <see cref="DispatcherQueue"/> and returns a

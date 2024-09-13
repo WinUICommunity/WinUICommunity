@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public class TitleBarAttach
+public partial class TitleBarAttach
 {
     public static bool GetIsMaximizable(DependencyObject obj)
     {

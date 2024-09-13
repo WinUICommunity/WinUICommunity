@@ -2,7 +2,7 @@
 using Microsoft.UI.Composition.SystemBackdrops;
 
 namespace WinUICommunity;
-public sealed class AcrylicSystemBackdrop : SystemBackdrop
+public sealed partial class AcrylicSystemBackdrop : SystemBackdrop
 {
     public readonly static Color Default_TintColor_Dark = Color.FromArgb(0xff, 0x54, 0x54, 0x54);
     public readonly static Color Default_TintColor_Light = Color.FromArgb(0xff, 0xd3, 0xd3, 0xd3);

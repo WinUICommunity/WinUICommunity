@@ -2,7 +2,7 @@
 using Windows.Security.Credentials;
 
 namespace WinUICommunity;
-public static class CredentialHelper
+public static partial class CredentialHelper
 {
     private static async Task<CredentialPickerResults> PickCredentialBase(string caption, string message, CredentialSaveOption credentialSaveOption, AuthenticationProtocol authenticationProtocol, bool alwaysDisplayDialog)
     {

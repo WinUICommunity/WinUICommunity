@@ -4,7 +4,7 @@ using Windows.UI.Text;
 
 namespace WinUICommunity;
 
-public abstract class TextIconExtension : MarkupExtension
+public abstract partial class TextIconExtension : MarkupExtension
 {
     /// <summary>
     /// Gets or sets the size of the icon to display.

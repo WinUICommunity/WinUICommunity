@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public sealed class WindowMessageEventArgs : EventArgs
+public sealed partial class WindowMessageEventArgs : EventArgs
 {
     public WindowMessageEventArgs(IntPtr hwnd, uint messageId, nuint wParam, nint lParam)
     {

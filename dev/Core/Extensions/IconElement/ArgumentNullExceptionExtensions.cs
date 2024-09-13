@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
 namespace WinUICommunity;
-internal static class ArgumentNullExceptionExtensions
+internal static partial class ArgumentNullExceptionExtensions
 {
     [DoesNotReturn]
     public static void Throw(this ArgumentNullException? _, string? parameterName)

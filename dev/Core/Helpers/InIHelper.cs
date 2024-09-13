@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class InIHelper
+public partial class InIHelper
 {
     internal string Path { get; set; }
     public InIHelper(string filePath)

@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 
 namespace WinUICommunity;
 
-public class NavigationServiceEx : INavigationServiceEx
+public partial class NavigationServiceEx : INavigationServiceEx
 {
     private readonly IPageServiceEx _pageService;
     private object? _lastParameterUsed;

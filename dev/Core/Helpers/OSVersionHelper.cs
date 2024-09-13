@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public static class OSVersionHelper
+public static partial class OSVersionHelper
 {
     public static readonly Version OSVersion = GetOSVersion();
 

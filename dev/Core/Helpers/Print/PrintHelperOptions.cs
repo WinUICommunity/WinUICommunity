@@ -6,7 +6,7 @@ namespace WinUICommunity;
 /// <summary>
 /// Represents options used in a print task.
 /// </summary>
-public class PrintHelperOptions
+public partial class PrintHelperOptions
 {
     /// <summary>
     /// Gets or sets the bordering option for the print task.

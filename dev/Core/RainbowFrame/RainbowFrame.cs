@@ -1,7 +1,7 @@
 ﻿using WinRT.Interop;
 
 namespace WinUICommunity;
-public class RainbowFrame : IRainbowFrame
+public partial class RainbowFrame : IRainbowFrame
 {
     private uint _defaultColor = 0xFFFFFFFF;
     private DispatcherTimer _frameTimer;

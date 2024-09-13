@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 namespace WinUICommunity;
 
-public static class DateTimeExtension
+public static partial class DateTimeExtension
 {
     /// <summary>
     /// Get Shamsi Date From Miladi Year

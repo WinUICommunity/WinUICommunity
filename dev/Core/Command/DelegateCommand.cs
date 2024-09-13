@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public static class DelegateCommand
+public static partial class DelegateCommand
 {
     public static IDelegateCommand Create(Action? execute)
     {

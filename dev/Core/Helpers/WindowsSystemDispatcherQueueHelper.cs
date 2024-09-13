@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public class WindowsSystemDispatcherQueueHelper
+public partial class WindowsSystemDispatcherQueueHelper
 {
     object m_dispatcherQueueController = null;
     public void EnsureWindowsSystemDispatcherQueueController()

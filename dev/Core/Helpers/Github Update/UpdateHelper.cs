@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public static class UpdateHelper
+public static partial class UpdateHelper
 {
     private const string GITHUB_API = "https://api.github.com/repos/{0}/{1}/releases/latest";
 

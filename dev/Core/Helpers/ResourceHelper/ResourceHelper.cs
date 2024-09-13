@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public class ResourceHelper : IResourceHelper
+public partial class ResourceHelper : IResourceHelper
 {
     public ResourceManager ResourceManager { get; set; }
     public ResourceContext ResourceContext { get; set; }

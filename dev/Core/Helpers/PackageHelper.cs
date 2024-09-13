@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public class PackageHelper
+public partial class PackageHelper
 {
     private const uint APPMODEL_ERROR_NO_PACKAGE = 15700;
     public static bool IsPackaged { get; } = GetCurrentPackageName() != null;

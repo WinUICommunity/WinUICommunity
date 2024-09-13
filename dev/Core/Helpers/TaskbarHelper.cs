@@ -8,7 +8,7 @@ public enum TaskbarStates
     Error = 0x4,
     Paused = 0x8
 }
-public static class TaskbarHelper
+public static partial class TaskbarHelper
 {
     [ComImport()]
     [Guid("ea1afb91-9e28-4b86-90e9-9e9f8a5eefaf")]

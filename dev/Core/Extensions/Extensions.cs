@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public static class Extensions
+public static partial class Extensions
 {
     public static SolidColorBrush GetSolidColorBrush(this string hex)
     {

@@ -3,7 +3,7 @@
 /// <summary>
 /// An extension for the <see cref="Dictionary{TKey,TValue}"/> class.
 /// </summary>
-public static class DictionaryExtension
+public static partial class DictionaryExtension
 {
     /// <summary>
     /// Clones the dictionary.

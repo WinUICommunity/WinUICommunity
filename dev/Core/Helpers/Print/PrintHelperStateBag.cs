@@ -2,9 +2,9 @@
 namespace WinUICommunity;
 
 /// <summary>
-/// Internal class used to store values updated by <see cref="PrintHelper"/>.
+/// internal partial class used to store values updated by <see cref="PrintHelper"/>.
 /// </summary>
-internal class PrintHelperStateBag
+internal partial class PrintHelperStateBag
 {
     private readonly DispatcherQueue _dispatcherQueue;
 

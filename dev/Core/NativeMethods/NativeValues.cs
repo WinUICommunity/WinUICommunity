@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 
 namespace WinUICommunity;
-public static class NativeValues
+public static partial class NativeValues
 {
     /// <summary>
     /// Places the window at the top of the Z order.
@@ -11,7 +11,7 @@ public static class NativeValues
     public delegate IntPtr WNDPROC(IntPtr hWnd, NativeValues.WindowMessage Msg, IntPtr wParam, IntPtr lParam);
     public delegate IntPtr SUBCLASSPROC(IntPtr hWnd, uint uMsg, nuint wParam, nint lParam, nuint uIdSubclass, nuint dwRefData);
 
-    public static class ExternDll
+    public static partial class ExternDll
     {
         public const string
             User32 = "user32.dll",
@@ -101,7 +101,7 @@ public static class NativeValues
 
     [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false)]
     [Conditional("CodeGeneration")]
-    public class FriendlyAttribute : Attribute
+    public partial class FriendlyAttribute : Attribute
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FriendlyAttribute"/> class.

@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Hosting;
 using WinRT;
 namespace WinUICommunity;
-public class TransparentBackdrop : CompositionBrushBackdrop
+public partial class TransparentBackdrop : CompositionBrushBackdrop
 {
     private WindowMessageMonitor? monitor;
     private Windows.UI.Composition.CompositionColorBrush? brush;

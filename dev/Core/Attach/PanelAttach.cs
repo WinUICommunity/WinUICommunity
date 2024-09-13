@@ -17,7 +17,7 @@ public enum PanelTransitionCollection
     RepositionThemeTransition,
     SettingsCardTransition
 }
-public class PanelAttach
+public partial class PanelAttach
 {
     public static PanelTransitionCollection GetChildrenTransitions(DependencyObject obj)
     {

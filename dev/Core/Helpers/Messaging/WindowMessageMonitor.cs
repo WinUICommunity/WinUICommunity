@@ -1,7 +1,7 @@
 ﻿using WinRT.Interop;
 
 namespace WinUICommunity;
-public sealed class WindowMessageMonitor : IDisposable
+public sealed partial class WindowMessageMonitor : IDisposable
 {
     private nint _hwnd = IntPtr.Zero;
     private delegate nint WinProc(IntPtr hWnd, uint msg, nint wParam, nint lParam);

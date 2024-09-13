@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-internal static class WindowsCompositionHelper
+internal static partial class WindowsCompositionHelper
 {
     private static WindowsSystemDispatcherQueueHelper dispatcherQueueHelper;
 

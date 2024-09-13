@@ -1,7 +1,7 @@
 ﻿using WinRT.Interop;
 
 namespace WinUICommunity;
-public class WndProcHelper
+public partial class WndProcHelper
 {
     private IntPtr Handle { get; set; }
     private NativeValues.WNDPROC newMainWindowWndProc = null;

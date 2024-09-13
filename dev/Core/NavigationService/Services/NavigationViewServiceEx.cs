@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public class NavigationViewServiceEx : INavigationViewServiceEx
+public partial class NavigationViewServiceEx : INavigationViewServiceEx
 {
     private readonly INavigationServiceEx _navigationService;
 

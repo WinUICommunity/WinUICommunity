@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 
 namespace WinUICommunity;
-public static class ProcessInfoHelper
+public static partial class ProcessInfoHelper
 {
     private static readonly FileVersionInfo _fileVersionInfo;
     private static readonly Process _process;

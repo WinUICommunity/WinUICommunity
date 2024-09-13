@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public class Win32Window
+public partial class Win32Window
 {
     public Win32Window(IntPtr handle)
     {
