@@ -2,7 +2,7 @@
 using CommunityToolkit.WinUI.Media;
 
 namespace WinUICommunity;
-public class BlurAnimationHelper
+public partial class BlurAnimationHelper
 {
     private class AnimationSetInfo
     {

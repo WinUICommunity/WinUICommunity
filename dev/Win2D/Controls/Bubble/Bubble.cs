@@ -4,7 +4,7 @@ using Windows.Foundation;
 
 namespace WinUICommunity;
 
-public class Bubble : IDisposable
+public partial class Bubble : IDisposable
 {
     private static readonly Random rnd = new();
 

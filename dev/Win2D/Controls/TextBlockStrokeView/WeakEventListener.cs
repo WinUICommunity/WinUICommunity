@@ -12,7 +12,7 @@ namespace WinUICommunity;
 /// <typeparam name="TSource">Type of source for the event.</typeparam>
 /// <typeparam name="TEventArgs">Type of event arguments for the event.</typeparam>
 [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-internal sealed class WeakEventListener<TInstance, TSource, TEventArgs>
+internal sealed partial class WeakEventListener<TInstance, TSource, TEventArgs>
     where TInstance : class
 {
     /// <summary>

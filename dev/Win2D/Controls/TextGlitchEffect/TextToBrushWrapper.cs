@@ -5,7 +5,7 @@ using Windows.Graphics;
 
 namespace WinUICommunity;
 
-public class TextToBrushWrapper : Control
+public partial class TextToBrushWrapper : Control
 {
     public static readonly DependencyProperty DashStyleProperty =
         DependencyProperty.Register(nameof(DashStyle), typeof(CanvasDashStyle), typeof(TextToBrushWrapper),

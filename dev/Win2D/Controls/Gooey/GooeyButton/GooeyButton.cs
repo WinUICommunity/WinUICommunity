@@ -638,7 +638,7 @@ public sealed class GooeyButton : ItemsControl
 
     #region Nested Class
 
-    public class GooeyButtonProperty
+    public partial class GooeyButtonProperty
     {
         public Color? BackgroundColor { get; set; }
 
@@ -655,12 +655,12 @@ public sealed class GooeyButton : ItemsControl
 
     public delegate void GooeyButtonItemInvokedEventHandler(object sender, GooeyButtonItemInvokedEventArgs args);
 
-    public class GooeyButtonInvokedEventArgs : EventArgs
+    public partial class GooeyButtonInvokedEventArgs : EventArgs
     {
         public bool Cancel { get; set; } = false;
     }
 
-    public class GooeyButtonItemInvokedEventArgs : EventArgs
+    public partial class GooeyButtonItemInvokedEventArgs : EventArgs
     {
         internal GooeyButtonItemInvokedEventArgs(object item)
         {

@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class OutlineTextControl : Control
+public partial class OutlineTextControl : Control
 {
     public static readonly DependencyProperty DashStyleProperty =
         DependencyProperty.Register(nameof(DashStyle), typeof(CanvasDashStyle), typeof(OutlineTextControl), new PropertyMetadata(default(CanvasDashStyle), OnDashStyleChanged));

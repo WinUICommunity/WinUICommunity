@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public class GooeyBubble
+public partial class GooeyBubble
 {
     public DoubleTimeline OffsetTimeline { get; set; }
     public DoubleTimeline SizeTimeline { get; set; }

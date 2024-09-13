@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class TiledImageBrush : XamlCompositionBrushBase
+public partial class TiledImageBrush : XamlCompositionBrushBase
 {
     public static readonly DependencyProperty SourceProperty =
         DependencyProperty.Register(nameof(Source), typeof(ImageSource), typeof(TiledImageBrush), new PropertyMetadata(default(ImageSource), OnImageSourceUriChanged));
