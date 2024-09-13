@@ -108,7 +108,7 @@ public partial class GeneralHelper
 
     public static void SetApplicationLayoutRTL(IntPtr windowHandle)
     {
-        int exstyle = NativeMethods.GetWindowLong(windowHandle, NativeValues.GWL_EXSTYLE);
+        int exstyle = NativeMethods.GetWindowLongW(windowHandle, NativeValues.GWL_EXSTYLE);
         NativeMethods.SetWindowLong(windowHandle, NativeValues.GWL_EXSTYLE, exstyle | NativeValues.WS_EX_LAYOUTRTL);
     }
     public static void SetApplicationLayoutRTL(Window window)
@@ -119,7 +119,7 @@ public partial class GeneralHelper
 
     public static void SetApplicationLayoutLTR(IntPtr windowHandle)
     {
-        int exstyle = NativeMethods.GetWindowLong(windowHandle, NativeValues.GWL_EXSTYLE);
+        int exstyle = NativeMethods.GetWindowLongW(windowHandle, NativeValues.GWL_EXSTYLE);
         NativeMethods.SetWindowLong(windowHandle, NativeValues.GWL_EXSTYLE, exstyle | NativeValues.WS_EX_LAYOUTLTR);
     }
     public static void SetApplicationLayoutLTR(Window window)

@@ -40,7 +40,7 @@ public static partial class NativeMethods
     [DllImport("CoreMessaging.dll")]
     public static extern int CreateDispatcherQueueController([In] DispatcherQueueOptions options, [In, Out, MarshalAs(UnmanagedType.IUnknown)] ref object dispatcherQueueController);
 
-    [DllImport("coremessaging.dll", EntryPoint = "CreateDispatcherQueueController", CharSet = CharSet.Unicode)]
+    [DllImport("coremessaging.dll", CharSet = CharSet.Unicode)]
     public static extern IntPtr CreateDispatcherQueueController(DispatcherQueueOptions2 options, out IntPtr dispatcherQueueController);
 
     [DllImport(ExternDll.User32)]
@@ -57,54 +57,54 @@ public static partial class NativeMethods
     public static extern int GetCurrentPackageFullName(ref uint packageFullNameLength, [Optional] StringBuilder packageFullName);
 
 
-    [DllImport(ExternDll.User32, EntryPoint = "SetWindowLong")]
-    public static extern int SetWindowLong32(IntPtr hWnd, int nIndex, WNDPROC newProc);
-
-    [DllImport(ExternDll.User32, EntryPoint = "SetWindowLongPtr")]
-    public static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, int nIndex, WNDPROC newProc);
-
-    public static IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, WNDPROC newProc)
-    {
-        return IntPtr.Size == 8 ? SetWindowLongPtr64(hWnd, nIndex, newProc) : new IntPtr(SetWindowLong32(hWnd, nIndex, newProc));
-    }
+    [DllImport(ExternDll.User32)]
+    public static extern int SetWindowLong(IntPtr hWnd, int nIndex, WNDPROC newProc);
 
     [DllImport(ExternDll.User32)]
     public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
-    [DllImport(ExternDll.User32, EntryPoint = "SetWindowLongW", SetLastError = false)]
-    public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+    [DllImport(ExternDll.User32)]
+    public static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, WNDPROC newProc);
 
-    [DllImport(ExternDll.User32, EntryPoint = "SetWindowLongPtrW", SetLastError = false)]
-    public static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+    [DllImport(ExternDll.User32, SetLastError = false)]
+    public static extern IntPtr SetWindowLongW(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 
+    [DllImport(ExternDll.User32, SetLastError = false)]
+    public static extern IntPtr SetWindowLongPtrW(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+    public static IntPtr SetWindowLongAuto(IntPtr hWnd, int nIndex, WNDPROC newProc)
+    {
+        return IntPtr.Size == 8 ? SetWindowLongPtr(hWnd, nIndex, newProc) : new IntPtr(SetWindowLong(hWnd, nIndex, newProc));
+    }
+    
     public static IntPtr SetWindowLongAuto(IntPtr hWnd, int nIndex, IntPtr dwNewLong)
     {
         if (IntPtr.Size is 8)
         {
-            return SetWindowLongPtr(hWnd, nIndex, dwNewLong);
+            return SetWindowLongPtrW(hWnd, nIndex, dwNewLong);
         }
         else
         {
-            return SetWindowLong(hWnd, nIndex, dwNewLong);
+            return SetWindowLongW(hWnd, nIndex, dwNewLong);
         }
     }
 
 
-    [DllImport(ExternDll.User32, EntryPoint = "GetWindowLongW", SetLastError = false)]
-    public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+    [DllImport(ExternDll.User32, SetLastError = false)]
+    public static extern int GetWindowLongW(IntPtr hWnd, int nIndex);
 
-    [DllImport(ExternDll.User32, EntryPoint = "GetWindowLongPtrW", SetLastError = false)]
-    public static extern int GetWindowLongPtr(IntPtr hWnd, int nIndex);
+    [DllImport(ExternDll.User32, SetLastError = false)]
+    public static extern int GetWindowLongPtrW(IntPtr hWnd, int nIndex);
 
     public static int GetWindowLongAuto(IntPtr hWnd, int nIndex)
     {
         if (IntPtr.Size is 8)
         {
-            return GetWindowLongPtr(hWnd, nIndex);
+            return GetWindowLongPtrW(hWnd, nIndex);
         }
         else
         {
-            return GetWindowLong(hWnd, nIndex);
+            return GetWindowLongW(hWnd, nIndex);
         }
     }
 
