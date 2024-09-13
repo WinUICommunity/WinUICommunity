@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Windowing;
 
 namespace WinUICommunity;
-public class GrowlWindow : Window
+public partial class GrowlWindow : Window
 {
     internal Panel GrowlPanel { get; set; }
     internal bool WindowClosed;

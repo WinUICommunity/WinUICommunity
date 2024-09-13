@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Hosting;
 using System.Numerics;
 
 namespace WinUICommunity;
-public sealed class FlipSide : Control
+public sealed partial class FlipSide : Control
 {
     public static readonly DependencyProperty IsFlippedProperty =
         DependencyProperty.Register("IsFlipped", typeof(bool), typeof(FlipSide), new PropertyMetadata(false, (s, a) =>

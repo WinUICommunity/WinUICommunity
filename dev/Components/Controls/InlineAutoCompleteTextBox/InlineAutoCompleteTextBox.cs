@@ -15,7 +15,7 @@ namespace WinUICommunity;
 /// Suggestions need to be provided by the SuggestionsSource property.
 /// </summary>
 [TemplatePart(Name = ContentElementControlName, Type = typeof(ContentControl))]
-public sealed class InlineAutoCompleteTextBox : TextBox
+public sealed partial class InlineAutoCompleteTextBox : TextBox
 {
     /// <summary>
     /// Identifies the <see cref="IsSuggestionCaseSensitive"/> dependency property.

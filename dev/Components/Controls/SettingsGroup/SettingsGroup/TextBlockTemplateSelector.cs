@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-internal class TextBlockTemplateSelector : DataTemplateSelector
+internal partial class TextBlockTemplateSelector : DataTemplateSelector
 {
     public DataTemplate TextBlockTemplate { get; set; }
     protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)

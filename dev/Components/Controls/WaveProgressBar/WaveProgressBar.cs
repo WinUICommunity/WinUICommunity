@@ -4,7 +4,7 @@ namespace WinUICommunity;
 
 [TemplatePart(Name = ElementWave, Type = typeof(FrameworkElement))]
 [TemplatePart(Name = ElementClip, Type = typeof(FrameworkElement))]
-public class WaveProgressBar : Control
+public partial class WaveProgressBar : Control
 {
     private const string ElementWave = "PART_Wave";
 

@@ -5,7 +5,7 @@ using System.Reflection;
 namespace WinUICommunity;
 
 [TemplatePart(Name = TemplateBorderName, Type = typeof(Border))]
-public class LoadingIndicator : Control
+public partial class LoadingIndicator : Control
 {
     internal const string TemplateBorderName = "PART_Border";
 

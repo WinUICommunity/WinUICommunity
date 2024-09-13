@@ -13,7 +13,7 @@ namespace WinUICommunity;
 /// <see cref="UniformGrid.GetFreeSpot"/> iterator.
 /// This is used so we can better isolate our logic and make it easier to test.
 /// </summary>
-internal sealed class TakenSpotsReferenceHolder
+internal sealed partial class TakenSpotsReferenceHolder
 {
     /// <summary>
     /// The <see cref="BitArray"/> instance used to efficiently track empty spots.

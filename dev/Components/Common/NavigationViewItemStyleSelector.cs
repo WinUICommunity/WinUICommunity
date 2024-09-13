@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-internal class NavigationViewItemStyleSelector : StyleSelector
+internal partial class NavigationViewItemStyleSelector : StyleSelector
 {
     public Style TopLevelTemplate { get; set; }
     public Style SubLevelTemplate { get; set; }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Media.Animation;
 
 namespace WinUICommunity;
-public sealed class CopyButton : Button
+public sealed partial class CopyButton : Button
 {
     public CopyButton()
     {

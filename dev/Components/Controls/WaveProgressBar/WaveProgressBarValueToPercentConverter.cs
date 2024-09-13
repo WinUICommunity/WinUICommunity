@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public class WaveProgressBarValueToPercentConverter : IValueConverter
+public partial class WaveProgressBarValueToPercentConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {

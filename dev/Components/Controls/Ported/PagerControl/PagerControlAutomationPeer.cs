@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Automation.Peers;
 
 namespace WinUICommunity;
 
-public class PagerControlAutomationPeer : FrameworkElementAutomationPeer
+public partial class PagerControlAutomationPeer : FrameworkElementAutomationPeer
 {
 	public PagerControlAutomationPeer(PagerControl owner) : base(owner)
 	{

@@ -8,7 +8,7 @@ namespace WinUICommunity;
 
 [TemplatePart(Name = nameof(PART_Root), Type =(typeof(StackPanel)))]
 [ContentProperty(Name = nameof(Content))]
-public class ColorfulShimmingEffect : ContentControl
+public partial class ColorfulShimmingEffect : ContentControl
 {
     private string PART_Root = "PART_Root";
     private StackPanel _rootPanel;

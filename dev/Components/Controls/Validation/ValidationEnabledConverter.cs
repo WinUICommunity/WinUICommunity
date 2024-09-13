@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml.Data;
 
 namespace WinUICommunity;
 
-public sealed class ValidationEnabledConverter : IValueConverter
+public sealed partial class ValidationEnabledConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {

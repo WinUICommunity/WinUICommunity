@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Markup;
 
 namespace WinUICommunity;
-internal class IndicatorVisualStateGroupNames : MarkupExtension
+internal partial class IndicatorVisualStateGroupNames : MarkupExtension
 {
     private static IndicatorVisualStateGroupNames _internalActiveStates;
     private static IndicatorVisualStateGroupNames _sizeStates;

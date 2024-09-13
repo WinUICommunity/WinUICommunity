@@ -8,7 +8,7 @@ namespace WinUICommunity;
 /// <summary>
 /// Provides a set of properties that aid in implementations of input validation.
 /// </summary>
-public sealed class Validation : DependencyObject
+public sealed partial class Validation : DependencyObject
 {
     /// <summary>
     /// Gets or sets a provider that implements input validation through

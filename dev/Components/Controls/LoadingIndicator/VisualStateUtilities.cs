@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-internal static class VisualStateUtilities
+internal static partial class VisualStateUtilities
 {
     public static IEnumerable<VisualStateGroup> GetActiveVisualStateGroups(this FrameworkElement element) =>
         element.GetVisualStateGroupsByName(IndicatorVisualStateGroupNames.ActiveStates.Name);

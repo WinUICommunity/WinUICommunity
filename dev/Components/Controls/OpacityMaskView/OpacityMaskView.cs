@@ -9,7 +9,7 @@ using Windows.UI;
 
 namespace WinUICommunity;
 
-public class OpacityMaskView : RedirectVisualView
+public partial class OpacityMaskView : RedirectVisualView
 {
     public OpacityMaskView()
     {
