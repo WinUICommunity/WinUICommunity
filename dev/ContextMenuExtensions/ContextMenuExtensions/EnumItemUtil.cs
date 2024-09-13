@@ -3,15 +3,10 @@
 namespace WinUICommunity;
 public static partial class EnumItemUtil
 {
-    public static IReadOnlyList<EnumItem> GetEnumItems<T>() where T : struct
+    public static IReadOnlyList<EnumItem> GetEnumItems<T>() where T : struct, Enum
     {
-        if (!typeof(T).IsEnum)
-        {
-            throw new ArgumentException("T must be an enumerated type");
-        }
-
-        return Enum.GetValues(typeof(T))
-            .Cast<T>()
+        // No need to check if T is an enum because the generic constraint ensures it's an Enum
+        return Enum.GetValues<T>()
             .Select(x => new EnumItem
             {
                 Label = x.GetType().GetField(x.ToString()).GetCustomAttributes(false).OfType<DescriptionAttribute>().FirstOrDefault()?.Description ?? x.ToString(),
@@ -19,4 +14,5 @@ public static partial class EnumItemUtil
             })
             .ToImmutableList();
     }
+
 }
