@@ -1,21 +1,19 @@
 ﻿<p align="center">
-<img alt="OS" src="https://img.shields.io/badge/%3E%3DWindows%2010%20Build%201809-version?logo=windows&label=Supported%20OS&color=blue"/>
 <img alt="IDE-version" src="https://img.shields.io/badge/2022-Version?logo=visual%20studio&label=Visual%20Studio&color=blue"/>
-<img alt="githubrepo-size" src="https://img.shields.io/github/repo-size/WinUICommunity/WinUICommunity?logo=github"/>
-<br>
 <a href="https://github.com/WinUICommunity">
- <img alt="Projects" src="https://img.shields.io/badge/Projects-%20?logo=github&label=All%20WinUICommunity&color=blue"/>
+ <img alt="Projects" src="https://img.shields.io/badge/Projects-%20?logo=github&label=WinUICommunity&color=blue"/>
 </a>
 <a href="https://www.nuget.org/profiles/WinUICommunity">
- <img alt="Packages" src="https://img.shields.io/badge/Packages-%20?logo=nuget&label=All%20Nuget&color=blue"/>
+ <img alt="Packages" src="https://img.shields.io/badge/Packages-%20?logo=nuget&label=Nuget&color=blue"/>
 </a>
+<img alt="githubrepo-size" src="https://img.shields.io/github/repo-size/WinUICommunity/WinUICommunity?logo=github"/>
 <br>
+<img alt="build" src="https://img.shields.io/github/actions/workflow/status/WinUICommunity/WinUICommunity/dotnet-release.yml?logo=github"/>
 <img alt="releaseDate" src="https://img.shields.io/github/release-date/WinUICommunity/WinUICommunity?logo=github&link=https%3A%2F%2Fgithub.com%2FWinUICommunity%2FWinUICommunity%2Freleases"/>
-<img alt="license" src="https://img.shields.io/github/license/WinUICommunity/WinUICommunity"/>
 <a href="https://ghost1372.github.io/winUICommunity/">
  <img alt="Docs" src="https://img.shields.io/badge/See Here-Version?logo=markdown&label=Document&color=red&link=https%3A%2F%2Fghost1372.github.io%2FwinUICommunity%2F"/>
 </a> 
-<img alt="build" src="https://img.shields.io/github/actions/workflow/status/WinUICommunity/WinUICommunity/dotnet-release.yml?logo=github"/>
+<img alt="license" src="https://img.shields.io/github/license/WinUICommunity/WinUICommunity"/>
 </p>
 
 |Packages|Download/Installation|Documentation|
