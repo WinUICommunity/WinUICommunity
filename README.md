@@ -1,5 +1,4 @@
 ﻿<p align="center">
-<img alt="dotnet" src="https://img.shields.io/badge/%3E%3DNet%206.0-version?logo=dotnet&label=.Net&color=blue"/>
 <img alt="OS" src="https://img.shields.io/badge/%3E%3DWindows%2010%20Build%201809-version?logo=windows&label=Supported%20OS&color=blue"/>
 <img alt="IDE-version" src="https://img.shields.io/badge/2022-Version?logo=visual%20studio&label=Visual%20Studio&color=blue"/>
 <img alt="githubrepo-size" src="https://img.shields.io/github/repo-size/WinUICommunity/WinUICommunity?logo=github"/>
@@ -81,7 +80,6 @@ Happy coding! 🖥️💡
 
 ### ⚡ What’s Inside? ⚡
  - ✨ Converter
- - ✨ DynamicLanguage
  - ✨ Extensions
  - ✨ Helpers
  - ✨ NavigationService
@@ -112,7 +110,7 @@ Components Includes custom controls and styles.
 - ✨ ColorfulShimmingEffect
 - ✨ FlipSide
 - ✨ LongShadowTextBlock
-- ✨ PagerControl [It will be removed with the release of WASDK v1.5]
+- ✨ PagerControl
 - ✨ IndeterminateProgressBar
 - ✨ LoadingIndicator
 - ✨ AutoScrollView
@@ -133,7 +131,6 @@ Components Includes custom controls and styles.
 - ✨ WrapPanel
 - ✨ CheckBoxWithDescription
 - ✨ OptionsPageControl
-- ✨ TitleBar
 - ✨ SettingsCard
 - ✨ SettingsExpander
 - ✨ SettingsGroup
@@ -275,8 +272,6 @@ Install-Package WinUICommunity.ContextMenuExtensions
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/RequestOSPin.png)
 
 ### PagerControl
-It will be removed with the release of WASDK v1.6
-
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/PagerControl.png)
 
 ### IndeterminateProgressBar
@@ -335,11 +330,6 @@ It will be removed with the release of WASDK v1.6
 
 ### TextMorphEffect /Win2d
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TextMorphEffect.gif)
-
-### TitleBar
-![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TitleBar.png)
-![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TitleBar2.gif)
-![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/TitleBar.png)
 
 ### FontIcon Extension : Choose Fluent Icons (more than 1400) with Name or Code
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FontIconGlyph.png)
@@ -405,9 +395,6 @@ It will be removed with the release of WASDK v1.6
 
 ### Validation
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Validation.png)
-
-### AppNotification
-![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/AppNotificationAvatar.png)
 
 ### CheckBox With Description Control
 ![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/CheckBoxWithDescriptionControl.png)
