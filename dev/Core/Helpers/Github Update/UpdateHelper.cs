@@ -27,9 +27,7 @@ public static partial class UpdateHelper
         {
             if (currentVersion == null)
             {
-                var assembly = typeof(Application).GetTypeInfo().Assembly;
-                var assemblyVersion = assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
-                currentVersion = new Version(assemblyVersion);
+                currentVersion = ProcessInfoHelper.GetVersion();
             }
 
             var newVersionInfo = GetAsVersionInfo(result.TagName);
