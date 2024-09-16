@@ -119,15 +119,7 @@ public partial class ThemeService : IThemeService
             element.ActualThemeChanged += OnActualThemeChanged;
         }
 
-        var appInfo = AssemblyInfoHelper.GetAppDetails(NameType.CurrentAssemblyVersion, VersionType.AssemblyInformationalVersion);
-        string AppName = appInfo.NameAndVersion;
-        if (string.IsNullOrEmpty(appInfo.Version))
-        {
-            appInfo = AssemblyInfoHelper.GetAppDetails(NameType.CurrentAssemblyVersion, VersionType.CurrentAssemblyVersion);
-            AppName = appInfo.NameAndVersion;
-        }
-
-        string RootPath = Path.Combine(PathHelper.GetAppDataFolderPath(), AppName);
+        string RootPath = Path.Combine(PathHelper.GetAppDataFolderPath(), ProcessInfoHelper.ProductNameAndVersion);
         string AppConfigPath = Path.Combine(RootPath, ConfigFilePath);
 
         this.useAutoSave = useAutoSave;
