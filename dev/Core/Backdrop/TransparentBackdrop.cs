@@ -1,5 +1,6 @@
 ﻿using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml.Hosting;
+using Windows.Win32.Graphics.Dwm;
 using WinRT;
 namespace WinUICommunity;
 public partial class TransparentBackdrop : CompositionBrushBackdrop
@@ -49,7 +50,7 @@ public partial class TransparentBackdrop : CompositionBrushBackdrop
 
         base.OnTargetConnected(connectedTarget, xamlRoot);
 
-        var hdc = NativeMethods.GetDC(new IntPtr((nint)hWnd));
+        var hdc = PInvoke.GetDC(new HWND((nint)hWnd));
         ClearBackground((nint)hWnd, hdc);
     }
     protected override void OnTargetDisconnected(ICompositionSupportsSystemBackdrop disconnectedTarget)
@@ -67,23 +68,25 @@ public partial class TransparentBackdrop : CompositionBrushBackdrop
     private static void ConfigureDwm(ulong hWnd)
     {
         IntPtr handle = new IntPtr((nint)hWnd);
-        var margins = new NativeValues.MARGINS(); // You may need to set appropriate values for margins
+        var margins = new Windows.Win32.UI.Controls.MARGINS(); // You may need to set appropriate values for margins
 
-        NativeMethods.DwmExtendFrameIntoClientArea(handle, ref margins);
-        var dwm = new NativeValues.DWM_BLURBEHIND()
+        PInvoke.DwmExtendFrameIntoClientArea(new HWND(handle), in margins);
+
+        var dwm = new DWM_BLURBEHIND()
         {
-            dwFlags = NativeValues.DWM_BLURBEHIND_Mask.Enable | NativeValues.DWM_BLURBEHIND_Mask.BlurRegion,
+            dwFlags = (uint)(NativeValues.DWM_BLURBEHIND_Mask.Enable | NativeValues.DWM_BLURBEHIND_Mask.BlurRegion),
             fEnable = true,
-            hRgnBlur = NativeMethods.CreateRectRgn(-2, -2, -1, -1),
+            hRgnBlur = PInvoke.CreateRectRgn(-2, -2, -1, -1),
         };
-        NativeMethods.DwmEnableBlurBehindWindow(handle, ref dwm);
+        PInvoke.DwmEnableBlurBehindWindow(new HWND(handle), in dwm);
     }
 
     private bool ClearBackground(nint hwnd, nint hdc)
     {
-        if (NativeMethods.GetClientRect(new IntPtr(hwnd), out var rect))
+        if (PInvoke.GetClientRect(new HWND(hwnd), out var rect))
         {
-            var brush = NativeMethods.CreateSolidBrush(0);
+            var brush = PInvoke.CreateSolidBrush((COLORREF)0);
+            NativeMethods.FillRect(hdc, ref rect, brush);
             NativeMethods.FillRect(hdc, ref rect, brush);
             return true;
         }

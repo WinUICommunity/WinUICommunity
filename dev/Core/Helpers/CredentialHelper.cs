@@ -6,12 +6,26 @@ public static partial class CredentialHelper
 {
     private static async Task<CredentialPickerResults> PickCredentialBase(string caption, string message, CredentialSaveOption credentialSaveOption, AuthenticationProtocol authenticationProtocol, bool alwaysDisplayDialog)
     {
-        uint nSize = 260;
-        StringBuilder sbComputerName = new StringBuilder((int)nSize);
-        NativeMethods.GetComputerName(sbComputerName, ref nSize);
+        uint MAX_Length = 260;
+        Span<char> buffer = stackalloc char[(int)MAX_Length];
+
+        string computerName = string.Empty;
+
+        unsafe
+        {
+            fixed (char* pBuffer = buffer)
+            {
+                int result = PInvoke.GetComputerName(pBuffer, ref MAX_Length);
+                if (result > 0)
+                {
+                    computerName = new string(pBuffer, 0, result);
+                }
+            }
+        }
+
         var options = new CredentialPickerOptions()
         {
-            TargetName = sbComputerName.ToString(),
+            TargetName = computerName,
             Caption = caption,
             Message = message,
             CredentialSaveOption = credentialSaveOption,

@@ -1,7 +1,7 @@
 ﻿namespace WinUICommunity;
 public partial class WindowsSystemDispatcherQueueHelper
 {
-    object m_dispatcherQueueController = null;
+    public DispatcherQueueController m_dispatcherQueueController = null;
     public void EnsureWindowsSystemDispatcherQueueController()
     {
         if (Windows.System.DispatcherQueue.GetForCurrentThread() != null)
@@ -12,13 +12,13 @@ public partial class WindowsSystemDispatcherQueueHelper
 
         if (m_dispatcherQueueController == null)
         {
-            NativeValues.DispatcherQueueOptions options;
-            options.dwSize = Marshal.SizeOf<NativeValues.DispatcherQueueOptions>();
+            Windows.Win32.System.WinRT.DispatcherQueueOptions options;
+            options.dwSize = (uint)Marshal.SizeOf<Windows.Win32.System.WinRT.DispatcherQueueOptions>();
 
-            options.threadType = 2;    // DQTYPE_THREAD_CURRENT
-            options.apartmentType = 2; // DQTAT_COM_STA
+            options.threadType = Windows.Win32.System.WinRT.DISPATCHERQUEUE_THREAD_TYPE.DQTYPE_THREAD_CURRENT;    // DQTYPE_THREAD_CURRENT
+            options.apartmentType = Windows.Win32.System.WinRT.DISPATCHERQUEUE_THREAD_APARTMENTTYPE.DQTAT_COM_STA; // DQTAT_COM_STA
 
-            NativeMethods.CreateDispatcherQueueController(options, ref m_dispatcherQueueController);
+            PInvoke.CreateDispatcherQueueController(options, out m_dispatcherQueueController);
         }
     }
 }

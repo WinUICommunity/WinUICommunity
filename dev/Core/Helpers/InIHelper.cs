@@ -8,9 +8,9 @@ public partial class InIHelper
         Path = filePath;
     }
 
-    private string GetAssemblyName()
+    private string GetProductName()
     {
-        return Assembly.GetEntryAssembly().GetName().Name;
+        return ProcessInfoHelper.ProductName;
     }
 
     /// <summary>
@@ -22,9 +22,23 @@ public partial class InIHelper
     /// <returns></returns>
     public string ReadValue(string Key, string Section = null, string Path = null)
     {
-        var RetVal = new StringBuilder(255);
-        NativeMethods.GetPrivateProfileString(Section ?? GetAssemblyName(), Key, "", RetVal, 255, Path ?? Path);
-        return RetVal.ToString();
+        const uint MAX_Length = 255;
+        Span<char> buffer = stackalloc char[(int)MAX_Length];
+
+        unsafe
+        {
+            fixed (char* pBuffer = buffer)
+            {
+                uint result = PInvoke.GetPrivateProfileString(Section ?? GetProductName(), Key, "", new PWSTR(pBuffer), MAX_Length, Path ?? this.Path);
+
+                if (result == 0)
+                {
+                    throw new Win32Exception();
+                }
+
+                return new string(pBuffer, 0, (int)result);
+            }
+        }
     }
 
     /// <summary>
@@ -36,7 +50,7 @@ public partial class InIHelper
     /// <param name="Path">default is: application startup folder location</param>
     public void AddValue(string Key, string Value, string Section = null, string Path = null)
     {
-        NativeMethods.WritePrivateProfileString(Section ?? GetAssemblyName(), Key, Value, Path ?? Path);
+        PInvoke.WritePrivateProfileString(Section ?? GetProductName(), Key, Value, Path ?? this.Path);
     }
 
     /// <summary>
@@ -47,7 +61,7 @@ public partial class InIHelper
     /// <param name="Path"></param>
     public void DeleteKey(string Key, string Section = null, string Path = null)
     {
-        AddValue(Key, null, Section ?? GetAssemblyName(), Path ?? Path);
+        AddValue(Key, null, Section ?? GetProductName(), Path ?? this.Path);
     }
 
     /// <summary>
@@ -57,7 +71,7 @@ public partial class InIHelper
     /// <param name="Path"></param>
     public void DeleteSection(string Section = null, string Path = null)
     {
-        AddValue(null, null, Section ?? GetAssemblyName(), Path ?? Path);
+        AddValue(null, null, Section ?? GetProductName(), Path ?? this.Path);
     }
 
     /// <summary>
@@ -69,6 +83,6 @@ public partial class InIHelper
     /// <returns></returns>
     public bool IsKeyExists(string Key, string Section = null, string Path = null)
     {
-        return ReadValue(Key, Section, Path ?? Path).Length > 0;
+        return ReadValue(Key, Section, Path ?? this.Path).Length > 0;
     }
 }

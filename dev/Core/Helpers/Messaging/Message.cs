@@ -40,9 +40,9 @@ public struct Message
                     8 => "Bottom-Right",
                     _ => WParam.ToString(),
                 };
-                var rect = Marshal.PtrToStructure<NativeValues.RECT>((IntPtr)LParam);
+                var rect = Marshal.PtrToStructure<RECT>((IntPtr)LParam);
 
-                return $"WM_SIZING: Side: {side} Rect: {rect.Left},{rect.Top},{rect.Right},{rect.Bottom}";
+                return $"WM_SIZING: Side: {side} Rect: {rect.left},{rect.top},{rect.right},{rect.bottom}";
             default:
                 break;
         }

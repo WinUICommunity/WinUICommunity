@@ -1,8 +1,6 @@
 ﻿namespace WinUICommunity;
 public partial class PathHelper
 {
-    private static readonly int MAX_PATH = 255;
-
     public static async Task<string> GetFilePath(string filePath, PathType pathType = PathType.Relative)
     {
         var file = await FileHelper.GetStorageFile(filePath, pathType);
@@ -54,8 +52,22 @@ public partial class PathHelper
     /// <returns></returns>
     public static string GetExecutablePathNative()
     {
-        var sb = new StringBuilder(MAX_PATH);
-        NativeMethods.GetModuleFileName(IntPtr.Zero, sb, MAX_PATH);
-        return sb.ToString();
+        const uint MAX_Length = 255;
+        Span<char> buffer = stackalloc char[(int)MAX_Length];
+
+        unsafe
+        {
+            fixed (char* pBuffer = buffer)
+            {
+                uint result = PInvoke.GetModuleFileName(null, new PWSTR(pBuffer), MAX_Length);
+
+                if (result == 0)
+                {
+                    throw new Win32Exception();
+                }
+
+                return new string(pBuffer, 0, (int)result);
+            }
+        }
     }
 }

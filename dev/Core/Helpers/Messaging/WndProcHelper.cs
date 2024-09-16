@@ -32,20 +32,20 @@ public partial class WndProcHelper
     public void RegisterWndProc(NativeValues.WNDPROC wndProc)
     {
         newMainWindowWndProc = wndProc;
-        oldMainWindowWndProc = NativeMethods.SetWindowLongAuto(Handle, (int)NativeValues.WindowLongIndexFlags.GWL_WNDPROC, Marshal.GetFunctionPointerForDelegate(newMainWindowWndProc));
+        oldMainWindowWndProc = PInvoke.SetWindowLong(new HWND(Handle), Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX.GWL_WNDPROC, (int)Marshal.GetFunctionPointerForDelegate(newMainWindowWndProc));
     }
 
     public void RegisterInputNonClientPointerSourceWndProc(NativeValues.WNDPROC wndProc)
     {
-        var inputNonClientPointerSourceHandle = NativeMethods.FindWindowEx(Handle, IntPtr.Zero, "InputNonClientPointerSource", null);
+        var inputNonClientPointerSourceHandle = PInvoke.FindWindowEx(new HWND(Handle), HWND.Null, "InputNonClientPointerSource", null);
 
-        if (inputNonClientPointerSourceHandle != IntPtr.Zero)
+        if (inputNonClientPointerSourceHandle != HWND.Null)
         {
-            var style = NativeMethods.GetWindowLongAuto(Handle, (int)NativeValues.WindowLongIndexFlags.GWL_STYLE);
-            NativeMethods.SetWindowLongAuto(Handle, (int)NativeValues.WindowLongIndexFlags.GWL_STYLE, (IntPtr)(style & ~(int)NativeValues.WindowStyle.WS_SYSMENU));
+            var style = PInvoke.GetWindowLong(new HWND(Handle), Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX.GWL_STYLE);
+            PInvoke.SetWindowLong(new HWND(Handle), Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX.GWL_STYLE, (style & ~(int)NativeValues.WindowStyle.WS_SYSMENU));
 
             newInputNonClientPointerSourceWndProc = wndProc;
-            oldInputNonClientPointerSourceWndProc = NativeMethods.SetWindowLongAuto(inputNonClientPointerSourceHandle, (int)NativeValues.WindowLongIndexFlags.GWL_WNDPROC, Marshal.GetFunctionPointerForDelegate(newInputNonClientPointerSourceWndProc));
+            oldInputNonClientPointerSourceWndProc = PInvoke.SetWindowLong(inputNonClientPointerSourceHandle, Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX.GWLP_WNDPROC, (int)Marshal.GetFunctionPointerForDelegate(newInputNonClientPointerSourceWndProc));
         }
     }
 }
