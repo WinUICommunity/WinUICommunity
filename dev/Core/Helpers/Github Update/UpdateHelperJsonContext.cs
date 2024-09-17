@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-[JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
+[JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.Unspecified)]
 [JsonSerializable(typeof(UpdateInfo))]
 internal partial class UpdateHelperJsonContext : JsonSerializerContext
 {
