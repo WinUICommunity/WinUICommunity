@@ -2,7 +2,7 @@
 using Microsoft.UI.Composition.SystemBackdrops;
 
 namespace WinUICommunity;
-public sealed class MicaSystemBackdrop : SystemBackdrop
+public sealed partial class MicaSystemBackdrop : SystemBackdrop
 {
     public readonly static Color Default_TintColor_Dark = Color.FromArgb(0xff, 0x20, 0x20, 0x20);
     public readonly static Color Default_TintColor_Light = Color.FromArgb(0xff, 0xf3, 0xf3, 0xf3);

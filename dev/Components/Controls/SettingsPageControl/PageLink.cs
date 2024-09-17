@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class PageLink
+public partial class PageLink
 {
     public string Text { get; set; }
 

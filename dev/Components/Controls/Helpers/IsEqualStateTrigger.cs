@@ -19,7 +19,7 @@ namespace WinUICommunity;
 /// </code>
 /// </para>
 /// </remarks>
-public class IsEqualStateTrigger : StateTriggerBase
+public partial class IsEqualStateTrigger : StateTriggerBase
 {
     private void UpdateTrigger()
     {

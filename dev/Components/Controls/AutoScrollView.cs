@@ -4,7 +4,7 @@ using Microsoft.UI.Composition;
 using Microsoft.UI.Xaml.Hosting;
 
 namespace WinUICommunity;
-public class AutoScrollView : RedirectVisualView
+public partial class AutoScrollView : RedirectVisualView
 {
     public AutoScrollView()
     {

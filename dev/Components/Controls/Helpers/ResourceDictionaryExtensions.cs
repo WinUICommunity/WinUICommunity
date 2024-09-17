@@ -2,12 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using Microsoft.UI.Xaml;
-
 namespace WinUICommunity;
 
 // Adapted from https://github.com/rudyhuyn/XamlPlus
-internal static class ResourceDictionaryExtensions
+internal static partial class ResourceDictionaryExtensions
 {
     /// <summary>
     /// Copies  the <see cref="ResourceDictionary"/> provided as a parameter into the calling dictionary, includes overwriting the source location, theme dictionaries, and merged dictionaries.

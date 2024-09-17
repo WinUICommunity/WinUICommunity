@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class Vector2Timeline
+public partial class Vector2Timeline
 {
     private readonly TimelineProgresser _progresser;
 

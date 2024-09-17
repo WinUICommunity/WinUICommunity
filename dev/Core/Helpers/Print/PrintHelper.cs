@@ -9,7 +9,7 @@ namespace WinUICommunity;
 /// It allows you to render a framework element per page.
 /// </summary>
 /// <remarks>Based on https://github.com/Microsoft/Windows-universal-samples/blob/master/Samples/Printing/cs/PrintHelper.cs</remarks>
-public class PrintHelper : IDisposable
+public partial class PrintHelper : IDisposable
 {
     /// <summary>
     /// Occurs when a print was successful.

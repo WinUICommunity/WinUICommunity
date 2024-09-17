@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class DoubleTimeline
+public partial class DoubleTimeline
 {
     private readonly TimelineProgresser _progresser;
 

@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public static class MergedDictionariesExtension
+public static partial class MergedDictionariesExtension
 {
     public static void AddIfNotNull(this Collection<ResourceDictionary> mergedDictionaries, ResourceDictionary item)
     {

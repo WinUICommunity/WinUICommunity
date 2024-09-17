@@ -1,22 +1,19 @@
 ﻿<p align="center">
-<img alt="dotnet" src="https://img.shields.io/badge/%3E%3DNet%206.0-version?logo=dotnet&label=.Net&color=blue"/>
-<img alt="OS" src="https://img.shields.io/badge/%3E%3DWindows%2010%20Build%201809-version?logo=windows&label=Supported%20OS&color=blue"/>
 <img alt="IDE-version" src="https://img.shields.io/badge/2022-Version?logo=visual%20studio&label=Visual%20Studio&color=blue"/>
-<img alt="githubrepo-size" src="https://img.shields.io/github/repo-size/WinUICommunity/WinUICommunity?logo=github"/>
-<br>
 <a href="https://github.com/WinUICommunity">
- <img alt="Projects" src="https://img.shields.io/badge/Projects-%20?logo=github&label=All%20WinUICommunity&color=blue"/>
+ <img alt="Projects" src="https://img.shields.io/badge/Projects-%20?logo=github&label=WinUICommunity&color=blue"/>
 </a>
 <a href="https://www.nuget.org/profiles/WinUICommunity">
- <img alt="Packages" src="https://img.shields.io/badge/Packages-%20?logo=nuget&label=All%20Nuget&color=blue"/>
+ <img alt="Packages" src="https://img.shields.io/badge/Packages-%20?logo=nuget&label=Nuget&color=blue"/>
 </a>
+<img alt="githubrepo-size" src="https://img.shields.io/github/repo-size/WinUICommunity/WinUICommunity?logo=github"/>
 <br>
+<img alt="build" src="https://img.shields.io/github/actions/workflow/status/WinUICommunity/WinUICommunity/dotnet-release.yml?logo=github"/>
 <img alt="releaseDate" src="https://img.shields.io/github/release-date/WinUICommunity/WinUICommunity?logo=github&link=https%3A%2F%2Fgithub.com%2FWinUICommunity%2FWinUICommunity%2Freleases"/>
-<img alt="license" src="https://img.shields.io/github/license/WinUICommunity/WinUICommunity"/>
 <a href="https://ghost1372.github.io/winUICommunity/">
  <img alt="Docs" src="https://img.shields.io/badge/See Here-Version?logo=markdown&label=Document&color=red&link=https%3A%2F%2Fghost1372.github.io%2FwinUICommunity%2F"/>
 </a> 
-<img alt="build" src="https://img.shields.io/github/actions/workflow/status/WinUICommunity/WinUICommunity/dotnet-release.yml?logo=github"/>
+<img alt="license" src="https://img.shields.io/github/license/WinUICommunity/WinUICommunity"/>
 </p>
 
 |Packages|Download/Installation|Documentation|
@@ -74,6 +71,16 @@ WinUICommunity is a collection of useful classes, controls, styles, and codes fo
 Found a bug? Want to contribute? We’d love your input!
 Happy coding! 🖥️💡
 
+### Compile source code
+
+> [!TIP]
+> Please confirm that your development environment meets the requirements before compiling.
+- Visual Studio 2022 On the `Workloads` tab of the installation dialog box, select as appropriate:
+- select .NET Desktop Development
+- select Windows application development
+- make sure `Windows 11 SDK (10.0.22000.0)` and `Windows 11 SDK (10.0.22621.0)` or `Windows 11 SDK (10.0.26100.0)` is selected.
+- .Net `8.x` and `9.x`
+
 ---
 
 ## 🔥 Core 🔥
@@ -81,7 +88,6 @@ Happy coding! 🖥️💡
 
 ### ⚡ What’s Inside? ⚡
  - ✨ Converter
- - ✨ DynamicLanguage
  - ✨ Extensions
  - ✨ Helpers
  - ✨ NavigationService
@@ -112,7 +118,7 @@ Components Includes custom controls and styles.
 - ✨ ColorfulShimmingEffect
 - ✨ FlipSide
 - ✨ LongShadowTextBlock
-- ✨ PagerControl [It will be removed with the release of WASDK v1.5]
+- ✨ PagerControl
 - ✨ IndeterminateProgressBar
 - ✨ LoadingIndicator
 - ✨ AutoScrollView
@@ -133,7 +139,6 @@ Components Includes custom controls and styles.
 - ✨ WrapPanel
 - ✨ CheckBoxWithDescription
 - ✨ OptionsPageControl
-- ✨ TitleBar
 - ✨ SettingsCard
 - ✨ SettingsExpander
 - ✨ SettingsGroup
@@ -275,8 +280,6 @@ Install-Package WinUICommunity.ContextMenuExtensions
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/RequestOSPin.png)
 
 ### PagerControl
-It will be removed with the release of WASDK v1.6
-
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/PagerControl.png)
 
 ### IndeterminateProgressBar
@@ -335,11 +338,6 @@ It will be removed with the release of WASDK v1.6
 
 ### TextMorphEffect /Win2d
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Win2d/TextMorphEffect.gif)
-
-### TitleBar
-![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TitleBar.png)
-![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/TitleBar2.gif)
-![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/TitleBar.png)
 
 ### FontIcon Extension : Choose Fluent Icons (more than 1400) with Name or Code
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/FontIconGlyph.png)
@@ -405,9 +403,6 @@ It will be removed with the release of WASDK v1.6
 
 ### Validation
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/Validation.png)
-
-### AppNotification
-![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/AppNotificationAvatar.png)
 
 ### CheckBox With Description Control
 ![WinUICommunity](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/Samples/CheckBoxWithDescriptionControl.png)

@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public abstract class Observable : INotifyPropertyChanged
+public abstract partial class Observable : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 

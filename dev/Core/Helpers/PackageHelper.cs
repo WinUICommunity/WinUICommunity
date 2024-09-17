@@ -1,18 +1,30 @@
 ﻿namespace WinUICommunity;
-public class PackageHelper
+public partial class PackageHelper
 {
-    private const uint APPMODEL_ERROR_NO_PACKAGE = 15700;
     public static bool IsPackaged { get; } = GetCurrentPackageName() != null;
 
     public static string GetCurrentPackageName()
     {
-        var length = 0u;
-        NativeMethods.GetCurrentPackageFullName(ref length);
+        unsafe
+        {
+            uint packageFullNameLength = 0;
 
-        var result = new StringBuilder((int)length);
-        var error = NativeMethods.GetCurrentPackageFullName(ref length, result);
+            var result = PInvoke.GetCurrentPackageFullName(&packageFullNameLength, null);
 
-        return error == APPMODEL_ERROR_NO_PACKAGE ? null : result.ToString();
+            if (result == WIN32_ERROR.ERROR_INSUFFICIENT_BUFFER)
+            {
+                char* packageFullName = stackalloc char[(int)packageFullNameLength];
+
+                result = PInvoke.GetCurrentPackageFullName(&packageFullNameLength, packageFullName);
+
+                if (result == 0) // S_OK or ERROR_SUCCESS
+                {
+                    return new string(packageFullName, 0, (int)packageFullNameLength);
+                }
+            }
+        }
+
+        return null;
     }
 
     public static Windows.ApplicationModel.Package GetPackageDetails()

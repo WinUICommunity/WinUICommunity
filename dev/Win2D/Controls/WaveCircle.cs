@@ -3,7 +3,7 @@
 using Windows.Foundation;
 
 namespace WinUICommunity;
-public class WaveCircle : FrameworkElement
+public partial class WaveCircle : FrameworkElement
 {
     public static readonly DependencyProperty ColorBrushProperty =
         DependencyProperty.Register(nameof(ColorBrush), typeof(Color), typeof(WaveCircle), new PropertyMetadata(Colors.Red, OnColorChanged));

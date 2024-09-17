@@ -1,7 +1,7 @@
 ﻿using Windows.UI;
 
 namespace WinUICommunity;
-public class ColorPaletteItem
+public partial class ColorPaletteItem
 {
     public string? Name { get; set; }
     public string? Hex { get; set; }

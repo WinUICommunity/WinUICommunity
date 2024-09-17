@@ -9,7 +9,7 @@ namespace WinUICommunity;
 /// <summary>
 /// Enables a state if an Object is <c>null</c> or a String/IEnumerable is empty
 /// </summary>
-public class IsNullOrEmptyStateTrigger : StateTriggerBase
+public partial class IsNullOrEmptyStateTrigger : StateTriggerBase
 {
     /// <summary>
     /// Gets or sets the value used to check for <c>null</c> or empty.

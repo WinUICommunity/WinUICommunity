@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class ConvertList
+public partial class ConvertList
 	{
 		public long Level { get; set; }
 		public long Number { get; set; }
@@ -11,7 +11,7 @@ public class ConvertList
     }
 	}
 
-	public static class PersianUtil
+	public static partial class PersianUtil
 	{
 		private static Dictionary<long, string> numDic = new Dictionary<long, string>()
 		{

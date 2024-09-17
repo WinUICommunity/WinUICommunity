@@ -159,7 +159,7 @@ public sealed class GooeyButtonItem : Button
     public delegate void GooeyButtonItemPropertyChangedEventHandler(GooeyButtonItem sender,
         GooeyButtonItemPropertyChangedEventArgs args);
 
-    public class GooeyButtonItemProperty
+    public partial class GooeyButtonItemProperty
     {
         public Color? BackgroundColor { get; set; }
 
@@ -172,7 +172,7 @@ public sealed class GooeyButtonItem : Button
         public double TranslateY { get; set; }
     }
 
-    public class GooeyButtonItemPropertyChangedEventArgs : EventArgs
+    public partial class GooeyButtonItemPropertyChangedEventArgs : EventArgs
     {
         internal GooeyButtonItemPropertyChangedEventArgs(GooeyButtonItemProperty property)
         {

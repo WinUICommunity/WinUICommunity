@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-internal sealed class SystemClock : IClock
+internal sealed partial class SystemClock : IClock
 {
     public DateTime Now => DateTime.Now;
 

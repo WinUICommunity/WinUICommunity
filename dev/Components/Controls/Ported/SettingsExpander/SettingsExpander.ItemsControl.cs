@@ -1,7 +1,4 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 //// Implement properties for ItemsControl like behavior.
 public partial class SettingsExpander

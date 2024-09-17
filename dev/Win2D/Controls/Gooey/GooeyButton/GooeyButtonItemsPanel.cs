@@ -4,7 +4,7 @@ using Windows.Foundation;
 
 namespace WinUICommunity;
 
-public class GooeyButtonItemsPanel : Canvas
+public partial class GooeyButtonItemsPanel : Canvas
 {
     private readonly List<Storyboard> closeStoryboards = new();
 

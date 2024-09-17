@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Hosting;
 
 namespace WinUICommunity;
-public static class CompositionHelper
+public static partial class CompositionHelper
 {
     public static void MakeLongShadow(int depth, float opacity, TextBlock textElement, FrameworkElement shadowElement, Color color)
     {

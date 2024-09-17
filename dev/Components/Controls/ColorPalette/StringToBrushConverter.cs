@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Media;
 
 namespace WinUICommunity;
-internal sealed class StringToBrushConverter : IValueConverter
+internal sealed partial class StringToBrushConverter : IValueConverter
 {
     public object? Convert(object value, Type targetType, object parameter, string language)
     {

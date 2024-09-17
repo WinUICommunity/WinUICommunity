@@ -1,7 +1,7 @@
 ﻿namespace WinUICommunity;
 
 [MarkupExtensionReturnType(ReturnType = typeof(BitmapIconSource))]
-public sealed class BitmapIconSourceExtension : MarkupExtension
+public sealed partial class BitmapIconSourceExtension : MarkupExtension
 {
     /// <summary>
     /// Gets or sets the <see cref="Uri"/> representing the image to display.

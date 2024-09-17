@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public class DataGroup
+public partial class DataGroup
 {
     public DataGroup(string uniqueId, string sectionId, string title, string secondaryTitle,
         string subtitle, string imagePath, string imageIconPath, string description,

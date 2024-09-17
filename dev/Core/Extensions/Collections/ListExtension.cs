@@ -3,7 +3,7 @@
 /// <summary>
 /// An extension for the <see cref="List{T}"/> class.
 /// </summary>
-public static class ListExtension
+public static partial class ListExtension
 {
     /// <summary>
     /// Clones the list.

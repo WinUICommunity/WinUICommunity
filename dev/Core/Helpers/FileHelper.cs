@@ -45,7 +45,7 @@ public partial class FileHelper
             switch (pathType)
             {
                 case PathType.Relative:
-                    var sourcePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), filePath));
+                    var sourcePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, filePath));
                     file = await StorageFile.GetFileFromPathAsync(sourcePath);
                     break;
                 case PathType.Absolute:

@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-internal class TextBlockStrokeHelper : IDisposable
+internal partial class TextBlockStrokeHelper : IDisposable
 {
     internal const float padding = 10;
 

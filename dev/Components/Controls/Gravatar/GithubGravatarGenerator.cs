@@ -7,7 +7,7 @@ using Windows.UI;
 using Path = Microsoft.UI.Xaml.Shapes.Path;
 
 namespace WinUICommunity;
-public class GithubGravatarGenerator : IGravatarGenerator
+public partial class GithubGravatarGenerator : IGravatarGenerator
 {
     private const int RenderDataMaxLength = 15;
 

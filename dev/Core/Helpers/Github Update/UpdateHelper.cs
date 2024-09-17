@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public static class UpdateHelper
+public static partial class UpdateHelper
 {
     private const string GITHUB_API = "https://api.github.com/repos/{0}/{1}/releases/latest";
 
@@ -14,22 +14,19 @@ public static class UpdateHelper
         if (string.IsNullOrEmpty(repository))
             throw new ArgumentNullException(nameof(repository));
 
-        ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
         var client = new HttpClient();
         client.DefaultRequestHeaders.Add("User-Agent", username);
         var url = string.Format(GITHUB_API, username, repository);
         var response = await client.GetAsync(url);
         response.EnsureSuccessStatusCode();
         var responseBody = await response.Content.ReadAsStringAsync();
-        var result = JsonSerializer.Deserialize<UpdateInfo>(responseBody);
+        var result = JsonSerializer.Deserialize<UpdateInfo>(responseBody, UpdateHelperJsonContext.Default.UpdateInfo);
 
         if (result != null)
         {
             if (currentVersion == null)
             {
-                var assembly = typeof(Application).GetTypeInfo().Assembly;
-                var assemblyVersion = assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
-                currentVersion = new Version(assemblyVersion);
+                currentVersion = ProcessInfoHelper.GetVersion();
             }
 
             var newVersionInfo = GetAsVersionInfo(result.TagName);

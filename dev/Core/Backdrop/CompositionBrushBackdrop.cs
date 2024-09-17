@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public abstract class CompositionBrushBackdrop : SystemBackdrop
+public abstract partial class CompositionBrushBackdrop : SystemBackdrop
 {
     private static WindowsSystemDispatcherQueueHelper dispatcherQueueHelper;
 

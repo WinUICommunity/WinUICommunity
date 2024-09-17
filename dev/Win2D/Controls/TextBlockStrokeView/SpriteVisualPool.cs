@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-internal class SpriteVisualPool : DependencyObject, IDisposable
+internal partial class SpriteVisualPool : DependencyObject, IDisposable
 {
     private static object staticLocker = new object();
     private static SpriteVisualPool? instance;

@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Data;
 
 namespace WinUICommunity;
-public class GridLengthConverter : IValueConverter
+public partial class GridLengthConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {

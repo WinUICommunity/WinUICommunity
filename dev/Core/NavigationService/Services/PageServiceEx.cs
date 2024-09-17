@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class PageServiceEx : IPageServiceEx
+public partial class PageServiceEx : IPageServiceEx
 {
     public Dictionary<string, Type> _pageKeyToTypeMap;
 

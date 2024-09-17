@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Media;
 
 namespace WinUICommunity;
-public class Shield : ButtonBase
+public partial class Shield : ButtonBase
 {
     public static readonly DependencyProperty SubjectProperty = DependencyProperty.Register(
         nameof(Subject), typeof(object), typeof(Shield), new PropertyMetadata(default(object)));

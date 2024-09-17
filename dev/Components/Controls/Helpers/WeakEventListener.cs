@@ -7,7 +7,7 @@
 /// <typeparam name="TSource">Type of source for the event.</typeparam>
 /// <typeparam name="TEventArgs">Type of event arguments for the event.</typeparam>
 [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-public sealed class WeakEventListener<TInstance, TSource, TEventArgs>
+public sealed partial class WeakEventListener<TInstance, TSource, TEventArgs>
     where TInstance : class
 {
     /// <summary>

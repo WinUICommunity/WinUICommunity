@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-internal class ParticleModel
+internal partial class ParticleModel
 {
     private static readonly Random rnd = new Random();
 

@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public static class ColorHelper
+public static partial class ColorHelper
 {
     public static Color GetColorFromHex(string hexColor)
     {

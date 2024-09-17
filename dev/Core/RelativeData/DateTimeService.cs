@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-internal static class DateTimeService
+internal static partial class DateTimeService
 {
     public static IClock Clock { get; set; } = new SystemClock();
 

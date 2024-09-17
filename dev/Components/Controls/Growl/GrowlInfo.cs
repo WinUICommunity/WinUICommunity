@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public class GrowlInfo
+public partial class GrowlInfo
 {
     public string Title { get; set; }
     public string Message { get; set; }

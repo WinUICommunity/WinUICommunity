@@ -1,7 +1,7 @@
 ﻿// https://github.com/DinoChan
 
 namespace WinUICommunity;
-public class BubbleButton : Button
+public partial class BubbleButton : Button
 {
     public static readonly DependencyProperty BubbleForegroundProperty =
         DependencyProperty.Register(nameof(BubbleForeground), typeof(Brush), typeof(BubbleButton), new PropertyMetadata(null));

@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public static class VisualExtensions
+public static partial class VisualExtensions
 {
     public static readonly DependencyProperty IsBindCenterPointProperty =
         DependencyProperty.RegisterAttached("IsBindCenterPoint", typeof(bool), typeof(VisualExtensions),

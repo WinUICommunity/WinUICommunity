@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class PagerControlTemplateSettings : DependencyObject
+public partial class PagerControlTemplateSettings : DependencyObject
 {
 	public IList<object> Pages
 	{

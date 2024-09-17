@@ -11,7 +11,7 @@ namespace WinUICommunity;
 /// A conditional state trigger that functions
 /// based on the target control's width or height.
 /// </summary>
-public class ControlSizeTrigger : StateTriggerBase
+public partial class ControlSizeTrigger : StateTriggerBase
 {
     /// <summary>
     /// Gets or sets a value indicating

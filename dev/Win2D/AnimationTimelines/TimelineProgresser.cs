@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class TimelineProgresser
+public partial class TimelineProgresser
 {
     public TimelineProgresser(double seconds, bool autoReverse)
     {

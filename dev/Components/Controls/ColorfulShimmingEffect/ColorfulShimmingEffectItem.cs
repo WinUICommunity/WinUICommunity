@@ -1,7 +1,7 @@
 ﻿using Windows.UI;
 
 namespace WinUICommunity;
-public class ColorfulShimmingEffectItem
+public partial class ColorfulShimmingEffectItem
 {
     public Color Color { get; set; }
     public TimeSpan DelayTimeSpan { get; set; }

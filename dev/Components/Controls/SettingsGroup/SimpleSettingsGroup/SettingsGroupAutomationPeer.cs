@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public class SimpleSettingsGroupAutomationPeer : FrameworkElementAutomationPeer
+public partial class SimpleSettingsGroupAutomationPeer : FrameworkElementAutomationPeer
 {
     public SimpleSettingsGroupAutomationPeer(SimpleSettingsGroup owner)
         : base(owner)

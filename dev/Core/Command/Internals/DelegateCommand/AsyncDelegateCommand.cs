@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-internal sealed class AsyncDelegateCommand : IDelegateCommand
+internal sealed partial class AsyncDelegateCommand : IDelegateCommand
 {
     private readonly Func<object?, Task> _execute;
     private readonly Func<object?, bool> _canExecute;

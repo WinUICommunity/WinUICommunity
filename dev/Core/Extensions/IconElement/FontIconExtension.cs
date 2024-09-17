@@ -1,7 +1,7 @@
 ﻿namespace WinUICommunity;
 
 [MarkupExtensionReturnType(ReturnType = typeof(FontIcon))]
-public class FontIconExtension : TextIconExtension
+public partial class FontIconExtension : TextIconExtension
 {
     /// <summary>
     /// Gets or sets the <see cref="string"/> value representing the icon to display.

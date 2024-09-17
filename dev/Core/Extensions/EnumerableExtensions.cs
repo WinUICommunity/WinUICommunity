@@ -15,7 +15,7 @@ public struct EnumeratorWithIndex<T>
         return new EnumeratorWithIndex<T>(value, index);
     }
 }
-public static class EnumerableExtensions
+public static partial class EnumerableExtensions
 {
     /// <summary>
     /// This Extension Help to access item index in foreach loop

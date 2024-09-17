@@ -2,7 +2,7 @@
 using Nucs.JsonSettings.Modulation;
 
 namespace WinUICommunity;
-internal class CoreSettings : JsonSettings, IVersionable
+internal partial class CoreSettings : JsonSettings, IVersionable
 {
     [EnforcedVersion("7.0.0.0")]
     public Version Version { get; set; } = new Version(7, 0, 0, 0);

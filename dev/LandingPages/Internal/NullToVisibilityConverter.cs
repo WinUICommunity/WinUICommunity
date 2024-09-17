@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Data;
 
 namespace WinUICommunity;
-internal class NullToVisibilityConverter : IValueConverter
+internal partial class NullToVisibilityConverter : IValueConverter
 {
     public Visibility NullValue { get; set; } = Visibility.Collapsed;
     public Visibility NonNullValue { get; set; } = Visibility.Visible;

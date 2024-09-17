@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace WinUICommunity;
 
-public class DataItem
+public partial class DataItem
 {
     public DataItem(string title)
     {

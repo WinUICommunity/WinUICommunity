@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-internal static class Extensions
+internal static partial class Extensions
 {
     private static readonly Random rnd = new Random(new Guid().GetHashCode());
     internal static void BindCenterPoint(this Visual target)

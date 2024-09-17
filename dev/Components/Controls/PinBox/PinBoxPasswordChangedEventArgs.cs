@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public class PinBoxPasswordChangedEventArgs : EventArgs
+public partial class PinBoxPasswordChangedEventArgs : EventArgs
 {
     public string OldValue { get; }
     public string NewValue { get; }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Data;
 
 namespace WinUICommunity;
-internal class CornerRadiusConverter : IValueConverter
+internal partial class CornerRadiusConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {

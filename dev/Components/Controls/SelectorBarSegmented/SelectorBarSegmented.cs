@@ -2,7 +2,7 @@
 namespace WinUICommunity;
 
 [TemplatePart(Name = nameof(PART_ItemsView), Type = typeof(ItemsView))]
-public class SelectorBarSegmented : SelectorBar
+public partial class SelectorBarSegmented : SelectorBar
 {
     private string PART_ItemsView = "PART_ItemsView";
     private ItemsView _ItemsView { get; set; }

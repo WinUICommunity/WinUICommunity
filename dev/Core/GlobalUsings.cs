@@ -18,3 +18,5 @@ global using Windows.Networking.Connectivity;
 global using Windows.Storage;
 global using Windows.System;
 global using Windows.UI;
+global using Windows.Win32;
+global using Windows.Win32.Foundation;

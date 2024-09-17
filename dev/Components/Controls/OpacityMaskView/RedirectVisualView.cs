@@ -8,7 +8,7 @@ using System.Numerics;
 namespace WinUICommunity;
 
 [ContentProperty(Name = nameof(Child))]
-public class RedirectVisualView : Control
+public partial class RedirectVisualView : Control
 {
     public RedirectVisualView()
     {

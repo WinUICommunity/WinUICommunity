@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public class UpdateInfo
+public partial class UpdateInfo
 {
     [JsonPropertyName("url")]
     public string Url { get; set; }
@@ -51,7 +51,7 @@ public class UpdateInfo
     public bool IsExistNewVersion { get; set; }
 }
 
-public class Author
+public partial class Author
 {
     [JsonPropertyName("login")]
     public string Login { get; set; }
@@ -66,7 +66,7 @@ public class Author
     public string HtmlUrl { get; set; }
 }
 
-public class Asset
+public partial class Asset
 {
     [JsonPropertyName("size")]
     public int Size { get; set; }

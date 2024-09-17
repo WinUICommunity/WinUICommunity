@@ -8,7 +8,8 @@ namespace WinUICommunity;
 /// A markup extension that returns a collection of values of a specific <see langword="enum"/>
 /// </summary>
 [MarkupExtensionReturnType(ReturnType = typeof(Array))]
-public sealed class EnumValuesExtension : MarkupExtension
+[System.Diagnostics.CodeAnalysis.RequiresDynamicCode("It might not be possible to create an array of a user-defined enum type at runtime.")]
+public sealed partial class EnumValuesExtension : MarkupExtension
 {
     /// <summary>
     /// Gets or sets the <see cref="global::System.Type"/> of the target <see langword="enum"/>

@@ -1,11 +1,11 @@
 ﻿using WinRT.Interop;
 
 namespace WinUICommunity;
-public sealed class WindowMessageMonitor : IDisposable
+public sealed partial class WindowMessageMonitor : IDisposable
 {
-    private nint _hwnd = IntPtr.Zero;
-    private delegate nint WinProc(IntPtr hWnd, uint msg, nint wParam, nint lParam);
-    private NativeValues.SUBCLASSPROC callback;
+    private IntPtr _hwnd = IntPtr.Zero;
+    private delegate IntPtr WinProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+    private Windows.Win32.UI.Shell.SUBCLASSPROC? callback;
     private readonly object _lockObject = new object();
 
     public WindowMessageMonitor(Window window) : this(WindowNative.GetWindowHandle(window))
@@ -52,17 +52,17 @@ public sealed class WindowMessageMonitor : IDisposable
         }
     }
 
-    private nint NewWindowProc(IntPtr hWnd, uint uMsg, nuint wParam, nint lParam, nuint uIdSubclass, nuint dwRefData)
+    private LRESULT NewWindowProc(HWND hWnd, uint uMsg, WPARAM wParam, LPARAM lParam, nuint uIdSubclass, nuint dwRefData)
     {
         var handler = _NativeMessage;
         if (handler != null)
         {
-            var args = new WindowMessageEventArgs(hWnd, uMsg, wParam, lParam);
+            var args = new WindowMessageEventArgs(hWnd, uMsg, wParam.Value, lParam);
             handler.Invoke(this, args);
             if (args.Handled)
-                return new IntPtr(args.Result);
+                return new LRESULT((int)args.Result);
         }
-        return NativeMethods.DefSubclassProc(hWnd, uMsg, wParam, lParam);
+        return PInvoke.DefSubclassProc(hWnd, uMsg, wParam, lParam);
     }
 
     private void Subscribe()
@@ -70,8 +70,8 @@ public sealed class WindowMessageMonitor : IDisposable
         lock (_lockObject)
             if (callback == null)
             {
-                callback = new NativeValues.SUBCLASSPROC(NewWindowProc);
-                var ok = NativeMethods.SetWindowSubclass(new IntPtr((int)_hwnd), callback, 101, 0);
+                callback = new Windows.Win32.UI.Shell.SUBCLASSPROC(NewWindowProc);
+                bool ok = PInvoke.SetWindowSubclass(new HWND(_hwnd), callback, 101, 0);
             }
     }
 
@@ -80,7 +80,7 @@ public sealed class WindowMessageMonitor : IDisposable
         lock (_lockObject)
             if (callback != null)
             {
-                NativeMethods.RemoveWindowSubclass(new IntPtr(_hwnd), callback, 101);
+                PInvoke.RemoveWindowSubclass(new HWND(_hwnd), callback, 101);
                 callback = null;
             }
     }

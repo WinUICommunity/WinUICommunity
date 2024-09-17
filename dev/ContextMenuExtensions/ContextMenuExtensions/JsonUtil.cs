@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 
 namespace WinUICommunity;
-public static class JsonUtil
+public static partial class JsonUtil
 {
     private readonly static JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings
     {

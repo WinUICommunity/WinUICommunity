@@ -6,7 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace WinUICommunity;
 
-public class CheckBoxWithDescriptionControl : CheckBox
+public partial class CheckBoxWithDescriptionControl : CheckBox
 {
     private CheckBoxWithDescriptionControl _checkBoxSubTextControl;
 

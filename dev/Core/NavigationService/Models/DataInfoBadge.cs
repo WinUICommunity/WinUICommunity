@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class DataInfoBadge
+public partial class DataInfoBadge
 {
     public string BadgeValue { get; set; }
     public string BadgeStyle { get; set; }

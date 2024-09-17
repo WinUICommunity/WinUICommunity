@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml.Shapes;
 
 namespace WinUICommunity;
 
-public class BubbleView : Control
+public partial class BubbleView : Control
 {
     public static readonly DependencyProperty IsBubbingProperty =
         DependencyProperty.Register("IsBubbing", typeof(bool), typeof(BubbleView), new PropertyMetadata(false, (s, a) =>

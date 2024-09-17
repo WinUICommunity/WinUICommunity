@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public static class VisualHelper
+public static partial class VisualHelper
 {
     public static T GetListViewItem<T>(FrameworkElement frameworkElement) where T : class
     {

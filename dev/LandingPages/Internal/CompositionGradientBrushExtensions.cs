@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 using Windows.UI;
 
 namespace WinUICommunity;
-internal static class CompositionGradientBrushExtensions
+internal static partial class CompositionGradientBrushExtensions
 {
     /// <summary>
     /// Create color stops by using easing function

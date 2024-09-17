@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-internal class NavigationViewItemAttach
+internal partial class NavigationViewItemAttach
 {
     public static readonly DependencyProperty IsSubItemProperty =
         DependencyProperty.RegisterAttached("IsSubItem", typeof(bool), typeof(NavigationViewItemAttach), new PropertyMetadata(false, OnIsSubItemChanged));

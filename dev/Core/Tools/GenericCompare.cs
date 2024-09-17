@@ -1,5 +1,5 @@
 ﻿namespace WinUICommunity;
-public class GenericCompare<T> : IEqualityComparer<T> where T : class
+public partial class GenericCompare<T> : IEqualityComparer<T> where T : class
 {
     private Func<T, object> _expr { get; set; }
     public GenericCompare(Func<T, object> expr)

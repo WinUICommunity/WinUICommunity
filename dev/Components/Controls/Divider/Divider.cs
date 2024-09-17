@@ -10,7 +10,7 @@ namespace WinUICommunity;
 [TemplatePart(Name = nameof(PART_RightLine), Type = typeof(Line))]
 [TemplatePart(Name = nameof(PART_Content), Type = typeof(ContentPresenter))]
 [ContentProperty(Name = nameof(Content))]
-public class Divider : Control
+public partial class Divider : Control
 {
     private string PART_ColumnStart = "PART_ColumnStart";
     private string PART_ColumnEnd = "PART_ColumnEnd";

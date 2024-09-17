@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-public class DataLink
+public partial class DataLink
 {
     public DataLink(string title, string uri)
     {

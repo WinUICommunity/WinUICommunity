@@ -1,6 +1,6 @@
 ﻿namespace WinUICommunity;
 
-internal class DisposableCollector : IDisposable
+internal partial class DisposableCollector : IDisposable
 {
     private bool disposedValue;
 
@@ -28,7 +28,7 @@ internal class DisposableCollector : IDisposable
 
 }
 
-internal static class DisposableCollectorExtensions
+internal static partial class DisposableCollectorExtensions
 {
     public static T TraceDisposable<T>(this T obj, DisposableCollector disposableCollector) where T : IDisposable
     {

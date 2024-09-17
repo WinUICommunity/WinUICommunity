@@ -9,12 +9,12 @@ public partial class WindowHelper
     {
         if (window != null)
         {
-            NativeMethods.SwitchToThisWindow(WindowNative.GetWindowHandle(window), true);
+            SwitchToThisWindow(new HWND(WindowNative.GetWindowHandle(window)));
         }
     }
     public static void SwitchToThisWindow(IntPtr windowHandle)
     {
-        NativeMethods.SwitchToThisWindow(windowHandle, true);
+        PInvoke.SwitchToThisWindow(new HWND(windowHandle), true);
     }
 
     public static void ReActivateWindow(Window window)
@@ -24,16 +24,17 @@ public partial class WindowHelper
     }
     public static void ReActivateWindow(IntPtr windowHandle)
     {
-        var activeWindow = NativeMethods.GetActiveWindow();
-        if (windowHandle == activeWindow)
+        var activeWindow = PInvoke.GetActiveWindow();
+        var hwnd = new HWND(windowHandle);
+        if (hwnd == activeWindow)
         {
-            NativeMethods.SendMessage(windowHandle, NativeValues.WM_ACTIVATE, NativeValues.WA_INACTIVE, IntPtr.Zero);
-            NativeMethods.SendMessage(windowHandle, NativeValues.WM_ACTIVATE, NativeValues.WA_ACTIVE, IntPtr.Zero);
+            PInvoke.SendMessage(hwnd, NativeValues.WM_ACTIVATE, NativeValues.WA_INACTIVE, IntPtr.Zero);
+            PInvoke.SendMessage(hwnd, NativeValues.WM_ACTIVATE, NativeValues.WA_ACTIVE, IntPtr.Zero);
         }
         else
         {
-            NativeMethods.SendMessage(windowHandle, NativeValues.WM_ACTIVATE, NativeValues.WA_ACTIVE, IntPtr.Zero);
-            NativeMethods.SendMessage(windowHandle, NativeValues.WM_ACTIVATE, NativeValues.WA_INACTIVE, IntPtr.Zero);
+            PInvoke.SendMessage(hwnd, NativeValues.WM_ACTIVATE, NativeValues.WA_ACTIVE, IntPtr.Zero);
+            PInvoke.SendMessage(hwnd, NativeValues.WM_ACTIVATE, NativeValues.WA_INACTIVE, IntPtr.Zero);
         }
     }
 
@@ -58,16 +59,18 @@ public partial class WindowHelper
     {
         if (OSVersionHelper.IsWindows11_22000_OrGreater)
         {
-            var attribute = NativeValues.DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE;
-            var preference = (uint)cornerPreference;
-            NativeMethods.DwmSetWindowAttribute(hwnd, attribute, ref preference, sizeof(uint));
+            unsafe
+            {
+                uint preference = (uint)cornerPreference;
+                PInvoke.DwmSetWindowAttribute(new HWND(hwnd), Windows.Win32.Graphics.Dwm.DWMWINDOWATTRIBUTE.DWMWA_WINDOW_CORNER_PREFERENCE, &preference, sizeof(uint));
+            }
         }
     }
 
     public static IReadOnlyList<Win32Window> GetTopLevelWindows()
     {
         var list = new List<Win32Window>();
-        NativeMethods.EnumWindows((h, l) =>
+        PInvoke.EnumWindows((h, l) =>
         {
             list.Add(new Win32Window(h));
             return true;
@@ -79,7 +82,7 @@ public partial class WindowHelper
     {
         var process = Process.GetCurrentProcess();
         var list = new List<Win32Window>();
-        NativeMethods.EnumWindows((h, l) =>
+        PInvoke.EnumWindows((h, l) =>
         {
             var window = new Win32Window(h);
             if (window.ProcessId == process.Id)
@@ -93,16 +96,42 @@ public partial class WindowHelper
 
     public static string GetWindowText(IntPtr hwnd)
     {
-        var sb = new StringBuilder(1024);
-        NativeMethods.GetWindowText(hwnd, sb, sb.Capacity - 1);
-        return sb.ToString();
+        const int MAX_Length = 1024;
+        Span<char> buffer = stackalloc char[(int)MAX_Length];
+
+        unsafe
+        {
+            fixed (char* pBuffer = buffer)
+            {
+                int result = PInvoke.GetWindowText(new HWND(hwnd), pBuffer, MAX_Length);
+                if (result > 0)
+                {
+                    string windowText = new string(pBuffer, 0, result);
+                    return windowText;
+                }
+            }
+        }
+        return null;
     }
 
     public static string GetClassName(IntPtr hwnd)
     {
-        var sb = new StringBuilder(256);
-        NativeMethods.GetClassName(hwnd, sb, sb.Capacity - 1);
-        return sb.ToString();
+        const int MAX_Length = 256;
+        Span<char> buffer = stackalloc char[(int)MAX_Length];
+
+        unsafe
+        {
+            fixed (char* pBuffer = buffer)
+            {
+                int result = PInvoke.GetClassName(new HWND(hwnd), pBuffer, MAX_Length);
+                if (result > 0)
+                {
+                    string className = new string(pBuffer, 0, result);
+                    return className;
+                }
+            }
+        }
+        return null;
     }
 
     public static AppWindow GetCurrentAppWindow()

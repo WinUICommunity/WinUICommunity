@@ -2,7 +2,7 @@
 
 public partial class ProgressRing
 {
-    public class TemplateSettingValues : DependencyObject
+    public partial class TemplateSettingValues : DependencyObject
     {
         public static readonly DependencyProperty EllipseDiameterProperty =
             DependencyProperty.Register("EllipseDiameter", typeof(double), typeof(TemplateSettingValues),

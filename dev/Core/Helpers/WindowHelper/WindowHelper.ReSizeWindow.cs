@@ -36,7 +36,7 @@ public partial class WindowHelper
     {
         if (e.MessageType == NativeValues.WindowMessage.WM_GETMINMAXINFO)
         {
-            var dpi = NativeMethods.GetDpiForWindow(WindowNative.GetWindowHandle(Window));
+            var dpi = PInvoke.GetDpiForWindow(new HWND(WindowNative.GetWindowHandle(Window)));
             
             var scalingFactor = (float)dpi / 96;
 
@@ -70,7 +70,7 @@ public partial class WindowHelper
 
     public static void MoveAndResize(Window window, double x, double y, double width, double height)
     {
-        var scale = NativeMethods.GetDpiForWindow(WindowNative.GetWindowHandle(window)) / 96f;
+        var scale = PInvoke.GetDpiForWindow(new HWND(WindowNative.GetWindowHandle(window))) / 96f;
         window.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32((int)x, (int)y, (int)(width * scale), (int)(height * scale)));
     }
 

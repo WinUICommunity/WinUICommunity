@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public static class CollectionExtension
+public static partial class CollectionExtension
 {
     public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> newItems)
     {

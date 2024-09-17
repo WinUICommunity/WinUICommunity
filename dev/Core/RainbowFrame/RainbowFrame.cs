@@ -1,7 +1,7 @@
 ﻿using WinRT.Interop;
 
 namespace WinUICommunity;
-public class RainbowFrame : IRainbowFrame
+public partial class RainbowFrame : IRainbowFrame
 {
     private uint _defaultColor = 0xFFFFFFFF;
     private DispatcherTimer _frameTimer;
@@ -10,6 +10,14 @@ public class RainbowFrame : IRainbowFrame
     private IntPtr _hwnd;
     private int EffectSpeed = 4;
 
+    public RainbowFrame()
+    {
+        
+    }
+    public RainbowFrame(Window window)
+    {
+        Initialize(window);
+    }
     public void Initialize(Window window, TimeSpan frameUpdateInterval, int effectSpeed)
     {
         InternalInitialize(window, _hwnd, effectSpeed, frameUpdateInterval);
@@ -102,7 +110,10 @@ public class RainbowFrame : IRainbowFrame
         {
             if (OSVersionHelper.IsWindows11_22000_OrGreater)
             {
-                NativeMethods.DwmSetWindowAttribute(_hwnd, NativeValues.DWMWINDOWATTRIBUTE.DWMWA_BORDER_COLOR, ref color, sizeof(uint));
+                unsafe
+                {
+                    PInvoke.DwmSetWindowAttribute(new HWND(_hwnd), Windows.Win32.Graphics.Dwm.DWMWINDOWATTRIBUTE.DWMWA_BORDER_COLOR, &color, sizeof(uint));
+                }
             }
         }
         catch (Exception)

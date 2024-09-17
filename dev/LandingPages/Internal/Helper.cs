@@ -1,7 +1,7 @@
 ﻿using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
-internal static class Helper
+internal static partial class Helper
 {
     internal static string GetLocalizedText(string input, bool usexUid, ResourceManager resourceManager, ResourceContext resourceContext)
     {

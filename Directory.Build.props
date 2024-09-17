@@ -1,11 +1,11 @@
 ﻿<Project>
   <PropertyGroup Condition="'$(MSBuildProjectName)' != 'WinUICommunityGallery'">
-    <TargetFrameworks Condition=" '$(Configuration)' == 'Release' ">net8.0-windows10.0.17763.0;net8.0-windows10.0.19041.0;net8.0-windows10.0.22621.0;net8.0-windows10.0.26100.0;net9.0-windows10.0.17763.0;net9.0-windows10.0.19041.0;net9.0-windows10.0.22621.0;net9.0-windows10.0.26100.0</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(Configuration)' == 'Release' ">net8.0-windows10.0.22621.0;net8.0-windows10.0.26100.0;net9.0-windows10.0.22621.0;net9.0-windows10.0.26100.0</TargetFrameworks>
     <TargetFrameworks Condition=" '$(Configuration)' == 'Debug' ">net8.0-windows10.0.22621.0</TargetFrameworks>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
 
-    <Win2dVersion Condition="'$(TargetFramework.Contains(windows10.0.17763))' == 'true' Or '$(TargetFramework.Contains(windows10.0.19041))' == 'true' Or '$(TargetFramework.Contains(windows10.0.20348))' == 'true' Or '$(TargetFramework.Contains(windows10.0.22000))' == 'true'">1.0.5.1</Win2dVersion>
-    <Win2dVersion Condition="'$(TargetFramework.Contains(windows10.0.17763))' == 'false' Or '$(TargetFramework.Contains(windows10.0.19041))' == 'false' Or '$(TargetFramework.Contains(windows10.0.20348))' == 'false' Or '$(TargetFramework.Contains(windows10.0.22000))' == 'false'">1.2.0</Win2dVersion>
+    <Win2dVersion Condition="'$(TargetFramework.Contains(windows10.0.20348))' == 'true' Or '$(TargetFramework.Contains(windows10.0.22000))' == 'true'">1.0.5.1</Win2dVersion>
+    <Win2dVersion Condition="'$(TargetFramework.Contains(windows10.0.20348))' == 'false' Or '$(TargetFramework.Contains(windows10.0.22000))' == 'false'">1.2.0</Win2dVersion>
 
     <EnableMsixTooling Condition="'$(GITHUB_ACTIONS)' == 'true'">true</EnableMsixTooling>
 
@@ -14,7 +14,8 @@
     <UseWinUI>true</UseWinUI>
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Latest</LangVersion>
-    <NoWarn>WMC1506;WMC0001;CA1416;CS8632;CS0067;CS0414;NU1903;NU1902</NoWarn>
+    <IsAotCompatible>true</IsAotCompatible>
+    <NoWarn>WMC1506;WMC0001;CA1416;CS8632;CS0067;CS0078;CS0649;CS0414;NU1903;NU1902</NoWarn>
 
     <!-- The NuGet package version -->
     <XAMLToolsVersion>1.0.0-alpha0167</XAMLToolsVersion>

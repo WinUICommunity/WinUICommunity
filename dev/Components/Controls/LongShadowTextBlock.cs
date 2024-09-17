@@ -7,7 +7,7 @@ namespace WinUICommunity;
 [TemplatePart(Name = nameof(PART_ShadowElement), Type = typeof(Rectangle))]
 [TemplatePart(Name = nameof(PART_TextBlock), Type = typeof(ContentPresenter))]
 [ContentProperty(Name = nameof(TextBlock))]
-public class LongShadowTextBlock : Control
+public partial class LongShadowTextBlock : Control
 {
     private string PART_ShadowElement = "PART_ShadowElement";
     private string PART_TextBlock = "PART_TextBlock";

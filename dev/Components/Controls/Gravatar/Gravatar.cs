@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml.Media;
 
 namespace WinUICommunity;
-public class Gravatar : ContentControl
+public partial class Gravatar : ContentControl
 {
     public static readonly DependencyProperty GeneratorProperty = DependencyProperty.Register(
         nameof(Generator), typeof(IGravatarGenerator), typeof(Gravatar), new PropertyMetadata(new GithubGravatarGenerator()));
