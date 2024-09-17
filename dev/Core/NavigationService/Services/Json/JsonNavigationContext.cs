@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 
 namespace WinUICommunity;
-[JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
+[JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.Unspecified)]
 [JsonSerializable(typeof(DataSource))]
 internal partial class JsonNavigationContext : JsonSerializerContext
 {
