@@ -2,14 +2,13 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace WinUICommunity;
 
 /// <summary>
 /// A markup extension that returns a collection of values of a specific <see langword="enum"/>
 /// </summary>
 [MarkupExtensionReturnType(ReturnType = typeof(Array))]
+[System.Diagnostics.CodeAnalysis.RequiresDynamicCode("It might not be possible to create an array of a user-defined enum type at runtime.")]
 public sealed partial class EnumValuesExtension : MarkupExtension
 {
     /// <summary>
@@ -18,11 +17,9 @@ public sealed partial class EnumValuesExtension : MarkupExtension
     public Type? Type { get; set; }
 
     /// <inheritdoc/>
-    [UnconditionalSuppressMessage("AOT", "IL3050:Calling members annotated with 'RequiresDynamicCodeAttribute' may break functionality when AOT compiling.", Justification = "<Pending>")]
     protected override object ProvideValue()
     {
         // TODO: We should probably make a throw helper and throw here if type is null?
         return Enum.GetValues(Type!);
     }
-
 }
