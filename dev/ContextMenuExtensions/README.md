@@ -32,52 +32,7 @@ add a new ContextMenu for Windows 11/10.
 Install-Package WinUICommunity.ContextMenuExtensions
 ```
 
-After installing, add the following codes to `Package.appxmanifest`
-
-```xml
-<Extensions>
-    <desktop4:Extension Category="windows.fileExplorerContextMenus">
-        <desktop4:FileExplorerContextMenus>
-            <desktop5:ItemType Type="Directory"  >
-                <desktop5:Verb Id="CustomMenu" Clsid="3EB53D8C-1221-451F-80AE-50E5B67E42DF" />
-            </desktop5:ItemType>
-            <desktop5:ItemType Type="*"  >
-                <desktop5:Verb Id="CustomMenu" Clsid="3EB53D8C-1221-451F-80AE-50E5B67E42DF" />
-            </desktop5:ItemType>
-            <desktop5:ItemType Type="Directory\Background">
-                <desktop5:Verb Id="CustomMenu" Clsid="3EB53D8C-1221-451F-80AE-50E5B67E42DF" />
-            </desktop5:ItemType>
-        </desktop4:FileExplorerContextMenus>
-    </desktop4:Extension>
-    <com:Extension Category="windows.comServer">
-        <com:ComServer>
-            <com:SurrogateServer  DisplayName="Custome Context Menu">
-                <com:Class Id="3EB53D8C-1221-451F-80AE-50E5B67E42DF" Path="ContextMenuCustomHost.dll" ThreadingModel="STA"/>
-            </com:SurrogateServer>
-        </com:ComServer>
-    </com:Extension>
-    <uap3:Extension Category="windows.appExecutionAlias">
-        <uap3:AppExecutionAlias>
-            <desktop:ExecutionAlias Alias="App5.exe"/>
-        </uap3:AppExecutionAlias>
-    </uap3:Extension>
-</Extensions>
-```
-
-`change App5.exe to your project name.`
-
 read the docs to see how to use it
-
-## Namespace
-We moved all namespaces into a single namespace. No matter which (WinUICommunity) library you use, the namespace is always as follows
- For use in the Xaml:
- ```xml 
- xmlns:wuc="using:WinUICommunity"
- ```
- For use in the Csharp:
- ```csharp
- using WinUICommunity;
- ```
 
 ## Documentation
 

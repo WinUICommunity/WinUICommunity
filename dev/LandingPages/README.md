@@ -1,8 +1,5 @@
 ﻿<p align="center">
-    <img alt="dotnet" src="https://img.shields.io/badge/.net-%3E=6.0-brightgreen"/>
-    <img alt="os-require" src="https://img.shields.io/badge/OS-%3E%3D%20Windows%2010%20Build%201809-orange"/>
     <img alt="IDE-version" src="https://img.shields.io/badge/IDE-vs2022-red"/>
-    <img alt="csharp-require" src="https://img.shields.io/badge/CSharp-Latest-yellow"/>
     <a href="https://github.com/WinUICommunity">
         <img alt="projects" src="https://img.shields.io/badge/WinUICommunity-Projects-green"></img>
     </a> 
@@ -41,18 +38,6 @@ This package is based on the following packages
 - CommunityToolkit.WinUI.UI.Animations
 - Microsoft.Graphics.Win2D
 
-
-## Namespace
-We moved all namespaces into a single namespace. No matter which (WinUICommunity) library you use, the namespace is always as follows
- For use in the Xaml:
- ```xml 
- xmlns:wuc="using:WinUICommunity"
- ```
- For use in the Csharp:
- ```csharp
- using WinUICommunity;
- ```
-
 ## Install
 ```
 Install-Package WinUICommunity.LandingPages
@@ -61,18 +46,9 @@ Install-Package WinUICommunity.LandingPages
 After installing, add the following resources to app.xaml
 
 ```xml
-xmlns:wuc="using:WinUICommunity"
-
-<wuc:ItemTemplates/>
 <ResourceDictionary Source="ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml" />
+<ItemTemplates xmlns="using:WinUICommunity"/>
 ```
-
-now:
-
-```xml
-xmlns:wuc="using:WinUICommunity"
-```
-
 
 See the [Demo](https://github.com/WinUICommunity/WinUICommunity) app to see how to use it
 

@@ -1,8 +1,5 @@
 ﻿<p align="center">
-    <img alt="dotnet" src="https://img.shields.io/badge/.net-%3E=6.0-brightgreen"/>
-    <img alt="os-require" src="https://img.shields.io/badge/OS-%3E%3D%20Windows%2010%20Build%201809-orange"/>
     <img alt="IDE-version" src="https://img.shields.io/badge/IDE-vs2022-red"/>
-    <img alt="csharp-require" src="https://img.shields.io/badge/CSharp-Latest-yellow"/>
     <a href="https://github.com/WinUICommunity">
         <img alt="projects" src="https://img.shields.io/badge/WinUICommunity-Projects-green"></img>
     </a> 
@@ -45,17 +42,6 @@ After installing, add the following resource to app.xaml
 <ResourceDictionary Source="ms-appx:///WinUICommunity.Components/Themes/Generic.xaml" />
 ```
 
-## Namespace
-We moved all namespaces into a single namespace. No matter which (WinUICommunity) library you use, the namespace is always as follows
- For use in the Xaml:
- ```xml 
- xmlns:wuc="using:WinUICommunity"
- ```
- For use in the Csharp:
- ```csharp
- using WinUICommunity;
- ```
-
 ## Demo
 
 See the [Demo](https://github.com/WinUICommunity/WinUICommunity) app to see how to use it
@@ -63,20 +49,3 @@ See the [Demo](https://github.com/WinUICommunity/WinUICommunity) app to see how 
 ## Documentation
 
 See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
-
-## Available Features
-
-- Multiple Custom Controls such as `Windows 11` Settings Page Controls
-- Custom Styles for Some Controls such as TextBlock and Button.
-
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/0.png)
-
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/1.png)
-
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/5.png)
-
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/2.png)
-
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/3.png)
-
-![SettingsUI](https://raw.githubusercontent.com/ghost1372/Resources/main/SettingsUI/4.png)
