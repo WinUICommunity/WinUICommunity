@@ -6,7 +6,7 @@ namespace WinUICommunity;
 public sealed partial class FlipSide : Control
 {
     public static readonly DependencyProperty IsFlippedProperty =
-        DependencyProperty.Register("IsFlipped", typeof(bool), typeof(FlipSide), new PropertyMetadata(false, (s, a) =>
+        DependencyProperty.Register(nameof(IsFlipped), typeof(bool), typeof(FlipSide), new PropertyMetadata(false, (s, a) =>
         {
             if (a.NewValue != a.OldValue)
             {
@@ -18,43 +18,40 @@ public sealed partial class FlipSide : Control
         }));
 
     public static readonly DependencyProperty Side1Property =
-        DependencyProperty.Register("Side1", typeof(object), typeof(FlipSide), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(Side1), typeof(object), typeof(FlipSide), new PropertyMetadata(null));
 
     public static readonly DependencyProperty Side2Property =
-        DependencyProperty.Register("Side2", typeof(object), typeof(FlipSide), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(Side2), typeof(object), typeof(FlipSide), new PropertyMetadata(null));
 
-    private Vector2 axis;
-
-    private Grid LayoutRoot;
-
-    private Visual s1Visual;
-
-    private Visual s2Visual;
-
-    private ContentPresenter Side1Content;
-
-    private ContentPresenter Side2Content;
-
-    private SpringScalarNaturalMotionAnimation springAnimation1;
-
-    private SpringScalarNaturalMotionAnimation springAnimation2;
-
-    public FlipSide()
-    {
-        axis = new Vector2(0, 1);
-        this.DefaultStyleKey = typeof(FlipSide);
-    }
-
-    public Vector2 Axis
-    {
-        get => axis;
-        set
+    public static readonly DependencyProperty AxisProperty =
+        DependencyProperty.Register(nameof(Axis), typeof(Vector2), typeof(FlipSide), new PropertyMetadata(new Vector2(0, 1), (d, e) =>
         {
-            axis = value;
-            UpdateAxis(Side1Content);
-            UpdateAxis(Side2Content);
-        }
-    }
+            var ctl = (FlipSide)d;
+            if (ctl != null)
+            {
+                ctl.UpdateAxis(ctl.Side1Content, (Vector2)e.NewValue);
+                ctl.UpdateAxis(ctl.Side2Content, (Vector2)e.NewValue);
+            }
+        }));
+
+
+    public static readonly DependencyProperty FlipOrientationProperty =
+        DependencyProperty.Register(nameof(FlipOrientation), typeof(FlipOrientationMode), typeof(FlipSide), new PropertyMetadata(FlipOrientationMode.Horizontal, (d, e) =>
+        {
+            var ctl = d as FlipSide;
+            if (ctl != null)
+            {
+                switch ((FlipOrientationMode)e.NewValue)
+                {
+                    case FlipOrientationMode.Horizontal:
+                        ctl.SetValue(AxisProperty, new Vector2(0, 1));
+                        break;
+                    case FlipOrientationMode.Vertical:
+                        ctl.SetValue(AxisProperty, new Vector2(1, 0));
+                        break;
+                }
+            }
+        }));
 
     public bool IsFlipped
     {
@@ -72,6 +69,35 @@ public sealed partial class FlipSide : Control
     {
         get { return (object)GetValue(Side2Property); }
         set { SetValue(Side2Property, value); }
+    }
+    public Vector2 Axis
+    {
+        get { return (Vector2)GetValue(AxisProperty); }
+        set { SetValue(AxisProperty, value); }
+    }
+    public FlipOrientationMode FlipOrientation
+    {
+        get { return (FlipOrientationMode)GetValue(FlipOrientationProperty); }
+        set { SetValue(FlipOrientationProperty, value); }
+    }
+
+    private Grid LayoutRoot;
+
+    private Visual s1Visual;
+
+    private Visual s2Visual;
+
+    private ContentPresenter Side1Content;
+
+    private ContentPresenter Side2Content;
+
+    private SpringScalarNaturalMotionAnimation springAnimation1;
+
+    private SpringScalarNaturalMotionAnimation springAnimation2;
+
+    public FlipSide()
+    {
+        this.DefaultStyleKey = typeof(FlipSide);
     }
 
     protected override void OnApplyTemplate()
@@ -112,18 +138,24 @@ public sealed partial class FlipSide : Control
         springAnimation2.Period = TimeSpan.FromMilliseconds(200);
         springAnimation2.FinalValue = 180f;
 
-        UpdateAxis(Side1Content);
-        UpdateAxis(Side2Content);
+        UpdateAxis(Side1Content, Axis);
+        UpdateAxis(Side2Content, Axis);
         UpdateTransformMatrix(LayoutRoot);
 
         LayoutRoot.SizeChanged += LayoutRoot_SizeChanged;
     }
 
+    public void UpdateAnimations(SpringScalarNaturalMotionAnimation animation1, SpringScalarNaturalMotionAnimation animation2)
+    {
+        springAnimation1 = animation1;
+        springAnimation2 = animation2;
+    }
+
     private void LayoutRoot_SizeChanged(object sender, SizeChangedEventArgs e)
     {
         UpdateTransformMatrix(LayoutRoot);
-        UpdateAxis(Side1Content);
-        UpdateAxis(Side2Content);
+        UpdateAxis(Side1Content, Axis);
+        UpdateAxis(Side2Content, Axis);
     }
 
     private void OnIsFlippedChanged()
@@ -155,13 +187,17 @@ public sealed partial class FlipSide : Control
         }
     }
 
-    private void UpdateAxis(FrameworkElement element)
+    private void UpdateAxis(FrameworkElement element, Vector2 vector2)
     {
+        if (element == null)
+        {
+            return;
+        }
         var visual = ElementCompositionPreview.GetElementVisual(element);
         var size = element.RenderSize.ToVector2();
 
         visual.CenterPoint = new Vector3(size.X / 2, size.Y / 2, 0f);
-        visual.RotationAxis = new Vector3(axis, 0f);
+        visual.RotationAxis = new Vector3(vector2, 0f);
     }
 
     private void UpdateTransformMatrix(FrameworkElement element)
