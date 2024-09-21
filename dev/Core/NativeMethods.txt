@@ -29,3 +29,4 @@ GetComputerName
 GetModuleFileName
 SetWindowLong
 GetWindowLong
+MessageBox
