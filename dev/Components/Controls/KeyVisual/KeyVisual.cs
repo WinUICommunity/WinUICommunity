@@ -1,6 +1,4 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Markup;
+﻿using Microsoft.UI.Xaml.Markup;
 
 using Windows.System;
 
@@ -97,8 +95,10 @@ public sealed partial class KeyVisual : Control
                     /* We can enable other glyphs in the future
                     case 13: // The Enter key or button.
                         _keyVisual._keyPresenter.Content = "\uE751"; break;
+
                     case 8: // The Back key or button.
                         _keyVisual._keyPresenter.Content = "\uE750"; break;
+
                     case 16: // The right Shift key or button.
                     case 160: // The left Shift key or button.
                     case 161: // The Shift key or button.
@@ -111,13 +111,13 @@ public sealed partial class KeyVisual : Control
 
                     case 91: // The left Windows key
                     case 92: // The right Windows key
-                        var winIcon = XamlReader.Load(@"<PathIcon xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"" Data=""M9,17V9h8v8ZM0,17V9H8v8ZM9,8V0h8V8ZM0,8V0H8V8Z"" />") as PathIcon;
-                        var winIconContainer = new Viewbox();
+                        PathIcon winIcon = XamlReader.Load(@"<PathIcon xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"" Data=""M683 1229H0V546h683v683zm819 0H819V546h683v683zm-819 819H0v-683h683v683zm819 0H819v-683h683v683z"" />") as PathIcon;
+                        Viewbox winIconContainer = new Viewbox();
                         winIconContainer.Child = winIcon;
                         winIconContainer.HorizontalAlignment = HorizontalAlignment.Center;
                         winIconContainer.VerticalAlignment = VerticalAlignment.Center;
 
-                        var iconDimensions = GetIconSize();
+                        double iconDimensions = GetIconSize();
                         winIconContainer.Height = iconDimensions;
                         winIconContainer.Width = iconDimensions;
                         _keyVisual._keyPresenter.Content = winIconContainer;
@@ -130,18 +130,34 @@ public sealed partial class KeyVisual : Control
 
     public Style GetStyleSize(string styleName)
     {
-        return VisualType == VisualType.Small
-            ? (Style)Application.Current.Resources["Small" + styleName]
-            : VisualType == VisualType.SmallOutline
-                ? (Style)Application.Current.Resources["SmallOutline" + styleName]
-                : (Style)Application.Current.Resources["Default" + styleName];
+        if (VisualType == VisualType.Small)
+        {
+            return (Style)Application.Current.Resources["Small" + styleName];
+        }
+        else if (VisualType == VisualType.SmallOutline)
+        {
+            return (Style)Application.Current.Resources["SmallOutline" + styleName];
+        }
+        else if (VisualType == VisualType.TextOnly)
+        {
+            return (Style)Application.Current.Resources["Only" + styleName];
+        }
+        else
+        {
+            return (Style)Application.Current.Resources["Default" + styleName];
+        }
     }
 
     public double GetIconSize()
     {
-        return VisualType == VisualType.Small || VisualType == VisualType.SmallOutline
-            ? (double)Application.Current.Resources["SmallIconSize"]
-            : (double)Application.Current.Resources["DefaultIconSize"];
+        if (VisualType == VisualType.Small || VisualType == VisualType.SmallOutline)
+        {
+            return (double)Application.Current.Resources["SmallIconSize"];
+        }
+        else
+        {
+            return (double)Application.Current.Resources["DefaultIconSize"];
+        }
     }
 
     private void KeyVisual_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -164,5 +180,6 @@ public enum VisualType
 {
     Small,
     SmallOutline,
+    TextOnly,
     Large,
 }
