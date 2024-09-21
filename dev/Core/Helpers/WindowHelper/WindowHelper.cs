@@ -66,32 +66,51 @@ public partial class WindowHelper
             }
         }
     }
-
+    internal static List<Win32Window> topLevelWindowList = new List<Win32Window>();
     public static IReadOnlyList<Win32Window> GetTopLevelWindows()
     {
-        var list = new List<Win32Window>();
-        PInvoke.EnumWindows((h, l) =>
+        unsafe
         {
-            list.Add(new Win32Window(h));
-            return true;
-        }, IntPtr.Zero);
-        return list.AsReadOnly();
-    }
+            topLevelWindowList?.Clear();
+            delegate* unmanaged[Stdcall]<HWND, LPARAM, BOOL> callback = &EnumWindowsCallback;
 
+            PInvoke.EnumWindows(callback, IntPtr.Zero);
+
+            return topLevelWindowList.AsReadOnly();
+
+            [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+            static BOOL EnumWindowsCallback(HWND hWnd, LPARAM lParam)
+            {
+                topLevelWindowList.Add(new Win32Window(hWnd));
+                return true;
+            }
+        }
+    }
+    internal static List<Win32Window> processWindowList = new List<Win32Window>();
+    internal static Process currentProcess;
     public static IReadOnlyList<Win32Window> GetProcessWindowList()
     {
-        var process = Process.GetCurrentProcess();
-        var list = new List<Win32Window>();
-        PInvoke.EnumWindows((h, l) =>
+        unsafe
         {
-            var window = new Win32Window(h);
-            if (window.ProcessId == process.Id)
+            processWindowList?.Clear();
+            currentProcess = Process.GetCurrentProcess();
+            delegate* unmanaged[Stdcall]<HWND, LPARAM, BOOL> callback = &EnumWindowsCallback;
+
+            PInvoke.EnumWindows(callback, IntPtr.Zero);
+
+            return processWindowList.AsReadOnly();
+
+            [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+            static BOOL EnumWindowsCallback(HWND hWnd, LPARAM lParam)
             {
-                list.Add(window);
+                var window = new Win32Window(hWnd);
+                if (window.ProcessId == currentProcess.Id)
+                {
+                    processWindowList.Add(window);
+                }
+                return true;
             }
-            return true;
-        }, IntPtr.Zero);
-        return list.AsReadOnly();
+        }
     }
 
     public static string GetWindowText(IntPtr hwnd)
