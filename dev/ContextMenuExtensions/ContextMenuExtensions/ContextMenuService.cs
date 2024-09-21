@@ -314,4 +314,11 @@ public partial class ContextMenuService
         var newMenuItem = await ReadAsync(menuItem.File);
         ReplaceMenu(menuItem, newMenuItem);
     }
+
+    public async Task<bool> CheckMenuExistsAsync(ContextMenuItem item)
+    {
+        var configFolder = await GetMenusFolderAsync();
+        var files = await configFolder.GetFilesAsync();
+        return files.Any(x => x.Name.Equals($"{item?.Title}.json", StringComparison.OrdinalIgnoreCase));
+    }
 }
