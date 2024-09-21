@@ -3,8 +3,9 @@
 namespace WinUICommunity;
 public sealed partial class WindowMessageMonitor : IDisposable
 {
-    private GCHandle? _monitorGCHandle;
     private IntPtr _hwnd = IntPtr.Zero;
+    private delegate IntPtr WinProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+    private Windows.Win32.UI.Shell.SUBCLASSPROC? callback;
     private readonly object _lockObject = new object();
 
     public WindowMessageMonitor(Window window) : this(WindowNative.GetWindowHandle(window))
@@ -26,10 +27,10 @@ public sealed partial class WindowMessageMonitor : IDisposable
     private void Dispose(bool disposing)
     {
         if (_NativeMessage != null)
-            RemoveWindowSubclass();
+            Unsubscribe();
     }
 
-    private event EventHandler<WindowMessageEventArgs>? _NativeMessage;
+    private event EventHandler<WindowMessageEventArgs> _NativeMessage;
 
     public event EventHandler<WindowMessageEventArgs> WindowMessageReceived
     {
@@ -37,7 +38,7 @@ public sealed partial class WindowMessageMonitor : IDisposable
         {
             if (_NativeMessage is null)
             {
-                SetWindowSubclass();
+                Subscribe();
             }
             _NativeMessage += value;
         }
@@ -46,47 +47,41 @@ public sealed partial class WindowMessageMonitor : IDisposable
             _NativeMessage -= value;
             if (_NativeMessage is null)
             {
-                RemoveWindowSubclass();
+                Unsubscribe();
             }
         }
     }
 
-    [UnmanagedCallersOnly(CallConvs = new Type[] { typeof(System.Runtime.CompilerServices.CallConvStdcall) })]
-    private static Windows.Win32.Foundation.LRESULT NewWindowProc(Windows.Win32.Foundation.HWND hWnd, uint uMsg, Windows.Win32.Foundation.WPARAM wParam, Windows.Win32.Foundation.LPARAM lParam, nuint uIdSubclass, nuint dwRefData)
+    private LRESULT NewWindowProc(HWND hWnd, uint uMsg, WPARAM wParam, LPARAM lParam, nuint uIdSubclass, nuint dwRefData)
     {
-        var handle = GCHandle.FromIntPtr((IntPtr)(nint)dwRefData);
-        if (handle.IsAllocated && handle.Target is WindowMessageMonitor monitor)
+        var handler = _NativeMessage;
+        if (handler != null)
         {
-            var handler = monitor._NativeMessage;
-            if (handler != null)
-            {
-                var args = new WindowMessageEventArgs(hWnd, uMsg, wParam.Value, lParam);
-                handler.Invoke(monitor, args);
-                if (args.Handled)
-                    return new Windows.Win32.Foundation.LRESULT((int)args.Result);
-            }
+            var args = new WindowMessageEventArgs(hWnd, uMsg, wParam.Value, lParam);
+            handler.Invoke(this, args);
+            if (args.Handled)
+                return new LRESULT((int)args.Result);
         }
-        return Windows.Win32.PInvoke.DefSubclassProc(hWnd, uMsg, wParam, lParam);
+        return PInvoke.DefSubclassProc(hWnd, uMsg, wParam, lParam);
     }
 
-    private unsafe void SetWindowSubclass()
+    private void Subscribe()
     {
         lock (_lockObject)
-            if (!_monitorGCHandle.HasValue)
+            if (callback == null)
             {
-                _monitorGCHandle = GCHandle.Alloc(this);
-                bool ok = Windows.Win32.PInvoke.SetWindowSubclass(new Windows.Win32.Foundation.HWND(_hwnd), &NewWindowProc, 101, (nuint)GCHandle.ToIntPtr(_monitorGCHandle.Value).ToPointer());
+                callback = new Windows.Win32.UI.Shell.SUBCLASSPROC(NewWindowProc);
+                bool ok = PInvoke.SetWindowSubclass(new HWND(_hwnd), callback, 101, 0);
             }
     }
 
-    private unsafe void RemoveWindowSubclass()
+    private void Unsubscribe()
     {
         lock (_lockObject)
-            if (_monitorGCHandle.HasValue)
+            if (callback != null)
             {
-                Windows.Win32.PInvoke.RemoveWindowSubclass(new Windows.Win32.Foundation.HWND(_hwnd), &NewWindowProc, 101);
-                _monitorGCHandle?.Free();
-                _monitorGCHandle = null;
+                PInvoke.RemoveWindowSubclass(new HWND(_hwnd), callback, 101);
+                callback = null;
             }
     }
 }
