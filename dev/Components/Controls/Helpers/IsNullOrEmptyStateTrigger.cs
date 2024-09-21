@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Specialized;
 
-using Microsoft.UI.Xaml;
-
 using Windows.Foundation.Collections;
 
 namespace WinUICommunity;
+
 /// <summary>
 /// Enables a state if an Object is <c>null</c> or a String/IEnumerable is empty
 /// </summary>
@@ -16,8 +15,8 @@ public partial class IsNullOrEmptyStateTrigger : StateTriggerBase
     /// </summary>
     public object Value
     {
-        get => GetValue(ValueProperty);
-        set => SetValue(ValueProperty, value);
+        get { return GetValue(ValueProperty); }
+        set { SetValue(ValueProperty, value); }
     }
 
     /// <summary>
@@ -44,10 +43,10 @@ public partial class IsNullOrEmptyStateTrigger : StateTriggerBase
 
         // Try to listen for various notification events
         // Starting with INorifyCollectionChanged
-#pragma warning disable CS8622 //  Nullability of reference types
         var valNotifyCollection = val as INotifyCollectionChanged;
         if (valNotifyCollection != null)
         {
+#pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
             var weakEvent = new WeakEventListener<IsNullOrEmptyStateTrigger, object, NotifyCollectionChangedEventArgs>(this)
             {
                 OnEventAction = static (instance, source, args) => instance.SetActive(IsNullOrEmpty(source)),
@@ -55,7 +54,7 @@ public partial class IsNullOrEmptyStateTrigger : StateTriggerBase
             };
 
             valNotifyCollection.CollectionChanged += weakEvent.OnEvent;
-#pragma warning restore CS8622
+#pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
             return;
         }
 
@@ -115,8 +114,10 @@ public partial class IsNullOrEmptyStateTrigger : StateTriggerBase
         }
 
         // Object is not an ICollection, check for an empty IEnumerable
-        var valEnumerable = val as IEnumerable;
-        if (valEnumerable != null)
+        if (val is IEnumerable valEnumerable
+            // Workaround to regression introduced in https://github.com/unoplatform/uno/pull/16834
+            // Track https://github.com/unoplatform/uno/issues/17311 for cleanup
+            )
         {
             foreach (var item in valEnumerable)
             {
