@@ -1,7 +1,4 @@
-﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 
 public sealed partial class ShortcutDialogContentControl : UserControl
 {
@@ -10,12 +7,10 @@ public sealed partial class ShortcutDialogContentControl : UserControl
         InitializeComponent();
     }
 
-#pragma warning disable CA2227 // Collection properties should be read only
     public List<object> Keys
-#pragma warning restore CA2227 // Collection properties should be read only
     {
-        get => (List<object>)GetValue(KeysProperty);
-        set => SetValue(KeysProperty, value);
+        get { return (List<object>)GetValue(KeysProperty); }
+        set { SetValue(KeysProperty, value); }
     }
 
     public static readonly DependencyProperty KeysProperty = DependencyProperty.Register("Keys", typeof(List<object>), typeof(SettingsPageControl), new PropertyMetadata(default(string)));
@@ -27,4 +22,12 @@ public sealed partial class ShortcutDialogContentControl : UserControl
     }
 
     public static readonly DependencyProperty IsErrorProperty = DependencyProperty.Register("IsError", typeof(bool), typeof(ShortcutDialogContentControl), new PropertyMetadata(false));
+
+    public bool IsWarningAltGr
+    {
+        get => (bool)GetValue(IsWarningAltGrProperty);
+        set => SetValue(IsWarningAltGrProperty, value);
+    }
+
+    public static readonly DependencyProperty IsWarningAltGrProperty = DependencyProperty.Register("IsWarningAltGr", typeof(bool), typeof(ShortcutDialogContentControl), new PropertyMetadata(false));
 }
