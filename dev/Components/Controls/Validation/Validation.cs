@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.ComponentModel;
 
-using Microsoft.UI.Xaml;
-
 namespace WinUICommunity;
 
 /// <summary>
