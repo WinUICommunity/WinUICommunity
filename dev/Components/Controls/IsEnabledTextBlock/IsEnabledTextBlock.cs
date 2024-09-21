@@ -1,8 +1,5 @@
 ﻿using System.ComponentModel;
 
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-
 namespace WinUICommunity;
 
 [TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
