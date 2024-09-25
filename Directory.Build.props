@@ -15,11 +15,12 @@
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Latest</LangVersion>
     <IsAotCompatible>true</IsAotCompatible>
+    <CsWinRTAotWarningLevel Condition="'$(IsAotCompatible)' == 'true'">2</CsWinRTAotWarningLevel>
     <NoWarn>WMC1506;WMC0001;CA1416;CS8632;CS0067;CS0078;CS0649;CS0414;NU1903;NU1902</NoWarn>
 
     <!-- The NuGet package version -->
     <XAMLToolsVersion>1.0.0-alpha0167</XAMLToolsVersion>
-    <CommunityToolkitMediaVersion>8.1.240821</CommunityToolkitMediaVersion>
+    <CommunityToolkitMediaVersion>8.1.240916</CommunityToolkitMediaVersion>
     <NewtonsoftJsonVersion>13.0.3</NewtonsoftJsonVersion>
     
     <!-- The NuGet package options -->

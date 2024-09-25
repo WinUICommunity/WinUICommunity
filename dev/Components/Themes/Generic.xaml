@@ -2289,7 +2289,7 @@ Themes\Styles\TextBlock.xaml
   <Style x:Key="DefaultCopyButtonStyle" TargetType="local:CopyButton">
     <Setter Property="Background" Value="{ThemeResource ButtonBackground}" />
     <Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
-    <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+    <Setter Property="Foreground" Value="{x:Null}" />
     <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}" />
     <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}" />
     <Setter Property="Padding" Value="6" />
@@ -2360,10 +2360,10 @@ Themes\Styles\TextBlock.xaml
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPointerOver}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForegroundPointerOver}}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CopySuccessGlyph" Storyboard.TargetProperty="Foreground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForegroundPointerOver}}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                   <VisualState.Setters>
@@ -2379,10 +2379,10 @@ Themes\Styles\TextBlock.xaml
                       <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForegroundPressed}}" />
                     </ObjectAnimationUsingKeyFrames>
                     <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CopySuccessGlyph" Storyboard.TargetProperty="Foreground">
-                      <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}" />
+                      <DiscreteObjectKeyFrame KeyTime="0" Value="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForegroundPressed}}" />
                     </ObjectAnimationUsingKeyFrames>
                   </Storyboard>
                   <VisualState.Setters>
@@ -2411,12 +2411,12 @@ Themes\Styles\TextBlock.xaml
                 </VisualState>
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <ContentPresenter x:Name="ContentPresenter" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" RenderTransformOrigin=".5,.5">
+            <ContentPresenter x:Name="ContentPresenter" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForeground}}" RenderTransformOrigin=".5,.5">
               <ContentPresenter.RenderTransform>
                 <ScaleTransform x:Name="CopyToClipboardTextScaleTransform" />
               </ContentPresenter.RenderTransform>
             </ContentPresenter>
-            <ContentPresenter x:Name="CopySuccessGlyph" Foreground="{TemplateBinding Foreground}" Opacity="0" RenderTransformOrigin=".5,.5">
+            <ContentPresenter x:Name="CopySuccessGlyph" Foreground="{Binding Foreground, RelativeSource={RelativeSource Mode=TemplatedParent}, TargetNullValue={ThemeResource ButtonForeground}}" Opacity="0" RenderTransformOrigin=".5,.5">
               <ContentPresenter.RenderTransform>
                 <ScaleTransform x:Name="CopyToClipboardSuccessTextScaleTransform" />
               </ContentPresenter.RenderTransform>
@@ -2849,6 +2849,29 @@ Themes\Styles\TextBlock.xaml
     <Setter Property="FontWeight" Value="SemiBold" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="FontSize" Value="9" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+  </Style>
+  <Style x:Key="OnlyTextKeyVisualStyle" BasedOn="{StaticResource DefaultTextKeyVisualStyle}" TargetType="local:KeyVisual">
+    <Setter Property="MinHeight" Value="12" />
+    <Setter Property="MinWidth" Value="12" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+  </Style>
+  <Style x:Key="OnlyIconKeyVisualStyle" BasedOn="{StaticResource DefaultTextKeyVisualStyle}" TargetType="local:KeyVisual">
+    <Setter Property="MinHeight" Value="10" />
+    <Setter Property="MinWidth" Value="10" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="FontFamily" Value="{ThemeResource SymbolThemeFontFamily}" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="Padding" Value="0,0,0,3" />
+    <!--<Setter Property="FontSize" Value="9" />-->
     <Setter Property="HorizontalContentAlignment" Value="Center" />
   </Style>
   <Style BasedOn="{StaticResource DefaultOptionsPageControlStyle}" TargetType="local:OptionsPageControl" />
