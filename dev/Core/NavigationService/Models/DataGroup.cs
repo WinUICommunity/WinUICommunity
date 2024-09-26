@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-public partial class DataGroup
+public partial class DataGroup : BaseDataInfo
 {
     public DataGroup(string uniqueId, string sectionId, string title, string secondaryTitle,
         string subtitle, string imagePath, string imageIconPath, string description,
@@ -50,7 +50,6 @@ public partial class DataGroup
     public bool Order { get; set; }
     public bool OrderByDescending { get; set; }
     public ObservableCollection<DataItem> Items { get; set; }
-    public DataInfoBadge DataInfoBadge { get; set; }
     public override string ToString()
     {
         return Title;

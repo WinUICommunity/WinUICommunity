@@ -186,23 +186,24 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 
-    private InfoBadge GetInfoBadge(dynamic data)
+    private InfoBadge GetInfoBadge(BaseDataInfo data)
     {
-        if (data.DataInfoBadge is not null)
+        var dataInfoBadge = data.DataInfoBadge;
+        if (dataInfoBadge != null)
         {
-            bool hideNavigationViewItemBadge = data.DataInfoBadge.HideNavigationViewItemBadge;
-            string value = data.DataInfoBadge.BadgeValue;
-            string style = data.DataInfoBadge.BadgeStyle;
+            bool hideNavigationViewItemBadge = dataInfoBadge.HideNavigationViewItemBadge;
+            string value = dataInfoBadge.BadgeValue;
+            string style = dataInfoBadge.BadgeStyle;
             bool hasValue = !string.IsNullOrEmpty(value);
-            if (style != null && style.Contains("Dot", StringComparison.OrdinalIgnoreCase) || style.Contains("Icon", StringComparison.OrdinalIgnoreCase))
+            if (style != null && (style.Contains("Dot", StringComparison.OrdinalIgnoreCase) || style.Contains("Icon", StringComparison.OrdinalIgnoreCase)))
             {
                 hasValue = true;
             }
             if (!hideNavigationViewItemBadge && hasValue)
             {
-                int badgeValue = Convert.ToInt32(data.DataInfoBadge.BadgeValue);
-                int width = data.DataInfoBadge.BadgeWidth;
-                int height = data.DataInfoBadge.BadgeHeight;
+                int badgeValue = Convert.ToInt32(dataInfoBadge.BadgeValue);
+                int width = dataInfoBadge.BadgeWidth;
+                int height = dataInfoBadge.BadgeHeight;
 
                 InfoBadge infoBadge = new()
                 {
@@ -214,7 +215,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                         infoBadge.Value = badgeValue;
                         break;
                     case string s when s.Contains("icon"):
-                        infoBadge.IconSource = GetIconSource(data.DataInfoBadge);
+                        infoBadge.IconSource = GetIconSource(dataInfoBadge);
                         break;
                 }
 

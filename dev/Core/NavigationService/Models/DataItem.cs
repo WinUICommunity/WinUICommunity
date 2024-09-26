@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace WinUICommunity;
 
-public partial class DataItem
+public partial class DataItem : BaseDataInfo
 {
     public DataItem(string title)
     {
@@ -67,7 +67,6 @@ public partial class DataItem
     public ObservableCollection<DataLink> Links { get; set; }
     public ObservableCollection<DataItem> Items { get; set; }
     public ObservableCollection<string> Extra { get; set; }
-    public DataInfoBadge DataInfoBadge { get; set; }
     public bool IncludedInBuild { get; set; } = true;
     public bool AutoIncludedInBuild { get; set; }
     public bool IsNavigationViewItemHeader { get; set; }

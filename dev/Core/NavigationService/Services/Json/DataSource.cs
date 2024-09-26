@@ -184,6 +184,7 @@ public partial class DataSource
         }
     }
 
+
     private DataItem UpdateItem(DataItem item, bool autoIncludedInBuild)
     {
         string? badgeString = item switch
@@ -204,8 +205,7 @@ public partial class DataSource
         string pageString = item.UniqueId;
         if (autoIncludedInBuild)
         {
-            Type pageType = NavigationServiceHelper.GetPageType(pageString, item.ApiNamespace);
-
+            Type pageType = Type.GetType(pageString);
 
             isIncludedInBuild = pageType != null;
         }
