@@ -15,7 +15,5 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="nucs.JsonSettings2" Version="2.0.3" />
-	  <PackageReference Include="nucs.JsonSettings2.Autosave" Version="2.0.3" />
   </ItemGroup>
 </Project>

@@ -1,16 +1,7 @@
-﻿using Nucs.JsonSettings;
-using Nucs.JsonSettings.Fluent;
-using Nucs.JsonSettings.Modulation;
-using Nucs.JsonSettings.Modulation.Recovery;
-
-namespace WinUICommunity;
+﻿namespace WinUICommunity;
 public partial class ThemeService : IThemeService
 {
-    internal static CoreSettings Settings = JsonSettings.Configure<CoreSettings>()
-                               .WithRecovery(RecoveryAction.RenameAndLoadDefault)
-                               .WithVersioning(VersioningResultAction.RenameAndLoadDefault);
-
-    public readonly string ConfigFilePath = "CommonAppConfig.json";
+    public readonly string ConfigFilePath = "CoreAppConfigV7.0.0-Preview1.json";
     public event IThemeService.ActualThemeChangedEventHandler ActualThemeChanged;
     private bool changeThemeWithoutSave = false;
     private bool useAutoSave;
@@ -88,10 +79,10 @@ public partial class ThemeService : IThemeService
             }
             if (!changeThemeWithoutSave)
             {
-                if (this.useAutoSave)
+                if (this.useAutoSave && GlobalData.Config != null)
                 {
-                    Settings.ElementTheme = value;
-                    Settings?.Save();
+                    GlobalData.Config.ElementTheme = value;
+                    GlobalData.Save();
                 }
             }
         }
@@ -125,12 +116,20 @@ public partial class ThemeService : IThemeService
         this.useAutoSave = useAutoSave;
         this.filename = filename;
 
-        if (!string.IsNullOrEmpty(filename))
+        if (useAutoSave)
         {
-            AppConfigPath = filename;
-        }
+            if (!string.IsNullOrEmpty(filename))
+            {
+                AppConfigPath = filename;
+            }
 
-        Settings.LoadNow(AppConfigPath);
+            GlobalData.SavePath = AppConfigPath;
+            if (!Directory.Exists(RootPath))
+            {
+                Directory.CreateDirectory(RootPath);
+            }
+            GlobalData.Init();
+        }
     }
 
     private void OnActualThemeChanged(FrameworkElement sender, object args)

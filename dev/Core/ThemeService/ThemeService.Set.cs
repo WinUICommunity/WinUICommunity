@@ -10,14 +10,14 @@ public partial class ThemeService
     {
         var systemBackdrop = GetSystemBackdrop(backdropType);
 
-        if (useAutoSave)
+        if (useAutoSave && GlobalData.Config != null)
         {
-            if (Settings.BackdropType != backdropType)
+            if (GlobalData.Config.BackdropType != backdropType)
             {
                 SetWindowSystemBackdrop(systemBackdrop);
 
-                Settings.BackdropType = backdropType;
-                Settings?.Save();
+                GlobalData.Config.BackdropType = backdropType;
+                GlobalData.Save();
             }
         }
         else
@@ -58,10 +58,10 @@ public partial class ThemeService
                 acrylic.TintColor = color;
             }
 
-            if (useAutoSave && Settings.BackdropTintColor != color)
+            if (useAutoSave && GlobalData.Config != null && GlobalData.Config.BackdropTintColor != color)
             {
-                Settings.BackdropTintColor = color;
-                Settings?.Save();
+                GlobalData.Config.BackdropTintColor = color;
+                GlobalData.Save();
             }
         }
     }
@@ -80,10 +80,10 @@ public partial class ThemeService
                 acrylic.FallbackColor = color;
             }
 
-            if (useAutoSave && Settings.BackdropFallBackColor != color)
+            if (useAutoSave && GlobalData.Config != null && GlobalData.Config.BackdropFallBackColor != color)
             {
-                Settings.BackdropFallBackColor = color;
-                Settings?.Save();
+                GlobalData.Config.BackdropFallBackColor = color;
+                GlobalData.Save();
             }
         }
     }

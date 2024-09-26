@@ -8,11 +8,11 @@ public partial class ThemeService
             return;
         }
 
-        if (useAutoSave && Settings.IsBackdropFirstRun)
+        if (useAutoSave && GlobalData.Config != null && GlobalData.Config.IsBackdropFirstRun)
         {
-            Settings.BackdropType = backdropType;
-            Settings.IsBackdropFirstRun = false;
-            Settings.Save();
+            GlobalData.Config.BackdropType = backdropType;
+            GlobalData.Config.IsBackdropFirstRun = false;
+            GlobalData.Save();
         }
 
         if (backdropType != BackdropType.None)
@@ -25,11 +25,11 @@ public partial class ThemeService
 
     public void ConfigTintColor(Color color, bool force)
     {
-        if (useAutoSave && Settings.IsBackdropTintColorFirstRun)
+        if (useAutoSave && GlobalData.Config != null && GlobalData.Config.IsBackdropTintColorFirstRun)
         {
-            Settings.BackdropTintColor = color;
-            Settings.IsBackdropTintColorFirstRun = false;
-            Settings.Save();
+            GlobalData.Config.BackdropTintColor = color;
+            GlobalData.Config.IsBackdropTintColorFirstRun = false;
+            GlobalData.Save();
         }
 
         var tintColor = GetBackdropTintColorFromLocalConfig(color, force);
@@ -78,11 +78,11 @@ public partial class ThemeService
     }
     public void ConfigFallbackColor(Color color, bool force)
     {
-        if (useAutoSave && Settings.IsBackdropFallBackColorFirstRun)
+        if (useAutoSave && GlobalData.Config != null && GlobalData.Config.IsBackdropFallBackColorFirstRun)
         {
-            Settings.BackdropFallBackColor = color;
-            Settings.IsBackdropFallBackColorFirstRun = false;
-            Settings.Save();
+            GlobalData.Config.BackdropFallBackColor = color;
+            GlobalData.Config.IsBackdropFallBackColorFirstRun = false;
+            GlobalData.Save();
         }
 
         var tintColor = GetBackdropFallbackColorFromLocalConfig(color, force);
@@ -125,14 +125,14 @@ public partial class ThemeService
     }
     public void ConfigElementTheme(ElementTheme elementTheme = ElementTheme.Default, bool force = false)
     {
-        if (useAutoSave && Settings.IsThemeFirstRun)
+        if (useAutoSave && GlobalData.Config != null && GlobalData.Config.IsThemeFirstRun)
         {
-            Settings.ElementTheme = elementTheme;
-            Settings.IsThemeFirstRun = false;
-            Settings.Save();
+            GlobalData.Config.ElementTheme = elementTheme;
+            GlobalData.Config.IsThemeFirstRun = false;
+            GlobalData.Save();
         }
 
-        if (useAutoSave)
+        if (useAutoSave && GlobalData.Config != null)
         {
             SetElementTheme(GetElementThemeFromLocalConfig(elementTheme, force));
         }

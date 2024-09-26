@@ -72,25 +72,44 @@ public partial class ThemeService
 
     private SystemBackdrop GetSystemBackdropFromLocalConfig(BackdropType backdropType, bool ForceBackdrop)
     {
-        BackdropType currentBackdrop = this.useAutoSave ? Settings.BackdropType : backdropType;
+        BackdropType currentBackdrop = backdropType;
+        if (this.useAutoSave && GlobalData.Config != null)
+        {
+            currentBackdrop = GlobalData.Config.BackdropType;
+        }
+
         return ForceBackdrop ? GetSystemBackdrop(backdropType) : GetSystemBackdrop(currentBackdrop);
     }
 
     private Color GetBackdropTintColorFromLocalConfig(Color color, bool ForceTintColor)
     {
-        Color tintColor = this.useAutoSave ? Settings.BackdropTintColor : color;
+        Color tintColor = color;
+        if (this.useAutoSave && GlobalData.Config != null)
+        {
+            tintColor = GlobalData.Config.BackdropTintColor;
+        }
+
         return ForceTintColor ? color : tintColor;
     }
 
     private Color GetBackdropFallbackColorFromLocalConfig(Color color, bool ForceFallbackColor)
     {
-        Color fallbackColor = this.useAutoSave ? Settings.BackdropFallBackColor : color;
+        Color fallbackColor = color;
+        if (this.useAutoSave && GlobalData.Config != null)
+        {
+            fallbackColor = GlobalData.Config.BackdropFallBackColor;
+        }
+
         return ForceFallbackColor ? color : fallbackColor;
     }
 
     private ElementTheme GetElementThemeFromLocalConfig(ElementTheme theme, bool forceTheme)
     {
-        var currentTheme = Settings.ElementTheme;
+        ElementTheme currentTheme = theme;
+        if (this.useAutoSave && GlobalData.Config != null)
+        {
+            currentTheme = GlobalData.Config.ElementTheme;
+        }
         return forceTheme ? theme : currentTheme;
     }
 }
