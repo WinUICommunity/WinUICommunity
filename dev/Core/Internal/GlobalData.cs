@@ -2,7 +2,7 @@
 
 namespace WinUICommunity;
 
-internal class GlobalData
+internal partial class GlobalData
 {
     public static void Init()
     {

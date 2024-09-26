@@ -1,30 +1,15 @@
-﻿using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json;
+﻿using System.Text.Json;
 
 namespace WinUICommunity;
 public static partial class JsonUtil
 {
-    private readonly static JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings
+    public static string Serialize(object obj)
     {
-        ContractResolver = new DefaultContractResolver
-        {
-            NamingStrategy = new CamelCaseNamingStrategy(),
-        }
-    };
-
-    public static string Serialize(object obj, bool indented = false)
-    {
-        var formatting = indented ? Formatting.Indented : Formatting.None;
-        return JsonConvert.SerializeObject(obj, formatting, jsonSerializerSettings);
+        return JsonSerializer.Serialize(obj, ContextMenuJsonSerializerContext.Default.ContextMenuItem);
     }
 
-    public static T Deserialize<T>(string json)
+    public static ContextMenuItem Deserialize(string json)
     {
-        return JsonConvert.DeserializeObject<T>(json, jsonSerializerSettings);
-    }
-
-    public static void Populate(string json, object value)
-    {
-        JsonConvert.PopulateObject(json, value, jsonSerializerSettings);
+        return JsonSerializer.Deserialize<ContextMenuItem>(json, ContextMenuJsonSerializerContext.Default.ContextMenuItem);
     }
 }

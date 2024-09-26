@@ -224,7 +224,7 @@ public partial class ContextMenuService
 
     public ContextMenuItem ConvertMenuFromJson(string content)
     {
-        var menu = JsonUtil.Deserialize<ContextMenuItem>(content);
+        var menu = JsonUtil.Deserialize(content);
 
         //update from old version v3.6
         if (menu.AcceptFileFlag == (int)FileMatchFlagEnum.None && menu.AcceptFile)
@@ -243,9 +243,9 @@ public partial class ContextMenuService
         return menu;
     }
 
-    public string ConvertMenuToJson(ContextMenuItem content, bool indented = false)
+    public string ConvertMenuToJson(ContextMenuItem content)
     {
-        var json = JsonUtil.Serialize(content, indented);
+        var json = JsonUtil.Serialize(content);
         return json;
     }
 
