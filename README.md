@@ -223,7 +223,7 @@ After installing, add the following resource to app.xaml
 ---
 
 ## 🔥 ContextMenuExtensions 🔥
-add a new ContextMenu for Windows 11/10.
+Add a new ContextMenu for Windows 11/10. You can use it in any .Net >= 8.0 apps which supports Package Identity. this means you can use it in WPF or WinForm with MSIX Packaging.
 
 #### 💻 Installation | Nuget
 ```
