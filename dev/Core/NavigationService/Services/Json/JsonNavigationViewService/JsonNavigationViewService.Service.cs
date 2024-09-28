@@ -86,6 +86,8 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             return false;
         }
 
+        CurrentPageParameter = parameter;
+
         if (_frame != null && (_frame.Content?.GetType() != pageType || (parameter != null && !parameter.Equals(_lastParameterUsed))))
         {
             _frame.Tag = clearNavigation;

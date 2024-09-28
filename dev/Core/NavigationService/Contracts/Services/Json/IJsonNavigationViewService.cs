@@ -24,6 +24,7 @@ public interface IJsonNavigationViewService
     NavigationViewItem? GetSelectedItem(IList<object> items, Type currentPageType);
     IEnumerable<DataItem> SearchNavigationViewItems(IEnumerable<DataItem> items, string query);
 
+    object CurrentPageParameter { get; set; }
     bool CanGoBack { get; }
     Frame? Frame { get; set; }
     Window? Window { get; set; }

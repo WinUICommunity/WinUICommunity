@@ -20,13 +20,13 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     private Type _sectionPage { get; set; }
     public ResourceManager ResourceManager { get; set; }
     public ResourceContext ResourceContext { get; set; }
+    public object CurrentPageParameter { get; set; }
 
     private string _autoSuggestBoxNotFoundString;
     private string _autoSuggestBoxNotFoundImagePath;
     public string JsonFilePath;
     private PathType _pathType;
     private bool _autoIncludedInBuild;
-
     public DataSource DataSource { get; set; }
 
     private NavigationViewItem topLevelItem { get; set; }
