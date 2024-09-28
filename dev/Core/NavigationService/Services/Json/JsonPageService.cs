@@ -35,11 +35,11 @@ public partial class JsonPageService : PageServiceEx
             {
                 if (string.IsNullOrEmpty(dataItem.SectionId))
                 {
-                    _pageKeyToTypeMap[GenerateUniqueId(dataItem.UniqueId, dataItem.Parameter?.ToString())] = Type.GetType(dataItem.UniqueId);
+                    _pageKeyToTypeMap[GenerateUniqueId(dataItem.UniqueId, dataItem.Parameter?.ToString())] = NavigationServiceHelper.GetPageType(dataItem.UniqueId, dataItem.ApiNamespace);
                 }
                 else
                 {
-                    _pageKeyToTypeMap[GenerateUniqueId(dataItem.UniqueId, dataItem.Parameter?.ToString())] = Type.GetType(dataItem.SectionId);
+                    _pageKeyToTypeMap[GenerateUniqueId(dataItem.UniqueId, dataItem.Parameter?.ToString())] = NavigationServiceHelper.GetPageType(dataItem.SectionId, dataItem.ApiNamespace);
                 }
             }
         }
@@ -47,11 +47,11 @@ public partial class JsonPageService : PageServiceEx
         {
             if (string.IsNullOrEmpty(dataGroup.SectionId))
             {
-                _pageKeyToTypeMap[GenerateUniqueId(dataGroup.UniqueId, null)] = Type.GetType(dataGroup.UniqueId);
+                _pageKeyToTypeMap[GenerateUniqueId(dataGroup.UniqueId, null)] = NavigationServiceHelper.GetPageType(dataGroup.UniqueId, dataGroup.ApiNamespace);
             }
             else
             {
-                _pageKeyToTypeMap[GenerateUniqueId(dataGroup.UniqueId, null)] = Type.GetType(dataGroup.SectionId);
+                _pageKeyToTypeMap[GenerateUniqueId(dataGroup.UniqueId, null)] = NavigationServiceHelper.GetPageType(dataGroup.SectionId, dataGroup.ApiNamespace);
             }
         }
 

@@ -1,6 +1,32 @@
 ﻿namespace WinUICommunity;
 public partial class NavigationServiceHelper
 {
+    public static Type GetPageType(string uniqueId, string assemblyString)
+    {
+        Assembly assembly;
+
+        if (string.IsNullOrEmpty(assemblyString))
+        {
+            assembly = Application.Current.GetType().Assembly;
+        }
+        else
+        {
+            try
+            {
+                assembly = Assembly.Load(assemblyString);
+            }
+            catch (Exception)
+            {
+                assembly = Application.Current.GetType().Assembly;
+            }
+        }
+
+        if (assembly is not null)
+        {
+            return assembly.GetType(uniqueId);
+        }
+        return null;
+    }
     public static (string UniqueId, string SectionId) GetUniqueIdAndSectionId(object parameter)
     {
         var uniqueId = string.Empty;

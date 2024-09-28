@@ -205,7 +205,7 @@ public partial class DataSource
         string pageString = item.UniqueId;
         if (autoIncludedInBuild)
         {
-            Type pageType = Type.GetType(pageString);
+            Type pageType = NavigationServiceHelper.GetPageType(pageString, item.ApiNamespace);
 
             isIncludedInBuild = pageType != null;
         }
