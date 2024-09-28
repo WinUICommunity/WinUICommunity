@@ -21,7 +21,7 @@
   </ItemGroup>
   <ItemGroup>
 	  <XAMLCombineItems Include="Themes\Styles\**\*.xaml">
-		  <TargetFile>Themes\Generic.xaml</TargetFile>
+		  <TargetFile>Themes\ThemeResources.xaml</TargetFile>
 		  <Visible>True</Visible>
 	  </XAMLCombineItems>
   </ItemGroup>
