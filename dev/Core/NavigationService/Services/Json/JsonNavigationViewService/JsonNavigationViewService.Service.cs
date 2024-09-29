@@ -119,6 +119,14 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                     {
                         pageTitle = dataGroup.Title;
                     }
+                    else if (_disableNavigationViewNavigator && CurrentPageParameter != null && CurrentPageParameter is DataItem)
+                    {
+                        _navigationView.AlwaysShowHeader = false;
+                    }
+                    else if (_disableNavigationViewNavigator && CurrentPageParameter != null && CurrentPageParameter is DataGroup)
+                    {
+                        _navigationView.AlwaysShowHeader = false;
+                    }
                 }
 
                 if (!string.IsNullOrEmpty(pageTitle))

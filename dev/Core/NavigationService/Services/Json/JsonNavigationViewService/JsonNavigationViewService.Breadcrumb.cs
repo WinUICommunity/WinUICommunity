@@ -21,6 +21,14 @@ public partial class JsonNavigationViewService
     private void UpdateBreadcrumb()
     {
         _mainBreadcrumb.ItemsSource = BreadCrumbs;
+        if (BreadCrumbs != null && BreadCrumbs?.Count > 0)
+        {
+            _navigationView.AlwaysShowHeader = true;
+        }
+        else
+        {
+            _navigationView.AlwaysShowHeader = false;
+        }
     }
     public void NavigateFromBreadcrumb(Type TargetPageType, int BreadcrumbBarIndex, bool NavigatingBackwardsFromBreadcrumb = true)
     {
