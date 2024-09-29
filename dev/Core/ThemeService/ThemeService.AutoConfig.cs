@@ -7,10 +7,7 @@ public partial class ThemeService
         var selectedTheme = (cmb?.SelectedItem as ComboBoxItem)?.Tag?.ToString();
         if (selectedTheme != null)
         {
-            if (Enum.TryParse(selectedTheme, out ElementTheme result) && Enum.IsDefined(typeof(ElementTheme), result))
-            {
-                SetElementTheme(result);
-            }
+            ApplyThemeOrBackdrop<ElementTheme>(selectedTheme);
         }
     }
 
@@ -30,10 +27,7 @@ public partial class ThemeService
         var selectedBackdrop = (cmb?.SelectedItem as ComboBoxItem)?.Tag?.ToString();
         if (selectedBackdrop != null)
         {
-            if (Enum.TryParse(selectedBackdrop, out BackdropType result) && Enum.IsDefined(typeof(BackdropType), result))
-            {
-                SetBackdropType(result);
-            }
+            ApplyThemeOrBackdrop<BackdropType>(selectedBackdrop);
         }
     }
 
@@ -53,15 +47,22 @@ public partial class ThemeService
         var selectedTheme = ((RadioButton)sender)?.Tag?.ToString();
         if (selectedTheme != null)
         {
-            var currentTheme = GeneralHelper.GetEnum<ElementTheme>(selectedTheme);
-            SetElementTheme(currentTheme);
+            ApplyThemeOrBackdrop<ElementTheme>(selectedTheme);
         }
     }
 
     public void SetThemeRadioButtonDefaultItem(Panel ThemePanel)
     {
         var currentTheme = RootTheme.ToString();
-        ThemePanel.Children.Cast<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentTheme).IsChecked = true;
+        var items = ThemePanel.Children.Cast<RadioButton>();
+        if (items != null)
+        {
+            var selectedItem = items.FirstOrDefault(c => c?.Tag?.ToString() == currentTheme);
+            if (selectedItem != null)
+            {
+                selectedItem.IsChecked = true;
+            }
+        }
     }
 
     public void OnBackdropRadioButtonChecked(object sender)
@@ -69,15 +70,36 @@ public partial class ThemeService
         var selectedBackdrop = ((RadioButton)sender)?.Tag?.ToString();
         if (selectedBackdrop != null)
         {
-            var backdrop = GeneralHelper.GetEnum<BackdropType>(selectedBackdrop);
-            SetBackdropType(backdrop);
+            ApplyThemeOrBackdrop<BackdropType>(selectedBackdrop);
         }
     }
 
     public void SetBackdropRadioButtonDefaultItem(Panel BackdropPanel)
     {
         var currentBackdrop = GetBackdropType(GetSystemBackdrop()).ToString();
+        var items = BackdropPanel.Children.Cast<RadioButton>();
+        if (items != null)
+        {
+            var selectedItem = items.FirstOrDefault(c => c?.Tag?.ToString() == currentBackdrop);
+            if (selectedItem != null)
+            {
+                selectedItem.IsChecked = true;
+            }
+        }
+    }
 
-        BackdropPanel.Children.Cast<RadioButton>().FirstOrDefault(c => c?.Tag?.ToString() == currentBackdrop).IsChecked = true;
+    private void ApplyThemeOrBackdrop<TEnum>(string text) where TEnum : struct
+    {
+        if (Enum.TryParse(text, out TEnum result) && Enum.IsDefined(typeof(TEnum), result))
+        {
+            if (result is BackdropType backdrop)
+            {
+                SetBackdropType(backdrop);
+            }
+            else if (result is ElementTheme theme)
+            {
+                SetElementTheme(theme);
+            }
+        }
     }
 }
