@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
+using Windows.System;
 
 namespace WinUICommunity;
 
@@ -185,12 +186,16 @@ public partial class SettingsCard : ButtonBase
         }
     }
 
-    protected override void OnPointerReleased(PointerRoutedEventArgs e)
+    protected override async void OnPointerReleased(PointerRoutedEventArgs e)
     {
         if (IsClickEnabled)
         {
             base.OnPointerReleased(e);
             VisualStateManager.GoToState(this, NormalState, true);
+            if (!string.IsNullOrEmpty(LaunchUri))
+            {
+                _ = await Launcher.LaunchUriAsync(new Uri(LaunchUri));
+            }
         }
     }
 

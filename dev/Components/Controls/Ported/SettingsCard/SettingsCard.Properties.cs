@@ -7,6 +7,16 @@ using Microsoft.UI.Xaml.Controls.Primitives;
 namespace WinUICommunity;
 public partial class SettingsCard : ButtonBase
 {
+    public string LaunchUri
+    {
+        get { return (string)GetValue(LaunchUriProperty); }
+        set { SetValue(LaunchUriProperty, value); }
+    }
+
+    public static readonly DependencyProperty LaunchUriProperty =
+        DependencyProperty.Register(nameof(LaunchUri), typeof(string), typeof(SettingsCard), new PropertyMetadata(null));
+
+
     /// <summary>
     /// The backing <see cref="DependencyProperty"/> for the <see cref="Header"/> property.
     /// </summary>
