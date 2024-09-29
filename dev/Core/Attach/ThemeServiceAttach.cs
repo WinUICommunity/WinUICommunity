@@ -3,7 +3,7 @@ public static partial class ThemeServiceAttach
 {
     public static IThemeService GetThemeService(DependencyObject obj)
     {
-        return (ThemeService)obj.GetValue(ThemeServiceProperty);
+        return (IThemeService)obj.GetValue(ThemeServiceProperty);
     }
 
     public static void SetThemeService(DependencyObject obj, IThemeService value)
