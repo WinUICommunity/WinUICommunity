@@ -92,6 +92,31 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         {
             _frame.Tag = clearNavigation;
             var vmBeforeNavigation = _frame.GetPageViewModel();
+
+            if (_useBreadcrumbBar)
+            {
+                string pageTitle = string.Empty;
+
+                if (CurrentPageParameter != null && CurrentPageParameter is string value)
+                {
+                    pageTitle = value;
+                }
+                else if (CurrentPageParameter != null && CurrentPageParameter is DataItem dataItem)
+                {
+                    pageTitle = dataItem.Title;
+                }
+                else if (CurrentPageParameter != null && CurrentPageParameter is DataGroup dataGroup)
+                {
+                    pageTitle = dataGroup.Title;
+                }
+
+                if (!string.IsNullOrEmpty(pageTitle))
+                {
+                    BreadCrumbs?.Add(new NavigationBreadcrumb(pageTitle, pageType));
+                    UpdateBreadcrumb();
+                }
+            }
+
             var navigated = _frame.Navigate(pageType, parameter, transitionInfo);
             if (navigated)
             {
@@ -116,6 +141,10 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             if (clearNavigation)
             {
                 frame.BackStack.Clear();
+                if (_useBreadcrumbBar)
+                {
+                    BreadCrumbs?.Clear();
+                }
             }
 
             if (frame.GetPageViewModel() is INavigationAwareEx navigationAware)

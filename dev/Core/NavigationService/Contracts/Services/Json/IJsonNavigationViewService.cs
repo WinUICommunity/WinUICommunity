@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Media.Animation;
+﻿using System.Collections.ObjectModel;
+using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
@@ -12,6 +13,7 @@ public interface IJsonNavigationViewService
     void ConfigSettingsPage(Type pageType);
     void ConfigSectionPage(Type pageType);
     void ConfigLocalizer(ResourceManager resourceManager, ResourceContext resourceContext);
+    void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar);
     void UnregisterEvents();
 
     event NavigatedEventHandler Navigated;
@@ -31,4 +33,5 @@ public interface IJsonNavigationViewService
     bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null);
     bool NavigateTo(Type pageType, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null);
     bool GoBack();
+    void NavigateFromBreadcrumb(Type TargetPageType, int BreadcrumbBarIndex, bool NavigatingBackwardsFromBreadcrumb = true);
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Windows.ApplicationModel.Resources;
+﻿using System.Collections.ObjectModel;
+using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
 public partial class JsonNavigationViewService : IJsonNavigationViewService
@@ -114,5 +115,18 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     {
         ResourceManager = resourceManager;
         ResourceContext = resourceContext;
+    }
+
+    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar)
+    {
+        _mainBreadcrumb = breadcrumbBar;
+        _useBreadcrumbBar = false;
+        if (_mainBreadcrumb != null)
+        {
+            BreadCrumbs = new ObservableCollection<NavigationBreadcrumb>();
+            _useBreadcrumbBar = true;
+            _mainBreadcrumb.ItemClicked -= MainBreadcrumb_ItemClicked;
+            _mainBreadcrumb.ItemClicked += MainBreadcrumb_ItemClicked;
+        }
     }
 }

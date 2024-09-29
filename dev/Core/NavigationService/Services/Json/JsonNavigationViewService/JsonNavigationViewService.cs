@@ -7,7 +7,6 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 {
     private NavigationView? _navigationView;
     private AutoSuggestBox? _autoSuggestBox;
-
     public IList<object>? MenuItems => _navigationView?.MenuItems;
     public IList<object>? FooterMenuItems => _navigationView?.FooterMenuItems;
     private IList<object>? _menuItemsWithFooterMenuItems => MenuItems?.Concat(FooterMenuItems)?.ToList();
@@ -28,7 +27,6 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     private PathType _pathType;
     private bool _autoIncludedInBuild;
     public DataSource DataSource { get; set; }
-
     private NavigationViewItem topLevelItem { get; set; }
 
     [MemberNotNull(nameof(_navigationView))]
@@ -162,7 +160,13 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         {
             if (_pageService.GetPageType(_pageService.SettingsPageKey) != null)
             {
-                NavigateTo(_pageService.SettingsPageKey);
+                string pageTitle = string.Empty;
+                var item = SettingsItem as NavigationViewItem;
+                if (item != null && item.Content != null)
+                {
+                    pageTitle = item.Content?.ToString();
+                }
+                NavigateTo(_pageService.SettingsPageKey, pageTitle);
             }
         }
         else
