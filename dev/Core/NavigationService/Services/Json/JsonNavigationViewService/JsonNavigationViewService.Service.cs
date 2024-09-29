@@ -111,11 +111,11 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                     {
                         pageTitle = value;
                     }
-                    else if (CurrentPageParameter != null && CurrentPageParameter is DataItem dataItem)
+                    else if (!_disableNavigationViewNavigator && CurrentPageParameter != null && CurrentPageParameter is DataItem dataItem)
                     {
                         pageTitle = dataItem.Title;
                     }
-                    else if (CurrentPageParameter != null && CurrentPageParameter is DataGroup dataGroup)
+                    else if (!_disableNavigationViewNavigator && CurrentPageParameter != null && CurrentPageParameter is DataGroup dataGroup)
                     {
                         pageTitle = dataGroup.Title;
                     }
@@ -123,8 +123,25 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
                 if (!string.IsNullOrEmpty(pageTitle))
                 {
-                    BreadCrumbs?.Add(new NavigationBreadcrumb(pageTitle, pageType));
-                    UpdateBreadcrumb();
+                    if (BreadCrumbs != null)
+                    {
+                        var currentItem = new NavigationBreadcrumb(pageTitle, pageType);
+
+                        if (_allowDuplication)
+                        {
+                            BreadCrumbs?.Add(currentItem);
+                            UpdateBreadcrumb();
+                        }
+                        else
+                        {
+                            var itemExist = BreadCrumbs.Contains(currentItem, new GenericCompare<NavigationBreadcrumb>(x => x.Page));
+                            if (!itemExist)
+                            {
+                                BreadCrumbs?.Add(currentItem);
+                                UpdateBreadcrumb();
+                            }
+                        }
+                    }
                 }
             }
 

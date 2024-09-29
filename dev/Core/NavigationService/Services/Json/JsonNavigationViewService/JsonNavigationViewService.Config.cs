@@ -117,8 +117,9 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         ResourceContext = resourceContext;
     }
 
-    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar)
+    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, bool disableNavigationViewNavigator)
     {
+        _disableNavigationViewNavigator = disableNavigationViewNavigator;
         _mainBreadcrumb = breadcrumbBar;
         _useBreadcrumbBar = false;
         if (_mainBreadcrumb != null)
@@ -128,5 +129,10 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             _mainBreadcrumb.ItemClicked -= MainBreadcrumb_ItemClicked;
             _mainBreadcrumb.ItemClicked += MainBreadcrumb_ItemClicked;
         }
+    }
+    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, bool disableNavigationViewNavigator, bool allowDuplication)
+    {
+        _allowDuplication = allowDuplication;
+        ConfigBreadcrumbBar(breadcrumbBar, disableNavigationViewNavigator);
     }
 }
