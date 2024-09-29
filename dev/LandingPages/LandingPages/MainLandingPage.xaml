@@ -1,17 +1,101 @@
-﻿<local:ItemsPageBase x:Class="WinUICommunity.MainLandingPage"
-                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     xmlns:local="using:WinUICommunity"
-                     HighContrastAdjustment="None"
-                     NavigationCacheMode="Enabled">
+﻿<local:ItemsPageBase
+    x:Class="WinUICommunity.MainLandingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUICommunity"
+    HighContrastAdjustment="None"
+    NavigationCacheMode="Enabled">
 
     <Page.Resources>
-        <CollectionViewSource x:Name="itemsCVS"
-                              IsSourceGrouped="true" />
+        <CollectionViewSource x:Name="itemsCVS" IsSourceGrouped="true" />
     </Page.Resources>
 
     <!--  This grid acts as a root panel for the page.  -->
     <Grid>
+        <GridView
+            x:Name="itemGridView"
+            Padding="24,0,24,0"
+            AutomationProperties.AutomationId="ItemGridView"
+            AutomationProperties.Name="Items In Group"
+            ContainerContentChanging="OnItemGridViewContainerContentChanging"
+            IsItemClickEnabled="True"
+            IsSwipeEnabled="False"
+            ItemClick="OnItemGridViewItemClick"
+            ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
+            ItemTemplate="{StaticResource ControlItemTemplate}"
+            ItemsSource="{x:Bind itemsCVS.View, Mode=OneWay}"
+            Loaded="OnItemGridViewLoaded"
+            SelectionMode="None">
+            <GridView.Header>
+                <Grid x:Name="HeaderGrid" Margin="{x:Bind HeaderMargin, Mode=OneWay}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <local:HomePageHeaderImage
+                        Grid.RowSpan="2"
+                        Height="{x:Bind HeaderImageHeight, Mode=OneWay}"
+                        VerticalAlignment="Top"
+                        EnableLazyLoading="{x:Bind EnableLazyLoading, Mode=OneWay}"
+                        HeaderImage="{x:Bind HeaderImage, Mode=OneWay}"
+                        HeaderOverlayImage="{x:Bind HeaderOverlayImage, Mode=OneWay}"
+                        IsCacheEnabled="{x:Bind IsCacheEnabled, Mode=OneWay}"
+                        LazyLoadingThreshold="{x:Bind LazyLoadingThreshold, Mode=OneWay}"
+                        PlaceholderSource="{x:Bind PlaceholderSource, Mode=OneWay}" />
+
+                    <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
+                    <StackPanel
+                        Margin="{x:Bind HeaderContentMargin, Mode=OneWay}"
+                        VerticalAlignment="Center"
+                        Orientation="Vertical">
+                        <TextBlock
+                            x:Name="smallHeaderSubtitleText"
+                            FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                            FontSize="{x:Bind HeaderSubtitleFontSize, Mode=OneWay}"
+                            Text="{x:Bind HeaderSubtitleText, Mode=OneWay}" />
+                        <TextBlock
+                            x:Name="smallHeaderText"
+                            FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                            FontSize="{x:Bind HeaderFontSize, Mode=OneWay}"
+                            Style="{StaticResource TitleLargeTextBlockStyle}"
+                            Text="{x:Bind HeaderText, Mode=OneWay}" />
+                    </StackPanel>
+
+                    <local:TileGallery
+                        x:Name="headerTileGallery"
+                        Grid.Row="1"
+                        Margin="0,0,0,0"
+                        HeaderContent="{x:Bind HeaderContent, Mode=OneWay}"
+                        Visibility="{x:Bind HeaderContent, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}" />
+                </Grid>
+            </GridView.Header>
+
+            <GridView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate x:DataType="local:GroupInfoList">
+                            <TextBlock
+                                x:Name="pageSubtitle"
+                                Margin="4,32,0,0"
+                                AutomationProperties.HeadingLevel="Level1"
+                                FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                                Style="{StaticResource SubtitleTextBlockStyle}"
+                                Text="{x:Bind Title}" />
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </GridView.GroupStyle>
+
+            <GridView.Footer>
+                <Grid
+                    Height="{x:Bind FooterHeight, Mode=OneWay}"
+                    Margin="{x:Bind FooterMargin, Mode=OneWay}"
+                    VerticalAlignment="Bottom"
+                    Visibility="{x:Bind FooterContent, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}">
+                    <ContentPresenter Content="{x:Bind FooterContent, Mode=OneWay}" />
+                </Grid>
+            </GridView.Footer>
+        </GridView>
         <VisualStateManager.VisualStateGroups>
             <!--  Visual states reflect the application's window size  -->
             <VisualStateGroup x:Name="LayoutVisualStates">
@@ -32,82 +116,5 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <GridView x:Name="itemGridView"
-                  Padding="24,0,24,0"
-                  AutomationProperties.AutomationId="ItemGridView"
-                  AutomationProperties.Name="Items In Group"
-                  ContainerContentChanging="OnItemGridViewContainerContentChanging"
-                  IsItemClickEnabled="True"
-                  IsSwipeEnabled="False"
-                  ItemClick="OnItemGridViewItemClick"
-                  ItemContainerStyle="{StaticResource IndentedGridViewItemStyle}"
-                  ItemTemplate="{StaticResource ControlItemTemplate}"
-                  ItemsSource="{x:Bind itemsCVS.View, Mode=OneWay}"
-                  Loaded="OnItemGridViewLoaded"
-                  SelectionMode="None">
-            <GridView.Header>
-                <Grid x:Name="HeaderGrid"
-                      Margin="{x:Bind HeaderMargin, Mode=OneWay}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <local:HomePageHeaderImage Grid.RowSpan="2"
-                                               Height="{x:Bind HeaderImageHeight, Mode=OneWay}"
-                                               VerticalAlignment="Top"
-                                               EnableLazyLoading="{x:Bind EnableLazyLoading, Mode=OneWay}"
-                                               HeaderImage="{x:Bind HeaderImage, Mode=OneWay}"
-                                               HeaderOverlayImage="{x:Bind HeaderOverlayImage, Mode=OneWay}"
-                                               IsCacheEnabled="{x:Bind IsCacheEnabled, Mode=OneWay}"
-                                               LazyLoadingThreshold="{x:Bind LazyLoadingThreshold, Mode=OneWay}"
-                                               PlaceholderSource="{x:Bind PlaceholderSource, Mode=OneWay}" />
-
-                    <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
-                    <StackPanel Margin="{x:Bind HeaderContentMargin, Mode=OneWay}"
-                                VerticalAlignment="Center"
-                                Orientation="Vertical">
-                        <TextBlock x:Name="smallHeaderSubtitleText"
-                                   FontFamily="{ThemeResource ContentControlThemeFontFamily}"
-                                   FontSize="{x:Bind HeaderSubtitleFontSize, Mode=OneWay}"
-                                   Text="{x:Bind HeaderSubtitleText, Mode=OneWay}" />
-                        <TextBlock x:Name="smallHeaderText"
-                                   FontFamily="{ThemeResource ContentControlThemeFontFamily}"
-                                   FontSize="{x:Bind HeaderFontSize, Mode=OneWay}"
-                                   Style="{StaticResource TitleLargeTextBlockStyle}"
-                                   Text="{x:Bind HeaderText, Mode=OneWay}" />
-                    </StackPanel>
-
-                    <local:TileGallery x:Name="headerTileGallery"
-                                       Grid.Row="1"
-                                       Margin="0,0,0,0"
-                                       HeaderContent="{x:Bind HeaderContent, Mode=OneWay}"
-                                       Visibility="{x:Bind HeaderContent, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}" />
-                </Grid>
-            </GridView.Header>
-
-            <GridView.GroupStyle>
-                <GroupStyle>
-                    <GroupStyle.HeaderTemplate>
-                        <DataTemplate x:DataType="local:GroupInfoList">
-                            <TextBlock x:Name="pageSubtitle"
-                                       Margin="4,32,0,0"
-                                       AutomationProperties.HeadingLevel="Level1"
-                                       FontFamily="{ThemeResource ContentControlThemeFontFamily}"
-                                       Style="{StaticResource SubtitleTextBlockStyle}"
-                                       Text="{x:Bind Title}" />
-                        </DataTemplate>
-                    </GroupStyle.HeaderTemplate>
-                </GroupStyle>
-            </GridView.GroupStyle>
-
-            <GridView.Footer>
-                <Grid Height="{x:Bind FooterHeight, Mode=OneWay}"
-                      Margin="{x:Bind FooterMargin, Mode=OneWay}"
-                      VerticalAlignment="Bottom"
-                      Visibility="{x:Bind FooterContent, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}">
-                    <ContentPresenter Content="{x:Bind FooterContent, Mode=OneWay}" />
-                </Grid>
-            </GridView.Footer>
-        </GridView>
     </Grid>
 </local:ItemsPageBase>

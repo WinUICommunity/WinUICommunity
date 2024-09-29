@@ -1,25 +1,17 @@
 ﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
 public sealed partial class AllLandingPage : ItemsPageBase
 {
+    internal static AllLandingPage Instance { get; private set; }
     public double HeaderFontSize
     {
         get => (double)GetValue(HeaderFontSizeProperty);
         set => SetValue(HeaderFontSizeProperty, value);
     }
-    public string HeaderImage
-    {
-        get => (string)GetValue(HeaderImageProperty);
-        set => SetValue(HeaderImageProperty, value);
-    }
-    public string HeaderOverlayImage
-    {
-        get => (string)GetValue(HeaderOverlayImageProperty);
-        set => SetValue(HeaderOverlayImageProperty, value);
-    }
+    
     public string HeaderText
     {
         get => (string)GetValue(HeaderTextProperty);
@@ -38,41 +30,37 @@ public sealed partial class AllLandingPage : ItemsPageBase
         set => SetValue(HeaderGridCornerRadiusProperty, value);
     }
 
-    public ImageSource PlaceholderSource
-    {
-        get => (ImageSource)GetValue(PlaceholderSourceProperty);
-        set => SetValue(PlaceholderSourceProperty, value);
-    }
-    public bool IsCacheEnabled
-    {
-        get => (bool)GetValue(IsCacheEnabledProperty);
-        set => SetValue(IsCacheEnabledProperty, value);
-    }
-    public bool EnableLazyLoading
-    {
-        get => (bool)GetValue(EnableLazyLoadingProperty);
-        set => SetValue(EnableLazyLoadingProperty, value);
-    }
-    public double LazyLoadingThreshold
-    {
-        get => (double)GetValue(LazyLoadingThresholdProperty);
-        set => SetValue(LazyLoadingThresholdProperty, value);
-    }
-
-    public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(AllLandingPage), new PropertyMetadata(28.0));
-    public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register("HeaderText", typeof(string), typeof(AllLandingPage), new PropertyMetadata("All"));
-    public static readonly DependencyProperty HeaderImageProperty = DependencyProperty.Register("HeaderImage", typeof(string), typeof(AllLandingPage), new PropertyMetadata(default(string)));
-    public static readonly DependencyProperty HeaderGridCornerRadiusProperty = DependencyProperty.Register("HeaderGridCornerRadius", typeof(CornerRadius), typeof(AllLandingPage), new PropertyMetadata(new CornerRadius(8,0,0,0)));
-    public static readonly DependencyProperty HeaderOverlayImageProperty = DependencyProperty.Register("HeaderOverlayImage", typeof(string), typeof(AllLandingPage), new PropertyMetadata(default(string)));
-    public static readonly DependencyProperty HeaderImageHeightProperty = DependencyProperty.Register("HeaderImageHeight", typeof(double), typeof(AllLandingPage), new PropertyMetadata(200.0));
-    public static readonly DependencyProperty PlaceholderSourceProperty = DependencyProperty.Register("PlaceholderSource", typeof(ImageSource), typeof(AllLandingPage), new PropertyMetadata(default(ImageSource)));
-    public static readonly DependencyProperty IsCacheEnabledProperty = DependencyProperty.Register("IsCacheEnabled", typeof(bool), typeof(AllLandingPage), new PropertyMetadata(true));
-    public static readonly DependencyProperty EnableLazyLoadingProperty = DependencyProperty.Register("EnableLazyLoading", typeof(bool), typeof(AllLandingPage), new PropertyMetadata(true));
-    public static readonly DependencyProperty LazyLoadingThresholdProperty = DependencyProperty.Register("LazyLoadingThreshold", typeof(double), typeof(AllLandingPage), new PropertyMetadata(300.0));
-
+    public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register(nameof(HeaderFontSize), typeof(double), typeof(AllLandingPage), new PropertyMetadata(28.0));
+    public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register(nameof(HeaderText), typeof(string), typeof(AllLandingPage), new PropertyMetadata("All"));
+    public static readonly DependencyProperty HeaderGridCornerRadiusProperty = DependencyProperty.Register(nameof(HeaderGridCornerRadius), typeof(CornerRadius), typeof(AllLandingPage), new PropertyMetadata(new CornerRadius(8,0,0,0)));
+    public static readonly DependencyProperty HeaderImageHeightProperty = DependencyProperty.Register(nameof(HeaderImageHeight), typeof(double), typeof(AllLandingPage), new PropertyMetadata(200.0));
+    
     public AllLandingPage()
     {
         this.InitializeComponent();
+        Instance = this;
+        Loaded -= AllLandingPage_Loaded;
+        Loaded += AllLandingPage_Loaded;
+    }
+
+    internal void Navigate(object sender, RoutedEventArgs e)
+    {
+        if (JsonNavigationViewService != null)
+        {
+            var args = (ItemClickEventArgs)e;
+            var item = (DataItem)args.ClickedItem;
+
+            JsonNavigationViewService.NavigateTo(item.UniqueId + item.Parameter?.ToString(), item);
+        }
+    }
+
+    private void AllLandingPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (CanExecuteInternalCommand && JsonNavigationViewService != null)
+        {
+            GetData(JsonNavigationViewService.DataSource);
+            OrderBy(i => i.Title);
+        }
     }
 
     public void GetData(DataSource dataSource)

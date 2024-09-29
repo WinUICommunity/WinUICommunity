@@ -2,7 +2,6 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Media;
 using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
@@ -56,18 +55,6 @@ public sealed partial class MainLandingPage : ItemsPageBase
         set => SetValue(HeaderContentProperty, value);
     }
 
-    public string HeaderImage
-    {
-        get => (string)GetValue(HeaderImageProperty);
-        set => SetValue(HeaderImageProperty, value);
-    }
-
-    public string HeaderOverlayImage
-    {
-        get => (string)GetValue(HeaderOverlayImageProperty);
-        set => SetValue(HeaderOverlayImageProperty, value);
-    }
-
     public double HeaderImageHeight
     {
         get => (double)GetValue(HeaderImageHeightProperty);
@@ -97,30 +84,6 @@ public sealed partial class MainLandingPage : ItemsPageBase
         get => (Thickness)GetValue(FooterMarginProperty);
         set => SetValue(FooterMarginProperty, value);
     }
-    
-    public ImageSource PlaceholderSource
-    {
-        get => (ImageSource)GetValue(PlaceholderSourceProperty);
-        set => SetValue(PlaceholderSourceProperty, value);
-    }
-
-    public bool IsCacheEnabled
-    {
-        get => (bool)GetValue(IsCacheEnabledProperty);
-        set => SetValue(IsCacheEnabledProperty, value);
-    }
-
-    public bool EnableLazyLoading
-    {
-        get => (bool)GetValue(EnableLazyLoadingProperty);
-        set => SetValue(EnableLazyLoadingProperty, value);
-    }
-
-    public double LazyLoadingThreshold
-    {
-        get => (double)GetValue(LazyLoadingThresholdProperty);
-        set => SetValue(LazyLoadingThresholdProperty, value);
-    }
 
     public Thickness HeaderContentMargin
     {
@@ -128,8 +91,7 @@ public sealed partial class MainLandingPage : ItemsPageBase
         set { SetValue(HeaderContentMarginProperty, value); }
     }
 
-    public static readonly DependencyProperty HeaderContentMarginProperty =
-        DependencyProperty.Register(nameof(HeaderContentMargin), typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(36,100,0,0)));
+    public static readonly DependencyProperty HeaderContentMarginProperty = DependencyProperty.Register(nameof(HeaderContentMargin), typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(36,100,0,0)));
 
     public static readonly DependencyProperty HeaderSubtitleFontSizeProperty = DependencyProperty.Register("HeaderSubtitleFontSize", typeof(double), typeof(MainLandingPage), new PropertyMetadata(18.0));
     public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(MainLandingPage), new PropertyMetadata(40.0));
@@ -139,22 +101,27 @@ public sealed partial class MainLandingPage : ItemsPageBase
 
     public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register("HeaderText", typeof(string), typeof(MainLandingPage), new PropertyMetadata(default(string)));
     public static readonly DependencyProperty HeaderSubtitleTextProperty = DependencyProperty.Register("HeaderSubtitleText", typeof(string), typeof(MainLandingPage), new PropertyMetadata(default(string)));
-    public static readonly DependencyProperty HeaderImageProperty = DependencyProperty.Register("HeaderImage", typeof(string), typeof(MainLandingPage), new PropertyMetadata(default(string)));
-    public static readonly DependencyProperty HeaderOverlayImageProperty = DependencyProperty.Register("HeaderOverlayImage", typeof(string), typeof(MainLandingPage), new PropertyMetadata(default(string)));
     public static readonly DependencyProperty HeaderContentProperty = DependencyProperty.Register("HeaderContent", typeof(object), typeof(MainLandingPage), new PropertyMetadata(null));
     public static readonly DependencyProperty HeaderImageHeightProperty = DependencyProperty.Register("HeaderImageHeight", typeof(double), typeof(MainLandingPage), new PropertyMetadata(396.0));
     public static readonly DependencyProperty HeaderMarginProperty = DependencyProperty.Register("HeaderMargin", typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(-24, 0, -24, 0)));
     public static readonly DependencyProperty FooterContentProperty = DependencyProperty.Register("FooterContent", typeof(object), typeof(MainLandingPage), new PropertyMetadata(null));
     public static readonly DependencyProperty FooterHeightProperty = DependencyProperty.Register("FooterHeight", typeof(double), typeof(MainLandingPage), new PropertyMetadata(200.0));
     public static readonly DependencyProperty FooterMarginProperty = DependencyProperty.Register("FooterMargin", typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(16, 34, 48, 0)));
-    public static readonly DependencyProperty PlaceholderSourceProperty = DependencyProperty.Register("PlaceholderSource", typeof(ImageSource), typeof(MainLandingPage), new PropertyMetadata(default(ImageSource)));
-    public static readonly DependencyProperty IsCacheEnabledProperty = DependencyProperty.Register("IsCacheEnabled", typeof(bool), typeof(MainLandingPage), new PropertyMetadata(true));
-    public static readonly DependencyProperty EnableLazyLoadingProperty = DependencyProperty.Register("EnableLazyLoading", typeof(bool), typeof(MainLandingPage), new PropertyMetadata(true));
-    public static readonly DependencyProperty LazyLoadingThresholdProperty = DependencyProperty.Register("LazyLoadingThreshold", typeof(double), typeof(MainLandingPage), new PropertyMetadata(300.0));
 
     public MainLandingPage()
     {
         this.InitializeComponent();
+        Loaded -= MainLandingPage_Loaded;
+        Loaded += MainLandingPage_Loaded;
+    }
+
+    private void MainLandingPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (CanExecuteInternalCommand && JsonNavigationViewService != null)
+        {
+            GetData(JsonNavigationViewService.DataSource);
+            OrderBy(i => i.Title);
+        }
     }
 
     public void GetData(DataSource dataSource)
