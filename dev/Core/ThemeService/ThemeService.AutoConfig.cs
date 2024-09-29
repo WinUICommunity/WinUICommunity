@@ -7,8 +7,10 @@ public partial class ThemeService
         var selectedTheme = (cmb?.SelectedItem as ComboBoxItem)?.Tag?.ToString();
         if (selectedTheme != null)
         {
-            var currentTheme = GeneralHelper.GetEnum<ElementTheme>(selectedTheme);
-            SetElementTheme(currentTheme);
+            if (Enum.TryParse(selectedTheme, out ElementTheme result) && Enum.IsDefined(typeof(ElementTheme), result))
+            {
+                SetElementTheme(result);
+            }
         }
     }
 
@@ -16,7 +18,7 @@ public partial class ThemeService
     {
         var currentTheme = RootTheme.ToString();
         var item = themeComboBox.Items.Cast<ComboBoxItem>().FirstOrDefault(c => c?.Tag?.ToString() == currentTheme);
-        if ((ComboBoxItem)themeComboBox.SelectedItem != item)
+        if (item != null && (ComboBoxItem)themeComboBox.SelectedItem != item)
         {
             themeComboBox.SelectedItem = item;
         }
@@ -28,8 +30,10 @@ public partial class ThemeService
         var selectedBackdrop = (cmb?.SelectedItem as ComboBoxItem)?.Tag?.ToString();
         if (selectedBackdrop != null)
         {
-            var backdrop = GeneralHelper.GetEnum<BackdropType>(selectedBackdrop);
-            SetBackdropType(backdrop);
+            if (Enum.TryParse(selectedBackdrop, out BackdropType result) && Enum.IsDefined(typeof(BackdropType), result))
+            {
+                SetBackdropType(result);
+            }
         }
     }
 
@@ -38,7 +42,7 @@ public partial class ThemeService
         var currentBackdrop = GetBackdropType(GetSystemBackdrop()).ToString();
 
         var item = backdropComboBox.Items.Cast<ComboBoxItem>().FirstOrDefault(c => c?.Tag?.ToString() == currentBackdrop);
-        if ((ComboBoxItem)backdropComboBox.SelectedItem != item)
+        if (item != null && (ComboBoxItem)backdropComboBox.SelectedItem != item)
         {
             backdropComboBox.SelectedItem = item;
         }
