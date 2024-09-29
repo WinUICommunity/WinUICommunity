@@ -97,17 +97,28 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             {
                 string pageTitle = string.Empty;
 
-                if (CurrentPageParameter != null && CurrentPageParameter is string value)
+                DependencyObject obj = Activator.CreateInstance(pageType) as DependencyObject;
+
+                var pageTitleAttached = BreadcrumbNavigator.GetPageTitle(obj);
+
+                if (!string.IsNullOrEmpty(pageTitleAttached))
                 {
-                    pageTitle = value;
+                    pageTitle = pageTitleAttached;
                 }
-                else if (CurrentPageParameter != null && CurrentPageParameter is DataItem dataItem)
+                else
                 {
-                    pageTitle = dataItem.Title;
-                }
-                else if (CurrentPageParameter != null && CurrentPageParameter is DataGroup dataGroup)
-                {
-                    pageTitle = dataGroup.Title;
+                    if (CurrentPageParameter != null && CurrentPageParameter is string value)
+                    {
+                        pageTitle = value;
+                    }
+                    else if (CurrentPageParameter != null && CurrentPageParameter is DataItem dataItem)
+                    {
+                        pageTitle = dataItem.Title;
+                    }
+                    else if (CurrentPageParameter != null && CurrentPageParameter is DataGroup dataGroup)
+                    {
+                        pageTitle = dataGroup.Title;
+                    }
                 }
 
                 if (!string.IsNullOrEmpty(pageTitle))
