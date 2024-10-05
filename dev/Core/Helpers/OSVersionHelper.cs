@@ -1,4 +1,5 @@
-﻿using Windows.Win32.System.SystemInformation;
+﻿using Microsoft.Win32;
+using Windows.Win32.System.SystemInformation;
 
 namespace WinUICommunity;
 public static partial class OSVersionHelper
@@ -60,7 +61,7 @@ public static partial class OSVersionHelper
     /// </summary>
     public static bool IsWindows11_26100_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 26100, OSVersion.Revision);
 
-    public static Version GetOSVersion()
+    public static Version GetOSVersion(bool useRegistryForRevision = true)
     {
         var osv = new OSVERSIONINFOW
         {
@@ -74,7 +75,23 @@ public static partial class OSVersionHelper
             throw new Win32Exception(result);
         }
 
-        return new Version((int)osv.dwMajorVersion, (int)osv.dwMinorVersion, (int)osv.dwBuildNumber);
+        // Get Revision Number
+
+        int revisionNumber = 0;
+        if (useRegistryForRevision)
+        {
+            RegistryKey registryKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
+            if (registryKey != null)
+            {
+                var ubr = registryKey.GetValue("UBR");
+                if (ubr != null)
+                {
+                    revisionNumber = Convert.ToInt32(ubr);
+                }
+            }
+        }
+
+        return new Version((int)osv.dwMajorVersion, (int)osv.dwMinorVersion, (int)osv.dwBuildNumber, revisionNumber);
     }
 
     public static bool IsEqualOrGreater(Version version)
