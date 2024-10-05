@@ -117,7 +117,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         ResourceContext = resourceContext;
     }
 
-    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, bool disableNavigationViewNavigator)
+    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, bool disableNavigationViewNavigator = true)
     {
         _navigationView.AlwaysShowHeader = false;
         _disableNavigationViewNavigator = disableNavigationViewNavigator;
@@ -125,7 +125,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         _useBreadcrumbBar = false;
         if (_mainBreadcrumb != null)
         {
-            BreadCrumbs = new ObservableCollection<NavigationBreadcrumb>();
+            _mainBreadcrumb.BreadCrumbs = new ObservableCollection<NavigationBreadcrumb>();
             _useBreadcrumbBar = true;
             _mainBreadcrumb.ItemClicked -= MainBreadcrumb_ItemClicked;
             _mainBreadcrumb.ItemClicked += MainBreadcrumb_ItemClicked;

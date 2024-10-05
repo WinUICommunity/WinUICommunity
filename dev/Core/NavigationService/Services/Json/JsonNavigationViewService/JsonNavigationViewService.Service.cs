@@ -95,62 +95,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
             if (_useBreadcrumbBar)
             {
-                string pageTitle = string.Empty;
-
-                DependencyObject obj = Activator.CreateInstance(pageType) as DependencyObject;
-
-                var pageTitleAttached = BreadcrumbNavigator.GetPageTitle(obj);
-
-                if (!string.IsNullOrEmpty(pageTitleAttached))
-                {
-                    pageTitle = pageTitleAttached;
-                }
-                else
-                {
-                    if (CurrentPageParameter != null && CurrentPageParameter is string value)
-                    {
-                        pageTitle = value;
-                    }
-                    else if (!_disableNavigationViewNavigator && CurrentPageParameter != null && CurrentPageParameter is DataItem dataItem)
-                    {
-                        pageTitle = dataItem.Title;
-                    }
-                    else if (!_disableNavigationViewNavigator && CurrentPageParameter != null && CurrentPageParameter is DataGroup dataGroup)
-                    {
-                        pageTitle = dataGroup.Title;
-                    }
-                    else if (_disableNavigationViewNavigator && CurrentPageParameter != null && CurrentPageParameter is DataItem)
-                    {
-                        _navigationView.AlwaysShowHeader = false;
-                    }
-                    else if (_disableNavigationViewNavigator && CurrentPageParameter != null && CurrentPageParameter is DataGroup)
-                    {
-                        _navigationView.AlwaysShowHeader = false;
-                    }
-                }
-
-                if (!string.IsNullOrEmpty(pageTitle))
-                {
-                    if (BreadCrumbs != null)
-                    {
-                        var currentItem = new NavigationBreadcrumb(pageTitle, pageType);
-
-                        if (_allowDuplication)
-                        {
-                            BreadCrumbs?.Add(currentItem);
-                            UpdateBreadcrumb();
-                        }
-                        else
-                        {
-                            var itemExist = BreadCrumbs.Contains(currentItem, new GenericCompare<NavigationBreadcrumb>(x => x.Page));
-                            if (!itemExist)
-                            {
-                                BreadCrumbs?.Add(currentItem);
-                                UpdateBreadcrumb();
-                            }
-                        }
-                    }
-                }
+                _mainBreadcrumb.AddNewItem(_navigationView, pageType, null, CurrentPageParameter, CurrentPageParameter, _allowDuplication, _disableNavigationViewNavigator, UpdateBreadcrumb);
             }
 
             var navigated = _frame.Navigate(pageType, parameter, transitionInfo);
@@ -179,7 +124,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 frame.BackStack.Clear();
                 if (_useBreadcrumbBar)
                 {
-                    BreadCrumbs?.Clear();
+                    _mainBreadcrumb?.BreadCrumbs?.Clear();
                 }
             }
 
