@@ -52,12 +52,12 @@ public static partial class OSVersionHelper
     public static bool IsWindows11_22631_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 22631, OSVersion.Revision);
 
     /// <summary>
-    ///     Windows 11 Build 22631
+    ///     Windows 11 Build 26100
     /// </summary>
     public static bool IsWindows11_26100 { get; } = IsWindowsNT && OSVersion == new Version(10, 0, 26100, OSVersion.Revision);
 
     /// <summary>
-    ///     Windows 11 Build 22631 Or Greater
+    ///     Windows 11 Build 26100 Or Greater
     /// </summary>
     public static bool IsWindows11_26100_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 26100, OSVersion.Revision);
 
