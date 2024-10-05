@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v7.0.0-Preview2](https://github.com/WinUICommunity/WinUICommunity/compare/v7.0.0-Preview1...v7.0.0-Preview2)
+
+> 5 October 2024
+
+- Fix #40 [`#40`](https://github.com/WinUICommunity/WinUICommunity/issues/40)
+- Imporve BreadcrumbNavigator #40 [Part 1 | Not Completed Yet!] [`9fd9acf`](https://github.com/WinUICommunity/WinUICommunity/commit/9fd9acf603045d53c607e854eadb0afa2689d5da)
+- Fix Some Issues #40 [`67d1387`](https://github.com/WinUICommunity/WinUICommunity/commit/67d13879d2a06abf850525d4a26b4478a838c590)
+- add PageTitle Attached property for BreadcrumbNavigator [`50b993f`](https://github.com/WinUICommunity/WinUICommunity/commit/50b993fe723d0ad2d2d3c035c6a28fe25507c849)
+- Complete BreadcrumbNavigator #40 [`d52d6d9`](https://github.com/WinUICommunity/WinUICommunity/commit/d52d6d9d3ae8e3ec6caeac266f46efd88845980e)
+- Fix LandingPage ItemTemplate [`663171c`](https://github.com/WinUICommunity/WinUICommunity/commit/663171c2bb6149e40aeaa7feb25b25b97ebb6f95)
+- Update WASDK version [`a8cdaf3`](https://github.com/WinUICommunity/WinUICommunity/commit/a8cdaf3a1e17de8dbaa506384a00910d1913376f)
+- Simplify LandingPages [`ad43486`](https://github.com/WinUICommunity/WinUICommunity/commit/ad434867494c2f2699a0e9d3a5cf541104b0b2eb)
+- Add BreadcrumbNavigator [`442d217`](https://github.com/WinUICommunity/WinUICommunity/commit/442d217cda8871cc6e224b3df760cb56abb90739)
+- Add ItemTemplate to Generic.xaml file so no need to refrence it in App.xaml [`8183f57`](https://github.com/WinUICommunity/WinUICommunity/commit/8183f574e41ebcbc59ce0223cb4c310943967f90)
+- Update CHANGELOG.md [`21a561f`](https://github.com/WinUICommunity/WinUICommunity/commit/21a561f8a206cfa902c786253f6f252b7467c8dd)
+- Remove nucs.JsonSettings from Core #39 [`021876c`](https://github.com/WinUICommunity/WinUICommunity/commit/021876c0bf6846177fe3b7171ca945acaef0f4e7)
+- Add ThemeServiceAttach [`8f5ed81`](https://github.com/WinUICommunity/WinUICommunity/commit/8f5ed81680eab8506840fa558a8f239e53ce791f)
+- Replaced Newtonsoft.Json with System.Text.Json for serialization and deserialization across multiple files.  Updated project properties in Directory.Build.props to handle different configurations and exclude the ContextMenuExtensions project from certain properties. Add support for WinUI, WPF, Winform and all projects that uses .Net 8, 9 and Package Identity. [`3895df8`](https://github.com/WinUICommunity/WinUICommunity/commit/3895df8c54e8c91ab2de91d56d6d6453365cd43b)
+- Fix Some Trimming Warnings [`900fadd`](https://github.com/WinUICommunity/WinUICommunity/commit/900faddf35578a0ab0ca056d86afdef9c43ed385)
+- Add SettingsNavigationAttach [`1f36fd1`](https://github.com/WinUICommunity/WinUICommunity/commit/1f36fd1f09ae6797f56d2c6f00801b1713b530d2)
+- Move RtlGetVersion to NativeMethods.txt [`5ee5e9e`](https://github.com/WinUICommunity/WinUICommunity/commit/5ee5e9eb32b8c201fab8ec86c9f95dc43423fb2a)
+- Revert Some Changes [`a62598e`](https://github.com/WinUICommunity/WinUICommunity/commit/a62598ed11168f7c02f7d42b4dee24d3f1e844cc)
+- Update OSVersionHelper.cs [`04256a0`](https://github.com/WinUICommunity/WinUICommunity/commit/04256a027c6bc5b7c6abdba1acda4f94061276bf)
+- Add LaunchUri for SettingsCard [`7c16fb9`](https://github.com/WinUICommunity/WinUICommunity/commit/7c16fb93017df502f59f865faf98268d32b23809)
+- Update ThemeService.AutoConfig.cs [`099bb39`](https://github.com/WinUICommunity/WinUICommunity/commit/099bb3951571979c2e02a4bc9b0af4bfbf23ebec)
+- Update ReadMe [`2915573`](https://github.com/WinUICommunity/WinUICommunity/commit/2915573715375b075a444f9168216f44170b8a38)
+
 #### [v7.0.0-Preview1](https://github.com/WinUICommunity/WinUICommunity/compare/v6.9.0...v7.0.0-Preview1)
 
 > 25 September 2024
