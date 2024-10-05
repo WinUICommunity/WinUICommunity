@@ -30,3 +30,4 @@ GetModuleFileName
 SetWindowLong
 GetWindowLong
 MessageBox
+RtlGetVersion

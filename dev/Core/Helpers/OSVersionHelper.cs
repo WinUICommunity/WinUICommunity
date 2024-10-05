@@ -1,4 +1,6 @@
-﻿namespace WinUICommunity;
+﻿using Windows.Win32.System.SystemInformation;
+
+namespace WinUICommunity;
 public static partial class OSVersionHelper
 {
     public static readonly Version OSVersion = GetOSVersion();
@@ -48,11 +50,31 @@ public static partial class OSVersionHelper
     /// </summary>
     public static bool IsWindows11_22631_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 22631, OSVersion.Revision);
 
+    /// <summary>
+    ///     Windows 11 Build 22631
+    /// </summary>
+    public static bool IsWindows11_26100 { get; } = IsWindowsNT && OSVersion == new Version(10, 0, 26100, OSVersion.Revision);
+
+    /// <summary>
+    ///     Windows 11 Build 22631 Or Greater
+    /// </summary>
+    public static bool IsWindows11_26100_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 26100, OSVersion.Revision);
+
     public static Version GetOSVersion()
     {
-        var osv = new NativeValues.RTL_OSVERSIONINFOEX();
-        NativeMethods.RtlGetVersion(out osv);
-        return new Version((int)osv.dwMajorVersion, (int)osv.dwMinorVersion, (int)osv.dwBuildNumber, (int)osv.dwRevision);
+        var osv = new OSVERSIONINFOW
+        {
+            dwOSVersionInfoSize = (uint)Marshal.SizeOf<OSVERSIONINFOW>()
+        };
+
+        int result = Windows.Wdk.PInvoke.RtlGetVersion(ref osv);
+
+        if (result < 0)
+        {
+            throw new Win32Exception(result);
+        }
+
+        return new Version((int)osv.dwMajorVersion, (int)osv.dwMinorVersion, (int)osv.dwBuildNumber);
     }
 
     public static bool IsEqualOrGreater(Version version)

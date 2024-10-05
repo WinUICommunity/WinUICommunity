@@ -12,10 +12,6 @@ public static partial class NativeMethods
     [LibraryImport(ExternDll.User32)]
     internal static partial IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, WindowMessage Msg, IntPtr wParam, IntPtr lParam);
 
-    [DllImport(ExternDll.NTdll)]
-    public static extern int RtlGetVersion(out RTL_OSVERSIONINFOEX lpVersionInformation);
-
-    
     [DllImport(ExternDll.User32)]
     [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
     internal static unsafe extern int FillRect(IntPtr hDC, ref Windows.Win32.Foundation.RECT lprc, Windows.Win32.Graphics.Gdi.HBRUSH hbr);
