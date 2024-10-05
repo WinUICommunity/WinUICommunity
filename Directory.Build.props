@@ -2,7 +2,7 @@
   <PropertyGroup Condition="'$(MSBuildProjectName)' != 'WinUICommunityGallery'">
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-    <OutputPath>$(SolutionDir)output\$(MSBuildProjectName)\</OutputPath>
+    <OutputPath>$(SolutionDir)Output\</OutputPath>
     <NoWarn>WMC1506;WMC0001;CA1416;CS8632;CS0067;CS0078;CS0649;CS0414;NU1903;NU1902</NoWarn>
     <ImplicitUsings>true</ImplicitUsings>
     <LangVersion>Latest</LangVersion>
@@ -37,11 +37,11 @@
   
   <!-- The NuGet versions of dependencies to build against. -->
   <ItemGroup Condition="'$(MSBuildProjectName)' != 'ContextMenuExtensions'">
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240829007" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.3233" />
   </ItemGroup>
   
-  <ItemGroup Condition="'$(MSBuildProjectName)' != 'WinUICommunityGallery' And '$(MSBuildProjectName)' != 'ContextMenuExtensions'">
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'WinUICommunityGallery'">
     <None Include="Assets\icon.png" Pack="true" PackagePath="" />
     <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
     <None Include="README.md" Pack="true" PackagePath="" />
