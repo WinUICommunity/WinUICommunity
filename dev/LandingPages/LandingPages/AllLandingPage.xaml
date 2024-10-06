@@ -8,8 +8,8 @@
     <!--  This grid acts as a root panel for the page.  -->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <VisualStateManager.VisualStateGroups>
             <!--  Visual states reflect the application's window size  -->
@@ -35,11 +35,10 @@
         </VisualStateManager.VisualStateGroups>
 
         <Grid x:Name="HeaderGrid"
+              Grid.RowSpan="2"
+              VerticalAlignment="Top"
               CornerRadius="{x:Bind HeaderGridCornerRadius, Mode=OneWay}">
-            <local:HomePageHeaderImage Grid.RowSpan="2"
-                                       Height="{x:Bind HeaderImageHeight, Mode=OneWay}"
-                                       VerticalAlignment="Top"
-                                       EnableLazyLoading="{x:Bind EnableLazyLoading, Mode=OneWay}"
+            <local:HomePageHeaderImage EnableLazyLoading="{x:Bind EnableLazyLoading, Mode=OneWay}"
                                        HeaderImage="{x:Bind HeaderImage, Mode=OneWay}"
                                        HeaderOverlayImage="{x:Bind HeaderOverlayImage, Mode=OneWay}"
                                        IsCacheEnabled="{x:Bind IsCacheEnabled, Mode=OneWay}"
@@ -52,15 +51,17 @@
             <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
             <TextBlock x:Name="smallHeaderText"
                        Margin="36,0,0,0"
-                       VerticalAlignment="Center"
+                       VerticalAlignment="{x:Bind HeaderTextVerticalAlignment, Mode=OneWay}"
                        FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                        FontSize="{x:Bind HeaderFontSize, Mode=OneWay}"
+                       Foreground="{ThemeResource HeaderTextInverseBrush}"
                        Style="{StaticResource TitleTextBlockStyle}"
                        Text="{x:Bind HeaderText, Mode=OneWay}" />
         </Grid>
         <GridView x:Name="itemGridView"
                   Grid.Row="1"
-                  Padding="24,36,24,36"
+                  Padding="{x:Bind GridViewPadding, Mode=OneWay}"
+                  VerticalAlignment="{x:Bind GridViewVerticalAlignment, Mode=OneWay}"
                   AutomationProperties.AutomationId="ItemGridView"
                   AutomationProperties.Name="Items In Group"
                   ContainerContentChanging="OnItemGridViewContainerContentChanging"

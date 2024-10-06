@@ -46,15 +46,94 @@ public sealed partial class AllLandingPage : ItemsPageBase
         get { return (string)GetValue(NormalizedCenterPointProperty); }
         set { SetValue(NormalizedCenterPointProperty, value); }
     }
+    public bool FullScreenHeaderImage
+    {
+        get { return (bool)GetValue(FullScreenHeaderImageProperty); }
+        set { SetValue(FullScreenHeaderImageProperty, value); }
+    }
 
+    public static readonly DependencyProperty FullScreenHeaderImageProperty = DependencyProperty.Register(nameof(FullScreenHeaderImage), typeof(bool), typeof(AllLandingPage), new PropertyMetadata(false, OnFullScreenHeaderImageChanged));
+
+    private static void OnFullScreenHeaderImageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctl = (AllLandingPage)d;
+        if (ctl != null && ctl.HeaderGrid != null && ctl.itemGridView != null)
+        {
+            if ((bool)e.NewValue)
+            {
+                ctl.HeaderGrid.Height = double.NaN;
+                ctl.itemGridView.Padding = new Thickness(24,0,24,36);
+            }
+            else
+            {
+                ctl.HeaderGrid.Height = ctl.HeaderImageHeight;
+                ctl.itemGridView.Padding = new Thickness(24, 0, 24, 72);
+            }
+        }
+    }
+
+    public Thickness GridViewPadding
+    {
+        get { return (Thickness)GetValue(GridViewPaddingProperty); }
+        set { SetValue(GridViewPaddingProperty, value); }
+    }
+    public Brush HeaderTextForeground
+    {
+        get { return (Brush)GetValue(HeaderTextForegroundProperty); }
+        set { SetValue(HeaderTextForegroundProperty, value); }
+    }
+
+    public VerticalAlignment GridViewVerticalAlignment
+    {
+        get { return (VerticalAlignment)GetValue(GridViewVerticalAlignmentProperty); }
+        set { SetValue(GridViewVerticalAlignmentProperty, value); }
+    }
+
+
+
+    public VerticalAlignment HeaderTextVerticalAlignment
+    {
+        get { return (VerticalAlignment)GetValue(HeaderTextVerticalAlignmentProperty); }
+        set { SetValue(HeaderTextVerticalAlignmentProperty, value); }
+    }
+
+    public static readonly DependencyProperty HeaderTextVerticalAlignmentProperty = DependencyProperty.Register(nameof(HeaderTextVerticalAlignment), typeof(VerticalAlignment), typeof(AllLandingPage), new PropertyMetadata(VerticalAlignment.Center));
+    public static readonly DependencyProperty GridViewVerticalAlignmentProperty = DependencyProperty.Register(nameof(GridViewVerticalAlignment), typeof(VerticalAlignment), typeof(AllLandingPage), new PropertyMetadata(VerticalAlignment.Bottom));
+    public static readonly DependencyProperty GridViewPaddingProperty = DependencyProperty.Register(nameof(GridViewPadding), typeof(Thickness), typeof(AllLandingPage), new PropertyMetadata(new Thickness(24,0,24,72)));
     public static readonly DependencyProperty NormalizedCenterPointProperty = DependencyProperty.Register(nameof(NormalizedCenterPoint), typeof(string), typeof(AllLandingPage), new PropertyMetadata("0.5"));
     public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(nameof(Stretch), typeof(Stretch), typeof(AllLandingPage), new PropertyMetadata(Stretch.UniformToFill));
     public static readonly DependencyProperty OverlayOpacityProperty = DependencyProperty.Register(nameof(OverlayOpacity), typeof(double), typeof(AllLandingPage), new PropertyMetadata(0.5));
     public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register(nameof(HeaderFontSize), typeof(double), typeof(AllLandingPage), new PropertyMetadata(28.0));
     public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register(nameof(HeaderText), typeof(string), typeof(AllLandingPage), new PropertyMetadata("All"));
     public static readonly DependencyProperty HeaderGridCornerRadiusProperty = DependencyProperty.Register(nameof(HeaderGridCornerRadius), typeof(CornerRadius), typeof(AllLandingPage), new PropertyMetadata(new CornerRadius(8,0,0,0)));
-    public static readonly DependencyProperty HeaderImageHeightProperty = DependencyProperty.Register(nameof(HeaderImageHeight), typeof(double), typeof(AllLandingPage), new PropertyMetadata(200.0));
-    
+    public static readonly DependencyProperty HeaderImageHeightProperty = DependencyProperty.Register(nameof(HeaderImageHeight), typeof(double), typeof(AllLandingPage), new PropertyMetadata(400.0, OnHeaderImageHeightChanged));
+    public static readonly DependencyProperty HeaderTextForegroundProperty = DependencyProperty.Register(nameof(HeaderTextForeground), typeof(Brush), typeof(AllLandingPage), new PropertyMetadata(null, OnHeaderTextForegroundChanged));
+
+    private static void OnHeaderTextForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctl = (AllLandingPage)d;
+        if (ctl != null && ctl.smallHeaderText != null && e.NewValue != null)
+        {
+            ctl.smallHeaderText.Foreground = (Brush)e.NewValue;
+        }
+    }
+
+    private static void OnHeaderImageHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctl = (AllLandingPage)d;
+        if (ctl != null && ctl.HeaderGrid != null)
+        {
+            if (ctl.FullScreenHeaderImage)
+            {
+                ctl.HeaderGrid.Height = double.NaN;
+            }
+            else
+            {
+                ctl.HeaderGrid.Height = (double)e.NewValue;
+            }
+        }
+    }
+
     public AllLandingPage()
     {
         this.InitializeComponent();
