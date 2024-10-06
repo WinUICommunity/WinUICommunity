@@ -119,9 +119,10 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
     public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, bool disableNavigationViewNavigator = true)
     {
-        _navigationView.AlwaysShowHeader = false;
         _disableNavigationViewNavigator = disableNavigationViewNavigator;
         _mainBreadcrumb = breadcrumbBar;
+        _navigationView.AlwaysShowHeader = false;
+        _mainBreadcrumb.Visibility = Visibility.Collapsed;
         _useBreadcrumbBar = false;
         if (_mainBreadcrumb != null)
         {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using Windows.Foundation;
 
@@ -192,7 +193,15 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
             navigationView.AlwaysShowHeader = isHeaderVisibile;
         }
 
-        ChangeBreadcrumbVisibility(isHeaderVisibile);
+        if (BreadCrumbs == null && BreadCrumbs?.Count == 0)
+        {
+            navigationView.AlwaysShowHeader = false;
+            ChangeBreadcrumbVisibility(false);
+        }
+        else
+        {
+            ChangeBreadcrumbVisibility(isHeaderVisibile);
+        }
 
         if (this.Frame != null)
         {
