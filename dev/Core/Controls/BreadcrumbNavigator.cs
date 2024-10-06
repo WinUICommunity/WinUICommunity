@@ -187,18 +187,17 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
             }
         }
 
-        if (navigationView != null)
-        {
-            navigationView.AlwaysShowHeader = isHeaderVisibile;
-        }
-
-        if (BreadCrumbs == null && BreadCrumbs?.Count == 0)
+        if (BreadCrumbs == null || BreadCrumbs?.Count == 0)
         {
             navigationView.AlwaysShowHeader = false;
             ChangeBreadcrumbVisibility(false);
         }
         else
         {
+            if (navigationView != null)
+            {
+                navigationView.AlwaysShowHeader = isHeaderVisibile;
+            }
             ChangeBreadcrumbVisibility(isHeaderVisibile);
         }
 
