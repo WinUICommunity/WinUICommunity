@@ -1,5 +1,6 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
@@ -29,7 +30,26 @@ public sealed partial class AllLandingPage : ItemsPageBase
         get => (CornerRadius)GetValue(HeaderGridCornerRadiusProperty);
         set => SetValue(HeaderGridCornerRadiusProperty, value);
     }
+    public double OverlayOpacity
+    {
+        get { return (double)GetValue(OverlayOpacityProperty); }
+        set { SetValue(OverlayOpacityProperty, value); }
+    }
 
+    public Stretch Stretch
+    {
+        get { return (Stretch)GetValue(StretchProperty); }
+        set { SetValue(StretchProperty, value); }
+    }
+    public string NormalizedCenterPoint
+    {
+        get { return (string)GetValue(NormalizedCenterPointProperty); }
+        set { SetValue(NormalizedCenterPointProperty, value); }
+    }
+
+    public static readonly DependencyProperty NormalizedCenterPointProperty = DependencyProperty.Register(nameof(NormalizedCenterPoint), typeof(string), typeof(AllLandingPage), new PropertyMetadata("0.5"));
+    public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(nameof(Stretch), typeof(Stretch), typeof(AllLandingPage), new PropertyMetadata(Stretch.UniformToFill));
+    public static readonly DependencyProperty OverlayOpacityProperty = DependencyProperty.Register(nameof(OverlayOpacity), typeof(double), typeof(AllLandingPage), new PropertyMetadata(0.5));
     public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register(nameof(HeaderFontSize), typeof(double), typeof(AllLandingPage), new PropertyMetadata(28.0));
     public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register(nameof(HeaderText), typeof(string), typeof(AllLandingPage), new PropertyMetadata("All"));
     public static readonly DependencyProperty HeaderGridCornerRadiusProperty = DependencyProperty.Register(nameof(HeaderGridCornerRadius), typeof(CornerRadius), typeof(AllLandingPage), new PropertyMetadata(new CornerRadius(8,0,0,0)));
@@ -67,7 +87,6 @@ public sealed partial class AllLandingPage : ItemsPageBase
     {
         Items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem));
     }
-
     public void GetLocalizedData(DataSource dataSource)
     {
         GetLocalized(dataSource, null, null);

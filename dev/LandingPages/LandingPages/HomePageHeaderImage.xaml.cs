@@ -45,12 +45,33 @@ public sealed partial class HomePageHeaderImage : UserControl
         get => (double)GetValue(LazyLoadingThresholdProperty);
         set => SetValue(LazyLoadingThresholdProperty, value);
     }
-    public static readonly DependencyProperty HeaderImageProperty = DependencyProperty.Register("HeaderImage", typeof(string), typeof(HomePageHeaderImage), new PropertyMetadata(default(string)));
-    public static readonly DependencyProperty HeaderOverlayImageProperty = DependencyProperty.Register("HeaderOverlayImage", typeof(string), typeof(HomePageHeaderImage), new PropertyMetadata(default(string)));
-    public static readonly DependencyProperty PlaceholderSourceProperty = DependencyProperty.Register("PlaceholderSource", typeof(ImageSource), typeof(HomePageHeaderImage), new PropertyMetadata(default(ImageSource)));
-    public static readonly DependencyProperty IsCacheEnabledProperty = DependencyProperty.Register("IsCacheEnabled", typeof(bool), typeof(HomePageHeaderImage), new PropertyMetadata(true));
-    public static readonly DependencyProperty EnableLazyLoadingProperty = DependencyProperty.Register("EnableLazyLoading", typeof(bool), typeof(HomePageHeaderImage), new PropertyMetadata(true));
-    public static readonly DependencyProperty LazyLoadingThresholdProperty = DependencyProperty.Register("LazyLoadingThreshold", typeof(double), typeof(HomePageHeaderImage), new PropertyMetadata(300.0));
+
+    public double OverlayOpacity
+    {
+        get { return (double)GetValue(OverlayOpacityProperty); }
+        set { SetValue(OverlayOpacityProperty, value); }
+    }
+
+    public Stretch Stretch
+    {
+        get { return (Stretch)GetValue(StretchProperty); }
+        set { SetValue(StretchProperty, value); }
+    }
+    public string NormalizedCenterPoint
+    {
+        get { return (string)GetValue(NormalizedCenterPointProperty); }
+        set { SetValue(NormalizedCenterPointProperty, value); }
+    }
+
+    public static readonly DependencyProperty NormalizedCenterPointProperty = DependencyProperty.Register(nameof(NormalizedCenterPoint), typeof(string), typeof(HomePageHeaderImage), new PropertyMetadata("0.5"));
+    public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(nameof(Stretch), typeof(Stretch), typeof(HomePageHeaderImage), new PropertyMetadata(Stretch.UniformToFill));
+    public static readonly DependencyProperty OverlayOpacityProperty = DependencyProperty.Register(nameof(OverlayOpacity), typeof(double), typeof(HomePageHeaderImage), new PropertyMetadata(0.5));
+    public static readonly DependencyProperty HeaderImageProperty = DependencyProperty.Register(nameof(HeaderImage), typeof(string), typeof(HomePageHeaderImage), new PropertyMetadata(default(string)));
+    public static readonly DependencyProperty HeaderOverlayImageProperty = DependencyProperty.Register(nameof(HeaderOverlayImage), typeof(string), typeof(HomePageHeaderImage), new PropertyMetadata(default(string)));
+    public static readonly DependencyProperty PlaceholderSourceProperty = DependencyProperty.Register(nameof(PlaceholderSource), typeof(ImageSource), typeof(HomePageHeaderImage), new PropertyMetadata(default(ImageSource)));
+    public static readonly DependencyProperty IsCacheEnabledProperty = DependencyProperty.Register(nameof(IsCacheEnabled), typeof(bool), typeof(HomePageHeaderImage), new PropertyMetadata(true));
+    public static readonly DependencyProperty EnableLazyLoadingProperty = DependencyProperty.Register(nameof(EnableLazyLoading), typeof(bool), typeof(HomePageHeaderImage), new PropertyMetadata(true));
+    public static readonly DependencyProperty LazyLoadingThresholdProperty = DependencyProperty.Register(nameof(LazyLoadingThreshold), typeof(double), typeof(HomePageHeaderImage), new PropertyMetadata(300.0));
 
     private Compositor _compositor;
     private CompositionLinearGradientBrush _imageGridBottomGradientBrush;
