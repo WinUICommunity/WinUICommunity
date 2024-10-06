@@ -85,8 +85,99 @@ public sealed partial class AllLandingPage : ItemsPageBase
 
     public void GetData(DataSource dataSource)
     {
-        Items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem));
+        var allItems = new List<DataItem>();
+
+        foreach (var group in dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup))
+        {
+            foreach (var item in group.Items.Where(i => !i.HideItem))
+            {
+                // Recursively add the items, including nested ones
+                AddItemsRecursively(item, allItems);
+            }
+        }
+
+        Items = allItems;
     }
+
+    public async Task GetDataAsync(string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    {
+        var dataSource = new DataSource();
+        await dataSource.GetGroupsAsync(jsonFilePath, pathType, autoIncludedInBuild);
+
+        var allItems = new List<DataItem>();
+
+        foreach (var group in dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup))
+        {
+            foreach (var item in group.Items.Where(i => !i.HideItem))
+            {
+                // Recursively add the items, including nested ones
+                AddItemsRecursively(item, allItems);
+            }
+        }
+
+        Items = allItems;
+    }
+
+    private void AddItemsRecursively(DataItem currentItem, List<DataItem> allItems)
+    {
+        allItems.Add(currentItem);
+
+        // Recursively check for nested items in the current item
+        foreach (var nestedItem in currentItem.Items.Where(i => !i.HideItem))
+        {
+            AddItemsRecursively(nestedItem, allItems);
+        }
+    }
+    private void GetLocalized(DataSource dataSource, ResourceManager resourceManager, ResourceContext resourceContext)
+    {
+        var allItems = new List<DataItem>();
+
+        // Gather all items from all groups, including nested items
+        foreach (var group in dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup))
+        {
+            foreach (var item in group.Items.Where(i => !i.HideItem))
+            {
+                AddLocalizedItemsRecursively(item, allItems, resourceManager, resourceContext);
+            }
+        }
+
+        Items = allItems;
+    }
+    private async Task GetLocalizedAsync(string jsonFilePath, ResourceManager resourceManager, ResourceContext resourceContext, PathType pathType, bool autoIncludedInBuild)
+    {
+        var dataSource = new DataSource();
+        await dataSource.GetGroupsAsync(jsonFilePath, pathType, autoIncludedInBuild);
+
+        var allItems = new List<DataItem>();
+
+        // Gather all items from all groups, including nested items
+        foreach (var group in dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup))
+        {
+            foreach (var item in group.Items.Where(i => !i.HideItem))
+            {
+                AddLocalizedItemsRecursively(item, allItems, resourceManager, resourceContext);
+            }
+        }
+
+        Items = allItems;
+    }
+
+    private void AddLocalizedItemsRecursively(DataItem currentItem, List<DataItem> allItems, ResourceManager resourceManager, ResourceContext resourceContext)
+    {
+        currentItem.Title = Helper.GetLocalizedText(currentItem.Title, currentItem.UsexUid, resourceManager, resourceContext);
+        currentItem.SecondaryTitle = Helper.GetLocalizedText(currentItem.SecondaryTitle, currentItem.UsexUid, resourceManager, resourceContext);
+        currentItem.Subtitle = Helper.GetLocalizedText(currentItem.Subtitle, currentItem.UsexUid, resourceManager, resourceContext);
+        currentItem.Description = Helper.GetLocalizedText(currentItem.Description, currentItem.UsexUid, resourceManager, resourceContext);
+
+        allItems.Add(currentItem);
+
+        // Recursively process nested items
+        foreach (var nestedItem in currentItem.Items.Where(i => !i.HideItem))
+        {
+            AddLocalizedItemsRecursively(nestedItem, allItems, resourceManager, resourceContext);
+        }
+    }
+
     public void GetLocalizedData(DataSource dataSource)
     {
         GetLocalized(dataSource, null, null);
@@ -97,27 +188,6 @@ public sealed partial class AllLandingPage : ItemsPageBase
         GetLocalized(dataSource, resourceManager, resourceContext);
     }
 
-    private void GetLocalized(DataSource dataSource, ResourceManager resourceManager, ResourceContext resourceContext)
-    {
-        var items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem)).ToList();
-        for (int i = 0; i < items.Count; i++)
-        {
-            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, resourceManager, resourceContext);
-            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, resourceManager, resourceContext);
-            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, resourceManager, resourceContext);
-            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, resourceManager, resourceContext);
-        }
-
-        Items = items;
-    }
-
-    public async void GetDataAsync(string JsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
-    {
-        var dataSource = new DataSource();
-        await dataSource.GetGroupsAsync(JsonFilePath, pathType, autoIncludedInBuild);
-        Items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem));
-    }
-
     public async void GetLocalizedDataAsync(string JsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
     {
         await GetLocalizedAsync(JsonFilePath, null, null, pathType, autoIncludedInBuild);
@@ -126,23 +196,6 @@ public sealed partial class AllLandingPage : ItemsPageBase
     public async void GetLocalizedDataAsync(string JsonFilePath, ResourceManager resourceManager, ResourceContext resourceContext, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
     {
        await GetLocalizedAsync(JsonFilePath, resourceManager, resourceContext, pathType, autoIncludedInBuild);
-    }
-
-    private async Task GetLocalizedAsync(string JsonFilePath, ResourceManager resourceManager, ResourceContext resourceContext, PathType pathType, bool autoIncludedInBuild)
-    {
-        var dataSource = new DataSource();
-        await dataSource.GetGroupsAsync(JsonFilePath, pathType, autoIncludedInBuild);
-        var items = dataSource.Groups.Where(g => !g.IsSpecialSection && !g.HideGroup).SelectMany(g => g.Items.Where(i => !i.HideItem)).ToList();
-
-        for (int i = 0; i < items.Count; i++)
-        {
-            items[i].Title = Helper.GetLocalizedText(items[i].Title, items[i].UsexUid, resourceManager, resourceContext);
-            items[i].SecondaryTitle = Helper.GetLocalizedText(items[i].SecondaryTitle, items[i].UsexUid, resourceManager, resourceContext);
-            items[i].Subtitle = Helper.GetLocalizedText(items[i].Subtitle, items[i].UsexUid, resourceManager, resourceContext);
-            items[i].Description = Helper.GetLocalizedText(items[i].Description, items[i].UsexUid, resourceManager, resourceContext);
-        }
-
-        Items = items;
     }
 
     public void OrderBy(Func<DataItem, object> orderby = null)
