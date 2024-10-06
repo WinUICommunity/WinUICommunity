@@ -16,17 +16,6 @@ public partial class JsonNavigationViewService
             NavigateFromBreadcrumb(crumb.Page, args.Index);
         }
     }
-    private void UpdateBreadcrumb()
-    {
-        if (_mainBreadcrumb.BreadCrumbs != null && _mainBreadcrumb.BreadCrumbs?.Count > 0)
-        {
-            _navigationView.AlwaysShowHeader = true;
-        }
-        else
-        {
-            _navigationView.AlwaysShowHeader = false;
-        }
-    }
     private void NavigateFromBreadcrumb(Type TargetPageType, int BreadcrumbBarIndex)
     {
         SlideNavigationTransitionInfo info = new SlideNavigationTransitionInfo();
