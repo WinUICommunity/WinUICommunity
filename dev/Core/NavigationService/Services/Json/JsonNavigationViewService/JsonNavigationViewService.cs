@@ -85,7 +85,7 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
             if (args.ChosenSuggestion is DataItem)
             {
                 var infoDataItem = args.ChosenSuggestion as DataItem;
-                NavigateTo(infoDataItem.UniqueId, infoDataItem);
+                NavigateTo(infoDataItem.UniqueId + infoDataItem.Parameter, infoDataItem);
             }
         }
     }
