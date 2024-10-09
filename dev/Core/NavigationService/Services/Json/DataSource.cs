@@ -10,16 +10,16 @@ public partial class DataSource
     public ObservableCollection<DataGroup> Groups { get; set; } = new ObservableCollection<DataGroup>();
     public ObservableCollection<DataGroup> SectionGroups { get; set; } = new ObservableCollection<DataGroup>();
 
-    public async Task<IEnumerable<DataGroup>> GetGroupsAsync(string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    public async Task<IEnumerable<DataGroup>> GetGroupsAsync(string jsonFilePath, PathType pathType = PathType.Relative)
     {
-        await GetDataAsync(jsonFilePath, pathType, autoIncludedInBuild);
+        await GetDataAsync(jsonFilePath, pathType);
 
         return Groups;
     }
 
-    public async Task<IEnumerable<DataGroup>> GetSectionGroupsAsync(string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    public async Task<IEnumerable<DataGroup>> GetSectionGroupsAsync(string jsonFilePath, PathType pathType = PathType.Relative)
     {
-        await GetDataAsync(jsonFilePath, pathType, autoIncludedInBuild);
+        await GetDataAsync(jsonFilePath, pathType);
 
         return SectionGroups;
     }
@@ -38,17 +38,17 @@ public partial class DataSource
         return null;
     }
 
-    public async Task<DataGroup> GetGroupAsync(string uniqueId, string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    public async Task<DataGroup> GetGroupAsync(string uniqueId, string jsonFilePath, PathType pathType = PathType.Relative)
     {
-        await GetDataAsync(jsonFilePath, pathType, autoIncludedInBuild);
+        await GetDataAsync(jsonFilePath, pathType);
         // Simple linear search is acceptable for small data sets
         var matches = Groups.Where((group) => !string.IsNullOrEmpty(group.UniqueId) && group.UniqueId.Equals(uniqueId));
         return matches.Count() == 1 ? matches.First() : null;
     }
 
-    public async Task<DataGroup> GetSectionGroupAsync(string uniqueId, string sectionId, string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    public async Task<DataGroup> GetSectionGroupAsync(string uniqueId, string sectionId, string jsonFilePath, PathType pathType = PathType.Relative)
     {
-        await GetDataAsync(jsonFilePath, pathType, autoIncludedInBuild);
+        await GetDataAsync(jsonFilePath, pathType);
         // Simple linear search is acceptable for small data sets
         var matches = SectionGroups.Where((group) => !string.IsNullOrEmpty(group.UniqueId) && !string.IsNullOrEmpty(group.SectionId) && group.UniqueId.Equals(uniqueId) && group.SectionId.Equals(sectionId));
         return matches.Count() == 1 ? matches.First() : null;
@@ -70,9 +70,9 @@ public partial class DataSource
         return null;
     }
 
-    public async Task<DataItem> GetItemAsync(string uniqueId, string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    public async Task<DataItem> GetItemAsync(string uniqueId, string jsonFilePath, PathType pathType = PathType.Relative)
     {
-        await GetDataAsync(jsonFilePath, pathType, autoIncludedInBuild);
+        await GetDataAsync(jsonFilePath, pathType);
         // Simple linear search is acceptable for small data sets
         var matches = FindItems(Groups.SelectMany(group => group.Items), uniqueId).ToList();
 
@@ -106,7 +106,7 @@ public partial class DataSource
         }
     }
 
-    public async Task GetDataAsync(string jsonFilePath, PathType pathType, bool autoIncludedInBuild)
+    public async Task GetDataAsync(string jsonFilePath, PathType pathType)
     {
         lock (_lock)
         {
@@ -122,7 +122,7 @@ public partial class DataSource
 
         lock (_lock)
         {
-            UpdateItemInGroups(controlInfoDataGroup.Groups, autoIncludedInBuild);
+            UpdateItemInGroups(controlInfoDataGroup.Groups);
 
             foreach (var group in controlInfoDataGroup.Groups)
             {
@@ -135,21 +135,21 @@ public partial class DataSource
         }
     }
 
-    private void UpdateItemInGroups(ObservableCollection<DataGroup> groups, bool autoIncludedInBuild)
+    private void UpdateItemInGroups(ObservableCollection<DataGroup> groups)
     {
         foreach (var group in groups)
         {
             foreach (var item in group.Items)
             {
-                UpdateItem(item, autoIncludedInBuild);
-                UpdateItemInItems(item.Items, autoIncludedInBuild);
+                UpdateItem(item);
+                UpdateItemInItems(item.Items);
             }
 
-            UpdateItemInItems(group.Items, autoIncludedInBuild);
+            UpdateItemInItems(group.Items);
         }
     }
 
-    private void UpdateItemInItems(ObservableCollection<DataItem> items, bool autoIncludedInBuild)
+    private void UpdateItemInItems(ObservableCollection<DataItem> items)
     {
         foreach (var item in items)
         {
@@ -179,13 +179,13 @@ public partial class DataSource
                     SectionGroups.Add(group);
                 }
             }
-            UpdateItem(item, autoIncludedInBuild);
-            UpdateItemInItems(item.Items, autoIncludedInBuild);
+            UpdateItem(item);
+            UpdateItemInItems(item.Items);
         }
     }
 
 
-    private DataItem UpdateItem(DataItem item, bool autoIncludedInBuild)
+    private DataItem UpdateItem(DataItem item)
     {
         string? badgeString = item switch
         {
@@ -201,20 +201,6 @@ public partial class DataSource
         }
 
         item.BadgeString = badgeString;
-        bool isIncludedInBuild = item.IncludedInBuild;
-        string pageString = item.UniqueId;
-        if (autoIncludedInBuild)
-        {
-            Type pageType = NavigationServiceHelper.GetPageType(pageString, item.ApiNamespace);
-
-            isIncludedInBuild = pageType != null;
-        }
-        else
-        {
-            isIncludedInBuild = item.IncludedInBuild;
-        }
-
-        item.IncludedInBuild = isIncludedInBuild;
         return item;
     }
 }

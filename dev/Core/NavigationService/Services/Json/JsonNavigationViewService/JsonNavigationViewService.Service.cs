@@ -70,7 +70,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
     public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false, NavigationTransitionInfo transitionInfo = null)
     {
-        var pageType = _pageService.GetPageType(pageKey);
+        var pageType = GetPageType(pageKey);
         return Navigate(pageType, parameter, clearNavigation, transitionInfo);
     }
 

@@ -68,7 +68,6 @@ public partial class DataItem : BaseDataInfo
     public ObservableCollection<DataItem> Items { get; set; }
     public ObservableCollection<string> Extra { get; set; }
     public bool IncludedInBuild { get; set; } = true;
-    public bool AutoIncludedInBuild { get; set; }
     public bool IsNavigationViewItemHeader { get; set; }
     public bool UsexUid { get; set; }
     public override string ToString()

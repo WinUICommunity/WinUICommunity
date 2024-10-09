@@ -3,7 +3,7 @@ using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
 
-public partial class JsonNavigationViewService : IJsonNavigationViewService
+public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationViewService
 {
     private NavigationView? _navigationView;
     private AutoSuggestBox? _autoSuggestBox;
@@ -12,8 +12,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     private IList<object>? _menuItemsWithFooterMenuItems => MenuItems?.Concat(FooterMenuItems)?.ToList();
     public object? SettingsItem => _navigationView?.SettingsItem;
 
-    private readonly JsonPageService _pageService = new();
-
+    private Dictionary<string, Type> _pageDictionary = new Dictionary<string, Type>();
     private Type _defaultPage { get; set; }
     private Type _settingsPage { get; set; }
     private Type _sectionPage { get; set; }
@@ -25,16 +24,15 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     private string _autoSuggestBoxNotFoundImagePath;
     public string JsonFilePath;
     private PathType _pathType;
-    private bool _autoIncludedInBuild;
     public DataSource DataSource { get; set; }
     private NavigationViewItem topLevelItem { get; set; }
 
     [MemberNotNull(nameof(_navigationView))]
-    public void Initialize(NavigationView navigationView, Frame frame)
+    public void Initialize(NavigationView navigationView, Frame frame, Dictionary<string, Type> pages)
     {
         _navigationView = navigationView;
         this.Frame = frame;
-
+        this._pageDictionary = pages;
         _navigationView.BackRequested += OnBackRequested;
         _navigationView.ItemInvoked += OnItemInvoked;
         Navigated += (s, e) =>
@@ -158,7 +156,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
     {
         if (args.IsSettingsInvoked)
         {
-            if (_pageService.GetPageType(_pageService.SettingsPageKey) != null)
+            if (GetPageType(SettingsPageKey) != null)
             {
                 string pageTitle = string.Empty;
                 var item = SettingsItem as NavigationViewItem;
@@ -166,7 +164,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 {
                     pageTitle = item.Content?.ToString();
                 }
-                NavigateTo(_pageService.SettingsPageKey, pageTitle);
+                NavigateTo(SettingsPageKey, pageTitle);
             }
         }
         else
@@ -175,11 +173,11 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
             if (_sectionPage != null && selectedItem.DataContext is DataGroup itemGroup && !string.IsNullOrEmpty(itemGroup.SectionId))
             {
-                NavigateTo(_pageService.SectionPageKey, itemGroup);
+                NavigateTo(SectionPageKey, itemGroup);
             }
             else if (_sectionPage != null && selectedItem.DataContext is DataItem item && !string.IsNullOrEmpty(item.SectionId) && item.Items.Count > 0)
             {
-                NavigateTo(_pageService.SectionPageKey, item);
+                NavigateTo(SectionPageKey, item);
             }
             else
             {
@@ -288,7 +286,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             if (item is NavigationViewItem navigationViewItem)
             {
                 string navigatedToValue = NavigationHelperEx.GetNavigateTo(navigationViewItem);
-                var pageType = _pageService.GetPageType(navigatedToValue);
+                var pageType = GetPageType(navigatedToValue);
                 if (pageType == currentPageType)
                 {
                     return navigationViewItem;

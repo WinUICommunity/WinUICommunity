@@ -89,14 +89,6 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         }
     }
 
-    private void AddNavigationMenuItems()
-    {
-        AddNavigationMenuItemsBase(true, false);
-    }
-    private void AddNavigationMenuItems(bool orderRootItems)
-    {
-        AddNavigationMenuItemsBase(orderRootItems, false);
-    }
     private void AddNavigationMenuItems(bool orderRootItems, bool orderByDescending)
     {
         AddNavigationMenuItemsBase(orderRootItems, orderByDescending);
@@ -106,7 +98,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         if (_navigationView == null)
             return;
 
-        DataSource.GetDataAsync(JsonFilePath, _pathType, _autoIncludedInBuild).ContinueWith(t =>
+        DataSource.GetDataAsync(JsonFilePath, _pathType).ContinueWith(t =>
         {
             var dataGroup = DataSource.Groups.Where(i => !i.IsSpecialSection && !i.HideGroup);
             if (orderRootItems)

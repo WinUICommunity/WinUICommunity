@@ -36,9 +36,9 @@ public sealed partial class SectionPage : ItemsPageBase
         GetItems(group);
     }
 
-    public async void GetDataAsync(string uniqueId, string sectionId, string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    public async void GetDataAsync(string uniqueId, string sectionId, string jsonFilePath, PathType pathType = PathType.Relative)
     {
-        var group = await new DataSource().GetSectionGroupAsync(uniqueId, sectionId, jsonFilePath, pathType, autoIncludedInBuild);
+        var group = await new DataSource().GetSectionGroupAsync(uniqueId, sectionId, jsonFilePath, pathType);
 
         GetItems(group);
     }

@@ -1,13 +1,12 @@
-﻿using System.Collections.ObjectModel;
-using Microsoft.UI.Xaml.Media.Animation;
+﻿using Microsoft.UI.Xaml.Media.Animation;
 using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
 
 public interface IJsonNavigationViewService
 {
-    void Initialize(NavigationView navigationView, Frame frame);
-    void ConfigJson(string jsonFilePath, bool autoIncludedInBuild = false, PathType pathType = PathType.Relative);
+    void Initialize(NavigationView navigationView, Frame frame, Dictionary<string, Type> pageDictionary);
+    void ConfigJson(string jsonFilePath, PathType pathType = PathType.Relative);
     void ConfigAutoSuggestBox(AutoSuggestBox autoSuggestBox, bool useItemTemplate = true, string autoSuggestBoxNotFoundString = null, string autoSuggestBoxNotFoundImagePath = null);
     void ConfigDefaultPage(Type pageType);
     void ConfigSettingsPage(Type pageType);

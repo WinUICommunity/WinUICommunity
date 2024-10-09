@@ -140,10 +140,10 @@ public sealed partial class MainLandingPage : ItemsPageBase
         Items = allItems;
         GetCollectionViewSource().Source = FormatData();
     }
-    public async Task GetDataAsync(string jsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    public async Task GetDataAsync(string jsonFilePath, PathType pathType = PathType.Relative)
     {
         var dataSource = new DataSource();
-        await dataSource.GetGroupsAsync(jsonFilePath, pathType, autoIncludedInBuild);
+        await dataSource.GetGroupsAsync(jsonFilePath, pathType);
 
         var allItems = new List<DataItem>();
 
@@ -187,10 +187,10 @@ public sealed partial class MainLandingPage : ItemsPageBase
         Items = allItems;
         GetCollectionViewSource().Source = FormatData();
     }
-    private async Task GetLocalizedAsync(string jsonFilePath, ResourceManager resourceManager, ResourceContext resourceContext, PathType pathType, bool autoIncludedInBuild)
+    private async Task GetLocalizedAsync(string jsonFilePath, ResourceManager resourceManager, ResourceContext resourceContext, PathType pathType)
     {
         var dataSource = new DataSource();
-        await dataSource.GetGroupsAsync(jsonFilePath, pathType, autoIncludedInBuild);
+        await dataSource.GetGroupsAsync(jsonFilePath, pathType);
 
         var allItems = new List<DataItem>();
 
@@ -232,14 +232,14 @@ public sealed partial class MainLandingPage : ItemsPageBase
         GetLocalized(dataSource, resourceManager, resourceContext);
     }
 
-    public async void GetLocalizedDataAsync(string JsonFilePath, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    public async void GetLocalizedDataAsync(string JsonFilePath, PathType pathType = PathType.Relative)
     {
-        await GetLocalizedAsync(JsonFilePath, null, null, pathType, autoIncludedInBuild);
+        await GetLocalizedAsync(JsonFilePath, null, null, pathType);
     }
 
-    public async void GetLocalizedDataAsync(string JsonFilePath, ResourceManager resourceManager, ResourceContext resourceContext, PathType pathType = PathType.Relative, bool autoIncludedInBuild = false)
+    public async void GetLocalizedDataAsync(string JsonFilePath, ResourceManager resourceManager, ResourceContext resourceContext, PathType pathType = PathType.Relative)
     {
-        await GetLocalizedAsync(JsonFilePath, resourceManager, resourceContext, pathType, autoIncludedInBuild);
+        await GetLocalizedAsync(JsonFilePath, resourceManager, resourceContext, pathType);
     }
 
     public void OrderBy(Func<DataItem, object> orderby = null)

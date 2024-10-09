@@ -2,44 +2,38 @@
 using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
-public partial class JsonNavigationViewService : IJsonNavigationViewService
+public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationViewService
 {
-    private void ConfigJsonBase(string jsonFilePath, bool orderRootItems, bool orderByDescending, bool autoIncludedInBuild, PathType pathType)
+    private void ConfigJsonBase(string jsonFilePath, bool orderRootItems, bool orderByDescending, PathType pathType)
     {
         JsonFilePath = jsonFilePath;
         _pathType = pathType;
-        _autoIncludedInBuild = autoIncludedInBuild;
         DataSource = new DataSource();
 
         AddNavigationMenuItems(orderRootItems, orderByDescending);
     }
     public void ConfigJson(string jsonFilePath)
     {
-        ConfigJsonBase(jsonFilePath, true, false, false, PathType.Relative);
+        ConfigJsonBase(jsonFilePath, true, false, PathType.Relative);
     }
 
     public void ConfigJson(string jsonFilePath, bool orderRootItems)
     {
-        ConfigJsonBase(jsonFilePath, orderRootItems, false, false, PathType.Relative);
+        ConfigJsonBase(jsonFilePath, orderRootItems, false, PathType.Relative);
     }
     public void ConfigJson(string jsonFilePath, bool orderRootItems, bool orderByDescending)
     {
-        ConfigJsonBase(jsonFilePath, orderRootItems, orderByDescending, false, PathType.Relative);
+        ConfigJsonBase(jsonFilePath, orderRootItems, orderByDescending, PathType.Relative);
     }
 
     public void ConfigJson(string jsonFilePath, PathType pathType)
     {
-        ConfigJsonBase(jsonFilePath, true, false, false, pathType);
+        ConfigJsonBase(jsonFilePath, true, false, pathType);
     }
 
-    public void ConfigJson(string jsonFilePath, bool autoIncludedInBuild, PathType pathType)
+    public void ConfigJson(string jsonFilePath, bool orderRootItems, bool orderByDescending, PathType pathType)
     {
-        ConfigJsonBase(jsonFilePath, true, false, autoIncludedInBuild, pathType);
-    }
-
-    public void ConfigJson(string jsonFilePath, bool orderRootItems, bool orderByDescending, bool autoIncludedInBuild, PathType pathType)
-    {
-        ConfigJsonBase(jsonFilePath, orderRootItems, orderByDescending, autoIncludedInBuild, pathType);
+        ConfigJsonBase(jsonFilePath, orderRootItems, orderByDescending, pathType);
     }
     public void ConfigAutoSuggestBox(AutoSuggestBox autoSuggestBox, bool useItemTemplate = true, string autoSuggestBoxNotFoundString = null, string autoSuggestBoxNotFoundImagePath = null)
     {
@@ -100,14 +94,14 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
     private void ConfigPages()
     {
-        _pageService.GetPages(_menuItemsWithFooterMenuItems);
-        _pageService.SetDefaultPage(_defaultPage);
-        _pageService.SetSettingsPage(_settingsPage);
-        _pageService.SetSectionPage(_sectionPage);
+        _pageKeyToTypeMap = _pageDictionary;
+        SetDefaultPage(_defaultPage);
+        SetSettingsPage(_settingsPage);
+        SetSectionPage(_sectionPage);
 
-        if (_pageService.GetPageType(_pageService.DefaultPageKey) != null)
+        if (GetPageType(DefaultPageKey) != null)
         {
-            NavigateTo(_pageService.DefaultPageKey);
+            NavigateTo(DefaultPageKey);
         }
     }
 

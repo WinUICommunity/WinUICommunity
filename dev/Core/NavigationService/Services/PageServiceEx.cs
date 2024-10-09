@@ -6,6 +6,7 @@ public partial class PageServiceEx : IPageServiceEx
 
     public string DefaultPageKey { get; set; } = nameof(DefaultPageKey);
     public string SettingsPageKey { get; set; } = nameof(SettingsPageKey);
+    internal string SectionPageKey { get; set; } = nameof(SectionPageKey);
 
     public virtual Type GetPageType(string key)
     {
@@ -37,6 +38,13 @@ public partial class PageServiceEx : IPageServiceEx
         if (pageType != null)
         {
             _pageKeyToTypeMap.TryAdd(SettingsPageKey, pageType);
+        }
+    }
+    internal virtual void SetSectionPage(Type pageType)
+    {
+        if (pageType != null)
+        {
+            _pageKeyToTypeMap.TryAdd(SectionPageKey, pageType);
         }
     }
 }
