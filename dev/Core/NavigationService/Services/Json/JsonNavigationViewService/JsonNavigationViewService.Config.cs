@@ -94,7 +94,7 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
 
     private void ConfigPages()
     {
-        _pageKeyToTypeMap = _pageDictionary;
+        _pageKeyToTypeMap = _navigationPageDictionary;
         SetDefaultPage(_defaultPage);
         SetSettingsPage(_settingsPage);
         SetSectionPage(_sectionPage);
@@ -111,9 +111,10 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
         ResourceContext = resourceContext;
     }
 
-    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, bool disableNavigationViewNavigator = true)
+    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool disableNavigationViewNavigator = true)
     {
         _disableNavigationViewNavigator = disableNavigationViewNavigator;
+        _breadcrumbPageDictionary = pageDictionary;
         _mainBreadcrumb = breadcrumbBar;
         _navigationView.AlwaysShowHeader = false;
         _mainBreadcrumb.Visibility = Visibility.Collapsed;
@@ -126,9 +127,9 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
             _mainBreadcrumb.ItemClicked += MainBreadcrumb_ItemClicked;
         }
     }
-    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, bool disableNavigationViewNavigator, bool allowDuplication)
+    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool disableNavigationViewNavigator, bool allowDuplication)
     {
         _allowDuplication = allowDuplication;
-        ConfigBreadcrumbBar(breadcrumbBar, disableNavigationViewNavigator);
+        ConfigBreadcrumbBar(breadcrumbBar, pageDictionary, disableNavigationViewNavigator);
     }
 }

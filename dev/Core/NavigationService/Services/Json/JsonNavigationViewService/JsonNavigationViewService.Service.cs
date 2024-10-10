@@ -95,6 +95,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
             if (_useBreadcrumbBar)
             {
+                _mainBreadcrumb.PageDictionary = _breadcrumbPageDictionary;
                 _mainBreadcrumb.AddNewItem(_navigationView, pageType, null, CurrentPageParameter, CurrentPageParameter, _allowDuplication, _disableNavigationViewNavigator, null);
             }
 

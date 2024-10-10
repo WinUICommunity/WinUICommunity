@@ -12,8 +12,8 @@ public interface IJsonNavigationViewService
     void ConfigSettingsPage(Type pageType);
     void ConfigSectionPage(Type pageType);
     void ConfigLocalizer(ResourceManager resourceManager, ResourceContext resourceContext);
-    void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, bool disableNavigationViewNavigator);
-    void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, bool disableNavigationViewNavigator, bool allowDuplication);
+    void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool disableNavigationViewNavigator);
+    void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool disableNavigationViewNavigator, bool allowDuplication);
 
     void UnregisterEvents();
 

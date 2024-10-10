@@ -12,7 +12,9 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
     private IList<object>? _menuItemsWithFooterMenuItems => MenuItems?.Concat(FooterMenuItems)?.ToList();
     public object? SettingsItem => _navigationView?.SettingsItem;
 
-    private Dictionary<string, Type> _pageDictionary = new Dictionary<string, Type>();
+    private Dictionary<string, Type> _navigationPageDictionary = new Dictionary<string, Type>();
+    private Dictionary<Type, BreadcrumbPageConfig> _breadcrumbPageDictionary;
+
     private Type _defaultPage { get; set; }
     private Type _settingsPage { get; set; }
     private Type _sectionPage { get; set; }
@@ -32,7 +34,7 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
     {
         _navigationView = navigationView;
         this.Frame = frame;
-        this._pageDictionary = pages;
+        this._navigationPageDictionary = pages;
         _navigationView.BackRequested += OnBackRequested;
         _navigationView.ItemInvoked += OnItemInvoked;
         Navigated += (s, e) =>

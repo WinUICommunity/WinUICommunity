@@ -64,6 +64,15 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
     public static readonly DependencyProperty FrameProperty =
         DependencyProperty.Register(nameof(Frame), typeof(Frame), typeof(BreadcrumbNavigator), new PropertyMetadata(null));
 
+    public Dictionary<Type, BreadcrumbPageConfig> PageDictionary
+    {
+        get { return (Dictionary<Type, BreadcrumbPageConfig>)GetValue(PageDictionaryProperty); }
+        set { SetValue(PageDictionaryProperty, value); }
+    }
+
+    public static readonly DependencyProperty PageDictionaryProperty =
+        DependencyProperty.Register(nameof(PageDictionary), typeof(Dictionary<Type, BreadcrumbPageConfig>), typeof(BreadcrumbNavigator), new PropertyMetadata(null));
+
     public BreadcrumbNavigator()
     {
         ItemClicked -= OnItemClicked;
@@ -119,15 +128,31 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
     internal void AddNewItem(NavigationView navigationView, Type targetPageType, NavigationTransitionInfo navigationTransitionInfo, object parameter, object currentPageParameter, bool allowDuplication, bool disableNavigationViewNavigator, Action updateBreadcrumb)
     {
         string pageTitle = string.Empty;
+        string pageTitleAttached = string.Empty;
         bool isHeaderVisibile = true;
         bool clearNavigation = true;
 
-        DependencyObject obj = Activator.CreateInstance(targetPageType) as DependencyObject;
+        if (PageDictionary == null)
+        {
+#pragma warning disable IL2067 // Target parameter argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
+            DependencyObject obj = Activator.CreateInstance(targetPageType) as DependencyObject;
+#pragma warning restore IL2067 // Target parameter argument does not satisfy 'DynamicallyAccessedMembersAttribute' in call to target method. The parameter of method does not have matching annotations.
 
-        var pageTitleAttached = GetPageTitle(obj);
-        isHeaderVisibile = GetIsHeaderVisible(obj);
-        clearNavigation = GetClearNavigation(obj);
-
+            pageTitleAttached = GetPageTitle(obj);
+            isHeaderVisibile = GetIsHeaderVisible(obj);
+            clearNavigation = GetClearNavigation(obj);
+        }
+        else
+        {
+            var item = PageDictionary.FirstOrDefault(x => x.Key == targetPageType);
+            if (item.Value != null)
+            {
+                pageTitleAttached = item.Value.PageTitle;
+                isHeaderVisibile = item.Value.IsHeaderVisible;
+                clearNavigation = item.Value.ClearNavigation;
+            }
+        }
+        
         if (!string.IsNullOrEmpty(pageTitleAttached))
         {
             pageTitle = pageTitleAttached;
