@@ -45,15 +45,12 @@ public partial class SettingsNavigationAttach
                     {
                         void OnItemClick(object sender, RoutedEventArgs e)
                         {
-                            if (item.Tag != null)
-                            {
-                                var pageType = item?.GetValue(NavigationHelperEx.NavigateToSettingProperty) as Type;
+                            var pageType = item?.GetValue(NavigationHelperEx.NavigateToSettingProperty) as Type;
 
-                                if (pageType != null)
-                                {
-                                    var effect = GetSlideNavigationTransitionInfo(panel);
-                                    jsonNavigationService.NavigateTo(pageType, item.Header, false, effect);
-                                }
+                            if (pageType != null)
+                            {
+                                var effect = GetSlideNavigationTransitionInfo(panel);
+                                jsonNavigationService.NavigateTo(pageType, item.Header, false, effect);
                             }
                         }
 
