@@ -47,7 +47,7 @@ public partial class SettingsNavigationAttach
                         {
                             if (item.Tag != null)
                             {
-                                Type pageType = Application.Current.GetType().Assembly.GetType($"{item.Tag}");
+                                var pageType = item?.GetValue(NavigationHelperEx.NavigateToSettingProperty) as Type;
 
                                 if (pageType != null)
                                 {
