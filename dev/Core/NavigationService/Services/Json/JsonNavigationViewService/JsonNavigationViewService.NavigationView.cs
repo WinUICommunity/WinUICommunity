@@ -270,10 +270,20 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             ? null
             : imagePath.ToLowerInvariant().EndsWith(".png") || imagePath.ToLowerInvariant().EndsWith(".jpg")
                 ? new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false }
-                : new FontIcon()
-                {
-                    Glyph = imagePath
-                };
+                : GetFontIcon(imagePath);
+    }
+
+    private FontIcon GetFontIcon(string glyph)
+    {
+        var fontIcon = new FontIcon();
+        fontIcon.Glyph = glyph;
+
+        if (!string.IsNullOrEmpty(_fontFamilyForGlyph))
+        {
+            fontIcon.FontFamily = new FontFamily(_fontFamilyForGlyph);
+        }
+
+        return fontIcon;
     }
 
     private string GetLocalizedText(string input, bool usexUid)

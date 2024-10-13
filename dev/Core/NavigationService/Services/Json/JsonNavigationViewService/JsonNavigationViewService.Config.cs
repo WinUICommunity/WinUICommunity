@@ -106,6 +106,11 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
         _sectionPage = sectionPage;
     }
 
+    public void ConfigFontFamilyForGlyph(string fontFamily)
+    {
+        _fontFamilyForGlyph = fontFamily;
+    }
+
     private void ConfigPages()
     {
         _pageKeyToTypeMap = _navigationPageDictionary;

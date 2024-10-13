@@ -23,6 +23,7 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
     public ResourceContext ResourceContext { get; set; }
     public object CurrentPageParameter { get; set; }
 
+    private string _fontFamilyForGlyph;
     private string _autoSuggestBoxNotFoundString;
     private string _autoSuggestBoxNotFoundImagePath;
     public string JsonFilePath;
