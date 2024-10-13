@@ -8,8 +8,9 @@
     <!--  This grid acts as a root panel for the page.  -->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="{x:Bind SpaceBetweenHeaderAndGridView, Mode=OneWay}" />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <VisualStateManager.VisualStateGroups>
             <!--  Visual states reflect the application's window size  -->
@@ -33,25 +34,23 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-
+        <local:HomePageHeaderImage x:Name="HomePageHeaderImage"
+                                   Grid.RowSpan="3"
+                                   EnableLazyLoading="{x:Bind EnableLazyLoading, Mode=OneWay}"
+                                   HeaderImage="{x:Bind HeaderImage, Mode=OneWay}"
+                                   HeaderOverlayImage="{x:Bind HeaderOverlayImage, Mode=OneWay}"
+                                   IsCacheEnabled="{x:Bind IsCacheEnabled, Mode=OneWay}"
+                                   LazyLoadingThreshold="{x:Bind LazyLoadingThreshold, Mode=OneWay}"
+                                   NormalizedCenterPoint="{x:Bind NormalizedCenterPoint, Mode=OneWay}"
+                                   OverlayOpacity="{x:Bind OverlayOpacity, Mode=OneWay}"
+                                   PlaceholderSource="{x:Bind PlaceholderSource, Mode=OneWay}"
+                                   Stretch="{x:Bind Stretch, Mode=OneWay}" />
         <Grid x:Name="HeaderGrid"
-              Grid.RowSpan="2"
-              VerticalAlignment="Top"
+              VerticalAlignment="{x:Bind HeaderTextVerticalAlignment, Mode=OneWay}"
               CornerRadius="{x:Bind HeaderGridCornerRadius, Mode=OneWay}">
-            <local:HomePageHeaderImage EnableLazyLoading="{x:Bind EnableLazyLoading, Mode=OneWay}"
-                                       HeaderImage="{x:Bind HeaderImage, Mode=OneWay}"
-                                       HeaderOverlayImage="{x:Bind HeaderOverlayImage, Mode=OneWay}"
-                                       IsCacheEnabled="{x:Bind IsCacheEnabled, Mode=OneWay}"
-                                       LazyLoadingThreshold="{x:Bind LazyLoadingThreshold, Mode=OneWay}"
-                                       NormalizedCenterPoint="{x:Bind NormalizedCenterPoint, Mode=OneWay}"
-                                       OverlayOpacity="{x:Bind OverlayOpacity, Mode=OneWay}"
-                                       PlaceholderSource="{x:Bind PlaceholderSource, Mode=OneWay}"
-                                       Stretch="{x:Bind Stretch, Mode=OneWay}" />
-
             <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
             <TextBlock x:Name="smallHeaderText"
                        Margin="36,0,0,0"
-                       VerticalAlignment="{x:Bind HeaderTextVerticalAlignment, Mode=OneWay}"
                        FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                        FontSize="{x:Bind HeaderFontSize, Mode=OneWay}"
                        Foreground="{ThemeResource HeaderTextInverseBrush}"
@@ -59,7 +58,7 @@
                        Text="{x:Bind HeaderText, Mode=OneWay}" />
         </Grid>
         <GridView x:Name="itemGridView"
-                  Grid.Row="1"
+                  Grid.Row="2"
                   Padding="{x:Bind GridViewPadding, Mode=OneWay}"
                   VerticalAlignment="{x:Bind GridViewVerticalAlignment, Mode=OneWay}"
                   AutomationProperties.AutomationId="ItemGridView"

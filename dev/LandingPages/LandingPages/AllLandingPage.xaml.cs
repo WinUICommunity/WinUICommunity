@@ -19,10 +19,10 @@ public sealed partial class AllLandingPage : ItemsPageBase
         set => SetValue(HeaderTextProperty, value);
     }
 
-    public double HeaderImageHeight
+    public GridLength SpaceBetweenHeaderAndGridView
     {
-        get => (double)GetValue(HeaderImageHeightProperty);
-        set => SetValue(HeaderImageHeightProperty, value);
+        get => (GridLength)GetValue(SpaceBetweenHeaderAndGridViewProperty);
+        set => SetValue(SpaceBetweenHeaderAndGridViewProperty, value);
     }
 
     public CornerRadius HeaderGridCornerRadius
@@ -46,32 +46,37 @@ public sealed partial class AllLandingPage : ItemsPageBase
         get { return (string)GetValue(NormalizedCenterPointProperty); }
         set { SetValue(NormalizedCenterPointProperty, value); }
     }
-    public bool FullScreenHeaderImage
+    public bool UseFullScreenHeaderImage
     {
-        get { return (bool)GetValue(FullScreenHeaderImageProperty); }
-        set { SetValue(FullScreenHeaderImageProperty, value); }
+        get { return (bool)GetValue(UseFullScreenHeaderImageProperty); }
+        set { SetValue(UseFullScreenHeaderImageProperty, value); }
     }
 
-    public static readonly DependencyProperty FullScreenHeaderImageProperty = DependencyProperty.Register(nameof(FullScreenHeaderImage), typeof(bool), typeof(AllLandingPage), new PropertyMetadata(false, OnFullScreenHeaderImageChanged));
+    public static readonly DependencyProperty UseFullScreenHeaderImageProperty = DependencyProperty.Register(nameof(UseFullScreenHeaderImage), typeof(bool), typeof(AllLandingPage), new PropertyMetadata(false, OnFullScreenHeaderImageChanged));
 
     private static void OnFullScreenHeaderImageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctl = (AllLandingPage)d;
-        if (ctl != null && ctl.HeaderGrid != null && ctl.itemGridView != null)
+        if (ctl != null)
         {
-            if ((bool)e.NewValue)
-            {
-                ctl.HeaderGrid.Height = double.NaN;
-                ctl.itemGridView.Padding = new Thickness(24,0,24,36);
-            }
-            else
-            {
-                ctl.HeaderGrid.Height = ctl.HeaderImageHeight;
-                ctl.itemGridView.Padding = new Thickness(24, 0, 24, 72);
-            }
+            ctl.ToggleFullScreen((bool)e.NewValue);
         }
     }
 
+    private void ToggleFullScreen(bool value)
+    {
+        if (HeaderGrid != null && itemGridView != null)
+        {
+            if (value)
+            {
+                Microsoft.UI.Xaml.Controls.Grid.SetRowSpan(HomePageHeaderImage, 3);
+            }
+            else
+            {
+                Microsoft.UI.Xaml.Controls.Grid.SetRowSpan(HomePageHeaderImage, 2);
+            }
+        }
+    }
     public Thickness GridViewPadding
     {
         get { return (Thickness)GetValue(GridViewPaddingProperty); }
@@ -89,8 +94,6 @@ public sealed partial class AllLandingPage : ItemsPageBase
         set { SetValue(GridViewVerticalAlignmentProperty, value); }
     }
 
-
-
     public VerticalAlignment HeaderTextVerticalAlignment
     {
         get { return (VerticalAlignment)GetValue(HeaderTextVerticalAlignmentProperty); }
@@ -106,7 +109,7 @@ public sealed partial class AllLandingPage : ItemsPageBase
     public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register(nameof(HeaderFontSize), typeof(double), typeof(AllLandingPage), new PropertyMetadata(28.0));
     public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register(nameof(HeaderText), typeof(string), typeof(AllLandingPage), new PropertyMetadata("All"));
     public static readonly DependencyProperty HeaderGridCornerRadiusProperty = DependencyProperty.Register(nameof(HeaderGridCornerRadius), typeof(CornerRadius), typeof(AllLandingPage), new PropertyMetadata(new CornerRadius(8,0,0,0)));
-    public static readonly DependencyProperty HeaderImageHeightProperty = DependencyProperty.Register(nameof(HeaderImageHeight), typeof(double), typeof(AllLandingPage), new PropertyMetadata(400.0, OnHeaderImageHeightChanged));
+    public static readonly DependencyProperty SpaceBetweenHeaderAndGridViewProperty = DependencyProperty.Register(nameof(SpaceBetweenHeaderAndGridView), typeof(GridLength), typeof(AllLandingPage), new PropertyMetadata(new GridLength(200.0)));
     public static readonly DependencyProperty HeaderTextForegroundProperty = DependencyProperty.Register(nameof(HeaderTextForeground), typeof(Brush), typeof(AllLandingPage), new PropertyMetadata(null, OnHeaderTextForegroundChanged));
 
     private static void OnHeaderTextForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -118,28 +121,14 @@ public sealed partial class AllLandingPage : ItemsPageBase
         }
     }
 
-    private static void OnHeaderImageHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-    {
-        var ctl = (AllLandingPage)d;
-        if (ctl != null && ctl.HeaderGrid != null)
-        {
-            if (ctl.FullScreenHeaderImage)
-            {
-                ctl.HeaderGrid.Height = double.NaN;
-            }
-            else
-            {
-                ctl.HeaderGrid.Height = (double)e.NewValue;
-            }
-        }
-    }
-
     public AllLandingPage()
     {
         this.InitializeComponent();
         Instance = this;
         Loaded -= AllLandingPage_Loaded;
         Loaded += AllLandingPage_Loaded;
+
+        ToggleFullScreen(UseFullScreenHeaderImage);
     }
 
     internal void Navigate(object sender, RoutedEventArgs e)
