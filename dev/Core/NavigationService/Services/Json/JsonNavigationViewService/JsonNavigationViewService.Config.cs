@@ -92,6 +92,20 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
         _settingsPage = SettingsPage;
     }
 
+    public void ConfigSettingsPage(Type SettingsPage, IconElement icon)
+    {
+        _settingsPage = SettingsPage;
+        var settingItem = (NavigationViewItem)SettingsItem;
+        if (settingItem != null)
+        {
+            settingItem.Icon = icon;
+        }
+    }
+    public void ConfigSectionPage(Type sectionPage)
+    {
+        _sectionPage = sectionPage;
+    }
+
     private void ConfigPages()
     {
         _pageKeyToTypeMap = _navigationPageDictionary;

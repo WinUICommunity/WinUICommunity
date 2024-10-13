@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.UI.Xaml.Controls.AnimatedVisuals;
 using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
@@ -37,6 +38,12 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
         this._navigationPageDictionary = pages;
         _navigationView.BackRequested += OnBackRequested;
         _navigationView.ItemInvoked += OnItemInvoked;
+        var settingItem = (NavigationViewItem)SettingsItem;
+        if (settingItem != null)
+        {
+            settingItem.Icon = GetAnimatedSettingsIcon();
+        }
+
         Navigated += (s, e) =>
         {
             navigationView.IsBackEnabled = CanGoBack;
@@ -67,6 +74,13 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
         };
     }
 
+    private IconElement GetAnimatedSettingsIcon()
+    {
+        var animatedIcon = new AnimatedIcon();
+        animatedIcon.Source = new AnimatedSettingsVisualSource();
+        animatedIcon.FallbackIconSource = new FontIconSource() { Glyph = "\uE713" };
+        return animatedIcon;
+    }
     private void ExpandItems(NavigationViewItem navigationViewItem)
     {
         if (navigationViewItem != null)
@@ -137,12 +151,6 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
             }
         }
     }
-
-    public void ConfigSectionPage(Type sectionPage)
-    {
-        _sectionPage = sectionPage;
-    }
-
     public void UnregisterEvents()
     {
         if (_navigationView != null)

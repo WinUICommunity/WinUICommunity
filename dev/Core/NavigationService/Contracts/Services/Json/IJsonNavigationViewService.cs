@@ -10,6 +10,7 @@ public interface IJsonNavigationViewService
     void ConfigAutoSuggestBox(AutoSuggestBox autoSuggestBox, bool useItemTemplate = true, string autoSuggestBoxNotFoundString = null, string autoSuggestBoxNotFoundImagePath = null);
     void ConfigDefaultPage(Type pageType);
     void ConfigSettingsPage(Type pageType);
+    void ConfigSettingsPage(Type pageType, IconElement icon);
     void ConfigSectionPage(Type pageType);
     void ConfigLocalizer(ResourceManager resourceManager, ResourceContext resourceContext);
     void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool disableNavigationViewNavigator);
