@@ -1,11 +1,10 @@
 ﻿namespace WinUICommunity;
 public partial class ThemeService : IThemeService
 {
-    public readonly string ConfigFilePath = "CoreAppConfigV7.0.0-Preview1.json";
+    public readonly string ConfigFilePath = "CoreAppConfigV7.0.0-Preview4.json";
     public event IThemeService.ActualThemeChangedEventHandler ActualThemeChanged;
     private bool changeThemeWithoutSave = false;
     private bool useAutoSave;
-    private string filename;
     public Window Window { get; set; }
 
     public ThemeService() { }
@@ -114,7 +113,6 @@ public partial class ThemeService : IThemeService
         string AppConfigPath = Path.Combine(RootPath, ConfigFilePath);
 
         this.useAutoSave = useAutoSave;
-        this.filename = filename;
 
         if (useAutoSave)
         {
