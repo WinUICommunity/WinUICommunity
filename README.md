@@ -95,6 +95,7 @@ Happy coding! 🖥️💡
  - ✨ ThemeService
  - ✨ PickCredential
  - ✨ RequestWindowsPIN
+ - ✨ Legacy MessageBox
  - 🚀 And More...
 
 #### 💻 Installation | Nuget
@@ -112,6 +113,7 @@ Experience WinUI 3 quickly and easily with the help of Components, Everything yo
 Components Includes custom controls and styles.
 
 ### ⚡ What’s Inside? ⚡
+- ✨ BreadcrumbNavigator
 - ✨ PinBox
 - ✨ SelectorBarSegmented
 - ✨ NavigationViewItem Style
@@ -248,6 +250,9 @@ Install-Package WinUICommunity.ContextMenuExtensions
 ---
 
 ## History
+
+### BreadcrumbNavigator
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/BreadcrumbNavigator.gif)
 
 ### PinBox
 ![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/PinBox.gif)
