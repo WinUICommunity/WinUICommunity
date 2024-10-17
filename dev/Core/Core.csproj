@@ -5,7 +5,6 @@
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
     <AssemblyName>$(Namespace)</AssemblyName>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 	  <Description>Experience WinUI 3 quickly and easily with the help of Core, Everything you need to develop an application is gathered in one place. Helpers, Extensions...</Description>
 	  <PackageTags>winui winui3 win11 xaml core Common SettingsUI settings theme styles projectreunion winappsdk windowsappsdk wasdk reunion SettingsControls settingsexpander settingscard</PackageTags>
   </PropertyGroup>
