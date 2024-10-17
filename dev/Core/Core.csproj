@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-	  <Version>7.0.0-Preview4</Version>
+	  <Version>7.0.0-Preview3</Version>
     <Namespace>WinUICommunity.Core</Namespace>
     <RootNamespace>$(Namespace)</RootNamespace>
     <PackageId>$(Namespace)</PackageId>
