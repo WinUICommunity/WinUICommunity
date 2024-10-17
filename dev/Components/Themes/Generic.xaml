@@ -4550,7 +4550,9 @@ Themes\Styles\TextBlock.xaml
       </Setter.Value>
     </Setter>
   </Style>
-  <Style BasedOn="{StaticResource DefaultCopyButtonStyle}" TargetType="local:CopyButton" />
+  <Style BasedOn="{StaticResource DefaultCopyButtonStyle}" TargetType="local:CopyButton">
+    <Setter Property="Content" Value="" />
+  </Style>
   <Style BasedOn="{StaticResource DefaultFlyoutMenuButtonStyle}" TargetType="local:FlyoutMenuButton" />
   <Style TargetType="local:PinBox">
     <Setter Property="HorizontalAlignment" Value="Center" />

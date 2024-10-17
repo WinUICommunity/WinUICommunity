@@ -64,8 +64,15 @@ public partial class NavigationServiceEx : INavigationServiceEx
         if (CanGoBack)
         {
             var vmBeforeNavigation = _frame.GetPageViewModel();
+            var frameContentBeforeNavigationAOTSafe = _frame?.Content;
+            
             _frame.GoBack();
-            if (vmBeforeNavigation is INavigationAwareEx navigationAware)
+
+            if (frameContentBeforeNavigationAOTSafe is Page page && page?.DataContext is INavigationAwareEx viewModel)
+            {
+                viewModel.OnNavigatedFrom();
+            }
+            else if (vmBeforeNavigation is INavigationAwareEx navigationAware)
             {
                 navigationAware.OnNavigatedFrom();
             }
@@ -98,11 +105,17 @@ public partial class NavigationServiceEx : INavigationServiceEx
         {
             _frame.Tag = clearNavigation;
             var vmBeforeNavigation = _frame.GetPageViewModel();
+            var frameContentBeforeNavigationAOTSafe = _frame?.Content;
             var navigated = _frame.Navigate(pageType, parameter, transitionInfo);
             if (navigated)
             {
                 _lastParameterUsed = parameter;
-                if (vmBeforeNavigation is INavigationAwareEx navigationAware)
+
+                if (frameContentBeforeNavigationAOTSafe is Page page && page?.DataContext is INavigationAwareEx viewModel)
+                {
+                    viewModel.OnNavigatedFrom();
+                }
+                else if (vmBeforeNavigation is INavigationAwareEx navigationAware)
                 {
                     navigationAware.OnNavigatedFrom();
                 }
@@ -124,7 +137,11 @@ public partial class NavigationServiceEx : INavigationServiceEx
                 frame.BackStack.Clear();
             }
 
-            if (frame.GetPageViewModel() is INavigationAwareEx navigationAware)
+            if (_frame?.Content is Page page && page?.DataContext is INavigationAwareEx viewModel)
+            {
+                viewModel.OnNavigatedTo(e.Parameter);
+            }
+            else if (frame.GetPageViewModel() is INavigationAwareEx navigationAware)
             {
                 navigationAware.OnNavigatedTo(e.Parameter);
             }

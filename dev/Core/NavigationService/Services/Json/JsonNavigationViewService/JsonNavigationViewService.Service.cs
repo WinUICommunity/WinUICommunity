@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-
 using Microsoft.UI.Xaml.Media.Animation;
 
 namespace WinUICommunity;
@@ -56,12 +55,19 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         if (CanGoBack)
         {
             var vmBeforeNavigation = _frame.GetPageViewModel();
+            var frameContentBeforeNavigationAOTSafe = _frame?.Content;
+
             _frame.GoBack();
-            if (vmBeforeNavigation is INavigationAwareEx navigationAware)
+
+            if (frameContentBeforeNavigationAOTSafe is Page page && page?.DataContext is INavigationAwareEx viewModel)
+            {
+                viewModel.OnNavigatedFrom();
+            }
+            else if (vmBeforeNavigation is INavigationAwareEx navigationAware)
             {
                 navigationAware.OnNavigatedFrom();
             }
-
+            
             return true;
         }
 
@@ -92,7 +98,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         {
             _frame.Tag = clearNavigation;
             var vmBeforeNavigation = _frame.GetPageViewModel();
-
+            var frameContentBeforeNavigationAOTSafe = _frame?.Content;
             if (_useBreadcrumbBar)
             {
                 _mainBreadcrumb.PageDictionary = _breadcrumbPageDictionary;
@@ -103,7 +109,12 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             if (navigated)
             {
                 _lastParameterUsed = parameter;
-                if (vmBeforeNavigation is INavigationAwareEx navigationAware)
+
+                if (frameContentBeforeNavigationAOTSafe is Page page && page?.DataContext is INavigationAwareEx viewModel)
+                {
+                    viewModel.OnNavigatedFrom();
+                }
+                else if (vmBeforeNavigation is INavigationAwareEx navigationAware)
                 {
                     navigationAware.OnNavigatedFrom();
                 }
@@ -129,7 +140,12 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 }
             }
 
-            if (frame.GetPageViewModel() is INavigationAwareEx navigationAware)
+            // This is AOT Safe
+            if (_frame?.Content is Page page && page?.DataContext is INavigationAwareEx viewModel)
+            {
+                viewModel.OnNavigatedTo(e.Parameter);
+            }
+            else if (frame.GetPageViewModel() is INavigationAwareEx navigationAware)
             {
                 navigationAware.OnNavigatedTo(e.Parameter);
             }
