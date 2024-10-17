@@ -5,7 +5,7 @@ using Microsoft.UI.Xaml.Markup;
 namespace WinUICommunity;
 
 [ContentProperty(Name = "Content")]
-public sealed class GooeyButtonItem : Button
+public sealed partial class GooeyButtonItem : Button
 {
     private Brush background;
     private long brushColorToken = -1;

@@ -6,7 +6,7 @@ using Microsoft.UI.Xaml.Shapes;
 namespace WinUICommunity;
 
 [ContentProperty(Name = "Content")]
-public sealed class GooeyButton : ItemsControl
+public sealed partial class GooeyButton : ItemsControl
 {
     private Brush background;
     private Shape BackgroundShape;
