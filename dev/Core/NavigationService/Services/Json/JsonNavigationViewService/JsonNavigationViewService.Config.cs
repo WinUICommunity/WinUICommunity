@@ -130,14 +130,20 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
         ResourceContext = resourceContext;
     }
 
-    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool disableNavigationViewNavigator = true)
+    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary)
     {
-        _disableNavigationViewNavigator = disableNavigationViewNavigator;
-        _breadcrumbPageDictionary = pageDictionary;
         _mainBreadcrumb = breadcrumbBar;
-        _navigationView.AlwaysShowHeader = false;
+        _mainBreadcrumb.NavigationView = _navigationView;
+        _mainBreadcrumb.InternalFrame = Frame;
+        _mainBreadcrumb.PageDictionary = pageDictionary;
         _mainBreadcrumb.Visibility = Visibility.Collapsed;
+        _mainBreadcrumb.Initialize();
         _useBreadcrumbBar = false;
+        if (_navigationView != null)
+        {
+            _navigationView.AlwaysShowHeader = false;
+        }
+
         if (_mainBreadcrumb != null)
         {
             _mainBreadcrumb.BreadCrumbs = new ObservableCollection<NavigationBreadcrumb>();
@@ -146,9 +152,9 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
             _mainBreadcrumb.ItemClicked += MainBreadcrumb_ItemClicked;
         }
     }
-    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool disableNavigationViewNavigator, bool allowDuplication)
+    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool allowDuplication)
     {
         _allowDuplication = allowDuplication;
-        ConfigBreadcrumbBar(breadcrumbBar, pageDictionary, disableNavigationViewNavigator);
+        ConfigBreadcrumbBar(breadcrumbBar, pageDictionary);
     }
 }

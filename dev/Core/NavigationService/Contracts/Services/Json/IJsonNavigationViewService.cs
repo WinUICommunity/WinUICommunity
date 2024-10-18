@@ -14,8 +14,8 @@ public interface IJsonNavigationViewService
     void ConfigSectionPage(Type pageType);
     void ConfigFontFamilyForGlyph(string fontFamily);
     void ConfigLocalizer(ResourceManager resourceManager, ResourceContext resourceContext);
-    void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool disableNavigationViewNavigator);
-    void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool disableNavigationViewNavigator, bool allowDuplication);
+    void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary);
+    void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool allowDuplication);
 
     void UnregisterEvents();
 

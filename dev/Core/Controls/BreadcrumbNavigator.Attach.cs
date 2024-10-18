@@ -12,7 +12,7 @@ public partial class BreadcrumbNavigator
     }
 
     public static readonly DependencyProperty IsHeaderVisibleProperty =
-        DependencyProperty.RegisterAttached("IsHeaderVisible", typeof(bool), typeof(BreadcrumbNavigator), new PropertyMetadata(true));
+        DependencyProperty.RegisterAttached("IsHeaderVisible", typeof(bool), typeof(BreadcrumbNavigator), new PropertyMetadata(false));
 
     public static readonly DependencyProperty PageTitle =
             DependencyProperty.RegisterAttached("PageTitle", typeof(string), typeof(BreadcrumbNavigator), new PropertyMetadata(null));
@@ -38,5 +38,5 @@ public partial class BreadcrumbNavigator
     }
 
     public static readonly DependencyProperty ClearNavigationProperty =
-        DependencyProperty.RegisterAttached("ClearNavigation", typeof(bool), typeof(BreadcrumbNavigator), new PropertyMetadata(true));
+        DependencyProperty.RegisterAttached("ClearNavigation", typeof(bool), typeof(BreadcrumbNavigator), new PropertyMetadata(false));
 }

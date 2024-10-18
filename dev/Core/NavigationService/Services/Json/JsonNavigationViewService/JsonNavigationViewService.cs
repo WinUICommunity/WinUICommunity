@@ -14,7 +14,6 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
     public object? SettingsItem => _navigationView?.SettingsItem;
 
     private Dictionary<string, Type> _navigationPageDictionary = new Dictionary<string, Type>();
-    private Dictionary<Type, BreadcrumbPageConfig> _breadcrumbPageDictionary;
 
     private Type _defaultPage { get; set; }
     private Type _settingsPage { get; set; }

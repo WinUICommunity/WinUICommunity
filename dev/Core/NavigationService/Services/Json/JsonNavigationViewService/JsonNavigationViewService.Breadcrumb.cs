@@ -4,7 +4,6 @@ namespace WinUICommunity;
 public partial class JsonNavigationViewService
 {
     private bool _useBreadcrumbBar;
-    private bool _disableNavigationViewNavigator;
     private bool _allowDuplication;
 
     private BreadcrumbNavigator _mainBreadcrumb { get; set; }

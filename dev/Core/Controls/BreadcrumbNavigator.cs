@@ -73,15 +73,89 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
     public static readonly DependencyProperty PageDictionaryProperty =
         DependencyProperty.Register(nameof(PageDictionary), typeof(Dictionary<Type, BreadcrumbPageConfig>), typeof(BreadcrumbNavigator), new PropertyMetadata(null));
 
+    public NavigationView NavigationView
+    {
+        get { return (NavigationView)GetValue(NavigationViewProperty); }
+        set { SetValue(NavigationViewProperty, value); }
+    }
+
+    public static readonly DependencyProperty NavigationViewProperty =
+        DependencyProperty.Register(nameof(NavigationView), typeof(NavigationView), typeof(BreadcrumbNavigator), new PropertyMetadata(null));
+
+    internal Frame InternalFrame
+    {
+        get { return (Frame)GetValue(InternalFrameProperty); }
+        set { SetValue(InternalFrameProperty, value); }
+    }
+
+    internal static readonly DependencyProperty InternalFrameProperty =
+        DependencyProperty.Register(nameof(InternalFrame), typeof(Frame), typeof(BreadcrumbNavigator), new PropertyMetadata(null));
+
+    private bool removeLastBackStackItem = false;
     public BreadcrumbNavigator()
     {
         ItemClicked -= OnItemClicked;
         ItemClicked += OnItemClicked;
-
         if (Frame != null && UseBuiltInEventForFrame)
         {
             Frame.Navigating -= OnFrameNavigating;
             Frame.Navigating += OnFrameNavigating;
+        }
+    }
+
+    internal void Initialize()
+    {
+        if (InternalFrame != null)
+        {
+            InternalFrame.Navigated -= OnInternalFrameNavigated;
+            InternalFrame.Navigated += OnInternalFrameNavigated;
+            InternalFrame.Navigating -= OnInternalFrameNavigating;
+            InternalFrame.Navigating += OnInternalFrameNavigating;
+        }
+    }
+
+    private void HandleBackRequested(Type sourcePageType)
+    {
+        if (PageDictionary == null)
+            return;
+
+        var item = PageDictionary.FirstOrDefault(x => x.Key == sourcePageType);
+        bool isHeaderVisible = false;
+        if (item.Value != null)
+        {
+            isHeaderVisible = item.Value.IsHeaderVisible;
+        }
+
+        if (NavigationView != null)
+        {
+            NavigationView.AlwaysShowHeader = isHeaderVisible;
+        }
+        ChangeBreadcrumbVisibility(isHeaderVisible);
+    }
+
+    private void OnInternalFrameNavigating(object sender, NavigatingCancelEventArgs e)
+    {
+        var currentItem = BreadCrumbs?.FirstOrDefault(x => x.Page == e.SourcePageType);
+        if (currentItem != null)
+        {
+            int currentIndex = BreadCrumbs.IndexOf(currentItem);
+
+            // Filter items from beginning to the current item
+            var filteredItems = BreadCrumbs.Take(currentIndex + 1).ToList();
+
+            // Update BreadCrumbs with the filtered items
+            BreadCrumbs = new(filteredItems);
+        }
+
+        HandleBackRequested(e.SourcePageType);
+    }
+    private void OnInternalFrameNavigated(object sender, NavigationEventArgs e)
+    {
+        if (removeLastBackStackItem && InternalFrame != null)
+        {
+            InternalFrame.BackStack?.Remove(InternalFrame.BackStack?.LastOrDefault());
+            InternalFrame.BackStack?.Remove(InternalFrame.BackStack?.LastOrDefault());
+            removeLastBackStackItem = false;
         }
     }
 
@@ -96,6 +170,8 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
         {
             OnItemClicked(args);
         }
+
+        removeLastBackStackItem = true;
     }
 
     public void OnItemClicked(BreadcrumbBarItemClickedEventArgs args)
@@ -125,12 +201,12 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
         }
     }
 
-    internal void AddNewItem(NavigationView navigationView, Type targetPageType, NavigationTransitionInfo navigationTransitionInfo, object parameter, object currentPageParameter, bool allowDuplication, bool disableNavigationViewNavigator, Action updateBreadcrumb)
+    internal void AddNewItem(Type targetPageType, NavigationTransitionInfo navigationTransitionInfo, object parameter, object currentPageParameter, bool allowDuplication, Action updateBreadcrumb)
     {
         string pageTitle = string.Empty;
         string pageTitleAttached = string.Empty;
-        bool isHeaderVisibile = true;
-        bool clearNavigation = true;
+        bool isHeaderVisibile = false;
+        bool clearNavigation = false;
 
         if (PageDictionary == null)
         {
@@ -163,27 +239,20 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
             {
                 pageTitle = value;
             }
-            else if (!disableNavigationViewNavigator && currentPageParameter != null && currentPageParameter is DataItem dataItem)
+            else if (currentPageParameter != null && currentPageParameter is DataItem dataItem)
             {
                 pageTitle = dataItem.Title;
             }
-            else if (!disableNavigationViewNavigator && currentPageParameter != null && currentPageParameter is DataGroup dataGroup)
+            else if (currentPageParameter != null && currentPageParameter is DataGroup dataGroup)
             {
                 pageTitle = dataGroup.Title;
             }
         }
 
-        if (disableNavigationViewNavigator && currentPageParameter != null && (currentPageParameter is DataItem || currentPageParameter is DataGroup))
+        if (Frame != null && clearNavigation)
         {
-            isHeaderVisibile = false;
-        }
-        else
-        {
-            if (Frame != null && clearNavigation)
-            {
-                BreadCrumbs.Clear();
-                this.Frame.BackStack.Clear();
-            }
+            BreadCrumbs?.Clear();
+            this.Frame.BackStack.Clear();
         }
 
         if (isHeaderVisibile)
@@ -214,14 +283,17 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
 
         if (BreadCrumbs == null || BreadCrumbs?.Count == 0)
         {
-            navigationView.AlwaysShowHeader = false;
+            if (NavigationView != null)
+            {
+                NavigationView.AlwaysShowHeader = false;
+            }
             ChangeBreadcrumbVisibility(false);
         }
         else
         {
-            if (navigationView != null)
+            if (NavigationView != null)
             {
-                navigationView.AlwaysShowHeader = isHeaderVisibile;
+                NavigationView.AlwaysShowHeader = isHeaderVisibile;
             }
             ChangeBreadcrumbVisibility(isHeaderVisibile);
         }
@@ -234,11 +306,11 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
 
     public void AddNewItem(Type targetPageType, object parameter, NavigationTransitionInfo navigationTransitionInfo, Action updateBreadcrumb)
     {
-        AddNewItem(null, targetPageType, navigationTransitionInfo, parameter, null, true, false, updateBreadcrumb);
+        AddNewItem(targetPageType, navigationTransitionInfo, parameter, null, false, updateBreadcrumb);
     }
     public void AddNewItem(Type targetPageType, Action updateBreadcrumb)
     {
-        AddNewItem(null, targetPageType, null, null, null, true, false, updateBreadcrumb);
+        AddNewItem(targetPageType, null, null, null, false, updateBreadcrumb);
     }
     public void ChangeBreadcrumbVisibility(bool IsBreadcrumbVisible)
     {

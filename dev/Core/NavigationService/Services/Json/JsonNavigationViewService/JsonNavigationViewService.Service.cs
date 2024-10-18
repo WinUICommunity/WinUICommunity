@@ -101,8 +101,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
             var frameContentBeforeNavigationAOTSafe = _frame?.Content;
             if (_useBreadcrumbBar)
             {
-                _mainBreadcrumb.PageDictionary = _breadcrumbPageDictionary;
-                _mainBreadcrumb.AddNewItem(_navigationView, pageType, null, CurrentPageParameter, CurrentPageParameter, _allowDuplication, _disableNavigationViewNavigator, null);
+                _mainBreadcrumb.AddNewItem(pageType, null, CurrentPageParameter, CurrentPageParameter, _allowDuplication, null);
             }
 
             var navigated = _frame.Navigate(pageType, parameter, transitionInfo);
