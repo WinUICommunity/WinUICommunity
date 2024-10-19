@@ -45,18 +45,25 @@
                                    OverlayOpacity="{x:Bind OverlayOpacity, Mode=OneWay}"
                                    PlaceholderSource="{x:Bind PlaceholderSource, Mode=OneWay}"
                                    Stretch="{x:Bind Stretch, Mode=OneWay}" />
-        <Grid x:Name="HeaderGrid"
-              VerticalAlignment="{x:Bind HeaderTextVerticalAlignment, Mode=OneWay}"
-              CornerRadius="{x:Bind HeaderGridCornerRadius, Mode=OneWay}">
-            <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
+
+        <StackPanel x:Name="HeaderPanel"
+                    Margin="{x:Bind HeaderContentMargin, Mode=OneWay}"
+                    VerticalAlignment="{x:Bind HeaderVerticalAlignment, Mode=OneWay}"
+                    CornerRadius="{x:Bind HeaderCornerRadius, Mode=OneWay}">
+            <TextBlock x:Name="smallHeaderSubtitleText"
+                       FontFamily="{ThemeResource ContentControlThemeFontFamily}"
+                       FontSize="{x:Bind HeaderSubtitleFontSize, Mode=OneWay}"
+                       Foreground="{x:Bind Foreground, Mode=OneWay}"
+                       Text="{x:Bind HeaderSubtitleText, Mode=OneWay}"
+                       Visibility="{x:Bind HeaderSubtitleText, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}" />
             <TextBlock x:Name="smallHeaderText"
-                       Margin="36,0,0,0"
                        FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                        FontSize="{x:Bind HeaderFontSize, Mode=OneWay}"
                        Foreground="{x:Bind Foreground, Mode=OneWay}"
-                       Style="{StaticResource TitleTextBlockStyle}"
-                       Text="{x:Bind HeaderText, Mode=OneWay}" />
-        </Grid>
+                       Style="{StaticResource TitleLargeTextBlockStyle}"
+                       Text="{x:Bind HeaderText, Mode=OneWay}"
+                       Visibility="{x:Bind HeaderText, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}" />
+        </StackPanel>
         <GridView x:Name="itemGridView"
                   Grid.Row="2"
                   Padding="{x:Bind GridViewPadding, Mode=OneWay}"

@@ -7,18 +7,6 @@ using Microsoft.Windows.ApplicationModel.Resources;
 namespace WinUICommunity;
 public sealed partial class MainLandingPage : ItemsPageBase
 {
-    public double HeaderFontSize
-    {
-        get => (double)GetValue(HeaderFontSizeProperty);
-        set => SetValue(HeaderFontSizeProperty, value);
-    }
-
-    public double HeaderSubtitleFontSize
-    {
-        get => (double)GetValue(HeaderSubtitleFontSizeProperty);
-        set => SetValue(HeaderSubtitleFontSizeProperty, value);
-    }
-
     public string NewGroupText
     {
         get => (string)GetValue(NewGroupTextProperty);
@@ -36,29 +24,11 @@ public sealed partial class MainLandingPage : ItemsPageBase
         get => (string)GetValue(PreviewGroupTextProperty);
         set => SetValue(PreviewGroupTextProperty, value);
     }
-
-    public string HeaderText
-    {
-        get => (string)GetValue(HeaderTextProperty);
-        set => SetValue(HeaderTextProperty, value);
-    }
-
-    public string HeaderSubtitleText
-    {
-        get => (string)GetValue(HeaderSubtitleTextProperty);
-        set => SetValue(HeaderSubtitleTextProperty, value);
-    }
-
+   
     public object HeaderContent
     {
         get => (object)GetValue(HeaderContentProperty);
         set => SetValue(HeaderContentProperty, value);
-    }
-
-    public double HeaderImageHeight
-    {
-        get => (double)GetValue(HeaderImageHeightProperty);
-        set => SetValue(HeaderImageHeightProperty, value);
     }
 
     public Thickness HeaderMargin
@@ -85,28 +55,61 @@ public sealed partial class MainLandingPage : ItemsPageBase
         set => SetValue(FooterMarginProperty, value);
     }
 
-    public Thickness HeaderContentMargin
+    public bool UseFullScreenHeaderImage
     {
-        get { return (Thickness)GetValue(HeaderContentMarginProperty); }
-        set { SetValue(HeaderContentMarginProperty, value); }
+        get { return (bool)GetValue(UseFullScreenHeaderImageProperty); }
+        set { SetValue(UseFullScreenHeaderImageProperty, value); }
     }
 
-    public static readonly DependencyProperty HeaderContentMarginProperty = DependencyProperty.Register(nameof(HeaderContentMargin), typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(36,100,0,0)));
+    public static readonly DependencyProperty UseFullScreenHeaderImageProperty = DependencyProperty.Register(nameof(UseFullScreenHeaderImage), typeof(bool), typeof(MainLandingPage), new PropertyMetadata(false, OnFullScreenHeaderImageChanged));
 
-    public static readonly DependencyProperty HeaderSubtitleFontSizeProperty = DependencyProperty.Register("HeaderSubtitleFontSize", typeof(double), typeof(MainLandingPage), new PropertyMetadata(18.0));
-    public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(MainLandingPage), new PropertyMetadata(40.0));
-    public static readonly DependencyProperty PreviewGroupTextProperty = DependencyProperty.Register("PreviewGroupText", typeof(string), typeof(MainLandingPage), new PropertyMetadata("Preview"));
-    public static readonly DependencyProperty UpdatedGroupTextProperty = DependencyProperty.Register("UpdatedGroupText", typeof(string), typeof(MainLandingPage), new PropertyMetadata("Recently updated"));
-    public static readonly DependencyProperty NewGroupTextProperty = DependencyProperty.Register("NewGroupText", typeof(string), typeof(MainLandingPage), new PropertyMetadata("Recently added"));
+    private static void OnFullScreenHeaderImageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctl = (MainLandingPage)d;
+        if (ctl != null)
+        {
+            ctl.ToggleFullScreen((bool)e.NewValue);
+        }
+    }
 
-    public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register("HeaderText", typeof(string), typeof(MainLandingPage), new PropertyMetadata(default(string)));
-    public static readonly DependencyProperty HeaderSubtitleTextProperty = DependencyProperty.Register("HeaderSubtitleText", typeof(string), typeof(MainLandingPage), new PropertyMetadata(default(string)));
-    public static readonly DependencyProperty HeaderContentProperty = DependencyProperty.Register("HeaderContent", typeof(object), typeof(MainLandingPage), new PropertyMetadata(null));
-    public static readonly DependencyProperty HeaderImageHeightProperty = DependencyProperty.Register("HeaderImageHeight", typeof(double), typeof(MainLandingPage), new PropertyMetadata(396.0));
-    public static readonly DependencyProperty HeaderMarginProperty = DependencyProperty.Register("HeaderMargin", typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(-24, 0, -24, 0)));
-    public static readonly DependencyProperty FooterContentProperty = DependencyProperty.Register("FooterContent", typeof(object), typeof(MainLandingPage), new PropertyMetadata(null));
-    public static readonly DependencyProperty FooterHeightProperty = DependencyProperty.Register("FooterHeight", typeof(double), typeof(MainLandingPage), new PropertyMetadata(200.0));
-    public static readonly DependencyProperty FooterMarginProperty = DependencyProperty.Register("FooterMargin", typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(16, 34, 48, 0)));
+    private void ToggleFullScreen(bool value)
+    {
+        if (HomePageHeaderImage != null)
+        {
+            if (value)
+            {
+                HomePageHeaderImage.Height = double.NaN;
+            }
+            else
+            {
+                HomePageHeaderImage.Height = HeaderImageHeight;
+            }
+        }
+    }
+    public double HeaderImageHeight
+    {
+        get => (double)GetValue(HeaderImageHeightProperty);
+        set => SetValue(HeaderImageHeightProperty, value);
+    }
+    public static readonly DependencyProperty HeaderImageHeightProperty = DependencyProperty.Register(nameof(HeaderImageHeight), typeof(double), typeof(MainLandingPage), new PropertyMetadata(300.0, OnHeaderImageHeightChanged));
+
+    private static void OnHeaderImageHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+        var ctl = (MainLandingPage)d;
+        if (ctl != null)
+        {
+            ctl.ToggleFullScreen(ctl.UseFullScreenHeaderImage);
+        }
+    }
+
+    public static readonly DependencyProperty PreviewGroupTextProperty = DependencyProperty.Register(nameof(PreviewGroupText), typeof(string), typeof(MainLandingPage), new PropertyMetadata("Preview"));
+    public static readonly DependencyProperty UpdatedGroupTextProperty = DependencyProperty.Register(nameof(UpdatedGroupText), typeof(string), typeof(MainLandingPage), new PropertyMetadata("Recently updated"));
+    public static readonly DependencyProperty NewGroupTextProperty = DependencyProperty.Register(nameof(NewGroupText), typeof(string), typeof(MainLandingPage), new PropertyMetadata("Recently added"));
+    public static readonly DependencyProperty HeaderContentProperty = DependencyProperty.Register(nameof(HeaderContent), typeof(object), typeof(MainLandingPage), new PropertyMetadata(null));
+    public static readonly DependencyProperty HeaderMarginProperty = DependencyProperty.Register(nameof(HeaderMargin), typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(-24, 0, -24, 0)));
+    public static readonly DependencyProperty FooterContentProperty = DependencyProperty.Register(nameof(FooterContent), typeof(object), typeof(MainLandingPage), new PropertyMetadata(null));
+    public static readonly DependencyProperty FooterHeightProperty = DependencyProperty.Register(nameof(FooterHeight), typeof(double), typeof(MainLandingPage), new PropertyMetadata(200.0));
+    public static readonly DependencyProperty FooterMarginProperty = DependencyProperty.Register(nameof(FooterMargin), typeof(Thickness), typeof(MainLandingPage), new PropertyMetadata(new Thickness(16, 34, 48, 0)));
 
     public MainLandingPage()
     {

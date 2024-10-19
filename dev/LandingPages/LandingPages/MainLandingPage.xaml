@@ -32,8 +32,21 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <local:HomePageHeaderImage x:Name="HomePageHeaderImage"
+                                   VerticalAlignment="Top"
+                                   EnableLazyLoading="{x:Bind EnableLazyLoading, Mode=OneWay}"
+                                   HeaderImage="{x:Bind HeaderImage, Mode=OneWay}"
+                                   HeaderOverlayImage="{x:Bind HeaderOverlayImage, Mode=OneWay}"
+                                   IsCacheEnabled="{x:Bind IsCacheEnabled, Mode=OneWay}"
+                                   LazyLoadingThreshold="{x:Bind LazyLoadingThreshold, Mode=OneWay}"
+                                   NormalizedCenterPoint="{x:Bind NormalizedCenterPoint, Mode=OneWay}"
+                                   OverlayOpacity="{x:Bind OverlayOpacity, Mode=OneWay}"
+                                   PlaceholderSource="{x:Bind PlaceholderSource, Mode=OneWay}"
+                                   Stretch="{x:Bind Stretch, Mode=OneWay}" />
+
         <GridView x:Name="itemGridView"
-                  Padding="24,0,24,0"
+                  Padding="{x:Bind GridViewPadding, Mode=OneWay}"
+                  VerticalAlignment="{x:Bind GridViewVerticalAlignment, Mode=OneWay}"
                   AutomationProperties.AutomationId="ItemGridView"
                   AutomationProperties.Name="Items In Group"
                   ContainerContentChanging="OnItemGridViewContainerContentChanging"
@@ -50,31 +63,26 @@
                       Margin="{x:Bind HeaderMargin, Mode=OneWay}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="{x:Bind SpaceBetweenHeaderAndGridView, Mode=OneWay}" />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
-                    <local:HomePageHeaderImage Grid.RowSpan="2"
-                                               Height="{x:Bind HeaderImageHeight, Mode=OneWay}"
-                                               VerticalAlignment="Top"
-                                               EnableLazyLoading="{x:Bind EnableLazyLoading, Mode=OneWay}"
-                                               HeaderImage="{x:Bind HeaderImage, Mode=OneWay}"
-                                               HeaderOverlayImage="{x:Bind HeaderOverlayImage, Mode=OneWay}"
-                                               IsCacheEnabled="{x:Bind IsCacheEnabled, Mode=OneWay}"
-                                               LazyLoadingThreshold="{x:Bind LazyLoadingThreshold, Mode=OneWay}"
-                                               PlaceholderSource="{x:Bind PlaceholderSource, Mode=OneWay}" />
-
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
                     <StackPanel Margin="{x:Bind HeaderContentMargin, Mode=OneWay}"
-                                VerticalAlignment="Center"
-                                Orientation="Vertical">
+                                VerticalAlignment="{x:Bind HeaderVerticalAlignment, Mode=OneWay}"
+                                CornerRadius="{x:Bind HeaderCornerRadius, Mode=OneWay}">
                         <TextBlock x:Name="smallHeaderSubtitleText"
                                    FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                                    FontSize="{x:Bind HeaderSubtitleFontSize, Mode=OneWay}"
-                                   Text="{x:Bind HeaderSubtitleText, Mode=OneWay}" />
+                                   Foreground="{x:Bind Foreground, Mode=OneWay}"
+                                   Text="{x:Bind HeaderSubtitleText, Mode=OneWay}"
+                                   Visibility="{x:Bind HeaderSubtitleText, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}" />
                         <TextBlock x:Name="smallHeaderText"
                                    FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                                    FontSize="{x:Bind HeaderFontSize, Mode=OneWay}"
+                                   Foreground="{x:Bind Foreground, Mode=OneWay}"
                                    Style="{StaticResource TitleLargeTextBlockStyle}"
-                                   Text="{x:Bind HeaderText, Mode=OneWay}" />
+                                   Text="{x:Bind HeaderText, Mode=OneWay}"
+                                   Visibility="{x:Bind HeaderText, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}" />
                     </StackPanel>
 
                     <local:TileGallery x:Name="headerTileGallery"

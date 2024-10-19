@@ -125,6 +125,91 @@ public abstract partial class ItemsPageBase : Page, INotifyPropertyChanged
         get => (string)GetValue(HeaderOverlayImageProperty);
         set => SetValue(HeaderOverlayImageProperty, value);
     }
+
+    public GridLength SpaceBetweenHeaderAndGridView
+    {
+        get => (GridLength)GetValue(SpaceBetweenHeaderAndGridViewProperty);
+        set => SetValue(SpaceBetweenHeaderAndGridViewProperty, value);
+    }
+
+    public Stretch Stretch
+    {
+        get { return (Stretch)GetValue(StretchProperty); }
+        set { SetValue(StretchProperty, value); }
+    }
+    public string NormalizedCenterPoint
+    {
+        get { return (string)GetValue(NormalizedCenterPointProperty); }
+        set { SetValue(NormalizedCenterPointProperty, value); }
+    }
+    public double OverlayOpacity
+    {
+        get { return (double)GetValue(OverlayOpacityProperty); }
+        set { SetValue(OverlayOpacityProperty, value); }
+    }
+
+    public VerticalAlignment HeaderVerticalAlignment
+    {
+        get { return (VerticalAlignment)GetValue(HeaderVerticalAlignmentProperty); }
+        set { SetValue(HeaderVerticalAlignmentProperty, value); }
+    }
+    public CornerRadius HeaderCornerRadius
+    {
+        get => (CornerRadius)GetValue(HeaderCornerRadiusProperty);
+        set => SetValue(HeaderCornerRadiusProperty, value);
+    }
+    public Thickness HeaderContentMargin
+    {
+        get { return (Thickness)GetValue(HeaderContentMarginProperty); }
+        set { SetValue(HeaderContentMarginProperty, value); }
+    }
+
+    public double HeaderSubtitleFontSize
+    {
+        get => (double)GetValue(HeaderSubtitleFontSizeProperty);
+        set => SetValue(HeaderSubtitleFontSizeProperty, value);
+    }
+
+    public string HeaderSubtitleText
+    {
+        get => (string)GetValue(HeaderSubtitleTextProperty);
+        set => SetValue(HeaderSubtitleTextProperty, value);
+    }
+
+    public Thickness GridViewPadding
+    {
+        get { return (Thickness)GetValue(GridViewPaddingProperty); }
+        set { SetValue(GridViewPaddingProperty, value); }
+    }
+    public VerticalAlignment GridViewVerticalAlignment
+    {
+        get { return (VerticalAlignment)GetValue(GridViewVerticalAlignmentProperty); }
+        set { SetValue(GridViewVerticalAlignmentProperty, value); }
+    }
+    public double HeaderFontSize
+    {
+        get => (double)GetValue(HeaderFontSizeProperty);
+        set => SetValue(HeaderFontSizeProperty, value);
+    }
+
+    public string HeaderText
+    {
+        get => (string)GetValue(HeaderTextProperty);
+        set => SetValue(HeaderTextProperty, value);
+    }
+    public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register(nameof(HeaderFontSize), typeof(double), typeof(ItemsPageBase), new PropertyMetadata(28.0));
+    public static readonly DependencyProperty HeaderTextProperty = DependencyProperty.Register(nameof(HeaderText), typeof(string), typeof(ItemsPageBase), new PropertyMetadata("All"));
+    public static readonly DependencyProperty GridViewVerticalAlignmentProperty = DependencyProperty.Register(nameof(GridViewVerticalAlignment), typeof(VerticalAlignment), typeof(ItemsPageBase), new PropertyMetadata(VerticalAlignment.Bottom));
+    public static readonly DependencyProperty GridViewPaddingProperty = DependencyProperty.Register(nameof(GridViewPadding), typeof(Thickness), typeof(ItemsPageBase), new PropertyMetadata(new Thickness(24, 0, 24, 72)));
+    public static readonly DependencyProperty HeaderSubtitleTextProperty = DependencyProperty.Register(nameof(HeaderSubtitleText), typeof(string), typeof(ItemsPageBase), new PropertyMetadata(default(string)));
+    public static readonly DependencyProperty HeaderSubtitleFontSizeProperty = DependencyProperty.Register(nameof(HeaderSubtitleFontSize), typeof(double), typeof(ItemsPageBase), new PropertyMetadata(18.0));
+    public static readonly DependencyProperty HeaderContentMarginProperty = DependencyProperty.Register(nameof(HeaderContentMargin), typeof(Thickness), typeof(ItemsPageBase), new PropertyMetadata(new Thickness(36, 100, 0, 0)));
+    public static readonly DependencyProperty HeaderCornerRadiusProperty = DependencyProperty.Register(nameof(HeaderCornerRadius), typeof(CornerRadius), typeof(ItemsPageBase), new PropertyMetadata(new CornerRadius(8, 0, 0, 0)));
+    public static readonly DependencyProperty HeaderVerticalAlignmentProperty = DependencyProperty.Register(nameof(HeaderVerticalAlignment), typeof(VerticalAlignment), typeof(ItemsPageBase), new PropertyMetadata(VerticalAlignment.Center));
+    public static readonly DependencyProperty OverlayOpacityProperty = DependencyProperty.Register(nameof(OverlayOpacity), typeof(double), typeof(ItemsPageBase), new PropertyMetadata(0.5));
+    public static readonly DependencyProperty NormalizedCenterPointProperty = DependencyProperty.Register(nameof(NormalizedCenterPoint), typeof(string), typeof(ItemsPageBase), new PropertyMetadata("0.5"));
+    public static readonly DependencyProperty StretchProperty = DependencyProperty.Register(nameof(Stretch), typeof(Stretch), typeof(ItemsPageBase), new PropertyMetadata(Stretch.UniformToFill));
+    public static readonly DependencyProperty SpaceBetweenHeaderAndGridViewProperty = DependencyProperty.Register(nameof(SpaceBetweenHeaderAndGridView), typeof(GridLength), typeof(ItemsPageBase), new PropertyMetadata(new GridLength(50.0)));
     public static readonly DependencyProperty LazyLoadingThresholdProperty = DependencyProperty.Register(nameof(LazyLoadingThreshold), typeof(double), typeof(ItemsPageBase), new PropertyMetadata(300.0));
     public static readonly DependencyProperty EnableLazyLoadingProperty = DependencyProperty.Register(nameof(EnableLazyLoading), typeof(bool), typeof(ItemsPageBase), new PropertyMetadata(true));
     public static readonly DependencyProperty PlaceholderSourceProperty = DependencyProperty.Register(nameof(PlaceholderSource), typeof(ImageSource), typeof(ItemsPageBase), new PropertyMetadata(default(ImageSource)));
