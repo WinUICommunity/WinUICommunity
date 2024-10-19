@@ -1,5 +1,5 @@
 ﻿<Project>
-  <PropertyGroup Condition="'$(MSBuildProjectName)' != 'WinUICommunityGallery'">
+  <PropertyGroup Condition="'$(MSBuildProjectName)' != 'WucGalleryApp'">
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <OutputPath>$(SolutionDir)Output\</OutputPath>
