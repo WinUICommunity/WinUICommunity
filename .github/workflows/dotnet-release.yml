@@ -79,6 +79,28 @@ jobs:
       with:
         proj-path: ${{ env.PROJECT_PATH }}
 
+    # Install vswhere (to locate TextTransform.exe)
+    - name: Install vswhere
+      run: |
+        choco install vswhere
+
+    # Locate TextTransform.exe
+    - name: Find TextTransform.exe
+      id: locate-texttransform
+      run: |
+        $vsInstallPath = vswhere -latest -requires Microsoft.Component.MSBuild -find **/TextTransform.exe
+        echo "::set-output name=path::$vsInstallPath"
+
+    # Transform all T4 templates
+    - name: Transform all T4 templates
+      run: |
+        $textTransformPath = '${{ steps.locate-texttransform.outputs.path }}'
+        Get-ChildItem -Recurse -Filter *.tt | ForEach-Object {
+          $ttFile = $_.FullName
+          $outputFile = [System.IO.Path]::ChangeExtension($ttFile, '.cs')
+          & $textTransformPath -out $outputFile $ttFile
+        }
+
     # Building with configured commands
     - run: |
         $runtimeIdentifier = "${{ matrix.platform }}"
