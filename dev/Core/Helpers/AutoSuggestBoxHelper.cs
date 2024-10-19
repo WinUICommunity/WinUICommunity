@@ -47,4 +47,42 @@ public static partial class AutoSuggestBoxHelper
         NoResult = noResultString;
         LoadSuggestions(autoSuggestBox, args, suggestList);
     }
+
+    public static void OnITitleBarAutoSuggestBoxQuerySubmittedEvent(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args, Frame frame)
+    {
+        HandleITitleBarAutoSuggestBoxEvents(sender, null, args, frame, false);
+    }
+
+    public static void OnITitleBarAutoSuggestBoxTextChangedEvent(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args, Frame frame)
+    {
+        HandleITitleBarAutoSuggestBoxEvents(sender, args, null, frame, true);
+    }
+
+    private static void HandleITitleBarAutoSuggestBoxEvents(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs textChangedArgs, AutoSuggestBoxQuerySubmittedEventArgs querySubmittedArgs, Frame frame, bool isTextChangedEvent)
+    {
+        var viewModel = frame.GetPageViewModel();
+        var frameContentAOTSafe = frame?.Content;
+        if (frameContentAOTSafe is Page page && page?.DataContext is ITitleBarAutoSuggestBoxAware viewModelAOTSafe)
+        {
+            if (isTextChangedEvent)
+            {
+                viewModelAOTSafe.OnAutoSuggestBoxTextChanged(sender, textChangedArgs);
+            }
+            else
+            {
+                viewModelAOTSafe.OnAutoSuggestBoxQuerySubmitted(sender, querySubmittedArgs);
+            }
+        }
+        else if (viewModel != null && viewModel is ITitleBarAutoSuggestBoxAware titleBarAutoSuggestBoxAware)
+        {
+            if (isTextChangedEvent)
+            {
+                titleBarAutoSuggestBoxAware.OnAutoSuggestBoxTextChanged(sender, textChangedArgs);
+            }
+            else
+            {
+                titleBarAutoSuggestBoxAware.OnAutoSuggestBoxQuerySubmitted(sender, querySubmittedArgs);
+            }
+        }
+    }
 }
