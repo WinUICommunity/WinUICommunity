@@ -142,4 +142,23 @@ public partial class ThemeService : IThemeService
             ? Application.Current.RequestedTheme == ApplicationTheme.Dark
             : RootTheme == ElementTheme.Dark;
     }
+
+    public static void ChangeThemeWithoutSave(Window window)
+    {
+        var element = window?.Content as FrameworkElement;
+
+        if (element == null)
+        {
+            return;
+        }
+
+        if (element.ActualTheme == ElementTheme.Light)
+        {
+            element.RequestedTheme = ElementTheme.Dark;
+        }
+        else if (element.ActualTheme == ElementTheme.Dark)
+        {
+            element.RequestedTheme = ElementTheme.Light;
+        }
+    }
 }
