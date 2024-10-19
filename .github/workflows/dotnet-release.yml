@@ -55,7 +55,7 @@ jobs:
         
     - uses: actions/setup-dotnet@v4
       with:
-      dotnet-version: '9.x.x'
+        dotnet-version: '9.x.x'
 
     # Add CommunityToolkit Labs and Main nuget sources
     - run: |
