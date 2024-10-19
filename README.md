@@ -67,6 +67,8 @@ WinUICommunity is a collection of useful classes, controls, styles, and codes fo
 	<img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
 </a>
 
+![WinUICommunity](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/GalleryApp.png)
+
 ### 🧑‍💻 Contributing 🧑‍💻
 Found a bug? Want to contribute? We’d love your input!
 Happy coding! 🖥️💡
