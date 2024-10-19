@@ -47,7 +47,6 @@ After installing, add the following resources to app.xaml
 
 ```xml
 <ResourceDictionary Source="ms-appx:///WinUICommunity.LandingPages/Themes/Generic.xaml" />
-<ItemTemplates xmlns="using:WinUICommunity"/>
 ```
 
 See the [Demo](https://github.com/WinUICommunity/WinUICommunity) app to see how to use it
@@ -56,4 +55,4 @@ See the [Demo](https://github.com/WinUICommunity/WinUICommunity) app to see how 
 
 See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
 
-![LandingsPage](https://raw.githubusercontent.com/ghost1372/Resources/main/LandingsPage/0.png)
+![GalleryApp](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/GalleryApp.png)

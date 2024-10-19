@@ -49,3 +49,5 @@ See the [Demo](https://github.com/WinUICommunity/WinUICommunity) app to see how 
 ## Documentation
 
 See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
+
+![GalleryApp](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/GalleryApp.png)
