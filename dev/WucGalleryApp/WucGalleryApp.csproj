@@ -114,12 +114,13 @@
 	<HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
 
-  <Target Condition="'$(GITHUB_ACTIONS)'=='false'" Name="TransformAllT4Templates" BeforeTargets="BeforeBuild">
-    <ItemGroup>
-      <!-- This picks up all T4 templates in the project -->
-      <T4Template Include="**\*.tt" />
-    </ItemGroup>
-    <!-- Iterate over each .tt file and run TextTransform.exe -->
-    <Exec Command="&quot;$(DevEnvDir)TextTransform.exe&quot; &quot;%(T4Template.FullPath)&quot;" />
-  </Target>
+<Target Name="TransformAllT4Templates" BeforeTargets="BeforeBuild">
+  <ItemGroup>
+    <!-- This picks up all T4 templates in the project -->
+    <T4Template Include="**\*.tt" />
+  </ItemGroup>
+
+  <!-- Check if TextTransform.exe exists before running -->
+  <Exec Command="if exist &quot;$(DevEnvDir)TextTransform.exe&quot; &quot;$(DevEnvDir)TextTransform.exe&quot; &quot;%(T4Template.FullPath)&quot;" Condition="Exists('$(DevEnvDir)TextTransform.exe')" />
+</Target>
 </Project>
