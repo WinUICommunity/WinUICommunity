@@ -60,8 +60,6 @@ Themes\Styles\Styles.xaml
       <Setter.Value>
         <ControlTemplate TargetType="local:ImageEx">
           <Grid Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
-            <Image Name="PlaceholderImage" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Opacity="1.0" Source="{TemplateBinding PlaceholderSource}" Stretch="{TemplateBinding PlaceholderStretch}" />
-            <Image Name="Image" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" NineGrid="{TemplateBinding NineGrid}" Opacity="0.0" Stretch="{TemplateBinding Stretch}" />
             <VisualStateManager.VisualStateGroups>
               <VisualStateGroup x:Name="CommonStates">
                 <VisualState x:Name="Failed">
@@ -93,6 +91,8 @@ Themes\Styles\Styles.xaml
                 <VisualState x:Name="Unloaded" />
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
+            <Image Name="PlaceholderImage" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Opacity="1.0" Source="{TemplateBinding PlaceholderSource}" Stretch="{TemplateBinding PlaceholderStretch}" />
+            <Image Name="Image" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" NineGrid="{TemplateBinding NineGrid}" Opacity="0.0" Stretch="{TemplateBinding Stretch}" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>
@@ -201,14 +201,6 @@ Themes\Styles\Styles.xaml
           <ColumnDefinition Width="*" />
           <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Grid Width="72" CornerRadius="{ThemeResource ControlCornerRadius}">
-          <local:ImageEx x:Name="gridImage" Width="48" VerticalAlignment="Center" AutomationProperties.Name="{Binding Title}" Source="{Binding ImagePath}" Stretch="Uniform" />
-        </Grid>
-        <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="16,0,0,0" VerticalAlignment="Center" Orientation="Vertical" Spacing="2">
-          <TextBlock x:Name="titleText" FontFamily="{ThemeResource ContentControlThemeFontFamily}" FontSize="{ThemeResource LandingItemTitleFontSize}" Style="{StaticResource BodyStrongTextBlockStyle}" Text="{Binding Title}" TextLineBounds="TrimToCapHeight" TextWrapping="NoWrap" />
-          <TextBlock FontFamily="{ThemeResource ContentControlThemeFontFamily}" FontSize="{ThemeResource LandingItemSubtitleFontSize}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" RelativePanel.Below="titleText" Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding Subtitle}" TextTrimming="CharacterEllipsis" />
-        </StackPanel>
-        <InfoBadge Grid.Column="2" Width="10" Margin="4" VerticalAlignment="Top" FontFamily="{ThemeResource ContentControlThemeFontFamily}" Style="{StaticResource AttentionIconInfoBadgeStyle}" Visibility="{Binding BadgeString, Converter={StaticResource nullToVisibilityConverter}}" />
         <VisualStateManager.VisualStateGroups>
           <VisualStateGroup x:Name="LayoutVisualStates">
             <VisualState x:Name="WideLayout">
@@ -228,6 +220,14 @@ Themes\Styles\Styles.xaml
             </VisualState>
           </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <Grid Width="72" CornerRadius="{ThemeResource ControlCornerRadius}">
+          <local:ImageEx x:Name="gridImage" Width="48" VerticalAlignment="Center" AutomationProperties.Name="{Binding Title}" Source="{Binding ImagePath}" Stretch="Uniform" />
+        </Grid>
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Margin="16,0,0,0" VerticalAlignment="Center" Orientation="Vertical" Spacing="2">
+          <TextBlock x:Name="titleText" FontFamily="{ThemeResource ContentControlThemeFontFamily}" FontSize="{ThemeResource LandingItemTitleFontSize}" Style="{StaticResource BodyStrongTextBlockStyle}" Text="{Binding Title}" TextLineBounds="TrimToCapHeight" TextWrapping="NoWrap" />
+          <TextBlock FontFamily="{ThemeResource ContentControlThemeFontFamily}" FontSize="{ThemeResource LandingItemSubtitleFontSize}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" RelativePanel.Below="titleText" Style="{StaticResource CaptionTextBlockStyle}" Text="{Binding Subtitle}" TextTrimming="CharacterEllipsis" />
+        </StackPanel>
+        <InfoBadge Grid.Column="2" Width="10" Margin="4" VerticalAlignment="Top" FontFamily="{ThemeResource ContentControlThemeFontFamily}" Style="{StaticResource AttentionIconInfoBadgeStyle}" Visibility="{Binding BadgeString, Converter={StaticResource nullToVisibilityConverter}}" />
       </Grid>
     </UserControl>
   </DataTemplate>

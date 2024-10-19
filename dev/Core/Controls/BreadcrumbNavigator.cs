@@ -91,6 +91,15 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
     internal static readonly DependencyProperty InternalFrameProperty =
         DependencyProperty.Register(nameof(InternalFrame), typeof(Frame), typeof(BreadcrumbNavigator), new PropertyMetadata(null));
 
+    public BreadcrumbNavigatorHeaderVisibilityOptions HeaderVisibilityOptions
+    {
+        get { return (BreadcrumbNavigatorHeaderVisibilityOptions)GetValue(HeaderVisibilityOptionsProperty); }
+        set { SetValue(HeaderVisibilityOptionsProperty, value); }
+    }
+
+    public static readonly DependencyProperty HeaderVisibilityOptionsProperty =
+        DependencyProperty.Register(nameof(HeaderVisibilityOptions), typeof(BreadcrumbNavigatorHeaderVisibilityOptions), typeof(BreadcrumbNavigator), new PropertyMetadata(BreadcrumbNavigatorHeaderVisibilityOptions.Both));
+
     private bool removeLastBackStackItem = false;
     public BreadcrumbNavigator()
     {
@@ -126,10 +135,6 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
             isHeaderVisible = item.Value.IsHeaderVisible;
         }
 
-        if (NavigationView != null)
-        {
-            NavigationView.AlwaysShowHeader = isHeaderVisible;
-        }
         ChangeBreadcrumbVisibility(isHeaderVisible);
     }
 
@@ -283,18 +288,10 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
 
         if (BreadCrumbs == null || BreadCrumbs?.Count == 0)
         {
-            if (NavigationView != null)
-            {
-                NavigationView.AlwaysShowHeader = false;
-            }
             ChangeBreadcrumbVisibility(false);
         }
         else
         {
-            if (NavigationView != null)
-            {
-                NavigationView.AlwaysShowHeader = isHeaderVisibile;
-            }
             ChangeBreadcrumbVisibility(isHeaderVisibile);
         }
 
@@ -314,13 +311,21 @@ public sealed partial class BreadcrumbNavigator : BreadcrumbBar
     }
     public void ChangeBreadcrumbVisibility(bool IsBreadcrumbVisible)
     {
-        if (IsBreadcrumbVisible)
+        if (HeaderVisibilityOptions == BreadcrumbNavigatorHeaderVisibilityOptions.None)
+            return;
+
+        if (HeaderVisibilityOptions == BreadcrumbNavigatorHeaderVisibilityOptions.Both ||
+            HeaderVisibilityOptions == BreadcrumbNavigatorHeaderVisibilityOptions.NavigationViewOnly)
         {
-            Visibility = Visibility.Visible;
+            if (NavigationView != null)
+            {
+                NavigationView.AlwaysShowHeader = IsBreadcrumbVisible;
+            }
         }
-        else
+
+        if (HeaderVisibilityOptions != BreadcrumbNavigatorHeaderVisibilityOptions.NavigationViewOnly)
         {
-            Visibility = Visibility.Collapsed;
+            Visibility = IsBreadcrumbVisible ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

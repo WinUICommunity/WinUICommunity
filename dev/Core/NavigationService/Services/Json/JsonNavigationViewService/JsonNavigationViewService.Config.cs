@@ -133,28 +133,39 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
     public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary)
     {
         _mainBreadcrumb = breadcrumbBar;
-        _mainBreadcrumb.NavigationView = _navigationView;
-        _mainBreadcrumb.InternalFrame = Frame;
-        _mainBreadcrumb.PageDictionary = pageDictionary;
-        _mainBreadcrumb.Visibility = Visibility.Collapsed;
-        _mainBreadcrumb.Initialize();
         _useBreadcrumbBar = false;
-        if (_navigationView != null)
-        {
-            _navigationView.AlwaysShowHeader = false;
-        }
 
         if (_mainBreadcrumb != null)
         {
+            _mainBreadcrumb.NavigationView = _navigationView;
+            _mainBreadcrumb.InternalFrame = Frame;
+            _mainBreadcrumb.PageDictionary = pageDictionary;
+            _mainBreadcrumb.Visibility = Visibility.Collapsed;
+            _mainBreadcrumb.Initialize();
+
             _mainBreadcrumb.BreadCrumbs = new ObservableCollection<NavigationBreadcrumb>();
             _useBreadcrumbBar = true;
             _mainBreadcrumb.ItemClicked -= MainBreadcrumb_ItemClicked;
             _mainBreadcrumb.ItemClicked += MainBreadcrumb_ItemClicked;
+            _mainBreadcrumb.ChangeBreadcrumbVisibility(false);
         }
     }
+
+    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, BreadcrumbNavigatorHeaderVisibilityOptions headerVisibilityOptions)
+    {
+        breadcrumbBar.HeaderVisibilityOptions = headerVisibilityOptions;
+        ConfigBreadcrumbBar(breadcrumbBar, pageDictionary);
+    }
+
     public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, bool allowDuplication)
     {
         _allowDuplication = allowDuplication;
         ConfigBreadcrumbBar(breadcrumbBar, pageDictionary);
+    }
+
+    public void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, BreadcrumbNavigatorHeaderVisibilityOptions headerVisibilityOptions, bool allowDuplication)
+    {
+        breadcrumbBar.HeaderVisibilityOptions = headerVisibilityOptions;
+        ConfigBreadcrumbBar(breadcrumbBar, pageDictionary, allowDuplication);
     }
 }
