@@ -1,0 +1,4 @@
+﻿<wuc:AllLandingPage HeaderImage="{ThemeResource HeaderCover}"
+                        HeaderOverlayImage="{ThemeResource HeaderCover}"
+                        HeaderText="{x:Bind wuc:ProcessInfoHelper.ProductNameAndVersion}"
+                        JsonNavigationViewService="{x:Bind local:App.Current.GetJsonNavigationViewService}" />

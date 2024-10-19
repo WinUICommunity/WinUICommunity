@@ -1,0 +1,448 @@
+﻿{
+  "Groups": [
+    {
+      "UniqueId": "Win2dFeatures",
+      "SectionId": "WucGalleryApp.Views.DemoSectionPage",
+      "Title": "Features (Win2D)",
+      "SecondaryTitle": "",
+      "ImageIconPath": "ms-appx:///Assets/Fluent/canvas.png",
+      "ImagePath": "ms-appx:///Assets/Fluent/canvas.png",
+      "Items": [
+        {
+          "UniqueId": "WucGalleryApp.Views.TiledImageBrushPage",
+          "Title": "TiledImageBrush",
+          "Subtitle": "TiledImageBrush",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/watermark.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/watermark.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.OutlineTextControlPage",
+          "Title": "OutlineTextControl",
+          "Subtitle": "OutlineTextControl",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/frame.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.WatermarkPage",
+          "Title": "Watermark",
+          "Subtitle": "Watermark a Text or Image",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/watermark.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/watermark.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.BlurAnimationPage",
+          "Title": "Blur Animation Helper",
+          "Subtitle": "Blur Animation Helper",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/backdrop.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/backdrop.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.TextMorphEffectPage",
+          "Title": "Text Morph Effect",
+          "Subtitle": "Text Morhp Effect",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/morph.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/morph.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.TextGlitchEffectPage",
+          "Title": "Text Glitch Effect",
+          "Subtitle": "Text Glitch Effect",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/styles.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.TextBlockStrokeViewPage",
+          "Title": "TextBlock Stroke View",
+          "Subtitle": "TextBlock Stroke View",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/autoSuggestBox.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/autoSuggestBox.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ParticlePage",
+          "Title": "Particle",
+          "Subtitle": "Particle",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/particle.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/particle.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.WaveCirclePage",
+          "Title": "WaveCircle",
+          "Subtitle": "WaveCircle",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/canvas.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/canvas.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.BubblePage",
+          "Title": "Bubble",
+          "Subtitle": "Bubble",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/canvas.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/canvas.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.GooeyPage",
+          "Title": "Gooey",
+          "Subtitle": "Gooey",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/gooey.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/gooey.png"
+        }
+      ]
+    },
+    {
+      "UniqueId": "Features",
+      "SectionId": "WucGalleryApp.Views.DemoSectionPage",
+      "Title": "Features",
+      "ImageIconPath": "ms-appx:///Assets/icon.png",
+      "ImagePath": "ms-appx:///Assets/icon.png",
+      "IsSpecialSection": false,
+      "Items": [
+        {
+          "UniqueId": "WucGalleryApp.Views.PinBoxPage",
+          "Title": "PinBox",
+          "Subtitle": "PinBox",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/passwordBox.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/passwordBox.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.SelectorBarSegmentedPage",
+          "Title": "SelectorBarSegmented",
+          "Subtitle": "SelectorBarSegmented",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/segmented.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/segmented.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ColorfulShimmingEffectPage",
+          "Title": "ColorfulShimmingEffect",
+          "Subtitle": "ColorfulShimmingEffect",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/morph.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/morph.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.LongShadowTextBlockPage",
+          "Title": "LongShadowTextBlock",
+          "Subtitle": "LongShadowTextBlock",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/morph.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/morph.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.CredentialHelperPage",
+          "Title": "CredentialHelper",
+          "Subtitle": "CredentialHelper",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/contentDialog.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/contentDialog.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.CompositionHelperPage",
+          "Title": "CompositionHelper",
+          "Subtitle": "CompositionHelper",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/backdrop.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/backdrop.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.FlipSidePage",
+          "Title": "FlipSide",
+          "Subtitle": "FlipSide",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/autoScrollView.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/autoScrollView.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.PagerControlPage",
+          "Title": "PagerControl",
+          "Subtitle": "PagerControl",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/pagerControl.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/pagerControl.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.AutoScrollViewPage",
+          "Title": "AutoScrollView",
+          "Subtitle": "AutoScrollView",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/autoScrollView.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/autoScrollView.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.OpacityMaskViewPage",
+          "Title": "OpacityMaskView",
+          "Subtitle": "OpacityMaskView",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/backdrop.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/backdrop.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ProgressBarPage",
+          "Title": "Progress",
+          "Subtitle": "ProgressRing, WaveProgressBar",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/progressBar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/progressBar.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.DividerPage",
+          "Title": "Divider",
+          "Subtitle": "Divider",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/divider.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/divider.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ShieldPage",
+          "Title": "Shield",
+          "Subtitle": "Shield",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/shield.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/shield.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.GravatarPage",
+          "Title": "Gravatar",
+          "Subtitle": "Gravatar",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/gravatar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/gravatar.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.GrowlPage",
+          "Title": "Growl",
+          "Subtitle": "Growl",
+          "IsNew": true,
+          "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/frame.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.OptionsPageControlPage",
+          "Title": "OptionsPageControl",
+          "Subtitle": "A page with options",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/optionsPageControl.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/optionsPageControl.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.RainbowFramePage",
+          "Title": "Rainbow Frame",
+          "Subtitle": "A window with Rainbow Frame",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/frame.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/frame.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.FileAndFolderPickerPage",
+          "Title": "File And Folder Picker",
+          "Subtitle": "File And Folder Picker",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.StylesPage",
+          "Title": "Styles",
+          "Subtitle": "Styles",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/styles.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/styles.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.SwitchPresenterPage",
+          "Title": "SwitchPresenter",
+          "Subtitle": "SwitchPresenter",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/switchPresenter.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/switchPresenter.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ValidationPage",
+          "Title": "Validation",
+          "Subtitle": "Validation",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/behaviors.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/behaviors.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ExtensionPage",
+          "Title": "Extension",
+          "Subtitle": "Extension",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/extensions.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/extensions.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ThemeManagerPage",
+          "Title": "ThemeManager",
+          "Subtitle": "Change Application Theme and Material Easily",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/theme.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/theme.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.NavigationManagerPage",
+          "Title": "NavigationManager",
+          "Subtitle": "Navigate between pages easily (json file supported)",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/navigationView.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/navigationView.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.PrintPage",
+          "Title": "Print",
+          "Subtitle": "See how you can print data in winui 3",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/print.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/print.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ContentDialogPage",
+          "Title": "Content Dialog",
+          "Subtitle": "Some Extension Methods for ContentDialog",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/contentDialog.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/contentDialog.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.CommandObservablePage",
+          "Title": "Command and Observable",
+          "Subtitle": "Command and INotifyPropertyChanged",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/commandBar.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/commandBar.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.CheckUpdatePage",
+          "Title": "Check Update",
+          "Subtitle": "Check Application Update from Github",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/update.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/update.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.InlineAutoCompleteTextBoxPage",
+          "Title": "Inline AutoComplete TextBox",
+          "Subtitle": "Inline AutoComplete TextBox",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/autoSuggestBox.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/autoSuggestBox.png"
+        }
+      ]
+    },
+    {
+      "UniqueId": "LandingPages",
+      "SectionId": "WucGalleryApp.Views.DemoSectionPage",
+      "Title": "LandingPages",
+      "SecondaryTitle": "",
+      "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+      "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png",
+      "Items": [
+        {
+          "UniqueId": "WucGalleryApp.Views.AllLandingsPage",
+          "Title": "AllLandingPage",
+          "Subtitle": "Show All Available options from Json file",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.HomeLandingsPage",
+          "Title": "HomeLandingPage",
+          "Subtitle": "Show Simple Landing Page",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/dataGrid.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/dataGrid.png"
+        }
+      ]
+    },
+    {
+      "UniqueId": "Settings Control",
+      "SectionId": "WucGalleryApp.Views.DemoSectionPage",
+      "Title": "Settings Control",
+      "ImageIconPath": "ms-appx:///Assets/Fluent/settingsControl.png",
+      "ImagePath": "ms-appx:///Assets/Fluent/settingsControl.png",
+      "Items": [
+        {
+          "UniqueId": "WucGalleryApp.Views.SettingsGroup",
+          "Title": "SettingsGroup Sample",
+          "Subtitle": "SettingsGroup Sample",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/settingsControl.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/settingsControl.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.SettingsControls",
+          "Title": "SettingsControl Sample",
+          "Subtitle": "SettingsControl Sample",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/settingsControl.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/settingsControl.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.GeneralPage",
+          "Title": "General",
+          "Subtitle": "General Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/general.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/general.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.OobePage",
+          "Title": "Oobe",
+          "Subtitle": "Oobe Page",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/powerToys.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/powerToys.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.AwakePage",
+          "Title": "Awake",
+          "Subtitle": "Awake Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/awake.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/awake.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ColorPickerPage",
+          "Title": "Color Picker",
+          "Subtitle": "Color Picker Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/colorPicker.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/colorPicker.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.FancyZonesPage",
+          "Title": "Fancy Zones",
+          "Subtitle": "Fancy Zones Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/fancyZones.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/fancyZones.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.PowerPreviewPage",
+          "Title": "Power Preview",
+          "Subtitle": "Power Preview Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/fileExplorerPreview.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/fileExplorerPreview.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ImageResizerPage",
+          "Title": "Image Resizer",
+          "Subtitle": "Image Resizer Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/imageResizer.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/imageResizer.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.KeyboardManagerPage",
+          "Title": "Keyboard Manager",
+          "Subtitle": "Keyboard Manager Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/keyboardManager.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/keyboardManager.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.PowerRenamePage",
+          "Title": "Power Rename",
+          "Subtitle": "Power Rename Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/powerRename.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/powerRename.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.PowerLauncherPage",
+          "Title": "Power Launcher",
+          "Subtitle": "Power Launcher Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/powerToysRun.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/powerToysRun.png"
+        },
+        {
+          "UniqueId": "WucGalleryApp.Views.ShortcutGuidePage",
+          "Title": "Shortcut Guide",
+          "Subtitle": "Shortcut Guide Settings for SettingsControl",
+          "ImageIconPath": "ms-appx:///Assets/Fluent/shortcutGuide.png",
+          "ImagePath": "ms-appx:///Assets/Fluent/shortcutGuide.png"
+        }
+      ]
+    }
+  ]
+}

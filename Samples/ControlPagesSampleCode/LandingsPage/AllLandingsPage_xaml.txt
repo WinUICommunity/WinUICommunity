@@ -1,5 +1,0 @@
-﻿<wuc:AllLandingPage x:Name="allLandingsPage"
-                    HeaderImage="{ThemeResource HeaderCover}"
-                    HeaderText="All"
-                    Loaded="allLandingsPage_Loaded"
-                    OnItemClick="allLandingsPage_OnItemClick" />

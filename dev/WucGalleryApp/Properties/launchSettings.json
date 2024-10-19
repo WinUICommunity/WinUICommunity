@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WucGalleryApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WucGalleryApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

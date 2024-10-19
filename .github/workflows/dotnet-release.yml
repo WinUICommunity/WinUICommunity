@@ -1,4 +1,4 @@
-﻿name: GitHub Release Publisher
+name: GitHub Release Publisher
 
 on:
   workflow_dispatch:
@@ -8,8 +8,8 @@ permissions:
 
 env:
   # Configuring Project
-  PROJECT_PATH: Samples/WinUICommunityGallery.csproj
-  APP_NAME: WinUICommunity-Gallery
+  PROJECT_PATH: dev/WucGalleryApp/WucGalleryApp.csproj
+  APP_NAME: WucGalleryApp
 
   # Check Tag
   CHECK_TAG_EXISTENCE_BEFORE_CREATING_TAG: false
@@ -20,11 +20,13 @@ env:
   CUSTOM_NUGET_SOURCES: '' # Example ('https://api.nuget.org/v3/index.json, https://api.nuget.org/v2/index.json,...')
 
   # Configuring Dotnet Build Commands
-  PUBLISH_OUTPUT_FOLDER: publish
+  PUBLISH_OUTPUT_FOLDER: Publish
   PUBLISH_SELF_CONTAINED: true
   PUBLISH_SINGLE_FILE: false
   PUBLISH_READY_TO_RUN: true
+  PUBLISH_AOT: false
   PUBLISH_TRIMMED: false
+  PUBLISH_TRIM_MODE: partial # or full
 
   # Configuring GitHub Release
   IS_PRE_RELEASE: false
@@ -41,7 +43,7 @@ jobs:
       IS_PRE_RELEASE: ${{ env.IS_PRE_RELEASE }}
     strategy:
       matrix:
-        platform: [x64, x86, arm64] # Change platform if you want to build only a specific platform
+        platform: [x86, x64, ARM64] # Change platform if you want to build only a specific platform
 
     steps:
     - uses: actions/checkout@v4
@@ -76,7 +78,9 @@ jobs:
         proj-path: ${{ env.PROJECT_PATH }}
 
     # Building with configured commands
-    - run: dotnet publish ${{ env.PROJECT_PATH }} -c Release -r win-${{ matrix.platform }} /p:GITHUB_ACTIONS=true -p:Platform=${{ matrix.platform }} --self-contained ${{ env.PUBLISH_SELF_CONTAINED }} -p:PublishSingleFile=${{ env.PUBLISH_SINGLE_FILE }} -p:PublishReadyToRun=${{ env.PUBLISH_READY_TO_RUN }} -p:PublishTrimmed=${{ env.PUBLISH_TRIMMED }} --output ${{ env.PUBLISH_OUTPUT_FOLDER }}/${{ matrix.platform }}
+    - run: |
+        $runtimeIdentifier = "${{ matrix.platform }}"
+        dotnet publish ${{ env.PROJECT_PATH }} -c Release -r win-$($runtimeIdentifier.ToLower()) /p:GITHUB_ACTIONS=true -p:Platform=${{ matrix.platform }} --self-contained ${{ env.PUBLISH_SELF_CONTAINED }} -p:PublishSingleFile=${{ env.PUBLISH_SINGLE_FILE }} -p:PublishReadyToRun=${{ env.PUBLISH_READY_TO_RUN }} -p:PublishTrimmed=${{ env.PUBLISH_TRIMMED }} -p:TrimMode=${{ env.PUBLISH_TRIM_MODE }} -p:PublishAot=${{ env.PUBLISH_AOT }} --output ${{ env.PUBLISH_OUTPUT_FOLDER }}/${{ matrix.platform }}
 
     # Zipping folder and all files
     - uses: vimtor/action-zip@v1.2
