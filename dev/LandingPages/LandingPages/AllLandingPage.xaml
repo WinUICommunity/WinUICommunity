@@ -53,7 +53,7 @@
                        Margin="36,0,0,0"
                        FontFamily="{ThemeResource ContentControlThemeFontFamily}"
                        FontSize="{x:Bind HeaderFontSize, Mode=OneWay}"
-                       Foreground="{ThemeResource HeaderTextInverseBrush}"
+                       Foreground="{x:Bind Foreground, Mode=OneWay}"
                        Style="{StaticResource TitleTextBlockStyle}"
                        Text="{x:Bind HeaderText, Mode=OneWay}" />
         </Grid>
