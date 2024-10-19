@@ -114,7 +114,7 @@
 	<HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
 
-  <Target Name="TransformAllT4Templates" BeforeTargets="BeforeBuild">
+  <Target Condition="'$(GITHUB_ACTIONS)'=='false'" Name="TransformAllT4Templates" BeforeTargets="BeforeBuild">
     <ItemGroup>
       <!-- This picks up all T4 templates in the project -->
       <T4Template Include="**\*.tt" />
