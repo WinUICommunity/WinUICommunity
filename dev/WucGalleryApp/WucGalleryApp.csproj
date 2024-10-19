@@ -17,7 +17,7 @@
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <WindowsPackageType Condition="'$(GITHUB_ACTIONS)'=='true'">None</WindowsPackageType>
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
-    <Version>7.0.0</Version>
+    <Version>7.0.0-Preview4</Version>
 
     <!--Remove git hash from assembly informational version in .NET >= 8, Example: false = 1.0.0, true = 1.0.0+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
