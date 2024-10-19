@@ -40,9 +40,8 @@ public partial class AppUpdateSettingViewModel : ObservableObject
         {
             try
             {
-                //Todo: Fix UserName and Repo
-                string username = "";
-                string repo = "";
+                string username = "WinUICommunity";
+                string repo = "WinUICommunity";
                 LastUpdateCheck = DateTime.Now.ToShortDateString();
                 Settings.LastUpdateCheck = DateTime.Now.ToShortDateString();
                 var update = await UpdateHelper.CheckUpdateAsync(username, repo, new Version(ProcessInfoHelper.Version));

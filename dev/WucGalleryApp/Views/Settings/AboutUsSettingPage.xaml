@@ -14,7 +14,7 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="5">
-            <wuc:SettingsExpander Description="Description"
+            <wuc:SettingsExpander Description="WinUICommunity is a collection of useful classes, controls, styles, and codes for WinUI 3. Create a WinUI 3 app in less than a minute with the built-in project templates and scaffolding tools."
                                   Header="WucGalleryApp"
                                   HeaderIcon="{wuc:BitmapIcon Source=Assets/icon.png}"
                                   IsExpanded="True">
