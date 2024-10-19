@@ -13,22 +13,21 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TitleBar x:Name="AppTitleBar"
-                  Title="{x:Bind wuc:ProcessInfoHelper.GetProductName}"
-                  BackButtonClick="AppTitleBar_BackButtonClick"
-                  IsBackButtonVisible="True"
-                  IsPaneButtonVisible="True"
-                  PaneButtonClick="AppTitleBar_PaneButtonClick"
-                  Subtitle="{x:Bind wuc:ProcessInfoHelper.GetVersionString, Mode=OneWay}">
-            <TitleBar.Icon>
-                <BitmapIcon ShowAsMonochrome="False"
-                            UriSource="ms-appx:///Assets/icon.png" />
-            </TitleBar.Icon>
-        </TitleBar>
+        <wuc:TitleBar x:Name="AppTitleBar"
+                      Title="{x:Bind wuc:ProcessInfoHelper.ProductName}"
+                      BackRequested="OnBackButtonClick"
+                      IconSource="{wuc:BitmapIconSource Source=ms-appx:///Assets/icon.png}"
+                      IsBackButtonVisible="True"
+                      IsPaneToggleButtonVisible="True"
+                      PaneToggleRequested="OnPaneButtonClick"
+                      Subtitle="{x:Bind wuc:ProcessInfoHelper.VersionWithPrefix, Mode=OneWay}" />
         <NavigationView x:Name="NavView"
                         Grid.Row="1"
                         IsBackButtonVisible="Collapsed"
                         IsPaneToggleButtonVisible="False">
+            <NavigationView.Header>
+                <wuc:BreadcrumbNavigator x:Name="JsonBreadCrumbNavigator" />
+            </NavigationView.Header>
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox x:Name="ControlsSearchBox"
                                 MinWidth="200"

@@ -11,6 +11,7 @@
     <ScrollViewer>
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
+                    wuc:SettingsNavigationAttach.JsonNavigationViewService="{x:Bind local:App.Current.JsonNavigationViewService}"
                     Spacing="5">
             <wuc:SettingsCard Description="Select your Application Theme and Material"
                               Header="Appearance &amp; behavior"

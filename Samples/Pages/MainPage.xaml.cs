@@ -14,15 +14,16 @@ public sealed partial class MainPage : Page
         App.CurrentWindow.SetTitleBar(AppTitleBar);
         Instance = this;
 
-        App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame);
+        App.Current.JsonNavigationViewService.Initialize(NavView, NavFrame, NavigationPageMappings.PageDictionary);
         App.Current.JsonNavigationViewService.ConfigJson("DataModel/AppData.json");
         App.Current.JsonNavigationViewService.ConfigDefaultPage(typeof(HomeLandingPage));
         App.Current.JsonNavigationViewService.ConfigSettingsPage(typeof(SettingsPage));
         App.Current.JsonNavigationViewService.ConfigSectionPage(typeof(DemoSectionPage));
         App.Current.JsonNavigationViewService.ConfigAutoSuggestBox(ControlsSearchBox);
+        App.Current.JsonNavigationViewService.ConfigBreadcrumbBar(JsonBreadCrumbNavigator, BreadcrumbPageMappings.PageDictionary);
     }
 
-    private void AppTitleBar_BackButtonClick(object sender, RoutedEventArgs e)
+    private void OnBackButtonClick(WinUICommunity.TitleBar sender, object args)
     {
         if (NavFrame.CanGoBack)
         {
@@ -30,7 +31,7 @@ public sealed partial class MainPage : Page
         }
     }
 
-    private void AppTitleBar_PaneButtonClick(object sender, RoutedEventArgs e)
+    private void OnPaneButtonClick(WinUICommunity.TitleBar sender, object args)
     {
         NavView.IsPaneOpen = !NavView.IsPaneOpen;
     }

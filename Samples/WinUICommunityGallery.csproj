@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>WinUICommunityGallery</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -10,14 +10,24 @@
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
-    <Version>6.9.0</Version>
+    <Version>7.0.0</Version>
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <GITHUB_ACTIONS>false</GITHUB_ACTIONS>
+    <TrimMode>partial</TrimMode>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <WindowsPackageType Condition="'$(GITHUB_ACTIONS)'=='true'">None</WindowsPackageType>
     <NoWarn>NU1903;NU1902</NoWarn>
   </PropertyGroup>
+      <!-- Publish Properties -->
+  <PropertyGroup>
+	  <PublishAot>False</PublishAot>
+	  <PublishReadyToRun Condition="'$(Configuration)' == 'Debug'">False</PublishReadyToRun>
+    <PublishReadyToRun Condition="'$(Configuration)' != 'Debug'">True</PublishReadyToRun>
+    <PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
+    <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
+  </PropertyGroup>
+
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
@@ -41,6 +51,13 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="T4Templates\SampleNavigationPageMappings.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SampleNavigationPageMappings.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\dev\Components\Components.csproj" />
     <ProjectReference Include="..\dev\Win2D\Win2D.csproj" />
     <ProjectReference Include="..\dev\Core\Core.csproj" />
@@ -59,4 +76,49 @@
   <ItemGroup>
     <PackageReference Include="ColorCode.Core" Version="2.0.15" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="T4Templates\BreadcrumbPageMappings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BreadcrumbPageMappings.cs</LastGenOutput>
+    </None>
+    <None Update="T4Templates\NavigationPageMappings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NavigationPageMappings.cs</LastGenOutput>
+    </None>
+    <None Update="T4Templates\SampleNavigationPageMappings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SampleNavigationPageMappings.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="T4Templates\BreadcrumbPageMappings.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BreadcrumbPageMappings.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4Templates\NavigationPageMappings.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NavigationPageMappings.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4Templates\SampleNavigationPageMappings.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SampleNavigationPageMappings.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Target Name="TransformAllT4Templates" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <!-- This picks up all T4 templates in the project -->
+      <T4Template Include="**\*.tt" />
+    </ItemGroup>
+    <!-- Iterate over each .tt file and run TextTransform.exe -->
+    <Exec Command="&quot;$(DevEnvDir)TextTransform.exe&quot; &quot;%(T4Template.FullPath)&quot;" />
+  </Target>
 </Project>

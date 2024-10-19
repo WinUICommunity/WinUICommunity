@@ -63,7 +63,7 @@ public sealed partial class PrintPage : Page
                 printHelperOptions.AddDisplayOption(StandardPrintTaskOptions.Orientation);
             }
 
-            await _printHelper.ShowPrintUIAsync(WinRT.Interop.WindowNative.GetWindowHandle(App.currentWindow), "Sample", printHelperOptions, true);
+            await _printHelper.ShowPrintUIAsync(WinRT.Interop.WindowNative.GetWindowHandle(App.CurrentWindow), "Sample", printHelperOptions, true);
         }
         else
         {

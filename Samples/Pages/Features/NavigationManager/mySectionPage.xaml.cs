@@ -12,7 +12,7 @@ public sealed partial class mySectionPage : Page
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
-        var item = NavigationServiceHelper.GetUniqueIdAndSectionId(e.Parameter);
+        var item = AppHelper.GetUniqueIdAndSectionId(e.Parameter);
         sectionPage.GetData(NavigationManagerPage.Instance.jsonNavigationViewService.DataSource, item.UniqueId, item.SectionId);
     }
 

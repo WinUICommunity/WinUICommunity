@@ -1,4 +1,7 @@
-﻿using WinUICommunityGallery.Pages;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using WinUICommunity;
+using WinUICommunityGallery.Pages;
 
 namespace WinUICommunityGallery;
 
@@ -18,7 +21,7 @@ public partial class App : Application
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
         CurrentWindow = new Window();
-        CurrentWindow.AppWindow.Title = CurrentWindow.Title = ProcessInfoHelper.GetProductName();
+        CurrentWindow.AppWindow.Title = CurrentWindow.Title = ProcessInfoHelper.ProductName;
         CurrentWindow.AppWindow.SetIcon("Assets/icon.ico");
         if (CurrentWindow.Content is not Frame rootFrame)
         {
