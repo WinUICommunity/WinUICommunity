@@ -620,8 +620,10 @@ Start:
                     var propertyName = (string)attribute.NamedArguments[0].TypedValue.Value;
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 #pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable IL2075 // Trim
                     var propertyInfo = type.GetProperty(propertyName);
 #pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning restore IL2075 // Trim
 
                     return propertyInfo?.GetValue(element) as UIElement;
                 }
