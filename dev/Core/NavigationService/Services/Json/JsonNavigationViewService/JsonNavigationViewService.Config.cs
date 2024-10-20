@@ -51,7 +51,7 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
 
             if (string.IsNullOrEmpty(_autoSuggestBoxNotFoundImagePath))
             {
-                _autoSuggestBoxNotFoundImagePath = "Assets/autoSuggestBoxNotFound.png";
+                _autoSuggestBoxNotFoundImagePath = "ms-appx:///Assets/icon.png";
             }
 
             _autoSuggestBox.TextChanged += _autoSuggestBox_TextChanged;
@@ -66,20 +66,8 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
 
     private void CreateAutoSuggestBoxItemTemplate()
     {
-        string dataTemplateXaml = @"
-    <DataTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'>
-        <Grid ColumnSpacing='12'>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width='16' />
-                <ColumnDefinition Width='*' />
-            </Grid.ColumnDefinitions>
-            <Image Source='{Binding ImagePath}' />
-            <TextBlock Grid.Column='1' Text='{Binding Title}' />
-        </Grid>
-    </DataTemplate>";
-
-        var dataTemplate = XamlReader.Load(dataTemplateXaml) as DataTemplate;
-        _autoSuggestBox.ItemTemplate = dataTemplate;
+        _autoSuggestBox.Resources.MergedDictionaries.AddIfNotExists(new InternalAutoSuggestBoxItemTemplate());
+        _autoSuggestBox.ItemTemplate = _autoSuggestBox.Resources["InternalAutoSuggestBoxItemTemplate"] as DataTemplate;
     }
 
     public void ConfigDefaultPage(Type DefaultPage)
