@@ -1,4 +1,5 @@
 ﻿{
+  "$schema": "https://raw.githubusercontent.com/WinUICommunity/WinUICommunity/refs/heads/main/AppData.Schema.json",
   "Groups": [
     {
       "UniqueId": "Features",
@@ -155,7 +156,7 @@
                     {
                       "UniqueId": "WucGalleryApp.Views.OobePage",
                       "Title": "Oobe Page2",
-                      "Parameter" : "2",
+                      "Parameter": "2",
                       "SecondaryTitle": "Test SecondaryTitle",
                       "Subtitle": "Settings Page with a Hero Image",
                       "ImagePath": "ms-appx:///Assets/Modules/PT.png",
