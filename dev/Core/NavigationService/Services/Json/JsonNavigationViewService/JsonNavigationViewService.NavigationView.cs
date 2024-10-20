@@ -286,13 +286,10 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         {
             fontIcon.FontFamily = new FontFamily(_fontFamilyForGlyph);
         }
-        if (IsIconCode(glyph))
+        var _glyph = GeneralHelper.GetGlyph(glyph);
+        if (!string.IsNullOrEmpty(_glyph))
         {
-            if (int.TryParse(glyph, System.Globalization.NumberStyles.HexNumber, null, out int value))
-            {
-                char character = (char)value; // Convert to char
-                fontIcon.Glyph = $"{character}"; // Set the Glyph property
-            }
+            fontIcon.Glyph = _glyph; // Set the Glyph property
         }
         else
         {
@@ -301,17 +298,7 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
 
         return fontIcon;
     }
-    public static bool IsIconCode(string content)
-    {
-        // Check if the content is a valid hex code
-        return content.Length == 4 && int.TryParse(content, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out _);
-    }
 
-    public static bool IsEmoji(string content)
-    {
-        // Check if the content is an emoji (Unicode)
-        return char.IsSurrogate(content[0]) || char.IsSurrogate(content[1]);
-    }
     private string GetLocalizedText(string input, bool usexUid)
     {
         if (string.IsNullOrEmpty(input))

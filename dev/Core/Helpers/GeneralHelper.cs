@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Globalization;
+using System.Web;
 using Microsoft.UI.Input;
 
 namespace WinUICommunity;
@@ -102,8 +103,25 @@ public partial class GeneralHelper
     /// <returns></returns>
     public static string GetGlyph(string key)
     {
-        int codePoint = int.Parse(key, System.Globalization.NumberStyles.HexNumber);
-        return char.ConvertFromUtf32(codePoint);
+        // Try parsing the key as a hexadecimal number
+        if (int.TryParse(key, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var codePoint))
+        {
+            string glyph = char.ConvertFromUtf32(codePoint);
+
+            // Check if the resulting glyph is the null character '\0'
+            if (glyph == "\0")
+            {
+                // Return null or throw an exception, depending on your logic
+                return null; // or throw new ArgumentException("Invalid key", nameof(key));
+            }
+
+            return glyph;
+        }
+        else
+        {
+            // Handle the case where key could not be parsed
+            return null; // or throw new ArgumentException("Invalid key", nameof(key));
+        }
     }
 
     public static void SetApplicationLayoutRTL(IntPtr windowHandle)
