@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Automation;
+﻿using System.Globalization;
+using Microsoft.UI.Xaml.Automation;
 
 namespace WinUICommunity;
 public partial class JsonNavigationViewService : IJsonNavigationViewService
@@ -30,13 +31,10 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                 DataContext = navItem
             };
 
-            if (!string.IsNullOrEmpty(navItem.ImageIconPath))
+            var icon = GetIcon(navItem.ImagePath, navItem.IconGlyph);
+            if (icon != null)
             {
-                var icon = GetIcon(navItem.ImageIconPath);
-                if (icon != null)
-                {
-                    navigationViewItem.Icon = icon;
-                }
+                navigationViewItem.Icon = icon;
             }
 
             NavigationHelperEx.SetNavigateTo(navigationViewItem, navItem.UniqueId + navItem.Parameter?.ToString());
@@ -141,13 +139,10 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
                         DataContext = group
                     };
 
-                    if (!string.IsNullOrEmpty(group.ImageIconPath))
+                    var icon = GetIcon(group.ImagePath, group.IconGlyph);
+                    if (icon != null)
                     {
-                        var icon = GetIcon(group.ImageIconPath);
-                        if (icon != null)
-                        {
-                            topLevelItem.Icon = icon;
-                        }
+                        topLevelItem.Icon = icon;
                     }
 
                     NavigationHelperEx.SetNavigateTo(topLevelItem, group.UniqueId);
@@ -264,28 +259,59 @@ public partial class JsonNavigationViewService : IJsonNavigationViewService
         return null;
     }
 
-    private IconElement GetIcon(string imagePath)
+    private IconElement GetIcon(string imagePath, string iconGlyph)
     {
-        return string.IsNullOrEmpty(imagePath)
-            ? null
-            : imagePath.ToLowerInvariant().EndsWith(".png") || imagePath.ToLowerInvariant().EndsWith(".jpg")
-                ? new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false }
-                : GetFontIcon(imagePath);
+        if (string.IsNullOrEmpty(imagePath) && string.IsNullOrEmpty(iconGlyph))
+        {
+            return null;
+        }
+
+        if (!string.IsNullOrEmpty(iconGlyph))
+        {
+            return GetFontIcon(iconGlyph);
+        }
+
+        if (!string.IsNullOrEmpty(imagePath))
+        {
+            return new BitmapIcon() { UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute), ShowAsMonochrome = false };
+        }
+
+        return null;
     }
 
     private FontIcon GetFontIcon(string glyph)
     {
         var fontIcon = new FontIcon();
-        fontIcon.Glyph = glyph;
-
         if (!string.IsNullOrEmpty(_fontFamilyForGlyph))
         {
             fontIcon.FontFamily = new FontFamily(_fontFamilyForGlyph);
         }
+        if (IsIconCode(glyph))
+        {
+            if (int.TryParse(glyph, System.Globalization.NumberStyles.HexNumber, null, out int value))
+            {
+                char character = (char)value; // Convert to char
+                fontIcon.Glyph = $"{character}"; // Set the Glyph property
+            }
+        }
+        else
+        {
+            fontIcon.Glyph = glyph;
+        }
 
         return fontIcon;
     }
+    public static bool IsIconCode(string content)
+    {
+        // Check if the content is a valid hex code
+        return content.Length == 4 && int.TryParse(content, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out _);
+    }
 
+    public static bool IsEmoji(string content)
+    {
+        // Check if the content is an emoji (Unicode)
+        return char.IsSurrogate(content[0]) || char.IsSurrogate(content[1]);
+    }
     private string GetLocalizedText(string input, bool usexUid)
     {
         if (string.IsNullOrEmpty(input))

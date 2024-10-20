@@ -164,7 +164,7 @@ public partial class DataSource
                         item.SecondaryTitle,
                         item.Subtitle,
                         item.ImagePath,
-                        item.ImageIconPath,
+                        item.IconGlyph,
                         item.Description,
                         item.ApiNamespace,
                         false,

@@ -5,7 +5,7 @@ namespace WinUICommunity;
 public partial class DataGroup : BaseDataInfo
 {
     public DataGroup(string uniqueId, string sectionId, string title, string secondaryTitle,
-        string subtitle, string imagePath, string imageIconPath, string description,
+        string subtitle, string imagePath, string iconGlyph, string description,
         string apiNamespace, bool isSpecialSection, bool hideGroup, bool showItemsWithoutGroup,
         bool isExpanded, bool isFooterNavigationViewItem, bool isNavigationViewItemHeader, bool usexUid, DataInfoBadge dataInfoBadge)
     {
@@ -15,7 +15,7 @@ public partial class DataGroup : BaseDataInfo
         SecondaryTitle = secondaryTitle;
         Subtitle = subtitle;
         ImagePath = imagePath;
-        ImageIconPath = imageIconPath;
+        IconGlyph = iconGlyph;
         Description = description;
         ApiNamespace = apiNamespace;
         IsSpecialSection = isSpecialSection;
@@ -39,7 +39,7 @@ public partial class DataGroup : BaseDataInfo
     public string Subtitle { get; set; }
     public string Description { get; set; }
     public string ImagePath { get; set; }
-    public string ImageIconPath { get; set; }
+    public string IconGlyph { get; set; }
     public bool IsSpecialSection { get; set; }
     public bool IsExpanded { get; set; }
     public bool HideGroup { get; set; }

@@ -18,7 +18,7 @@ public partial class DataItem : BaseDataInfo
 
     [JsonConstructor]
     public DataItem(string uniqueId, string sectionId, string title, string secondaryTitle, object parameter, string apiNamespace,
-        string subtitle, string imagePath, string imageIconPath, string badgeString, string description,
+        string subtitle, string imagePath, string iconGlyph, string badgeString, string description,
         string content, bool isNew, bool isUpdated, bool isPreview, bool hideItem,
         bool hideNavigationViewItem, bool usexUid, bool isNavigationViewItemHeader, DataInfoBadge dataInfoBadge,
         ObservableCollection<DataLink> links, ObservableCollection<string> extra)
@@ -32,7 +32,7 @@ public partial class DataItem : BaseDataInfo
         Subtitle = subtitle;
         Description = description;
         ImagePath = imagePath;
-        ImageIconPath = imageIconPath;
+        IconGlyph = iconGlyph;
         BadgeString = badgeString;
         Content = content;
         IsNew = isNew;
@@ -56,7 +56,7 @@ public partial class DataItem : BaseDataInfo
     public string Subtitle { get; set; }
     public string Description { get; set; }
     public string ImagePath { get; set; }
-    public string ImageIconPath { get; set; }
+    public string IconGlyph { get; set; }
     public string BadgeString { get; set; }
     public string Content { get; set; }
     public bool IsNew { get; set; }

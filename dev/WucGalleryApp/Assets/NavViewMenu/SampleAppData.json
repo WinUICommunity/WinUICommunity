@@ -16,7 +16,6 @@
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "you can use UpdateHelper for checking application updates from github release page.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsUpdated": true,
           "Links": [
             {
@@ -35,7 +34,6 @@
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "Observable: inherited from INotifyPropertyChanged. - RelayCommand: inherited from ICommand.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsUpdated": true,
           "DataInfoBadge": {
             "BadgeStyle": "SuccessIconInfoBadgeStyle",
@@ -48,7 +46,6 @@
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "With the help of ShowAsyncQueue extension you can open multiple ContentDialogs.",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsUpdated": true,
           "DataInfoBadge": {
             "BadgeStyle": "SuccessIconInfoBadgeStyle",
@@ -61,7 +58,6 @@
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "Inline AutoCompleteTextBox",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsUpdated": true,
           "Links": [
             {
@@ -82,7 +78,6 @@
           "SecondaryTitle": "Test SecondaryTitle",
           "Subtitle": "SettingsControls from Labs",
           "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-          "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
           "IsNew": true,
           "Links": [
             {
@@ -111,7 +106,6 @@
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
               "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-              "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
               "IsUpdated": true
             },
             {
@@ -120,7 +114,6 @@
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
               "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-              "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
               "IsUpdated": true
             },
             {
@@ -129,7 +122,6 @@
               "SecondaryTitle": "Test SecondaryTitle",
               "Subtitle": "Settings Page with a Hero Image",
               "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-              "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
               "IsUpdated": true
             },
             {
@@ -144,7 +136,6 @@
                   "SecondaryTitle": "Test SecondaryTitle",
                   "Subtitle": "Settings Page with a Hero Image",
                   "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-                  "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
                   "IsUpdated": true
                 },
                 {
@@ -153,7 +144,6 @@
                   "SecondaryTitle": "Test SecondaryTitle",
                   "Subtitle": "Settings Page with a Hero Image",
                   "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-                  "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
                   "IsUpdated": true
                 },
                 {
@@ -169,7 +159,6 @@
                       "SecondaryTitle": "Test SecondaryTitle",
                       "Subtitle": "Settings Page with a Hero Image",
                       "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-                      "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
                       "IsUpdated": true
                     },
                     {
@@ -178,7 +167,6 @@
                       "SecondaryTitle": "Test SecondaryTitle",
                       "Subtitle": "Settings Page with a Hero Image",
                       "ImagePath": "ms-appx:///Assets/Modules/PT.png",
-                      "ImageIconPath": "ms-appx:///Assets/Modules/PT.png",
                       "IsUpdated": true
                     }
                   ]
