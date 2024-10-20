@@ -1,10 +1,10 @@
 ﻿{
+  "$schema": "https://raw.githubusercontent.com/WinUICommunity/WinUICommunity/refs/heads/main/AppData.Schema.json",
   "Groups": [
     {
       "UniqueId": "Win2dFeatures",
       "SectionId": "WucGalleryApp.Views.DemoSectionPage",
       "Title": "Features (Win2D)",
-      "SecondaryTitle": "",
       "ImagePath": "ms-appx:///Assets/Fluent/canvas.png",
       "Items": [
         {
