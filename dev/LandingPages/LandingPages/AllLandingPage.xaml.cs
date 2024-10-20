@@ -1,5 +1,4 @@
 ﻿using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace WinUICommunity;
@@ -7,13 +6,12 @@ public sealed partial class AllLandingPage : ItemsPageBase
 {
     internal static AllLandingPage Instance { get; private set; }
 
+    public static readonly DependencyProperty UseFullScreenHeaderImageProperty = DependencyProperty.Register(nameof(UseFullScreenHeaderImage), typeof(bool), typeof(AllLandingPage), new PropertyMetadata(false, OnFullScreenHeaderImageChanged));
     public bool UseFullScreenHeaderImage
     {
         get { return (bool)GetValue(UseFullScreenHeaderImageProperty); }
         set { SetValue(UseFullScreenHeaderImageProperty, value); }
     }
-
-    public static readonly DependencyProperty UseFullScreenHeaderImageProperty = DependencyProperty.Register(nameof(UseFullScreenHeaderImage), typeof(bool), typeof(AllLandingPage), new PropertyMetadata(false, OnFullScreenHeaderImageChanged));
 
     private static void OnFullScreenHeaderImageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
@@ -47,17 +45,6 @@ public sealed partial class AllLandingPage : ItemsPageBase
         Loaded += AllLandingPage_Loaded;
 
         ToggleFullScreen(UseFullScreenHeaderImage);
-    }
-
-    internal void Navigate(object sender, RoutedEventArgs e)
-    {
-        if (JsonNavigationViewService != null)
-        {
-            var args = (ItemClickEventArgs)e;
-            var item = (DataItem)args.ClickedItem;
-
-            JsonNavigationViewService.NavigateTo(item.UniqueId + item.Parameter?.ToString(), item);
-        }
     }
 
     private void AllLandingPage_Loaded(object sender, RoutedEventArgs e)
