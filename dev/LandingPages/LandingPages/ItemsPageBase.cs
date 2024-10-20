@@ -8,6 +8,8 @@ using Microsoft.UI.Xaml.Media;
 namespace WinUICommunity;
 public abstract partial class ItemsPageBase : Page, INotifyPropertyChanged
 {
+    public bool CanExecuteInternalCommand { get; set; } = true;
+
     public event EventHandler<RoutedEventArgs> OnItemClick;
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -19,6 +21,11 @@ public abstract partial class ItemsPageBase : Page, INotifyPropertyChanged
     {
         get => _items;
         set => SetProperty(ref _items, value);
+    }
+
+    protected ItemsPageBase()
+    {
+        Resources.MergedDictionaries.AddIfNotExists(new GridViewItemTemplate());
     }
 
     /// <summary>
@@ -53,7 +60,15 @@ public abstract partial class ItemsPageBase : Page, INotifyPropertyChanged
 
         if (OnItemClick == null)
         {
-            AllLandingPage.Instance.Navigate(sender, e);
+            if (AllLandingPage.Instance != null)
+            {
+                AllLandingPage.Instance.Navigate(sender, e);
+            }
+
+            if (MainLandingPage.Instance != null)
+            {
+                MainLandingPage.Instance.Navigate(sender, e);
+            }
         }
 
         OnItemClick?.Invoke(gridView, e);
@@ -87,7 +102,16 @@ public abstract partial class ItemsPageBase : Page, INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+    internal void Navigate(object sender, RoutedEventArgs e)
+    {
+        if (JsonNavigationViewService != null)
+        {
+            var args = (ItemClickEventArgs)e;
+            var item = (DataItem)args.ClickedItem;
 
+            JsonNavigationViewService.NavigateTo(item.UniqueId + item.Parameter?.ToString(), item);
+        }
+    }
     public IJsonNavigationViewService JsonNavigationViewService
     {
         get { return (IJsonNavigationViewService)GetValue(JsonNavigationViewServiceProperty); }
@@ -217,6 +241,4 @@ public abstract partial class ItemsPageBase : Page, INotifyPropertyChanged
     public static readonly DependencyProperty HeaderImageProperty = DependencyProperty.Register(nameof(HeaderImage), typeof(string), typeof(ItemsPageBase), new PropertyMetadata(default(string)));
     public static readonly DependencyProperty HeaderOverlayImageProperty = DependencyProperty.Register(nameof(HeaderOverlayImage), typeof(string), typeof(ItemsPageBase), new PropertyMetadata(default(string)));
     public static readonly DependencyProperty JsonNavigationViewServiceProperty = DependencyProperty.Register(nameof(JsonNavigationViewService), typeof(IJsonNavigationViewService), typeof(ItemsPageBase), new PropertyMetadata(null));
-
-    public bool CanExecuteInternalCommand { get; set; } = true;
 }
