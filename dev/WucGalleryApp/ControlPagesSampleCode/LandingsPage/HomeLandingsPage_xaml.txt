@@ -1,10 +1,8 @@
-﻿<wuc:MainLandingPage x:Name="mainLandingsPage"
-                        HeaderImage="{ThemeResource HeaderCover}"
+﻿<wuc:MainLandingPage HeaderImage="{ThemeResource HeaderCover}"
                         HeaderOverlayImage="{ThemeResource HeaderCover}"
-                        HeaderSubtitleText="Based On WinAppSDK 1.4"
-                        HeaderText="Demo App"
-                        Loaded="mainLandingsPage_Loaded"
-                        OnItemClick="mainLandingsPage_OnItemClick">
+                        HeaderSubtitleText="Windows App SDK 1.6+"
+                        HeaderText="{x:Bind wuc:ProcessInfoHelper.ProductNameAndVersion}"
+                        JsonNavigationViewService="{x:Bind local:App.Current.GetJsonNavigationViewService}">
     <wuc:MainLandingPage.HeaderContent>
         <StackPanel Orientation="Horizontal"
                     Spacing="10">

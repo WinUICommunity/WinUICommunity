@@ -10,17 +10,14 @@
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
-            <local:ControlExample CSharpSource="LandingsPage/HomeLandingsPage_cs.txt"
-                                  DocPage="mainLandingPage"
+            <local:ControlExample DocPage="mainLandingPage"
                                   DocType="LandingPages"
                                   XamlSource="LandingsPage/HomeLandingsPage_xaml.txt">
-                <wuc:MainLandingPage x:Name="mainLandingsPage"
-                                     HeaderImage="{ThemeResource HeaderCover}"
+                <wuc:MainLandingPage HeaderImage="{ThemeResource HeaderCover}"
                                      HeaderOverlayImage="{ThemeResource HeaderCover}"
-                                     HeaderSubtitleText="Based On WinAppSDK 1.4"
-                                     HeaderText="Demo App"
-                                     Loaded="mainLandingsPage_Loaded"
-                                     OnItemClick="mainLandingsPage_OnItemClick">
+                                     HeaderSubtitleText="Windows App SDK 1.6+"
+                                     HeaderText="{x:Bind wuc:ProcessInfoHelper.ProductNameAndVersion}"
+                                     JsonNavigationViewService="{x:Bind local:App.Current.GetJsonNavigationViewService}">
                     <wuc:MainLandingPage.HeaderContent>
                         <StackPanel Orientation="Horizontal"
                                     Spacing="10">

@@ -63,8 +63,8 @@
                       Margin="{x:Bind HeaderMargin, Mode=OneWay}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="{x:Bind SpaceBetweenHeaderAndGridView, Mode=OneWay}" />
-                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <TextBlock AutomationProperties.AutomationId="__ClickableAreaTextBlock" />
                     <StackPanel Margin="{x:Bind HeaderContentMargin, Mode=OneWay}"
@@ -87,7 +87,7 @@
 
                     <local:TileGallery x:Name="headerTileGallery"
                                        Grid.Row="1"
-                                       Margin="0,0,0,0"
+                                       Margin="0,10,0,0"
                                        HeaderContent="{x:Bind HeaderContent, Mode=OneWay}"
                                        Visibility="{x:Bind HeaderContent, Converter={StaticResource nullToVisibilityConverter}, Mode=OneWay}" />
                 </Grid>
