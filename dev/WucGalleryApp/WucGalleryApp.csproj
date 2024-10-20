@@ -19,6 +19,7 @@
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <Version>7.0.0-Preview4</Version>
 
+    <NoWarn>NU1903;NU1902</NoWarn>
     <!--Remove git hash from assembly informational version in .NET >= 8, Example: false = 1.0.0, true = 1.0.0+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <GITHUB_ACTIONS>false</GITHUB_ACTIONS>
