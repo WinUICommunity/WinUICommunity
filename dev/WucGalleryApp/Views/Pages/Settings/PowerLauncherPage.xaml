@@ -21,7 +21,7 @@
                          IsOpen="True"
                          Severity="Informational" />
 
-                <wuc:SimpleSettingsGroup x:Uid="Shortcut">
+                <wuc:SimpleSettingsGroup Header="Shortcut">
                     <wuc:SettingsExpander Description="Customize the keyboard shortcut to activate this module"
                                           Header="Activation shortcut"
                                           HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
@@ -82,7 +82,7 @@
                         </ComboBox>
                     </wuc:SettingsCard>
 
-                    <wuc:SettingsCard x:Uid="ColorModeHeader"
+                    <wuc:SettingsCard Header="App theme"
                                       HeaderIcon="{wuc:FontIcon FontFamily={StaticResource SymbolThemeFontFamily},
                                                                 Glyph=&#xE790;}">
                         <wuc:SettingsCard.Description>

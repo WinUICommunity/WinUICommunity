@@ -32,10 +32,10 @@
                                                                 Glyph=&#xE945;}">
                         <ComboBox MinWidth="{StaticResource SettingActionControlMinWidth}"
                                   SelectedIndex="0">
-                            <ComboBoxItem x:Uid="Awake_NoKeepAwakeSelector" />
-                            <ComboBoxItem x:Uid="Awake_IndefiniteKeepAwakeSelector" />
-                            <ComboBoxItem x:Uid="Awake_TemporaryKeepAwakeSelector" />
-                            <ComboBoxItem x:Uid="Awake_ExpirableKeepAwakeSelector" />
+                            <ComboBoxItem Content="Keep using the selected power plan" />
+                            <ComboBoxItem Content="Keep awake indefinitely" />
+                            <ComboBoxItem Content="Keep awake for a time interval" />
+                            <ComboBoxItem Content="Keep awake until expiration" />
                         </ComboBox>
                     </wuc:SettingsCard>
 

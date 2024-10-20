@@ -50,17 +50,18 @@
                     Spacing="8">
             <Grid Height="62">
 
-                <InfoBar x:Uid="InvalidShortcut"
+                <InfoBar Title="Invalid shortcut"
                          IsClosable="False"
-                         IsOpen="{Binding ElementName=ShortcutContentControl, Path=IsError, Mode=OneWay}"
-                         IsTabStop="{Binding ElementName=ShortcutContentControl, Path=IsError, Mode=OneWay}"
+                         IsOpen="{x:Bind IsError, Mode=OneWay}"
+                         IsTabStop="{x:Bind IsError, Mode=OneWay}"
                          Severity="Error" />
 
-                <InfoBar x:Uid="WarningShortcutAltGr"
+                <InfoBar Title="Possible shortcut interference with Alt Gr"
                          IsClosable="False"
-                         IsOpen="{Binding ElementName=ShortcutContentControl, Path=IsWarningAltGr, Mode=OneWay}"
-                         IsTabStop="{Binding ElementName=ShortcutContentControl, Path=IsWarningAltGr, Mode=OneWay}"
-                         Severity="Warning" />
+                         IsOpen="{x:Bind IsWarningAltGr, Mode=OneWay}"
+                         IsTabStop="{x:Bind IsWarningAltGr, Mode=OneWay}"
+                         Severity="Warning"
+                         ToolTipService.ToolTip="Shortcuts with **Ctrl** and **Alt** may remove functionality from some international keyboards, because **Ctrl** + **Alt** = **Alt Gr** in those keyboards." />
             </Grid>
         </StackPanel>
     </Grid>

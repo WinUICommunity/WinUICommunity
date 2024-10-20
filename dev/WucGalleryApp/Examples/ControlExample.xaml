@@ -78,7 +78,7 @@
             </SelectorBar>
             <wuc:SwitchPresenter Grid.Row="1"
                                  x:DefaultBindMode="OneWay"
-                                 Value="{Binding SelectedItem.Tag, ElementName=selectorBarControl}">
+                                 Value="{x:Bind selectorBarControl.SelectedItem.Tag, Mode=OneWay}">
                 <wuc:Case Value="XAML">
                     <local:SampleCodePresenter x:Name="XamlPresenter"
                                                animations:Implicit.HideAnimations="{StaticResource HideTransitions}"

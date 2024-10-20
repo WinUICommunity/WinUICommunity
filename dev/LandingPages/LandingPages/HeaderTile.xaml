@@ -15,7 +15,7 @@
                          VerticalAlignment="Stretch"
                          HorizontalContentAlignment="Stretch"
                          VerticalContentAlignment="Stretch"
-                         AutomationProperties.LabeledBy="{Binding ElementName=TitleText}"
+                         AutomationProperties.LabeledBy="{x:Bind TitleText, Mode=OneWay}"
                          Click="HyperlinkButton_Click"
                          CornerRadius="{StaticResource OverlayCornerRadius}">
             <Grid Padding="24"

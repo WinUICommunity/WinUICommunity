@@ -64,7 +64,6 @@
                                 Style="{StaticResource AccentButtonStyle}" />
                     </wuc:SettingsCard>
                     <ListView HorizontalAlignment="Stretch"
-                              AutomationProperties.Name="{Binding ElementName=ColorFormatsSetting, Path=Header}"
                               ItemsSource="{x:Bind ColorFormats, Mode=TwoWay}"
                               SelectionMode="None">
                         <ListView.ItemTemplate>

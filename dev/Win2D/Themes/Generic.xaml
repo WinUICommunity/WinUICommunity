@@ -310,19 +310,6 @@ Themes\Styles\Watermark.xaml
       <Setter.Value>
         <ControlTemplate TargetType="local:BubbleProgressButton">
           <Grid x:Name="RootGrid">
-            <local:BubbleView x:Name="BubbleView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="{TemplateBinding BubbleForeground}" />
-            <ContentControl x:Name="CompletedElement" Template="{StaticResource CompletedTemplate}" Visibility="Collapsed">
-              <animations1:Implicit.HideAnimations>
-                <animations1:OpacityAnimation DelayBehavior="SetInitialValueBeforeDelay" From="1" To="0" Duration="0:0:0.3" />
-              </animations1:Implicit.HideAnimations>
-              <animations1:Implicit.ShowAnimations>
-                <animations1:OpacityAnimation DelayBehavior="SetInitialValueBeforeDelay" From="0" To="1" Duration="0:0:0.6" />
-              </animations1:Implicit.ShowAnimations>
-            </ContentControl>
-            <Border x:Name="RootBorder" Margin="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="100">
-              <ContentControl x:Name="ContentControl" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" />
-            </Border>
-            <ProgressRing x:Name="PressProgressBar" Width="{Binding ElementName=RootBorder, Path=Width}" Height="{Binding ElementName=RootBorder, Path=Height}" Background="Transparent" Foreground="{TemplateBinding ProgressForeground}" IsIndeterminate="False" Maximum="{TemplateBinding Maximum}" Minimum="{TemplateBinding Minimum}" Value="{TemplateBinding Value}" />
             <VisualStateManager.VisualStateGroups>
               <VisualStateGroup x:Name="CommonStates">
                 <VisualState x:Name="Normal" />
@@ -356,6 +343,19 @@ Themes\Styles\Watermark.xaml
                 <VisualState x:Name="Faulted" />
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
+            <local:BubbleView x:Name="BubbleView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="{TemplateBinding BubbleForeground}" />
+            <ContentControl x:Name="CompletedElement" Template="{StaticResource CompletedTemplate}" Visibility="Collapsed">
+              <animations1:Implicit.HideAnimations>
+                <animations1:OpacityAnimation DelayBehavior="SetInitialValueBeforeDelay" From="1" To="0" Duration="0:0:0.3" />
+              </animations1:Implicit.HideAnimations>
+              <animations1:Implicit.ShowAnimations>
+                <animations1:OpacityAnimation DelayBehavior="SetInitialValueBeforeDelay" From="0" To="1" Duration="0:0:0.6" />
+              </animations1:Implicit.ShowAnimations>
+            </ContentControl>
+            <Border x:Name="RootBorder" Margin="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="100">
+              <ContentControl x:Name="ContentControl" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" />
+            </Border>
+            <ProgressRing x:Name="PressProgressBar" Width="{Binding ElementName=RootBorder, Path=Width}" Height="{Binding ElementName=RootBorder, Path=Height}" Background="Transparent" Foreground="{TemplateBinding ProgressForeground}" IsIndeterminate="False" Maximum="{TemplateBinding Maximum}" Minimum="{TemplateBinding Minimum}" Value="{TemplateBinding Value}" />
           </Grid>
         </ControlTemplate>
       </Setter.Value>
