@@ -238,4 +238,7 @@ public partial class WindowHelper
 
         return IntPtr.Zero;
     }
+
+    public static (int, int) GetScreenSize()
+            => (PInvoke.GetSystemMetrics(Windows.Win32.UI.WindowsAndMessaging.SYSTEM_METRICS_INDEX.SM_CXSCREEN), PInvoke.GetSystemMetrics(Windows.Win32.UI.WindowsAndMessaging.SYSTEM_METRICS_INDEX.SM_CYSCREEN));
 }
