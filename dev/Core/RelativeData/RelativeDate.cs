@@ -22,6 +22,10 @@ public readonly struct RelativeDate : IComparable, IComparable<RelativeDate>, IE
 
     public override string ToString() => ToString(format: null, formatProvider: null);
 
+    public string ToString(IFormatProvider? formatProvider)
+    {
+        return ToString(format: null, formatProvider: formatProvider);
+    }
     public string ToString(string? format, IFormatProvider? formatProvider)
     {
         var now = DateTime.Kind == DateTimeKind.Utc ? DateTimeService.UtcNow : DateTimeService.Now;
@@ -118,11 +122,11 @@ public readonly struct RelativeDate : IComparable, IComparable<RelativeDate>, IE
     }
     private string GetString(string key, CultureInfo? cultureInfo)
     {
-        return resourceHelper.GetStringFromResource(key, cultureInfo.Name, "WinUICommunity.Core/Resources");
+        return resourceHelper.GetStringFromResource(key, cultureInfo?.Name, "WinUICommunity.Core/Resources");
     }
     private string GetString(string key, CultureInfo? cultureInfo, int value)
     {
-        var candidate =  resourceHelper.GetStringFromResource(key, cultureInfo.Name, "WinUICommunity.Core/Resources");
+        var candidate =  resourceHelper.GetStringFromResource(key, cultureInfo?.Name, "WinUICommunity.Core/Resources");
 
         return candidate != null ? string.Format(candidate, value) : key;
     }

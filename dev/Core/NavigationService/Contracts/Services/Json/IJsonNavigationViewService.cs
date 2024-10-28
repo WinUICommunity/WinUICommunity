@@ -13,6 +13,8 @@ public interface IJsonNavigationViewService
     void ConfigSettingsPage(Type pageType, IconElement icon);
     void ConfigSectionPage(Type pageType);
     void ConfigFontFamilyForGlyph(string fontFamily);
+    void ConfigLocalizer();
+    void ConfigLocalizer(ResourceManager resourceManager);
     void ConfigLocalizer(ResourceManager resourceManager, ResourceContext resourceContext);
     void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary);
     void ConfigBreadcrumbBar(BreadcrumbNavigator breadcrumbBar, Dictionary<Type, BreadcrumbPageConfig> pageDictionary, BreadcrumbNavigatorHeaderVisibilityOptions headerVisibilityOptions);

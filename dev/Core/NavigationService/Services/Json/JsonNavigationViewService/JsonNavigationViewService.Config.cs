@@ -54,7 +54,9 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
                 _autoSuggestBoxNotFoundImagePath = "ms-appx:///Assets/icon.png";
             }
 
+            _autoSuggestBox.TextChanged -= _autoSuggestBox_TextChanged;
             _autoSuggestBox.TextChanged += _autoSuggestBox_TextChanged;
+            _autoSuggestBox.QuerySubmitted -= _autoSuggestBox_QuerySubmitted;
             _autoSuggestBox.QuerySubmitted += _autoSuggestBox_QuerySubmitted;
 
             if (useItemTemplate)
@@ -110,6 +112,18 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
         {
             NavigateTo(DefaultPageKey);
         }
+    }
+
+    public void ConfigLocalizer()
+    {
+        ResourceManager = new ResourceManager();
+        ResourceContext = ResourceManager.CreateResourceContext();
+    }
+
+    public void ConfigLocalizer(ResourceManager resourceManager)
+    {
+        ResourceManager = resourceManager ?? new ResourceManager();
+        ResourceContext = ResourceManager.CreateResourceContext();
     }
 
     public void ConfigLocalizer(ResourceManager resourceManager, ResourceContext resourceContext)

@@ -33,10 +33,16 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
     [MemberNotNull(nameof(_navigationView))]
     public void Initialize(NavigationView navigationView, Frame frame, Dictionary<string, Type> pages)
     {
+        _navigationView?.MenuItems?.Clear();
+        _navigationView?.FooterMenuItems?.Clear();
+        _navigationPageDictionary?.Clear();
+
         _navigationView = navigationView;
         this.Frame = frame;
         this._navigationPageDictionary = pages;
+        _navigationView.BackRequested -= OnBackRequested;
         _navigationView.BackRequested += OnBackRequested;
+        _navigationView.ItemInvoked -= OnItemInvoked;
         _navigationView.ItemInvoked += OnItemInvoked;
         var settingItem = (NavigationViewItem)SettingsItem;
         if (settingItem != null)
@@ -44,7 +50,7 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
             settingItem.Icon = GetAnimatedSettingsIcon();
         }
 
-        Navigated += (s, e) =>
+        void OnNavigated(object s,NavigationEventArgs e)
         {
             navigationView.IsBackEnabled = CanGoBack;
 
@@ -71,7 +77,9 @@ public partial class JsonNavigationViewService : PageServiceEx, IJsonNavigationV
                 _navigationView.SelectedItem = selectedItem;
                 ExpandItems(selectedItem);
             }
-        };
+        }
+        Navigated -= OnNavigated;
+        Navigated += OnNavigated;
     }
 
     private IconElement GetAnimatedSettingsIcon()

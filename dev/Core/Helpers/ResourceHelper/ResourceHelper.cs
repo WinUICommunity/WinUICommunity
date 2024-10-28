@@ -9,35 +9,14 @@ public partial class ResourceHelper : IResourceHelper
 
     public ResourceHelper()
     {
-        Initialize();
-    }
-
-    public ResourceHelper(ResourceManager resourceManager)
-    {
-        Initialize(resourceManager);
-    }
-
-    public ResourceHelper(ResourceManager resourceManager, ResourceContext resourceContext)
-    {
-        Initialize(resourceManager, resourceContext);
-    }
-
-    public void Initialize()
-    {
         ResourceManager = new ResourceManager();
         ResourceContext = ResourceManager.CreateResourceContext();
     }
 
-    public void Initialize(ResourceManager resourceManager)
+    public ResourceHelper(ResourceManager resourceManager) : this()
     {
-        this.ResourceManager = resourceManager;
-        this.ResourceContext = resourceManager.CreateResourceContext();
-    }
-
-    public void Initialize(ResourceManager resourceManager, ResourceContext resourceContext)
-    {
-        this.ResourceManager = resourceManager;
-        this.ResourceContext = resourceContext;
+        ResourceManager = resourceManager ?? new ResourceManager();
+        ResourceContext = ResourceManager.CreateResourceContext();
     }
     
     /// <summary>
@@ -68,12 +47,17 @@ public partial class ResourceHelper : IResourceHelper
 
     private string GetStringBase(string key, string language, string filename)
     {
+        var oldLanguage = ResourceContext.QualifierValues["Language"];
         if (!string.IsNullOrEmpty(language))
         {
-            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = language;
+            ResourceContext.QualifierValues["Language"] = language;
         }
+
         var candidate = ResourceManager.MainResourceMap.TryGetValue($"{filename}/{key}", ResourceContext);
-        return candidate != null ? candidate.ValueAsString : key;
+        var value = candidate != null ? candidate.ValueAsString : key;
+        ResourceContext.QualifierValues["Language"] = oldLanguage;
+
+        return value;
     }
 
     public string GetString(string key)

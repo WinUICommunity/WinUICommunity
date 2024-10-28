@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Microsoft.UI.Xaml.Automation;
+﻿using Microsoft.UI.Xaml.Automation;
 
 namespace WinUICommunity;
 public partial class JsonNavigationViewService : IJsonNavigationViewService
