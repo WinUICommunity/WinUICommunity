@@ -47,15 +47,19 @@ public partial class ResourceHelper : IResourceHelper
 
     private string GetStringBase(string key, string language, string filename)
     {
-        var oldLanguage = ResourceContext.QualifierValues["Language"];
+        var oldLanguage = Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
         if (!string.IsNullOrEmpty(language))
         {
-            ResourceContext.QualifierValues["Language"] = language;
+            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = language;
         }
 
         var candidate = ResourceManager.MainResourceMap.TryGetValue($"{filename}/{key}", ResourceContext);
         var value = candidate != null ? candidate.ValueAsString : key;
-        ResourceContext.QualifierValues["Language"] = oldLanguage;
+
+        if (!string.IsNullOrEmpty(language) && !string.IsNullOrEmpty(oldLanguage))
+        {
+            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = oldLanguage;
+        }
 
         return value;
     }
