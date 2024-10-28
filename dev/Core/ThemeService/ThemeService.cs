@@ -1,7 +1,7 @@
 ﻿namespace WinUICommunity;
 public partial class ThemeService : IThemeService
 {
-    public readonly string ConfigFilePath = "CoreAppConfigV7.0.0-Preview4.json";
+    public readonly string ConfigFilePath = "CoreAppConfigV7.0.0.json";
     public event IThemeService.ActualThemeChangedEventHandler ActualThemeChanged;
     private bool changeThemeWithoutSave = false;
     private bool useAutoSave;
