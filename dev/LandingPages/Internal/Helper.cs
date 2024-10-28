@@ -3,20 +3,18 @@
 namespace WinUICommunity;
 internal static partial class Helper
 {
-    internal static string GetLocalizedText(string input, bool usexUid, ResourceManager resourceManager, ResourceContext resourceContext)
+    internal static string GetLocalizedText(string input, bool useXUid, ResourceManager resourceManager)
     {
         if (string.IsNullOrEmpty(input))
             return input;
 
         try
         {
-            if (usexUid)
+            if (useXUid && resourceManager != null)
             {
-                if (resourceManager != null && resourceContext != null)
-                {
-                    var candidate = resourceManager.MainResourceMap.TryGetValue($"Resources/{input}", resourceContext);
-                    return candidate != null ? candidate.ValueAsString : input;
-                }
+                var candidate = resourceManager.MainResourceMap.TryGetValue($"Resources/{input}");
+                var value = candidate != null ? candidate.ValueAsString : input;
+                return value;
             }
         }
         catch (Exception)
