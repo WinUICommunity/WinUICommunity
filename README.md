@@ -80,7 +80,7 @@ Happy coding! 🖥️💡
 - Visual Studio 2022 On the `Workloads` tab of the installation dialog box, select as appropriate:
 - select .NET Desktop Development
 - select Windows application development
-- make sure `Windows 11 SDK (10.0.22000.0)` and `Windows 11 SDK (10.0.22621.0)` or `Windows 11 SDK (10.0.26100.0)` is selected.
+- make sure `Windows 11 SDK (10.0.19041.0)` and `Windows 11 SDK (10.0.26100.0)` is selected.
 - .Net `8.x` and `9.x`
 
 ---
