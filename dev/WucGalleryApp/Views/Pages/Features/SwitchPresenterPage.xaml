@@ -10,7 +10,6 @@
       xmlns:wuc="using:WinUICommunity"
       mc:Ignorable="d">
     <Page.Resources>
-        <enum:Animal x:Key="MyAnimal">Cat</enum:Animal>
         <Style x:Key="PanelStyle"
                TargetType="StackPanel">
             <Setter Property="CornerRadius" Value="8" />
@@ -43,11 +42,97 @@
                                          To="0"
                                          Duration="0:0:0.1" />
         </animations:ImplicitAnimationSet>
+
+        <enum:CheckStatus x:Key="MyChecks">Warning</enum:CheckStatus>
+
+        <wuc:SwitchConverter x:Key="StatusToColorSwitchConverter"
+                             TargetType="enum:CheckStatus">
+            <!--  Note: These are reused from the controls namespace from SwitchPresenter  -->
+            <wuc:Case Content="{ThemeResource SystemFillColorSuccessBrush}"
+                      Value="Success" />
+            <wuc:Case Content="{ThemeResource SystemFillColorCautionBrush}"
+                      Value="Warning" />
+            <wuc:Case Content="{ThemeResource SystemFillColorCriticalBrush}"
+                      Value="Error" />
+        </wuc:SwitchConverter>
     </Page.Resources>
     <ScrollViewer>
         <StackPanel Margin="10"
                     wuc:PanelAttach.ChildrenTransitions="Default"
                     Spacing="10">
+            <local:ControlExample CSharpSource="Features/SwitchPresenter/SwitchPresenterPage_SwitchConverterBrush_cs.txt"
+                                  DocPage="controls/switchPresenter"
+                                  HeaderText="SwitchConverter Brush Example"
+                                  XamlSource="Features/SwitchPresenter/SwitchPresenterPage_SwitchConverterBrush_xaml.txt">
+                <local:ControlExample.Pane>
+                    <ComboBox x:Name="StatusPicker"
+                              Header="Pick a status"
+                              SelectedIndex="0">
+                        <x:String>Success</x:String>
+                        <x:String>Warning</x:String>
+                        <x:String>Error</x:String>
+                    </ComboBox>
+                </local:ControlExample.Pane>
+                <StackPanel Spacing="8">
+                    <TextBlock Text="This is it, this is the demo:" />
+                    <TextBlock FontWeight="SemiBold"
+                               Foreground="{x:Bind StatusPicker.SelectedItem, Converter={StaticResource StatusToColorSwitchConverter}, Mode=OneWay}"
+                               Text="{x:Bind StatusPicker.SelectedItem, Mode=OneWay}" />
+                </StackPanel>
+            </local:ControlExample>
+            <local:ControlExample CSharpSource="Features/SwitchPresenter/SwitchPresenterPage_SwitchPresenterTemplate_cs.txt"
+                                  DocPage="controls/switchPresenter"
+                                  HeaderText="SwitchPresenter Template Example"
+                                  XamlSource="Features/SwitchPresenter/SwitchPresenterPage_SwitchPresenterTemplate_xaml.txt">
+                <local:ControlExample.Pane>
+                    <ComboBox x:Name="Lookup"
+                              Margin="0,0,0,8"
+                              Header="Look up reservation"
+                              SelectedIndex="0">
+                        <x:String>Confirmation Code</x:String>
+                        <x:String>E-ticket number</x:String>
+                        <x:String>Mileage Plan number</x:String>
+                    </ComboBox>
+                </local:ControlExample.Pane>
+                <StackPanel>
+                    <!--  SwitchPresenter binds to a value  -->
+                    <wuc:SwitchPresenter Value="{x:Bind Lookup.SelectedItem, Mode=OneWay}">
+
+                        <!--  We define a common UI template for the data we want to display  -->
+                        <wuc:SwitchPresenter.ContentTemplate>
+                            <DataTemplate x:DataType="enum:TemplateInformation">
+                                <StackPanel>
+                                    <TextBox Name="CodeValidator"
+                                             wuc:TextBoxExtensions.Regex="{x:Bind Regex, Mode=OneWay}"
+                                             Header="{x:Bind Header, Mode=OneWay}"
+                                             PlaceholderText="{x:Bind PlaceholderText, Mode=OneWay}" />
+                                    <TextBlock Text="Thanks for entering a valid code!"
+                                               Visibility="{Binding (wuc:TextBoxExtensions.IsValid), ElementName=CodeValidator}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </wuc:SwitchPresenter.ContentTemplate>
+
+                        <!--  And use the value to transform our data into an object we'll use as the context for our UI  -->
+
+                        <wuc:Case IsDefault="True"
+                                  Value="Confirmation Code">
+                            <enum:TemplateInformation Header="Confirmation code"
+                                                      PlaceholderText="6 letters"
+                                                      Regex="^[a-zA-Z]{6}$" />
+                        </wuc:Case>
+                        <wuc:Case Value="E-ticket number">
+                            <enum:TemplateInformation Header="E-ticket number"
+                                                      PlaceholderText="10 or 13 numbers"
+                                                      Regex="(^\d{10}$)|(^\d{13}$)" />
+                        </wuc:Case>
+                        <wuc:Case Value="Mileage Plan number">
+                            <enum:TemplateInformation Header="Mileage Plan #"
+                                                      PlaceholderText="Mileage Plan (12 digits)"
+                                                      Regex="(^\d{12}$)" />
+                        </wuc:Case>
+                    </wuc:SwitchPresenter>
+                </StackPanel>
+            </local:ControlExample>
             <local:ControlExample DocPage="controls/switchPresenter"
                                   HeaderText="Loading Example"
                                   XamlSource="Features/SwitchPresenter/SwitchPresenterPage_Loading_xaml.txt">
@@ -147,57 +232,6 @@
                 </StackPanel>
             </local:ControlExample>
 
-            <local:ControlExample DocPage="controls/switchPresenter"
-                                  HeaderText="Example 2"
-                                  XamlSource="Features/SwitchPresenter/SwitchPresenterPage_Part2_xaml.txt">
-                <local:ControlExample.Pane>
-                    <ComboBox x:Name="Lookup"
-                              Margin="0,0,0,8"
-                              Header="Look up reservation"
-                              SelectedIndex="0">
-                        <x:String>Select an option</x:String>
-                        <x:String>Confirmation Code</x:String>
-                        <x:String>E-ticket number</x:String>
-                        <x:String>Mileage Plan number</x:String>
-                    </ComboBox>
-                </local:ControlExample.Pane>
-                <StackPanel Margin="10"
-                            Spacing="10">
-                    <wuc:SwitchPresenter Value="{Binding SelectedItem, ElementName=Lookup}">
-                        <!--  And then only dynamically displays the Case with the matching Value  -->
-                        <wuc:Case Value="Confirmation Code">
-                            <StackPanel>
-                                <TextBox Name="ConfirmationCodeValidator"
-                                         wuc:TextBoxExtensions.Regex="^[a-zA-Z]{6}$"
-                                         Header="Confirmation code"
-                                         PlaceholderText="6 letters" />
-                                <TextBlock Text="Thanks for entering a valid code!"
-                                           Visibility="{Binding (wuc:TextBoxExtensions.IsValid), ElementName=ConfirmationCodeValidator}" />
-                            </StackPanel>
-                        </wuc:Case>
-                        <wuc:Case Value="E-ticket number">
-                            <StackPanel>
-                                <TextBox Name="TicketValidator"
-                                         wuc:TextBoxExtensions.Regex="(^\d{10}$)|(^\d{13}$)"
-                                         Header="E-ticket number"
-                                         PlaceholderText="10 or 13 numbers" />
-                                <TextBlock Text="Thanks for entering a valid code!"
-                                           Visibility="{Binding (wuc:TextBoxExtensions.IsValid), ElementName=TicketValidator}" />
-                            </StackPanel>
-                        </wuc:Case>
-                        <wuc:Case Value="Mileage Plan number">
-                            <TextBox Name="PlanValidator"
-                                     Header="Mileage Plan #"
-                                     PlaceholderText="Mileage Plan #" />
-                        </wuc:Case>
-                        <!--  You can also provide a default case if no match is found  -->
-                        <wuc:Case IsDefault="True">
-                            <TextBlock Text="Please select a way to lookup your reservation above..." />
-                        </wuc:Case>
-                    </wuc:SwitchPresenter>
-                </StackPanel>
-            </local:ControlExample>
-
             <local:ControlExample CSharpSource="Features/SwitchPresenter/SwitchPresenterPage_Part3_cs.txt"
                                   DocPage="controls/switchPresenter"
                                   HeaderText="Example 3"
@@ -208,11 +242,14 @@
                               ItemsSource="{wuc:EnumValues Type=enum:Animal}"
                               SelectedIndex="0" />
                 </local:ControlExample.Pane>
-                <StackPanel Margin="10"
-                            Spacing="10">
+                <StackPanel>
                     <wuc:SwitchPresenter Padding="16"
                                          TargetType="enum:Animal"
-                                         Value="{Binding SelectedItem, ElementName=AnimalPicker}">
+                                         Value="{x:Bind AnimalPicker.SelectedItem, Mode=OneWay}">
+                        <wuc:Case Value="Bunny">
+                            <TextBlock FontSize="32"
+                                       Text="🐇" />
+                        </wuc:Case>
                         <wuc:Case Value="Cat">
                             <TextBlock FontSize="32"
                                        Text="🐈" />
@@ -221,13 +258,21 @@
                             <TextBlock FontSize="32"
                                        Text="🐕" />
                         </wuc:Case>
-                        <wuc:Case Value="Bunny">
+                        <wuc:Case Value="Giraffe">
                             <TextBlock FontSize="32"
-                                       Text="🐇" />
+                                       Text="🦒" />
                         </wuc:Case>
                         <wuc:Case Value="Llama">
                             <TextBlock FontSize="32"
                                        Text="🦙" />
+                        </wuc:Case>
+                        <wuc:Case Value="Otter">
+                            <TextBlock FontSize="32"
+                                       Text="🦦" />
+                        </wuc:Case>
+                        <wuc:Case Value="Owl">
+                            <TextBlock FontSize="32"
+                                       Text="🦉" />
                         </wuc:Case>
                         <wuc:Case Value="Parrot">
                             <TextBlock FontSize="32"

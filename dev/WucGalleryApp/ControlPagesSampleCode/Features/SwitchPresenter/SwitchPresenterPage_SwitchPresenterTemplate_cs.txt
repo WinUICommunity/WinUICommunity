@@ -1,0 +1,8 @@
+﻿public partial class TemplateInformation
+{
+    public string? Header { get; set; }
+
+    public string? Regex { get; set; }
+
+    public string? PlaceholderText { get; set; }
+}
