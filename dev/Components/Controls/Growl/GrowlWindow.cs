@@ -10,12 +10,7 @@ public partial class GrowlWindow : Window
     {
         SystemBackdrop = new TransparentBackdrop();
 
-        // Todo: Fix
-        // Temporary Fix White Border because of WASDK v1.6
-        // https://github.com/microsoft/microsoft-ui-xaml/issues/9978#issuecomment-2451557045
-        ExtendsContentIntoTitleBar = true;
-        ((OverlappedPresenter)AppWindow.Presenter).SetBorderAndTitleBar(true, false);
-
+        ((OverlappedPresenter)AppWindow.Presenter).SetBorderAndTitleBar(false, false);
         ((OverlappedPresenter)AppWindow.Presenter).IsMinimizable = false;
         ((OverlappedPresenter)AppWindow.Presenter).IsMaximizable = false;
         ((OverlappedPresenter)AppWindow.Presenter).IsResizable = false;
@@ -27,7 +22,7 @@ public partial class GrowlWindow : Window
             Spacing = 5,
             Tag = "x"
         };
-
+        
         GrowlPanel.SizeChanged += (sender, args) =>
         {
             MoveAndResizeWindow();

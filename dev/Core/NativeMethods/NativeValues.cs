@@ -47,7 +47,6 @@ public static partial class NativeValues
         /// </summary>
         public int y;
 
-#if !UAP10_0
         public static implicit operator System.Drawing.Point(POINT point)
         {
             return new(point.x, point.y);
@@ -57,7 +56,6 @@ public static partial class NativeValues
         {
             return new() { x = point.X, y = point.Y };
         }
-#endif
     }
 
     [Flags]
@@ -155,5 +153,13 @@ public static partial class NativeValues
         NIN_BALLOONUSERCLICK = WM_USER + 5,
         NIN_POPUPOPEN = WM_USER + 6,
         NIN_POPUPCLOSE = WM_USER + 7,
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct DispatcherQueueOptions
+    {
+        internal int dwSize;
+        internal int threadType;
+        internal int apartmentType;
     }
 }
