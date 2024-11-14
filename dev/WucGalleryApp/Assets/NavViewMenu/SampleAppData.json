@@ -21,7 +21,7 @@
           "Links": [
             {
               "Title": "CheckUpdatePage",
-              "Uri": "https://ghost1372.github.io/winUICommunity/helpers/updateHelper/"
+              "Uri": "https://WinUICommunity.github.io/winUICommunity/helpers/updateHelper/"
             }
           ],
           "DataInfoBadge": {
@@ -63,7 +63,7 @@
           "Links": [
             {
               "Title": "InlineAutoCompleteTextBoxPage",
-              "Uri": "https://ghost1372.github.io/winUICommunity/controls/inlineAutoCompleteTextBox/"
+              "Uri": "https://WinUICommunity.github.io/winUICommunity/controls/inlineAutoCompleteTextBox/"
             }
           ],
           "DataInfoBadge": {
@@ -83,7 +83,7 @@
           "Links": [
             {
               "Title": "SettingsControls",
-              "Uri": "https://ghost1372.github.io/winUICommunity/settingsControls/"
+              "Uri": "https://WinUICommunity.github.io/winUICommunity/settingsControls/"
             }
           ]
         }

@@ -23,7 +23,7 @@
                                     Spacing="10">
                             <wuc:HeaderTile Title="Documentation Center"
                                             Description="Learn how to work with controls and styles."
-                                            Link="https://ghost1372.github.io/winUICommunity/">
+                                            Link="https://WinUICommunity.github.io/winUICommunity/">
                                 <wuc:HeaderTile.Source>
                                     <Image Source="/Assets/HomeHeaderTiles/Header-WinUICommunityGallery.png" />
                                 </wuc:HeaderTile.Source>

@@ -132,7 +132,7 @@ public sealed partial class ControlExample : OptionsPageControl
                 break;
         }
 
-        await Launcher.LaunchUriAsync(new Uri($"https://ghost1372.github.io/{docTypeValue}/{DocPage}"));
+        await Launcher.LaunchUriAsync(new Uri($"https://WinUICommunity.github.io/{docTypeValue}/{DocPage}"));
     }
 
     private void SelectorBarItem_Loaded(object sender, RoutedEventArgs e)

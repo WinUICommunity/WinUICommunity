@@ -12,7 +12,7 @@
     <a href="https://www.nuget.org/packages/WinUICommunity.Win2d">
         <img alt="Installed" src="https://img.shields.io/nuget/dt/WinUICommunity.Win2d?color=brightgreen&label=Installs"></img>
     </a> 
-    <a href="https://ghost1372.github.io/winUICommunity/">
+    <a href="https://WinUICommunity.github.io/winUICommunity/">
         <img alt="Docs" src="https://img.shields.io/badge/Document-Here-critical"></img>
     </a> 
 </p>
@@ -48,6 +48,6 @@ See the [Demo](https://github.com/WinUICommunity/WinUICommunity) app to see how 
 
 ## Documentation
 
-See Here for Online [Documentation](https://ghost1372.github.io/winUICommunity/)
+See Here for Online [Documentation](https://WinUICommunity.github.io/winUICommunity/)
 
 ![GalleryApp](https://raw.githubusercontent.com/WinUICommunity/Resources/main/WinUICommunityDocs/GalleryApp.png)

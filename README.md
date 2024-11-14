@@ -10,8 +10,8 @@
 <br>
 <img alt="build" src="https://img.shields.io/github/actions/workflow/status/WinUICommunity/WinUICommunity/dotnet-release.yml?logo=github"/>
 <img alt="releaseDate" src="https://img.shields.io/github/release-date/WinUICommunity/WinUICommunity?logo=github&link=https%3A%2F%2Fgithub.com%2FWinUICommunity%2FWinUICommunity%2Freleases"/>
-<a href="https://ghost1372.github.io/winUICommunity/">
- <img alt="Docs" src="https://img.shields.io/badge/See Here-Version?logo=markdown&label=Document&color=red&link=https%3A%2F%2Fghost1372.github.io%2FwinUICommunity%2F"/>
+<a href="https://WinUICommunity.github.io/winUICommunity/">
+ <img alt="Docs" src="https://img.shields.io/badge/See Here-Version?logo=markdown&label=Document&color=red&link=https%3A%2F%2FWinUICommunity.github.io%2FwinUICommunity%2F"/>
 </a> 
 <img alt="license" src="https://img.shields.io/github/license/WinUICommunity/WinUICommunity"/>
 </p>
@@ -20,11 +20,11 @@
 |:---|:---|:---:|
 |[![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/MahdiHosseini.WinUICommunityTemplates?label=WinUICommunity-Templates)](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates)|[![Marketplace](https://img.shields.io/visual-studio-marketplace/d/MahdiHosseini.WinUICommunityTemplates?logo=visual%20studio&label=WinUICommunity-Templates)](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.WinUICommunityTemplates)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://github.com/WinUICommunity/WinUICommunity-Templates)|
 ||||
-|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.Core?label=Core)](https://www.nuget.org/packages/WinUICommunity.Core)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.Core?label=Core)](https://www.nuget.org/packages/WinUICommunity.Core)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://ghost1372.github.io/winUICommunityCore)|
-|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.Components?label=Components)](https://www.nuget.org/packages/WinUICommunity.Components)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.Components?label=Components)](https://www.nuget.org/packages/WinUICommunity.Components)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://ghost1372.github.io/winUICommunityComponents/)|
-|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.Win2D?label=Win2D)](https://www.nuget.org/packages/WinUICommunity.Win2D)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.Win2D?label=Win2D&color)](https://www.nuget.org/packages/WinUICommunity.Win2D)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://ghost1372.github.io/winUICommunityWin2d)|
-|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.ContextMenuExtensions?label=ContextMenuExtensions)](https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.ContextMenuExtensions?label=ContextMenuExtensions)](https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://ghost1372.github.io/winUICommunityContextMenuExtensions)|
-|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.LandingPages?label=LandingPages)](https://www.nuget.org/packages/WinUICommunity.LandingPages)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.LandingPages?label=LandingPages)](https://www.nuget.org/packages/WinUICommunity.LandingPages)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://ghost1372.github.io/winUICommunityLandingPages)|
+|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.Core?label=Core)](https://www.nuget.org/packages/WinUICommunity.Core)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.Core?label=Core)](https://www.nuget.org/packages/WinUICommunity.Core)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://WinUICommunity.github.io/winUICommunityCore)|
+|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.Components?label=Components)](https://www.nuget.org/packages/WinUICommunity.Components)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.Components?label=Components)](https://www.nuget.org/packages/WinUICommunity.Components)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://WinUICommunity.github.io/winUICommunityComponents/)|
+|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.Win2D?label=Win2D)](https://www.nuget.org/packages/WinUICommunity.Win2D)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.Win2D?label=Win2D&color)](https://www.nuget.org/packages/WinUICommunity.Win2D)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://WinUICommunity.github.io/winUICommunityWin2d)|
+|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.ContextMenuExtensions?label=ContextMenuExtensions)](https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.ContextMenuExtensions?label=ContextMenuExtensions)](https://www.nuget.org/packages/WinUICommunity.ContextMenuExtensions)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://WinUICommunity.github.io/winUICommunityContextMenuExtensions)|
+|[![NuGet Version](https://img.shields.io/nuget/v/WinUICommunity.LandingPages?label=LandingPages)](https://www.nuget.org/packages/WinUICommunity.LandingPages)|[![NuGet Download](https://img.shields.io/nuget/dt/WinUICommunity.LandingPages?label=LandingPages)](https://www.nuget.org/packages/WinUICommunity.LandingPages)|[![Document](https://img.shields.io/badge/See%20Here-%20?logo=github&label=Document&color=red)](https://WinUICommunity.github.io/winUICommunityLandingPages)|
 
 ---
 
@@ -54,7 +54,7 @@ WinUICommunity is a collection of useful classes, controls, styles, and codes fo
 ### 📚 Explore Our Documentation! 📚
 > [!TIP]
 >  Need help getting started with our app? Our comprehensive documentation site covers everything you need to know. Whether you’re a beginner or an experienced user, you’ll find answers, tutorials, and tips to enhance your experience. From installation instructions to advanced features, we’ve got you covered. Happy exploring! 🚀
->  👉 [Documentation](https://ghost1372.github.io/winUICommunity/) 👈
+>  👉 [Documentation](https://WinUICommunity.github.io/winUICommunity/) 👈
 
 
 ### 🚀 Explore Our Gallery App 🚀
@@ -106,7 +106,7 @@ Install-Package WinUICommunity.Core
 ```
 
 > [!WARNING]
->  For more info See the [Core](dev/Core/README.md) and [Docs](https://ghost1372.github.io/winUICommunityCore/)
+>  For more info See the [Core](dev/Core/README.md) and [Docs](https://WinUICommunity.github.io/winUICommunityCore/)
 
 ---
 
@@ -165,7 +165,7 @@ After installing, add the following resource to app.xaml
 ```
 
 > [!WARNING]
->  For more info See the [Components](dev/Components/README.md) and [Docs](https://ghost1372.github.io/winUICommunityComponents/) 
+>  For more info See the [Components](dev/Components/README.md) and [Docs](https://WinUICommunity.github.io/winUICommunityComponents/) 
 
 ---
 
@@ -200,7 +200,7 @@ After installing, add the following resource to app.xaml
 ```
 
 > [!WARNING]
->  For more info See the [Win2D](dev/Win2D/README.md) and [Docs](https://ghost1372.github.io/winUICommunityWin2d/)
+>  For more info See the [Win2D](dev/Win2D/README.md) and [Docs](https://WinUICommunity.github.io/winUICommunityWin2d/)
 
 ---
 
@@ -222,7 +222,7 @@ After installing, add the following resource to app.xaml
 ```
 
 > [!WARNING]
->  For more info See the [LandingPages](dev/LandingPages/README.md) and [Docs](https://ghost1372.github.io/winUICommunityLandingPages/)
+>  For more info See the [LandingPages](dev/LandingPages/README.md) and [Docs](https://WinUICommunity.github.io/winUICommunityLandingPages/)
 
 ---
 
@@ -235,7 +235,7 @@ Install-Package WinUICommunity.ContextMenuExtensions
 ```
 
 > [!WARNING]
->  For more info See the [ContextMenuExtensions](dev/ContextMenuExtensions/README.md) and [Docs](https://ghost1372.github.io/winUICommunityContextMenuExtensions/)
+>  For more info See the [ContextMenuExtensions](dev/ContextMenuExtensions/README.md) and [Docs](https://WinUICommunity.github.io/winUICommunityContextMenuExtensions/)
 
 ---
 
