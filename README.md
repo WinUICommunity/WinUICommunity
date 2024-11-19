@@ -1,16 +1,4 @@
-﻿# Important Notice ⚠️
-## Version 7.0.0 Notice:
-v7.0.0 of this repository was based on Windows App SDK (WASDK) v1.6.2, which has been unlisted by Microsoft due to critical bugs affecting Windows 10 users. To ensure stability, we have also unlisted v7.0.0 from nuget.
-
-## Version 7.1.0 Announcement:
-v7.1.0 will be released soon, based on the upcoming WASDK v1.6.3 release from Microsoft, containing the necessary fixes.
-
-# Last Release:
-Please note that v7.1.0 will be the final release for this repository, as we are transitioning to our new and improved repository (DevWinUI).
-
-Thank you for your patience and support as we ensure a stable and reliable experience for our users. Stay tuned for the v7.1.0 release!
-
-## 🚀 Repository Retired! 🚀
+﻿## 🚀 Repository Retired! 🚀
 > [!IMPORTANT]
 > This repository has been retired and is no longer actively maintained. We’ve rebranded and launched a new and improved repository to better serve your needs! 🎉
 
